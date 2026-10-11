@@ -110,6 +110,19 @@ with proper RTL shaping (`final_subtitled.mp4`) and cuts 9:16 Shorts from the ra
 Needs `ffmpeg` and an Arabic font (`apt install ffmpeg fonts-noto-core`); the Whisper model is
 downloaded from huggingface.co on first run (`WHISPER_MODEL=small` for a quick test).
 
+## Brand assets (`assets/`, rendered offline from code)
+
+| File | What |
+|---|---|
+| `intro_sting.mp4` | 5 s channel opener, 1080p60, synthesized house bed + SFX mastered to -14 LUFS. Navy matches the avatar background so it cuts straight into the presenter. |
+| `intro_sting_poster.png` | Frame at 4.35 s (title lockup) for thumbnails/end cards. |
+| `lower_third_presenter.webm` / `.mov` | 6 s name + title lower-third with alpha (VP9 / ProRes 4444; the .mov is regenerated, not committed). Overlay bottom-right in any editor. |
+| `lower_third_presenter.png` | Static hold frame of the same lower-third. |
+
+Sources: `sting/` (motion-reel film: `film.js`, `docs/shotlist.md`, `docs/critique.md`, fonts) and `lowerthird/`.
+Rebuild the lower-third for a guest or topic: `node scripts/render_alpha.mjs --film lowerthird --name "اسم الضيف" --title "المسمّى" --out guest`
+(needs `npm i -D playwright@1.56.1` and ffmpeg). Fonts: Noto Kufi Arabic (display) + Noto Naskh Arabic (UI), OFL.
+
 ## Things to verify before the first production run
 
 - **Feed URLs:** newsletters move their feeds, and AlphaSignal is email-only. Point it at a

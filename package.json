@@ -1,0 +1,26 @@
+{
+  "name": "ai-youtube-pipeline",
+  "version": "1.0.0",
+  "description": "An automated pipeline that turns a week of AI news into an 8-minute Modern Standard Arabic script and a talking-head MP4 of your digital twin (your cloned face and voice).",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wisamk-ctrl/ai-youtube-pipeline.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/issues"
+  },
+  "homepage": "https://github.com/wisamk-ctrl/ai-youtube-pipeline#readme",
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  }
+}

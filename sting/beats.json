@@ -1,0 +1,48 @@
+{
+ "bpm": 127.841,
+ "period": 0.469333,
+ "offset": 0.0,
+ "beats": [
+  0.0,
+  0.46933,
+  0.93867,
+  1.408,
+  1.87733,
+  2.34667,
+  2.816,
+  3.28533,
+  3.75467,
+  4.224,
+  4.69333,
+  5.16267
+ ],
+ "detected": [
+  0.4693,
+  0.9387,
+  1.408,
+  1.8773
+ ],
+ "fit_inliers": 4,
+ "fit_residual_ms": 0.0,
+ "sections": [
+  {
+   "name": "main",
+   "beat": 0
+  },
+  {
+   "name": "end",
+   "beat": 4
+  }
+ ],
+ "source": "synth house D minor 128.0 bpm (beats.py), grid measured on the drum stem",
+ "downbeats": [
+  0.0,
+  1.87733,
+  3.75467
+ ],
+ "bar_energy": [
+  0.1559,
+  0.1248
+ ],
+ "duration": 5.0
+}

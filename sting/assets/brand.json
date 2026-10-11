@@ -1,0 +1,17 @@
+{
+  "channel": "أسبوع الذكاء الاصطناعي",
+  "channel_en": "Weekly AI (Arabic)",
+  "presenter": "وسام",
+  "tagline": "نشرة أسبوعية لقادة الأعمال والتقنية",
+  "colors": {
+    "navy": "#0B1220",
+    "paper": "#F4F1EA",
+    "accent": "#E9B44C",
+    "muted": "#5C6B86"
+  },
+  "fonts": {
+    "display": "Noto Kufi Arabic (fonts/display.ttf, wght 100-900)",
+    "ui": "Noto Naskh Arabic (fonts/ui.ttf)"
+  },
+  "source": "Brief from the founder (no website yet). Navy from settings.yaml video.heygen.background_color so the sting cuts cleanly into the avatar render."
+}
