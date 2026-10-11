@@ -1,0 +1,82 @@
+# ─────────────────────────────────────────────────────────────────────
+# Pipeline configuration. Secrets live in .env, never here.
+# ─────────────────────────────────────────────────────────────────────
+
+ingestion:
+  lookback_days: 7            # weekly roundup window
+  request_timeout_s: 20
+
+  # RSS feeds. Verify each URL before the first run: newsletters move their
+  # feeds, and some (e.g. AlphaSignal) publish only by email. For an email-only
+  # newsletter, forward it to a service such as Kill the Newsletter
+  # (kill-the-newsletter.com), which gives you an Atom feed URL to paste here.
+  rss_feeds:
+    - name: TLDR AI
+      url: https://tldr.tech/api/rss/ai
+      weight: 1.2               # source credibility multiplier used in scoring
+    - name: AlphaSignal
+      url: ""                   # paste your kill-the-newsletter Atom URL here
+      weight: 1.2
+    - name: Import AI
+      url: https://importai.substack.com/feed
+      weight: 1.1
+    - name: The Batch (DeepLearning.AI)
+      url: https://www.deeplearning.ai/the-batch/feed/
+      weight: 1.1
+
+  x:
+    enabled: true
+    top_n: 10                 # keep the 10 highest-engagement posts of the week
+    max_posts_per_account: 100
+    accounts:
+      - emollick
+      - rowancheung
+      - karpathy
+      - AndrewYNg
+      - simonw
+
+scoring:
+  min_score: 2.0              # items below this are dropped as noise
+  max_items: 25               # cap handed to the scripting engine
+  dedupe_similarity: 0.82     # title similarity above which two items are duplicates
+
+scripting:
+  model: claude-opus-5-5
+  effort: high                # Opus 5.5 defaults to medium; scripting is quality-sensitive
+  target_minutes: 8
+  words_per_minute: 130       # measured pace of formal Arabic news delivery; tune to your twin's voice
+  length_tolerance: 0.10      # ±10% of target word count before a revision pass is triggered
+  max_revisions: 2
+  stories_min: 5
+  stories_max: 7
+  channel_name: "أسبوع الذكاء الاصطناعي"   # spoken in the intro/outro
+  presenter_name: "وسام"
+
+video:
+  provider: heygen            # heygen | elevenlabs_did
+  # How [Pause] markers reach the speech engine:
+  #   ssml     → <break time="0.8s"/> (ElevenLabs multilingual v2; HeyGen voices that support it)
+  #   ellipsis → "..." (works everywhere, less precise)
+  pause_style: ssml
+  pause_seconds: 0.8
+  max_chars_per_chunk: 1500   # sentence-aligned chunks; well under every provider's per-request limit
+  poll_interval_s: 20
+  poll_timeout_s: 3600
+
+  heygen:
+    avatar_type: avatar       # avatar (Instant/Studio avatar) | talking_photo (photo avatar)
+    avatar_style: normal
+    voice_speed: 1.0
+    width: 1920
+    height: 1080
+    background_color: "#0B1220"
+
+  elevenlabs:
+    model_id: eleven_multilingual_v2   # supports Arabic
+    stability: 0.5
+    similarity_boost: 0.85
+    style: 0.15
+    use_speaker_boost: true
+
+  did:
+    endpoint: clips           # clips (presenter_id) — the custom-avatar path on D-ID
