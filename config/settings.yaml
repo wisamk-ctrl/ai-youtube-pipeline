@@ -24,6 +24,21 @@ ingestion:
       url: https://www.deeplearning.ai/the-batch/feed/
       weight: 1.1
 
+  # Newsletters that arrive by email. Needs GOOGLE_CLIENT_ID/SECRET + GMAIL_REFRESH_TOKEN
+  # (scripts/google_authorize.py gmail). Each email is split into its stories.
+  gmail:
+    enabled: false
+    newsletters:
+      - name: TLDR AI (email)
+        query: "from:tldr.tech subject:AI"
+        weight: 1.2
+      - name: AlphaSignal
+        query: "from:alphasignal.ai"
+        weight: 1.2
+      - name: The Rundown AI
+        query: "from:therundown.ai"
+        weight: 1.0
+
   x:
     enabled: true
     top_n: 10                 # keep the 10 highest-engagement posts of the week
@@ -80,3 +95,11 @@ video:
 
   did:
     endpoint: clips           # clips (presenter_id) — the custom-avatar path on D-ID
+
+publish:
+  # YouTube Data API. Needs GOOGLE_CLIENT_ID/SECRET + YOUTUBE_REFRESH_TOKEN
+  # (scripts/google_authorize.py youtube). Uploads private + scheduled.
+  publish_weekday: 6          # 0=Mon … 6=Sun
+  publish_hour_utc: 6         # 06:00 UTC = 10:00 Gulf
+  tags: [الذكاء الاصطناعي, أخبار التقنية, AI, ChatGPT, OpenAI, Claude, Gemini, شركات, الإمارات, السعودية]
+  hashtags: ["#الذكاء_الاصطناعي", "#أخبار_التقنية", "#AI"]

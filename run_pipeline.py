@@ -105,9 +105,17 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     log.info("Phase 4 done → %s (similarity %.2f, %d shorts)", result["final"], result["similarity"], len(result["shorts"]))
 
 
+def phase_publish(cfg: dict, out: Path) -> None:
+    from pipeline.publish.youtube_upload import run_publish
+
+    video_id = run_publish(out, cfg)
+    log.info("Phase 5 done → https://youtu.be/%s (private, scheduled)", video_id)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("phase", choices=["ingest", "script", "video", "post", "all"])
+    ap.add_argument("phase", choices=["ingest", "script", "video", "post", "publish", "all"])
+    ap.add_argument("--fixture", help="Copy fixtures/<name>/items.json into the week folder instead of ingesting (offline testing)")
     ap.add_argument("--shorts", help='Comma-separated start-end seconds for vertical cuts, e.g. "12-55,180-240"')
     ap.add_argument("--week", help="Output folder name, default: current ISO week (e.g. 2026-W41)")
     ap.add_argument("--config", type=Path, help="Alternate settings.yaml")
@@ -122,7 +130,11 @@ def main() -> None:
     cfg = load_settings(args.config)
     out = week_dir(args.week)
 
-    if args.phase in ("ingest", "all"):
+    if args.fixture:
+        import shutil
+        shutil.copy(ROOT / "fixtures" / args.fixture / "items.json", out / "items.json")
+        log.info("Using fixture items from fixtures/%s", args.fixture)
+    elif args.phase in ("ingest", "all"):
         phase_ingest(cfg, out)
     if args.phase in ("script", "all"):
         phase_script(cfg, out)
@@ -136,6 +148,8 @@ def main() -> None:
         phase_video(cfg, out, args.dry_run, args.resume_video_id)
     if args.phase == "post":
         phase_post(cfg, out, args.shorts)
+    if args.phase == "publish":
+        phase_publish(cfg, out)
 
 
 if __name__ == "__main__":

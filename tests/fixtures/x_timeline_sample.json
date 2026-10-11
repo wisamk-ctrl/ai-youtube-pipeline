@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "id": "1001",
+      "text": "Big week: enterprise AI adoption is finally showing up in earnings. Thread 🧵 https://t.co/abc",
+      "created_at": "__RECENT__",
+      "public_metrics": {"like_count": 4200, "retweet_count": 800, "quote_count": 120, "reply_count": 300},
+      "entities": {"urls": [{"expanded_url": "https://www.oneusefulthing.org/p/enterprise-ai-earnings"}]}
+    },
+    {
+      "id": "1002",
+      "text": "gm everyone ☀️",
+      "created_at": "__RECENT__",
+      "public_metrics": {"like_count": 50000, "retweet_count": 10, "quote_count": 0, "reply_count": 900},
+      "entities": {"urls": []}
+    },
+    {
+      "id": "1003",
+      "text": "Short post",
+      "note_tweet": {"text": "NVIDIA announced a new data center GPU for inference at 2x lower cost per token. This matters for every enterprise running agents at scale. Full analysis below."},
+      "created_at": "__RECENT__",
+      "public_metrics": {"like_count": 900, "retweet_count": 300, "quote_count": 40, "reply_count": 80},
+      "entities": {"urls": [{"expanded_url": "https://x.com/emollick/status/1003"}]}
+    }
+  ],
+  "meta": {"result_count": 3}
+}

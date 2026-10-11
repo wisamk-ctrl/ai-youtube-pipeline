@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 from typing import Any
 
+from pipeline.ingestion.gmail_ingest import fetch_gmail_newsletters
 from pipeline.ingestion.rss_ingest import fetch_all_feeds
 from pipeline.ingestion.scoring import rank_and_filter
 from pipeline.ingestion.x_ingest import fetch_top_posts
@@ -15,6 +16,7 @@ log = logging.getLogger(__name__)
 
 def run_ingestion(cfg: dict[str, Any]) -> list[NewsItem]:
     items = fetch_all_feeds(cfg)
+    items += fetch_gmail_newsletters(cfg)
     try:
         items += fetch_top_posts(cfg)
     except RuntimeError as exc:

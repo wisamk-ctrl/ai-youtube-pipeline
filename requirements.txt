@@ -6,6 +6,10 @@ requests>=2.32.3          # HTTP for RSS fetch, X API v2, HeyGen, ElevenLabs, D-
 anthropic>=1.13,<2          # Official Anthropic SDK (Messages API, structured outputs, streaming)
 pydantic>=2.9             # Schemas for structured LLM output (editorial plan)
 
+# ── Phase 1 (Gmail newsletters) + Phase 5 (YouTube upload) ──────────
+google-api-python-client>=2.150
+google-auth-oauthlib>=1.2
+
 # ── Shared ──────────────────────────────────────────────────────────
 PyYAML>=6.0.2             # config/settings.yaml
 python-dotenv>=1.0.1      # loads .env (API keys) without committing secrets

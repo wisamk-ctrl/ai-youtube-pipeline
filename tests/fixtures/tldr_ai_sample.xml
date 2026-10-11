@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>TLDR AI</title>
+<link>https://tldr.tech/ai</link>
+<item>
+  <title>OpenAI launches enterprise agent platform with usage-based pricing (4 minute read)</title>
+  <link>https://tldr.tech/ai/2026-10-09#openai-agents</link>
+  <pubDate>__RECENT__</pubDate>
+  <description><![CDATA[<p>OpenAI announced general availability of its enterprise agent platform, letting companies deploy agents with SSO, audit logs and per-seat pricing. Early customers include banks in the UAE and Saudi Arabia.</p>]]></description>
+</item>
+<item>
+  <title>Why I switched my morning routine (3 minute read)</title>
+  <link>https://example.com/lifestyle</link>
+  <pubDate>__RECENT__</pubDate>
+  <description><![CDATA[<p>A personal essay about productivity, coffee and journaling. Sponsored by a webinar series.</p>]]></description>
+</item>
+<item>
+  <title>Anthropic cuts Claude API prices 40% for batch workloads (2 minute read)</title>
+  <link>https://tldr.tech/ai/2026-10-08#anthropic-pricing</link>
+  <pubDate>__RECENT__</pubDate>
+  <content:encoded><![CDATA[<div><p>Anthropic announced a 40% price cut on batch inference for enterprise customers, alongside new compliance features for regulated industries.</p></div>]]></content:encoded>
+</item>
+<item>
+  <title>Old story from last month (5 minute read)</title>
+  <link>https://tldr.tech/ai/old</link>
+  <pubDate>__OLD__</pubDate>
+  <description><![CDATA[<p>Google released a new model.</p>]]></description>
+</item>
+</channel>
+</rss>
