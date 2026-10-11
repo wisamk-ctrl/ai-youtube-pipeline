@@ -43,6 +43,8 @@ ENTERPRISE_SIGNALS: dict[str, float] = {
     r"\b(open[- ]source|open[- ]weights?)\b": 0.8,
     r"\b(pricing|price cut|cost)\b": 0.7,
     r"\b(productivity|roi|adoption|workforce|jobs)\b": 0.8,
+    r"\b(sovereign|on-premises|private cloud|data sovereignty)\b": 1.0,   # the Gulf enterprise buying criterion
+    r"\b(partnership|collaboration|acqui-?hire|ipo)\b": 0.5,
 }
 
 # The channel's differentiator: stories with a regional angle get a bonus.
