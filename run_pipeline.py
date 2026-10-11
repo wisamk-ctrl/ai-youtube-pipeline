@@ -93,9 +93,22 @@ def phase_video(cfg: dict, out: Path, dry_run: bool, resume_id: str | None) -> N
         log.info("Phase 3 done → %s", path)
 
 
+def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
+    from pipeline.post.subtitles import run_post
+    from pipeline.script_format import spoken_text
+
+    video = out / "talking_head.mp4"
+    if not video.exists():
+        sys.exit(f"{video} not found — run the video phase first.")
+    shorts = [tuple(map(float, s.split("-"))) for s in shorts_arg.split(",")] if shorts_arg else []
+    result = run_post(video, spoken_text((out / "script.md").read_text(encoding="utf-8")), out, shorts)
+    log.info("Phase 4 done → %s (similarity %.2f, %d shorts)", result["final"], result["similarity"], len(result["shorts"]))
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("phase", choices=["ingest", "script", "video", "all"])
+    ap.add_argument("phase", choices=["ingest", "script", "video", "post", "all"])
+    ap.add_argument("--shorts", help='Comma-separated start-end seconds for vertical cuts, e.g. "12-55,180-240"')
     ap.add_argument("--week", help="Output folder name, default: current ISO week (e.g. 2026-W41)")
     ap.add_argument("--config", type=Path, help="Alternate settings.yaml")
     ap.add_argument("--dry-run", action="store_true", help="Prepare TTS text/cues but skip the paid render")
@@ -121,6 +134,8 @@ def main() -> None:
         return
     if args.phase in ("video", "all"):
         phase_video(cfg, out, args.dry_run, args.resume_video_id)
+    if args.phase == "post":
+        phase_post(cfg, out, args.shorts)
 
 
 if __name__ == "__main__":

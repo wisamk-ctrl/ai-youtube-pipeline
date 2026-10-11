@@ -11,5 +11,9 @@ PyYAML>=6.0.2             # config/settings.yaml
 python-dotenv>=1.0.1      # loads .env (API keys) without committing secrets
 tenacity>=9.0.0           # retry/backoff for flaky third-party APIs
 
+# ── Phase 4 (optional post-production; heavy — comment out if unused) ─
+faster-whisper>=1.2       # local Arabic transcription → SRT captions + script check
+# ffmpeg must be on PATH (apt install ffmpeg); Arabic font: apt install fonts-noto-core
+
 # ── Dev ─────────────────────────────────────────────────────────────
 pytest>=8.3

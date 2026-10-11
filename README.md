@@ -60,6 +60,7 @@ python run_pipeline.py all                         # ingest + script, then stops
 # read / edit output/<week>/script.md
 python run_pipeline.py video --dry-run             # inspect tts_text.txt and cue_sheet.json (free)
 python run_pipeline.py video                       # paid render → output/<week>/talking_head.mp4
+python run_pipeline.py post --shorts "12-55,180-240"   # optional: Arabic captions + 9:16 Shorts (local, free)
 ```
 
 Schedule it with cron (for example, Saturday 06:00): `0 6 * * 6 cd /path/ai-youtube-pipeline && .venv/bin/python run_pipeline.py all`.
@@ -101,6 +102,13 @@ boundaries.
 
 Job submissions are never retried automatically, because a lost response could otherwise bill a
 second render. Status polls and downloads are retried.
+
+**Phase 4: post-production (optional, offline).** `faster-whisper` transcribes the rendered
+Arabic audio with word timestamps → `subtitles.srt`, compares it with the approved script (a low
+similarity score means the provider dropped or garbled a chunk), then ffmpeg burns the captions in
+with proper RTL shaping (`final_subtitled.mp4`) and cuts 9:16 Shorts from the ranges you pass.
+Needs `ffmpeg` and an Arabic font (`apt install ffmpeg fonts-noto-core`); the Whisper model is
+downloaded from huggingface.co on first run (`WHISPER_MODEL=small` for a quick test).
 
 ## Things to verify before the first production run
 
