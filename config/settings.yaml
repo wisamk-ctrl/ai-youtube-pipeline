@@ -74,7 +74,7 @@ radar:
   # without it only the hard signals run. Threshold agreed 2026-10-12: 2 sources + 1 signal.
   enabled: true
   extraction:
-    provider: ollama          # anthropic | ollama
+    provider: anthropic       # anthropic | ollama  (anthropic for production quality; ollama for free local testing)
     model: claude-haiku-5-5   # used when provider: anthropic (≈$0.05/week)
     ollama_url: http://localhost:11434   # or set OLLAMA_HOST; the weekly job must run where Ollama runs
     ollama_model: qwen2.5     # pick from `ollama list`; qwen2.5/qwen3 ≥ 7B tag reliably, 1.5B models do not
@@ -92,7 +92,7 @@ radar:
 
 scripting:
   model: claude-opus-5-5
-  effort: high                # Opus 5.5 defaults to medium; scripting is quality-sensitive
+  effort: xhigh               # Opus 5.5 defaults to medium; the script goes out to a large audience
   target_minutes: 8
   words_per_minute: 130       # measured pace of formal Arabic news delivery; tune to your twin's voice
   length_tolerance: 0.10      # ±10% of target word count before a revision pass is triggered
