@@ -30,6 +30,9 @@ on:
       shorts:
         description: "post only: start-end seconds, e.g. 12-55,180-240"
         default: ""
+      fixture:
+        description: "script only: use fixtures/<name>/items.json instead of live ingestion (e.g. sample_week)"
+        default: ""
 
 permissions:
   contents: write            # the script job commits data/radar_state.json (the radar's memory)
@@ -62,7 +65,8 @@ jobs:
           GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
         run: |
           WEEK_ARG=""; [ -n "${{ steps.week.outputs.week }}" ] && WEEK_ARG="--week ${{ steps.week.outputs.week }}"
-          python run_pipeline.py all $WEEK_ARG
+          FIX_ARG=""; [ -n "${{ inputs.fixture }}" ] && FIX_ARG="--fixture ${{ inputs.fixture }}"
+          python run_pipeline.py all $WEEK_ARG $FIX_ARG
           echo "WEEK_DIR=$(ls -d output/*/ | tail -n1)" >> "$GITHUB_ENV"
       - name: Commit the radar's memory
         run: |
