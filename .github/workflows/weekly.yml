@@ -89,7 +89,9 @@ jobs:
             const cov = fs.existsSync(`${dir}/coverage.md`) ? fs.readFileSync(`${dir}/coverage.md`, 'utf8') : '';
             const crit = fs.existsSync(`${dir}/critique.json`) ? JSON.parse(fs.readFileSync(`${dir}/critique.json`, 'utf8')) : [];
             const last = crit[crit.length - 1];
-            const quality = last ? `**Listener review** (round ${crit.length}): ${Object.entries(last.scores).map(([k, v]) => `${k} ${v}`).join(' · ')} — _${last.verdict}_` : '';
+            const bar = 8;
+            const below = last && last.minimum < bar ? `\n\n⚠️ **Below the quality bar** (min ${last.minimum} < ${bar} after ${crit.length} rounds) — read critique.json in the artifact; the critic's last three fixes are the edit list.` : '';
+            const quality = last ? `**Listener review** (round ${crit.length}): ${Object.entries(last.scores).map(([k, v]) => `${k} ${v}`).join(' · ')} — _${last.verdict}_${below}` : '';
             const smap = fs.existsSync(`${dir}/source_map.md`) ? fs.readFileSync(`${dir}/source_map.md`, 'utf8') : '';
             const unsourced = (smap.match(/\*\*(\d+) unsourced claims\*\*/) || [])[1];
             const sourceLine = smap ? (unsourced === '0' ? '✅ Every claim traced to a source.' : `⚠️ **${unsourced} unsourced claim(s)** — see source_map.md in the artifact before recording.`) : '';
