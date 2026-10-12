@@ -35,7 +35,11 @@ def run_ingestion(cfg: dict[str, Any], week: str = "", out_dir: Path | None = No
         watch.tag(item)
     # The radar looks for names that are NOT on the watchlist and adds the ones that clear
     # the bar as track="radar" items, so the editor can give them the رادار الأسبوع slot.
+    from pipeline.radar.coverage import record, report_md
     from pipeline.radar.radar import run_radar
+    wk = week or datetime.now(timezone.utc).strftime("%G-W%V")
+    if out_dir:
+        (out_dir / "coverage.md").write_text(report_md(record(items, watch, wk), watch, wk), encoding="utf-8")
     items += run_radar(items, watch, cfg, week or datetime.now(timezone.utc).strftime("%G-W%V"), out_dir)
     ranked = rank_and_filter(items, cfg)
     if not ranked:

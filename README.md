@@ -92,6 +92,11 @@ and ≥ 1 hard signal backs it (`radar.min_sources` / `min_signals`). The weekly
 candidate table (`radar_report.md`); `data/radar_state.json` remembers every name (committed back by
 the workflow). Promote a name by adding it to the watchlist; silence one by setting `status: ignored`.
 
+**Deciding (Phase C).** The weekly review issue carries the radar table and a coverage report (items
+per track and region; watched names with no news in 4 weeks). Reply `/promote <name> --track … --group …
+--ar …` or `/ignore <name>` on the issue: `radar-decide.yml` opens a pull request that adds the name to
+`watchlist.yaml` (promote) or commits the ignore. The same script runs locally: `python scripts/radar_decide.py list|promote|ignore`.
+
 **Phase 2: scripting (Claude).** This phase is a chain of three calls, each doing one job:
 1. **Editor.** `messages.parse` returns a validated Pydantic `EditorialPlan`: 5–7 stories,
    their order, the enterprise angle and B-roll ideas. Item IDs that don't exist are removed.

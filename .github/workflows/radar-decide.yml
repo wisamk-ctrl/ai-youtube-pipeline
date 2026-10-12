@@ -1,0 +1,78 @@
+# Decide on radar candidates from a comment on the weekly review issue:
+#
+#   /promote Reflection AI --track models --group us --ar ريفلكشن --alias Beam --hf reflectionai
+#   /ignore Some Startup
+#
+# promote → opens a pull request that adds the name to config/watchlist.yaml (you merge it)
+# ignore  → commits the status straight to data/radar_state.json
+# Only the repository owner / collaborators can trigger it.
+
+name: radar-decide
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  decide:
+    if: >
+      startsWith(github.event.comment.body, '/promote ') || startsWith(github.event.comment.body, '/ignore ')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the commenter may decide
+        if: ${{ !contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association) }}
+        run: echo "::error::only the repository owner or collaborators can promote/ignore" && exit 1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: Apply the decision
+        id: apply
+        env:
+          BODY: ${{ github.event.comment.body }}
+        run: |
+          set -e
+          CMD=$(printf '%s' "$BODY" | head -n1)
+          if [[ "$CMD" == /promote* ]]; then
+            ARGS=${CMD#/promote }
+            # first token(s) up to the first --flag are the name
+            NAME=$(printf '%s' "$ARGS" | sed -E 's/ --.*$//')
+            FLAGS=$(printf '%s' "$ARGS" | grep -oE ' --.*$' || true)
+            eval python scripts/radar_decide.py promote "\"$NAME\"" $FLAGS | tee result.txt
+            echo "kind=promote" >> "$GITHUB_OUTPUT"
+          else
+            NAME=${CMD#/ignore }
+            python scripts/radar_decide.py ignore "$NAME" | tee result.txt
+            echo "kind=ignore" >> "$GITHUB_OUTPUT"
+          fi
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "result=$(cat result.txt)" >> "$GITHUB_OUTPUT"
+      - name: Commit (ignore) or open a PR (promote)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          if [ "${{ steps.apply.outputs.kind }}" = "ignore" ]; then
+            git add data/radar_state.json && git commit -m "radar: ignore ${{ steps.apply.outputs.name }}" && git push
+          else
+            BR="watchlist/$(echo '${{ steps.apply.outputs.name }}' | tr -cs 'A-Za-z0-9' '-' | tr 'A-Z' 'a-z')"
+            git checkout -b "$BR"
+            git add config/watchlist.yaml data/radar_state.json
+            git commit -m "watchlist: promote ${{ steps.apply.outputs.name }}"
+            git push -u origin "$BR"
+            gh pr create --title "Watchlist: add ${{ steps.apply.outputs.name }}" \
+              --body "Promoted from the radar via #${{ github.event.issue.number }}. Review the aliases/Arabic name, then merge." \
+              --base main --head "$BR"
+          fi
+      - name: Reply on the issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number,
+              body: `✅ ${{ steps.apply.outputs.result }}` });
