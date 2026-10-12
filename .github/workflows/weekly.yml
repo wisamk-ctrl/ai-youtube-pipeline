@@ -45,7 +45,7 @@ jobs:
   script:
     if: github.event_name == 'schedule' || inputs.phase == 'script'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60          # write + up to 3 review passes + critic rounds + source map, each a long Opus call
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

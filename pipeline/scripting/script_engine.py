@@ -162,7 +162,7 @@ class ScriptEngine:
     def _generate(self, system: str, user: str, step: str) -> str:
         with self.client.beta.messages.stream(
             model=self.cfg["model"],
-            max_tokens=32000,  # ~1k Arabic words is ~3-4k tokens; headroom for thinking
+            max_tokens=64000,  # thinking tokens count against this; a 1k-word Arabic script is ~4k, the rest is reasoning room
             system=system,
             messages=[{"role": "user", "content": user}],
             output_config={"effort": self.cfg.get("effort", "high")},
