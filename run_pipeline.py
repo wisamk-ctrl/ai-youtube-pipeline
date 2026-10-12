@@ -50,7 +50,7 @@ def week_dir(week: str | None) -> Path:
 def phase_ingest(cfg: dict, out: Path) -> None:
     from pipeline.ingestion.engine import run_ingestion
 
-    items = run_ingestion(cfg)
+    items = run_ingestion(cfg, week=out.name, out_dir=out)
     (out / "items.json").write_text(
         json.dumps([i.to_dict() for i in items], ensure_ascii=False, indent=2), encoding="utf-8")
     log.info("Phase 1 done → %s (%d items)", out / "items.json", len(items))

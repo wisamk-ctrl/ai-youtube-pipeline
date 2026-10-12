@@ -66,7 +66,22 @@ scoring:
     models: 8
     agents: 5
     chips: 4
+    radar: 1
   dedupe_similarity: 0.82     # title similarity above which two items are duplicates
+
+radar:
+  # Names NOT on the watchlist. Extraction needs ANTHROPIC_API_KEY (Haiku 5.5, ≈$0.05/week);
+  # without it only the hard signals run. Threshold agreed 2026-10-12: 2 sources + 1 signal.
+  enabled: true
+  min_sources: 2
+  min_signals: 1
+  max_surfaced: 3           # at most this many radar items offered to the editor
+  hf_trending: true
+  openrouter: true
+  github: true
+  github_min_stars: 300
+  hackernews: true
+  hn_min_points: 150
 
 scripting:
   model: claude-opus-5-5

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import logging
+from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 from pipeline.ingestion.gmail_ingest import fetch_gmail_newsletters
@@ -16,7 +18,7 @@ from pipeline.models import NewsItem
 log = logging.getLogger(__name__)
 
 
-def run_ingestion(cfg: dict[str, Any]) -> list[NewsItem]:
+def run_ingestion(cfg: dict[str, Any], week: str = "", out_dir: Path | None = None) -> list[NewsItem]:
     watch = load_watchlist()
     items = fetch_all_feeds(cfg)
     items += fetch_gmail_newsletters(cfg)
@@ -31,6 +33,10 @@ def run_ingestion(cfg: dict[str, Any]) -> list[NewsItem]:
     # which sets its track (models / agents / chips) and region for the quotas and the plan.
     for item in items:
         watch.tag(item)
+    # The radar looks for names that are NOT on the watchlist and adds the ones that clear
+    # the bar as track="radar" items, so the editor can give them the رادار الأسبوع slot.
+    from pipeline.radar.radar import run_radar
+    items += run_radar(items, watch, cfg, week or datetime.now(timezone.utc).strftime("%G-W%V"), out_dir)
     ranked = rank_and_filter(items, cfg)
     if not ranked:
         raise RuntimeError("Ingestion produced no items above the relevance threshold — check feeds/keys.")

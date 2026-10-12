@@ -32,7 +32,7 @@ on:
         default: ""
 
 permissions:
-  contents: read
+  contents: write            # the script job commits data/radar_state.json (the radar's memory)
   issues: write
 
 env:
@@ -64,6 +64,10 @@ jobs:
           WEEK_ARG=""; [ -n "${{ steps.week.outputs.week }}" ] && WEEK_ARG="--week ${{ steps.week.outputs.week }}"
           python run_pipeline.py all $WEEK_ARG
           echo "WEEK_DIR=$(ls -d output/*/ | tail -n1)" >> "$GITHUB_ENV"
+      - name: Commit the radar's memory
+        run: |
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git add data/radar_state.json && (git diff --cached --quiet || git commit -m "chore: radar state $(date -u +%F)") && git push
       - uses: actions/upload-artifact@v4
         with:
           name: week-${{ steps.week.outputs.week || github.run_id }}
@@ -77,13 +81,14 @@ jobs:
             const dir = process.env.WEEK_DIR;
             const script = fs.readFileSync(`${dir}/script.md`, 'utf8');
             const plan = JSON.parse(fs.readFileSync(`${dir}/plan.json`, 'utf8'));
+            const radar = fs.existsSync(`${dir}/radar_report.md`) ? fs.readFileSync(`${dir}/radar_report.md`, 'utf8') : '';
             await github.rest.issues.create({
               owner: context.repo.owner, repo: context.repo.repo,
               title: `Review: ${plan.episode_title_ar} (${dir.replace('output/','').replace('/','')})`,
               labels: ['script-review'],
               body: `Artifact run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
                     `When approved, run the **weekly-roundup** workflow with phase=\`video\` and this week.\n\n` +
-                    `<details><summary>script.md</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>`,
+                    `<details><summary>script.md</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>\n\n${radar}`,
             });
 
   render:

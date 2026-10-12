@@ -84,6 +84,14 @@ feeds, GitHub releases and new Hugging Face models (all free), and tags every it
 mentions, so scoring can reserve seats per track (`scoring.min_per_track`) and the editor can build
 the fixed episode shape: models → agents → chips → radar. Gulf names carry a 1.3× weight.
 
+**Radar (`pipeline/radar/`).** Names that are *not* on the watchlist. Haiku 5.5 reads every collected
+item once and extracts the organisations, models and products it is about (≈$0.05/week, cached per
+item); hard signals come from Hugging Face trending, OpenRouter's new models, fast-growing GitHub
+repos and Hacker News. A name becomes radar news when ≥ 2 independent sources make it their subject
+and ≥ 1 hard signal backs it (`radar.min_sources` / `min_signals`). The weekly issue carries the
+candidate table (`radar_report.md`); `data/radar_state.json` remembers every name (committed back by
+the workflow). Promote a name by adding it to the watchlist; silence one by setting `status: ignored`.
+
 **Phase 2: scripting (Claude).** This phase is a chain of three calls, each doing one job:
 1. **Editor.** `messages.parse` returns a validated Pydantic `EditorialPlan`: 5–7 stories,
    their order, the enterprise angle and B-roll ideas. Item IDs that don't exist are removed.
