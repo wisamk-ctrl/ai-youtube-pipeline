@@ -68,6 +68,10 @@ def phase_script(cfg: dict, out: Path) -> None:
     (out / "plan.json").write_text(
         json.dumps(result.plan.model_dump(), ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "script.md").write_text(result.script + "\n", encoding="utf-8")
+    (out / "critique.json").write_text(json.dumps(result.critique_rounds, ensure_ascii=False, indent=2), encoding="utf-8")
+    (out / "source_map.md").write_text(result.source_map_md, encoding="utf-8")
+    log.info("Quality: critic %s · sources: %s", 
+             " → ".join(str(r["minimum"]) for r in result.critique_rounds) or "n/a", result.source_stats)
     minutes = result.word_count / cfg["scripting"]["words_per_minute"]
     log.info("Phase 2 done → %s (%d words ≈ %.1f min; target %d)",
              out / "script.md", result.word_count, minutes, result.target_words)

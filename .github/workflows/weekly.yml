@@ -83,11 +83,18 @@ jobs:
             const plan = JSON.parse(fs.readFileSync(`${dir}/plan.json`, 'utf8'));
             const radar = fs.existsSync(`${dir}/radar_report.md`) ? fs.readFileSync(`${dir}/radar_report.md`, 'utf8') : '';
             const cov = fs.existsSync(`${dir}/coverage.md`) ? fs.readFileSync(`${dir}/coverage.md`, 'utf8') : '';
+            const crit = fs.existsSync(`${dir}/critique.json`) ? JSON.parse(fs.readFileSync(`${dir}/critique.json`, 'utf8')) : [];
+            const last = crit[crit.length - 1];
+            const quality = last ? `**Listener review** (round ${crit.length}): ${Object.entries(last.scores).map(([k, v]) => `${k} ${v}`).join(' · ')} — _${last.verdict}_` : '';
+            const smap = fs.existsSync(`${dir}/source_map.md`) ? fs.readFileSync(`${dir}/source_map.md`, 'utf8') : '';
+            const unsourced = (smap.match(/\*\*(\d+) unsourced claims\*\*/) || [])[1];
+            const sourceLine = smap ? (unsourced === '0' ? '✅ Every claim traced to a source.' : `⚠️ **${unsourced} unsourced claim(s)** — see source_map.md in the artifact before recording.`) : '';
             await github.rest.issues.create({
               owner: context.repo.owner, repo: context.repo.repo,
               title: `Review: ${plan.episode_title_ar} (${dir.replace('output/','').replace('/','')})`,
               labels: ['script-review'],
               body: `Artifact run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
+                    `${quality}\n\n${sourceLine}\n\n` +
                     `When approved, run the **weekly-roundup** workflow with phase=\`video\` and this week.\n\n` +
                     `<details><summary>script.md</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>\n\n${radar}\n\n${cov}\n\nDecide from here: comment \`/promote <name> --track models --group gulf --ar <الاسم>\` or \`/ignore <name>\`.`,
             });

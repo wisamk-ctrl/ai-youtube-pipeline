@@ -97,6 +97,11 @@ scripting:
   words_per_minute: 130       # measured pace of formal Arabic news delivery; tune to your twin's voice
   length_tolerance: 0.10      # ±10% of target word count before a revision pass is triggered
   max_revisions: 2
+  aux_model: claude-sonnet-5-5   # per-sentence source map (mechanical attribution)
+  critic:                     # listener-side quality gate, scored by a "head of news" pass
+    model: claude-opus-5-5
+    min_score: 8              # every score (hook, clarity, pacing, flow, arabic, value) must reach this
+    max_rounds: 2             # fix-and-rescore rounds before we stop and flag it
   stories_min: 5
   stories_max: 7
   channel_name: "أسبوع الذكاء الاصطناعي"   # spoken in the intro/outro

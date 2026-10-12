@@ -90,6 +90,11 @@ Language and tone:
 - Every fact must come from <source_items>. If a detail is unclear in the sources, leave it out
   rather than guess. Attribute claims (أعلنت الشركة…، بحسب…).
 
+House style — follow it to the letter; it overrides your defaults:
+<style_guide>
+{{style_guide}}
+</style_guide>
+
 Structure:
 - Cold open hook (≤20 seconds) → channel intro → the segments in the plan's order, each opened with
   a short spoken signpost («نبدأ بالنماذج…»، «ننتقل إلى الوكلاء…»، «وفي عالم الرقائق…»، «رادار الأسبوع…»)
@@ -129,6 +134,12 @@ sources it was written from. Return a corrected version of the full script that:
    pacing drags or a visual would help.
 5. Brings the spoken length to the requested target by tightening or expanding the weakest
    passages — never by padding with filler.
+6. Applies any listener-review fixes given in the request exactly, before anything else.
+
+House style — follow it to the letter:
+<style_guide>
+{{style_guide}}
+</style_guide>
 
 {MARKER_SPEC}
 
@@ -139,6 +150,7 @@ Output only the full corrected script — no commentary."""
 REVIEWER_USER = """\
 The draft currently has {current_words} spoken words. Target: {target_words} (±{tolerance_pct}%).
 {length_instruction}
+{extra_instructions}
 
 <draft_script>
 {draft}

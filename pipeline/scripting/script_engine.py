@@ -29,7 +29,7 @@ from __future__ import annotations
 
 import json
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date
 from typing import Any
 
@@ -38,9 +38,12 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from pipeline.config import ROOT
 from pipeline.models import NewsItem
 from pipeline.script_format import count_spoken_words
+from pipeline.scripting import critic as critic_mod
 from pipeline.scripting import prompts
+from pipeline.scripting import source_map as smap_mod
 
 log = logging.getLogger(__name__)
 
@@ -73,6 +76,9 @@ class ScriptResult:
     script: str
     word_count: int
     target_words: int
+    critique_rounds: list[dict[str, Any]] = field(default_factory=list)
+    source_map_md: str = ""
+    source_stats: dict[str, Any] = field(default_factory=dict)
 
 
 class ScriptGenerationError(RuntimeError):
@@ -115,6 +121,7 @@ class ScriptEngine:
         # for an unattended weekly job.
         self.client = client or anthropic.Anthropic(max_retries=4)
         self.target_words = round(self.cfg["target_minutes"] * self.cfg["words_per_minute"])
+        self.style_guide = (ROOT / "config" / "style_guide.md").read_text(encoding="utf-8")
 
     # ── Step 1 ──
     def plan(self, items: list[NewsItem], week_label: str) -> EditorialPlan:
@@ -182,7 +189,8 @@ class ScriptEngine:
     def write(self, plan: EditorialPlan, items: list[NewsItem]) -> str:
         selected = self.selected_items(plan, items)
         system = prompts.WRITER_SYSTEM.format(
-            presenter_name=self.cfg["presenter_name"], channel_name=self.cfg["channel_name"]
+            presenter_name=self.cfg["presenter_name"], channel_name=self.cfg["channel_name"],
+            style_guide=self.style_guide,
         )
         user = prompts.WRITER_USER.format(
             target_words=self.target_words,
@@ -194,7 +202,7 @@ class ScriptEngine:
         return self._generate(system, user, "draft script")
 
     # ── Step 3 ──
-    def review(self, draft: str, items: list[NewsItem]) -> str:
+    def review(self, draft: str, items: list[NewsItem], extra_instructions: str = "") -> str:
         current = count_spoken_words(draft)
         tol = self.cfg["length_tolerance"]
         delta = self.target_words - current
@@ -210,10 +218,11 @@ class ScriptEngine:
             target_words=self.target_words,
             tolerance_pct=round(tol * 100),
             length_instruction=instruction,
+            extra_instructions=extra_instructions,
             draft=draft,
             items_block=_items_block(items),
         )
-        return self._generate(prompts.REVIEWER_SYSTEM, user, "review pass")
+        return self._generate(prompts.REVIEWER_SYSTEM.replace("{style_guide}", self.style_guide), user, "review pass")
 
     # ── Full chain ──
     def run(self, items: list[NewsItem], week_label: str | None = None) -> ScriptResult:
@@ -235,4 +244,27 @@ class ScriptEngine:
         else:
             log.warning("Script length still off target after revisions; continuing (%d words)", words)
 
-        return ScriptResult(plan=plan, script=script, word_count=words, target_words=self.target_words)
+        # Listener-side gate: score like a head of news; below the bar → the reviewer applies the
+        # critic's three fixes and we score again. The last critique always stands in the record.
+        ccfg = self.cfg.get("critic", {})
+        rounds: list[dict[str, Any]] = []
+        for attempt in range(ccfg.get("max_rounds", 2) + 1):
+            c = critic_mod.critique(script, self.style_guide, ccfg.get("model", self.cfg["model"]), self.client)
+            rounds.append({"scores": c.scores, "minimum": c.minimum, "verdict": c.verdict,
+                           "worst_three": [f.model_dump() for f in c.worst_three]})
+            log.info("Critic round %d: min %d — %s", attempt + 1, c.minimum, c.verdict)
+            if c.minimum >= ccfg.get("min_score", 8) or attempt == ccfg.get("max_rounds", 2):
+                break
+            script = self.review(script, sources, extra_instructions=critic_mod.fixes_as_instruction(c))
+            words = count_spoken_words(script)
+        if rounds[-1]["minimum"] < ccfg.get("min_score", 8):
+            log.warning("Script still below the quality bar (min %d) after %d rounds — review the critique", rounds[-1]["minimum"], len(rounds))
+
+        # Every spoken sentence attributed to its sources; unsourced claims are listed first.
+        sents, smap = smap_mod.build(script, sources, self.cfg.get("aux_model", self.cfg["model"]), self.client)
+        source_md, source_stats = smap_mod.render_md(sents, smap, sources), smap_mod.stats(smap)
+        if source_stats["unsourced"]:
+            log.warning("%d unsourced claim(s) in the script — see source_map.md", source_stats["unsourced"])
+
+        return ScriptResult(plan=plan, script=script, word_count=words, target_words=self.target_words,
+                            critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats)

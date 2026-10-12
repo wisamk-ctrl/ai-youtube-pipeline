@@ -117,7 +117,15 @@ per track and region; watched names with no news in 4 weeks). Reply `/promote <n
    strips any investment advice and corrects the length. It repeats while the length is outside
    ±10% of `8 min × 130 wpm`.
 
-All three calls use `claude-opus-5-5` at `effort: high`. They opt into server-side refusal
+Two more passes follow. A **listener-side critic** (a "head of news" prompt) scores the script 1–10 on
+hook, clarity, pacing, flow, Arabic and value against `config/style_guide.md`; any score under 8 sends
+the reviewer back in with the critic's three fixes, up to two rounds (`critique.json`). Then a
+**source map** attributes every spoken sentence to the items it draws on and lists unsourced claims
+first (`source_map.md`); the review issue shows the scores and the unsourced count.
+`config/style_guide.md` (register, numbers, names, pacing, approved terms, tashkeel policy, what is
+never said) is injected into the writer, reviewer and critic on every run — edit it there, nowhere else.
+
+All three calls use `claude-opus-5-5` at `effort: xhigh`. They opt into server-side refusal
 fallbacks and check `stop_reason`, so a truncated or refused script fails loudly. It is never
 rendered. Newsletter and tweet text is fenced as untrusted data in every prompt.
 
