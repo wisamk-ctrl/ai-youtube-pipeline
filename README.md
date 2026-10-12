@@ -53,6 +53,16 @@ cp .env.example .env               # then fill in the keys and your avatar/voice
 pytest -q                          # offline tests
 ```
 
+## Running on your Mac (Ollama)
+
+```bash
+make setup            # .venv + dependencies
+make ollama-check     # Ollama up? which models? does the configured one answer JSON?
+make extract-test     # tag the sample week with the local model and score it (no API key)
+make weekly           # this week's ingest + radar + script
+make install-launchd  # every Saturday 10:00 local time; log in output/launchd.log
+```
+
 ## Weekly run
 
 ```bash
