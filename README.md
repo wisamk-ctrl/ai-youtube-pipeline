@@ -84,9 +84,10 @@ feeds, GitHub releases and new Hugging Face models (all free), and tags every it
 mentions, so scoring can reserve seats per track (`scoring.min_per_track`) and the editor can build
 the fixed episode shape: models → agents → chips → radar. Gulf names carry a 1.3× weight.
 
-**Radar (`pipeline/radar/`).** Names that are *not* on the watchlist. Haiku 5.5 reads every collected
-item once and extracts the organisations, models and products it is about (≈$0.05/week, cached per
-item); hard signals come from Hugging Face trending, OpenRouter's new models, fast-growing GitHub
+**Radar (`pipeline/radar/`).** Names that are *not* on the watchlist. A model reads every collected item once and
+extracts the organisations, models and products it is about (cached per item). `radar.extraction.provider`
+picks `ollama` (a local model via `/api/chat` with a JSON-schema `format`, free; set `ollama_model` from
+`ollama list`) or `anthropic` (Haiku 5.5, ≈$0.05/week); hard signals come from Hugging Face trending, OpenRouter's new models, fast-growing GitHub
 repos and Hacker News. A name becomes radar news when ≥ 2 independent sources make it their subject
 and ≥ 1 hard signal backs it (`radar.min_sources` / `min_signals`). The weekly issue carries the
 candidate table (`radar_report.md`); `data/radar_state.json` remembers every name (committed back by

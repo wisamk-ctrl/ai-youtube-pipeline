@@ -73,6 +73,13 @@ radar:
   # Names NOT on the watchlist. Extraction needs ANTHROPIC_API_KEY (Haiku 5.5, ≈$0.05/week);
   # without it only the hard signals run. Threshold agreed 2026-10-12: 2 sources + 1 signal.
   enabled: true
+  extraction:
+    provider: ollama          # anthropic | ollama
+    model: claude-haiku-5-5   # used when provider: anthropic (≈$0.05/week)
+    ollama_url: http://localhost:11434   # or set OLLAMA_HOST; the weekly job must run where Ollama runs
+    ollama_model: qwen2.5     # pick from `ollama list`; qwen2.5/qwen3 ≥ 7B tag reliably, 1.5B models do not
+    ollama_batch: 8           # items per local call (keeps the prompt inside num_ctx)
+    ollama_timeout_s: 600
   min_sources: 2
   min_signals: 1
   max_surfaced: 3           # at most this many radar items offered to the editor

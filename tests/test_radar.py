@@ -73,3 +73,41 @@ def test_state_accumulates_weeks(tmp_path, monkeypatch):
     again = radar.load_state()
     assert again["arena"]["status"] == "candidate" and set(again["arena"]["weeks"]) == {"2026-W41", "2026-W42"}
     assert "Arena" in radar.report_md(cands, again, CFG)
+
+
+def test_ollama_provider_posts_schema_and_parses(monkeypatch):
+    """The Ollama path sends our JSON schema as `format` and validates what comes back."""
+    from pipeline.radar import extract as ex
+
+    a = item("cnbc.com", "Reflection AI releases Beam")
+    sent: dict = {}
+
+    class Resp:
+        def raise_for_status(self): pass
+        def json(self):
+            return {"message": {"content": '{"items": [{"item_id": "%s", "event": "launch", "region": "us", '
+                    '"mentions": [{"name": "Reflection AI", "kind": "org", "track": "models", "role": "subject"}]}]}' % a.id}}
+
+    def fake_post(url, json, timeout):
+        sent.update(url=url, body=json)
+        return Resp()
+
+    monkeypatch.setattr(ex.requests, "post", fake_post)
+    monkeypatch.delenv("OLLAMA_HOST", raising=False)
+    tags = ex.extract([a], opts={"provider": "ollama", "ollama_model": "qwen2.5", "ollama_url": "http://localhost:11434"})
+    assert sent["url"] == "http://localhost:11434/api/chat" and sent["body"]["model"] == "qwen2.5"
+    assert sent["body"]["format"]["properties"]["items"] and sent["body"]["stream"] is False
+    assert tags[a.id].mentions[0].name == "Reflection AI" and tags[a.id].event == "launch"
+
+
+def test_ollama_bad_json_is_skipped_not_fatal(monkeypatch):
+    from pipeline.radar import extract as ex
+
+    a = item("cnbc.com", "Something")
+
+    class Resp:
+        def raise_for_status(self): pass
+        def json(self): return {"message": {"content": "not json"}}
+
+    monkeypatch.setattr(ex.requests, "post", lambda url, json, timeout: Resp())
+    assert ex.extract([a], opts={"provider": "ollama"}) == {}

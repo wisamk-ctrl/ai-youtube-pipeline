@@ -168,7 +168,8 @@ def run_radar(items: list[NewsItem], watch: Watchlist, cfg: dict[str, Any], week
     if not cfg.get("radar", {}).get("enabled", True):
         return []
     try:
-        tags = extract(items, cache_path=(out_dir / "radar_tags.json") if out_dir else None)
+        tags = extract(items, cache_path=(out_dir / "radar_tags.json") if out_dir else None,
+                       opts=cfg.get("radar", {}).get("extraction"))
     except Exception as exc:  # noqa: BLE001 — no key / API down: the radar degrades, the run continues
         log.warning("Radar extraction skipped: %s", exc)
         tags = {}
