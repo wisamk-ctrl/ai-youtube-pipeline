@@ -9,35 +9,48 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.0,
-    "score": 17.367,
+    "score": 18.78,
     "score_breakdown": {
+      "watchlist": 1.5,
       "enterprise": 12.8,
       "regional": 4.0,
       "engagement": 0.0,
-      "recency": 0.567,
+      "recency": 0.48,
       "noise": -0.0
     },
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "NVIDIA"
+    ],
     "id": "a4ca21a445"
   },
   {
-    "source": "Emirates News Agency (WAM)",
+    "source": "Benzinga / FT",
     "source_type": "rss",
-    "title": "UAE expands AI across government in 2026: Agentic AI Project targets 50% of federal operations within two years",
-    "summary": "A WAM report on October 10 summarised the UAE's 2026 AI push. At the federal level the UAE launched the Agentic AI Project, which aims to convert 50 percent of federal government sectors, services and operations into autonomous, AI-driven models within two years; the National Committee for Agentic AI approved its operating framework and introductory guide to standardise implementation and governance. The UAE also announced a new Federal Authority for Artificial Intelligence and Data to integrate national data, AI and digital-government systems, alongside investment in skills, digital infrastructure and regulatory frameworks.",
-    "url": "https://app.bigdata.com/documents/4814174F3B61A43D52D06FC16A40408B?cnum=2",
-    "published": "2026-10-10T23:11:43+00:00",
+    "title": "SoftBank seeks up to $100 billion from Gulf investors for AI as its $65 billion OpenAI bet draws scrutiny",
+    "summary": "SoftBank is seeking up to $100 billion from Gulf investors to fund AI investments, the Financial Times reported on October 9, naming Abu Dhabi-linked vehicles MGX and G42 as potential participants; neither responded to requests for comment. The push comes as SoftBank faces questions over its concentrated AI bets, including $65 billion invested in OpenAI for a 13% stake, and over the timing of an OpenAI IPO. Gulf sovereign capital has become a major funding source for AI infrastructure as regional governments diversify away from oil and gas.",
+    "url": "https://app.bigdata.com/documents/359D9E2B7E65998DC1EF6CADA01D666B?cnum=2",
+    "published": "2026-10-09T20:39:06+00:00",
     "author": "",
     "engagement": 0,
-    "source_weight": 1.2,
-    "score": 11.825,
+    "source_weight": 1.43,
+    "score": 14.943,
     "score_breakdown": {
-      "enterprise": 4.6,
+      "watchlist": 1.5,
+      "enterprise": 4.1,
       "regional": 4.0,
       "engagement": 0.0,
-      "recency": 1.254,
+      "recency": 0.85,
       "noise": -0.0
     },
-    "id": "ded82d4e79"
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "G42",
+      "OpenAI"
+    ],
+    "id": "5a39c604ff"
   },
   {
     "source": "Anthropic News (aiweekly)",
@@ -49,14 +62,20 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.1,
-    "score": 11.383,
+    "score": 12.923,
     "score_breakdown": {
+      "watchlist": 1.5,
       "enterprise": 9.7,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 0.648,
+      "recency": 0.548,
       "noise": -0.0
     },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic"
+    ],
     "id": "575548b7ee"
   },
   {
@@ -69,55 +88,47 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.0,
-    "score": 11.194,
+    "score": 12.463,
     "score_breakdown": {
+      "watchlist": 1.5,
       "enterprise": 9.7,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 1.494,
+      "recency": 1.263,
       "noise": -0.0
     },
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "DeepSeek",
+      "Moonshot AI",
+      "NVIDIA"
+    ],
     "id": "e5d4b3f5a3"
   },
   {
-    "source": "Benzinga / FT",
+    "source": "Emirates News Agency (WAM)",
     "source_type": "rss",
-    "title": "SoftBank seeks up to $100 billion from Gulf investors for AI as its $65 billion OpenAI bet draws scrutiny",
-    "summary": "SoftBank is seeking up to $100 billion from Gulf investors to fund AI investments, the Financial Times reported on October 9, naming Abu Dhabi-linked vehicles MGX and G42 as potential participants; neither responded to requests for comment. The push comes as SoftBank faces questions over its concentrated AI bets, including $65 billion invested in OpenAI for a 13% stake, and over the timing of an OpenAI IPO. Gulf sovereign capital has become a major funding source for AI infrastructure as regional governments diversify away from oil and gas.",
-    "url": "https://app.bigdata.com/documents/359D9E2B7E65998DC1EF6CADA01D666B?cnum=2",
-    "published": "2026-10-09T20:39:06+00:00",
+    "title": "UAE expands AI across government in 2026: Agentic AI Project targets 50% of federal operations within two years",
+    "summary": "A WAM report on October 10 summarised the UAE's 2026 AI push. At the federal level the UAE launched the Agentic AI Project, which aims to convert 50 percent of federal government sectors, services and operations into autonomous, AI-driven models within two years; the National Committee for Agentic AI approved its operating framework and introductory guide to standardise implementation and governance. The UAE also announced a new Federal Authority for Artificial Intelligence and Data to integrate national data, AI and digital-government systems, alongside investment in skills, digital infrastructure and regulatory frameworks.",
+    "url": "https://app.bigdata.com/documents/4814174F3B61A43D52D06FC16A40408B?cnum=2",
+    "published": "2026-10-10T23:11:43+00:00",
     "author": "",
     "engagement": 0,
-    "source_weight": 1.1,
-    "score": 10.016,
+    "source_weight": 1.2,
+    "score": 11.592,
     "score_breakdown": {
-      "enterprise": 4.1,
+      "watchlist": 0.0,
+      "enterprise": 4.6,
       "regional": 4.0,
       "engagement": 0.0,
-      "recency": 1.005,
+      "recency": 1.06,
       "noise": -0.0
     },
-    "id": "5a39c604ff"
-  },
-  {
-    "source": "@rowancheung",
-    "source_type": "x",
-    "title": "Mistral Large 4 is here — Europe's biggest open-weight model, launching first to cybersecurity leaders and governments",
-    "summary": "Mistral Large 4 is here. Europe's biggest open-weight model, launching first to developers, cybersecurity leaders and state authorities before a wider release this month. The sovereign-AI pitch: download the weights, keep your data. Full breakdown below.",
-    "url": "https://x.com/rowancheung/status/sample-w41-2",
-    "published": "2026-10-06T14:30:00+00:00",
-    "author": "rowancheung",
-    "engagement": 9800,
-    "source_weight": 1.0,
-    "score": 9.519,
-    "score_breakdown": {
-      "enterprise": 6.6,
-      "regional": 0.0,
-      "engagement": 2.395,
-      "recency": 0.524,
-      "noise": -0.0
-    },
-    "id": "76f6ca7f0f"
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "ded82d4e79"
   },
   {
     "source": "CNBC",
@@ -129,55 +140,49 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.2,
-    "score": 9.501,
+    "score": 11.205,
     "score_breakdown": {
+      "watchlist": 1.5,
       "enterprise": 7.4,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 0.518,
+      "recency": 0.438,
       "noise": -0.0
     },
+    "track": "models",
+    "region": "eu",
+    "entities": [
+      "Anthropic",
+      "Mistral",
+      "OpenAI"
+    ],
     "id": "6818ae0cfc"
   },
   {
-    "source": "Benzinga / CNW",
-    "source_type": "rss",
-    "title": "Optro opens a Dubai hub for agentic GRC as the UAE mandates a shift to agentic AI in government",
-    "summary": "AI-powered governance, risk and compliance platform Optro announced on October 6, at the CAE Conference in Abu Dhabi, that it is establishing Dubai as its regional centre for MENA. It cites the 'UAE Government 4.0' directive under the National AI Strategy 2031 that tasks federal institutions with converting 50 percent of operations to agentic AI within two years, and regional frameworks such as the CBUAE AI & ML Guidance, the Federal PDPL and Cybersecurity Council standards as drivers of demand for continuous risk assessment and non-human identity control.",
-    "url": "https://app.bigdata.com/documents/1291B8B4DD11E0988CA0B8D43B9890CC?cnum=2&cnum=1",
-    "published": "2026-10-06T13:01:26+00:00",
-    "author": "",
-    "engagement": 0,
-    "source_weight": 0.9,
-    "score": 8.206,
-    "score_breakdown": {
-      "enterprise": 4.6,
-      "regional": 4.0,
-      "engagement": 0.0,
-      "recency": 0.518,
-      "noise": -0.0
-    },
-    "id": "552d3699a4"
-  },
-  {
-    "source": "Benzinga / PRNewswire",
-    "source_type": "rss",
-    "title": "Rein Security raises $25 million Series A to secure the AI agents enterprises build, and stop the ones attacking them",
-    "summary": "Rein Security announced a $25 million Series A on October 8, co-led by Glilot Capital and Sienna Venture Capital, bringing total funding to $35 million. The company cites Gartner projecting the market for securing AI at nearly $4.8 billion in 2027, up 68.7% from 2026, as enterprises deploy agents with broad access to business systems, creating a class of risk traditional tools were not designed to detect.",
-    "url": "https://app.bigdata.com/documents/DF82D28E0D24C95D43A93E35DA0D60A4?cnum=1",
-    "published": "2026-10-08T10:02:10+00:00",
-    "author": "",
-    "engagement": 0,
+    "source": "@rowancheung",
+    "source_type": "x",
+    "title": "Mistral Large 4 is here — Europe's biggest open-weight model, launching first to cybersecurity leaders and governments",
+    "summary": "Mistral Large 4 is here. Europe's biggest open-weight model, launching first to developers, cybersecurity leaders and state authorities before a wider release this month. The sovereign-AI pitch: download the weights, keep your data. Full breakdown below.",
+    "url": "https://x.com/rowancheung/status/sample-w41-2",
+    "published": "2026-10-06T14:30:00+00:00",
+    "author": "rowancheung",
+    "engagement": 9800,
     "source_weight": 1.0,
-    "score": 7.953,
+    "score": 10.938,
     "score_breakdown": {
-      "enterprise": 7.2,
+      "watchlist": 1.5,
+      "enterprise": 6.6,
       "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.753,
+      "engagement": 2.395,
+      "recency": 0.443,
       "noise": -0.0
     },
-    "id": "f7efe82e47"
+    "track": "models",
+    "region": "eu",
+    "entities": [
+      "Mistral"
+    ],
+    "id": "76f6ca7f0f"
   },
   {
     "source": "Micro Center weekly AI roundup",
@@ -189,35 +194,45 @@
     "author": "",
     "engagement": 0,
     "source_weight": 0.8,
-    "score": 7.056,
+    "score": 8.204,
     "score_breakdown": {
+      "watchlist": 1.5,
       "enterprise": 8.4,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 0.42,
+      "recency": 0.355,
       "noise": -0.0
     },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
     "id": "e0c1cc0247"
   },
   {
-    "source": "@emollick",
-    "source_type": "x",
-    "title": "Enterprises have 183 AI tools on average and most can't connect them — the orchestration gap is the real AI story this year",
-    "summary": "Enterprises have 183 AI tools on average and most can't connect them. The orchestration gap, not model quality, is the real enterprise AI story this year. The companies seeing ROI are the ones treating agents as a systems-integration problem, not a chatbot problem. https://app.bigdata.com/documents/A85CE3FE0300388CD7426B5352808FF2",
-    "url": "https://x.com/emollick/status/sample-w41-1",
-    "published": "2026-10-08T15:10:00+00:00",
-    "author": "emollick",
-    "engagement": 6100,
-    "source_weight": 1.0,
-    "score": 6.558,
+    "source": "Benzinga / CNW",
+    "source_type": "rss",
+    "title": "Optro opens a Dubai hub for agentic GRC as the UAE mandates a shift to agentic AI in government",
+    "summary": "AI-powered governance, risk and compliance platform Optro announced on October 6, at the CAE Conference in Abu Dhabi, that it is establishing Dubai as its regional centre for MENA. It cites the 'UAE Government 4.0' directive under the National AI Strategy 2031 that tasks federal institutions with converting 50 percent of operations to agentic AI within two years, and regional frameworks such as the CBUAE AI & ML Guidance, the Federal PDPL and Cybersecurity Council standards as drivers of demand for continuous risk assessment and non-human identity control.",
+    "url": "https://app.bigdata.com/documents/1291B8B4DD11E0988CA0B8D43B9890CC?cnum=2&cnum=1",
+    "published": "2026-10-06T13:01:26+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 8.134,
     "score_breakdown": {
-      "enterprise": 3.5,
-      "regional": 0.0,
-      "engagement": 2.271,
-      "recency": 0.786,
+      "watchlist": 0.0,
+      "enterprise": 4.6,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 0.438,
       "noise": -0.0
     },
-    "id": "5b15ce2b6c"
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "552d3699a4"
   },
   {
     "source": "Schwab Network / 21st Century Business",
@@ -229,35 +244,46 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.0,
-    "score": 6.553,
+    "score": 7.968,
     "score_breakdown": {
+      "watchlist": 1.5,
       "enterprise": 6.0,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 0.553,
+      "recency": 0.468,
       "noise": -0.0
     },
+    "track": "models",
+    "region": "cn",
+    "entities": [
+      "DeepSeek",
+      "Moonshot AI"
+    ],
     "id": "ccb83d89b0"
   },
   {
-    "source": "WSJ Intelligence / Benzinga",
+    "source": "Benzinga / PRNewswire",
     "source_type": "rss",
-    "title": "85% of C-suite executives say their AI tech stacks are disconnected; the average enterprise now runs 183 AI tools",
-    "summary": "A study of 801 C-suite executives at US companies with at least $500 million in revenue, published October 7 by WSJ Intelligence and Code and Theory, found enterprises now use an average of 183 AI tools, yet 85% lack the systems to connect them, even though 94% say better orchestration is essential to growth. The report calls this the 'orchestration gap': a widening distance between deploying AI and operating as a connected, agentic enterprise, and a reason many companies struggle to show material ROI.",
-    "url": "https://app.bigdata.com/documents/A85CE3FE0300388CD7426B5352808FF2?cnum=1",
-    "published": "2026-10-07T18:00:00+00:00",
+    "title": "Rein Security raises $25 million Series A to secure the AI agents enterprises build, and stop the ones attacking them",
+    "summary": "Rein Security announced a $25 million Series A on October 8, co-led by Glilot Capital and Sienna Venture Capital, bringing total funding to $35 million. The company cites Gartner projecting the market for securing AI at nearly $4.8 billion in 2027, up 68.7% from 2026, as enterprises deploy agents with broad access to business systems, creating a class of risk traditional tools were not designed to detect.",
+    "url": "https://app.bigdata.com/documents/DF82D28E0D24C95D43A93E35DA0D60A4?cnum=1",
+    "published": "2026-10-08T10:02:10+00:00",
     "author": "",
     "engagement": 0,
-    "source_weight": 1.1,
-    "score": 6.225,
+    "source_weight": 1.0,
+    "score": 7.837,
     "score_breakdown": {
-      "enterprise": 5.0,
+      "watchlist": 0.0,
+      "enterprise": 7.2,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 0.659,
+      "recency": 0.637,
       "noise": -0.0
     },
-    "id": "dfe2a9ab2b"
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "f7efe82e47"
   },
   {
     "source": "CNBC",
@@ -269,15 +295,97 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.2,
-    "score": 6.158,
+    "score": 7.822,
     "score_breakdown": {
+      "watchlist": 1.5,
       "enterprise": 4.4,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 0.732,
+      "recency": 0.619,
       "noise": -0.0
     },
+    "track": "agents",
+    "region": "products",
+    "entities": [
+      "Manus"
+    ],
     "id": "49ffc3b05a"
+  },
+  {
+    "source": "@emollick",
+    "source_type": "x",
+    "title": "Enterprises have 183 AI tools on average and most can't connect them — the orchestration gap is the real AI story this year",
+    "summary": "Enterprises have 183 AI tools on average and most can't connect them. The orchestration gap, not model quality, is the real enterprise AI story this year. The companies seeing ROI are the ones treating agents as a systems-integration problem, not a chatbot problem. https://app.bigdata.com/documents/A85CE3FE0300388CD7426B5352808FF2",
+    "url": "https://x.com/emollick/status/sample-w41-1",
+    "published": "2026-10-08T15:10:00+00:00",
+    "author": "emollick",
+    "engagement": 6100,
+    "source_weight": 1.0,
+    "score": 6.436,
+    "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 3.5,
+      "regional": 0.0,
+      "engagement": 2.271,
+      "recency": 0.665,
+      "noise": -0.0
+    },
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "5b15ce2b6c"
+  },
+  {
+    "source": "WSJ Intelligence / Benzinga",
+    "source_type": "rss",
+    "title": "85% of C-suite executives say their AI tech stacks are disconnected; the average enterprise now runs 183 AI tools",
+    "summary": "A study of 801 C-suite executives at US companies with at least $500 million in revenue, published October 7 by WSJ Intelligence and Code and Theory, found enterprises now use an average of 183 AI tools, yet 85% lack the systems to connect them, even though 94% say better orchestration is essential to growth. The report calls this the 'orchestration gap': a widening distance between deploying AI and operating as a connected, agentic enterprise, and a reason many companies struggle to show material ROI.",
+    "url": "https://app.bigdata.com/documents/A85CE3FE0300388CD7426B5352808FF2?cnum=1",
+    "published": "2026-10-07T18:00:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.1,
+    "score": 6.113,
+    "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 5.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.557,
+      "noise": -0.0
+    },
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "dfe2a9ab2b"
+  },
+  {
+    "source": "WSJ via Finwire",
+    "source_type": "rss",
+    "title": "Oracle, Broadcom and SpaceX seek tens of billions in debt financing to buy AI chips",
+    "summary": "Broadcom is seeking to arrange more than $50 billion in financing for AI chips it is developing with OpenAI, with Apollo and Blackstone among prospective lenders; SpaceX is discussing $40 billion to buy Nvidia chips; and Oracle is in talks with Apollo and Goldman Sachs about a larger chip purchase, the Wall Street Journal reported on October 8. In some cases the financing may run through separate vehicles that buy the equipment and lease it back, reflecting the rapidly rising cost of AI infrastructure. Broadcom and Oracle aim to close before year-end.",
+    "url": "https://app.bigdata.com/documents/2BAC7A692C5485515AAA03D3311AD32F?cnum=1",
+    "published": "2026-10-08T04:38:16+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.1,
+    "score": 5.95,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.3,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.609,
+      "noise": -0.0
+    },
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "Broadcom",
+      "NVIDIA",
+      "OpenAI"
+    ],
+    "id": "ad3d5e3c96"
   },
   {
     "source": "MT Newswires",
@@ -289,14 +397,18 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.1,
-    "score": 6.017,
+    "score": 5.886,
     "score_breakdown": {
+      "watchlist": 0.0,
       "enterprise": 4.7,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 0.77,
+      "recency": 0.651,
       "noise": -0.0
     },
+    "track": "",
+    "region": "",
+    "entities": [],
     "id": "52f58418f8"
   },
   {
@@ -309,35 +421,19 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.0,
-    "score": 5.492,
+    "score": 5.338,
     "score_breakdown": {
+      "watchlist": 0.0,
       "enterprise": 4.5,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 0.992,
+      "recency": 0.838,
       "noise": -0.0
     },
+    "track": "",
+    "region": "",
+    "entities": [],
     "id": "6ff71a72c2"
-  },
-  {
-    "source": "WSJ via Finwire",
-    "source_type": "rss",
-    "title": "Oracle, Broadcom and SpaceX seek tens of billions in debt financing to buy AI chips",
-    "summary": "Broadcom is seeking to arrange more than $50 billion in financing for AI chips it is developing with OpenAI, with Apollo and Blackstone among prospective lenders; SpaceX is discussing $40 billion to buy Nvidia chips; and Oracle is in talks with Apollo and Goldman Sachs about a larger chip purchase, the Wall Street Journal reported on October 8. In some cases the financing may run through separate vehicles that buy the equipment and lease it back, reflecting the rapidly rising cost of AI infrastructure. Broadcom and Oracle aim to close before year-end.",
-    "url": "https://app.bigdata.com/documents/2BAC7A692C5485515AAA03D3311AD32F?cnum=1",
-    "published": "2026-10-08T04:38:16+00:00",
-    "author": "",
-    "engagement": 0,
-    "source_weight": 1.1,
-    "score": 4.422,
-    "score_breakdown": {
-      "enterprise": 3.3,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.72,
-      "noise": -0.0
-    },
-    "id": "ad3d5e3c96"
   },
   {
     "source": "Alliance News",
@@ -349,14 +445,18 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.0,
-    "score": 3.131,
+    "score": 3.033,
     "score_breakdown": {
+      "watchlist": 0.0,
       "enterprise": 2.5,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 0.631,
+      "recency": 0.533,
       "noise": -0.0
     },
+    "track": "",
+    "region": "",
+    "entities": [],
     "id": "43a3f7acbe"
   },
   {
@@ -369,14 +469,18 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.0,
-    "score": 2.672,
+    "score": 2.445,
     "score_breakdown": {
+      "watchlist": 0.0,
       "enterprise": 1.2,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 1.472,
+      "recency": 1.245,
       "noise": -0.0
     },
+    "track": "",
+    "region": "",
+    "entities": [],
     "id": "feb445d8ed"
   },
   {
@@ -389,14 +493,18 @@
     "author": "",
     "engagement": 0,
     "source_weight": 1.0,
-    "score": 0.63,
+    "score": 0.532,
     "score_breakdown": {
+      "watchlist": 0.0,
       "enterprise": 0.0,
       "regional": 0.0,
       "engagement": 0.0,
-      "recency": 0.63,
+      "recency": 0.532,
       "noise": -0.0
     },
+    "track": "",
+    "region": "",
+    "entities": [],
     "id": "9f56ba0e5b"
   }
 ]

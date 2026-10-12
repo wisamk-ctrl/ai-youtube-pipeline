@@ -27,6 +27,9 @@ class NewsItem:
     source_weight: float = 1.0        # credibility multiplier from settings.yaml
     score: float = 0.0
     score_breakdown: dict[str, float] = field(default_factory=dict)
+    track: str = ""                   # models | agents | chips | "" (set by the watchlist tagger)
+    region: str = ""                  # us | eu | cn | gulf | frameworks | ... (the watchlist group)
+    entities: list[str] = field(default_factory=list)   # watchlist names mentioned
 
     @property
     def id(self) -> str:

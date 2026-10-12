@@ -96,13 +96,14 @@ def _engagement_score(item: NewsItem) -> float:
 def score_item(item: NewsItem, now: datetime | None = None) -> NewsItem:
     now = now or datetime.now(timezone.utc)
     parts = {
+        "watchlist": 1.5 if item.entities else 0.0,   # a name we follow on purpose
         "enterprise": _keyword_score(item, "enterprise"),
         "regional": _keyword_score(item, "regional"),
         "engagement": _engagement_score(item),
         "recency": _recency_score(item, now),
         "noise": -_keyword_score(item, "noise"),
     }
-    positive = parts["enterprise"] + parts["regional"] + parts["engagement"] + parts["recency"]
+    positive = parts["watchlist"] + parts["enterprise"] + parts["regional"] + parts["engagement"] + parts["recency"]
     item.score = round(positive * item.source_weight + parts["noise"], 3)
     item.score_breakdown = {k: round(v, 3) for k, v in parts.items()}
     return item
@@ -130,8 +131,27 @@ def rank_and_filter(items: list[NewsItem], cfg: dict[str, Any]) -> list[NewsItem
         if any(_is_duplicate(item, k, s["dedupe_similarity"]) for k in kept):
             continue
         kept.append(item)
-        if len(kept) >= s["max_items"]:
-            break
 
+    kept = _apply_track_quotas(kept, s.get("min_per_track", {}), s["max_items"])
     log.info("Scoring: %d in → %d kept (min_score=%.1f)", len(items), len(kept), s["min_score"])
     return kept
+
+
+def _apply_track_quotas(ranked: list[NewsItem], quotas: dict[str, int], cap: int) -> list[NewsItem]:
+    """Reserve seats per track so every beat of the episode has material, then fill by score.
+
+    `ranked` is already sorted and de-duplicated. Each track's best N items are taken
+    first (N from settings), the rest of the cap is filled with the highest remaining
+    scores regardless of track. Score order is restored at the end so the editor
+    still sees the strongest story first.
+    """
+    chosen: list[NewsItem] = []
+    for track, n in quotas.items():
+        chosen += [i for i in ranked if i.track == track][:n]
+    for item in ranked:
+        if len(chosen) >= cap:
+            break
+        if item not in chosen:
+            chosen.append(item)
+    chosen = chosen[:max(cap, sum(quotas.values()))]
+    return sorted(chosen, key=lambda i: i.score, reverse=True)

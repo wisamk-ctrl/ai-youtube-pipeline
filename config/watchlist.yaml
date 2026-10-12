@@ -1,0 +1,127 @@
+# ─────────────────────────────────────────────────────────────────────
+# The watchlist: names we follow on purpose. Edit freely; it is read on every run.
+#
+# tracks   → models | agents | chips   (the three beats of the episode)
+# groups   → regions for models, categories for agents/chips
+# entity:
+#   name      canonical English name (used in prompts and the radar state)
+#   ar        Arabic name as it should be spoken in the script
+#   aliases   other spellings the matcher should recognise (case-insensitive, whole-word)
+#   query     Google News search; defaults to the name. Put quotes around multi-word names.
+#   rss       official blog / newsroom feeds
+#   github    owner/repo whose releases are news
+#   hf        Hugging Face organisation (new models = news)
+#   x         X handle (used when the X source is enabled)
+#   weight    multiplies the relevance score (1.0 = normal; the Gulf gets 1.3 by policy)
+# ─────────────────────────────────────────────────────────────────────
+
+tracks:
+  models:
+    label_ar: النماذج والمختبرات
+    groups:
+      us:
+        label_ar: الولايات المتحدة
+        entities:
+          - {name: OpenAI, ar: أوبن إيه آي, aliases: [GPT, ChatGPT, Codex, Sora], rss: [https://openai.com/news/rss.xml], hf: openai, x: OpenAI}
+          - {name: Anthropic, ar: أنثروبيك, aliases: [Claude], rss: [https://www.anthropic.com/rss.xml], x: AnthropicAI}
+          - {name: Google DeepMind, ar: جوجل ديب مايند, aliases: [Gemini, DeepMind, Google AI, Gemma], rss: [https://blog.google/technology/ai/rss/, https://deepmind.google/blog/rss.xml], hf: google, x: GoogleDeepMind}
+          - {name: Microsoft Copilot, ar: مايكروسوفت كوبايلوت, aliases: [Copilot, Phi, Azure AI], rss: [https://blogs.microsoft.com/ai/feed/], hf: microsoft, x: Microsoft}
+          - {name: Meta AI, ar: ميتا, aliases: [Llama, Meta Superintelligence], rss: [https://ai.meta.com/blog/rss/], hf: meta-llama, x: AIatMeta}
+          - {name: xAI, ar: إكس إيه آي, aliases: [Grok], x: xai}
+          - {name: Amazon Nova, ar: أمازون, aliases: [Amazon Bedrock, AWS AI, Nova], rss: [https://aws.amazon.com/blogs/machine-learning/feed/]}
+          - {name: Apple Intelligence, ar: آبل, aliases: [Apple AI, Apple Foundation Models], rss: [https://machinelearning.apple.com/rss.xml]}
+      eu:
+        label_ar: أوروبا
+        entities:
+          - {name: Mistral, ar: ميسترال, aliases: [Mistral AI, Mistral Large, Codestral, Le Chat], rss: [https://mistral.ai/news/rss], hf: mistralai, x: MistralAI}
+          - {name: Aleph Alpha, ar: أليف ألفا, hf: Aleph-Alpha}
+          - {name: Black Forest Labs, ar: بلاك فورست لابز, aliases: [FLUX], hf: black-forest-labs}
+          - {name: Kyutai, ar: كيوتاي, aliases: [Moshi], hf: kyutai}
+          - {name: DeepL, ar: ديب إل}
+      cn:
+        label_ar: الصين
+        entities:
+          - {name: DeepSeek, ar: ديب سيك, hf: deepseek-ai, github: deepseek-ai/DeepSeek-V3, x: deepseek_ai}
+          - {name: Alibaba Qwen, ar: علي بابا كوين, aliases: [Qwen, Alibaba Cloud AI, Tongyi], hf: Qwen, x: Alibaba_Qwen}
+          - {name: Moonshot AI, ar: مونشوت, aliases: [Kimi], hf: moonshotai}
+          - {name: Zhipu AI, ar: جيبو, aliases: [GLM, Z.ai, ChatGLM], hf: zai-org}
+          - {name: ByteDance Seed, ar: بايت دانس, aliases: [Doubao, Seed, ByteDance AI], hf: ByteDance-Seed}
+          - {name: Baidu ERNIE, ar: بايدو, aliases: [ERNIE, Baidu AI], hf: baidu}
+          - {name: Tencent Hunyuan, ar: تينسنت, aliases: [Hunyuan], hf: tencent}
+          - {name: MiniMax, ar: ميني ماكس, hf: MiniMaxAI}
+          - {name: StepFun, ar: ستيب فن, aliases: [Step-3, Juejue Xingchen, 阶跃星辰], hf: stepfun-ai}
+      gulf:
+        label_ar: الخليج والعالم العربي
+        weight: 1.3
+        entities:
+          - {name: G42, ar: جي 42, aliases: [Core42, Jais, Inception AI, MGX], hf: inceptionai, x: G42ai}
+          - {name: TII, ar: معهد الابتكار التكنولوجي, aliases: [Technology Innovation Institute, Falcon], hf: tiiuae, x: TIIuae}
+          - {name: Humain, ar: هيومين, aliases: [HUMAIN, PIF AI], x: HUMAINAI}
+          - {name: SDAIA, ar: سدايا, aliases: [ALLaM, Saudi Data and AI Authority], x: SDAIA_SA}
+          - {name: MBZUAI, ar: جامعة محمد بن زايد للذكاء الاصطناعي, aliases: [K2 Think], hf: MBZUAI, x: mbzuai}
+          - {name: Misraj, ar: مسراج, aliases: [Misraj AI]}
+
+  agents:
+    label_ar: الوكلاء
+    groups:
+      frameworks:
+        label_ar: أطر مفتوحة
+        entities:
+          - {name: OpenClaw, ar: أوبن كلو, github: openclaw/openclaw}
+          - {name: LangChain, ar: لانغ تشين, aliases: [LangGraph, LangSmith], github: langchain-ai/langgraph, x: LangChainAI}
+          - {name: CrewAI, ar: كرو إيه آي, github: crewAIInc/crewAI}
+          - {name: n8n, ar: إن 8 إن, github: n8n-io/n8n}
+          - {name: Microsoft AutoGen, ar: أوتوجن, aliases: [AutoGen, Agent Framework], github: microsoft/agent-framework}
+          - {name: Model Context Protocol, ar: بروتوكول سياق النموذج, aliases: [MCP], github: modelcontextprotocol/modelcontextprotocol}
+      products:
+        label_ar: منتجات
+        entities:
+          - {name: Manus, ar: مانوس, aliases: [Butterfly Effect], x: ManusAI_HQ}
+          - {name: Claude Code, ar: كلود كود, github: anthropics/claude-code}
+          - {name: OpenAI Codex, ar: كودكس, aliases: [Operator, ChatGPT Agent], github: openai/codex}
+          - {name: Gemini Agent, ar: وكيل جيميناي, aliases: [Gemini CLI, Jules, Agentspace], github: google-gemini/gemini-cli}
+          - {name: Devin, ar: ديفين, aliases: [Cognition, Cognition AI], x: cognition}
+          - {name: Cursor, ar: كيرسر, aliases: [Anysphere], x: cursor_ai}
+          - {name: Replit Agent, ar: ريبليت, aliases: [Replit], x: Replit}
+          - {name: Genspark, ar: جينسبارك}
+          - {name: Perplexity Comet, ar: بيربلكسيتي, aliases: [Perplexity, Comet], x: perplexity_ai}
+      enterprise:
+        label_ar: منصات المؤسسات
+        entities:
+          - {name: Copilot Studio, ar: كوبايلوت ستوديو, aliases: [Microsoft Agents, Azure AI Foundry Agents]}
+          - {name: Salesforce Agentforce, ar: سيلزفورس إيجنت فورس, aliases: [Agentforce]}
+          - {name: ServiceNow AI, ar: سيرفس ناو, aliases: [ServiceNow, Now Assist]}
+          - {name: SAP Joule, ar: ساب جول, aliases: [Joule]}
+          - {name: Zapier Agents, ar: زابير, aliases: [Zapier]}
+
+  chips:
+    label_ar: الرقائق والاستدلال
+    groups:
+      makers:
+        label_ar: صانعو الرقائق
+        entities:
+          - {name: NVIDIA, ar: إنفيديا, aliases: [Nvidia, Blackwell, Rubin, Jensen Huang, CUDA], rss: [https://blogs.nvidia.com/feed/], x: nvidia}
+          - {name: AMD, ar: إيه إم دي, aliases: [Instinct, MI350, MI400, Lisa Su, ROCm], x: AMD}
+          - {name: Apple silicon, ar: رقائق آبل, aliases: [Apple Silicon, M5, M6, Neural Engine, Apple chip]}
+          - {name: Intel, ar: إنتل, aliases: [Gaudi, Xeon AI, Intel AI], x: intel}
+          - {name: Qualcomm, ar: كوالكوم, aliases: [Snapdragon, Cloud AI 100, AI200], x: Qualcomm}
+          - {name: Arm, ar: آرم, aliases: [Arm Holdings], x: Arm}
+          - {name: Broadcom, ar: برودكوم, aliases: [XPU]}
+          - {name: Huawei Ascend, ar: هواوي, aliases: [Ascend, Huawei AI chip, CloudMatrix]}
+      hyperscalers:
+        label_ar: رقائق السحابة
+        entities:
+          - {name: Google TPU, ar: جوجل تي بي يو, aliases: [TPU, Ironwood, Trillium]}
+          - {name: AWS Trainium, ar: أمازون ترينيوم, aliases: [Trainium, Inferentia]}
+          - {name: Microsoft Maia, ar: مايكروسوفت مايا, aliases: [Maia, Cobalt]}
+          - {name: Meta MTIA, ar: ميتا إم تي آي إيه, aliases: [MTIA]}
+      inference:
+        label_ar: متخصصو الاستدلال
+        entities:
+          - {name: Groq, ar: جروك (رقائق), aliases: [LPU], x: GroqInc}
+          - {name: Cerebras, ar: سيريبراس, aliases: [Wafer-Scale Engine], x: CerebrasSystems}
+          - {name: SambaNova, ar: سامبانوفا}
+          - {name: Together AI, ar: توجيذر, aliases: [Together]}
+          - {name: Fireworks AI, ar: فايروركس, aliases: [Fireworks]}
+          - {name: Baseten, ar: بيس تن}
+          - {name: OpenRouter, ar: أوبن راوتر}

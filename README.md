@@ -77,6 +77,13 @@ Items below `min_score` are dropped and near-duplicates are merged. `items.json`
 per-item `score_breakdown`, so you can see why a story was kept or dropped and tune the keyword
 tables in `scoring.py`.
 
+**Watchlist (`config/watchlist.yaml`).** The names we follow on purpose, in three tracks — models
+(US / Europe / China / Gulf), agents, chips & inference — each with aliases, its Arabic name, official
+feeds, GitHub repo and Hugging Face org. Station 1 adds a Google News search per name, the official
+feeds, GitHub releases and new Hugging Face models (all free), and tags every item with the names it
+mentions, so scoring can reserve seats per track (`scoring.min_per_track`) and the editor can build
+the fixed episode shape: models → agents → chips → radar. Gulf names carry a 1.3× weight.
+
 **Phase 2: scripting (Claude).** This phase is a chain of three calls, each doing one job:
 1. **Editor.** `messages.parse` returns a validated Pydantic `EditorialPlan`: 5–7 stories,
    their order, the enterprise angle and B-roll ideas. Item IDs that don't exist are removed.

@@ -50,9 +50,22 @@ ingestion:
       - AndrewYNg
       - simonw
 
+  # Sources driven by config/watchlist.yaml (all free, no keys)
+  watchlist:
+    enabled: true
+    google_news: true         # one search feed per watched name
+    official_feeds: true      # the names' own blogs / newsrooms
+    github: true              # releases of watched repos (set GITHUB_TOKEN to lift the anonymous rate limit)
+    huggingface: true         # new models from watched organisations
+    max_per_entity: 8         # Google News items kept per name per week
+
 scoring:
   min_score: 2.0              # items below this are dropped as noise
-  max_items: 25               # cap handed to the scripting engine
+  max_items: 30               # cap handed to the scripting engine
+  min_per_track:              # reserved seats so every beat of the episode has material
+    models: 8
+    agents: 5
+    chips: 4
   dedupe_similarity: 0.82     # title similarity above which two items are duplicates
 
 scripting:

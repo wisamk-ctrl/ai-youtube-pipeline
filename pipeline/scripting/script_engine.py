@@ -34,6 +34,8 @@ from datetime import date
 from typing import Any
 
 import anthropic
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 from pipeline.models import NewsItem
@@ -47,6 +49,8 @@ FALLBACK_BETA = "server-side-fallback-2026-07-01"  # header for the `fallbacks="
 
 # ── Structured output schema for Step 1 ──────────────────────────────────────
 class Segment(BaseModel):
+    track: Literal["models", "agents", "chips", "radar", "other"] = Field(
+        description="Beat of the episode: models (labs & LLMs), agents, chips (chips & inference), radar (new names), other")
     item_ids: list[str] = Field(description="IDs of the source items this segment is built from")
     headline_en: str = Field(description="One-line English working headline")
     angle: str = Field(description="The angle/narrative for this story, in English")
@@ -80,7 +84,8 @@ def _items_block(items: list[NewsItem]) -> str:
     """Serialise items for the prompt. IDs let the plan reference items unambiguously."""
     return "\n\n".join(
         f"<item id=\"{i.id}\" source=\"{i.source}\" published=\"{i.published.date()}\" "
-        f"score=\"{i.score}\">\n<title>{i.title}</title>\n<url>{i.url}</url>\n"
+        f"score=\"{i.score}\" track=\"{i.track or 'other'}\" region=\"{i.region}\" "
+        f"entities=\"{', '.join(i.entities)}\">\n<title>{i.title}</title>\n<url>{i.url}</url>\n"
         f"<body>{i.summary}</body>\n</item>"
         for i in items
     )
