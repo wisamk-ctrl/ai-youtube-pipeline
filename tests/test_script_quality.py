@@ -89,3 +89,16 @@ def test_fix_instruction_is_explicit():
                  worst_three=[Fix(where="w", problem="p", fix="f")])
     text = fixes_as_instruction(c)
     assert "hook" in text and "1. At «w»: p → f" in text
+
+
+def test_polish_applies_last_fixes_and_appends_round():
+    client = FakeClient()
+    cfg = load_settings()
+    cfg["scripting"]["critic"] = {"model": "x", "min_score": 8, "max_rounds": 2}
+    prior = [{"scores": {"hook": 5, "clarity": 9, "pacing": 8, "flow": 8, "arabic": 9, "value": 8}, "minimum": 5,
+              "verdict": "not yet", "worst_three": [{"where": "أعلنت ميسترال", "problem": "p", "fix": "open with the 40% price cut"}]}]
+    result = ScriptEngine(cfg, client).polish(PLAN, SCRIPT, [ITEM], prior)
+    reviewer_calls = [c for c in client.calls if "draft_script" in str(c.get("messages"))]
+    assert len(reviewer_calls) == 1 and "open with the 40% price cut" in str(reviewer_calls[0]["messages"])
+    assert [r["minimum"] for r in result.critique_rounds] == [5, 5]   # FakeClient's first critic call scores low
+    assert result.source_stats["unsourced"] == 1

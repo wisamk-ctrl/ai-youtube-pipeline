@@ -260,11 +260,39 @@ class ScriptEngine:
         if rounds[-1]["minimum"] < ccfg.get("min_score", 8):
             log.warning("Script still below the quality bar (min %d) after %d rounds — review the critique", rounds[-1]["minimum"], len(rounds))
 
-        # Every spoken sentence attributed to its sources; unsourced claims are listed first.
+        source_md, source_stats = self.source_map(script, sources)
+        return ScriptResult(plan=plan, script=script, word_count=words, target_words=self.target_words,
+                            critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats)
+
+    def source_map(self, script: str, sources: list[NewsItem]) -> tuple[str, dict[str, Any]]:
+        """Every spoken sentence attributed to its sources; unsourced claims are listed first."""
         sents, smap = smap_mod.build(script, sources, self.cfg.get("aux_model", self.cfg["model"]), self.client)
         source_md, source_stats = smap_mod.render_md(sents, smap, sources), smap_mod.stats(smap)
         if source_stats["unsourced"]:
             log.warning("%d unsourced claim(s) in the script — see source_map.md", source_stats["unsourced"])
+        return source_md, source_stats
 
+    def polish(self, plan: EditorialPlan, script: str, items: list[NewsItem],
+               rounds: list[dict[str, Any]]) -> ScriptResult:
+        """Apply the last critique's three fixes to an existing script, score again, rebuild the source map.
+
+        One reviewer pass + one critic round, so a below-bar script can be nudged without
+        regenerating the episode. The new round is appended to the existing record.
+        """
+        if not rounds:
+            raise ValueError("polish needs at least one critique round to apply")
+        last = critic_mod.Critique(**rounds[-1]["scores"], worst_three=rounds[-1]["worst_three"], verdict=rounds[-1]["verdict"])
+        sources = self.selected_items(plan, items)
+        script = self.review(script, sources, extra_instructions=critic_mod.fixes_as_instruction(last))
+        words = count_spoken_words(script)
+        log.info("Polish: %d spoken words (target %d)", words, self.target_words)
+        ccfg = self.cfg.get("critic", {})
+        c = critic_mod.critique(script, self.style_guide, ccfg.get("model", self.cfg["model"]), self.client)
+        rounds = rounds + [{"scores": c.scores, "minimum": c.minimum, "verdict": c.verdict,
+                            "worst_three": [f.model_dump() for f in c.worst_three]}]
+        log.info("Critic round %d: min %d — %s", len(rounds), c.minimum, c.verdict)
+        if c.minimum < ccfg.get("min_score", 8):
+            log.warning("Script still below the quality bar (min %d) — review the critique", c.minimum)
+        source_md, source_stats = self.source_map(script, sources)
         return ScriptResult(plan=plan, script=script, word_count=words, target_words=self.target_words,
                             critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats)
