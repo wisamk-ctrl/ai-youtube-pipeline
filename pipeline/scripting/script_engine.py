@@ -122,6 +122,7 @@ class ScriptEngine:
         self.client = client or anthropic.Anthropic(max_retries=4)
         self.target_words = round(self.cfg["target_minutes"] * self.cfg["words_per_minute"])
         self.style_guide = (ROOT / "config" / "style_guide.md").read_text(encoding="utf-8")
+        self.rubric = (ROOT / "config" / "critic_rubric.md").read_text(encoding="utf-8")
 
     # ── Step 1 ──
     def plan(self, items: list[NewsItem], week_label: str) -> EditorialPlan:
@@ -249,10 +250,9 @@ class ScriptEngine:
         ccfg = self.cfg.get("critic", {})
         rounds: list[dict[str, Any]] = []
         for attempt in range(ccfg.get("max_rounds", 2) + 1):
-            c = critic_mod.critique(script, self.style_guide, ccfg.get("model", self.cfg["model"]), self.client)
-            rounds.append({"scores": c.scores, "minimum": c.minimum, "verdict": c.verdict,
-                           "worst_three": [f.model_dump() for f in c.worst_three]})
-            log.info("Critic round %d: min %d — %s", attempt + 1, c.minimum, c.verdict)
+            c, rec = self.critique(script)
+            rounds.append(rec)
+            log.info("Critic round %d: min %d (samples %s) — %s", attempt + 1, c.minimum, rec["samples"], c.verdict)
             if c.minimum >= ccfg.get("min_score", 8) or attempt == ccfg.get("max_rounds", 2):
                 break
             script = self.review(script, sources, extra_instructions=critic_mod.fixes_as_instruction(c))
@@ -263,6 +263,13 @@ class ScriptEngine:
         source_md, source_stats = self.source_map(script, sources)
         return ScriptResult(plan=plan, script=script, word_count=words, target_words=self.target_words,
                             critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats)
+
+    def critique(self, script: str) -> tuple[critic_mod.Critique, dict[str, Any]]:
+        """Double-scored, rubric-based critique; returns the consensus and its critique.json record."""
+        ccfg = self.cfg.get("critic", {})
+        c, samples, stable = critic_mod.consensus(script, self.style_guide, self.rubric, ccfg,
+                                                  ccfg.get("model", self.cfg["model"]), self.client)
+        return c, critic_mod.round_record(c, samples, stable)
 
     def source_map(self, script: str, sources: list[NewsItem]) -> tuple[str, dict[str, Any]]:
         """Every spoken sentence attributed to its sources; unsourced claims are listed first."""
@@ -277,10 +284,9 @@ class ScriptEngine:
         """Critic + source map only, on a script as given (e.g. one edited by hand). No rewriting."""
         sources = self.selected_items(plan, items)
         ccfg = self.cfg.get("critic", {})
-        c = critic_mod.critique(script, self.style_guide, ccfg.get("model", self.cfg["model"]), self.client)
-        rounds = rounds + [{"scores": c.scores, "minimum": c.minimum, "verdict": c.verdict,
-                            "worst_three": [f.model_dump() for f in c.worst_three]}]
-        log.info("Critic round %d: min %d — %s", len(rounds), c.minimum, c.verdict)
+        c, rec = self.critique(script)
+        rounds = rounds + [rec]
+        log.info("Critic round %d: min %d (samples %s) — %s", len(rounds), c.minimum, rec["samples"], c.verdict)
         source_md, source_stats = self.source_map(script, sources)
         return ScriptResult(plan=plan, script=script, word_count=count_spoken_words(script), target_words=self.target_words,
                             critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats)
@@ -300,10 +306,9 @@ class ScriptEngine:
         words = count_spoken_words(script)
         log.info("Polish: %d spoken words (target %d)", words, self.target_words)
         ccfg = self.cfg.get("critic", {})
-        c = critic_mod.critique(script, self.style_guide, ccfg.get("model", self.cfg["model"]), self.client)
-        rounds = rounds + [{"scores": c.scores, "minimum": c.minimum, "verdict": c.verdict,
-                            "worst_three": [f.model_dump() for f in c.worst_three]}]
-        log.info("Critic round %d: min %d — %s", len(rounds), c.minimum, c.verdict)
+        c, rec = self.critique(script)
+        rounds = rounds + [rec]
+        log.info("Critic round %d: min %d (samples %s) — %s", len(rounds), c.minimum, rec["samples"], c.verdict)
         if c.minimum < ccfg.get("min_score", 8):
             log.warning("Script still below the quality bar (min %d) — review the critique", c.minimum)
         source_md, source_stats = self.source_map(script, sources)
