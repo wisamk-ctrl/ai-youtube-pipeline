@@ -3,9 +3,12 @@
 The critic does not "feel" a score. It lists defects against the rules below, each tagged
 with an axis and a severity, and the score is computed from the count:
 
-    score = 10 − 2 × (major defects) − 1 × (minor defects), floor 1
+    penalty = 2 × (major defects) + 1 × (minor defects)
+    score   = 10 − 2 × penalty ÷ (number of segments), rounded, floor 1
 
-So a 10 has no defects on that axis, an 8 has one major or two minors, a 6 has two majors.
+Density, not raw count, so an eight-segment episode is not punished for being long:
+a 10 has no defects on that axis; an 8 has about one minor per segment (or a major every
+other segment); a 6 has about one major per segment; a 4 has two majors per segment.
 The same script must produce the same defect list; if a defect is not in this rubric it is
 not a defect, it is taste, and taste is not scored.
 

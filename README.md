@@ -184,7 +184,7 @@ sponsors also tend to trust a channel more when it is open about using a digital
 
 `config/critic_rubric.md` fixes what counts as a defect on each axis (hook, clarity, pacing,
 flow, arabic, value) and its severity. The critic lists defects with quotes; the score is
-computed as 10 − 2·major − minor, so every number has evidence behind it. Each round samples
+computed from defect density per segment (penalty 2·major + minor; score 10 − 2·penalty/segments), so every number has evidence behind it. Each round samples
 the critic `critic.samples` times (default 2); if any axis differs by more than
 `critic.max_disagreement`, a third sample breaks the tie and the per-axis median stands.
 `critique.json` keeps every sample and a `stable` flag; the review issue shows them.

@@ -23,7 +23,7 @@ PLAN = EditorialPlan(episode_title_ar="ع", cold_open_hook_en="h",
                      segments=[Segment(track="models", item_ids=[ITEM.id], headline_en="h", angle="a",
                                        enterprise_impact="e", broll_ideas=[], approx_seconds=60)],
                      quick_fire_item_ids=[], thumbnail_text_ar="ع")
-SCRIPT = "أعلنت ميسترال عن نموذج Large 4. " * 520 + "وهذا يهم شركات المنطقة. نلتقي الأسبوع المقبل."
+SCRIPT = "[Section: الافتتاحية]\n" + "أعلنت ميسترال عن نموذج Large 4. " * 520 + "وهذا يهم شركات المنطقة. نلتقي الأسبوع المقبل."
 
 
 class FakeClient:
@@ -43,7 +43,7 @@ class FakeClient:
         if fmt is Critique:
             self.critic_calls += 1
             # Two samples per round (settings: samples 2). Round 1 (calls 1-2): hook has a major +
-            # a minor defect → computed 7, below a bar of 8. Round 2 (calls 3-4): clean → 10.
+            # a minor defect in a one-segment script → computed 4, below the bar. Round 2 (calls 3-4): clean → 10.
             low = self.critic_calls <= 2
             defects = [Defect(axis="hook", severity="major", rule="no fact first", quote="أعلنت ميسترال"),
                        Defect(axis="hook", severity="minor", rule="first sentence long", quote="أعلنت ميسترال عن")] if low else []
@@ -82,8 +82,8 @@ def test_engine_runs_critic_loop_and_source_map():
     systems = [c.get("system", "") for c in client.calls]
     assert sum("دليل أسلوب" in s for s in systems) >= 2
     # critic: round 1 hook 7 (one major + one minor, computed) → reviewer re-run with the fix → round 2 clean
-    assert [r["minimum"] for r in result.critique_rounds] == [7, 10]
-    assert result.critique_rounds[0]["scores"]["hook"] == 7 and result.critique_rounds[0]["stable"] is True
+    assert [r["minimum"] for r in result.critique_rounds] == [4, 10]   # one segment, pen 3 → 10-6
+    assert result.critique_rounds[0]["scores"]["hook"] == 4 and result.critique_rounds[0]["stable"] is True
     assert len(result.critique_rounds[0]["samples"]) == 2 and client.critic_calls == 4
     reviewer_calls = [c for c in client.calls if "draft_script" in str(c.get("messages"))]
     assert any("open with the 40% price cut" in str(c["messages"]) for c in reviewer_calls)
@@ -109,7 +109,7 @@ def test_polish_applies_last_fixes_and_appends_round():
     result = ScriptEngine(cfg, client).polish(PLAN, SCRIPT, [ITEM], prior)
     reviewer_calls = [c for c in client.calls if "draft_script" in str(c.get("messages"))]
     assert len(reviewer_calls) == 1 and "open with the 40% price cut" in str(reviewer_calls[0]["messages"])
-    assert [r["minimum"] for r in result.critique_rounds] == [5, 7]   # new round: computed from defects
+    assert [r["minimum"] for r in result.critique_rounds] == [5, 4]   # new round: computed from defects
     assert result.source_stats["unsourced"] == 1
 
 
@@ -127,7 +127,11 @@ def test_scores_are_computed_from_defects():
          Defect(axis="clarity", severity="minor", rule="r", quote="q"),
          Defect(axis="value", severity="major", rule="r", quote="q")] + \
         [Defect(axis="pacing", severity="major", rule="r", quote="q")] * 6
-    assert critic_mod.scores_from_defects(d) == {"hook": 10, "clarity": 7, "pacing": 1, "flow": 10, "arabic": 10, "value": 8}
+    # one segment: raw density. clarity pen 3 → 10-6=4; pacing pen 12 → floor 1; value pen 2 → 6
+    assert critic_mod.scores_from_defects(d, 1) == {"hook": 10, "clarity": 4, "pacing": 1, "flow": 10, "arabic": 10, "value": 6}
+    # eight segments: the same list is a pattern, not a wall. clarity 10-round(0.75)=9; pacing 10-3=7; value 10-round(0.5)=10
+    assert critic_mod.scores_from_defects(d, 8) == {"hook": 10, "clarity": 9, "pacing": 7, "flow": 10, "arabic": 10, "value": 10}
+    assert critic_mod.segment_count("[Section: a]\nx\n[Section: b]\ny") == 2 and critic_mod.segment_count("كلمة " * 400) == 3
 
 
 def test_consensus_resamples_on_disagreement_and_takes_median():
