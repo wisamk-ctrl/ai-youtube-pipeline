@@ -95,7 +95,7 @@ jobs:
             const quality = last ? `**Listener review** (round ${crit.length}): ${Object.entries(last.scores).map(([k, v]) => `${k} ${v}`).join(' · ')} — _${last.verdict}_${below}` : '';
             const smap = fs.existsSync(`${dir}/source_map.md`) ? fs.readFileSync(`${dir}/source_map.md`, 'utf8') : '';
             const unsourced = (smap.match(/\*\*(\d+) unsourced claims\*\*/) || [])[1];
-            const sourceLine = smap ? (unsourced === '0' ? '✅ Every claim traced to a source.' : `⚠️ **${unsourced} unsourced claim(s)** — see source_map.md in the artifact before recording.`) : '';
+            const sourceLine = smap ? (unsourced === '0' ? '✅ Every claim traced to a source.' : `⚠️ **${unsourced} unsourced claim(s)** — fix before recording:\n${(smap.split('## ⚠️ Unsourced claims')[1] || '').split('\n| #')[0].trim().split('\n').filter(l => l.startsWith('- ')).join('\n')}`) : '';
             await github.rest.issues.create({
               owner: context.repo.owner, repo: context.repo.repo,
               title: `Review: ${plan.episode_title_ar} (${dir.replace('output/','').replace('/','')})`,
@@ -189,7 +189,7 @@ jobs:
             const body = `**${{ inputs.phase == 'score' && 'Score (reviewed script)' || 'Polish' }}** (run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) — critic min ${trail}\n\n` +
                          `Round ${crit.length}: ${Object.entries(last.scores).map(([k, v]) => `${k} ${v}`).join(' · ')} — _${last.verdict}_\n\n` +
                          (last.minimum >= bar ? '✅ Clears the quality bar.' : `⚠️ Still below the bar (${last.minimum} < ${bar}). Next three fixes:\n${fixes}`) + '\n\n' +
-                         (unsourced === '0' ? '✅ Every claim traced to a source.' : `⚠️ **${unsourced} unsourced claim(s)** — see source_map.md.`) + '\n\n' +
+                         (unsourced === '0' ? '✅ Every claim traced to a source.' : `⚠️ **${unsourced} unsourced claim(s)**:\n${(smap.split('## ⚠️ Unsourced claims')[1] || '').split('\n| #')[0].trim().split('\n').filter(l => l.startsWith('- ')).join('\n')}`) + '\n\n' +
                          `<details><summary>script.md (scored)</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>`;
             if (issue) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number, body });
             else core.warning('No open script-review issue for this week; polish result is in the artifact only.');
