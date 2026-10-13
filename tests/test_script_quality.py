@@ -102,3 +102,12 @@ def test_polish_applies_last_fixes_and_appends_round():
     assert len(reviewer_calls) == 1 and "open with the 40% price cut" in str(reviewer_calls[0]["messages"])
     assert [r["minimum"] for r in result.critique_rounds] == [5, 5]   # FakeClient's first critic call scores low
     assert result.source_stats["unsourced"] == 1
+
+
+def test_score_does_not_rewrite():
+    client = FakeClient()
+    cfg = load_settings()
+    result = ScriptEngine(cfg, client).score(PLAN, SCRIPT, [ITEM], [])
+    assert result.script == SCRIPT
+    assert not [c for c in client.calls if "draft_script" in str(c.get("messages"))]
+    assert len(result.critique_rounds) == 1 and result.source_stats["claims"] >= 1

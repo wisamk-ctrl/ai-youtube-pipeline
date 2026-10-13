@@ -272,6 +272,19 @@ class ScriptEngine:
             log.warning("%d unsourced claim(s) in the script — see source_map.md", source_stats["unsourced"])
         return source_md, source_stats
 
+    def score(self, plan: EditorialPlan, script: str, items: list[NewsItem],
+              rounds: list[dict[str, Any]]) -> ScriptResult:
+        """Critic + source map only, on a script as given (e.g. one edited by hand). No rewriting."""
+        sources = self.selected_items(plan, items)
+        ccfg = self.cfg.get("critic", {})
+        c = critic_mod.critique(script, self.style_guide, ccfg.get("model", self.cfg["model"]), self.client)
+        rounds = rounds + [{"scores": c.scores, "minimum": c.minimum, "verdict": c.verdict,
+                            "worst_three": [f.model_dump() for f in c.worst_three]}]
+        log.info("Critic round %d: min %d — %s", len(rounds), c.minimum, c.verdict)
+        source_md, source_stats = self.source_map(script, sources)
+        return ScriptResult(plan=plan, script=script, word_count=count_spoken_words(script), target_words=self.target_words,
+                            critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats)
+
     def polish(self, plan: EditorialPlan, script: str, items: list[NewsItem],
                rounds: list[dict[str, Any]]) -> ScriptResult:
         """Apply the last critique's three fixes to an existing script, score again, rebuild the source map.

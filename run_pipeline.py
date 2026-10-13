@@ -82,10 +82,8 @@ def _write_script_result(cfg: dict, out: Path, result, plan_too: bool) -> None:
              out / "script.md", result.word_count, minutes, result.target_words)
 
 
-def phase_polish(cfg: dict, out: Path) -> None:
-    """Apply the last critique's fixes to the existing script and score it again (no regeneration)."""
-    from pipeline.scripting.script_engine import EditorialPlan, ScriptEngine
-
+def _load_week(out: Path):
+    from pipeline.scripting.script_engine import EditorialPlan
     for name in ("items.json", "plan.json", "script.md", "critique.json"):
         if not (out / name).exists():
             sys.exit(f"{out / name} not found — run the script phase first.")
@@ -93,6 +91,29 @@ def phase_polish(cfg: dict, out: Path) -> None:
     plan = EditorialPlan.model_validate(json.loads((out / "plan.json").read_text(encoding="utf-8")))
     script = (out / "script.md").read_text(encoding="utf-8").rstrip("\n")
     rounds = json.loads((out / "critique.json").read_text(encoding="utf-8"))
+    return items, plan, script, rounds
+
+
+def phase_score(cfg: dict, out: Path) -> None:
+    """Score the script as it stands (critic + source map), without rewriting it.
+
+    Reads reviewed/<week>/script.md when present, so a hand-edited script is what gets scored."""
+    from pipeline.scripting.script_engine import ScriptEngine
+
+    items, plan, script, rounds = _load_week(out)
+    reviewed = ROOT / "reviewed" / out.name / "script.md"
+    if reviewed.exists():
+        script = reviewed.read_text(encoding="utf-8").rstrip("\n")
+        log.info("Scoring the reviewed script %s", reviewed)
+    result = ScriptEngine(cfg).score(plan, script, items, rounds)
+    _write_script_result(cfg, out, result, plan_too=False)
+
+
+def phase_polish(cfg: dict, out: Path) -> None:
+    """Apply the last critique's fixes to the existing script and score it again (no regeneration)."""
+    from pipeline.scripting.script_engine import ScriptEngine
+
+    items, plan, script, rounds = _load_week(out)
     (out / f"script.before-polish-{len(rounds)}.md").write_text(script + "\n", encoding="utf-8")
     result = ScriptEngine(cfg).polish(plan, script, items, rounds)
     _write_script_result(cfg, out, result, plan_too=False)
@@ -139,7 +160,7 @@ def phase_publish(cfg: dict, out: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("phase", choices=["ingest", "script", "polish", "video", "post", "publish", "all"])
+    ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "video", "post", "publish", "all"])
     ap.add_argument("--fixture", help="Copy fixtures/<name>/items.json into the week folder instead of ingesting (offline testing)")
     ap.add_argument("--shorts", help='Comma-separated start-end seconds for vertical cuts, e.g. "12-55,180-240"')
     ap.add_argument("--week", help="Output folder name, default: current ISO week (e.g. 2026-W41)")
@@ -173,6 +194,8 @@ def main() -> None:
         phase_video(cfg, out, args.dry_run, args.resume_video_id)
     if args.phase == "polish":
         phase_polish(cfg, out)
+    if args.phase == "score":
+        phase_score(cfg, out)
     if args.phase == "post":
         phase_post(cfg, out, args.shorts)
     if args.phase == "publish":

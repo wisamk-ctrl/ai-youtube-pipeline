@@ -20,10 +20,10 @@ on:
   workflow_dispatch:
     inputs:
       phase:
-        description: "script (ingest+script) | polish (apply the last critique, re-score) | video | post | publish"
+        description: "script (ingest+script) | polish (apply the last critique, re-score) | score (critic only, on reviewed/<week>/script.md if present) | video | post | publish"
         default: script
         type: choice
-        options: [script, polish, video, post, publish]
+        options: [script, polish, score, video, post, publish]
       week:
         description: "Week folder, e.g. 2026-W41 (default: current ISO week)"
         default: ""
@@ -170,7 +170,7 @@ jobs:
           overwrite: true
           retention-days: 30
       - name: Report the polish on the review issue
-        if: inputs.phase == 'polish'
+        if: inputs.phase == 'polish' || inputs.phase == 'score'
         uses: actions/github-script@v7
         with:
           script: |
@@ -186,10 +186,10 @@ jobs:
             const unsourced = (smap.match(/\*\*(\d+) unsourced claims\*\*/) || [])[1];
             const issues = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'script-review', state: 'open', per_page: 50 });
             const issue = issues.data.find(i => i.title.includes(`(${{ inputs.week }})`));
-            const body = `**Polish** (run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) — critic min ${trail}\n\n` +
+            const body = `**${{ inputs.phase == 'score' && 'Score (reviewed script)' || 'Polish' }}** (run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) — critic min ${trail}\n\n` +
                          `Round ${crit.length}: ${Object.entries(last.scores).map(([k, v]) => `${k} ${v}`).join(' · ')} — _${last.verdict}_\n\n` +
                          (last.minimum >= bar ? '✅ Clears the quality bar.' : `⚠️ Still below the bar (${last.minimum} < ${bar}). Next three fixes:\n${fixes}`) + '\n\n' +
                          (unsourced === '0' ? '✅ Every claim traced to a source.' : `⚠️ **${unsourced} unsourced claim(s)** — see source_map.md.`) + '\n\n' +
-                         `<details><summary>script.md (polished)</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>`;
+                         `<details><summary>script.md (scored)</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>`;
             if (issue) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number, body });
             else core.warning('No open script-review issue for this week; polish result is in the artifact only.');
