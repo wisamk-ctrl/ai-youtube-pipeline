@@ -90,7 +90,7 @@ jobs:
             const cov = fs.existsSync(`${dir}/coverage.md`) ? fs.readFileSync(`${dir}/coverage.md`, 'utf8') : '';
             const crit = fs.existsSync(`${dir}/critique.json`) ? JSON.parse(fs.readFileSync(`${dir}/critique.json`, 'utf8')) : [];
             const last = crit[crit.length - 1];
-            const bar = Number((fs.readFileSync('config/settings.yaml', 'utf8').match(/min_score:\s*(\d+)/) || [])[1] || 8);
+            const bar = Number((fs.readFileSync('config/settings.yaml', 'utf8').match(/critic:[\s\S]*?min_score:\s*(\d+)/) || [])[1] || 8);
             const below = last && last.minimum < bar ? `\n\n⚠️ **Below the quality bar** (min ${last.minimum} < ${bar} after ${crit.length} rounds) — read critique.json in the artifact; the critic's last three fixes are the edit list.` : '';
             const quality = last ? `**Listener review** (round ${crit.length}): ${Object.entries(last.scores).map(([k, v]) => `${k} ${v}`).join(' · ')} — _${last.verdict}_${below}` : '';
             const smap = fs.existsSync(`${dir}/source_map.md`) ? fs.readFileSync(`${dir}/source_map.md`, 'utf8') : '';
@@ -179,7 +179,7 @@ jobs:
             const script = fs.readFileSync(`${dir}/script.md`, 'utf8');
             const crit = JSON.parse(fs.readFileSync(`${dir}/critique.json`, 'utf8'));
             const last = crit[crit.length - 1];
-            const bar = Number((fs.readFileSync('config/settings.yaml', 'utf8').match(/min_score:\s*(\d+)/) || [])[1] || 8);
+            const bar = Number((fs.readFileSync('config/settings.yaml', 'utf8').match(/critic:[\s\S]*?min_score:\s*(\d+)/) || [])[1] || 8);
             const trail = crit.map(r => r.minimum).join(' → ');
             const fixes = last.worst_three.map((f, i) => `${i + 1}. **${f.where}** — ${f.problem} → ${f.fix}`).join('\n');
             const smap = fs.readFileSync(`${dir}/source_map.md`, 'utf8');
