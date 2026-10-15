@@ -1,1 +1,3902 @@
-{}
+{
+ "500btokenslaterlettingagentsdecompileafirstpersonshooter": {
+  "first_seen": "2026-10-15",
+  "name": "500B tokens later: Letting AI agents decompile a first-person shooter",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.93,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "a16z": {
+  "first_seen": "2026-10-15",
+  "name": "a16z",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "abenzerps": {
+  "first_seen": "2026-10-15",
+  "name": "abenzerps",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.34,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "abudhabi": {
+  "first_seen": "2026-10-15",
+  "name": "Abu Dhabi",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   }
+  }
+ },
+ "aegissoftware": {
+  "first_seen": "2026-10-15",
+  "name": "Aegis Software",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "agentmode": {
+  "first_seen": "2026-10-15",
+  "name": "Agent Mode",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "aimintelligence": {
+  "first_seen": "2026-10-15",
+  "name": "AIM Intelligence",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "akatz": {
+  "first_seen": "2026-10-15",
+  "name": "akatz-ai",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.58,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "alibaba": {
+  "first_seen": "2026-10-15",
+  "name": "Alibaba",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 11.0,
+    "signals": 0,
+    "sources": 11,
+    "track": "models"
+   }
+  }
+ },
+ "alphaproofnexus": {
+  "first_seen": "2026-10-15",
+  "name": "AlphaProof Nexus",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "amazonbedrockagentcore": {
+  "first_seen": "2026-10-15",
+  "name": "Amazon Bedrock AgentCore",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "amazonbedrockagentcorepayments": {
+  "first_seen": "2026-10-15",
+  "name": "Amazon Bedrock AgentCore payments",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "amazonq": {
+  "first_seen": "2026-10-15",
+  "name": "Amazon Q",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "amazonsagemaker": {
+  "first_seen": "2026-10-15",
+  "name": "Amazon SageMaker AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "amazonsagemakerhyperpod": {
+  "first_seen": "2026-10-15",
+  "name": "Amazon SageMaker HyperPod",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "amazonsagemakerjumpstart": {
+  "first_seen": "2026-10-15",
+  "name": "Amazon SageMaker JumpStart",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "amazonwebservices": {
+  "first_seen": "2026-10-15",
+  "name": "Amazon Web Services",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "other"
+   }
+  }
+ },
+ "amp": {
+  "first_seen": "2026-10-15",
+  "name": "Amp",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "anchorbrowser": {
+  "first_seen": "2026-10-15",
+  "name": "Anchor Browser",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "anthropicmodelsubmitsfalsetiponunsolvedphillymurderpolicesay": {
+  "first_seen": "2026-10-15",
+  "name": "Anthropic AI model submits false tip on unsolved Philly murder, police say",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.93,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "apexpixel": {
+  "first_seen": "2026-10-15",
+  "name": "APEX Pixel",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "appletv4k": {
+  "first_seen": "2026-10-15",
+  "name": "Apple TV 4K",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "aramcodigital": {
+  "first_seen": "2026-10-15",
+  "name": "Aramco Digital",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "araseg": {
+  "first_seen": "2026-10-15",
+  "name": "araseg",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "argano": {
+  "first_seen": "2026-10-15",
+  "name": "Argano",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "asana": {
+  "first_seen": "2026-10-15",
+  "name": "Asana",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "asml": {
+  "first_seen": "2026-10-15",
+  "name": "ASML",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "asmlholding": {
+  "first_seen": "2026-10-15",
+  "name": "ASML Holding",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "asurion": {
+  "first_seen": "2026-10-15",
+  "name": "Asurion",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "athenainferencemodel": {
+  "first_seen": "2026-10-15",
+  "name": "Athena Inference Model",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "atomicchat": {
+  "first_seen": "2026-10-15",
+  "name": "AtomicChat",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.18,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "autotrust": {
+  "first_seen": "2026-10-15",
+  "name": "autotrust",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.8,
+    "signals": 4,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "awstransform": {
+  "first_seen": "2026-10-15",
+  "name": "AWS Transform",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "azuremaia": {
+  "first_seen": "2026-10-15",
+  "name": "Azure Maia",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "azuremaia300": {
+  "first_seen": "2026-10-15",
+  "name": "Azure Maia 300",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "bankofamerica": {
+  "first_seen": "2026-10-15",
+  "name": "Bank of America",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   }
+  }
+ },
+ "bard": {
+  "first_seen": "2026-10-15",
+  "name": "Bard",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "beam": {
+  "first_seen": "2026-10-15",
+  "name": "Beam",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "bigbear": {
+  "first_seen": "2026-10-15",
+  "name": "BigBear.ai",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "biocon": {
+  "first_seen": "2026-10-15",
+  "name": "Biocon",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "block": {
+  "first_seen": "2026-10-15",
+  "name": "Block",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "blockrun": {
+  "first_seen": "2026-10-15",
+  "name": "BlockRun",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "bloodcellsfrom80yearolddonorbecomestemcellswithmolecularageunder20": {
+  "first_seen": "2026-10-15",
+  "name": "Blood cells from 80-year-old donor become stem cells with molecular age under 20",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.85,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "blueprints": {
+  "first_seen": "2026-10-15",
+  "name": "Blueprints AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "boldtrail": {
+  "first_seen": "2026-10-15",
+  "name": "BoldTrail",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "boldtrailmcp": {
+  "first_seen": "2026-10-15",
+  "name": "BoldTrail MCP",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "bostondynamics": {
+  "first_seen": "2026-10-15",
+  "name": "Boston Dynamics",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "bubble": {
+  "first_seen": "2026-10-15",
+  "name": "Bubble",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "cactuscompute": {
+  "first_seen": "2026-10-15",
+  "name": "Cactus-Compute",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.78,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "canberkkkkkk": {
+  "first_seen": "2026-10-15",
+  "name": "canberkkkkkk",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.54,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "censys": {
+  "first_seen": "2026-10-15",
+  "name": "Censys",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "centerforsafety": {
+  "first_seen": "2026-10-15",
+  "name": "Center for AI Safety",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "chunganguniversity": {
+  "first_seen": "2026-10-15",
+  "name": "Chung-Ang University",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "cisco": {
+  "first_seen": "2026-10-15",
+  "name": "Cisco",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "cityofraleigh": {
+  "first_seen": "2026-10-15",
+  "name": "City of Raleigh",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "claudehaiku": {
+  "first_seen": "2026-10-15",
+  "name": "Claude Haiku",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "cloudflare": {
+  "first_seen": "2026-10-15",
+  "name": "Cloudflare",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.94,
+    "signals": 3,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "codexcli": {
+  "first_seen": "2026-10-15",
+  "name": "Codex CLI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "codingagentsgeneratemorecodebutnotmoresoftware": {
+  "first_seen": "2026-10-15",
+  "name": "AI coding agents generate more code, but not more software",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.23,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "comfyorg": {
+  "first_seen": "2026-10-15",
+  "name": "Comfy-Org",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.14,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "containmentandmonitoringfailuresaretoblameforhackingreportsexperts": {
+  "first_seen": "2026-10-15",
+  "name": "Containment and monitoring failures are to blame for AI hacking reports: experts",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.24,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "convaiinnovations": {
+  "first_seen": "2026-10-15",
+  "name": "convaiinnovations",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.74,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "conwayresearch": {
+  "first_seen": "2026-10-15",
+  "name": "ConwayResearch",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.26,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "cpx": {
+  "first_seen": "2026-10-15",
+  "name": "CPX",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "crescentisland": {
+  "first_seen": "2026-10-15",
+  "name": "Crescent Island",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "cyberxero": {
+  "first_seen": "2026-10-15",
+  "name": "CyberXero",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "databricks": {
+  "first_seen": "2026-10-15",
+  "name": "Databricks",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "davidau": {
+  "first_seen": "2026-10-15",
+  "name": "DavidAU",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.54,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "dealign": {
+  "first_seen": "2026-10-15",
+  "name": "dealignai",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.42,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "decagon": {
+  "first_seen": "2026-10-15",
+  "name": "Decagon",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "decart": {
+  "first_seen": "2026-10-15",
+  "name": "Decart",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "models"
+   }
+  }
+ },
+ "decepticon": {
+  "first_seen": "2026-10-15",
+  "name": "Decepticon",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "decision1": {
+  "first_seen": "2026-10-15",
+  "name": "Decision-1",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "deckhand": {
+  "first_seen": "2026-10-15",
+  "name": "Deckhand",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "deepdub": {
+  "first_seen": "2026-10-15",
+  "name": "Deepdub",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "dell": {
+  "first_seen": "2026-10-15",
+  "name": "Dell",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "departmentofenergy": {
+  "first_seen": "2026-10-15",
+  "name": "Department of Energy",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "discovery": {
+  "first_seen": "2026-10-15",
+  "name": "Discovery AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "docusign": {
+  "first_seen": "2026-10-15",
+  "name": "Docusign",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "dxctechnology": {
+  "first_seen": "2026-10-15",
+  "name": "DXC Technology",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 6.0,
+    "signals": 0,
+    "sources": 6,
+    "track": "other"
+   }
+  }
+ },
+ "easya": {
+  "first_seen": "2026-10-15",
+  "name": "EasyA",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "eloquens": {
+  "first_seen": "2026-10-15",
+  "name": "Eloquens AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "emanate": {
+  "first_seen": "2026-10-15",
+  "name": "Emanate",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "exprealty": {
+  "first_seen": "2026-10-15",
+  "name": "eXp Realty",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "facebook": {
+  "first_seen": "2026-10-15",
+  "name": "facebook",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.66,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "falconasr": {
+  "first_seen": "2026-10-15",
+  "name": "Falcon-ASR",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "fedsgotwarrantstousefakecelltowerstohuntdowndonlemonsproducer": {
+  "first_seen": "2026-10-15",
+  "name": "Feds got warrants to use fake cell towers to hunt down Don Lemon's producer",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.88,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "fin": {
+  "first_seen": "2026-10-15",
+  "name": "Fin",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "fishaudio": {
+  "first_seen": "2026-10-15",
+  "name": "fishaudio",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.14,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "flux3video": {
+  "first_seen": "2026-10-15",
+  "name": "Flux 3 Video",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "formula1": {
+  "first_seen": "2026-10-15",
+  "name": "Formula 1",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "fröbelkindergarten": {
+  "first_seen": "2026-10-15",
+  "name": "Fröbel Kindergarten",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "fujitsu": {
+  "first_seen": "2026-10-15",
+  "name": "Fujitsu",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "gapinsharedunderstandingofllmcapabilityiswidening": {
+  "first_seen": "2026-10-15",
+  "name": "The gap in shared understanding of LLM capability is widening",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.94,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "geforcenow": {
+  "first_seen": "2026-10-15",
+  "name": "GeForce NOW",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "gemini4argon": {
+  "first_seen": "2026-10-15",
+  "name": "Gemini 4 Argon",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
+   }
+  }
+ },
+ "geminiagents": {
+  "first_seen": "2026-10-15",
+  "name": "Gemini Agents",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "gemtek": {
+  "first_seen": "2026-10-15",
+  "name": "Gemtek",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "gfisoftware": {
+  "first_seen": "2026-10-15",
+  "name": "GFI Software",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "gimlet": {
+  "first_seen": "2026-10-15",
+  "name": "Gimlet Labs",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "githubcopilot": {
+  "first_seen": "2026-10-15",
+  "name": "GitHub Copilot",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "glm52": {
+  "first_seen": "2026-10-15",
+  "name": "GLM-5.2",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "glm53highspeed": {
+  "first_seen": "2026-10-15",
+  "name": "GLM-5.3-Highspeed",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "glmlegal": {
+  "first_seen": "2026-10-15",
+  "name": "GLM-Legal",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.84,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "goodfire": {
+  "first_seen": "2026-10-15",
+  "name": "Goodfire",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "agents"
+   }
+  }
+ },
+ "googlecloud": {
+  "first_seen": "2026-10-15",
+  "name": "Google Cloud",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "other"
+   }
+  }
+ },
+ "googlefiber": {
+  "first_seen": "2026-10-15",
+  "name": "Google Fiber",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "googleplay": {
+  "first_seen": "2026-10-15",
+  "name": "Google Play",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "govtechsingapore": {
+  "first_seen": "2026-10-15",
+  "name": "GovTech Singapore",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "gpt61sol": {
+  "first_seen": "2026-10-15",
+  "name": "GPT-6.1 Sol",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "gpt61ultrafast": {
+  "first_seen": "2026-10-15",
+  "name": "GPT-6.1 Ultrafast",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "gpt6astra": {
+  "first_seen": "2026-10-15",
+  "name": "GPT-6 Astra",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "gpt6luna": {
+  "first_seen": "2026-10-15",
+  "name": "GPT-6 Luna",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "gpt6sol": {
+  "first_seen": "2026-10-15",
+  "name": "GPT-6 Sol",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "gpudseries": {
+  "first_seen": "2026-10-15",
+  "name": "GPU D-Series",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "grok47": {
+  "first_seen": "2026-10-15",
+  "name": "Grok 4.7",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "grokvoice30": {
+  "first_seen": "2026-10-15",
+  "name": "Grok Voice 3.0",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
+   }
+  }
+ },
+ "gtmai": {
+  "first_seen": "2026-10-15",
+  "name": "GTM.AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "hackersactivateautomaticdefrostinginsupermarketfridgesacrosseurope": {
+  "first_seen": "2026-10-15",
+  "name": "Hackers activate automatic defrosting in supermarket fridges across Europe",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.31,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "harvarduniversity": {
+  "first_seen": "2026-10-15",
+  "name": "Harvard University",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "hauhaucs": {
+  "first_seen": "2026-10-15",
+  "name": "HauhauCS",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.06,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "helion": {
+  "first_seen": "2026-10-15",
+  "name": "Helion",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "hidreamo1video10": {
+  "first_seen": "2026-10-15",
+  "name": "HiDream-O1-Video-1.0",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "higgsfield": {
+  "first_seen": "2026-10-15",
+  "name": "Higgsfield",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "homeview": {
+  "first_seen": "2026-10-15",
+  "name": "HomeView",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "hostinger": {
+  "first_seen": "2026-10-15",
+  "name": "Hostinger",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "huawei": {
+  "first_seen": "2026-10-15",
+  "name": "Huawei",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
+    "track": "other"
+   }
+  }
+ },
+ "incarna": {
+  "first_seen": "2026-10-15",
+  "name": "Incarna",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "inception42": {
+  "first_seen": "2026-10-15",
+  "name": "Inception42",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "infinigence": {
+  "first_seen": "2026-10-15",
+  "name": "Infinigence AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "insiderealestate": {
+  "first_seen": "2026-10-15",
+  "name": "Inside Real Estate",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "insight": {
+  "first_seen": "2026-10-15",
+  "name": "Insight",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "intelligentagreementmanagement": {
+  "first_seen": "2026-10-15",
+  "name": "Intelligent Agreement Management",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "intercom": {
+  "first_seen": "2026-10-15",
+  "name": "Intercom",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "intuit": {
+  "first_seen": "2026-10-15",
+  "name": "Intuit",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "iphone18": {
+  "first_seen": "2026-10-15",
+  "name": "iPhone 18",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "istadaslab": {
+  "first_seen": "2026-10-15",
+  "name": "ISTA-DASLab",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.84,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "istitlaa": {
+  "first_seen": "2026-10-15",
+  "name": "Istitlaa",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "janasrunllmslargerthanrambystreamingexpertsfromssd": {
+  "first_seen": "2026-10-15",
+  "name": "Janas: Run LLMs larger than RAM by streaming experts from SSD",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.94,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "jetbrains": {
+  "first_seen": "2026-10-15",
+  "name": "JetBrains",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.18,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "jialinyyzz": {
+  "first_seen": "2026-10-15",
+  "name": "jialinyyzz",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.46,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "kerioconnect": {
+  "first_seen": "2026-10-15",
+  "name": "KerioConnect",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "kesai": {
+  "first_seen": "2026-10-15",
+  "name": "KE:SAI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   }
+  }
+ },
+ "kohler": {
+  "first_seen": "2026-10-15",
+  "name": "KOHLER",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "kolibri": {
+  "first_seen": "2026-10-15",
+  "name": "Kolibri",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "models"
+   }
+  }
+ },
+ "lakebase": {
+  "first_seen": "2026-10-15",
+  "name": "Lakebase",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "langgraphcheckpointpostgres": {
+  "first_seen": "2026-10-15",
+  "name": "LangGraph Checkpoint Postgres",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "langgraphcli": {
+  "first_seen": "2026-10-15",
+  "name": "LangGraph CLI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "launchhnagent37ycf26lowcostagentsandboxesforrunningagents": {
+  "first_seen": "2026-10-15",
+  "name": "Launch HN: Agent37 (YC F26) – Low-cost agent sandboxes for running agents",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.32,
+    "signals": 2,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "lechonk": {
+  "first_seen": "2026-10-15",
+  "name": "Le Chonk",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "legalcontextgraph": {
+  "first_seen": "2026-10-15",
+  "name": "Legal Context Graph",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "legalon": {
+  "first_seen": "2026-10-15",
+  "name": "LegalOn",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "lfm2524ba2bbuiltforfastondeviceagents": {
+  "first_seen": "2026-10-15",
+  "name": "LFM2.5-24B-A2B: Built for fast on-device agents",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.33,
+    "signals": 2,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "lidstralarabic": {
+  "first_seen": "2026-10-15",
+  "name": "LIDstral-Arabic",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "lightricks": {
+  "first_seen": "2026-10-15",
+  "name": "Lightricks",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.22,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "linuxkernel": {
+  "first_seen": "2026-10-15",
+  "name": "Linux kernel",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "liquid": {
+  "first_seen": "2026-10-15",
+  "name": "LiquidAI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.6,
+    "signals": 4,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "llamacpp": {
+  "first_seen": "2026-10-15",
+  "name": "llama.cpp",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "lovable": {
+  "first_seen": "2026-10-15",
+  "name": "Lovable",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "maia300": {
+  "first_seen": "2026-10-15",
+  "name": "Maia 300",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
+    "track": "chips"
+   }
+  }
+ },
+ "marvell": {
+  "first_seen": "2026-10-15",
+  "name": "Marvell",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "marvelltechnology": {
+  "first_seen": "2026-10-15",
+  "name": "Marvell Technology",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "mass": {
+  "first_seen": "2026-10-15",
+  "name": "MASS",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "memryx": {
+  "first_seen": "2026-10-15",
+  "name": "MemryX",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "microsoftcopilotstudio": {
+  "first_seen": "2026-10-15",
+  "name": "Microsoft Copilot Studio",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "microsoftdecision1": {
+  "first_seen": "2026-10-15",
+  "name": "Microsoft-Decision-1",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "microsoftdynamics365": {
+  "first_seen": "2026-10-15",
+  "name": "Microsoft Dynamics 365",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "minimaxh3": {
+  "first_seen": "2026-10-15",
+  "name": "MiniMax H3",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "minions": {
+  "first_seen": "2026-10-15",
+  "name": "Minions",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
+    "track": "other"
+   }
+  }
+ },
+ "mistrallarge4": {
+  "first_seen": "2026-10-15",
+  "name": "Mistral Large 4",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "models"
+   }
+  }
+ },
+ "modal": {
+  "first_seen": "2026-10-15",
+  "name": "Modal",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "modelscanprovablyhidearbitrarycapabilities": {
+  "first_seen": "2026-10-15",
+  "name": "AI models can provably hide arbitrary capabilities",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.06,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "moderna": {
+  "first_seen": "2026-10-15",
+  "name": "Moderna",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "muse": {
+  "first_seen": "2026-10-15",
+  "name": "Muse",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "agents"
+   }
+  }
+ },
+ "musewonder": {
+  "first_seen": "2026-10-15",
+  "name": "Muse Wonder",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
+    "track": "models"
+   }
+  }
+ },
+ "musewonderfull": {
+  "first_seen": "2026-10-15",
+  "name": "Muse Wonder Full",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "mxcmicrosoftexecutioncontainersversion100": {
+  "first_seen": "2026-10-15",
+  "name": "Mxc: Microsoft Execution Containers version 1.0.0",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.96,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "nerkyor": {
+  "first_seen": "2026-10-15",
+  "name": "nerkyor",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.02,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "netdocuments": {
+  "first_seen": "2026-10-15",
+  "name": "NetDocuments",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "nibvok": {
+  "first_seen": "2026-10-15",
+  "name": "NIBVOK",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "ninjatech": {
+  "first_seen": "2026-10-15",
+  "name": "NinjaTech",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "nvidiadsxfactoryplatform": {
+  "first_seen": "2026-10-15",
+  "name": "NVIDIA DSX AI Factory Platform",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "nvidiaintalkstoacquireusopenmodelstartupreflection": {
+  "first_seen": "2026-10-15",
+  "name": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.86,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "nvidiaomniverse": {
+  "first_seen": "2026-10-15",
+  "name": "NVIDIA Omniverse",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "oasis": {
+  "first_seen": "2026-10-15",
+  "name": "Oasis AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "ocp": {
+  "first_seen": "2026-10-15",
+  "name": "OCP",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "odensekommune": {
+  "first_seen": "2026-10-15",
+  "name": "Odense Kommune",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "odyssey3": {
+  "first_seen": "2026-10-15",
+  "name": "Odyssey-3",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "oktana": {
+  "first_seen": "2026-10-15",
+  "name": "Oktana",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "ondas": {
+  "first_seen": "2026-10-15",
+  "name": "Ondas",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "onlyoffice": {
+  "first_seen": "2026-10-15",
+  "name": "ONLYOFFICE",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "opalrecords": {
+  "first_seen": "2026-10-15",
+  "name": "Opal Records",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "openbmb": {
+  "first_seen": "2026-10-15",
+  "name": "openbmb",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.38,
+    "signals": 3,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "oracle": {
+  "first_seen": "2026-10-15",
+  "name": "Oracle",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "orbitron": {
+  "first_seen": "2026-10-15",
+  "name": "OrbitronAI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "orca": {
+  "first_seen": "2026-10-15",
+  "name": "ORCA",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "orcarouter": {
+  "first_seen": "2026-10-15",
+  "name": "orcarouter",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.38,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "orcasecurity": {
+  "first_seen": "2026-10-15",
+  "name": "Orca Security",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "pablodawson": {
+  "first_seen": "2026-10-15",
+  "name": "pablodawson",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.62,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "palantir": {
+  "first_seen": "2026-10-15",
+  "name": "Palantir",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "partnershipon": {
+  "first_seen": "2026-10-15",
+  "name": "Partnership on AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "paypal": {
+  "first_seen": "2026-10-15",
+  "name": "PayPal",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "pollo": {
+  "first_seen": "2026-10-15",
+  "name": "Pollo AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "postman": {
+  "first_seen": "2026-10-15",
+  "name": "Postman",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "prismml": {
+  "first_seen": "2026-10-15",
+  "name": "prism-ml",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.98,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "pyannote": {
+  "first_seen": "2026-10-15",
+  "name": "pyannote",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.22,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "qwenglasses": {
+  "first_seen": "2026-10-15",
+  "name": "Qwen AI glasses",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "qwengyre": {
+  "first_seen": "2026-10-15",
+  "name": "QwenGyre",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "agents"
+   }
+  }
+ },
+ "qwenimage21turbo": {
+  "first_seen": "2026-10-15",
+  "name": "Qwen-Image-2.1-Turbo",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
+   }
+  }
+ },
+ "qwenn1glasses": {
+  "first_seen": "2026-10-15",
+  "name": "Qwen N1 glasses",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "radware": {
+  "first_seen": "2026-10-15",
+  "name": "Radware",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "rayllmdeeplearningcontainers": {
+  "first_seen": "2026-10-15",
+  "name": "Ray LLM Deep Learning Containers",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "reatool": {
+  "first_seen": "2026-10-15",
+  "name": "REA Tool",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "reflection": {
+  "first_seen": "2026-10-15",
+  "name": "Reflection AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
+   }
+  }
+ },
+ "regna": {
+  "first_seen": "2026-10-15",
+  "name": "Regna AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "rencore": {
+  "first_seen": "2026-10-15",
+  "name": "Rencore",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "restate": {
+  "first_seen": "2026-10-15",
+  "name": "Restate",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "revenuegrowthagent": {
+  "first_seen": "2026-10-15",
+  "name": "Revenue Growth Agent",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "robertboschgmbh": {
+  "first_seen": "2026-10-15",
+  "name": "Robert Bosch GmbH",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "rtxspark": {
+  "first_seen": "2026-10-15",
+  "name": "RTX Spark",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "runai": {
+  "first_seen": "2026-10-15",
+  "name": "Run:ai",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "ryzenhalo": {
+  "first_seen": "2026-10-15",
+  "name": "Ryzen AI Halo",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "chips"
+   }
+  }
+ },
+ "ryzenmaxpro495": {
+  "first_seen": "2026-10-15",
+  "name": "Ryzen AI Max+ PRO 495",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "saastr": {
+  "first_seen": "2026-10-15",
+  "name": "SaaStr",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "sakana": {
+  "first_seen": "2026-10-15",
+  "name": "Sakana AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "salesforce": {
+  "first_seen": "2026-10-15",
+  "name": "Salesforce",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 6.0,
+    "signals": 0,
+    "sources": 6,
+    "track": "agents"
+   }
+  }
+ },
+ "samsung": {
+  "first_seen": "2026-10-15",
+  "name": "Samsung",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "sap": {
+  "first_seen": "2026-10-15",
+  "name": "SAP",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 6.0,
+    "signals": 0,
+    "sources": 6,
+    "track": "agents"
+   }
+  }
+ },
+ "sc117": {
+  "first_seen": "2026-10-15",
+  "name": "SC117",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.7,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "scaledown": {
+  "first_seen": "2026-10-15",
+  "name": "scaledown",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.6,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "scalenut": {
+  "first_seen": "2026-10-15",
+  "name": "Scalenut",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "scaleway": {
+  "first_seen": "2026-10-15",
+  "name": "Scaleway",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "scytale": {
+  "first_seen": "2026-10-15",
+  "name": "Scytale",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "scytalemcp": {
+  "first_seen": "2026-10-15",
+  "name": "Scytale MCP",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "sea": {
+  "first_seen": "2026-10-15",
+  "name": "Sea",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "seedance25": {
+  "first_seen": "2026-10-15",
+  "name": "Seedance 2.5",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "selfcompact": {
+  "first_seen": "2026-10-15",
+  "name": "SELFCOMPACT",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "semif": {
+  "first_seen": "2026-10-15",
+  "name": "SemIf",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "sentinelone": {
+  "first_seen": "2026-10-15",
+  "name": "SentinelOne",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "shipstationglobal": {
+  "first_seen": "2026-10-15",
+  "name": "ShipStation Global",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "showhnletyouragentspaintbigarrowsboxesandtextonyourscreen": {
+  "first_seen": "2026-10-15",
+  "name": "Show HN: Let your AI agents paint big arrows, boxes and text on your screen",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.34,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "showhnpetalopensourcecoscreenscreenherofinallyfree": {
+  "first_seen": "2026-10-15",
+  "name": "Show HN: Petal, open-source CoScreen/ScreenHero finally free",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.81,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "siri": {
+  "first_seen": "2026-10-15",
+  "name": "Siri",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "skhynix": {
+  "first_seen": "2026-10-15",
+  "name": "SK hynix",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "softr": {
+  "first_seen": "2026-10-15",
+  "name": "Softr",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "sophos": {
+  "first_seen": "2026-10-15",
+  "name": "Sophos",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "spacex": {
+  "first_seen": "2026-10-15",
+  "name": "SpaceXAI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 6.0,
+    "signals": 0,
+    "sources": 6,
+    "track": "models"
+   }
+  }
+ },
+ "spacexsi": {
+  "first_seen": "2026-10-15",
+  "name": "SpaceXSI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "spacexsuperintelligence": {
+  "first_seen": "2026-10-15",
+  "name": "SpaceX Super Intelligence",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "speridlabs": {
+  "first_seen": "2026-10-15",
+  "name": "speridlabs",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.86,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "spikes": {
+  "first_seen": "2026-10-15",
+  "name": "Spikes",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "stagwell": {
+  "first_seen": "2026-10-15",
+  "name": "Stagwell",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "starlinklimithitsukrainesdrones": {
+  "first_seen": "2026-10-15",
+  "name": "Starlink limit hits Ukraine's drones",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.83,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "step5": {
+  "first_seen": "2026-10-15",
+  "name": "Step-5",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
+   }
+  }
+ },
+ "step5preview": {
+  "first_seen": "2026-10-15",
+  "name": "Step 5 Preview",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "step5previewnvfp4": {
+  "first_seen": "2026-10-15",
+  "name": "Step-5-Preview-NVFP4",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "strands": {
+  "first_seen": "2026-10-15",
+  "name": "Strands",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "stripe": {
+  "first_seen": "2026-10-15",
+  "name": "Stripe",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "surfacelaptopultra": {
+  "first_seen": "2026-10-15",
+  "name": "Surface Laptop Ultra",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "swe2": {
+  "first_seen": "2026-10-15",
+  "name": "SWE-2",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "tabpfn": {
+  "first_seen": "2026-10-15",
+  "name": "TabPFN",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "talorysaselfhostedpersonalagentoncloudflaresfreetier": {
+  "first_seen": "2026-10-15",
+  "name": "Talorys – A self-hosted personal AI agent on Cloudflare's free tier",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.16,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "tami": {
+  "first_seen": "2026-10-15",
+  "name": "Tami",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "tamnoon": {
+  "first_seen": "2026-10-15",
+  "name": "Tamnoon",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "tawakkalna": {
+  "first_seen": "2026-10-15",
+  "name": "Tawakkalna",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "tclcsot": {
+  "first_seen": "2026-10-15",
+  "name": "TCL CSOT",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "tencent": {
+  "first_seen": "2026-10-15",
+  "name": "Tencent",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
+   }
+  }
+ },
+ "tencentcloud": {
+  "first_seen": "2026-10-15",
+  "name": "Tencent Cloud",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "thirdmomentresearch": {
+  "first_seen": "2026-10-15",
+  "name": "Third Moment Research",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "tiktok": {
+  "first_seen": "2026-10-15",
+  "name": "TikTok",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   }
+  }
+ },
+ "tokenfabric": {
+  "first_seen": "2026-10-15",
+  "name": "Token Fabric",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "toku": {
+  "first_seen": "2026-10-15",
+  "name": "Toku",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "tpuv9": {
+  "first_seen": "2026-10-15",
+  "name": "TPU v9",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "chips"
+   }
+  }
+ },
+ "uaecybersecuritycouncil": {
+  "first_seen": "2026-10-15",
+  "name": "UAE Cyber Security Council",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "unbiased": {
+  "first_seen": "2026-10-15",
+  "name": "~unbiased",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.6,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "unitedarabemirates": {
+  "first_seen": "2026-10-15",
+  "name": "United Arab Emirates",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "unsloth": {
+  "first_seen": "2026-10-15",
+  "name": "unsloth",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.8,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "upscale": {
+  "first_seen": "2026-10-15",
+  "name": "Upscale",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "usatoday": {
+  "first_seen": "2026-10-15",
+  "name": "USA Today",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "usatodayco": {
+  "first_seen": "2026-10-15",
+  "name": "USA Today Co",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "userrepgen4b": {
+  "first_seen": "2026-10-15",
+  "name": "UserRepGen-4B",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "valeo": {
+  "first_seen": "2026-10-15",
+  "name": "Valeo",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "other"
+   }
+  }
+ },
+ "verarubin": {
+  "first_seen": "2026-10-15",
+  "name": "Vera Rubin",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "vibes": {
+  "first_seen": "2026-10-15",
+  "name": "Vibes",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "vllmsr": {
+  "first_seen": "2026-10-15",
+  "name": "vllm-sr",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.58,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "voxtralmini4brealtimearabic": {
+  "first_seen": "2026-10-15",
+  "name": "Voxtral-Mini-4B-Realtime-Arabic",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "vscode": {
+  "first_seen": "2026-10-15",
+  "name": "VS Code",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "whyarentcompaniesbeingchargedforhacking": {
+  "first_seen": "2026-10-15",
+  "name": "Why aren't AI companies being charged for hacking?",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.17,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "whydollmpelicanslooklikethis": {
+  "first_seen": "2026-10-15",
+  "name": "Why do LLM pelicans look like this?",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 0.82,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "winverse": {
+  "first_seen": "2026-10-15",
+  "name": "Winverse",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "workbuddy": {
+  "first_seen": "2026-10-15",
+  "name": "WorkBuddy",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "workflowfactory": {
+  "first_seen": "2026-10-15",
+  "name": "AI Workflow Factory",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "worldbank": {
+  "first_seen": "2026-10-15",
+  "name": "World Bank",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "xbox": {
+  "first_seen": "2026-10-15",
+  "name": "Xbox Labs",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "xpremium": {
+  "first_seen": "2026-10-15",
+  "name": "X Premium",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   }
+  }
+ },
+ "xsubscription": {
+  "first_seen": "2026-10-15",
+  "name": "X Subscription",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   }
+  }
+ },
+ "youtuparsingomni": {
+  "first_seen": "2026-10-15",
+  "name": "Youtu-Parsing-Omni",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "zendesk": {
+  "first_seen": "2026-10-15",
+  "name": "Zendesk",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "zetaglobal": {
+  "first_seen": "2026-10-15",
+  "name": "Zeta Global",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "zoominfo": {
+  "first_seen": "2026-10-15",
+  "name": "ZoomInfo",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   }
+  }
+ }
+}
