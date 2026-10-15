@@ -20,10 +20,10 @@ on:
   workflow_dispatch:
     inputs:
       phase:
-        description: "script (ingest+script) | polish (apply the last critique, re-score) | score (critic only, on reviewed/<week>/script.md if present) | video | post | publish"
+        description: "script (ingest+script) | ingest (sources only, no Claude) | polish (apply the last critique, re-score) | score (critic only, on reviewed/<week>/script.md if present) | video | post | publish"
         default: script
         type: choice
-        options: [script, polish, score, video, post, publish]
+        options: [script, ingest, polish, score, video, post, publish]
       week:
         description: "Week folder, e.g. 2026-W41 (default: current ISO week)"
         default: ""
@@ -44,7 +44,7 @@ env:
 
 jobs:
   script:
-    if: github.event_name == 'schedule' || inputs.phase == 'script'
+    if: github.event_name == 'schedule' || inputs.phase == 'script' || inputs.phase == 'ingest'
     runs-on: ubuntu-latest
     timeout-minutes: 60          # write + up to 3 review passes + critic rounds + source map, each a long Opus call
     steps:
@@ -67,7 +67,7 @@ jobs:
         run: |
           WEEK_ARG=""; [ -n "${{ steps.week.outputs.week }}" ] && WEEK_ARG="--week ${{ steps.week.outputs.week }}"
           FIX_ARG=""; [ -n "${{ inputs.fixture }}" ] && FIX_ARG="--fixture ${{ inputs.fixture }}"
-          python run_pipeline.py all $WEEK_ARG $FIX_ARG
+          python run_pipeline.py ${{ inputs.phase == 'ingest' && 'ingest' || 'all' }} $WEEK_ARG $FIX_ARG
           echo "WEEK_DIR=$(ls -d output/*/ | tail -n1)" >> "$GITHUB_ENV"
       - name: Commit the radar's memory
         run: |
@@ -79,6 +79,7 @@ jobs:
           path: output/
           retention-days: 30
       - name: Open review issue
+        if: inputs.phase != 'ingest'
         uses: actions/github-script@v7
         with:
           script: |
@@ -107,7 +108,7 @@ jobs:
             });
 
   render:
-    if: github.event_name == 'workflow_dispatch' && inputs.phase != 'script'
+    if: github.event_name == 'workflow_dispatch' && inputs.phase != 'script' && inputs.phase != 'ingest'
     runs-on: ubuntu-latest
     timeout-minutes: 120           # avatar renders can take 30+ min
     steps:
