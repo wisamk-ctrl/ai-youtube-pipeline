@@ -15,6 +15,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.93,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -47,6 +53,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.3,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -60,6 +72,12 @@
     "signals": 0,
     "sources": 3,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
    }
   }
  },
@@ -69,6 +87,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -86,6 +110,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -95,6 +125,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -118,6 +154,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.66,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -131,6 +173,25 @@
     "signals": 0,
     "sources": 11,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 11.0,
+    "signals": 0,
+    "sources": 11,
+    "track": "models"
+   }
+  }
+ },
+ "alpha": {
+  "first_seen": "2026-10-15",
+  "name": "Alpha",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -140,6 +201,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -157,6 +224,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -166,6 +239,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -183,6 +262,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -196,6 +281,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -205,6 +296,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -222,6 +319,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -231,6 +334,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 4.0,
     "signals": 0,
     "sources": 4,
@@ -248,6 +357,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.77,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -257,6 +372,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.94,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.94,
     "signals": 1,
     "sources": 0,
@@ -274,6 +395,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -283,6 +410,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -300,6 +433,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.68,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -309,6 +448,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.64,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.64,
     "signals": 1,
     "sources": 0,
@@ -332,6 +477,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.93,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -341,6 +492,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -358,6 +515,12 @@
     "signals": 0,
     "sources": 2,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -367,6 +530,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -384,6 +553,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -393,6 +568,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -410,6 +591,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.69,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -423,6 +610,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -432,6 +625,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -462,6 +661,25 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "asus": {
+  "first_seen": "2026-10-15",
+  "name": "ASUS",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -471,6 +689,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -494,6 +718,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.18,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -513,6 +743,12 @@
     "signals": 4,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 3.84,
+    "signals": 4,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -526,6 +762,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -535,6 +777,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.63,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.63,
     "signals": 1,
     "sources": 0,
@@ -591,6 +839,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -604,6 +858,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -617,6 +877,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.51,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -626,6 +892,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -646,12 +918,31 @@
    }
   }
  },
+ "bird": {
+  "first_seen": "2026-10-15",
+  "name": "Bird",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "block": {
   "first_seen": "2026-10-15",
   "name": "Block",
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -688,6 +979,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.85,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -714,6 +1011,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -740,6 +1043,25 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   }
+  }
+ },
+ "bryanstenlerstudios": {
+  "first_seen": "2026-10-15",
+  "name": "Bryan Stenler Studios",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -749,6 +1071,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -768,6 +1096,12 @@
     "track": "models"
    },
    "2026-W42-feedtest2": {
+    "score": 1.78,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.78,
     "signals": 1,
     "sources": 0,
@@ -804,6 +1138,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -813,6 +1153,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -830,6 +1176,12 @@
     "signals": 0,
     "sources": 2,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
    }
   }
  },
@@ -839,6 +1191,25 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "citigroup": {
+  "first_seen": "2026-10-15",
+  "name": "Citigroup",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -856,6 +1227,12 @@
     "signals": 0,
     "sources": 2,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
    }
   }
  },
@@ -869,6 +1246,25 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "claudemotion": {
+  "first_seen": "2026-10-15",
+  "name": "Claude Motion",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -888,6 +1284,12 @@
     "signals": 3,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.9,
+    "signals": 3,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -901,6 +1303,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.72,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -910,6 +1318,25 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "codexharness": {
+  "first_seen": "2026-10-15",
+  "name": "Codex Harness",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -933,6 +1360,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.23,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -948,6 +1381,12 @@
     "track": "models"
    },
    "2026-W42-feedtest2": {
+    "score": 1.14,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.14,
     "signals": 1,
     "sources": 0,
@@ -971,6 +1410,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.28,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -986,6 +1431,12 @@
     "track": "models"
    },
    "2026-W42-feedtest2": {
+    "score": 1.74,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.74,
     "signals": 1,
     "sources": 0,
@@ -1009,6 +1460,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.22,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -1018,6 +1475,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1035,6 +1498,25 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "crux": {
+  "first_seen": "2026-10-15",
+  "name": "Crux AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -1048,6 +1530,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1057,6 +1545,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1080,6 +1574,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.54,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -1099,6 +1599,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.46,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -1108,6 +1614,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1125,6 +1637,12 @@
     "signals": 0,
     "sources": 4,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "other"
    }
   }
  },
@@ -1134,6 +1652,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1164,6 +1688,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -1173,6 +1703,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1190,6 +1726,38 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.84,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
+ "deepseekocr": {
+  "first_seen": "2026-10-15",
+  "name": "DeepSeek-OCR",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "deepseekv41flash": {
+  "first_seen": "2026-10-15",
+  "name": "DeepSeek-V4.1 Flash",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1216,6 +1784,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1225,6 +1799,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1242,6 +1822,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1251,6 +1837,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 6.0,
+    "signals": 0,
+    "sources": 6,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 6.0,
     "signals": 0,
     "sources": 6,
@@ -1281,6 +1873,25 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.5,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
+ "ecosia": {
+  "first_seen": "2026-10-15",
+  "name": "Ecosia",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1294,6 +1905,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.82,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -1303,6 +1920,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.88,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.88,
     "signals": 1,
     "sources": 0,
@@ -1320,6 +1943,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -1329,6 +1958,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1346,6 +1981,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.64,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -1355,6 +1996,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1378,6 +2025,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.66,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -1391,6 +2044,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1400,6 +2059,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.63,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.63,
     "signals": 1,
     "sources": 0,
@@ -1423,6 +2088,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.89,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -1432,6 +2103,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1455,6 +2132,25 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.14,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "flourish1": {
+  "first_seen": "2026-10-15",
+  "name": "Flourish 1",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1481,6 +2177,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.93,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -1490,6 +2192,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1507,6 +2215,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.8,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -1516,6 +2230,25 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "fujifilm": {
+  "first_seen": "2026-10-15",
+  "name": "Fujifilm",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1533,6 +2266,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1542,6 +2281,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.63,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.63,
     "signals": 1,
     "sources": 0,
@@ -1565,6 +2310,25 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.94,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "gearsofwareday": {
+  "first_seen": "2026-10-15",
+  "name": "Gears of War: E-Day",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1574,6 +2338,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1591,6 +2361,12 @@
     "signals": 0,
     "sources": 2,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "models"
    }
   }
  },
@@ -1600,6 +2376,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1617,6 +2399,38 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "gensparkdesign": {
+  "first_seen": "2026-10-15",
+  "name": "Genspark Design",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "gfiber": {
+  "first_seen": "2026-10-15",
+  "name": "gFiber",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1626,6 +2440,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1643,6 +2463,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -1652,6 +2478,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1669,6 +2501,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1678,6 +2516,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1701,6 +2545,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.84,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -1714,6 +2564,12 @@
     "signals": 0,
     "sources": 3,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
    }
   }
  },
@@ -1723,6 +2579,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 4.0,
     "signals": 0,
     "sources": 4,
@@ -1753,6 +2615,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1762,6 +2630,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1779,6 +2653,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1788,6 +2668,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1805,6 +2691,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1818,6 +2710,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1827,6 +2725,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1847,12 +2751,31 @@
    }
   }
  },
+ "graygnatconsole": {
+  "first_seen": "2026-10-15",
+  "name": "graygnatconsole",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 0.62,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
  "grok47": {
   "first_seen": "2026-10-15",
   "name": "Grok 4.7",
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1870,6 +2793,25 @@
     "signals": 0,
     "sources": 2,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
+   }
+  }
+ },
+ "groqlpu": {
+  "first_seen": "2026-10-15",
+  "name": "Groq LPU",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -1883,6 +2825,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.75,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -1892,6 +2840,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1915,6 +2869,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.31,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -1928,6 +2888,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1937,6 +2903,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.77,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.77,
     "signals": 1,
     "sources": 0,
@@ -1960,6 +2932,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.06,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -1973,6 +2951,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -1986,6 +2970,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1995,6 +2985,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2025,6 +3021,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2037,6 +3039,12 @@
     "score": 5.0,
     "signals": 0,
     "sources": 5,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
     "track": "other"
    }
   }
@@ -2064,6 +3072,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
    }
   }
  },
@@ -2073,6 +3087,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2090,6 +3110,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2103,6 +3129,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -2112,6 +3144,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2129,6 +3167,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -2142,6 +3186,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2151,6 +3201,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2174,6 +3230,12 @@
     "signals": 2,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.84,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -2183,6 +3245,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2206,6 +3274,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.94,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -2225,6 +3299,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.26,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -2234,6 +3314,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 3.5,
+    "signals": 3,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 3.5,
     "signals": 3,
     "sources": 0,
@@ -2257,6 +3343,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.46,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -2267,6 +3359,12 @@
   "weeks": {
    "2026-W42-feedtest2": {
     "score": 1.1,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.11,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -2296,6 +3394,12 @@
     "signals": 0,
     "sources": 3,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "other"
    }
   }
  },
@@ -2305,6 +3409,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 2.5,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 2.5,
     "signals": 1,
     "sources": 0,
@@ -2335,6 +3445,12 @@
     "signals": 0,
     "sources": 3,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "models"
    }
   }
  },
@@ -2344,6 +3460,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.74,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.74,
     "signals": 1,
     "sources": 0,
@@ -2374,6 +3496,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -2383,6 +3511,25 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "langgraphprebuilt": {
+  "first_seen": "2026-10-15",
+  "name": "LangGraph Prebuilt",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2406,6 +3553,12 @@
     "signals": 2,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.32,
+    "signals": 2,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -2415,6 +3568,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2445,6 +3604,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2455,6 +3620,12 @@
   "weeks": {
    "2026-W42-feedtest2": {
     "score": 1.45,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.46,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -2477,6 +3648,12 @@
     "signals": 2,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.39,
+    "signals": 2,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -2486,6 +3663,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2509,6 +3692,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.26,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -2519,6 +3708,12 @@
   "weeks": {
    "2026-W42-feedtest2": {
     "score": 0.64,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.65,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -2554,6 +3749,12 @@
     "signals": 4,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 3.6,
+    "signals": 4,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -2567,6 +3768,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -2576,6 +3783,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.77,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.77,
     "signals": 1,
     "sources": 0,
@@ -2593,6 +3806,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.85,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -2602,6 +3821,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 2.5,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 2.5,
     "signals": 1,
     "sources": 0,
@@ -2619,6 +3844,25 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "macmini": {
+  "first_seen": "2026-10-15",
+  "name": "Mac Mini",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2632,6 +3876,12 @@
     "signals": 0,
     "sources": 5,
     "track": "chips"
+   },
+   "2026-W42-feedtest3": {
+    "score": 7.0,
+    "signals": 0,
+    "sources": 7,
+    "track": "chips"
    }
   }
  },
@@ -2641,6 +3891,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.65,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.65,
     "signals": 1,
     "sources": 0,
@@ -2658,6 +3914,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.87,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -2667,6 +3929,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.63,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.63,
     "signals": 1,
     "sources": 0,
@@ -2684,6 +3952,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -2693,6 +3967,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2723,6 +4003,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2732,6 +4018,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2749,6 +4041,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -2758,6 +4056,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2775,6 +4079,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.01,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -2784,6 +4094,25 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "minimaxm3": {
+  "first_seen": "2026-10-15",
+  "name": "MiniMax M3",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2801,6 +4130,12 @@
     "signals": 0,
     "sources": 5,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
+    "track": "other"
    }
   }
  },
@@ -2814,6 +4149,12 @@
     "signals": 0,
     "sources": 3,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "models"
    }
   }
  },
@@ -2823,6 +4164,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -2842,6 +4189,12 @@
     "track": "other"
    },
    "2026-W42-feedtest2": {
+    "score": 1.06,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.06,
     "signals": 1,
     "sources": 0,
@@ -2872,6 +4225,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.71,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -2884,6 +4243,25 @@
     "score": 3.0,
     "signals": 0,
     "sources": 3,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "agents"
+   }
+  }
+ },
+ "museagent": {
+  "first_seen": "2026-10-15",
+  "name": "Muse Agent",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "agents"
    }
   }
@@ -2898,6 +4276,12 @@
     "signals": 0,
     "sources": 5,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "models"
    }
   }
  },
@@ -2907,6 +4291,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2921,6 +4311,12 @@
   "weeks": {
    "2026-W42-feedtest2": {
     "score": 0.84,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.85,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -2943,6 +4339,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.96,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -2952,6 +4354,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 1.29,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.29,
     "signals": 1,
     "sources": 0,
@@ -2969,6 +4377,25 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.99,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
+ "nationalhurricanecenter": {
+  "first_seen": "2026-10-15",
+  "name": "National Hurricane Center",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2988,6 +4415,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.02,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -2997,6 +4430,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3014,6 +4453,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3027,6 +4472,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3040,6 +4491,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.01,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -3049,6 +4506,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3072,6 +4535,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.86,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -3085,6 +4554,38 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "nvidiartxspark": {
+  "first_seen": "2026-10-15",
+  "name": "NVIDIA RTX Spark",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "nvidiaverarubin": {
+  "first_seen": "2026-10-15",
+  "name": "NVIDIA Vera Rubin",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -3098,6 +4599,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3124,6 +4631,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3133,6 +4646,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3150,6 +4669,12 @@
     "signals": 0,
     "sources": 2,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
    }
   }
  },
@@ -3163,6 +4688,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.65,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -3172,6 +4703,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3189,6 +4726,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.38,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -3202,6 +4745,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3211,6 +4760,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3234,6 +4789,25 @@
     "signals": 3,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 3.38,
+    "signals": 3,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "opencomputeproject": {
+  "first_seen": "2026-10-15",
+  "name": "Open Compute Project",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3247,6 +4821,25 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.78,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
+ "oppo": {
+  "first_seen": "2026-10-15",
+  "name": "OPPO",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3259,6 +4852,12 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
     "track": "other"
    }
   }
@@ -3273,6 +4872,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3282,6 +4887,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3305,6 +4916,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.38,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3318,6 +4935,12 @@
     "signals": 0,
     "sources": 2,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -3327,6 +4950,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.62,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.62,
     "signals": 1,
     "sources": 0,
@@ -3341,6 +4970,12 @@
   "weeks": {
    "2026-W42-feedtest2": {
     "score": 0.79,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.8,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -3363,6 +4998,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.62,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3376,6 +5017,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3385,6 +5032,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3415,6 +5068,25 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.05,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
+ "pladis": {
+  "first_seen": "2026-10-15",
+  "name": "pladis",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3424,6 +5096,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3441,6 +5119,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -3450,6 +5134,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.66,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.66,
     "signals": 1,
     "sources": 0,
@@ -3473,6 +5163,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.02,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3492,6 +5188,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.22,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3501,6 +5203,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 1.86,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.86,
     "signals": 1,
     "sources": 0,
@@ -3521,12 +5229,31 @@
    }
   }
  },
+ "qwenglassesn1": {
+  "first_seen": "2026-10-15",
+  "name": "Qwen Glasses N1",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "qwengyre": {
   "first_seen": "2026-10-15",
   "name": "QwenGyre",
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -3544,6 +5271,25 @@
     "signals": 0,
     "sources": 2,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
+   }
+  }
+ },
+ "qwenn1": {
+  "first_seen": "2026-10-15",
+  "name": "Qwen N1",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3570,6 +5316,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.7,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -3579,6 +5331,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -3596,6 +5354,25 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "rea": {
+  "first_seen": "2026-10-15",
+  "name": "REA",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -3622,6 +5399,12 @@
     "signals": 0,
     "sources": 2,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "models"
    }
   }
  },
@@ -3635,6 +5418,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3644,6 +5433,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 2.5,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 2.5,
     "signals": 1,
     "sources": 0,
@@ -3661,6 +5456,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -3670,6 +5471,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3687,6 +5494,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -3696,6 +5509,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3726,6 +5545,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3735,6 +5560,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "chips"
+   },
+   "2026-W42-feedtest3": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -3752,6 +5583,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -3761,6 +5598,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3778,6 +5621,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -3787,6 +5636,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 6.0,
+    "signals": 0,
+    "sources": 6,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 6.0,
     "signals": 0,
     "sources": 6,
@@ -3804,6 +5659,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -3813,6 +5674,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 6.0,
+    "signals": 0,
+    "sources": 6,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 6.0,
     "signals": 0,
     "sources": 6,
@@ -3836,6 +5703,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.7,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3845,6 +5718,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.62,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.62,
     "signals": 1,
     "sources": 0,
@@ -3868,6 +5747,12 @@
     "signals": 2,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.6,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3881,6 +5766,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3890,6 +5781,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3920,6 +5817,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -3932,6 +5835,12 @@
     "score": 2.0,
     "signals": 0,
     "sources": 2,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "other"
    }
   }
@@ -3946,6 +5855,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -3955,6 +5870,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3985,6 +5906,25 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "servicedesk": {
+  "first_seen": "2026-10-15",
+  "name": "AI Service Desk",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -3998,6 +5938,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.45,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4007,6 +5953,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4030,6 +5982,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.34,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -4049,6 +6007,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.82,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -4058,6 +6022,25 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "sirimodel": {
+  "first_seen": "2026-10-15",
+  "name": "Siri AI Model",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4075,6 +6058,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -4085,6 +6074,12 @@
   "weeks": {
    "2026-W42-feedtest2": {
     "score": 1.29,
+    "signals": 2,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.3,
     "signals": 2,
     "sources": 0,
     "track": "agents"
@@ -4101,6 +6096,25 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "solarpro4": {
+  "first_seen": "2026-10-15",
+  "name": "Solar Pro 4",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -4110,6 +6124,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4127,6 +6147,12 @@
     "signals": 0,
     "sources": 6,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
+    "track": "models"
    }
   }
  },
@@ -4140,6 +6166,12 @@
     "signals": 0,
     "sources": 2,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
    }
   }
  },
@@ -4149,6 +6181,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4172,6 +6210,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.86,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -4185,6 +6229,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4194,6 +6244,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4217,6 +6273,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.84,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -4226,6 +6288,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.66,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.66,
     "signals": 1,
     "sources": 0,
@@ -4243,6 +6311,12 @@
     "signals": 0,
     "sources": 2,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -4256,6 +6330,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
    }
   }
  },
@@ -4265,6 +6345,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4295,6 +6381,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.66,
+    "signals": 1,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -4311,6 +6403,45 @@
    }
   }
  },
+ "superblocks": {
+  "first_seen": "2026-10-15",
+  "name": "Superblocks",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "superintelligencesummit": {
+  "first_seen": "2026-10-15",
+  "name": "The SuperIntelligence Summit",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "supermicro": {
+  "first_seen": "2026-10-15",
+  "name": "Super Micro",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
  "surfacelaptopultra": {
   "first_seen": "2026-10-15",
   "name": "Surface Laptop Ultra",
@@ -4321,6 +6452,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -4334,6 +6471,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -4343,6 +6486,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4366,6 +6515,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.16,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -4375,6 +6530,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4392,6 +6553,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -4401,6 +6568,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4418,6 +6591,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4431,6 +6610,12 @@
     "signals": 0,
     "sources": 2,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.54,
+    "signals": 1,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4440,6 +6625,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4457,6 +6648,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -4466,6 +6663,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 3.0,
     "signals": 0,
     "sources": 3,
@@ -4483,6 +6686,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4496,6 +6705,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -4509,6 +6724,12 @@
     "signals": 0,
     "sources": 2,
     "track": "chips"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "chips"
    }
   }
  },
@@ -4518,6 +6739,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4537,6 +6764,12 @@
     "track": "models"
    },
    "2026-W42-feedtest2": {
+    "score": 2.6,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 2.6,
     "signals": 2,
     "sources": 0,
@@ -4573,6 +6806,12 @@
     "signals": 2,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.68,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -4586,6 +6825,25 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "upstage": {
+  "first_seen": "2026-10-15",
+  "name": "Upstage",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4595,6 +6853,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4612,6 +6876,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4625,6 +6895,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -4634,6 +6910,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 4.0,
     "signals": 0,
     "sources": 4,
@@ -4654,6 +6936,19 @@
    }
   }
  },
+ "vessl": {
+  "first_seen": "2026-10-15",
+  "name": "VESSL AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "vibes": {
   "first_seen": "2026-10-15",
   "name": "Vibes",
@@ -4664,6 +6959,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4676,6 +6977,25 @@
     "score": 0.72,
     "signals": 1,
     "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.72,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
+ "visualstudiocode": {
+  "first_seen": "2026-10-15",
+  "name": "Visual Studio Code",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "agents"
    }
   }
@@ -4696,6 +7016,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.58,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -4709,6 +7035,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.64,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4718,6 +7050,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4748,6 +7086,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.67,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4761,6 +7105,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.63,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4770,6 +7120,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest2": {
+    "score": 0.7,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 0.7,
     "signals": 1,
     "sources": 0,
@@ -4793,6 +7149,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.17,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -4812,6 +7174,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.82,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -4824,6 +7192,12 @@
     "score": 2.0,
     "signals": 0,
     "sources": 2,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
     "track": "other"
    }
   }
@@ -4847,6 +7221,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4877,6 +7257,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4886,6 +7272,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 3.0,
     "signals": 0,
     "sources": 3,
@@ -4916,6 +7308,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 2.5,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4929,6 +7327,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.68,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4938,6 +7342,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest3": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4968,6 +7378,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4981,6 +7397,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest3": {
+    "score": 0.9,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4990,6 +7412,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   },
+   "2026-W42-feedtest3": {
     "score": 3.0,
     "signals": 0,
     "sources": 3,
