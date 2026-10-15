@@ -24,7 +24,9 @@ ingestion:
       url: https://www.deeplearning.ai/the-batch/feed/
       weight: 1.1
 
-  # YouTube channels (no key needed: each channel has an Atom feed). Give a handle (resolved
+  # YouTube channels. From a home/office IP the Atom feeds work with no key; from a datacenter
+  # (GitHub runners) YouTube answers 404, so set YOUTUBE_API_KEY (Data API v3, 1 quota unit per
+  # channel per run) and the same list is read through the API. Give a handle (resolved
   # to a channel id on first run and cached in data/youtube_channels.json) or a channel_id.
   # Weight below 1: a video is a lead to verify against a written source, not a source itself.
   youtube:

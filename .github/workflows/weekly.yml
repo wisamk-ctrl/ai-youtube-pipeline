@@ -11,6 +11,7 @@
 # Secrets to add under Settings → Secrets and variables → Actions:
 #   ANTHROPIC_API_KEY, X_BEARER_TOKEN (optional), HEYGEN_API_KEY, HEYGEN_AVATAR_ID, HEYGEN_VOICE_ID
 #   GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GMAIL_REFRESH_TOKEN, YOUTUBE_REFRESH_TOKEN (optional)
+#   YOUTUBE_API_KEY (Data API v3 key; the Atom feeds answer 404 to GitHub's datacenter IPs)
 
 name: weekly-roundup
 
@@ -64,6 +65,7 @@ jobs:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
           WEEK_ARG=""; [ -n "${{ steps.week.outputs.week }}" ] && WEEK_ARG="--week ${{ steps.week.outputs.week }}"
           FIX_ARG=""; [ -n "${{ inputs.fixture }}" ] && FIX_ARG="--fixture ${{ inputs.fixture }}"

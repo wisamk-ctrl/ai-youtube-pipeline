@@ -193,7 +193,9 @@ Edit the rubric to change the standard; do not tune the bar to chase a score.
 ### YouTube channels as leads
 
 `ingestion.youtube.channels` in `config/settings.yaml` lists AI news channels by handle. Each
-channel's Atom feed is read without an API key; handles are resolved to channel ids once and
+channel's Atom feed is read without an API key from a residential IP; GitHub's runners get 404 from
+that endpoint, so the weekly workflow needs a `YOUTUBE_API_KEY` secret (YouTube Data API v3, ~1 quota
+unit per channel per run) and reads the same list through the API. Handles are resolved to channel ids once and
 cached in `data/youtube_channels.json` (committed by the weekly run). Videos enter as
 `source_type: youtube` with a weight under 1, so they surface a story but a written source on
 the same story outranks them. Add a channel with one line; set `channel_id` directly to skip

@@ -71,12 +71,15 @@ def _anthropic_batch(chunk: list[NewsItem], opts: dict[str, Any], client: anthro
     client = client or anthropic.Anthropic(max_retries=4)
     try:
         resp = client.messages.parse(
-            model=opts["model"], max_tokens=8000, system=SYSTEM,
+            model=opts["model"], max_tokens=16000, system=SYSTEM,
             messages=[{"role": "user", "content": f"Tag these {len(chunk)} items.\n\n{_block(chunk)}"}],
             output_format=Batch,
         )
     except anthropic.APIError as exc:
         log.error("Extraction batch failed (%d items): %s", len(chunk), exc)
+        return None
+    except (ValidationError, ValueError) as exc:   # truncated / malformed JSON: lose this batch, not the run
+        log.error("Extraction batch unparseable (%d items): %s", len(chunk), str(exc)[:200])
         return None
     if resp.stop_reason != "end_turn" or resp.parsed_output is None:
         log.error("Extraction batch stopped early: %s", resp.stop_reason)

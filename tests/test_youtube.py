@@ -45,3 +45,19 @@ def test_handle_resolution_and_cache(tmp_path, monkeypatch):
     path = tmp_path / "c.json"
     yt.save_cache(cache, path)
     assert yt.load_cache(path) == cache and yt.load_cache(tmp_path / "missing.json") == {}
+
+
+def test_uploads_api_maps_rows(monkeypatch):
+    rows = {"items": [{"snippet": {"title": "Kimi K3 explained", "description": "notes", "publishedAt": (NOW - timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                   "channelTitle": "Wes Roth", "resourceId": {"videoId": "v1"}}},
+                      {"snippet": {"title": "old", "description": "", "publishedAt": "2020-01-01T00:00:00Z", "resourceId": {"videoId": "v0"}}}]}
+    class R:
+        def raise_for_status(self): pass
+        def json(self): return rows
+    seen = {}
+    def fake_get(url, params=None, **kw):
+        seen.update(params); return R()
+    monkeypatch.setattr(yt.requests, "get", fake_get)
+    items = yt.fetch_uploads_api("UCqcbQf6yw5KzRoDDcZ_wBSw", "k", 0.8, NOW - timedelta(days=7), 5, "Wes Roth", 5)
+    assert seen["playlistId"] == "UUqcbQf6yw5KzRoDDcZ_wBSw" and seen["key"] == "k"
+    assert [i.title for i in items] == ["Kimi K3 explained"] and items[0].url.endswith("v=v1") and items[0].source_type == "youtube"

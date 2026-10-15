@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -103,6 +104,35 @@ def fetch_feed_bytes(cid: str, timeout: int) -> bytes:
     raise last  # type: ignore[misc]
 
 
+API_URL = "https://www.googleapis.com/youtube/v3/playlistItems"
+
+
+def fetch_uploads_api(cid: str, api_key: str, weight: float, since: datetime, max_items: int, name: str,
+                      timeout: int) -> list[NewsItem]:
+    """YouTube Data API v3: the channel's uploads playlist is 'UU' + the id without 'UC' (1 quota unit per call).
+    Datacenter IPs (GitHub runners) get 404 from the Atom feed endpoint; the API answers from anywhere."""
+    playlist = "UU" + cid[2:]
+    resp = requests.get(API_URL, params={"part": "snippet", "playlistId": playlist, "maxResults": 15, "key": api_key},
+                        timeout=timeout)
+    resp.raise_for_status()
+    items: list[NewsItem] = []
+    for row in resp.json().get("items", []):
+        sn = row.get("snippet", {})
+        published = datetime.fromisoformat(sn.get("publishedAt", "").replace("Z", "+00:00")) if sn.get("publishedAt") else None
+        if published is None or published < since:
+            continue
+        vid = sn.get("resourceId", {}).get("videoId", "")
+        items.append(NewsItem(
+            source=name, source_type="youtube", title=strip_html(sn.get("title", "")),
+            summary=truncate(strip_html(sn.get("description", "")), 1500),
+            url=f"https://www.youtube.com/watch?v={vid}", published=published,
+            author=sn.get("channelTitle", name), source_weight=weight,
+        ))
+        if len(items) >= max_items:
+            break
+    return items
+
+
 def fetch_youtube_channels(cfg: dict[str, Any]) -> list[NewsItem]:
     ing = cfg["ingestion"]
     yt = ing.get("youtube") or {}
@@ -111,11 +141,15 @@ def fetch_youtube_channels(cfg: dict[str, Any]) -> list[NewsItem]:
     since = datetime.now(timezone.utc) - timedelta(days=ing["lookback_days"])
     timeout, per = ing["request_timeout_s"], int(yt.get("max_per_channel", 5))
     cache, out = load_cache(), []
+    api_key = os.environ.get("YOUTUBE_API_KEY", "")
+    log.info("YouTube via %s", "Data API" if api_key else "Atom feeds (set YOUTUBE_API_KEY on a datacenter runner)")
     for ch in yt.get("channels", []):
         try:
             cid = channel_id_for(ch, cache, timeout)
-            resp = fetch_feed_bytes(cid, timeout)
-            items = parse_feed(ch["name"], resp, float(ch.get("weight", 0.8)), since, per)
+            if api_key:
+                items = fetch_uploads_api(cid, api_key, float(ch.get("weight", 0.8)), since, per, ch["name"], timeout)
+            else:
+                items = parse_feed(ch["name"], fetch_feed_bytes(cid, timeout), float(ch.get("weight", 0.8)), since, per)
             log.info("YouTube %-20s %2d videos in window", ch["name"], len(items))
             out.extend(items)
         except Exception as exc:  # noqa: BLE001 — one channel must never kill the run
