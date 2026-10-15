@@ -23,13 +23,12 @@ from typing import Any
 import feedparser
 import requests
 
-from pipeline.ingestion.text_utils import strip_html, truncate
+from pipeline.ingestion.text_utils import BROWSER_HEADERS, strip_html, truncate
 from pipeline.models import NewsItem
 
 log = logging.getLogger(__name__)
 
-# Some newsletter CDNs reject the default python-requests UA.
-_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; ai-news-roundup/1.0; +rss-reader)"}
+_HEADERS = BROWSER_HEADERS
 
 
 def _entry_datetime(entry: Any) -> datetime | None:

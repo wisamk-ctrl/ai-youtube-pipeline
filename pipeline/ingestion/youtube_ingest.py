@@ -24,7 +24,7 @@ import requests
 
 from pipeline.config import ROOT
 from pipeline.ingestion.rss_ingest import _entry_datetime
-from pipeline.ingestion.text_utils import strip_html, truncate
+from pipeline.ingestion.text_utils import BROWSER_HEADERS, strip_html, truncate
 from pipeline.models import NewsItem
 
 log = logging.getLogger(__name__)
@@ -32,7 +32,7 @@ log = logging.getLogger(__name__)
 CACHE_PATH = ROOT / "data" / "youtube_channels.json"
 FEED_URL = "https://www.youtube.com/feeds/videos.xml?channel_id={cid}"
 CHANNEL_ID_RE = re.compile(r'"(?:channelId|externalId)":"(UC[0-9A-Za-z_-]{22})"')
-_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; ai-news-roundup/1.0)", "Accept-Language": "en"}
+_HEADERS = BROWSER_HEADERS
 
 
 def load_cache(path: Path = CACHE_PATH) -> dict[str, str]:
@@ -88,6 +88,21 @@ def parse_feed(name: str, content: bytes, weight: float, since: datetime, max_it
     return items
 
 
+def fetch_feed_bytes(cid: str, timeout: int) -> bytes:
+    """YouTube's feed endpoint answers 404 to some header sets; try browser headers, then none."""
+    last: Exception | None = None
+    for headers in (_HEADERS, {}):
+        try:
+            resp = requests.get(FEED_URL.format(cid=cid), headers=headers, timeout=timeout)
+            resp.raise_for_status()
+            return resp.content
+        except requests.HTTPError as exc:
+            last = exc
+            if exc.response is None or exc.response.status_code not in (403, 404):
+                raise
+    raise last  # type: ignore[misc]
+
+
 def fetch_youtube_channels(cfg: dict[str, Any]) -> list[NewsItem]:
     ing = cfg["ingestion"]
     yt = ing.get("youtube") or {}
@@ -99,9 +114,8 @@ def fetch_youtube_channels(cfg: dict[str, Any]) -> list[NewsItem]:
     for ch in yt.get("channels", []):
         try:
             cid = channel_id_for(ch, cache, timeout)
-            resp = requests.get(FEED_URL.format(cid=cid), headers=_HEADERS, timeout=timeout)
-            resp.raise_for_status()
-            items = parse_feed(ch["name"], resp.content, float(ch.get("weight", 0.8)), since, per)
+            resp = fetch_feed_bytes(cid, timeout)
+            items = parse_feed(ch["name"], resp, float(ch.get("weight", 0.8)), since, per)
             log.info("YouTube %-20s %2d videos in window", ch["name"], len(items))
             out.extend(items)
         except Exception as exc:  # noqa: BLE001 — one channel must never kill the run

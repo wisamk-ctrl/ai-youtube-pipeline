@@ -20,3 +20,12 @@ def truncate(text: str, limit: int) -> str:
     if len(text) <= limit:
         return text
     return text[:limit].rsplit(" ", 1)[0] + "…"
+
+
+# Sent on every feed/page fetch. Datacenter requests with a "bot" User-Agent get 403 from
+# Substack and deeplearning.ai and 404 from YouTube's feed endpoint; a plain browser UA passes.
+BROWSER_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "Accept": "application/atom+xml, application/rss+xml, application/xml;q=0.9, text/html;q=0.8, */*;q=0.5",
+    "Accept-Language": "en-US,en;q=0.8",
+}

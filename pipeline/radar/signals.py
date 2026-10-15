@@ -77,17 +77,22 @@ def github_new(timeout: int, days: int, min_stars: int = 300) -> list[Signal]:
     if os.environ.get("GITHUB_TOKEN"):
         headers["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
     since = (datetime.now(timezone.utc) - timedelta(days=days * 4)).date()   # young repos, not just this week's
-    q = f"created:>{since} stars:>{min_stars} topic:llm OR topic:ai-agents OR topic:agents OR topic:mcp"
-    try:
-        r = requests.get("https://api.github.com/search/repositories", params={"q": q, "sort": "stars", "per_page": 30},
-                         headers=headers, timeout=timeout)
-        r.raise_for_status()
-        for repo in r.json().get("items", []):
-            out.append(Signal(repo["owner"]["login"], "github_new", strength=min(1.0, repo["stargazers_count"] / 5000),
-                              url=repo["html_url"], note=f"{repo['stargazers_count']:,} stars, created {repo['created_at'][:10]}",
-                              track_hint="agents", extra={"repo": repo["full_name"], "stars": repo["stargazers_count"]}))
-    except Exception as exc:  # noqa: BLE001
-        log.warning("GitHub search failed: %s", exc)
+    seen: set[str] = set()
+    for topic in ("llm", "ai-agents", "agents", "mcp"):   # the search API rejects OR across qualifiers (422)
+        q = f"created:>{since} stars:>{min_stars} topic:{topic}"
+        try:
+            r = requests.get("https://api.github.com/search/repositories", params={"q": q, "sort": "stars", "per_page": 30},
+                             headers=headers, timeout=timeout)
+            r.raise_for_status()
+            for repo in r.json().get("items", []):
+                if repo.get("full_name") in seen:
+                    continue
+                seen.add(repo.get("full_name"))
+                out.append(Signal(repo["owner"]["login"], "github_new", strength=min(1.0, repo["stargazers_count"] / 5000),
+                                  url=repo["html_url"], note=f"{repo['stargazers_count']:,} stars, created {repo['created_at'][:10]}",
+                                  track_hint="agents", extra={"repo": repo["full_name"], "stars": repo["stargazers_count"]}))
+        except Exception as exc:  # noqa: BLE001
+            log.warning("GitHub search (topic:%s) failed: %s", topic, exc)
     return out
 
 
