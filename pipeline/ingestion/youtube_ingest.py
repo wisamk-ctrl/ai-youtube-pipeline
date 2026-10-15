@@ -32,7 +32,14 @@ log = logging.getLogger(__name__)
 
 CACHE_PATH = ROOT / "data" / "youtube_channels.json"
 FEED_URL = "https://www.youtube.com/feeds/videos.xml?channel_id={cid}"
-CHANNEL_ID_RE = re.compile(r'"(?:channelId|externalId)":"(UC[0-9A-Za-z_-]{22})"')
+# Order matters: the page embeds OTHER channels' ids too (featured channels, recommendations), so the
+# first "channelId" in the HTML is not always this channel. The canonical link and externalId are.
+CHANNEL_ID_PATTERNS = (
+    re.compile(r'<link rel="canonical" href="https://www\.youtube\.com/channel/(UC[0-9A-Za-z_-]{22})"'),
+    re.compile(r'"externalId":"(UC[0-9A-Za-z_-]{22})"'),
+    re.compile(r'<meta itemprop="identifier" content="(UC[0-9A-Za-z_-]{22})"'),
+    re.compile(r'"channelId":"(UC[0-9A-Za-z_-]{22})"'),
+)
 _HEADERS = BROWSER_HEADERS
 
 
@@ -53,10 +60,11 @@ def resolve_handle(handle: str, timeout: int, session: requests.Session | None =
     handle = handle.lstrip("@")
     resp = (session or requests).get(f"https://www.youtube.com/@{handle}", headers=_HEADERS, timeout=timeout)
     resp.raise_for_status()
-    m = CHANNEL_ID_RE.search(resp.text)
-    if not m:
-        raise ValueError(f"no channel id found on youtube.com/@{handle}")
-    return m.group(1)
+    for pat in CHANNEL_ID_PATTERNS:
+        m = pat.search(resp.text)
+        if m:
+            return m.group(1)
+    raise ValueError(f"no channel id found on youtube.com/@{handle}")
 
 
 def channel_id_for(ch: dict[str, Any], cache: dict[str, str], timeout: int) -> str:
