@@ -24,6 +24,24 @@ ingestion:
       url: https://www.deeplearning.ai/the-batch/feed/
       weight: 1.1
 
+  # YouTube channels (no key needed: each channel has an Atom feed). Give a handle (resolved
+  # to a channel id on first run and cached in data/youtube_channels.json) or a channel_id.
+  # Weight below 1: a video is a lead to verify against a written source, not a source itself.
+  youtube:
+    enabled: true
+    max_per_channel: 5
+    channels:
+      - { name: "Matt Wolfe",        handle: mreflow,              weight: 0.8 }
+      - { name: "AI Explained",      handle: aiexplained-official, weight: 0.9 }
+      - { name: "Wes Roth",          handle: WesRoth,              weight: 0.8 }
+      - { name: "TheAIGRID",         handle: TheAIGRID,            weight: 0.7 }
+      - { name: "Two Minute Papers", handle: TwoMinutePapers,      weight: 0.8 }
+      - { name: "MattVidPro AI",     handle: MattVidPro,           weight: 0.7 }
+      - { name: "Fireship",          handle: Fireship,             weight: 0.7 }
+      - { name: "bycloud",           handle: bycloudAI,            weight: 0.7 }
+      - { name: "Yannic Kilcher",    handle: YannicKilcher,        weight: 0.8 }
+      - { name: "The AI Advantage",  handle: aiadvantage,          weight: 0.7 }
+
   # Newsletters that arrive by email. Needs GOOGLE_CLIENT_ID/SECRET + GMAIL_REFRESH_TOKEN
   # (scripts/google_authorize.py gmail). Each email is split into its stories.
   gmail:

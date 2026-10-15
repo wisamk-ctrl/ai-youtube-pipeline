@@ -189,3 +189,12 @@ the critic `critic.samples` times (default 2); if any axis differs by more than
 `critic.max_disagreement`, a third sample breaks the tie and the per-axis median stands.
 `critique.json` keeps every sample and a `stable` flag; the review issue shows them.
 Edit the rubric to change the standard; do not tune the bar to chase a score.
+
+### YouTube channels as leads
+
+`ingestion.youtube.channels` in `config/settings.yaml` lists AI news channels by handle. Each
+channel's Atom feed is read without an API key; handles are resolved to channel ids once and
+cached in `data/youtube_channels.json` (committed by the weekly run). Videos enter as
+`source_type: youtube` with a weight under 1, so they surface a story but a written source on
+the same story outranks them. Add a channel with one line; set `channel_id` directly to skip
+the handle lookup.

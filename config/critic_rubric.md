@@ -17,6 +17,9 @@ not a defect, it is taste, and taste is not scored.
 
 Quote the exact words of every defect. A defect without a quote does not count.
 
+A model or product name that contains digits (Kimi K3, GPT-5, Claude Haiku 5.5, G42) is a name,
+not a figure: it never counts toward "two numbers in one breath" or "three or more figures".
+
 ## hook — the first 20 seconds (before the greeting)
 - MAJOR: the first spoken sentence is a greeting, a date or a channel name, not a news fact.
 - MAJOR: no number, name or decision in the first two sentences.

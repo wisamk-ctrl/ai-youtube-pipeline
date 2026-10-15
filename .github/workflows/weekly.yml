@@ -72,7 +72,7 @@ jobs:
       - name: Commit the radar's memory
         run: |
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
-          git add data/radar_state.json data/coverage.json && (git diff --cached --quiet || git commit -m "chore: radar state + coverage $(date -u +%F)") && git push
+          git add data/radar_state.json data/coverage.json data/youtube_channels.json 2>/dev/null; git add data/radar_state.json data/coverage.json && (git diff --cached --quiet || git commit -m "chore: radar state, coverage, youtube channel cache $(date -u +%F)") && git push
       - uses: actions/upload-artifact@v4
         with:
           name: week-${{ steps.week.outputs.week || github.run_id }}

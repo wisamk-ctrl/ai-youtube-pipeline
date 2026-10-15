@@ -9,6 +9,7 @@ from typing import Any
 
 from pipeline.ingestion.gmail_ingest import fetch_gmail_newsletters
 from pipeline.ingestion.rss_ingest import fetch_all_feeds
+from pipeline.ingestion.youtube_ingest import fetch_youtube_channels
 from pipeline.ingestion.scoring import rank_and_filter
 from pipeline.ingestion.watch_sources import fetch_watchlist_sources
 from pipeline.ingestion.watchlist import load_watchlist
@@ -22,6 +23,7 @@ def run_ingestion(cfg: dict[str, Any], week: str = "", out_dir: Path | None = No
     watch = load_watchlist()
     items = fetch_all_feeds(cfg)
     items += fetch_gmail_newsletters(cfg)
+    items += fetch_youtube_channels(cfg)
     items += fetch_watchlist_sources(watch, cfg)
     try:
         items += fetch_top_posts(cfg)
