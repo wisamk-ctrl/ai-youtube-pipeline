@@ -21,6 +21,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.93,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -55,6 +61,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 2.3,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.3,
     "signals": 1,
     "sources": 0,
@@ -97,6 +109,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -116,6 +134,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -131,6 +155,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -160,6 +190,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.66,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -179,6 +215,12 @@
     "signals": 0,
     "sources": 11,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 9.0,
+    "signals": 0,
+    "sources": 9,
+    "track": "models"
    }
   }
  },
@@ -192,6 +234,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -207,6 +255,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -230,6 +284,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -245,6 +305,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -268,6 +334,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -287,6 +359,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -302,6 +380,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -325,6 +409,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -344,6 +434,12 @@
     "signals": 0,
     "sources": 4,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
    }
   }
  },
@@ -359,6 +455,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.77,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.77,
     "signals": 1,
     "sources": 0,
@@ -382,6 +484,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.94,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -397,6 +505,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -420,6 +534,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -439,6 +559,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.69,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -454,6 +580,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.64,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.64,
     "signals": 1,
     "sources": 0,
@@ -479,6 +611,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 0.93,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.93,
     "signals": 1,
     "sources": 0,
@@ -521,6 +659,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
    }
   }
  },
@@ -536,6 +680,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -559,6 +709,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -578,6 +734,12 @@
     "signals": 0,
     "sources": 2,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "agents"
    }
   }
  },
@@ -593,6 +755,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.69,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.69,
     "signals": 1,
     "sources": 0,
@@ -616,6 +784,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -631,6 +805,12 @@
     "track": "chips"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -651,6 +831,19 @@
    }
   }
  },
+ "astspacemobile": {
+  "first_seen": "2026-10-15",
+  "name": "AST SpaceMobile",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "asurion": {
   "first_seen": "2026-10-15",
   "name": "Asurion",
@@ -667,6 +860,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -676,6 +875,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -695,6 +900,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -724,6 +935,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.18,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -749,6 +966,25 @@
     "signals": 4,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 3.84,
+    "signals": 4,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
+ "awsgovcloud": {
+  "first_seen": "2026-10-15",
+  "name": "AWS GovCloud",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -768,6 +1004,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -783,6 +1025,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.63,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.63,
     "signals": 1,
     "sources": 0,
@@ -845,6 +1093,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -864,6 +1118,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -883,6 +1143,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.51,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -898,6 +1164,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -928,6 +1200,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -947,6 +1225,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -956,6 +1240,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -981,6 +1271,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 0.85,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.85,
     "signals": 1,
     "sources": 0,
@@ -1017,6 +1313,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -1049,6 +1351,12 @@
     "signals": 0,
     "sources": 3,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
    }
   }
  },
@@ -1058,6 +1366,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1106,6 +1420,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.78,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -1144,6 +1464,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1163,6 +1489,25 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "chatgptmeetingsplugin": {
+  "first_seen": "2026-10-15",
+  "name": "ChatGPT Meetings Plugin",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1201,6 +1546,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1210,6 +1561,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1233,6 +1590,12 @@
     "signals": 0,
     "sources": 2,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "agents"
    }
   }
  },
@@ -1252,6 +1615,25 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "claudehaiku55": {
+  "first_seen": "2026-10-15",
+  "name": "Claude Haiku 5.5",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1265,6 +1647,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1290,6 +1678,12 @@
     "signals": 3,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.9,
+    "signals": 3,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -1305,6 +1699,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.72,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.72,
     "signals": 1,
     "sources": 0,
@@ -1328,6 +1728,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -1337,6 +1743,19 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "codingagents": {
+  "first_seen": "2026-10-15",
+  "name": "AI coding agents",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1366,6 +1785,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.23,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -1387,6 +1812,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.14,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.14,
     "signals": 1,
     "sources": 0,
@@ -1416,6 +1847,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.28,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -1441,6 +1878,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.74,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -1462,6 +1905,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 2.22,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.22,
     "signals": 1,
     "sources": 0,
@@ -1504,6 +1953,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -1536,6 +1991,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1551,6 +2012,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1580,6 +2047,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.54,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -1605,6 +2078,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.46,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -1620,6 +2099,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1643,6 +2128,12 @@
     "signals": 0,
     "sources": 4,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "models"
    }
   }
  },
@@ -1658,6 +2149,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1694,6 +2191,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -1709,6 +2212,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1732,6 +2241,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.84,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -1745,6 +2260,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -1754,6 +2275,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1790,6 +2317,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1805,6 +2338,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1828,6 +2367,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -1846,6 +2391,12 @@
     "score": 6.0,
     "signals": 0,
     "sources": 6,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
     "track": "other"
    }
   }
@@ -1879,6 +2430,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.5,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -1888,6 +2445,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -1911,6 +2474,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.82,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -1926,6 +2495,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.88,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.88,
     "signals": 1,
     "sources": 0,
@@ -1949,6 +2524,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -1968,6 +2549,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -1987,6 +2574,25 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.64,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
+ "euvlithographytools": {
+  "first_seen": "2026-10-15",
+  "name": "EUV lithography tools",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -2002,6 +2608,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2031,6 +2643,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.66,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -2050,6 +2668,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -2065,6 +2689,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.63,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.63,
     "signals": 1,
     "sources": 0,
@@ -2094,6 +2724,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.89,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -2109,6 +2745,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2138,6 +2780,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.14,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -2147,6 +2795,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2183,6 +2837,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.93,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -2198,6 +2858,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2221,6 +2887,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.8,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -2240,6 +2912,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2249,6 +2927,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2272,6 +2956,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2287,6 +2977,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.63,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.63,
     "signals": 1,
     "sources": 0,
@@ -2316,6 +3012,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.94,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -2325,6 +3027,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2367,6 +3075,12 @@
     "signals": 0,
     "sources": 4,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
+    "track": "models"
    }
   }
  },
@@ -2382,6 +3096,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2405,6 +3125,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2418,6 +3144,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -2427,6 +3159,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2450,6 +3188,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2465,6 +3209,12 @@
     "track": "chips"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2488,6 +3238,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -2507,6 +3263,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -2522,6 +3284,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2551,6 +3319,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.84,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -2570,6 +3344,12 @@
     "signals": 0,
     "sources": 3,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "agents"
    }
   }
  },
@@ -2585,6 +3365,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 4.0,
     "signals": 0,
     "sources": 4,
@@ -2621,6 +3407,38 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "googlesearch": {
+  "first_seen": "2026-10-15",
+  "name": "Google AI Search",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "googletpuv9": {
+  "first_seen": "2026-10-15",
+  "name": "Google TPU v9",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "chips"
    }
   }
  },
@@ -2636,6 +3454,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2659,6 +3483,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -2674,6 +3504,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2697,6 +3533,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -2712,6 +3554,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2735,6 +3583,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -2748,6 +3602,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -2757,6 +3617,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 0.62,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.62,
     "signals": 1,
     "sources": 0,
@@ -2780,6 +3646,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -2795,6 +3667,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -2831,6 +3709,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.75,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -2846,6 +3730,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -2871,6 +3761,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 2.31,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.31,
     "signals": 1,
     "sources": 0,
@@ -2913,6 +3809,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.77,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -2938,6 +3840,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.06,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -2957,6 +3865,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -2976,6 +3890,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -2991,6 +3911,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3046,6 +3972,12 @@
     "signals": 0,
     "sources": 3,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 6.0,
+    "signals": 0,
+    "sources": 6,
+    "track": "other"
    }
   }
  },
@@ -3055,6 +3987,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3078,6 +4016,12 @@
     "signals": 0,
     "sources": 3,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
    }
   }
  },
@@ -3093,6 +4037,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3116,6 +4066,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3135,6 +4091,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3173,6 +4135,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3192,6 +4160,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3207,6 +4181,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3236,6 +4216,12 @@
     "signals": 2,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.84,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3251,6 +4237,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3280,6 +4272,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.94,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -3305,6 +4303,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.3,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3320,6 +4324,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 3.5,
+    "signals": 3,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 3.5,
     "signals": 3,
     "sources": 0,
@@ -3349,6 +4359,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.46,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3364,6 +4380,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.11,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.11,
     "signals": 1,
     "sources": 0,
@@ -3400,6 +4422,12 @@
     "signals": 0,
     "sources": 4,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
    }
   }
  },
@@ -3415,6 +4443,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 2.5,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.5,
     "signals": 1,
     "sources": 0,
@@ -3451,6 +4485,12 @@
     "signals": 0,
     "sources": 3,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "models"
    }
   }
  },
@@ -3466,6 +4506,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.74,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.74,
     "signals": 1,
     "sources": 0,
@@ -3502,6 +4548,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -3521,6 +4573,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -3530,6 +4588,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3559,6 +4623,12 @@
     "signals": 2,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.32,
+    "signals": 2,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -3574,6 +4644,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3610,6 +4686,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3625,6 +4707,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.46,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.46,
     "signals": 1,
     "sources": 0,
@@ -3654,6 +4742,12 @@
     "signals": 2,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.4,
+    "signals": 2,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -3669,6 +4763,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -3698,6 +4798,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.26,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3713,6 +4819,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.65,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.65,
     "signals": 1,
     "sources": 0,
@@ -3755,6 +4867,12 @@
     "signals": 4,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 3.6,
+    "signals": 4,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -3774,6 +4892,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3789,6 +4913,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.77,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.77,
     "signals": 1,
     "sources": 0,
@@ -3812,6 +4942,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.85,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -3827,6 +4963,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 2.5,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.5,
     "signals": 1,
     "sources": 0,
@@ -3863,6 +5005,25 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "macos27": {
+  "first_seen": "2026-10-15",
+  "name": "macOS 27",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3882,6 +5043,12 @@
     "signals": 0,
     "sources": 7,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 6.0,
+    "signals": 0,
+    "sources": 6,
+    "track": "chips"
    }
   }
  },
@@ -3897,6 +5064,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.65,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.65,
     "signals": 1,
     "sources": 0,
@@ -3920,6 +5093,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.87,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -3935,6 +5114,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.63,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.63,
     "signals": 1,
     "sources": 0,
@@ -3958,6 +5143,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -3977,6 +5168,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -3990,6 +5187,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -4009,6 +5212,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -4024,6 +5233,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4047,6 +5262,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -4066,6 +5287,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4081,6 +5308,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.01,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.01,
     "signals": 1,
     "sources": 0,
@@ -4104,6 +5337,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -4113,6 +5352,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4136,6 +5381,12 @@
     "signals": 0,
     "sources": 5,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
+    "track": "other"
    }
   }
  },
@@ -4155,6 +5406,12 @@
     "signals": 0,
     "sources": 4,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "models"
    }
   }
  },
@@ -4170,6 +5427,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -4195,6 +5458,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.06,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.06,
     "signals": 1,
     "sources": 0,
@@ -4231,6 +5500,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.71,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4250,6 +5525,12 @@
     "signals": 0,
     "sources": 2,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "agents"
    }
   }
  },
@@ -4262,6 +5543,12 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
     "track": "agents"
    }
   }
@@ -4281,6 +5568,12 @@
     "score": 4.0,
     "signals": 0,
     "sources": 4,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
     "track": "models"
    }
   }
@@ -4320,6 +5613,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.85,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4345,6 +5644,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.96,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -4360,6 +5665,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.29,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.29,
     "signals": 1,
     "sources": 0,
@@ -4383,6 +5694,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.99,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4392,6 +5709,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4421,6 +5744,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.02,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -4436,6 +5765,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4459,6 +5794,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -4478,6 +5819,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -4497,6 +5844,25 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.01,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
+ "nvidiadsxfactory": {
+  "first_seen": "2026-10-15",
+  "name": "NVIDIA DSX AI Factory",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4516,6 +5882,19 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   }
+  }
+ },
+ "nvidiageforcenow": {
+  "first_seen": "2026-10-15",
+  "name": "NVIDIA GeForce NOW",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -4541,6 +5920,25 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.86,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "nvidiamgx": {
+  "first_seen": "2026-10-15",
+  "name": "NVIDIA MGX",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -4560,6 +5958,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4569,6 +5973,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4608,6 +6018,19 @@
    }
   }
  },
+ "oasisplatform": {
+  "first_seen": "2026-10-15",
+  "name": "Oasis AI Platform",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
  "ocp": {
   "first_seen": "2026-10-15",
   "name": "OCP",
@@ -4637,6 +6060,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4652,6 +6081,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4675,6 +6110,12 @@
     "signals": 0,
     "sources": 2,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "agents"
    }
   }
  },
@@ -4690,6 +6131,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.65,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.65,
     "signals": 1,
     "sources": 0,
@@ -4713,6 +6160,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4729,6 +6182,12 @@
    },
    "2026-W42-feedtest3": {
     "score": 1.38,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.39,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -4751,6 +6210,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4766,6 +6231,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4795,6 +6266,12 @@
     "signals": 3,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 3.38,
+    "signals": 3,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -4804,6 +6281,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4827,6 +6310,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.78,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4836,6 +6325,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4859,6 +6354,12 @@
     "signals": 0,
     "sources": 2,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
    }
   }
  },
@@ -4878,6 +6379,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4893,6 +6400,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -4922,6 +6435,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.38,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -4941,6 +6460,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4960,6 +6485,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.62,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -4975,6 +6506,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.8,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.8,
     "signals": 1,
     "sources": 0,
@@ -5004,6 +6541,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.62,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -5023,6 +6566,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -5038,6 +6587,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5074,6 +6629,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.05,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -5083,6 +6644,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5106,6 +6673,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -5125,6 +6698,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -5140,6 +6719,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.66,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.66,
     "signals": 1,
     "sources": 0,
@@ -5169,6 +6754,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.98,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -5194,6 +6785,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.18,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -5213,6 +6810,25 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.86,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
+ "quantiphi": {
+  "first_seen": "2026-10-15",
+  "name": "Quantiphi",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -5239,6 +6855,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -5254,6 +6876,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -5277,6 +6905,12 @@
     "signals": 0,
     "sources": 2,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "models"
    }
   }
  },
@@ -5289,6 +6923,12 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
     "track": "other"
    }
   }
@@ -5322,6 +6962,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.7,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -5337,6 +6983,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -5360,6 +7012,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -5386,6 +7044,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -5401,6 +7065,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 3.0,
     "signals": 0,
     "sources": 3,
@@ -5424,6 +7094,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -5439,6 +7115,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 2.5,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.5,
     "signals": 1,
     "sources": 0,
@@ -5462,6 +7144,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -5477,6 +7165,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5500,6 +7194,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -5515,6 +7215,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5551,6 +7257,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -5566,6 +7278,12 @@
     "track": "chips"
    },
    "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "chips"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -5589,6 +7307,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -5604,6 +7328,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5627,6 +7357,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -5642,6 +7378,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 6.0,
+    "signals": 0,
+    "sources": 6,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 6.0,
     "signals": 0,
     "sources": 6,
@@ -5665,6 +7407,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -5683,6 +7431,12 @@
     "score": 6.0,
     "signals": 0,
     "sources": 6,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 5.0,
+    "signals": 0,
+    "sources": 5,
     "track": "agents"
    }
   }
@@ -5709,6 +7463,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.7,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -5724,6 +7484,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.62,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.62,
     "signals": 1,
     "sources": 0,
@@ -5753,6 +7519,12 @@
     "signals": 2,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.6,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -5768,6 +7540,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5791,6 +7569,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -5800,6 +7584,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5823,6 +7613,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -5838,6 +7634,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5861,6 +7663,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -5880,6 +7688,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -5889,6 +7703,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5908,6 +7728,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5944,6 +7770,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.45,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -5959,6 +7791,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -5988,6 +7826,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.34,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -6013,6 +7857,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.82,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -6032,6 +7882,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -6064,6 +7920,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -6079,6 +7941,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.3,
+    "signals": 2,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.3,
     "signals": 2,
     "sources": 0,
@@ -6115,6 +7983,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -6130,6 +8004,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -6153,6 +8033,12 @@
     "signals": 0,
     "sources": 5,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "models"
    }
   }
  },
@@ -6168,6 +8054,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.0,
     "signals": 0,
     "sources": 2,
@@ -6191,6 +8083,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -6216,6 +8114,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.86,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -6235,6 +8139,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -6250,6 +8160,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -6279,6 +8195,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.84,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -6294,6 +8216,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.66,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.66,
     "signals": 1,
     "sources": 0,
@@ -6316,6 +8244,12 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
     "track": "models"
    }
   }
@@ -6355,6 +8289,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -6387,6 +8327,12 @@
     "signals": 1,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.66,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -6413,6 +8359,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -6442,6 +8394,19 @@
    }
   }
  },
+ "supermicrocomputer": {
+  "first_seen": "2026-10-15",
+  "name": "Super Micro Computer",
+  "status": "candidate",
+  "weeks": {
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
  "surfacelaptopultra": {
   "first_seen": "2026-10-15",
   "name": "Surface Laptop Ultra",
@@ -6458,6 +8423,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -6473,6 +8444,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -6521,6 +8498,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.16,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -6536,6 +8519,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -6559,6 +8548,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -6574,6 +8569,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -6597,6 +8598,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -6615,6 +8622,12 @@
     "score": 1.54,
     "signals": 1,
     "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.54,
+    "signals": 1,
+    "sources": 2,
     "track": "other"
    }
   }
@@ -6635,6 +8648,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -6650,6 +8669,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -6673,6 +8698,12 @@
     "signals": 0,
     "sources": 3,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
    }
   }
  },
@@ -6688,6 +8719,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -6711,6 +8748,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -6749,6 +8792,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -6770,6 +8819,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 2.6,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 2.6,
     "signals": 2,
     "sources": 0,
@@ -6812,6 +8867,12 @@
     "signals": 2,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.72,
+    "signals": 2,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -6827,6 +8888,12 @@
     "track": "chips"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -6863,6 +8930,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -6878,6 +8951,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -6901,6 +8980,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -6920,6 +9005,12 @@
     "signals": 0,
     "sources": 4,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 4.0,
+    "signals": 0,
+    "sources": 4,
+    "track": "other"
    }
   }
  },
@@ -6933,6 +9024,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -6942,6 +9039,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -6965,6 +9068,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -6980,6 +9089,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.72,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.72,
     "signals": 1,
     "sources": 0,
@@ -7022,6 +9137,12 @@
     "signals": 1,
     "sources": 0,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.58,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
    }
   }
  },
@@ -7037,6 +9158,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.64,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.64,
     "signals": 1,
     "sources": 0,
@@ -7060,6 +9187,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -7069,6 +9202,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -7092,6 +9231,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.67,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -7111,6 +9256,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.63,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -7126,6 +9277,12 @@
     "track": "agents"
    },
    "2026-W42-feedtest3": {
+    "score": 0.7,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   },
+   "2026-W42-feedtest4": {
     "score": 0.7,
     "signals": 1,
     "sources": 0,
@@ -7155,6 +9312,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.17,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -7180,6 +9343,12 @@
     "signals": 1,
     "sources": 0,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.82,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
    }
   }
  },
@@ -7198,6 +9367,12 @@
     "score": 3.0,
     "signals": 0,
     "sources": 3,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
     "track": "other"
    }
   }
@@ -7231,6 +9406,12 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -7240,6 +9421,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W42-feedtest": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -7259,6 +9446,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -7314,6 +9507,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 2.5,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -7333,6 +9532,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.68,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -7348,6 +9553,12 @@
     "track": "models"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   },
+   "2026-W42-feedtest4": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -7384,6 +9595,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -7403,6 +9620,12 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   },
+   "2026-W42-feedtest4": {
+    "score": 0.9,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
    }
   }
  },
@@ -7418,6 +9641,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   },
+   "2026-W42-feedtest4": {
     "score": 3.0,
     "signals": 0,
     "sources": 3,
