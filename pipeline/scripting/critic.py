@@ -25,6 +25,8 @@ from typing import Any, Literal
 import anthropic
 from pydantic import BaseModel, Field
 
+from pipeline import usage
+
 from pipeline.script_format import spoken_text
 
 log = logging.getLogger(__name__)
@@ -117,6 +119,7 @@ def critique(script: str, style_guide: str, model: str, client: anthropic.Anthro
         messages=[{"role": "user", "content": f"Score this script.\n\n<script>\n{script}\n</script>"}],
         output_format=Critique,
     )
+    usage.record("critic", model, getattr(resp, "usage", None))
     if resp.stop_reason != "end_turn" or resp.parsed_output is None:
         raise RuntimeError(f"critic stopped early: {resp.stop_reason}")
     c = resp.parsed_output

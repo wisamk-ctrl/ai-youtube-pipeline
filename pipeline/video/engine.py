@@ -28,6 +28,10 @@ def _provider(cfg: dict[str, Any]):
 def prepare(script: str, cfg: dict[str, Any], out_dir: Path) -> list[str]:
     """Write the speech text and the editor's B-roll cue sheet; return the TTS chunks."""
     v = cfg["video"]
+    if v.get("tashkeel"):
+        from pipeline.video.tashkeel import vocalise
+        script = vocalise(script, cfg)
+        (out_dir / "script.tashkeel.md").write_text(script + "\n", encoding="utf-8")
     tts = to_tts_text(script, v["pause_style"], v["pause_seconds"])
     chunks = chunk_text(tts, v["max_chars_per_chunk"])
     (out_dir / "tts_text.txt").write_text("\n\n---\n\n".join(chunks), encoding="utf-8")

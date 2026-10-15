@@ -200,3 +200,15 @@ cached in `data/youtube_channels.json` (committed by the weekly run). Videos ent
 `source_type: youtube` with a weight under 1, so they surface a story but a written source on
 the same story outranks them. Add a channel with one line; set `channel_id` directly to skip
 the handle lookup.
+
+### Production extras
+
+- **Cue cards** (`pipeline/post/overlays.py`): every `[On-Screen Text]` cue becomes a lower-third
+  card and every `[Show B-Roll]` cue a corner marker, overlaid on the talking head at the cue's
+  time (re-anchored to the Whisper subtitles). `post.overlays` in settings.
+- **Tashkeel** (`pipeline/video/tashkeel.py`): sparse diacritics before TTS, style guide §6; the
+  pass is refused if any word changes. Off until a voice test (`video.tashkeel`).
+- **Usage meter** (`pipeline/usage.py`): every model call is counted; `usage.json` per week and a
+  line in the review issue. Fill `pricing` in settings.yaml to see a cost.
+- **Failure alert**: a red run opens a `run-failed` issue; the next green script run closes it.
+- Docs: `docs/voice_clone.md`, `docs/native_signoff.md`, `docs/pilot.md` (+ `pilot_log.md`).

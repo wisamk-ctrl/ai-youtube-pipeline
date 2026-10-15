@@ -19,6 +19,7 @@ from typing import Any, Literal
 import anthropic
 from pydantic import BaseModel, Field
 
+from pipeline import usage
 from pipeline.models import NewsItem
 from pipeline.script_format import spoken_text
 
@@ -60,6 +61,7 @@ def build(script: str, items: list[NewsItem], model: str, client: anthropic.Anth
         messages=[{"role": "user", "content": f"<sources>\n{srcs}\n</sources>\n\n<script_sentences>\n{numbered}\n</script_sentences>"}],
         output_format=SourceMap,
     )
+    usage.record("source_map", model, getattr(resp, "usage", None))
     if resp.stop_reason != "end_turn" or resp.parsed_output is None:
         raise RuntimeError(f"source map stopped early: {resp.stop_reason}")
     known = {i.id for i in items}

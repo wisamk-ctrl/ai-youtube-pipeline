@@ -27,6 +27,7 @@ import anthropic
 import requests
 from pydantic import BaseModel, Field, ValidationError
 
+from pipeline import usage
 from pipeline.models import NewsItem
 
 log = logging.getLogger(__name__)
@@ -81,6 +82,7 @@ def _anthropic_batch(chunk: list[NewsItem], opts: dict[str, Any], client: anthro
     except (ValidationError, ValueError) as exc:   # truncated / malformed JSON: lose this batch, not the run
         log.error("Extraction batch unparseable (%d items): %s", len(chunk), str(exc)[:200])
         return None
+    usage.record("extract", opts["model"], getattr(resp, "usage", None))
     if resp.stop_reason != "end_turn" or resp.parsed_output is None:
         log.error("Extraction batch stopped early: %s", resp.stop_reason)
         return None

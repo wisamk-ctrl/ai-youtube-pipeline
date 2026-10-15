@@ -77,7 +77,7 @@ def upload(video: Path, plan: dict[str, Any], sources: list[dict[str, Any]], cfg
             "defaultAudioLanguage": "ar",
         },
         "status": {
-            "privacyStatus": "private",
+            "privacyStatus": cfg["publish"].get("privacy", "unlisted"),
             "publishAt": publish_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
             "selfDeclaredMadeForKids": False,
             "containsSyntheticMedia": True,

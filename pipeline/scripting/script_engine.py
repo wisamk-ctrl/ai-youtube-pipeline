@@ -38,6 +38,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from pipeline import usage
 from pipeline.config import ROOT
 from pipeline.models import NewsItem
 from pipeline.script_format import count_spoken_words
@@ -142,6 +143,7 @@ class ScriptEngine:
             }],
             output_format=EditorialPlan,
         )
+        usage.record("plan", self.cfg["model"], getattr(response, "usage", None))
         _check_stop(response, "editorial plan")
         plan = response.parsed_output
 
@@ -171,6 +173,7 @@ class ScriptEngine:
             fallbacks="default",
         ) as stream:
             message = stream.get_final_message()
+        usage.record(step, getattr(message, "model", self.cfg["model"]), getattr(message, "usage", None))
         _check_stop(message, step)
         if any(b.type == "fallback" for b in message.content):
             log.warning("%s: primary model declined; served by fallback model %s", step, message.model)

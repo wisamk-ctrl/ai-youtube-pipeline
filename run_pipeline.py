@@ -32,6 +32,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
+from pipeline import usage
 from pipeline.config import ROOT, load_settings
 from pipeline.models import NewsItem
 
@@ -147,7 +148,13 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     if not video.exists():
         sys.exit(f"{video} not found — run the video phase first.")
     shorts = [tuple(map(float, s.split("-"))) for s in shorts_arg.split(",")] if shorts_arg else []
-    result = run_post(video, spoken_text((out / "script.md").read_text(encoding="utf-8")), out, shorts)
+    script = (out / "script.md").read_text(encoding="utf-8")
+    result = run_post(video, spoken_text(script), out, shorts)
+    if cfg.get("post", {}).get("overlays", {}).get("enabled", True):
+        from pipeline.post.overlays import run_overlays
+        from pipeline.post.subtitles import burn_in
+        with_cards = run_overlays(video, script, cfg, out, result["srt"])
+        result["final"] = burn_in(with_cards, result["srt"], out / "final_subtitled.mp4")
     log.info("Phase 4 done → %s (similarity %.2f, %d shorts)", result["final"], result["similarity"], len(result["shorts"]))
 
 
@@ -200,6 +207,7 @@ def main() -> None:
         phase_post(cfg, out, args.shorts)
     if args.phase == "publish":
         phase_publish(cfg, out)
+    usage.write(out, cfg.get("pricing"))
 
 
 if __name__ == "__main__":

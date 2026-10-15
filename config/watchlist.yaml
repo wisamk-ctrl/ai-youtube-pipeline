@@ -23,10 +23,10 @@ tracks:
         label_ar: الولايات المتحدة
         entities:
           - {name: OpenAI, ar: أوبن إيه آي, aliases: [GPT, ChatGPT, Codex, Sora], rss: [https://openai.com/news/rss.xml], hf: openai, x: OpenAI}
-          - {name: Anthropic, ar: أنثروبيك, aliases: [Claude], rss: [https://www.anthropic.com/rss.xml], x: AnthropicAI}
+          - {name: Anthropic, ar: أنثروبيك, aliases: [Claude], x: AnthropicAI}
           - {name: Google DeepMind, ar: جوجل ديب مايند, aliases: [Gemini, DeepMind, Google AI, Gemma], rss: [https://blog.google/technology/ai/rss/, https://deepmind.google/blog/rss.xml], hf: google, x: GoogleDeepMind}
-          - {name: Microsoft Copilot, ar: مايكروسوفت كوبايلوت, aliases: [Copilot, Phi, Azure AI], rss: [https://blogs.microsoft.com/ai/feed/], hf: microsoft, x: Microsoft}
-          - {name: Meta AI, ar: ميتا, aliases: [Llama, Meta Superintelligence], rss: [https://ai.meta.com/blog/rss/], hf: meta-llama, x: AIatMeta}
+          - {name: Microsoft Copilot, ar: مايكروسوفت كوبايلوت, aliases: [Copilot, Phi, Azure AI], hf: microsoft, x: Microsoft}
+          - {name: Meta AI, ar: ميتا, aliases: [Llama, Meta Superintelligence], hf: meta-llama, x: AIatMeta}
           - {name: xAI, ar: إكس إيه آي, aliases: [Grok], x: xai}
           - {name: Amazon Nova, ar: أمازون, aliases: [Amazon Bedrock, AWS AI, Nova], rss: [https://aws.amazon.com/blogs/machine-learning/feed/]}
           - {name: Apple Intelligence, ar: آبل, aliases: [Apple AI, Apple Foundation Models], rss: [https://machinelearning.apple.com/rss.xml]}

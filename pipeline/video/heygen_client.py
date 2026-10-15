@@ -58,6 +58,7 @@ class HeyGenClient:
             "title": title,
             "caption": False,  # burn captions in post, where Arabic RTL typography can be controlled
             "dimension": {"width": self.hcfg["width"], "height": self.hcfg["height"]},
+            **({"quality": self.hcfg["quality"]} if self.hcfg.get("quality") else {}),
             "video_inputs": [
                 {
                     "character": self._character(),

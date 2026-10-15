@@ -139,13 +139,16 @@ video:
   max_chars_per_chunk: 1500   # sentence-aligned chunks; well under every provider's per-request limit
   poll_interval_s: 20
   poll_timeout_s: 3600
+  tashkeel: false             # sparse diacritics before TTS (style guide §6); turn on after a voice test confirms the engine honours them
+  tashkeel_model: claude-sonnet-5-5
 
   heygen:
     avatar_type: avatar       # avatar (Instant/Studio avatar) | talking_photo (photo avatar)
     avatar_style: normal
     voice_speed: 1.0
-    width: 1920
-    height: 1080
+    width: 3840               # 4K master; YouTube re-encodes 1080p from it at a visibly higher bitrate
+    height: 2160
+    quality: high             # HeyGen v2 render quality (omit to let the account default apply)
     background_color: "#0B1220"
 
   elevenlabs:
@@ -158,9 +161,23 @@ video:
   did:
     endpoint: clips           # clips (presenter_id) — the custom-avatar path on D-ID
 
+post:
+  overlays:
+    enabled: true             # [On-Screen Text] cues become lower-third cards; [Show B-Roll] cues a corner marker
+    card_seconds: 6
+    broll_seconds: 4
+
+# USD per million tokens, from anthropic.com/pricing. Left empty on purpose: the meter reports
+# tokens either way and only prints a cost once these are filled in.
+pricing:
+  claude-opus-5-5:   {input: null, output: null}
+  claude-sonnet-5-5: {input: null, output: null}
+  claude-haiku-5-5:  {input: null, output: null}
+
 publish:
   # YouTube Data API. Needs GOOGLE_CLIENT_ID/SECRET + YOUTUBE_REFRESH_TOKEN
   # (scripts/google_authorize.py youtube). Uploads private + scheduled.
+  privacy: unlisted           # pilot: unlisted for the first 5 episodes; switch to private+scheduled or public when the pilot passes
   publish_weekday: 6          # 0=Mon … 6=Sun
   publish_hour_utc: 6         # 06:00 UTC = 10:00 Gulf
   tags: [الذكاء الاصطناعي, أخبار التقنية, AI, ChatGPT, OpenAI, Claude, Gemini, شركات, الإمارات, السعودية]
