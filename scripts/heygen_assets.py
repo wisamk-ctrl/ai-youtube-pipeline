@@ -45,9 +45,9 @@ def main() -> None:
     out.append("### Your avatars (custom / instant)\n")
     out.append("| avatar_id | name | gender |\n|---|---|---|")
     out += [f"| `{a.get('avatar_id')}` | {a.get('avatar_name')} | {a.get('gender')} |" for a in custom] or ["| — | none | |"]
-    out.append("\n### Your talking photos (use `avatar_type: talking_photo`)\n")
+    out.append(f"\n### Your talking photos (use `avatar_type: talking_photo`; first 40 of {len(photos)}, rest in the artifact)\n")
     out.append("| talking_photo_id | name |\n|---|---|")
-    out += [f"| `{p.get('talking_photo_id')}` | {p.get('talking_photo_name')} |" for p in photos] or ["| — | none | |"]
+    out += [f"| `{p.get('talking_photo_id')}` | {p.get('talking_photo_name')} |" for p in photos[:40]] or ["| — | none | |"]
     out.append(f"\n### Public avatars (first 40 of {len(public)})\n")
     out.append("| avatar_id | name | gender |\n|---|---|---|")
     out += [f"| `{a.get('avatar_id')}` | {a.get('avatar_name')} | {a.get('gender')} |" for a in public[:40]]
@@ -56,7 +56,7 @@ def main() -> None:
     out += [f"| `{v.get('voice_id')}` | {v.get('name')} | {v.get('gender')} | {v.get('language')} | "
             f"{('[listen](' + v['preview_audio'] + ')') if v.get('preview_audio') else ''} |" for v in arabic] or ["| — | none | | | |"]
     out.append(f"\n<details><summary>Other voices ({len(other)})</summary>\n\n| voice_id | name | language |\n|---|---|---|")
-    out += [f"| `{v.get('voice_id')}` | {v.get('name')} | {v.get('language')} |" for v in other[:300]]
+    out += [f"| `{v.get('voice_id')}` | {v.get('name')} | {v.get('language')} |" for v in other[:150]]
     out.append("</details>")
     report = "\n".join(out)
     open("heygen_assets.md", "w", encoding="utf-8").write(report)
