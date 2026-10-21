@@ -1,0 +1,37 @@
+name: heygen-assets
+# Lists the avatars and voices behind HEYGEN_API_KEY so HEYGEN_AVATAR_ID / HEYGEN_VOICE_ID
+# can be chosen without the key ever leaving GitHub. Result: a "HeyGen assets" issue + artifact.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests
+      - name: List avatars and voices
+        env:
+          HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
+        run: python scripts/heygen_assets.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: heygen-assets
+          path: |
+            heygen_assets.json
+            heygen_assets.md
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('heygen_assets.md', 'utf8').slice(0, 60000) +
+              `\n\n_Run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}_`;
+            await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo,
+              title: `HeyGen assets (${new Date().toISOString().slice(0, 10)})`, labels: ['setup'], body });
