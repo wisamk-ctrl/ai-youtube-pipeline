@@ -190,6 +190,19 @@
    }
   }
  },
+ "advantageclub": {
+  "first_seen": "2026-10-24",
+  "name": "AI Advantage Club",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "aegissoftware": {
   "first_seen": "2026-10-15",
   "name": "Aegis Software",
@@ -244,6 +257,19 @@
  "agenticdecisionengine": {
   "first_seen": "2026-10-24",
   "name": "Agentic Decision Engine",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "agenticpcs": {
+  "first_seen": "2026-10-24",
+  "name": "Agentic PCs",
   "status": "candidate",
   "weeks": {
    "2026-W43": {
@@ -311,7 +337,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.67,
+    "score": 0.68,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -365,7 +391,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "agents"
+    "track": "other"
    }
   }
  },
@@ -573,7 +599,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "models"
    }
   }
  },
@@ -624,7 +650,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -655,7 +681,7 @@
     "score": 2.0,
     "signals": 0,
     "sources": 2,
-    "track": "models"
+    "track": "other"
    }
   }
  },
@@ -775,7 +801,7 @@
     "score": 3.0,
     "signals": 0,
     "sources": 3,
-    "track": "other"
+    "track": "models"
    }
   }
  },
@@ -1290,7 +1316,7 @@
     "score": 2.0,
     "signals": 0,
     "sources": 2,
-    "track": "agents"
+    "track": "other"
    }
   }
  },
@@ -1486,6 +1512,19 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   }
+  }
+ },
+ "bancosantander": {
+  "first_seen": "2026-10-24",
+  "name": "Banco Santander",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1836,7 +1875,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.64,
+    "score": 1.6,
     "signals": 2,
     "sources": 0,
     "track": "models"
@@ -1938,6 +1977,19 @@
    }
   }
  },
+ "cadencedesignsystems": {
+  "first_seen": "2026-10-24",
+  "name": "Cadence Design Systems",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "cadre": {
   "first_seen": "2026-10-24",
   "name": "CADRE",
@@ -1948,6 +2000,32 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   }
+  }
+ },
+ "calif": {
+  "first_seen": "2026-10-24",
+  "name": "Calif",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "callofdutymodernwarfare4": {
+  "first_seen": "2026-10-24",
+  "name": "Call of Duty: Modern Warfare 4",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -1983,6 +2061,19 @@
    }
   }
  },
+ "cas": {
+  "first_seen": "2026-10-24",
+  "name": "CAS",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "celestica": {
   "first_seen": "2026-10-24",
   "name": "Celestica",
@@ -2005,7 +2096,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "agents"
+    "track": "other"
    }
   }
  },
@@ -2065,9 +2156,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 5.0,
+    "score": 6.0,
     "signals": 0,
-    "sources": 5,
+    "sources": 6,
     "track": "chips"
    }
   }
@@ -2107,7 +2198,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "models"
    }
   }
  },
@@ -2117,7 +2208,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.69,
+    "score": 0.7,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -2221,7 +2312,7 @@
     "score": 4.0,
     "signals": 0,
     "sources": 4,
-    "track": "models"
+    "track": "agents"
    }
   }
  },
@@ -2328,7 +2419,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "agents"
+    "track": "other"
    }
   }
  },
@@ -2473,7 +2564,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -2524,6 +2615,19 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   }
+  }
+ },
+ "connector": {
+  "first_seen": "2026-10-24",
+  "name": "AI Connector",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -2601,7 +2705,7 @@
     "track": "models"
    },
    "2026-W43": {
-    "score": 0.7,
+    "score": 0.62,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -2722,13 +2826,26 @@
    }
   }
  },
+ "cst": {
+  "first_seen": "2026-10-24",
+  "name": "CST",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "ctoldigital": {
   "first_seen": "2026-10-24",
   "name": "ctoldigital",
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.64,
+    "score": 0.65,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -2766,7 +2883,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.66,
+    "score": 0.68,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -2804,7 +2921,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.86,
+    "score": 1.82,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -2854,7 +2971,7 @@
     "track": "models"
    },
    "2026-W43": {
-    "score": 1.46,
+    "score": 1.58,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -2904,7 +3021,7 @@
     "track": "models"
    },
    "2026-W43": {
-    "score": 2.02,
+    "score": 2.06,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -3084,7 +3201,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "agents"
+    "track": "models"
    }
   }
  },
@@ -3283,7 +3400,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -3340,7 +3457,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "chips"
    }
   }
  },
@@ -3439,7 +3556,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.84,
+    "score": 0.85,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -3629,6 +3746,19 @@
    }
   }
  },
+ "eliteintelligence": {
+  "first_seen": "2026-10-24",
+  "name": "Elite Intelligence",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "ellucian": {
   "first_seen": "2026-10-24",
   "name": "Ellucian",
@@ -3717,6 +3847,45 @@
    }
   }
  },
+ "enterpriseagenticsolution": {
+  "first_seen": "2026-10-24",
+  "name": "Enterprise Agentic AI Solution",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "agents"
+   }
+  }
+ },
+ "ethereum": {
+  "first_seen": "2026-10-24",
+  "name": "Ethereum",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "europeevsalesrose703inseptember326ofmarketshare": {
+  "first_seen": "2026-10-24",
+  "name": "Europe EV sales rose 70.3% in September, 32.6% of market share",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 0.83,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
  "euvlithographytools": {
   "first_seen": "2026-10-15",
   "name": "EUV lithography tools",
@@ -3730,13 +3899,39 @@
    }
   }
  },
+ "evalagent": {
+  "first_seen": "2026-10-24",
+  "name": "Eval Agent",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
  "everymodelhassamecontroversialtakeonhumans": {
   "first_seen": "2026-10-24",
   "name": "Every AI model has the same \"controversial\" take on humans",
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.75,
+    "score": 1.78,
+    "signals": 1,
+    "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "evolvingthreathttp2shellisanrceinnodepythonandmore": {
+  "first_seen": "2026-10-24",
+  "name": "Evolving Threat: http2shell is an RCE in Node, Python, and more",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 0.85,
     "signals": 1,
     "sources": 0,
     "track": "other"
@@ -3875,7 +4070,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.82,
+    "score": 1.02,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -3910,6 +4105,19 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   }
+  }
+ },
+ "federalgovernment": {
+  "first_seen": "2026-10-24",
+  "name": "Federal Government",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -3967,6 +4175,19 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   }
+  }
+ },
+ "figma": {
+  "first_seen": "2026-10-24",
+  "name": "Figma",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4071,6 +4292,19 @@
    }
   }
  },
+ "flint": {
+  "first_seen": "2026-10-24",
+  "name": "Flint AI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
  "flourish1": {
   "first_seen": "2026-10-15",
   "name": "Flourish 1",
@@ -4096,9 +4330,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 5.0,
+    "score": 4.0,
     "signals": 0,
-    "sources": 5,
+    "sources": 4,
     "track": "models"
    }
   }
@@ -4146,7 +4380,7 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 1.71,
+    "score": 1.92,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -4215,7 +4449,7 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 0.82,
+    "score": 0.83,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -4682,6 +4916,19 @@
    }
   }
  },
+ "glean": {
+  "first_seen": "2026-10-24",
+  "name": "Glean",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
  "glide": {
   "first_seen": "2026-10-24",
   "name": "GLIDE",
@@ -4831,9 +5078,9 @@
     "track": "other"
    },
    "2026-W43": {
-    "score": 4.0,
+    "score": 2.0,
     "signals": 0,
-    "sources": 4,
+    "sources": 2,
     "track": "other"
    }
   }
@@ -5237,6 +5484,32 @@
    }
   }
  },
+ "groq3": {
+  "first_seen": "2026-10-24",
+  "name": "Groq 3",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "groq3lpu": {
+  "first_seen": "2026-10-24",
+  "name": "Groq 3 LPU",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "chips"
+   }
+  }
+ },
  "groqlpu": {
   "first_seen": "2026-10-15",
   "name": "Groq LPU",
@@ -5259,7 +5532,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -5362,7 +5635,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.77,
+    "score": 0.78,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -5449,10 +5722,23 @@
     "track": "models"
    },
    "2026-W43": {
-    "score": 1.02,
+    "score": 1.18,
     "signals": 1,
     "sources": 0,
     "track": "models"
+   }
+  }
+ },
+ "haystackenterpriseplatform": {
+  "first_seen": "2026-10-24",
+  "name": "Haystack Enterprise Platform",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -5487,7 +5773,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.74,
+    "score": 0.75,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -5619,7 +5905,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.98,
+    "score": 1.14,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -5632,7 +5918,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.96,
+    "score": 0.99,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -5739,7 +6025,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "models"
    }
   }
  },
@@ -5990,7 +6276,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.94,
+    "score": 1.98,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -6099,6 +6385,12 @@
    "2026-W42-feedtest4": {
     "score": 1.84,
     "signals": 2,
+    "sources": 0,
+    "track": "models"
+   },
+   "2026-W43": {
+    "score": 1.3,
+    "signals": 1,
     "sources": 0,
     "track": "models"
    }
@@ -6246,7 +6538,7 @@
     "track": "models"
    },
    "2026-W43": {
-    "score": 1.9,
+    "score": 1.78,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -6393,7 +6685,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.17,
+    "score": 2.44,
     "signals": 1,
     "sources": 0,
     "track": "other"
@@ -6514,7 +6806,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.26,
+    "score": 1.34,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -6785,7 +7077,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.5,
+    "score": 1.52,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -6909,7 +7201,7 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 0.71,
+    "score": 0.72,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -7010,7 +7302,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.39,
+    "score": 1.41,
     "signals": 1,
     "sources": 0,
     "track": "other"
@@ -7023,7 +7315,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.28,
+    "score": 2.4,
     "signals": 2,
     "sources": 0,
     "track": "models"
@@ -7175,9 +7467,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 5.0,
+    "score": 2.0,
     "signals": 0,
-    "sources": 5,
+    "sources": 2,
     "track": "models"
    }
   }
@@ -7307,7 +7599,7 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 1.04,
+    "score": 1.05,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -7464,6 +7756,19 @@
    }
   }
  },
+ "memtensor": {
+  "first_seen": "2026-10-24",
+  "name": "MemTensor",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 0.65,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
  "mercury3": {
   "first_seen": "2026-10-24",
   "name": "Mercury 3",
@@ -7483,10 +7788,49 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.58,
+    "score": 1.54,
     "signals": 1,
     "sources": 0,
     "track": "models"
+   }
+  }
+ },
+ "metaplatforms": {
+  "first_seen": "2026-10-24",
+  "name": "Meta Platforms",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 3.0,
+    "signals": 0,
+    "sources": 3,
+    "track": "other"
+   }
+  }
+ },
+ "metr": {
+  "first_seen": "2026-10-24",
+  "name": "METR",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "microduck": {
+  "first_seen": "2026-10-24",
+  "name": "Microduck",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -7496,9 +7840,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 1,
     "track": "chips"
    }
   }
@@ -7711,9 +8055,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.0,
+    "score": 3.0,
     "signals": 0,
-    "sources": 1,
+    "sources": 3,
     "track": "models"
    }
   }
@@ -7767,9 +8111,9 @@
     "track": "models"
    },
    "2026-W43": {
-    "score": 3.15,
+    "score": 4.15,
     "signals": 1,
-    "sources": 2,
+    "sources": 3,
     "track": "models"
    }
   }
@@ -8018,7 +8362,7 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 1.18,
+    "score": 1.19,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -8080,7 +8424,7 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 1.48,
+    "score": 1.49,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -8154,6 +8498,19 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   }
+  }
+ },
+ "nebius": {
+  "first_seen": "2026-10-24",
+  "name": "Nebius",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -8359,7 +8716,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.67,
+    "score": 0.68,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -8427,7 +8784,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "chips"
    }
   }
  },
@@ -8604,9 +8961,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 1,
     "track": "models"
    }
   }
@@ -8666,6 +9023,19 @@
     "sources": 1,
     "track": "chips"
    },
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "nvidiaveracpu": {
+  "first_seen": "2026-10-24",
+  "name": "Nvidia Vera CPU",
+  "status": "candidate",
+  "weeks": {
    "2026-W43": {
     "score": 1.0,
     "signals": 0,
@@ -8907,7 +9277,7 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 1.97,
+    "score": 1.99,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -9077,7 +9447,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.69,
+    "score": 0.71,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -9090,7 +9460,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.48,
+    "score": 1.49,
     "signals": 1,
     "sources": 0,
     "track": "other"
@@ -9329,7 +9699,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.38,
+    "score": 1.42,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -9360,7 +9730,7 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 0.88,
+    "score": 0.87,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -9526,6 +9896,19 @@
    }
   }
  },
+ "pearl": {
+  "first_seen": "2026-10-24",
+  "name": "Pearl",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "penso": {
   "first_seen": "2026-10-15",
   "name": "penso",
@@ -9557,9 +9940,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 1,
     "track": "agents"
    }
   }
@@ -9583,7 +9966,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.67,
+    "score": 0.68,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -9648,7 +10031,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.66,
+    "score": 0.67,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -9849,7 +10232,7 @@
     "track": "models"
    },
    "2026-W43": {
-    "score": 0.66,
+    "score": 0.74,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -9880,7 +10263,7 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 2.23,
+    "score": 2.24,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -10103,6 +10486,19 @@
    }
   }
  },
+ "raleigh": {
+  "first_seen": "2026-10-24",
+  "name": "Raleigh",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "ramp": {
   "first_seen": "2026-10-24",
   "name": "Ramp",
@@ -10160,7 +10556,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.96,
+    "score": 0.97,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -10192,9 +10588,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.1,
+    "score": 3.1,
     "signals": 1,
-    "sources": 0,
+    "sources": 1,
     "track": "models"
    }
   }
@@ -10236,7 +10632,7 @@
     "track": "models"
    },
    "2026-W43": {
-    "score": 0.9,
+    "score": 0.78,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -10321,7 +10717,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "models"
+    "track": "agents"
    }
   }
  },
@@ -10464,6 +10860,32 @@
    }
   }
  },
+ "roommaster": {
+  "first_seen": "2026-10-24",
+  "name": "roommaster",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "rtx5070ti": {
+  "first_seen": "2026-10-24",
+  "name": "RTX 5070 Ti",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
  "rtxspark": {
   "first_seen": "2026-10-15",
   "name": "RTX Spark",
@@ -10476,10 +10898,10 @@
     "track": "chips"
    },
    "2026-W43": {
-    "score": 1.0,
+    "score": 2.0,
     "signals": 0,
-    "sources": 1,
-    "track": "other"
+    "sources": 2,
+    "track": "chips"
    }
   }
  },
@@ -10508,6 +10930,19 @@
    }
   }
  },
+ "ryzen7hx455": {
+  "first_seen": "2026-10-24",
+  "name": "Ryzen AI 7 HX 455",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
  "ryzenhalo": {
   "first_seen": "2026-10-15",
   "name": "Ryzen AI Halo",
@@ -10529,6 +10964,12 @@
     "score": 2.0,
     "signals": 0,
     "sources": 2,
+    "track": "chips"
+   },
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "chips"
    }
   }
@@ -10632,9 +11073,9 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 5.0,
+    "score": 4.0,
     "signals": 0,
-    "sources": 5,
+    "sources": 4,
     "track": "other"
    }
   }
@@ -10658,7 +11099,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.97,
+    "score": 1.0,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -10687,6 +11128,12 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   },
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -10864,6 +11311,19 @@
     "track": "other"
    },
    "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "scrippsresearch": {
+  "first_seen": "2026-10-24",
+  "name": "Scripps Research",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -11112,6 +11572,32 @@
    }
   }
  },
+ "servicenowagent": {
+  "first_seen": "2026-10-24",
+  "name": "ServiceNow AI Agent",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "servicenowoperationalresilience": {
+  "first_seen": "2026-10-24",
+  "name": "ServiceNow Operational Resilience",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
  "severallinuxkernelvulnerabilitiesaccidentallypostedtopublicmailinglist": {
   "first_seen": "2026-10-24",
   "name": "Several Linux kernel vulnerabilities accidentally posted to public mailing list",
@@ -11244,7 +11730,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.94,
+    "score": 0.95,
     "signals": 1,
     "sources": 0,
     "track": "other"
@@ -11343,6 +11829,12 @@
     "signals": 0,
     "sources": 1,
     "track": "models"
+   },
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
@@ -11369,6 +11861,19 @@
     "signals": 1,
     "sources": 0,
     "track": "agents"
+   }
+  }
+ },
+ "skdatacenter": {
+  "first_seen": "2026-10-24",
+  "name": "SK Data Center",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -11423,6 +11928,19 @@
    }
   }
  },
+ "slackfrontline": {
+  "first_seen": "2026-10-24",
+  "name": "Slack Frontline",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
  "smartsheet": {
   "first_seen": "2026-10-24",
   "name": "Smartsheet",
@@ -11432,7 +11950,7 @@
     "score": 2.0,
     "signals": 0,
     "sources": 2,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -11773,7 +12291,7 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 1.08,
+    "score": 1.09,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -11861,10 +12379,10 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
-    "track": "other"
+    "sources": 1,
+    "track": "agents"
    }
   }
  },
@@ -12077,9 +12595,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 3.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 3,
     "track": "agents"
    }
   }
@@ -12258,10 +12776,10 @@
     "track": "other"
    },
    "2026-W43": {
-    "score": 7.54,
+    "score": 7.46,
     "signals": 1,
     "sources": 6,
-    "track": "other"
+    "track": "models"
    }
   }
  },
@@ -12296,16 +12814,55 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 1,
     "track": "chips"
+   }
+  }
+ },
+ "terafab": {
+  "first_seen": "2026-10-24",
+  "name": "Terafab",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "terminalrsi": {
+  "first_seen": "2026-10-24",
+  "name": "Terminal-RSI",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
    }
   }
  },
  "terminalx": {
   "first_seen": "2026-10-24",
   "name": "Terminal X",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "tern": {
+  "first_seen": "2026-10-24",
+  "name": "Tern",
   "status": "candidate",
   "weeks": {
    "2026-W43": {
@@ -12431,6 +12988,19 @@
    }
   }
  },
+ "togetherposttrainingservice": {
+  "first_seen": "2026-10-24",
+  "name": "Together Post-Training Service",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "models"
+   }
+  }
+ },
  "tokenfabric": {
   "first_seen": "2026-10-15",
   "name": "Token Fabric",
@@ -12523,6 +13093,25 @@
     "signals": 0,
     "sources": 2,
     "track": "chips"
+   },
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "travelinsuredinternational": {
+  "first_seen": "2026-10-24",
+  "name": "Travel Insured International",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -12532,7 +13121,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.23,
+    "score": 1.24,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -12548,7 +13137,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "agents"
+    "track": "other"
    }
   }
  },
@@ -12716,7 +13305,7 @@
     "track": "models"
    },
    "2026-W43": {
-    "score": 2.66,
+    "score": 2.7,
     "signals": 3,
     "sources": 0,
     "track": "models"
@@ -12945,7 +13534,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.67,
+    "score": 0.68,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -13137,7 +13726,7 @@
     "score": 3.0,
     "signals": 0,
     "sources": 3,
-    "track": "agents"
+    "track": "models"
    }
   }
  },
@@ -13216,9 +13805,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 1,
     "track": "agents"
    }
   }
@@ -13232,6 +13821,19 @@
     "score": 0.82,
     "signals": 1,
     "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "wedbush": {
+  "first_seen": "2026-10-24",
+  "name": "Wedbush",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "other"
    }
   }
@@ -13469,6 +14071,19 @@
    }
   }
  },
+ "world": {
+  "first_seen": "2026-10-24",
+  "name": "World",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "worldbank": {
   "first_seen": "2026-10-15",
   "name": "World Bank",
@@ -13532,7 +14147,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.77,
+    "score": 0.74,
     "signals": 1,
     "sources": 0,
     "track": "agents"
