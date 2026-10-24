@@ -86,6 +86,18 @@ jobs:
           script: |
             const open = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'run-failed', state: 'open' });
             for (const i of open.data) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: i.number, state: 'closed', state_reason: 'completed' });
+      - name: Open sources issue (ingest only)
+        if: inputs.phase == 'ingest'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const dir = process.env.WEEK_DIR;
+            const srcs = fs.existsSync(`${dir}/sources.md`) ? fs.readFileSync(`${dir}/sources.md`, 'utf8') : 'no sources.md';
+            const cov = fs.existsSync(`${dir}/coverage.md`) ? fs.readFileSync(`${dir}/coverage.md`, 'utf8') : '';
+            await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo,
+              title: `Sources: ${dir.replace('output/','').replace('/','')}`, labels: ['sources'],
+              body: `Run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n${srcs}\n\n${cov}` });
       - name: Open review issue
         if: inputs.phase != 'ingest'
         uses: actions/github-script@v7
@@ -97,6 +109,7 @@ jobs:
             const plan = JSON.parse(fs.readFileSync(`${dir}/plan.json`, 'utf8'));
             const radar = fs.existsSync(`${dir}/radar_report.md`) ? fs.readFileSync(`${dir}/radar_report.md`, 'utf8') : '';
             const cov = fs.existsSync(`${dir}/coverage.md`) ? fs.readFileSync(`${dir}/coverage.md`, 'utf8') : '';
+            const srcs = fs.existsSync(`${dir}/sources.md`) ? fs.readFileSync(`${dir}/sources.md`, 'utf8') : '';
             const crit = fs.existsSync(`${dir}/critique.json`) ? JSON.parse(fs.readFileSync(`${dir}/critique.json`, 'utf8')) : [];
             const last = crit[crit.length - 1];
             const bar = Number((fs.readFileSync('config/settings.yaml', 'utf8').match(/critic:[\s\S]*?min_score:\s*(\d+)/) || [])[1] || 8);
@@ -114,7 +127,7 @@ jobs:
               body: `Artifact run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
                     `${quality}\n\n${sourceLine}\n\n${usageLine}\n\n` +
                     `When approved, run the **weekly-roundup** workflow with phase=\`video\` and this week.\n\n` +
-                    `<details><summary>script.md</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>\n\n${radar}\n\n${cov}\n\nDecide from here: comment \`/promote <name> --track models --group gulf --ar <الاسم>\` or \`/ignore <name>\`.`,
+                    `<details><summary>script.md</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>\n\n${radar}\n\n${cov}\n\n${srcs}\n\nDecide from here: comment \`/promote <name> --track models --group gulf --ar <الاسم>\` or \`/ignore <name>\`.`,
             });
 
   alert:

@@ -46,4 +46,7 @@ def run_ingestion(cfg: dict[str, Any], week: str = "", out_dir: Path | None = No
     ranked = rank_and_filter(items, cfg)
     if not ranked:
         raise RuntimeError("Ingestion produced no items above the relevance threshold — check feeds/keys.")
+    if out_dir:
+        from pipeline.ingestion.sources_report import sources_md
+        (out_dir / "sources.md").write_text(sources_md(items, ranked), encoding="utf-8")
     return ranked
