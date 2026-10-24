@@ -160,7 +160,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -237,6 +237,19 @@
     "score": 2.0,
     "signals": 0,
     "sources": 2,
+    "track": "agents"
+   }
+  }
+ },
+ "agentdevelopmentkit": {
+  "first_seen": "2026-10-24",
+  "name": "Agent Development Kit",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "agents"
    }
   }
@@ -378,7 +391,7 @@
     "score": 4.0,
     "signals": 0,
     "sources": 4,
-    "track": "agents"
+    "track": "other"
    }
   }
  },
@@ -599,7 +612,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "models"
+    "track": "other"
    }
   }
  },
@@ -759,9 +772,9 @@
     "track": "other"
    },
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 1,
     "track": "other"
    }
   }
@@ -814,7 +827,7 @@
     "score": 3.0,
     "signals": 0,
     "sources": 3,
-    "track": "models"
+    "track": "other"
    }
   }
  },
@@ -1076,6 +1089,19 @@
    }
   }
  },
+ "applemail": {
+  "first_seen": "2026-10-24",
+  "name": "Apple Mail",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "applemusic": {
   "first_seen": "2026-10-24",
   "name": "Apple Music",
@@ -1123,7 +1149,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "chips"
    }
   }
  },
@@ -1133,7 +1159,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.93,
+    "score": 0.94,
     "signals": 1,
     "sources": 0,
     "track": "other"
@@ -1368,7 +1394,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -1946,9 +1972,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 3.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 3,
     "track": "other"
    }
   }
@@ -1963,6 +1989,19 @@
     "signals": 2,
     "sources": 0,
     "track": "models"
+   }
+  }
+ },
+ "bruegel": {
+  "first_seen": "2026-10-24",
+  "name": "Bruegel",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2126,6 +2165,19 @@
    }
   }
  },
+ "calltrustdeepfakedetection": {
+  "first_seen": "2026-10-24",
+  "name": "Call Trust Deepfake Detection",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "canberkkkkkk": {
   "first_seen": "2026-10-15",
   "name": "canberkkkkkk",
@@ -2180,7 +2232,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -2282,7 +2334,20 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "agents"
+    "track": "models"
+   }
+  }
+ },
+ "chemicalabstractsservice": {
+  "first_seen": "2026-10-24",
+  "name": "Chemical Abstracts Service",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -2406,9 +2471,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 3.0,
+    "score": 4.0,
     "signals": 0,
-    "sources": 3,
+    "sources": 4,
     "track": "agents"
    }
   }
@@ -2648,7 +2713,7 @@
     "score": 5.0,
     "signals": 0,
     "sources": 5,
-    "track": "models"
+    "track": "other"
    }
   }
  },
@@ -2862,7 +2927,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "models"
+    "track": "other"
    }
   }
  },
@@ -3047,7 +3112,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -3510,7 +3575,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -3526,9 +3591,9 @@
     "track": "other"
    },
    "2026-W43": {
-    "score": 2.0,
+    "score": 3.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 3,
     "track": "other"
    }
   }
@@ -3653,9 +3718,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.0,
+    "score": 2.0,
     "signals": 0,
-    "sources": 1,
+    "sources": 2,
     "track": "agents"
    }
   }
@@ -3726,7 +3791,7 @@
     "score": 2.0,
     "signals": 0,
     "sources": 2,
-    "track": "agents"
+    "track": "other"
    }
   }
  },
@@ -3849,7 +3914,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.68,
+    "score": 0.69,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -4096,7 +4161,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "agents"
+    "track": "other"
    }
   }
  },
@@ -4374,7 +4439,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -4782,6 +4847,19 @@
    }
   }
  },
+ "gb10desktop": {
+  "first_seen": "2026-10-24",
+  "name": "GB10 Desktop",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
  "gearsofwareday": {
   "first_seen": "2026-10-15",
   "name": "Gears of War: E-Day",
@@ -5084,9 +5162,9 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 1.0,
+    "score": 2.0,
     "signals": 0,
-    "sources": 1,
+    "sources": 2,
     "track": "agents"
    }
   }
@@ -5279,9 +5357,9 @@
     "track": "other"
    },
    "2026-W43": {
-    "score": 2.0,
+    "score": 3.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 3,
     "track": "other"
    }
   }
@@ -5711,15 +5789,41 @@
    }
   }
  },
+ "groq3inferencerack": {
+  "first_seen": "2026-10-24",
+  "name": "Groq 3 Inference Rack",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
  "groq3lpu": {
   "first_seen": "2026-10-24",
   "name": "Groq 3 LPU",
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "groq3lpuinferencerack": {
+  "first_seen": "2026-10-24",
+  "name": "Groq 3 LPU Inference Rack",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "chips"
    }
   }
@@ -5740,6 +5844,19 @@
  "grupomadisa": {
   "first_seen": "2026-10-24",
   "name": "Grupo Madisa",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
+ "gsa": {
+  "first_seen": "2026-10-24",
+  "name": "GSA",
   "status": "candidate",
   "weeks": {
    "2026-W43": {
@@ -7561,7 +7678,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 1.9,
+    "score": 1.86,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -8073,9 +8190,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 1,
     "track": "other"
    }
   }
@@ -8385,6 +8502,12 @@
     "score": 2.0,
     "signals": 0,
     "sources": 2,
+    "track": "other"
+   },
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "other"
    }
   }
@@ -8978,7 +9101,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -9031,6 +9154,19 @@
     "signals": 0,
     "sources": 1,
     "track": "agents"
+   }
+  }
+ },
+ "nvidiacloudpartners": {
+  "first_seen": "2026-10-24",
+  "name": "NVIDIA Cloud Partners",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -9124,6 +9260,12 @@
     "track": "other"
    },
    "2026-W42-feedtest3": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W43": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -10164,7 +10306,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "agents"
+    "track": "other"
    }
   }
  },
@@ -11129,6 +11271,19 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
+    "track": "models"
+   }
+  }
+ },
+ "ribbon": {
+  "first_seen": "2026-10-24",
+  "name": "Ribbon",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "other"
    }
   }
@@ -11171,6 +11326,19 @@
    }
   }
  },
+ "robinhoodventuresfundi": {
+  "first_seen": "2026-10-24",
+  "name": "Robinhood Ventures Fund I",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "roommaster": {
   "first_seen": "2026-10-24",
   "name": "roommaster",
@@ -11180,7 +11348,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -11209,9 +11377,9 @@
     "track": "chips"
    },
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 1,
     "track": "chips"
    }
   }
@@ -11397,10 +11565,10 @@
     "track": "agents"
    },
    "2026-W43": {
-    "score": 5.0,
+    "score": 6.0,
     "signals": 0,
-    "sources": 5,
-    "track": "other"
+    "sources": 6,
+    "track": "agents"
    }
   }
  },
@@ -11501,7 +11669,7 @@
     "score": 3.0,
     "signals": 0,
     "sources": 3,
-    "track": "other"
+    "track": "agents"
    }
   }
  },
@@ -12000,7 +12168,7 @@
     "score": 1.0,
     "signals": 0,
     "sources": 1,
-    "track": "agents"
+    "track": "models"
    }
   }
  },
@@ -12958,10 +13126,10 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 3.0,
     "signals": 0,
-    "sources": 2,
-    "track": "other"
+    "sources": 3,
+    "track": "agents"
    }
   }
  },
@@ -13139,10 +13307,10 @@
     "track": "other"
    },
    "2026-W43": {
-    "score": 7.3,
+    "score": 8.26,
     "signals": 1,
-    "sources": 6,
-    "track": "other"
+    "sources": 7,
+    "track": "agents"
    }
   }
  },
@@ -13436,7 +13604,7 @@
     "score": 2.0,
     "signals": 0,
     "sources": 2,
-    "track": "other"
+    "track": "chips"
    }
   }
  },
@@ -13523,7 +13691,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.7,
+    "score": 0.66,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -13897,9 +14065,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 3.0,
+    "score": 4.0,
     "signals": 0,
-    "sources": 3,
+    "sources": 4,
     "track": "other"
    }
   }
@@ -13936,9 +14104,22 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 2.0,
+    "score": 1.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
+ "verarack": {
+  "first_seen": "2026-10-24",
+  "name": "Vera Rack",
+  "status": "candidate",
+  "weeks": {
+   "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "chips"
    }
   }
@@ -14220,7 +14401,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
-    "score": 0.62,
+    "score": 0.7,
     "signals": 1,
     "sources": 0,
     "track": "models"
