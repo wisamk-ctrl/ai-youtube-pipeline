@@ -196,6 +196,7 @@ def main() -> None:
         # claims; a 5-minute read of script.md is the cheapest insurance there is.
         log.info("Script ready for review: %s\nEdit it if needed, then run: python run_pipeline.py video --week %s",
                  out / "script.md", out.name)
+        usage.write(out, cfg.get("pricing"))
         return
     if args.phase in ("video", "all"):
         phase_video(cfg, out, args.dry_run, args.resume_video_id)
