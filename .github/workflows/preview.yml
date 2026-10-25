@@ -47,9 +47,11 @@ jobs:
           ls -la out
       - name: Push to the previews branch
         run: |
-          cd out
+          # Keep the other weeks' previews, then put the new file on top (never the other way round).
+          mkdir -p branch && cd branch
           git init -q -b previews
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
           git fetch -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previews 2>/dev/null && git checkout -q FETCH_HEAD -- . 2>/dev/null || true
-          git add -A && git commit -q -m "preview: ${{ inputs.week }} ($(date -u +%F))"
+          cp -f "../out/${{ inputs.week }}.mp4" .
+          git add -A && git commit -q -m "preview: ${{ inputs.week }} ($(date -u +%FT%H:%MZ)) from run ${{ steps.art.outputs.run_id }}"
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" HEAD:previews
