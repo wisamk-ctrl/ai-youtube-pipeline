@@ -47,20 +47,22 @@ not a figure: it never counts toward "two numbers in one breath" or "three or mo
 - MINOR: the same transition phrase used more than twice in the episode.
 - MINOR: the same "why it matters" question wording used more than three times.
 
-## arabic — broadcast MSA, style guide §1–§3, §5–§6
-- MAJOR: a calque listed in §1 («يقوم بإطلاق», «على مستوى», «بشكل», «من قِبل» without need).
-- MAJOR: colloquial or archaic register («إنّ ممّا لا يخفى», dialect).
+## arabic — Jordanian colloquial (Ammani), style guide §1–§3, §5–§6
+- MAJOR: a sentence in formal Modern Standard Arabic where a Jordanian would say it differently: «إنّ», «لقد», «سوف», «الذي/التي», «هذا/هذه», audible case endings, newsreader phrasing.
+- MAJOR: a word from another dialect: Egyptian («إزاي», «دلوقتي», «عايز»), Gulf («وايد», «شلون», «يبي»), or purely Lebanese («هلّق»).
 - MAJOR: a term rendered two different ways in one episode (§5 one-word rule).
+- MINOR: a calque from English («بيعمل إطلاق», «على مستوى», «بشكل» where a plain word fits).
+- MINOR: crude slang or overused fillers («يا زلمة», «والله» more than twice in the episode).
 - MINOR: a company or person on first mention without the §3 form (Arabic name + Latin name / full name + title).
-- MINOR: a large number written in digits instead of words (§2), or «مائة» for «مئة».
+- MINOR: a large number written in digits instead of words, or in formal form where §2 gives the spoken one («ثلاثة» for «تلاتة», «مئة» for «مية»).
 - MINOR: an epithet («عملاق التقنية», «الشركة الرائدة»).
 
 ## value — why it matters here (style guide §4, §7)
-- MAJOR: a segment with no sentence about enterprises, governments or buyers in the Gulf or Arab world.
-- MAJOR: an imperative or recommendation («عليكم», «يجب», «اشترِ») outside a quotation.
-- MAJOR: a forecast stated as fact with no attribution and no conditional («سيغيّر» rather than «قد يغيّر» / «يرى محللون»).
+- MAJOR: a segment with no sentence about what it means for companies, governments or people in Jordan, the Gulf or the Arab world.
+- MAJOR: an imperative or recommendation («لازم», «عليكم», «اشتروا», «استثمروا») outside a quotation. «اشتركوا بالقناة» in the outro is not a recommendation.
+- MAJOR: a forecast stated as fact with no attribution and no conditional («رح يغيّر» rather than «ممكن يغيّر» / «في محللين شايفين»).
 - MINOR: the regional implication is generic and could be pasted under any story (no named sector, buyer type or regulation).
-- Not a defect: an implication in the conditional («قد», «ربما») or framed as a question to watch; §7 asks for attribution of *opinions*, and a hedged implication is not an opinion.
+- Not a defect: an implication in the conditional («ممكن», «يمكن», «قد») or framed as a question to watch; §7 asks for attribution of *opinions*, and a hedged implication is not an opinion.
 
 ## worst_three
 After listing defects, pick the three with the largest listener cost, one rewrite each,

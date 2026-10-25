@@ -49,11 +49,11 @@ class Fix(BaseModel):
 
 
 class Critique(BaseModel):
-    hook: int = Field(ge=1, le=10, description="Do the first 20 seconds make a busy executive keep listening?")
+    hook: int = Field(ge=1, le=10, description="Do the first 20 seconds make a viewer scrolling on a phone keep listening?")
     clarity: int = Field(ge=1, le=10, description="Is every story understood on first hearing, no re-reading needed?")
     pacing: int = Field(ge=1, le=10, description="Sentence length, pauses, nothing drags or rushes")
     flow: int = Field(ge=1, le=10, description="Signposts and transitions between segments")
-    arabic: int = Field(ge=1, le=10, description="Broadcast MSA, no calques, style guide respected, names/numbers spoken right")
+    arabic: int = Field(ge=1, le=10, description="Natural Jordanian colloquial (Ammani), no formal MSA, no other dialects, style guide respected, names/numbers spoken right")
     value: int = Field(ge=1, le=10, description="Each story says why it matters to enterprises in the region")
     defects: list[Defect] = Field(default_factory=list, description="Every rubric defect found; empty if none")
     worst_three: list[Fix] = Field(min_length=1, max_length=3)
@@ -68,9 +68,10 @@ class Critique(BaseModel):
         return min(self.scores.values())
 
 
-SYSTEM = """You are the head of news at a leading Arabic business channel, reviewing a script minutes before
-recording. You did not write it and you owe it nothing. Read it as the audience will HEAR it: senior
-executives, CTOs and founders across the Gulf and the Arab world, on a phone, often with the sound low.
+SYSTEM = """You are the head of content at a popular Jordanian Arabic YouTube channel about technology,
+reviewing a script minutes before recording. You did not write it and you owe it nothing. Read it as the
+audience will HEAR it: people in Jordan, the Levant and the Gulf who follow AI and business, on a phone,
+often with the sound low, who want a host who talks like them and not like a newsreader.
 
 You score by the rubric, not by taste. Procedure:
 1. Walk the script once per axis and list every defect the rubric names, with its exact quote.

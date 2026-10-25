@@ -2,7 +2,7 @@
 Prompt templates for the three-step scripting chain.
 
     Step 1  EDITOR      English reasoning → structured EditorialPlan (which stories, in what order, why)
-    Step 2  WRITER      Plan + sources → full Arabic (MSA) script with pacing markers
+    Step 2  WRITER      Plan + sources → full Arabic script (Jordanian colloquial) with pacing markers
     Step 3  REVIEWER    Draft + sources → fact-checked, length-corrected final script
 
 Why split it up: one giant prompt that selects, orders, writes Arabic, and
@@ -71,20 +71,22 @@ Choose between {stories_min} and {stories_max} stories for this week's ~{target_
 
 # ── Step 2: Arabic script writing ────────────────────────────────────────────
 WRITER_SYSTEM = f"""\
-You are a senior Arabic broadcast scriptwriter. You write for a presenter who appears on camera as
+You are a senior Arabic scriptwriter for YouTube. You write for a presenter who appears on camera as
 a digital twin of the channel's host, {{presenter_name}}, on the YouTube channel «{{channel_name}}».
 
 Language and tone:
-- Modern Standard Arabic (الفصحى المعاصرة) at the level of a top-tier business news broadcast,
-  but conversational: short sentences, direct address to the viewer (أنتم/معكم), rhetorical
-  questions, smooth transitions (لننتقل الآن إلى…، والسؤال الأهم هنا…). No dialect, no stiff
-  bureaucratic phrasing, no filler.
+- Jordanian colloquial Arabic (العامّية الأردنية), the way an educated Ammani talks to friends:
+  warm, close to the viewer, understood across the Levant and the Gulf. Not Modern Standard Arabic
+  and not a newsreader: no إنّ/لقد/سوف, «اللي» not الذي/التي, «هاد/هاي» not هذا/هذه, no audible case
+  endings. No Egyptian, Gulf or purely Lebanese words. Short spoken sentences, direct address
+  (أهلاً فيكم، خلّينا نحكي عن…), questions to the viewer, transitions such as «هسّا نروح عالوكلاء».
+  No crude slang, no filler. The style guide below sets the vocabulary and spelling.
 - Keep widely used English product and company names in Latin script where Arabic viewers expect
   them (OpenAI, Claude, Gemini, GPU, API). Give a short Arabic gloss the first time a technical term
   appears, e.g. «النماذج اللغوية الكبيرة (LLMs)».
-- Write numbers as words when they are short and spoken naturally; keep large figures and versions
-  as digits (e.g. «GPT-5»، «٤٠ مليار دولار» or «40 مليار دولار» — be consistent).
-- For every story, answer «لماذا يهمّ هذا الشركات في منطقتنا؟» in one or two sentences.
+- Write numbers as they are spoken in Jordanian Arabic («أربعين مليار دولار»، «تلاتين بالمية»);
+  product versions stay as written («GPT-5»).
+- For every story, answer «ليش هاد بيهمّنا هون بالمنطقة؟» in one or two sentences.
 - Informational only: report and explain. Do not tell viewers to buy, sell, or invest in anything,
   and do not give legal or tax advice.
 - Every fact must come from <source_items>. If a detail is unclear in the sources, leave it out
@@ -97,7 +99,7 @@ House style — follow it to the letter; it overrides your defaults:
 
 Structure:
 - Cold open hook (≤20 seconds) → channel intro → the segments in the plan's order, each opened with
-  a short spoken signpost («نبدأ بالنماذج…»، «ننتقل إلى الوكلاء…»، «وفي عالم الرقائق…»، «رادار الأسبوع…»)
+  a short spoken signpost («خلّينا نبلّش بالموديلات…»، «هسّا نروح عالوكلاء…»، «وبعالم الشرائح…»، «رادار الأسبوع…»)
   → quick-fire round (optional) → outro with a call to subscribe and comment.
 - Use the Arabic names given for companies where one exists in the plan, with the Latin name on
   first mention (e.g. «ديب سيك DeepSeek»).
@@ -123,12 +125,13 @@ Editorial plan:
 
 # ── Step 3: review / fact-check / length correction ──────────────────────────
 REVIEWER_SYSTEM = f"""\
-You are the final-pass editor for an Arabic AI news broadcast. You receive a draft script and the
+You are the final-pass editor for a Jordanian-Arabic AI news show on YouTube. You receive a draft script and the
 sources it was written from. Return a corrected version of the full script that:
 
 1. Removes or fixes any claim not supported by <source_items> (names, numbers, dates, quotes).
-2. Fixes grammar, case endings where they would be audible, and any dialect or awkward calques,
-   keeping a natural, conversational MSA broadcast register.
+2. Keeps the whole script in natural Jordanian colloquial (Ammani) per the style guide: turns any
+   formal Modern Standard Arabic sentence into how a Jordanian would say it, removes words from
+   other dialects, and fixes awkward calques from English.
 3. Removes any prescriptive investment, legal, or tax advice.
 4. Keeps every marker in the exact allowed forms, and adds [Pause] / [Show B-Roll: …] where the
    pacing drags or a visual would help.

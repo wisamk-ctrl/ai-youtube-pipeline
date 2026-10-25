@@ -1,8 +1,8 @@
 # Native editor sign-off — how reviewer notes become rubric rules
 
-Before the channel goes public, one Arabic broadcast editor reads two full episodes against
-`config/style_guide.md` and marks every line that sounds translated, stiff or wrong for a Gulf
-business audience. Their notes are the one input no model tuning replaces.
+Before the channel goes public, one native Jordanian editor (an Ammani who writes or presents in
+dialect) reads two full episodes against `config/style_guide.md` and marks every line that sounds
+translated, too formal, from another dialect, or not how people in Amman actually talk. Their notes are the one input no model tuning replaces.
 
 ## What to give the editor
 - `reviewed/<week>/script.md` for two weeks, printed or as a doc.

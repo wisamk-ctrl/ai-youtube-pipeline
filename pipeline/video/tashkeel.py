@@ -28,7 +28,8 @@ log = logging.getLogger(__name__)
 HARAKAT_RE = re.compile(r"[ً-ْٰ]")
 
 SYSTEM = """You prepare Arabic broadcast scripts for a speech engine. Add diacritics (tashkeel) ONLY where
-a careful Arabic newsreader would need them to avoid a misreading:
+a careful presenter would need them to avoid a misreading. Scripts are in Jordanian colloquial Arabic:
+never add MSA case endings to colloquial words; mark only what a speech engine would misread:
 - passive verbs (أُعلِن، تُدار، يُطلَق)
 - words with more than one common reading (عَلِم/عِلْم، قَدَّم/قَدِم، سَبَق/سُبُق)
 - unfamiliar proper names transliterated into Arabic (هِينا فِيركونين، مُون شوت)

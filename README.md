@@ -1,6 +1,6 @@
 # AI YouTube Pipeline: weekly Arabic AI-news roundup
 
-An automated pipeline that turns a week of AI news into an 8-minute Modern Standard Arabic
+An automated pipeline that turns a week of AI news into an 8-minute Jordanian colloquial Arabic
 script and a talking-head MP4 of your digital twin (your cloned face and voice).
 
 ```
@@ -111,7 +111,7 @@ per track and region; watched names with no news in 4 weeks). Reply `/promote <n
 **Phase 2: scripting (Claude).** This phase is a chain of three calls, each doing one job:
 1. **Editor.** `messages.parse` returns a validated Pydantic `EditorialPlan`: 5–7 stories,
    their order, the enterprise angle and B-roll ideas. Item IDs that don't exist are removed.
-2. **Writer.** A streamed call writes the full MSA script with `[Pause]`, `[Show B-Roll: …]`,
+2. **Writer.** A streamed call writes the full script in Jordanian colloquial Arabic with `[Pause]`, `[Show B-Roll: …]`,
    `[On-Screen Text: …]` and `[Section: …]` markers.
 3. **Reviewer.** This call fact-checks the script against the sources, polishes the Arabic,
    strips any investment advice and corrects the length. It repeats while the length is outside
