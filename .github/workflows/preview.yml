@@ -1,0 +1,55 @@
+name: preview
+# Makes a watchable copy of a week's video: picks the most finished file in the week's artifact
+# (final_subtitled → with_cards → talking_head), transcodes it to 1080p H.264, and force-pushes it
+# to the orphan branch `previews` (one commit, so old previews never bloat the repo history).
+on:
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "Week folder whose artifact holds the video, e.g. voicetest or 2026-W43"
+        required: true
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find the run that holds the week's artifact
+        id: art
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const name = `week-${{ inputs.week }}`;
+            const { data } = await github.rest.actions.listArtifactsForRepo({ owner: context.repo.owner, repo: context.repo.repo, name, per_page: 20 });
+            const live = data.artifacts.filter(a => !a.expired).sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+            if (!live.length) core.setFailed(`No artifact named ${name}`);
+            else core.setOutput('run_id', String(live[0].workflow_run.id));
+      - uses: actions/download-artifact@v4
+        with:
+          name: week-${{ inputs.week }}
+          path: art/
+          run-id: ${{ steps.art.outputs.run_id }}
+          github-token: ${{ github.token }}
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Transcode to a 1080p preview
+        run: |
+          d="art/${{ inputs.week }}"
+          for f in final_subtitled.mp4 with_cards.mp4 talking_head.mp4; do [ -f "$d/$f" ] && src="$d/$f" && break; done
+          [ -n "${src:-}" ] || { echo "::error::no video in $d"; ls -R art; exit 1; }
+          echo "Source: $src"
+          mkdir -p out
+          ffmpeg -hide_banner -loglevel error -y -i "$src" -vf "scale=-2:1080" -c:v libx264 -preset medium -crf 26 \
+            -c:a aac -b:a 128k -movflags +faststart "out/${{ inputs.week }}.mp4"
+          ls -la out
+      - name: Push to the previews branch
+        run: |
+          cd out
+          git init -q -b previews
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git fetch -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previews 2>/dev/null && git checkout -q FETCH_HEAD -- . 2>/dev/null || true
+          git add -A && git commit -q -m "preview: ${{ inputs.week }} ($(date -u +%F))"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" HEAD:previews
