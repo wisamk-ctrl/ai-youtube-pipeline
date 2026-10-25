@@ -82,9 +82,16 @@ jobs:
           echo "WEEK_DIR=$(ls -d output/*/ | tail -n1)" >> "$GITHUB_ENV"
           echo "WEEK_ID=$(basename "$(ls -d output/*/ | tail -n1)")" >> "$GITHUB_ENV"
       - name: Commit the radar's memory
+        # Never blocks the episode: if main moved meanwhile, rebase and retry; if it still fails,
+        # warn and carry on so the artifact and the review issue are not lost.
+        continue-on-error: true
         run: |
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
-          git add data/radar_state.json data/coverage.json data/youtube_channels.json 2>/dev/null; git add data/radar_state.json data/coverage.json && (git diff --cached --quiet || git commit -m "chore: radar state, coverage, youtube channel cache $(date -u +%F)") && git push
+          git add data/radar_state.json data/coverage.json data/youtube_channels.json 2>/dev/null; git add data/radar_state.json data/coverage.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "chore: radar state, coverage, youtube channel cache $(date -u +%F)"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q && exit 0; sleep $((i * 5)); done
+          echo "::warning::Could not push the radar state; it will be rebuilt next run."
       - uses: actions/upload-artifact@v4
         with:
           # Ingest-only runs have no script.md; name them apart so a render never picks one up.
