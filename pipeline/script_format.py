@@ -162,3 +162,10 @@ def extract_shots(script: str) -> list[ShotMark]:
 
 def has_shots(script: str) -> bool:
     return bool(extract_shots(script))
+
+
+def strip_shots(script: str) -> str:
+    """The script without shot markers (for re-directing); every other marker and word is kept."""
+    keep = [line for line in script.splitlines()
+            if not ((m := MARKER_RE.fullmatch(line.strip())) and parse_shot(m.group("body")))]
+    return "\n".join(keep)

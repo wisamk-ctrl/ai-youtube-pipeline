@@ -50,15 +50,25 @@ def test_check_refuses_changed_words_and_unknown_sources():
 
 
 class FakeClient:
+    """Stands in for client.messages.stream(...) as a context manager."""
+
     def __init__(self, outputs):
         self.outputs = list(outputs)
         self.calls = 0
-        self.messages = SimpleNamespace(parse=self._parse)
+        self.messages = SimpleNamespace(stream=self._stream)
 
-    def _parse(self, **kw):
+    def _stream(self, **kw):
         self.calls += 1
-        out = director.Directed(script=self.outputs.pop(0))
-        return SimpleNamespace(stop_reason="end_turn", parsed_output=out, usage=None)
+        text = f"<script>\n{self.outputs.pop(0)}\n</script>"
+        msg = SimpleNamespace(stop_reason="end_turn", usage=None, content=[SimpleNamespace(text=text)])
+
+        class Ctx:
+            def __enter__(self_inner):
+                return SimpleNamespace(get_final_message=lambda: msg)
+
+            def __exit__(self_inner, *a):
+                return False
+        return Ctx()
 
 
 def test_direct_accepts_a_clean_answer():
@@ -219,3 +229,12 @@ def test_apply_reviewed_keeps_a_directed_copy_of_the_same_words(tmp_path, monkey
     (tmp_path / "reviewed" / "w" / "script.md").write_text(SCRIPT + "\nجملة جديدة.", encoding="utf-8")
     assert mod.main("w") == "using reviewed script"                      # a new edit wins
     assert "[Face]" not in out.read_text(encoding="utf-8")
+
+
+def test_strip_shots_removes_only_shot_markers():
+    from pipeline.script_format import strip_shots
+    directed = director.auto_direct(SCRIPT)
+    stripped = strip_shots(directed)
+    assert not extract_shots(stripped)
+    assert "[Section: الافتتاحية]" in stripped and "[Pause]" in stripped and "[On-Screen Text: 80%]" in stripped
+    assert spoken_text(stripped).split() == spoken_text(SCRIPT).split()

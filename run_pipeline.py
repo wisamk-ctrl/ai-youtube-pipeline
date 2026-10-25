@@ -221,7 +221,9 @@ def phase_direct(cfg: dict, out: Path) -> None:
     from pipeline.script_format import count_spoken_words
     if not (out / "script.md").exists():
         sys.exit(f"{out / 'script.md'} not found — run the script phase first.")
-    script = _directed(cfg, out, (out / "script.md").read_text(encoding="utf-8"))
+    from pipeline.script_format import strip_shots
+    # Always a fresh plan: an earlier one (perhaps the rule-based fallback) is discarded.
+    script = _directed(cfg, out, strip_shots((out / "script.md").read_text(encoding="utf-8")))
     _shotlist(cfg, out, script, count_spoken_words(script) / cfg["scripting"]["words_per_minute"] * 60, None)
 
 
