@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 
 import requests
@@ -40,7 +41,30 @@ def main() -> None:
     arabic = [v for v in voices if "arab" in (v.get("language") or "").lower()]
     other = [v for v in voices if v not in arabic]
 
-    out = [f"## HeyGen assets\n\n{len(avatars)} avatars · {len(photos)} talking photos · {len(voices)} voices "
+    # Your own uploads: HeyGen's avatar groups with include_public=false, plus any avatar, photo or
+    # voice whose name matches HEYGEN_MATCH (default: the presenter's names). Best effort: an
+    # endpoint this account cannot use is reported, never fatal.
+    pat = re.compile(os.environ.get("HEYGEN_MATCH") or r"wiss?am|وسام|kishek|\bsam\b", re.I)
+    mine = ["### Yours (uploaded to this account)\n"]
+    r = s.get(f"{BASE}/v2/avatar_group.list", params={"include_public": "false"}, timeout=60)
+    groups = ((r.json().get("data") or {}).get("avatar_group_list") or []) if r.status_code == 200 else []
+    mine.append(f"Avatar groups you own: {len(groups)}" + ("" if r.status_code == 200 else f" (endpoint HTTP {r.status_code})"))
+    for g in groups:
+        mine.append(f"- group `{g.get('id')}` · {g.get('name')} · type {g.get('group_type')} · {g.get('num_looks')} look(s)")
+        rr = s.get(f"{BASE}/v2/avatar_group/{g.get('id')}/avatars", timeout=60)
+        for a in ((rr.json().get("data") or {}).get("avatar_list") or []) if rr.status_code == 200 else []:
+            mine.append(f"  - look `{a.get('id') or a.get('avatar_id')}` · {a.get('name') or a.get('avatar_name')} · default voice `{a.get('default_voice_id')}`")
+    named = [("avatar", a.get("avatar_id"), a.get("avatar_name")) for a in avatars if pat.search(a.get("avatar_name") or "")]
+    named += [("talking_photo", p.get("talking_photo_id"), p.get("talking_photo_name")) for p in photos if pat.search(p.get("talking_photo_name") or "")]
+    named += [("voice", v.get("voice_id"), f"{v.get('name')} · {v.get('language')}") for v in voices if pat.search(v.get("name") or "")]
+    mine.append("\nNamed like you:" if named else "\nNothing named like you.")
+    mine += [f"- {k} `{i}` · {n}" for k, i, n in named]
+    unlabeled = [v for v in voices if not v.get("language")]
+    if unlabeled:
+        mine.append(f"\nVoices with no language set ({len(unlabeled)}; a fresh clone often looks like this):")
+        mine += [f"- voice `{v.get('voice_id')}` · {v.get('name')}" for v in unlabeled[:30]]
+
+    out = ["\n".join(mine) + "\n", f"## HeyGen assets\n\n{len(avatars)} avatars · {len(photos)} talking photos · {len(voices)} voices "
            f"({len(arabic)} Arabic). Full list in the `heygen-assets` artifact.\n"]
     out.append("### Your avatars (custom / instant)\n")
     out.append("| avatar_id | name | gender |\n|---|---|---|")
