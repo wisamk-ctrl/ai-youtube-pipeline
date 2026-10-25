@@ -144,6 +144,11 @@ video:
 
   heygen:
     avatar_type: avatar       # avatar (Instant/Studio avatar) | talking_photo (photo avatar)
+    # The presenter's own avatar and voice clone (2026-10-25). These are IDs, not credentials:
+    # they do nothing without HEYGEN_API_KEY. A HEYGEN_AVATAR_ID / HEYGEN_VOICE_ID secret or a
+    # workflow input overrides them for a one-off render.
+    avatar_id: dd64d6001c4e41c5a91b2fb9eead42a6   # "Sam -- 1"
+    voice_id: 4c810d9c9906445f81dfd4f7d32259e0    # Jordanian voice clone, second recording
     avatar_style: normal
     voice_speed: 1.0
     width: 3840               # 4K master; YouTube re-encodes 1080p from it at a visibly higher bitrate

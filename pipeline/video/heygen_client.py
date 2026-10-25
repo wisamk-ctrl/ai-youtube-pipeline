@@ -38,8 +38,9 @@ class HeyGenClient:
         self.hcfg = dict(cfg["video"]["heygen"])
         if os.environ.get("HEYGEN_AVATAR_TYPE"):
             self.hcfg["avatar_type"] = os.environ["HEYGEN_AVATAR_TYPE"]
-        self.avatar_id = require_env("HEYGEN_AVATAR_ID")
-        self.voice_id = require_env("HEYGEN_VOICE_ID")
+        # A secret or workflow input wins; otherwise the presenter's IDs in settings.yaml.
+        self.avatar_id = os.environ.get("HEYGEN_AVATAR_ID") or self.hcfg.get("avatar_id") or require_env("HEYGEN_AVATAR_ID")
+        self.voice_id = os.environ.get("HEYGEN_VOICE_ID") or self.hcfg.get("voice_id") or require_env("HEYGEN_VOICE_ID")
         self.session = requests.Session()
         self.session.headers.update({
             "X-Api-Key": require_env("HEYGEN_API_KEY"),
