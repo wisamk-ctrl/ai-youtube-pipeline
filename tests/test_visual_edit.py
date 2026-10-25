@@ -172,3 +172,21 @@ def test_compose_cuts_face_visuals_and_corner_over_the_original_audio(tmp_path):
     probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "stream=codec_type,width,height",
                             "-of", "csv=p=0", str(out)], capture_output=True, text=True).stdout
     assert "video,320,180" in probe and "audio" in probe
+
+
+def test_apply_reviewed_keeps_a_directed_copy_of_the_same_words(tmp_path, monkeypatch):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("apply_reviewed", Path(__file__).parents[1] / "scripts" / "apply_reviewed.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "reviewed" / "w").mkdir(parents=True)
+    (tmp_path / "reviewed" / "w" / "script.md").write_text(SCRIPT, encoding="utf-8")
+    out = tmp_path / "output" / "w" / "script.md"
+    assert mod.main("w") == "using reviewed script"                      # nothing there yet
+    out.write_text(director.auto_direct(SCRIPT), encoding="utf-8")
+    assert mod.main("w") == "kept the directed copy of the reviewed script"
+    assert "[Face]" in out.read_text(encoding="utf-8")
+    (tmp_path / "reviewed" / "w" / "script.md").write_text(SCRIPT + "\nجملة جديدة.", encoding="utf-8")
+    assert mod.main("w") == "using reviewed script"                      # a new edit wins
+    assert "[Face]" not in out.read_text(encoding="utf-8")

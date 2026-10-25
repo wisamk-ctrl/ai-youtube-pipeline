@@ -216,6 +216,15 @@ def phase_import(cfg: dict, out: Path, video_ref: str | None) -> None:
     phase_post(cfg, out, None)
 
 
+def phase_direct(cfg: dict, out: Path) -> None:
+    """Run the director on the week's approved script and write the shot list, before any video exists."""
+    from pipeline.script_format import count_spoken_words
+    if not (out / "script.md").exists():
+        sys.exit(f"{out / 'script.md'} not found — run the script phase first.")
+    script = _directed(cfg, out, (out / "script.md").read_text(encoding="utf-8"))
+    _shotlist(cfg, out, script, count_spoken_words(script) / cfg["scripting"]["words_per_minute"] * 60, None)
+
+
 def phase_publish(cfg: dict, out: Path) -> None:
     from pipeline.publish.youtube_upload import run_publish
 
@@ -225,7 +234,7 @@ def phase_publish(cfg: dict, out: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "video", "import", "post", "publish", "all"])
+    ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "direct", "video", "import", "post", "publish", "all"])
     ap.add_argument("--fixture", help="Copy fixtures/<name>/items.json into the week folder instead of ingesting (offline testing)")
     ap.add_argument("--shorts", help='Comma-separated start-end seconds for vertical cuts, e.g. "12-55,180-240"')
     ap.add_argument("--week", help="Output folder name, default: current ISO week (e.g. 2026-W41)")
@@ -263,6 +272,8 @@ def main() -> None:
         phase_polish(cfg, out)
     if args.phase == "score":
         phase_score(cfg, out)
+    if args.phase == "direct":
+        phase_direct(cfg, out)
     if args.phase == "import":
         phase_import(cfg, out, args.video_url)
     if args.phase == "post":
