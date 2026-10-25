@@ -76,6 +76,8 @@ def _write_script_result(cfg: dict, out: Path, result, plan_too: bool) -> None:
     (out / "script.md").write_text(result.script + "\n", encoding="utf-8")
     (out / "critique.json").write_text(json.dumps(result.critique_rounds, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "source_map.md").write_text(result.source_map_md, encoding="utf-8")
+    from pipeline.video.manual import write_paste_pack
+    write_paste_pack(result.script, cfg, out)   # for the manual HeyGen web-app route
     log.info("Quality: critic %s · sources: %s",
              " → ".join(str(r["minimum"]) for r in result.critique_rounds) or "n/a", result.source_stats)
     minutes = result.word_count / cfg["scripting"]["words_per_minute"]
@@ -158,6 +160,18 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     log.info("Phase 4 done → %s (similarity %.2f, %d shorts)", result["final"], result["similarity"], len(result["shorts"]))
 
 
+def phase_import(cfg: dict, out: Path, video_ref: str | None) -> None:
+    """Manual route: bring in a video rendered in HeyGen's web app, then run post-production."""
+    from pipeline.video.manual import import_video
+
+    if not video_ref:
+        sys.exit("phase import needs --video-url (a HeyGen video ID or link, Drive, Dropbox or direct MP4 URL)")
+    if not (out / "script.md").exists():
+        sys.exit(f"{out / 'script.md'} not found — the week needs its script for subtitles and cue cards.")
+    import_video(video_ref, out)
+    phase_post(cfg, out, None)
+
+
 def phase_publish(cfg: dict, out: Path) -> None:
     from pipeline.publish.youtube_upload import run_publish
 
@@ -167,7 +181,7 @@ def phase_publish(cfg: dict, out: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "video", "post", "publish", "all"])
+    ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "video", "import", "post", "publish", "all"])
     ap.add_argument("--fixture", help="Copy fixtures/<name>/items.json into the week folder instead of ingesting (offline testing)")
     ap.add_argument("--shorts", help='Comma-separated start-end seconds for vertical cuts, e.g. "12-55,180-240"')
     ap.add_argument("--week", help="Output folder name, default: current ISO week (e.g. 2026-W41)")
@@ -175,6 +189,7 @@ def main() -> None:
     ap.add_argument("--dry-run", action="store_true", help="Prepare TTS text/cues but skip the paid render")
     ap.add_argument("--approve", action="store_true", help="With 'all': render without stopping for script review")
     ap.add_argument("--resume-video-id", help="Re-attach to an already-submitted render job")
+    ap.add_argument("--video-url", help="import: HeyGen video ID or link, Drive/Dropbox share link, or direct MP4 URL")
     ap.add_argument("-v", "--verbose", action="store_true")
     args = ap.parse_args()
 
@@ -204,6 +219,8 @@ def main() -> None:
         phase_polish(cfg, out)
     if args.phase == "score":
         phase_score(cfg, out)
+    if args.phase == "import":
+        phase_import(cfg, out, args.video_url)
     if args.phase == "post":
         phase_post(cfg, out, args.shorts)
     if args.phase == "publish":

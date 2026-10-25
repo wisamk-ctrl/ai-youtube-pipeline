@@ -24,7 +24,7 @@ on:
         description: "script (ingest+script) | ingest (sources only, no Claude) | polish (apply the last critique, re-score) | score (critic only, on reviewed/<week>/script.md if present) | video | post | publish"
         default: script
         type: choice
-        options: [script, ingest, polish, score, video, post, publish]
+        options: [script, ingest, polish, score, video, import, post, publish]
       week:
         description: "Week folder, e.g. 2026-W41 (default: current ISO week)"
         default: ""
@@ -42,6 +42,9 @@ on:
         default: ""
       avatar_type:
         description: "video only: avatar | talking_photo (overrides settings.yaml)"
+        default: ""
+      video_url:
+        description: "import only: the video you rendered in HeyGen's web app (its ID or share link), or a Drive/Dropbox/direct MP4 link"
         default: ""
 
 permissions:
@@ -128,6 +131,7 @@ jobs:
             const radar = fs.existsSync(`${dir}/radar_report.md`) ? fs.readFileSync(`${dir}/radar_report.md`, 'utf8') : '';
             const cov = fs.existsSync(`${dir}/coverage.md`) ? fs.readFileSync(`${dir}/coverage.md`, 'utf8') : '';
             const srcs = fs.existsSync(`${dir}/sources.md`) ? fs.readFileSync(`${dir}/sources.md`, 'utf8') : '';
+            const paste = fs.existsSync(`${dir}/heygen_paste.md`) ? fs.readFileSync(`${dir}/heygen_paste.md`, 'utf8') : '';
             const crit = fs.existsSync(`${dir}/critique.json`) ? JSON.parse(fs.readFileSync(`${dir}/critique.json`, 'utf8')) : [];
             const last = crit[crit.length - 1];
             const bar = Number((fs.readFileSync('config/settings.yaml', 'utf8').match(/critic:[\s\S]*?min_score:\s*(\d+)/) || [])[1] || 8);
@@ -144,7 +148,8 @@ jobs:
               labels: ['script-review'],
               body: `Artifact run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
                     `${quality}\n\n${sourceLine}\n\n${usageLine}\n\n` +
-                    `When approved, run the **weekly-roundup** workflow with phase=\`video\` and this week.\n\n` +
+                    `When approved: render in HeyGen's web app from the paste pack below, then run **weekly-roundup** with phase=\`import\`, this week, and the video's link in \`video_url\`. (With API credits, phase=\`video\` renders it automatically instead.)\n\n` +
+                    (paste ? `<details><summary>HeyGen paste pack (copy scene by scene)</summary>\n\n${paste}\n</details>\n\n` : '') +
                     `<details><summary>script.md</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>\n\n${radar}\n\n${cov}\n\n${srcs}\n\nDecide from here: comment \`/promote <name> --track models --group gulf --ar <الاسم>\` or \`/ignore <name>\`.`.slice(0, 64000),
             });
 
@@ -177,10 +182,10 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - name: Install ffmpeg + Arabic font (post phase)
-        if: inputs.phase == 'post'
+        if: inputs.phase == 'post' || inputs.phase == 'import'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-core
       - name: Install Chromium for the cue cards (post phase)
-        if: inputs.phase == 'post'
+        if: inputs.phase == 'post' || inputs.phase == 'import'
         run: python -m playwright install --with-deps chromium
       - name: Find the run that holds the week's artifact
         # download-artifact only sees the current run unless told which run to read;
@@ -227,9 +232,11 @@ jobs:
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
           WHISPER_MODEL: medium
+          VIDEO_URL: ${{ inputs.video_url }}     # via env, never spliced into the shell line
         run: |
           SHORTS=""; [ -n "${{ inputs.shorts }}" ] && SHORTS="--shorts ${{ inputs.shorts }}"
-          python run_pipeline.py ${{ inputs.phase }} --week ${{ inputs.week }} $SHORTS
+          VURL=(); [ -n "$VIDEO_URL" ] && VURL=(--video-url "$VIDEO_URL")
+          python run_pipeline.py ${{ inputs.phase }} --week ${{ inputs.week }} $SHORTS "${VURL[@]}"
       - uses: actions/upload-artifact@v4
         with:
           name: week-${{ inputs.week }}
