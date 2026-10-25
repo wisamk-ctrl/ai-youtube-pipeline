@@ -102,8 +102,9 @@ def anchor(cue: Cue, script_words: list[str], srt_idx: list[tuple[float, str]], 
 
 
 def plan_cards(script: str, wpm: int, out_dir: Path, srt: Path | None = None,
-               card_seconds: float = 6.0, broll_seconds: float = 4.0) -> list[Card]:
-    cues = [c for c in extract_cues(script, wpm) if c.kind in ("onscreen", "broll")]
+               card_seconds: float = 6.0, broll_seconds: float = 4.0,
+               kinds: tuple[str, ...] = ("onscreen", "broll")) -> list[Card]:
+    cues = [c for c in extract_cues(script, wpm) if c.kind in kinds]
     words = spoken_text(script).split()
     idx = _srt_index(srt)
     cards: list[Card] = []
@@ -132,10 +133,17 @@ def overlay(video: Path, cards: list[Card], dest: Path) -> Path:
     return dest
 
 
-def run_overlays(video: Path, script: str, cfg: dict[str, Any], out_dir: Path, srt: Path | None = None) -> Path:
+def run_overlays(video: Path, script: str, cfg: dict[str, Any], out_dir: Path, srt: Path | None = None,
+                 skip_spans: list[tuple[float, float]] | None = None) -> Path:
+    """With the visual edit on, B-roll placeholders are gone (real footage replaced them) and a
+    lower-third is skipped where a full-screen card already shows the same moment."""
     o = cfg.get("post", {}).get("overlays", {})
+    edited = cfg.get("visuals", {}).get("enabled", False)
     cards = plan_cards(script, cfg["scripting"]["words_per_minute"], out_dir, srt,
-                       float(o.get("card_seconds", 6)), float(o.get("broll_seconds", 4)))
+                       float(o.get("card_seconds", 6)), float(o.get("broll_seconds", 4)),
+                       ("onscreen",) if edited else ("onscreen", "broll"))
+    if skip_spans:
+        cards = [c for c in cards if not any(a - 0.5 <= c.at <= b for a, b in skip_spans)]
     for c in cards:
         render_card(c.cue.text, c.png, c.cue.kind)
     (out_dir / "cards.json").write_text(json.dumps(

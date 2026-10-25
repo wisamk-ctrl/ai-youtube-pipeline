@@ -67,6 +67,10 @@ def phase_script(cfg: dict, out: Path) -> None:
 
     result = ScriptEngine(cfg).run(items, week_label=out.name)
     _write_script_result(cfg, out, result, plan_too=True)
+    if cfg.get("visuals", {}).get("enabled"):
+        script = _directed(cfg, out, result.script)
+        from pipeline.script_format import count_spoken_words
+        _shotlist(cfg, out, script, count_spoken_words(script) / cfg["scripting"]["words_per_minute"] * 60, None)
 
 
 def _write_script_result(cfg: dict, out: Path, result, plan_too: bool) -> None:
@@ -95,6 +99,34 @@ def _load_week(out: Path):
     script = (out / "script.md").read_text(encoding="utf-8").rstrip("\n")
     rounds = json.loads((out / "critique.json").read_text(encoding="utf-8"))
     return items, plan, script, rounds
+
+
+def _items(out: Path) -> list[NewsItem]:
+    p = out / "items.json"
+    return [NewsItem.from_dict(d) for d in json.loads(p.read_text(encoding="utf-8"))] if p.exists() else []
+
+
+def _directed(cfg: dict, out: Path, script: str) -> str:
+    """The script with shot markers: as written if it has them, otherwise through the director pass."""
+    from pipeline.script_format import has_shots
+    if has_shots(script):
+        return script
+    from pipeline.scripting.director import direct
+    directed = direct(script, _items(out), cfg)
+    (out / "script.md").write_text(directed.rstrip("\n") + "\n", encoding="utf-8")
+    return directed
+
+
+def _shotlist(cfg: dict, out: Path, script: str, duration: float, srt: Path | None) -> list:
+    from pipeline.post import visuals
+    v = cfg.get("visuals", {})
+    shots = visuals.plan(script, duration, srt, cfg["scripting"]["words_per_minute"],
+                         max_visual=float(v.get("max_visual_seconds", 12)))
+    report = visuals.lint(shots, v)
+    (out / "shotlist.md").write_text(visuals.shotlist_md(shots, report, estimated=srt is None), encoding="utf-8")
+    (out / "shotlist.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    log.info("Shot list: face %.0f%%, %d shots, %d warnings", report["face_share"] * 100, report["shots"], len(report["warnings"]))
+    return shots
 
 
 def phase_score(cfg: dict, out: Path) -> None:
@@ -151,12 +183,24 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         sys.exit(f"{video} not found — run the video phase first.")
     shorts = [tuple(map(float, s.split("-"))) for s in shorts_arg.split(",")] if shorts_arg else []
     script = (out / "script.md").read_text(encoding="utf-8")
-    result = run_post(video, spoken_text(script), out, shorts)
+    from pipeline.post.subtitles import burn_in
+    result = run_post(video, spoken_text(script), out, shorts, burn=False)
+    base, skip = video, []
+    if cfg.get("visuals", {}).get("enabled"):
+        # The premium cut (config/visual_standard.md): face for ~a quarter, visuals for the rest.
+        from pipeline.post import edit, visual_assets
+        script = _directed(cfg, out, script)
+        shots = _shotlist(cfg, out, script, edit.duration(video), result["srt"])
+        clips, _ = visual_assets.build(shots, _items(out), cfg, out)
+        base = edit.compose(video, shots, clips, cfg, out)
+        skip = [(s.start, s.end) for n, s in enumerate(shots) if n in clips and s.kind in ("number", "title", "source")]
     if cfg.get("post", {}).get("overlays", {}).get("enabled", True):
         from pipeline.post.overlays import run_overlays
-        from pipeline.post.subtitles import burn_in
-        with_cards = run_overlays(video, script, cfg, out, result["srt"])
-        result["final"] = burn_in(with_cards, result["srt"], out / "final_subtitled.mp4")
+        base = run_overlays(base, script, cfg, out, result["srt"], skip_spans=skip)
+    result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4")
+    import shutil  # intermediates are as large as the video itself; keep the artifact lean
+    for tmp in ("segments", "visuals"):
+        shutil.rmtree(out / tmp, ignore_errors=True)
     log.info("Phase 4 done → %s (similarity %.2f, %d shorts)", result["final"], result["similarity"], len(result["shorts"]))
 
 

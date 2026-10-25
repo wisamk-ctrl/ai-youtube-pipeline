@@ -166,6 +166,24 @@ video:
   did:
     endpoint: clips           # clips (presenter_id) — the custom-avatar path on D-ID
 
+# Premium-explainer look (config/visual_standard.md is the rulebook; these are the knobs).
+visuals:
+  enabled: true
+  director_model: claude-sonnet-5-5   # inserts shot markers; spoken words are checked unchanged
+  width: 1920                 # the edited cut; HeyGen's 4K master is scaled into it
+  height: 1080
+  fps: 30
+  face_share: [0.20, 0.30]    # target share of runtime with the presenter full-frame
+  face_share_max: 0.35
+  max_face_seconds: 20
+  max_visual_seconds: 12      # longer visuals switch to the corner layout halfway
+  corner:
+    size: 0.26                # circle diameter as a share of frame height
+    margin_x: 0.04
+    margin_bottom: 0.20       # clear of the subtitles
+    face_crop: 0.62           # share of the presenter frame's height kept around the face
+    face_top: 0.06
+
 post:
   overlays:
     enabled: true             # [On-Screen Text] cues become lower-third cards; [Show B-Roll] cues a corner marker

@@ -137,7 +137,8 @@ def cut_short(video: Path, start: float, end: float, dest: Path, srt: Path | Non
     return dest
 
 
-def run_post(video: Path, spoken_script: str, out_dir: Path, shorts: list[tuple[float, float]] | None = None) -> dict:
+def run_post(video: Path, spoken_script: str, out_dir: Path, shorts: list[tuple[float, float]] | None = None,
+             burn: bool = True) -> dict:
     """Transcribe → SRT → similarity check → burned-in master → optional Shorts."""
     segments = transcribe(video)
     srt = write_srt(segments, out_dir / "subtitles.srt")
@@ -146,7 +147,7 @@ def run_post(video: Path, spoken_script: str, out_dir: Path, shorts: list[tuple[
     if score < 0.75:
         log.warning("Low similarity — the render may have dropped or garbled a chunk; review subtitles.srt")
 
-    final = burn_in(video, srt, out_dir / "final_subtitled.mp4")
+    final = burn_in(video, srt, out_dir / "final_subtitled.mp4") if burn else None
     made = []
     if shorts:
         (out_dir / "shorts").mkdir(exist_ok=True)

@@ -117,3 +117,48 @@ def chunk_text(text: str, max_chars: int) -> list[str]:
     if current:
         chunks.append(current)
     return chunks
+
+
+# ── Shot markers (config/visual_standard.md) ─────────────────────────────────
+SHOT_KINDS = ("source", "number", "title", "stock")
+
+
+@dataclass
+class ShotMark:
+    mode: str           # "face" | "visual" | "corner"
+    kind: str           # "" for face, else one of SHOT_KINDS
+    payload: str        # item id, "figure | label", phrase, or stock search terms
+    at_word: int        # spoken-word offset where the shot starts
+
+
+def parse_shot(body: str) -> tuple[str, str, str] | None:
+    """`Face` / `Visual: <kind> <payload>` / `Corner: <kind> <payload>` → (mode, kind, payload)."""
+    body = body.strip()
+    if body.lower() == "face":
+        return ("face", "", "")
+    head, sep, rest = body.partition(":")
+    mode = head.strip().lower()
+    if not sep or mode not in ("visual", "corner"):
+        return None
+    kind, _, payload = rest.strip().partition(" ")
+    kind = kind.strip().lower()
+    if kind not in SHOT_KINDS or not payload.strip():
+        return None
+    return (mode, kind, payload.strip())
+
+
+def extract_shots(script: str) -> list[ShotMark]:
+    """Every shot marker, in order, with the spoken-word offset where it fires."""
+    shots: list[ShotMark] = []
+    words, pos = 0, 0
+    for m in MARKER_RE.finditer(script):
+        words += len(MARKER_RE.sub(" ", script[pos:m.start()]).split())
+        pos = m.end()
+        parsed = parse_shot(m.group("body"))
+        if parsed:
+            shots.append(ShotMark(*parsed, at_word=words))
+    return shots
+
+
+def has_shots(script: str) -> bool:
+    return bool(extract_shots(script))
