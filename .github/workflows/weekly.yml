@@ -185,9 +185,12 @@ jobs:
             const name = `week-${{ inputs.week }}`;
             const { data } = await github.rest.actions.listArtifactsForRepo({ owner: context.repo.owner, repo: context.repo.repo, name, per_page: 20 });
             const live = data.artifacts.filter(a => !a.expired).sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-            if (!live.length) core.setFailed(`No artifact named ${name}; run phase=script for this week first.`);
+            const reviewed = require('fs').existsSync(`reviewed/${{ inputs.week }}/script.md`);
+            if (!live.length && reviewed) core.notice(`No artifact named ${name}; rendering reviewed/${{ inputs.week }}/script.md on its own.`);
+            else if (!live.length) core.setFailed(`No artifact named ${name}; run phase=script for this week first.`);
             else core.setOutput('run_id', String(live[0].workflow_run.id));
       - name: Download the week's artifact
+        if: steps.art.outputs.run_id != ''
         uses: actions/download-artifact@v4
         with:
           name: week-${{ inputs.week }}
@@ -198,6 +201,7 @@ jobs:
         # Commit your reviewed script to reviewed/<week>/script.md to override the generated one.
         run: |
           if [ -f "reviewed/${{ inputs.week }}/script.md" ]; then
+            mkdir -p "output/${{ inputs.week }}"
             cp "reviewed/${{ inputs.week }}/script.md" "output/${{ inputs.week }}/script.md"
             echo "Using reviewed script"
           fi
