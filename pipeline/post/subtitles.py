@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import logging
 import os
+import re
 import shutil
 import subprocess
 from dataclasses import dataclass
@@ -48,31 +49,112 @@ def _fmt_ts(seconds: float) -> str:
     return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
 
 
-def transcribe(video: Path, model_size: str | None = None, max_chars: int = 42) -> list[Segment]:
-    """Arabic transcription with word timestamps, re-chunked into caption-sized lines.
+@dataclass
+class Word:
+    start: float
+    end: float
+    word: str
 
-    Whisper's own segments can run 15+ seconds; captions over ~42 characters
-    wrap badly on phones, so we re-split on word timings instead.
-    """
+
+def transcribe_words(video: Path, model_size: str | None = None) -> list[Word]:
+    """Every word Whisper hears, with its own start and end time."""
     from faster_whisper import WhisperModel  # imported lazily: heavy, optional
 
     model_size = model_size or os.environ.get("WHISPER_MODEL", "large-v3")
     model = WhisperModel(model_size, device="auto", compute_type="int8")
     segments, info = model.transcribe(str(video), language="ar", word_timestamps=True, vad_filter=True)
     log.info("Whisper %s: language=%s p=%.2f", model_size, info.language, info.language_probability)
+    return [Word(w.start, w.end, w.word) for seg in segments for w in (seg.words or [])]
 
+
+def transcribe(video: Path, model_size: str | None = None, max_chars: int = 42) -> list[Segment]:
+    """Arabic transcription re-chunked into caption-sized lines (Whisper's own wording)."""
+    return chunk_words(transcribe_words(video, model_size), max_chars)
+
+
+def chunk_words(all_words: list[Word], max_chars: int = 42) -> list[Segment]:
+    """Whisper's segments can run 15+ seconds; captions over ~42 characters wrap badly on phones,
+    so lines are re-split on word timings."""
     out: list[Segment] = []
     words: list = []
-    for seg in segments:
-        for w in seg.words or []:
-            words.append(w)
-            line = "".join(x.word for x in words).strip()
-            # Flush on length or on a sentence-final mark.
-            if len(line) >= max_chars or line.endswith(("،", ".", "؟", "!", "…")):
-                out.append(Segment(words[0].start, words[-1].end, line))
-                words = []
+    for w in all_words:
+        words.append(w)
+        line = "".join(x.word for x in words).strip()
+        # Flush on length or on a sentence-final mark.
+        if len(line) >= max_chars or line.endswith(("،", ".", "؟", "!", "…")):
+            out.append(Segment(words[0].start, words[-1].end, line))
+            words = []
     if words:
         out.append(Segment(words[0].start, words[-1].end, "".join(x.word for x in words).strip()))
+    return out
+
+
+# ── Captions from the approved script, timed by Whisper ─────────────────────
+# Whisper writes Jordanian speech in its own spelling («خلين انبلش» for «خلّينا نبلّش») and
+# digits for spoken numbers. The viewer should read the approved script, so Whisper is used only
+# for timing: script words are matched to heard words wherever the two agree after normalising
+# Arabic spelling, and every other word is timed by interpolating between those anchors.
+_HARAKAT = re.compile(r"[\u064B-\u0652\u0670\u0640]")
+_PUNCT = re.compile(r"[^\w]", re.UNICODE)
+
+
+def norm_word(w: str) -> str:
+    w = _HARAKAT.sub("", w)
+    w = re.sub("[أإآٱ]", "ا", w).replace("ة", "ه").replace("ى", "ي").replace("ؤ", "و").replace("ئ", "ي")
+    return _PUNCT.sub("", w).lower()
+
+
+def align(script_words: list[str], heard: list[Word]) -> list[float]:
+    """A start time for every script word."""
+    n = len(script_words)
+    if not heard:
+        return [0.0] * n
+    sm = SequenceMatcher(None, [norm_word(w) for w in script_words], [norm_word(h.word) for h in heard], autojunk=False)
+    anchors = {}
+    for a, b, size in sm.get_matching_blocks():
+        for k in range(size):
+            if norm_word(script_words[a + k]):
+                anchors[a + k] = heard[b + k].start
+    end = heard[-1].end
+    if not anchors:   # nothing matched: spread the script evenly over the speech
+        first = heard[0].start
+        return [first + (end - first) * i / n for i in range(n)]
+    points = sorted(anchors.items())
+    if points[0][0] != 0:
+        points.insert(0, (0, min(heard[0].start, points[0][1])))
+    if points[-1][0] != n:
+        points.append((n, end))
+    times = []
+    for i in range(n):
+        for (i0, t0), (i1, t1) in zip(points, points[1:]):
+            if i0 <= i <= i1:
+                times.append(t0 if i1 == i0 else t0 + (t1 - t0) * (i - i0) / (i1 - i0))
+                break
+    # Monotonic, whatever the matcher did.
+    for i in range(1, n):
+        times[i] = max(times[i], times[i - 1])
+    log.info("Caption alignment: %d of %d script words anchored to heard words", len(anchors), n)
+    return times
+
+
+def script_captions(spoken_script: str, heard: list[Word], max_chars: int = 42) -> list[Segment]:
+    words = spoken_script.split()
+    if not words:
+        return []
+    times = align(words, heard)
+    end = heard[-1].end if heard else times[-1] + 2
+    lines: list[tuple[int, int]] = []
+    start = 0
+    for i in range(len(words)):
+        text = " ".join(words[start:i + 1])
+        if len(text) >= max_chars or words[i].endswith(("،", ".", "؟", "!", "…", ":")) or i == len(words) - 1:
+            lines.append((start, i + 1))
+            start = i + 1
+    out = []
+    for k, (a, b) in enumerate(lines):
+        t0 = times[a]
+        t1 = times[lines[k + 1][0]] if k + 1 < len(lines) else end
+        out.append(Segment(t0, max(t0 + 0.4, t1 - 0.05), " ".join(words[a:b])))
     return out
 
 
@@ -91,11 +173,9 @@ def transcript_matches_script(segments: list[Segment], spoken_script: str) -> fl
     Arabic diacritics/punctuation differ between Whisper and the script, so
     compare on stripped, lower-cased tokens. Expect ~0.85+ for a clean render.
     """
-    import re
-
-    norm = lambda t: re.sub(r"[ً-ْـ،.؟!…\s]+", " ", t).strip()  # noqa: E731
-    said = norm(" ".join(s.text for s in segments))
-    return SequenceMatcher(None, said, norm(spoken_script)).ratio()
+    said = [norm_word(w) for s in segments for w in s.text.split()]
+    approved = [norm_word(w) for w in spoken_script.split()]
+    return SequenceMatcher(None, " ".join(said), " ".join(approved), autojunk=False).ratio()
 
 
 def _ffmpeg(*args: str) -> None:
@@ -140,8 +220,10 @@ def cut_short(video: Path, start: float, end: float, dest: Path, srt: Path | Non
 def run_post(video: Path, spoken_script: str, out_dir: Path, shorts: list[tuple[float, float]] | None = None,
              burn: bool = True) -> dict:
     """Transcribe → SRT → similarity check → burned-in master → optional Shorts."""
-    segments = transcribe(video)
-    srt = write_srt(segments, out_dir / "subtitles.srt")
+    heard = transcribe_words(video)
+    segments = chunk_words(heard)
+    write_srt(segments, out_dir / "transcript.srt")          # Whisper's own wording, for checking
+    srt = write_srt(script_captions(spoken_script, heard), out_dir / "subtitles.srt")
     score = transcript_matches_script(segments, spoken_script)
     log.info("Transcript/script similarity: %.2f", score)
     if score < 0.75:
