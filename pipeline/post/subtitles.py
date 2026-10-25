@@ -147,14 +147,17 @@ def script_captions(spoken_script: str, heard: list[Word], max_chars: int = 42) 
     start = 0
     for i in range(len(words)):
         text = " ".join(words[start:i + 1])
-        if len(text) >= max_chars or words[i].endswith(("،", ".", "؟", "!", "…", ":")) or i == len(words) - 1:
+        if len(text) >= max_chars or words[i].endswith((".", "؟", "?", "!", "…")) or i == len(words) - 1:
             lines.append((start, i + 1))
             start = i + 1
     out = []
     for k, (a, b) in enumerate(lines):
         t0 = times[a]
         t1 = times[lines[k + 1][0]] if k + 1 < len(lines) else end
-        out.append(Segment(t0, max(t0 + 0.4, t1 - 0.05), " ".join(words[a:b])))
+        # Subtitle convention: no trailing comma, full stop or colon (they also flip sides next to
+        # Latin words in right-to-left text); questions and exclamations keep their mark.
+        text = " ".join(words[a:b]).strip().rstrip("،,.:؛;").strip()
+        out.append(Segment(t0, max(t0 + 0.4, t1 - 0.05), text))
     return out
 
 

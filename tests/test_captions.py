@@ -38,3 +38,11 @@ def test_captions_use_the_script_wording_not_whisper():
 def test_no_matches_spreads_the_script_over_the_speech():
     caps = script_captions("كلمة تانية تالتة", [Word(1.0, 1.4, "x"), Word(3.0, 3.4, "y")])
     assert caps[0].start == 1.0 and caps[-1].end <= 3.4
+
+
+def test_lines_break_at_sentences_and_drop_trailing_commas():
+    caps = script_captions(SCRIPT, heard())
+    assert all(not c.text.endswith(("،", ".", ":")) for c in caps)
+    assert any(c.text.endswith("وسام") for c in caps)          # "معكم وسام." without its full stop
+    q = script_captions("بتثقوا بموديل ما درّبتوه بإيدكم؟", heard())
+    assert q[-1].text.endswith("؟")
