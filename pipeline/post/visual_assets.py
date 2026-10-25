@@ -5,7 +5,8 @@ output size and frame rate, a little longer than the shot.
 - source  → a news-clipping card (publisher, headline, date) with a slow push-in
 - number  → the figure counting up, then holding, with an Arabic label
 - title   → a short Arabic phrase, large, with a slow push-in
-- stock   → Pexels footage for English search terms (PEXELS_API_KEY), muted, cropped to fill
+- stock   → Pixabay (PIXABAY_API_KEY) or Pexels (PEXELS_API_KEY) footage for English search terms,
+              muted and cropped to fill; with no key or no result, a branded motion backdrop
 
 Cards are HTML rendered by Chromium with the brand fonts embedded, so they look the same on
 every machine. Any asset that cannot be made returns None and the shot falls back to the
@@ -194,39 +195,87 @@ def stock_clip(src: Path, seconds: float, dest: Path, w: int, h: int, fps: int) 
     return dest
 
 
-# ── Stock footage (Pexels) ───────────────────────────────────────────────────
+# ── Stock footage (Pixabay, or Pexels) ───────────────────────────────────────
+# Both providers are normalised to one shape: {"id", "duration", "width", "url",
+# "user": {"name", "url"}, "video_files": [{"file_type", "width", "height", "link"}]}, with ids
+# prefixed by the provider so a cache or a "used" set never mixes them up.
 def pick_file(video: dict[str, Any], min_width: int) -> dict[str, Any] | None:
-    files = [f for f in video.get("video_files", []) if f.get("file_type") == "video/mp4" and f.get("width")]
+    files = [f for f in video.get("video_files", []) if f.get("file_type") == "video/mp4" and f.get("width") and f.get("link")]
     files = [f for f in files if (f.get("width") or 0) >= (f.get("height") or 0)]  # landscape only
     big = sorted((f for f in files if f["width"] >= min_width), key=lambda f: f["width"])
     return big[0] if big else (max(files, key=lambda f: f["width"]) if files else None)
+
+
+def pixabay_search(query: str, key: str, per_page: int = 10) -> list[dict[str, Any]]:
+    r = requests.get("https://pixabay.com/api/videos/", timeout=30, params={
+        "key": key, "q": query[:100], "per_page": max(3, per_page), "safesearch": "true", "video_type": "film"})
+    r.raise_for_status()
+    out = []
+    for h in r.json().get("hits") or []:
+        files = [{"file_type": "video/mp4", "width": v.get("width") or 0, "height": v.get("height") or 0, "link": v.get("url")}
+                 for v in (h.get("videos") or {}).values() if v.get("url")]
+        out.append({"id": f"pixabay_{h['id']}", "duration": h.get("duration", 0),
+                    "width": max((f["width"] for f in files), default=0), "url": h.get("pageURL"),
+                    "user": {"name": h.get("user"), "url": f"https://pixabay.com/users/{h.get('user')}-{h.get('user_id')}/"},
+                    "video_files": files})
+    return out
 
 
 def pexels_search(query: str, key: str, per_page: int = 8) -> list[dict[str, Any]]:
     r = requests.get("https://api.pexels.com/videos/search", headers={"Authorization": key}, timeout=30,
                      params={"query": query, "orientation": "landscape", "per_page": per_page, "size": "medium"})
     r.raise_for_status()
-    return r.json().get("videos") or []
+    return [dict(v, id=f"pexels_{v['id']}") for v in r.json().get("videos") or []]
 
 
-def fetch_stock(query: str, cache: Path, used: set[int], key: str, min_width: int, min_seconds: float) -> tuple[Path, dict] | None:
-    """Best unused clip for the query that is long enough; cached on disk by Pexels id."""
-    vids = pexels_search(query, key)
-    vids = [v for v in vids if v.get("id") not in used]
+PROVIDERS = {"pixabay": ("PIXABAY_API_KEY", pixabay_search), "pexels": ("PEXELS_API_KEY", pexels_search)}
+
+
+def stock_search(cfg: dict[str, Any]):
+    """(provider name, search(query)) for the first configured provider with a key, else None."""
+    order = cfg.get("visuals", {}).get("stock", {}).get("providers", ["pixabay", "pexels"])
+    for name in order:
+        env, fn = PROVIDERS.get(name, (None, None))
+        key = os.environ.get(env or "", "")
+        if fn and key:
+            return name, (lambda q, fn=fn, key=key: fn(q, key))
+    return None
+
+
+def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int, min_seconds: float) -> tuple[Path, dict] | None:
+    """Best unused clip for the query that is long enough; cached on disk by provider id."""
+    vids = [v for v in search(query) if v.get("id") not in used]
     vids.sort(key=lambda v: (v.get("duration", 0) < min_seconds, -(v.get("width") or 0)))
     for v in vids:
         f = pick_file(v, min_width)
         if not f:
             continue
-        dest = cache / f"pexels_{v['id']}.mp4"
+        dest = cache / f"{v['id']}.mp4"
         if not dest.exists():
             from pipeline.video.common import download
             download(f["link"], dest)
         used.add(v["id"])
         user = v.get("user") or {}
-        return dest, {"query": query, "pexels_id": v["id"], "url": v.get("url"),
+        return dest, {"query": query, "id": v["id"], "url": v.get("url"),
                       "author": user.get("name"), "author_url": user.get("url")}
     return None
+
+
+def backdrop_html(seed: str, w: int, h: int) -> str:
+    """The no-footage fallback: a branded motion backdrop, varied by the shot's search terms so two
+    fallbacks in one episode do not look identical. No text: it never claims to show anything."""
+    import random
+    rnd = random.Random(seed)
+    paths = []
+    for _ in range(5):
+        y0, y1, y2 = (rnd.uniform(0.15, 0.85) * h for _ in range(3))
+        paths.append(f'<path d="M -50 {y0:.0f} C {w * 0.35:.0f} {y1:.0f}, {w * 0.65:.0f} {y2:.0f}, {w + 50} {rnd.uniform(0.2, 0.8) * h:.0f}" '
+                     f'stroke="{GOLD}" stroke-opacity="{rnd.uniform(0.12, 0.35):.2f}" stroke-width="{rnd.uniform(1.5, 4):.1f}" fill="none"/>')
+    dots = "".join(f'<circle cx="{rnd.uniform(0, w):.0f}" cy="{rnd.uniform(0, h):.0f}" r="{rnd.uniform(1, 3.5):.1f}" '
+                   f'fill="{SAND}" fill-opacity="{rnd.uniform(0.15, 0.5):.2f}"/>' for _ in range(70))
+    glow = f"radial-gradient(60% 50% at {rnd.uniform(20, 80):.0f}% {rnd.uniform(25, 75):.0f}%,rgba(232,178,74,.16) 0%,transparent 70%)"
+    body = f'<div style="position:absolute;inset:0;background:{glow}"></div><svg width="{w}" height="{h}" style="position:absolute;inset:0">{"".join(paths)}{dots}</svg>'
+    return _page(body, w, h)
 
 
 # ── Episode assets ───────────────────────────────────────────────────────────
@@ -237,12 +286,12 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
     work = out_dir / "visuals"
     work.mkdir(parents=True, exist_ok=True)
     by_id = {i.id: i for i in items}
-    key = os.environ.get("PEXELS_API_KEY", "")
-    used: set[int] = set()
+    search = stock_search(cfg)
+    used: set[str] = set()
     clips: dict[int, Path] = {}
     credits: list[dict] = []
     stock_src: dict[str, tuple[Path, dict] | None] = {}
-    cards_needed = any(s.mode != "face" and s.kind in ("source", "title", "number") for s in shots)
+    cards_needed = any(s.mode != "face" for s in shots)   # stock needs it too, for the backdrop fallback
     renderer = Renderer(w, h) if cards_needed else None
     if renderer:
         renderer.__enter__()
@@ -270,18 +319,19 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                     count = renderer.count_up(fig.strip(), label.strip(), fdir, min(int(fps * 1.2), round(secs * fps)))
                     clips[n] = frames_clip(fdir, count, secs, dest, w, h, fps)
                 elif s.kind == "stock":
-                    if not key:
-                        s.notes.append("no PEXELS_API_KEY; face instead")
-                        continue
-                    if s.payload not in stock_src:
-                        stock_src[s.payload] = fetch_stock(s.payload, work / "stock", used, key, w, secs)
-                    got = stock_src[s.payload]
-                    if not got:
-                        s.notes.append("no stock result; face instead")
-                        continue
-                    clips[n] = stock_clip(got[0], secs, dest, w, h, fps)
-                    if got[1] not in credits:
-                        credits.append(got[1])
+                    got = None
+                    if search:
+                        if s.payload not in stock_src:
+                            stock_src[s.payload] = fetch_stock(s.payload, work / "stock", used, search[1], w, secs)
+                        got = stock_src[s.payload]
+                    if got:
+                        clips[n] = stock_clip(got[0], secs, dest, w, h, fps)
+                        if got[1] not in credits:
+                            credits.append(dict(got[1], provider=search[0]))
+                    else:
+                        s.notes.append("no stock key" if not search else "no stock result")
+                        png = renderer.still(backdrop_html(s.payload, w, h), work / f"shot_{n:03d}.png")
+                        clips[n] = still_clip(png, secs, dest, w, h, fps, push=0.08)
             except Exception as exc:  # noqa: BLE001 — one bad asset must not sink the episode
                 log.warning("Shot %d (%s %s) failed: %s; face instead", n, s.kind, s.payload[:40], exc)
                 s.notes.append(f"asset failed: {exc}")

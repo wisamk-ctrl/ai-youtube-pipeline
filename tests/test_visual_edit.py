@@ -125,29 +125,6 @@ def test_pick_file_prefers_the_smallest_landscape_file_that_fills_the_frame():
     assert visual_assets.pick_file(video, 5000)["link"] == "b"
 
 
-def test_fetch_stock_skips_used_clips_and_records_credit(tmp_path, monkeypatch):
-    vids = [{"id": 1, "duration": 20, "width": 1920, "url": "u1", "user": {"name": "A", "url": "ua"},
-             "video_files": [{"file_type": "video/mp4", "width": 1920, "height": 1080, "link": "l1"}]},
-            {"id": 2, "duration": 20, "width": 1920, "url": "u2", "user": {"name": "B", "url": "ub"},
-             "video_files": [{"file_type": "video/mp4", "width": 1920, "height": 1080, "link": "l2"}]}]
-    monkeypatch.setattr(visual_assets, "pexels_search", lambda q, k, per_page=8: vids)
-    import pipeline.video.common as common
-    monkeypatch.setattr(common, "download", lambda url, dest: dest.write_bytes(b"x") or dest)
-    used = {1}
-    path, credit = visual_assets.fetch_stock("chips", tmp_path, used, "key", 1920, 5)
-    assert credit["pexels_id"] == 2 and credit["author"] == "B" and path.name == "pexels_2.mp4"
-    assert used == {1, 2}
-
-
-def test_stock_without_a_key_falls_back_to_the_face(tmp_path, monkeypatch):
-    monkeypatch.delenv("PEXELS_API_KEY", raising=False)
-    shots = [visuals.Shot("face", "", "", 0, 2), visuals.Shot("visual", "stock", "chips", 2, 6)]
-    clips, credits = visual_assets.build(shots, [], {"visuals": {}}, tmp_path)
-    assert clips == {} and credits == []
-    assert "no PEXELS_API_KEY" in shots[1].notes[0]
-
-
-# ── editor (needs ffmpeg and Chromium) ───────────────────────────────────────
 def _chromium_ok() -> bool:
     try:
         with visual_assets.Renderer(64, 36):
@@ -156,6 +133,58 @@ def _chromium_ok() -> bool:
         return False
 
 
+def test_fetch_stock_skips_used_clips_and_records_credit(tmp_path, monkeypatch):
+    vids = [{"id": "pixabay_1", "duration": 20, "width": 1920, "url": "u1", "user": {"name": "A", "url": "ua"},
+             "video_files": [{"file_type": "video/mp4", "width": 1920, "height": 1080, "link": "l1"}]},
+            {"id": "pixabay_2", "duration": 20, "width": 1920, "url": "u2", "user": {"name": "B", "url": "ub"},
+             "video_files": [{"file_type": "video/mp4", "width": 1920, "height": 1080, "link": "l2"}]}]
+    import pipeline.video.common as common
+    monkeypatch.setattr(common, "download", lambda url, dest: dest.write_bytes(b"x") or dest)
+    used = {"pixabay_1"}
+    path, credit = visual_assets.fetch_stock("chips", tmp_path, used, lambda q: vids, 1920, 5)
+    assert credit["id"] == "pixabay_2" and credit["author"] == "B" and path.name == "pixabay_2.mp4"
+    assert used == {"pixabay_1", "pixabay_2"}
+
+
+def test_pixabay_hits_are_normalised(monkeypatch):
+    hit = {"id": 7, "pageURL": "https://pixabay.com/videos/x-7/", "duration": 14, "user": "ann", "user_id": 9,
+           "videos": {"large": {"url": "", "width": 0, "height": 0},
+                      "medium": {"url": "https://cdn/m.mp4", "width": 1920, "height": 1080},
+                      "small": {"url": "https://cdn/s.mp4", "width": 1280, "height": 720}}}
+    class R:
+        def raise_for_status(self): pass
+        def json(self): return {"hits": [hit]}
+    seen = {}
+    monkeypatch.setattr(visual_assets.requests, "get", lambda url, timeout, params: seen.update(params) or R())
+    [v] = visual_assets.pixabay_search("server racks " * 20, "k")
+    assert v["id"] == "pixabay_7" and v["user"]["url"] == "https://pixabay.com/users/ann-9/"
+    assert visual_assets.pick_file(v, 1920)["link"] == "https://cdn/m.mp4"   # the empty "large" is ignored
+    assert len(seen["q"]) <= 100 and seen["safesearch"] == "true"
+
+
+def test_stock_provider_order_and_keys(monkeypatch):
+    for k in ("PIXABAY_API_KEY", "PEXELS_API_KEY"):
+        monkeypatch.delenv(k, raising=False)
+    assert visual_assets.stock_search({}) is None
+    monkeypatch.setenv("PEXELS_API_KEY", "p")
+    assert visual_assets.stock_search({})[0] == "pexels"
+    monkeypatch.setenv("PIXABAY_API_KEY", "x")
+    assert visual_assets.stock_search({})[0] == "pixabay"
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="needs ffmpeg")
+def test_stock_without_a_key_becomes_a_branded_backdrop(tmp_path, monkeypatch):
+    for k in ("PIXABAY_API_KEY", "PEXELS_API_KEY"):
+        monkeypatch.delenv(k, raising=False)
+    if not _chromium_ok():
+        pytest.skip("needs Chromium")
+    shots = [visuals.Shot("face", "", "", 0, 2), visuals.Shot("visual", "stock", "chips", 2, 4)]
+    clips, credits = visual_assets.build(shots, [], {"visuals": {"width": 320, "height": 180, "fps": 25}}, tmp_path)
+    assert set(clips) == {1} and credits == []
+    assert shots[1].notes == ["no stock key"]
+
+
+# ── editor (needs ffmpeg and Chromium) ───────────────────────────────────────
 @pytest.mark.skipif(not shutil.which("ffmpeg") or not _chromium_ok(), reason="needs ffmpeg and Chromium")
 def test_compose_cuts_face_visuals_and_corner_over_the_original_audio(tmp_path):
     from pipeline.post import edit

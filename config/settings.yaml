@@ -177,6 +177,8 @@ visuals:
   face_share_max: 0.35
   max_face_seconds: 20
   max_visual_seconds: 12      # longer visuals switch to the corner layout halfway
+  stock:
+    providers: [pixabay, pexels]   # first with a key wins: PIXABAY_API_KEY, PEXELS_API_KEY
   corner:
     size: 0.26                # circle diameter as a share of frame height
     margin_x: 0.04

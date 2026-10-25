@@ -231,7 +231,8 @@ jobs:
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
           WHISPER_MODEL: medium
           VIDEO_URL: ${{ inputs.video_url }}     # via env, never spliced into the shell line
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}   # stock footage; without it stock shots fall back to the face
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }} # stock footage; without a key, stock shots become branded backdrops
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
           SHORTS=""; [ -n "${{ inputs.shorts }}" ] && SHORTS="--shorts ${{ inputs.shorts }}"
           VURL=(); [ -n "$VIDEO_URL" ] && VURL=(--video-url "$VIDEO_URL")

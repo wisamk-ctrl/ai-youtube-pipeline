@@ -43,7 +43,10 @@ Each marker sits on its own line directly before the sentence where the shot sta
 lasts until the next shot marker.
 
 ## Fallbacks (the episode never fails for want of a picture)
-- No stock key, or no stock result: the shot becomes a face shot.
+- Stock footage comes from Pixabay (Pexels if configured instead). No key, or no result:
+  the shot becomes a branded motion backdrop (navy, gold lines, no text), never a face shot,
+  so the face share stays on target.
+- An asset that fails to render: the shot becomes a face shot.
 - A source id that is not in the week's items: the shot becomes a title card with the
   section title.
 - Stock credits (photographer and link) are saved with the episode for the description.
