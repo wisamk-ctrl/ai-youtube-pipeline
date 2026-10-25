@@ -55,7 +55,10 @@ def sentences(script: str) -> list[str]:
 def build(script: str, items: list[NewsItem], model: str, client: anthropic.Anthropic) -> tuple[list[str], SourceMap]:
     sents = sentences(script)
     numbered = "\n".join(f"{n + 1}. {s}" for n, s in enumerate(sents))
-    srcs = "\n\n".join(f'<item id="{i.id}" source="{i.source}">\n{i.title}\n{i.summary[:1500]}\n</item>' for i in items)
+    # The full body, exactly as the writer saw it. A shorter cut here (it was 1,500 characters
+    # while ingestion keeps 2,500) made every figure from the end of a long article read as
+    # "unsourced": a false alarm the editor learns to ignore, which defeats the check.
+    srcs = "\n\n".join(f'<item id="{i.id}" source="{i.source}">\n{i.title}\n{i.summary}\n</item>' for i in items)
     resp = client.messages.parse(
         model=model, max_tokens=16000, system=SYSTEM,
         messages=[{"role": "user", "content": f"<sources>\n{srcs}\n</sources>\n\n<script_sentences>\n{numbered}\n</script_sentences>"}],
