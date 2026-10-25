@@ -90,6 +90,9 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
     shots = [s for s in shots if s.end - s.start > 1e-3]
     merged: list[Shot] = []
     for s in shots:
+        if merged and s.mode == "face" and merged[-1].mode == "face":
+            merged[-1].end = s.end      # two [Face] markers in a row are one continuous shot
+            continue
         if merged and s.seconds < min_shot:
             merged[-1].end = s.end
             merged[-1].notes.append(f"absorbed a {s.seconds:.1f}s {s.mode} shot")
@@ -132,7 +135,7 @@ def lint(shots: list[Shot], std: dict[str, Any] | None = None) -> dict[str, Any]
             "corner": sum(1 for s in shots if s.mode == "corner"), "warnings": warnings}
 
 
-def shotlist_md(shots: list[Shot], report: dict[str, Any], estimated: bool) -> str:
+def shotlist_md(shots: list[Shot], report: dict[str, Any], estimated: bool, titles: dict[str, str] | None = None) -> str:
     def ts(x: float) -> str:
         return f"{int(x // 60)}:{int(x % 60):02d}"
     head = [f"## Shot list{' (estimated timings)' if estimated else ''}", "",
@@ -145,5 +148,6 @@ def shotlist_md(shots: list[Shot], report: dict[str, Any], estimated: bool) -> s
     rows = ["| time | shot | content |", "|---|---|---|"]
     for s in shots:
         label = {"face": "face", "visual": f"{s.kind}", "corner": f"{s.kind} + corner"}[s.mode]
-        rows.append(f"| {ts(s.start)}–{ts(s.end)} | {label} | {s.payload.replace('|', '/') if s.payload else ''} |")
+        content = (titles or {}).get(s.payload, s.payload) if s.kind == "source" else s.payload
+        rows.append(f"| {ts(s.start)}–{ts(s.end)} | {label} | {content.replace('|', '/') if content else ''} |")
     return "\n".join(head + ["<details><summary>All shots</summary>", ""] + rows + ["", "</details>"]) + "\n"

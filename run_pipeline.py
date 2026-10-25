@@ -123,7 +123,8 @@ def _shotlist(cfg: dict, out: Path, script: str, duration: float, srt: Path | No
     shots = visuals.plan(script, duration, srt, cfg["scripting"]["words_per_minute"],
                          max_visual=float(v.get("max_visual_seconds", 12)))
     report = visuals.lint(shots, v)
-    (out / "shotlist.md").write_text(visuals.shotlist_md(shots, report, estimated=srt is None), encoding="utf-8")
+    titles = {i.id: f"{i.source}: {i.title[:90]}" for i in _items(out)}
+    (out / "shotlist.md").write_text(visuals.shotlist_md(shots, report, estimated=srt is None, titles=titles), encoding="utf-8")
     (out / "shotlist.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     log.info("Shot list: face %.0f%%, %d shots, %d warnings", report["face_share"] * 100, report["shots"], len(report["warnings"]))
     return shots

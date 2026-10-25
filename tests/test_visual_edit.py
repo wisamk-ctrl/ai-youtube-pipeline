@@ -238,3 +238,15 @@ def test_strip_shots_removes_only_shot_markers():
     assert not extract_shots(stripped)
     assert "[Section: الافتتاحية]" in stripped and "[Pause]" in stripped and "[On-Screen Text: 80%]" in stripped
     assert spoken_text(stripped).split() == spoken_text(SCRIPT).split()
+
+
+def test_adjacent_face_markers_are_one_shot():
+    script = "[Face]\nواحد اتنين.\n[Face]\nتلاتة أربعة.\n[Visual: title عنوان]\nخمسة ستة."
+    shots = visuals.plan(script, 9.0, None)
+    assert [s.mode for s in shots] == ["face", "visual"]
+
+
+def test_shot_list_names_sources_by_headline():
+    shots = [visuals.Shot("visual", "source", "abc", 0, 5)]
+    md = visuals.shotlist_md(shots, visuals.lint(shots, {}), False, {"abc": "ET Datacenters: G42 in Greece"})
+    assert "ET Datacenters: G42 in Greece" in md and "| abc |" not in md

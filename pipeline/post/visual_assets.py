@@ -148,7 +148,11 @@ class Renderer:
     def count_up(self, figure: str, label: str, frames_dir: Path, frames: int) -> int:
         """Render the count-up as numbered PNG frames; returns how many were written."""
         frames_dir.mkdir(parents=True, exist_ok=True)
-        parts = split_figure(figure)
+        # "61% → 84%": the left figure stays, the right one climbs from it. Otherwise from zero.
+        left, arrow, right = figure.partition("→") if "→" in figure else ("", "", figure)
+        parts = split_figure(right)
+        start = (split_figure(left) or (None, 0.0))[1] if arrow else 0.0
+        prefix = f"{left.strip()} → " if arrow else ""
         self.page.set_content(number_html(figure, label, self.w, self.h), wait_until="load")
         self.page.evaluate("document.fonts.ready")
         if not parts:
@@ -157,7 +161,8 @@ class Renderer:
         for k in range(frames):
             x = (k + 1) / frames
             ease = 1 - (1 - x) ** 3
-            self.page.evaluate("t => document.getElementById('fig').textContent = t", fmt_figure(parts, parts[1] * ease))
+            value = start + (parts[1] - start) * ease
+            self.page.evaluate("t => document.getElementById('fig').textContent = t", prefix + fmt_figure(parts, value))
             self.page.screenshot(path=str(frames_dir / f"f{k:04d}.png"))
         return frames
 
