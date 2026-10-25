@@ -73,3 +73,13 @@ def test_probe_accepts_a_talking_head_and_rejects_silence(tmp_path: Path):
     subprocess.run(["ffmpeg", "-v", "error", "-f", "lavfi", "-i", "color=c=black:s=320x180:d=12", str(mute)], check=True)
     with pytest.raises(ValueError):
         manual.probe(mute)
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="ffmpeg not installed")
+def test_whisper_can_decode_audio(tmp_path: Path):
+    """faster-whisper's audio decoder must work with the installed PyAV (19 broke it)."""
+    audio = pytest.importorskip("faster_whisper.audio")
+    clip = tmp_path / "a.mp4"
+    subprocess.run(["ffmpeg", "-v", "error", "-f", "lavfi", "-i", "sine=d=1", str(clip)], check=True)
+    samples = audio.decode_audio(str(clip), sampling_rate=16000)
+    assert 15000 < len(samples) < 17000

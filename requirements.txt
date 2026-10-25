@@ -17,6 +17,7 @@ tenacity>=9.0.0           # retry/backoff for flaky third-party APIs
 
 # ── Phase 4 (optional post-production; heavy — comment out if unused) ─
 faster-whisper>=1.2       # local Arabic transcription → SRT captions + script check
+av>=15,<19                # PyAV 19 dropped open(metadata_errors=…), which faster-whisper 1.2 still passes
 # ffmpeg must be on PATH (apt install ffmpeg); Arabic font: apt install fonts-noto-core
 
 # ── Dev ─────────────────────────────────────────────────────────────
