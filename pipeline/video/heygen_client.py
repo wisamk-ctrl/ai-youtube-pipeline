@@ -17,6 +17,7 @@ Endpoints used (HeyGen API v2):
 from __future__ import annotations
 
 import logging
+import os
 from pathlib import Path
 from typing import Any
 
@@ -34,7 +35,9 @@ MAX_SCENES = 50  # HeyGen's limit on video_inputs per request
 class HeyGenClient:
     def __init__(self, cfg: dict[str, Any]) -> None:
         self.vcfg = cfg["video"]
-        self.hcfg = cfg["video"]["heygen"]
+        self.hcfg = dict(cfg["video"]["heygen"])
+        if os.environ.get("HEYGEN_AVATAR_TYPE"):
+            self.hcfg["avatar_type"] = os.environ["HEYGEN_AVATAR_TYPE"]
         self.avatar_id = require_env("HEYGEN_AVATAR_ID")
         self.voice_id = require_env("HEYGEN_VOICE_ID")
         self.session = requests.Session()

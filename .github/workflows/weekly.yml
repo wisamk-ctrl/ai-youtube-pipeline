@@ -34,6 +34,15 @@ on:
       fixture:
         description: "script only: use fixtures/<name>/items.json instead of live ingestion (e.g. sample_week)"
         default: ""
+      avatar_id:
+        description: "video only: HeyGen avatar or talking-photo ID for this run (overrides the HEYGEN_AVATAR_ID secret)"
+        default: ""
+      voice_id:
+        description: "video only: HeyGen voice ID for this run (overrides the HEYGEN_VOICE_ID secret)"
+        default: ""
+      avatar_type:
+        description: "video only: avatar | talking_photo (overrides settings.yaml)"
+        default: ""
 
 permissions:
   contents: write            # the script job commits data/radar_state.json (the radar's memory)
@@ -71,13 +80,15 @@ jobs:
           FIX_ARG=""; [ -n "${{ inputs.fixture }}" ] && FIX_ARG="--fixture ${{ inputs.fixture }}"
           python run_pipeline.py ${{ inputs.phase == 'ingest' && 'ingest' || 'all' }} $WEEK_ARG $FIX_ARG
           echo "WEEK_DIR=$(ls -d output/*/ | tail -n1)" >> "$GITHUB_ENV"
+          echo "WEEK_ID=$(basename "$(ls -d output/*/ | tail -n1)")" >> "$GITHUB_ENV"
       - name: Commit the radar's memory
         run: |
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
           git add data/radar_state.json data/coverage.json data/youtube_channels.json 2>/dev/null; git add data/radar_state.json data/coverage.json && (git diff --cached --quiet || git commit -m "chore: radar state, coverage, youtube channel cache $(date -u +%F)") && git push
       - uses: actions/upload-artifact@v4
         with:
-          name: week-${{ steps.week.outputs.week || github.run_id }}
+          # Ingest-only runs have no script.md; name them apart so a render never picks one up.
+          name: ${{ inputs.phase == 'ingest' && 'sources' || 'week' }}-${{ env.WEEK_ID }}
           path: output/
           retention-days: 30
       - name: Close run-failed issues
@@ -194,8 +205,9 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
-          HEYGEN_AVATAR_ID: ${{ secrets.HEYGEN_AVATAR_ID }}
-          HEYGEN_VOICE_ID: ${{ secrets.HEYGEN_VOICE_ID }}
+          HEYGEN_AVATAR_ID: ${{ inputs.avatar_id || secrets.HEYGEN_AVATAR_ID }}
+          HEYGEN_VOICE_ID: ${{ inputs.voice_id || secrets.HEYGEN_VOICE_ID }}
+          HEYGEN_AVATAR_TYPE: ${{ inputs.avatar_type }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
           DID_API_KEY: ${{ secrets.DID_API_KEY }}
