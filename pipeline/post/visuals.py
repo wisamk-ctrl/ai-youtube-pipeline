@@ -116,9 +116,9 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
 
 def lint(shots: list[Shot], std: dict[str, Any] | None = None) -> dict[str, Any]:
     std = std or {}
-    lo, hi = std.get("face_share", [0.20, 0.30])
-    cap = std.get("face_share_max", 0.35)
-    max_face, max_visual = std.get("max_face_seconds", 20), std.get("max_visual_seconds", 12)
+    lo, hi = std.get("face_share", [0.10, 0.20])
+    cap = std.get("face_share_max", 0.25)
+    max_face, max_visual = std.get("max_face_seconds", 12), std.get("max_visual_seconds", 12)
     total = sum(s.seconds for s in shots) or 1.0
     face = sum(s.seconds for s in shots if s.mode == "face")
     share = face / total

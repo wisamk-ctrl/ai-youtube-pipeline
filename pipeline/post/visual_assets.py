@@ -6,7 +6,8 @@ output size and frame rate, a little longer than the shot.
 - number  → the figure counting up, then holding, with an Arabic label
 - title   → a short Arabic phrase, large, with a slow push-in
 - stock   → Pixabay (PIXABAY_API_KEY) or Pexels (PEXELS_API_KEY) footage for English search terms,
-              muted and cropped to fill; with no key or no result, a branded motion backdrop
+              animations first, muted and cropped to fill; with no key or no result, a generated
+              tech animation (a moving network in the brand colours)
 
 Cards are HTML rendered by Chromium with the brand fonts embedded, so they look the same on
 every machine. Any asset that cannot be made returns None and the shot falls back to the
@@ -145,6 +146,17 @@ class Renderer:
         self.page.screenshot(path=str(dest))
         return dest
 
+    def tech_motion(self, seed: str, frames_dir: Path, seconds: float, fps: int = 15) -> int:
+        """A moving network of nodes and travelling pulses, rendered frame by frame (deterministic)."""
+        frames_dir.mkdir(parents=True, exist_ok=True)
+        self.page.set_content(_page(TECH_MOTION_HTML.format(w=self.w, h=self.h, seed=_seed(seed)), self.w, self.h),
+                              wait_until="load")
+        n = max(1, round(seconds * fps))
+        for k in range(n):
+            self.page.evaluate(f"draw({k / fps:.4f})")
+            self.page.screenshot(path=str(frames_dir / f"f{k:04d}.png"))
+        return n
+
     def count_up(self, figure: str, label: str, frames_dir: Path, frames: int) -> int:
         """Render the count-up as numbered PNG frames; returns how many were written."""
         frames_dir.mkdir(parents=True, exist_ok=True)
@@ -212,14 +224,24 @@ def pick_file(video: dict[str, Any], min_width: int) -> dict[str, Any] | None:
 
 
 def pixabay_search(query: str, key: str, per_page: int = 10) -> list[dict[str, Any]]:
+    """Animations first (the house look: config/visual_standard.md), then live footage."""
+    out: list[dict[str, Any]] = []
+    for video_type in ("animation", "film"):
+        if len(out) >= 3:
+            break
+        out += _pixabay(query, key, per_page, video_type)
+    return out
+
+
+def _pixabay(query: str, key: str, per_page: int, video_type: str) -> list[dict[str, Any]]:
     r = requests.get("https://pixabay.com/api/videos/", timeout=30, params={
-        "key": key, "q": query[:100], "per_page": max(3, per_page), "safesearch": "true", "video_type": "film"})
+        "key": key, "q": query[:100], "per_page": max(3, per_page), "safesearch": "true", "video_type": video_type})
     r.raise_for_status()
     out = []
     for h in r.json().get("hits") or []:
         files = [{"file_type": "video/mp4", "width": v.get("width") or 0, "height": v.get("height") or 0, "link": v.get("url")}
                  for v in (h.get("videos") or {}).values() if v.get("url")]
-        out.append({"id": f"pixabay_{h['id']}", "duration": h.get("duration", 0),
+        out.append({"id": f"pixabay_{h['id']}", "duration": h.get("duration", 0), "animation": video_type == "animation",
                     "width": max((f["width"] for f in files), default=0), "url": h.get("pageURL"),
                     "user": {"name": h.get("user"), "url": f"https://pixabay.com/users/{h.get('user')}-{h.get('user_id')}/"},
                     "video_files": files})
@@ -250,7 +272,7 @@ def stock_search(cfg: dict[str, Any]):
 def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int, min_seconds: float) -> tuple[Path, dict] | None:
     """Best unused clip for the query that is long enough; cached on disk by provider id."""
     vids = [v for v in search(query) if v.get("id") not in used]
-    vids.sort(key=lambda v: (v.get("duration", 0) < min_seconds, -(v.get("width") or 0)))
+    vids.sort(key=lambda v: (not v.get("animation", False), v.get("duration", 0) < min_seconds, -(v.get("width") or 0)))
     for v in vids:
         f = pick_file(v, min_width)
         if not f:
@@ -264,6 +286,34 @@ def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int,
         return dest, {"query": query, "id": v["id"], "url": v.get("url"),
                       "author": user.get("name"), "author_url": user.get("url")}
     return None
+
+
+TECH_MOTION_HTML = """<canvas id="c" width="{w}" height="{h}" style="position:absolute;inset:0"></canvas>
+<script>
+const W={w}, H={h}; let seed={seed};
+const rnd=()=>((seed=(seed*1664525+1013904223)>>>0)/4294967296);
+const N=120, nodes=[...Array(N)].map(()=>({{x:rnd()*W,y:rnd()*H,vx:(rnd()-.5)*W*.02,vy:(rnd()-.5)*H*.02,p:rnd()*6.28}}));
+const pulses=[...Array(24)].map(()=>({{a:Math.floor(rnd()*N),b:Math.floor(rnd()*N),o:rnd()}}));
+const ctx=document.getElementById('c').getContext('2d');
+window.draw=(t)=>{{
+  ctx.clearRect(0,0,W,H);
+  const P=nodes.map(n=>({{x:(n.x+n.vx*t+W*2)%W, y:(n.y+n.vy*t+H*2)%H, p:n.p}}));
+  const R=Math.min(W,H)*0.24;
+  for(let i=0;i<N;i++) for(let j=i+1;j<N;j++){{
+    const dx=P[i].x-P[j].x, dy=P[i].y-P[j].y, d=Math.hypot(dx,dy);
+    if(d<R){{ctx.strokeStyle=`rgba(232,178,74,${{0.5*(1-d/R)}})`;ctx.lineWidth=W/1100;ctx.beginPath();ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);ctx.stroke();}}
+  }}
+  for(const q of P){{const a=.45+.35*Math.sin(t*2+q.p);ctx.fillStyle=`rgba(244,241,234,${{a}})`;ctx.beginPath();ctx.arc(q.x,q.y,W/620,0,6.29);ctx.fill();}}
+  for(const u of pulses){{const A=P[u.a],B=P[u.b],k=((t*.35+u.o)%1);
+    ctx.fillStyle='rgba(232,178,74,.9)';ctx.beginPath();ctx.arc(A.x+(B.x-A.x)*k,A.y+(B.y-A.y)*k,W/480,0,6.29);ctx.fill();}}
+}};
+draw(0);
+</script>"""
+
+
+def _seed(text: str) -> int:
+    import zlib
+    return zlib.crc32(text.encode("utf-8")) or 1
 
 
 def backdrop_html(seed: str, w: int, h: int) -> str:
@@ -335,8 +385,11 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                             credits.append(dict(got[1], provider=search[0]))
                     else:
                         s.notes.append("no stock key" if not search else "no stock result")
-                        png = renderer.still(backdrop_html(s.payload, w, h), work / f"shot_{n:03d}.png")
-                        clips[n] = still_clip(png, secs, dest, w, h, fps, push=0.08)
+                        fdir = work / f"shot_{n:03d}_motion"
+                        count = renderer.tech_motion(s.payload, fdir, secs, fps=15)
+                        _ff("-framerate", "15", "-i", str(fdir / "f%04d.png"), "-vf", f"scale={w}:{h},fps={fps}",
+                            "-frames:v", str(max(1, round(secs * fps))), *_enc(fps), str(dest))
+                        clips[n] = dest
             except Exception as exc:  # noqa: BLE001 — one bad asset must not sink the episode
                 log.warning("Shot %d (%s %s) failed: %s; face instead", n, s.kind, s.payload[:40], exc)
                 s.notes.append(f"asset failed: {exc}")

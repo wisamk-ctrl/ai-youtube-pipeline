@@ -112,9 +112,9 @@ FIGURE_RE = re.compile(r"[\d٠-٩]")
 
 
 def auto_direct(script: str) -> str:
-    """Rule-based fallback: the presenter opens every section, B-roll → stock, figures → number cards,
-    back to the face for questions. A visual cued at a section's start waits for the second sentence,
-    because the first sentence of a story is the presenter's. Coarse, but it never edits a word."""
+    """Rule-based fallback: each section opens with the presenter in the corner over its first visual
+    (on the face when there is none), B-roll → stock, figures → number cards, the face for questions
+    to the viewer. Coarse, but it never edits a word."""
     out: list[str] = []
     face_next = True          # the next sentence opens a section (or the episode)
     pending: list[str] = []   # visuals waiting until the opening sentence has been said
@@ -147,11 +147,13 @@ def auto_direct(script: str) -> str:
         text = line.strip()
         if text and not PAUSE_RE.match(text):
             if face_next:
-                out.append("[Face]")
+                # A story opens with the presenter in the corner over its first visual; with no
+                # visual to hand, on the face.
+                out.append(pending.pop(0).replace("[Visual:", "[Corner:", 1) if pending else "[Face]")
                 face_next = False
             elif text.endswith(("؟", "?")) and not shot_here:
                 out.append("[Face]")
-                hold = 2   # the question and its answer are the presenter's («ليش بيهمّنا؟»)
+                hold = 1   # a question to the viewer is the presenter's own moment
             elif hold:
                 pass
             elif pending and not shot_here:

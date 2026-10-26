@@ -32,14 +32,14 @@ def test_auto_direct_keeps_every_word_and_follows_the_shape():
     out = director.auto_direct(SCRIPT)
     assert spoken_text(out).split() == spoken_text(SCRIPT).split()
     shots = extract_shots(out)
-    assert shots[0].mode == "face"
+    assert shots[0].mode == "corner" and shots[0].kind == "stock"   # the story opens in the corner
     assert any(s.kind == "stock" and "server racks" in s.payload for s in shots)
     assert any(s.kind == "number" and s.payload.startswith("80%") for s in shots)
     assert "[Show B-Roll" not in out
     assert director.check(SCRIPT, out, []) == []
     lines = out.splitlines()
-    answer = lines.index("لأنه الشركات عنّا ممكن تستفيد.")
-    assert not lines[answer - 1].startswith("[Visual")   # the «ليش بيهمّنا» answer stays on the face
+    question = lines.index("ليش هاد بيهمّنا؟")
+    assert lines[question - 1] == "[Face]"               # a question to the viewer is on the face
 
 
 def test_check_refuses_changed_words_and_unknown_sources():
@@ -166,7 +166,7 @@ def test_pixabay_hits_are_normalised(monkeypatch):
         def json(self): return {"hits": [hit]}
     seen = {}
     monkeypatch.setattr(visual_assets.requests, "get", lambda url, timeout, params: seen.update(params) or R())
-    [v] = visual_assets.pixabay_search("server racks " * 20, "k")
+    v = visual_assets.pixabay_search("server racks " * 20, "k")[0]   # animations are asked for first
     assert v["id"] == "pixabay_7" and v["user"]["url"] == "https://pixabay.com/users/ann-9/"
     assert visual_assets.pick_file(v, 1920)["link"] == "https://cdn/m.mp4"   # the empty "large" is ignored
     assert len(seen["q"]) <= 100 and seen["safesearch"] == "true"
@@ -250,3 +250,25 @@ def test_shot_list_names_sources_by_headline():
     shots = [visuals.Shot("visual", "source", "abc", 0, 5)]
     md = visuals.shotlist_md(shots, visuals.lint(shots, {}), False, {"abc": "ET Datacenters: G42 in Greece"})
     assert "ET Datacenters: G42 in Greece" in md and "| abc |" not in md
+
+
+def test_pixabay_prefers_animations(monkeypatch):
+    calls = []
+    def fake(query, key, per_page, video_type):
+        calls.append(video_type)
+        return [{"id": f"pixabay_{video_type}", "animation": video_type == "animation", "duration": 10, "width": 1920,
+                 "video_files": [{"file_type": "video/mp4", "width": 1920, "height": 1080, "link": video_type}]}]
+    monkeypatch.setattr(visual_assets, "_pixabay", fake)
+    vids = visual_assets.pixabay_search("neural network", "k")
+    assert calls == ["animation", "film"] and vids[0]["animation"]
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="needs ffmpeg")
+def test_tech_motion_frames_move(tmp_path):
+    if not _chromium_ok():
+        pytest.skip("needs Chromium")
+    with visual_assets.Renderer(160, 90) as r:
+        n = r.tech_motion("data centre", tmp_path, 1.0, fps=4)
+    frames = sorted(tmp_path.glob("f*.png"))
+    assert n == 4 and len(frames) == 4
+    assert frames[0].read_bytes() != frames[-1].read_bytes()   # it actually moves

@@ -5,8 +5,9 @@ Weekly Arabic AI-news YouTube show, «أسبوع الذكاء الاصطناعي
 ## Channel standards (founder decisions — follow them in every change)
 - **Language:** Jordanian colloquial Arabic (urban Ammani), never formal MSA. Source of truth:
   `config/style_guide.md`; the critic rubric (`config/critic_rubric.md`) enforces it.
-- **Look:** premium explainer, not a talking head. Face on screen 20–30 % of runtime, visuals
-  (source cards, number cards, title cards, Pixabay stock footage) for the rest. Source of truth:
+- **Look:** premium explainer, not a talking head. Face full-frame only 10–20 % of runtime
+  (presence through corner shots instead); tech/AI/computer animation is the house look
+  (Pixabay animations, generated tech motion, source/number/title cards). Source of truth:
   `config/visual_standard.md`; the director pass and the shot-list check enforce it.
 - **Facts:** every claim traces to a source item; `source_map.md` lists any that do not.
 - **Never** prescribe investments, never invent figures, never use third-party video clips.
