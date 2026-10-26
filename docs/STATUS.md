@@ -38,8 +38,9 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
   no one-time top-ups on Creator (the only way to add credits is upgrading to Pro).
 - **Motion engine is the cost driver.** Video look: Avatar III 4 credits/min, Avatar IV 31/min,
   Avatar V 48/min. AI Studio defaults to Avatar V, which is what made the October PDI videos cost
-  ~48/min. Rule: Avatar III for corner-circle scenes, Avatar IV only for full-frame face scenes,
-  never Avatar V.
+  ~48/min. Rule: one engine for the whole render (post-production cuts face and corner shots from the same
+  presenter track, so engines cannot be mixed per shot). Avatar III by default, Avatar IV when the
+  balance allows, never Avatar V. Layout Original, no background change.
 - Avatar group default voice is now the Arabic clone `4c810d9c…` (it was the English clone).
   New AI Studio videos may still open on a photo look, so pick **Sam -- 1** in every scene.
 - Duplicate voice clones (`d6ee6521…` Arabic, `e1412c88…` and `9bc2309f…` English) are unused; left in place.
@@ -48,8 +49,10 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
   Seedance, Veo, Wan, Gemini video models and Cinematic Shots are Pro only.
 - Other rates (HeyGen help centre): Video Agent 80/min, translation 4–10/min, upscale 1–2 credits/s,
   Batch Mode / Video Podcast 3/min (whether the engine charge is added on top is unverified).
-- Episode budget, ~8 min: III + IV mix ≈ 60 credits, all IV ≈ 250, all V ≈ 385.
-  Monthly at the mix: ≈ 250–300 credits including hero shots, which fits Creator.
+- Episode budget, ~8 min: all Avatar III ≈ 32 credits, all IV ≈ 250, all V ≈ 385.
+  Monthly (~4.3 episodes): III ≈ 140–180 incl. hero shots and thumbnails (fits Creator);
+  IV ≈ 1,070 (needs Pro above the 1,000 base tier).
+- W43 next step: render on Avatar III (~32 of the 119 credits left) and judge the lip-sync quality.
 
 ## Ideas not built yet
 - HeyGen's AI B-roll generator and Video Agent (web app only as far as known) for hero shots.
