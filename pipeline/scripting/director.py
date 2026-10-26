@@ -50,7 +50,7 @@ SCRIPT_TAG_RE = re.compile(r"<script>\s*(.*?)\s*</script>", re.S)
 def _ask(client: anthropic.Anthropic, model: str, system: str, msgs: list[dict[str, Any]]) -> str:
     """Stream the answer as plain text: a 1,100-word Arabic script with markers is long, and plain
     text survives where a JSON-wrapped string can be cut off and become unreadable."""
-    with client.messages.stream(model=model, max_tokens=32000, system=system, messages=msgs) as stream:
+    with client.messages.stream(model=model, max_tokens=64000, system=system, messages=msgs) as stream:
         message = stream.get_final_message()
     usage.record("director", model, getattr(message, "usage", None))
     if message.stop_reason != "end_turn":
@@ -103,9 +103,10 @@ def direct(script: str, items: list[NewsItem], cfg: dict[str, Any], client: anth
                 log.warning("Director: keeping attempt 2 despite %s", "; ".join(problems))
                 return out
             log.warning("Director attempt %d refused: %s", attempt, "; ".join(problems))
-            msgs += [{"role": "assistant", "content": out[:2000] + " …"},
-                     {"role": "user", "content": "Refused: " + "; ".join(problems) +
-                      ". Return the full script again with every spoken word exactly as given."}]
+            msgs += [{"role": "assistant", "content": f"<script>\n{out}\n</script>"},
+                     {"role": "user", "content": "Revise it: " + "; ".join(problems) +
+                      ". Return the full script once more between <script> and </script>, every spoken word "
+                      "exactly as given, with no commentary."}]
     except Exception as exc:  # noqa: BLE001 — any failure falls back; the episode must not block
         log.warning("Director unavailable (%s); using the rule-based director", exc)
     return auto_direct(script)
@@ -132,6 +133,12 @@ def _screen_time(directed: str, cfg: dict[str, Any], attempt: int) -> list[str]:
 
 FIGURE_RE = re.compile(r"[\d٠-٩]")
 
+# The house look (config/visual_standard.md) for sentences that have no visual cue of their own.
+HOUSE_STOCK = ["neural network animation, glowing nodes", "digital data flow, glowing streams",
+               "code on screen, dark editor", "server racks in a data centre, blue light",
+               "circuit board macro, light trails", "digital globe network connections",
+               "AI chip under light, close-up", "abstract technology background animation"]
+
 
 def auto_direct(script: str) -> str:
     """Rule-based fallback: each section opens with the presenter in the corner over its first visual
@@ -142,6 +149,7 @@ def auto_direct(script: str) -> str:
     pending: list[str] = []   # visuals waiting until the opening sentence has been said
     shot_here = False         # a shot is already cued for the next sentence
     hold = 0                  # sentences that stay on the face (the answer after a question)
+    house = 0                 # next house-look query
     for line in script.splitlines():
         m = MARKER_RE.fullmatch(line.strip())
         if m:
@@ -180,6 +188,10 @@ def auto_direct(script: str) -> str:
                 pass
             elif pending and not shot_here:
                 out.append(pending.pop(0))   # one deferred visual per sentence, so none is zero-length
+            elif not shot_here:
+                # No cue of its own: the house tech animation, so the face stays the exception.
+                out.append(f"[Visual: stock {HOUSE_STOCK[house % len(HOUSE_STOCK)]}]")
+                house += 1
             shot_here = False
             hold = max(0, hold - 1)
         out.append(line)

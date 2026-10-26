@@ -286,3 +286,11 @@ def test_director_gets_one_round_of_screen_time_feedback():
     script6 = "\n".join([words] * 6)
     client = FakeClient([balanced])
     assert director.direct(script6, [], cfg, client) == balanced.strip() and client.calls == 1
+
+
+def test_fallback_keeps_the_face_the_exception_without_cues():
+    plain = "[Section: خبر]\n" + "\n".join(f"جملة رقم {i} عن الذكاء الاصطناعي بالمنطقة." for i in range(12))
+    out = director.auto_direct(plain)
+    assert spoken_text(out).split() == spoken_text(plain).split()
+    report = visuals.lint(visuals.plan(out, 60.0), {})
+    assert report["face_share"] <= 0.25 and report["kinds"]["stock"] >= 8
