@@ -44,13 +44,19 @@ def paste_pack(script: str, cfg: dict[str, Any], week: str) -> str:
         "",
         f"{len(scenes)} scenes · about {minutes:.1f} minutes.",
         "",
-        "1. In HeyGen, create a video with your avatar and your voice clone"
-        + (f" (avatar `{h.get('avatar_id')}`, voice `{h.get('voice_id')}`)." if h.get("avatar_id") else "."),
-        "2. Make one scene per block below and paste each block into its scene's script box, in order.",
+        "1. In HeyGen AI Studio, start a new landscape video. In every scene: look **Sam -- 1** (the video",
+        "   look, not a photo look), your Arabic voice clone"
+        + (f" (avatar `{h.get('avatar_id')}`, voice `{h.get('voice_id')}`)" if h.get("avatar_id") else "")
+        + ", Layout **Original**, no background change (post-production builds the corner circle and face shots).",
+        "2. **Motion engine: Avatar III** (4 credits/min) in every scene, the same engine throughout.",
+        "   Avatar IV (31/min) only when the balance allows. **Never Avatar V** (48/min, HeyGen's default).",
+        "3. Make one scene per block below and paste each block into its scene's script box, in order.",
         "   The \"...\" marks are pauses; keep them.",
-        f"3. Render at {h.get('width', 1920)}×{h.get('height', 1080)} if your plan allows, otherwise 1080p.",
-        "4. Copy the video's ID or share link and run weekly-roundup with phase `import`, this week,",
+        "4. Before Generate, check HeyGen's credit estimate against the balance. Render at 1080p (4K is Pro only).",
+        "5. Copy the video's ID or share link and run weekly-roundup with phase `import`, this week,",
         "   and that link in `video_url`. Cue cards and subtitles are added automatically.",
+        "",
+        "Cost rules and the credit audit: `docs/STATUS.md`, \"HeyGen cost rules\".",
         "",
     ]
     for n, s in enumerate(scenes, 1):
