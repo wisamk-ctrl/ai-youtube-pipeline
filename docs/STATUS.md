@@ -33,6 +33,24 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
    native Ammani editor review (`docs/native_signoff.md`); decide whether the audience shifts
    from enterprise leaders to a broader Jordanian/Arab audience (planner prompt unchanged so far).
 
+## HeyGen cost rules (audited 2026-10-26, Creator plan)
+- Plan: Creator, $29/mo, 600 credits/month, renews on the 19th; unused credits roll over one cycle;
+  no one-time top-ups on Creator (the only way to add credits is upgrading to Pro).
+- **Motion engine is the cost driver.** Video look: Avatar III 4 credits/min, Avatar IV 31/min,
+  Avatar V 48/min. AI Studio defaults to Avatar V, which is what made the October PDI videos cost
+  ~48/min. Rule: Avatar III for corner-circle scenes, Avatar IV only for full-frame face scenes,
+  never Avatar V.
+- Avatar group default voice is now the Arabic clone `4c810d9c…` (it was the English clone).
+  New AI Studio videos may still open on a photo look, so pick **Sam -- 1** in every scene.
+- Duplicate voice clones (`d6ee6521…` Arabic, `e1412c88…` and `9bc2309f…` English) are unused; left in place.
+- Creative Studio on Creator: HeyGen Video model 0.24 credits/s (~14/min), renders the avatar in **16:9**
+  (a landscape hero-shot workaround for the portrait avatar); images 2 credits each.
+  Seedance, Veo, Wan, Gemini video models and Cinematic Shots are Pro only.
+- Other rates (HeyGen help centre): Video Agent 80/min, translation 4–10/min, upscale 1–2 credits/s,
+  Batch Mode / Video Podcast 3/min (whether the engine charge is added on top is unverified).
+- Episode budget, ~8 min: III + IV mix ≈ 60 credits, all IV ≈ 250, all V ≈ 385.
+  Monthly at the mix: ≈ 250–300 credits including hero shots, which fits Creator.
+
 ## Ideas not built yet
 - HeyGen's AI B-roll generator and Video Agent (web app only as far as known) for hero shots.
 - Split-screen layout or tight crop for portrait footage, if re-recording is not possible.
