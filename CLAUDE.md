@@ -12,6 +12,9 @@ Weekly Arabic AI-news YouTube show, «أسبوع الذكاء الاصطناعي
 - **Facts:** every claim traces to a source item; `source_map.md` lists any that do not.
 - **Never** prescribe investments, never invent figures, never use third-party video clips.
 
+## Current state
+Read `docs/STATUS.md` first: what is done, this week's episode, and the founder's open items.
+
 ## Render routes
 - Automatic: phase `video` (needs HeyGen API credits).
 - Manual (current default): the review issue's paste pack → HeyGen web app → phase `import`
