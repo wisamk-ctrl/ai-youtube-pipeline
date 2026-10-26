@@ -73,7 +73,7 @@ class FakeClient:
 
 def test_direct_accepts_a_clean_answer():
     good = f"[Face]\n{SCRIPT.replace('[Show B-Roll: server racks in a data centre]', f'[Visual: source {ITEM.id}]')}"
-    cfg = {"scripting": {"model": "m"}, "visuals": {}}
+    cfg = {"scripting": {"model": "m"}, "visuals": {"face_share": [0.0, 1.0]}}   # screen time not under test here
     assert director.direct(SCRIPT, [ITEM], cfg, FakeClient([good])) == good.strip()
 
 
@@ -272,3 +272,17 @@ def test_tech_motion_frames_move(tmp_path):
     frames = sorted(tmp_path.glob("f*.png"))
     assert n == 4 and len(frames) == 4
     assert frames[0].read_bytes() != frames[-1].read_bytes()   # it actually moves
+
+
+def test_director_gets_one_round_of_screen_time_feedback():
+    words = " ".join(["كلمة"] * 40) + "."
+    all_visual = f"[Visual: title عنوان]\n{words}\n[Visual: title تاني]\n{words}"
+    balanced = f"[Face]\n{words}\n[Visual: title عنوان]\n{words}\n[Visual: title تاني]\n{words}\n[Visual: title تالت]\n{words}\n[Visual: title رابع]\n{words}\n[Visual: title خامس]\n{words}"
+    script = "\n".join([words] * 2)
+    client = FakeClient([all_visual, all_visual])
+    cfg = {"scripting": {"model": "m", "words_per_minute": 130}, "visuals": {"face_share": [0.1, 0.2]}}
+    out = director.direct(script, [], cfg, client)
+    assert client.calls == 2 and out == all_visual.strip()          # feedback sent once, then accepted
+    script6 = "\n".join([words] * 6)
+    client = FakeClient([balanced])
+    assert director.direct(script6, [], cfg, client) == balanced.strip() and client.calls == 1

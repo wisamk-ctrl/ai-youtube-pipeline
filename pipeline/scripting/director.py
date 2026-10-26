@@ -95,9 +95,12 @@ def direct(script: str, items: list[NewsItem], cfg: dict[str, Any], client: anth
                 f"<items>\n{_items_block(items)}\n</items>\n\n<script>\n{script}\n</script>"}]
         for attempt in (1, 2):
             out = _ask(client, model, system, msgs)
-            problems = check(script, out, items)
+            problems = check(script, out, items) or _screen_time(out, cfg, attempt)
             if not problems:
                 log.info("Director: %d shots (attempt %d)", len(extract_shots(out)), attempt)
+                return out
+            if attempt == 2 and not check(script, out, items):
+                log.warning("Director: keeping attempt 2 despite %s", "; ".join(problems))
                 return out
             log.warning("Director attempt %d refused: %s", attempt, "; ".join(problems))
             msgs += [{"role": "assistant", "content": out[:2000] + " …"},
@@ -106,6 +109,25 @@ def direct(script: str, items: list[NewsItem], cfg: dict[str, Any], client: anth
     except Exception as exc:  # noqa: BLE001 — any failure falls back; the episode must not block
         log.warning("Director unavailable (%s); using the rule-based director", exc)
     return auto_direct(script)
+
+
+def _screen_time(directed: str, cfg: dict[str, Any], attempt: int) -> list[str]:
+    """On the first attempt, a face share outside the standard is sent back once as feedback."""
+    if attempt > 1:
+        return []
+    from pipeline.post.visuals import lint, plan
+    from pipeline.script_format import count_spoken_words
+    v = cfg.get("visuals", {})
+    wpm = cfg.get("scripting", {}).get("words_per_minute", 130)
+    seconds = count_spoken_words(directed) / wpm * 60
+    report = lint(plan(directed, seconds, None, wpm, max_visual=float(v.get("max_visual_seconds", 12))), v)
+    lo, hi = v.get("face_share", [0.10, 0.20])
+    share = report["face_share"]
+    if lo <= share <= hi:
+        return []
+    return [f"the presenter's face is full-frame for {share:.0%} of the runtime; the standard asks for "
+            f"{lo:.0%}–{hi:.0%}. {'Add' if share < lo else 'Remove'} [Face] shots accordingly "
+            f"(cold open, greeting, outro, one reaction or question per story)"]
 
 
 FIGURE_RE = re.compile(r"[\d٠-٩]")
