@@ -217,6 +217,7 @@ visuals:
   max_visual_seconds: 12      # longer visuals switch to the corner layout halfway
   stock:
     providers: [pixabay, pexels]   # first with a key wins: PIXABAY_API_KEY, PEXELS_API_KEY
+  dissolve_frames: 0          # off until the W45 length loss (2026-11-07) is traced; 12 = the designed dissolve
   face_mode: minimal          # founder 2026-11-07 (lip sync): face only at the open and the sign-off
   face_keep_seconds: 8
   corner:

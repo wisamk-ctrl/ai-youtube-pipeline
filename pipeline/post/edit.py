@@ -107,6 +107,9 @@ def compose(talking_head: Path, shots: list[Shot], clips: dict[int, Path], cfg: 
             graph, *_ = corner_filter(w, h, cfg)
             _ff("-i", str(clip), "-ss", f"{start:.3f}", "-i", str(talking_head), "-filter_complex", graph,
                 "-map", "[out]", "-frames:v", str(frames), *_enc(fps), str(seg))
+        got = round(duration(seg) * fps)
+        if got < frames - 1:   # a short segment shortens the whole cut (W45, 2026-11-07); say which one
+            log.warning("Segment %d (%s %s) is %d frames, expected %d", n, mode, s.kind, got, frames)
         if k in dissolve:
             runs.append([])
         runs[-1].append(f"file '{seg.resolve()}'")

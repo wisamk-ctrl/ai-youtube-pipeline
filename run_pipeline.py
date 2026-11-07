@@ -228,6 +228,21 @@ def _repair_speech(cfg: dict, out: Path, video: Path, spoken: str):
     return video, hides, heard
 
 
+def _dur(path: Path) -> float:
+    from pipeline.post.edit import duration
+    return duration(path)
+
+
+def _check_length(stage: str, path: Path, expected: float, tolerance: float = 1.5) -> None:
+    """Every stage must keep the programme's length. W45 (2026-11-07) came out 6:21 instead of ~9:20
+    with no error anywhere; a short stage now stops the run and says which one."""
+    got = _dur(path)
+    log.info("Length check — %s: %.1f s (expected %.1f s)", stage, got, expected)
+    if got < expected - tolerance:
+        sys.exit(f"{stage} is {got:.1f} s, expected {expected:.1f} s: the edit lost {expected - got:.1f} s "
+                 f"({path.name}). Not publishing a truncated episode.")
+
+
 def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     from pipeline.post.subtitles import run_post
     from pipeline.script_format import spoken_text
@@ -257,9 +272,11 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         base = edit.compose(video, shots, clips, cfg, out,
                             sections=section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]))
         skip = [(s.start, s.end) for n, s in enumerate(shots) if n in clips and s.kind in ("number", "title", "source")]
+        _check_length("edited cut", base, edit.duration(video))
     if cfg.get("post", {}).get("overlays", {}).get("enabled", True):
         from pipeline.post.overlays import run_overlays
         base = run_overlays(base, script, cfg, out, result["srt"], skip_spans=skip)
+        _check_length("with cue cards", base, _dur(video))
     # Final audio (music bed, whooshes, loudness) and the sting, then the one high-quality encode.
     from pipeline.post import audio
     sting = audio.sting_plan(cfg, script, result["srt"], base, ROOT)
@@ -268,6 +285,8 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     from pipeline.post import packaging, shorts as shorts_mod
     tail = packaging.end_card(cfg, out)          # 15 s branded end card (post.end_card), no captions over it
     result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4", audio=mix, insert=sting, tail=tail)
+    extra = (audio.duration_of(sting[1]) if sting else 0) + (audio.duration_of(tail) if tail else 0)
+    _check_length("final (programme + sting + end card)", result["final"], _dur(video) + extra)
     sting_span = (sting[0], audio.duration_of(sting[1])) if sting else None
     if sting:   # the captions as they sit in the final cut (for a caption-track upload)
         audio.shift_srt(result["srt"], sting[0], sting_span[1], out / "subtitles.final.srt")
