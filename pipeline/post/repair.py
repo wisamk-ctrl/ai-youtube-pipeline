@@ -210,14 +210,29 @@ def _mean_db(path: Path, start: float | None = None, length: float | None = None
     return float(m.group(1)) if m else -20.0
 
 
+_DOWNLOADS: dict[str, Path] = {}
+
+
 def _clip(url: str, dest: Path) -> Path:
-    """Download a clip and trim its leading and trailing silence."""
-    raw = dest.with_suffix(".src")
-    req = urllib.request.Request(url, headers={"User-Agent": "ai-youtube-pipeline"})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        raw.write_bytes(r.read())
+    """Download a clip and trim its leading and trailing silence.
+
+    `<url>#t=<start>,<end>` takes that stretch of a longer recording: every phrase of a week can
+    come from one speech call (one credit minimum per call), split by its word timestamps."""
+    base, _, frag = url.partition("#t=")
+    raw = _DOWNLOADS.get(base)
+    if raw is None or not raw.exists():
+        raw = dest.with_suffix(".src")
+        req = urllib.request.Request(base, headers={"User-Agent": "ai-youtube-pipeline"})
+        with urllib.request.urlopen(req, timeout=120) as r:
+            raw.write_bytes(r.read())
+        _DOWNLOADS[base] = raw
+    cut: list[str] = []
+    if frag:
+        a, _, b = frag.partition(",")
+        cut = ["-ss", f"{float(a):.3f}"] + (["-to", f"{float(b):.3f}"] if b else [])
     trim = "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse"
-    _run("ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(raw), "-af", trim, "-ar", "48000", "-ac", "2", str(dest))
+    _run("ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(raw), *cut, "-af", trim,
+         "-ar", "48000", "-ac", "2", str(dest))
     return dest
 
 

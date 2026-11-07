@@ -113,3 +113,13 @@ def test_correction_rewrites_script_and_keeps_markers():
     script = "رادار الأسبوع. تينسنت Tencent الصينية لسّا مش [Visual: stock chip] على القائمة. بس هالأسبوع"
     out = repair.apply_corrections(script, {"تينسنت Tencent الصينية لسّا مش على القائمة. بس هالأسبوع": "تينسنت رجعت، وهالأسبوع"})
     assert out == "رادار الأسبوع. تينسنت رجعت، وهالأسبوع [Visual: stock chip]"
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="needs ffmpeg")
+def test_clip_takes_a_stretch_of_one_recording(tmp_path, monkeypatch):
+    src = tmp_path / "all.wav"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "sine=frequency=400:duration=5", str(src)],
+                   check=True)
+    repair._DOWNLOADS[f"https://example.invalid/{tmp_path.name}.mp3"] = src
+    out = repair._clip(f"https://example.invalid/{tmp_path.name}.mp3#t=1.0,2.5", tmp_path / "c.wav")
+    assert abs(repair._duration(out) - 1.5) < 0.05
