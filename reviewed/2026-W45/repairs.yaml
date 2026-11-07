@@ -1,0 +1,6 @@
+# Speech repairs for this week's render (pipeline/post/repair.py).
+# fix: phrases the voice misread that no rule catches (here: «بُعد» read as «بوعد» from its vowel marks).
+# voice: what each re-voiced phrase says → the cloned-voice clip's URL (HeyGen speech tool).
+fix:
+  - عن بُعد
+voice: {}
