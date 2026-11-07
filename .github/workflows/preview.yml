@@ -52,7 +52,14 @@ jobs:
           [ -n "${src:-}" ] || { echo "::error::no video in $d"; ls -R art; exit 1; }
           echo "Source: $src"
           mkdir -p out
-          ffmpeg -hide_banner -loglevel error -y -i "$src" -vf "scale=-2:1080" -c:v libx264 -preset medium -crf 26 \
+          # GitHub refuses files over 100 MB: size the bitrate to the length so any episode lands under ~90 MB,
+          # and drop to 720p when that bitrate would be too thin for 1080p.
+          dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$src")
+          kbps=$(python3 -c "print(max(400, min(4000, int(90*8*1000/float('$dur')) - 160)))")
+          height=$([ "$kbps" -ge 1500 ] && echo 1080 || echo 720)
+          echo "Preview: ${dur}s at ${kbps} kbps, ${height}p"
+          ffmpeg -hide_banner -loglevel error -y -i "$src" -vf "scale=-2:${height}" -c:v libx264 -preset medium \
+            -b:v "${kbps}k" -maxrate "$((kbps * 3 / 2))k" -bufsize "$((kbps * 2))k" \
             -c:a aac -b:a 128k -movflags +faststart "out/${{ inputs.week }}.mp4"
           ls -la out
       - name: Push to the previews branch
