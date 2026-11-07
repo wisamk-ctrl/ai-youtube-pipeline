@@ -113,13 +113,15 @@ def scores_from_defects(defects: list[Defect], segments: int = 1) -> dict[str, i
     return {a: max(1, 10 - round(2 * p / max(1, segments))) for a, p in pen.items()}
 
 
-def critique(script: str, style_guide: str, model: str, client: anthropic.Anthropic, rubric: str = "") -> Critique:
-    """One sample. Scores are recomputed from the defect list so the number always has evidence."""
+def critique(script: str, style_guide: str, model: str, client: anthropic.Anthropic, rubric: str = "",
+             system: str | None = None, schema: type[Critique] = Critique) -> Critique:
+    """One sample. Scores are recomputed from the defect list so the number always has evidence.
+    `system` / `schema` let the English version (scripting/translate.py) reuse it with its own brief."""
     resp = client.messages.parse(
         model=model, max_tokens=8000,
-        system=SYSTEM.format(style_guide=style_guide, rubric=rubric or "(no rubric supplied: score 10 minus one per concrete listener problem you can quote)"),
+        system=(system or SYSTEM).format(style_guide=style_guide, rubric=rubric or "(no rubric supplied: score 10 minus one per concrete listener problem you can quote)"),
         messages=[{"role": "user", "content": f"Score this script.\n\n<script>\n{script}\n</script>"}],
-        output_format=Critique,
+        output_format=schema,
     )
     usage.record("critic", model, getattr(resp, "usage", None))
     if resp.stop_reason != "end_turn" or resp.parsed_output is None:

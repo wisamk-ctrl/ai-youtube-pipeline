@@ -36,7 +36,11 @@ log = logging.getLogger(__name__)
 
 _LATIN = re.compile(r"[A-Za-z]")
 _ARABIC = re.compile(r"[؀-ۿ]")
-PAD = 0.06            # silence kept either side of a clip, seconds
+PAD = 0.06            # room tone kept either side of a clip, seconds
+XFADE = 0.025         # crossfade at every splice joint, seconds (20–30 ms)
+REACH = 0.12          # how far a cut may move from the middle of the gap between two words
+SR = 16000            # rate of the analysis copy of the render's audio
+HOP = 0.002           # energy envelope step, seconds (10 ms windows)
 
 
 @dataclass
@@ -210,6 +214,65 @@ def _mean_db(path: Path, start: float | None = None, length: float | None = None
     return float(m.group(1)) if m else -20.0
 
 
+def _envelope(path: Path) -> Any:
+    """Short-term energy of the audio: mean power of 10 ms windows every HOP seconds (mono, SR)."""
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", str(path), "-vn", "-ac", "1",
+                          "-ar", str(SR), "-f", "f32le", "-"], capture_output=True, check=True).stdout
+    x = np.frombuffer(raw, dtype=np.float32).astype(np.float64)
+    win, hop = int(0.010 * SR), int(HOP * SR)
+    c = np.concatenate([[0.0], np.cumsum(x * x)])
+    starts = np.arange(0, max(1, len(x) - win + 1), hop)
+    return (c[np.minimum(starts + win, len(x))] - c[starts]) / win
+
+
+def _frame_time(k: int) -> float:
+    return k * HOP + 0.005          # centre of the 10 ms window
+
+
+def quiet_cut(env: Any, heard: list[Word], t: float) -> float:
+    """Where to cut near a word start `t`: the quietest point within REACH of the middle of the gap
+    between the previous word's end and that word's start. `t` itself when it is no heard word's start."""
+    import numpy as np
+    i = next((n for n, w in enumerate(heard) if abs(w.start - t) < 1e-3), None)
+    if env is None or i is None or i == 0:
+        return t
+    mid = (heard[i - 1].end + t) / 2
+    lo = max(0, int((mid - REACH - 0.005) / HOP))
+    hi = min(len(env), int((mid + REACH - 0.005) / HOP) + 1)
+    if hi <= lo:
+        return t
+    return round(_frame_time(lo + int(np.argmin(env[lo:hi]))), 3)
+
+
+def speech_db(env: Any, t0: float = 0.0, t1: float | None = None) -> float | None:
+    """Active speech level in dB (as ITU-T P.56 does): the mean power of the 10 ms frames within
+    25 dB of the loudest ones, so the pauses between words do not pull it down. None if silent."""
+    import numpy as np
+    seg = env[int(t0 / HOP):None if t1 is None else max(int(t0 / HOP) + 1, int(t1 / HOP))]
+    if len(seg) == 0 or float(np.max(seg)) <= 1e-9:
+        return None
+    gate = max(1e-7, float(np.percentile(seg, 95)) * 10 ** -2.5)
+    return float(10 * np.log10(np.mean(seg[seg >= gate])))
+
+
+def room_tone_at(env: Any, seconds: float = 0.3) -> float | None:
+    """Start of the render's quietest stretch that is neither digital silence nor speech (at least
+    25 dB under the voice): the room tone that pads a clip. None when the render has no such pause."""
+    import numpy as np
+    n = int(seconds / HOP)
+    voice = speech_db(env) if env is not None else None
+    if voice is None or len(env) <= n:
+        return None
+    c = np.concatenate([[0.0], np.cumsum(env)])
+    mean = (c[n:] - c[:-n]) / n
+    mean[mean < 1e-9] = np.inf              # below −90 dBFS: digital silence, not a room
+    k = int(np.argmin(mean))
+    if not np.isfinite(mean[k]) or 10 * np.log10(mean[k]) > voice - 25:
+        return None
+    return round(k * HOP, 3)
+
+
 _DOWNLOADS: dict[str, Path] = {}
 
 
@@ -242,7 +305,11 @@ def _clip(url: str, dest: Path) -> Path:
 
 def apply(video: Path, repairs: list[Repair], heard: list[Word], out_dir: Path, fps: int = 30
           ) -> tuple[Path, list[tuple[float, float]], list[Word]]:
-    """Splice the clips in. Returns (repaired video, spans to hide the face, heard words retimed)."""
+    """Splice the clips in. Returns (repaired video, spans to hide the face, heard words retimed).
+
+    Each cut moves to the quietest point of the gap between two words (`quiet_cut`); every joint is
+    a short crossfade (XFADE) that keeps the total length exact; a clip's padding is the render's
+    own room tone, never digital silence; a clip is matched to the render's speech level (`speech_db`)."""
     todo = sorted((r for r in repairs if r.audio), key=lambda r: r.start)
     if not todo:
         return video, [], heard
@@ -257,40 +324,93 @@ def apply(video: Path, repairs: list[Repair], heard: list[Word], out_dir: Path, 
             log.warning("Repair clip for «%s» unusable (%s); left as rendered", r.say, exc)
             r.audio = ""
             continue
-        gain = 0.0 if r.audio.startswith("silence:") else _mean_db(video, r.start, r.end - r.start) - _mean_db(c)
-        clips.append((c, length, max(-12.0, min(12.0, gain))))
+        clips.append((c, length))
         kept.append(r)
     todo = kept
     if not todo:
         return video, [], heard
     total = _duration(video)
+    try:
+        env = _envelope(video)
+    except Exception as exc:  # noqa: BLE001 — without the analysis the cuts stay on the word starts
+        log.warning("Repair: audio analysis failed (%s); cutting on word starts", exc)
+        env = None
+    cuts, cursor = [], 0.0
+    for r in todo:
+        a, b = quiet_cut(env, heard, r.start), quiet_cut(env, heard, r.end)
+        if not (cursor + 0.05 < a < r.start + REACH + 0.01 and a + 0.1 < b):
+            a, b = r.start, r.end
+        cuts.append((a, b))
+        cursor = b
+    tone_at = room_tone_at(env)
+    tone = None
+    if tone_at is not None:
+        tone = work / "room_tone.wav"
+        _run("ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-ss", f"{tone_at:.3f}", "-t", "0.3", "-i", str(video),
+             "-vn", "-ar", "48000", "-ac", "2", str(tone))
+    gains = []
+    for r, (a, b), (c, _) in zip(todo, cuts, clips):
+        if r.audio.startswith("silence:"):
+            gains.append(0.0)
+            continue
+        ctx = max(3.0, b - a)                        # the voice around the repair, pauses left out
+        mine = speech_db(env, max(0.0, (a + b - ctx) / 2), (a + b + ctx) / 2) if env is not None else None
+        theirs = speech_db(_envelope(c)) if mine is not None else None
+        gain = mine - theirs if mine is not None and theirs is not None else _mean_db(video, a, b - a) - _mean_db(c)
+        gains.append(max(-12.0, min(12.0, gain)))
     norm = "aformat=sample_rates=48000:channel_layouts=stereo"
-    parts, labels, hides, shifts = [], [], [], []
-    cursor, offset = 0.0, 0.0
-    for n, (r, (c, length, gain)) in enumerate(zip(todo, clips)):
-        if r.start > cursor + 1e-3:   # untouched stretch before this repair
-            parts.append(f"[0:v]trim=start={cursor:.3f}:end={r.start:.3f},setpts=PTS-STARTPTS,fps={fps}[v{n}k];"
-                         f"[0:a]atrim=start={cursor:.3f}:end={r.start:.3f},asetpts=PTS-STARTPTS,{norm},"
-                         f"afade=t=in:d=0.01,afade=t=out:st={max(0.0, r.start - cursor - 0.01):.3f}:d=0.01[a{n}k];")
-            labels.append(f"[v{n}k][a{n}k]")
-        span = r.end - r.start
-        parts.append(f"[0:v]trim=start={r.start:.3f}:end={r.end:.3f},setpts=(PTS-STARTPTS)*{length / span:.5f},"
-                     f"fps={fps},tpad=stop_mode=clone:stop_duration=1,trim=duration={length:.3f}[v{n}r];"
-                     f"[{n + 1}:a]{norm},volume={gain:.2f}dB,adelay={int(PAD * 1000)}:all=1,apad,"
-                     f"atrim=duration={length:.3f},asetpts=PTS-STARTPTS[a{n}r];")
-        labels.append(f"[v{n}r][a{n}r]")
-        new_start = r.start + offset
-        hides.append((round(new_start, 3), round(new_start + length, 3)))
-        shifts.append((r.start, r.end, offset, length - span))
-        offset += length - span
-        cursor = r.end
+    pieces: list[tuple[str, Any]] = []               # ("src", (a, b)) or ("clip", n), in order
+    cursor = 0.0
+    for n, (a, b) in enumerate(cuts):
+        if a > cursor + 1e-3:
+            pieces.append(("src", (cursor, a)))
+        pieces.append(("clip", n))
+        cursor = b
     if cursor < total - 1e-3:
-        parts.append(f"[0:v]trim=start={cursor:.3f},setpts=PTS-STARTPTS,fps={fps}[vend];"
-                     f"[0:a]atrim=start={cursor:.3f},asetpts=PTS-STARTPTS,{norm},afade=t=in:d=0.01[aend];")
-        labels.append("[vend][aend]")
-    graph = "".join(parts) + "".join(labels) + f"concat=n={len(labels)}:v=1:a=1[v][a]"
+        pieces.append(("src", (cursor, None)))
+    half = XFADE / 2      # each internal joint borrows half a crossfade from both sides: length stays exact
+    parts, vlab, alab, hides, shifts = [], [], [], [], []
+    tone_len = [0.0] * len(clips)                   # one looped room-tone input per clip, as long as its piece
+    offset = 0.0
+    for p, (kind, what) in enumerate(pieces):
+        left = half if p > 0 else 0.0
+        right = half if p < len(pieces) - 1 else 0.0
+        if kind == "src":
+            a, b = what
+            end_v = f":end={b:.3f}" if b is not None else ""
+            end_a = f":end={b + right:.3f}" if b is not None else ""
+            parts.append(f"[0:v]trim=start={a:.3f}{end_v},setpts=PTS-STARTPTS,fps={fps}[v{p}];"
+                         f"[0:a]atrim=start={a - left:.3f}{end_a},asetpts=PTS-STARTPTS,{norm}[a{p}];")
+        else:
+            n = what
+            r, (a, b), (c, length), gain = todo[n], cuts[n], clips[n], gains[n]
+            span, alen = b - a, length + left + right
+            parts.append(f"[0:v]trim=start={a:.3f}:end={b:.3f},setpts=(PTS-STARTPTS)*{length / span:.5f},"
+                         f"fps={fps},tpad=stop_mode=clone:stop_duration=1,trim=duration={length:.3f}[v{p}];"
+                         f"[{n + 1}:a]{norm},volume={gain:.2f}dB,adelay={int(round((PAD + left) * 1000))}:all=1,apad,"
+                         f"atrim=duration={alen:.3f},asetpts=PTS-STARTPTS" + ("[c%d];" % p if tone else f"[a{p}];"))
+            if tone:
+                tone_len[n] = alen
+                parts.append(f"[{len(clips) + 1 + n}:a]{norm},atrim=duration={alen:.3f},asetpts=PTS-STARTPTS[t{p}];"
+                             f"[c{p}][t{p}]amix=inputs=2:normalize=0:duration=first[a{p}];")
+            new_start = a + offset
+            hides.append((round(new_start, 3), round(new_start + length, 3)))
+            shifts.append((r.start, r.end, offset, length - span))
+            offset += length - span
+        vlab.append(f"[v{p}]")
+        alab.append(f"[a{p}]")
+    chain, prev = [], alab[0]
+    for p in range(1, len(alab)):
+        out_l = "[a]" if p == len(alab) - 1 else f"[x{p}]"
+        chain.append(f"{prev}{alab[p]}acrossfade=d={XFADE:.3f}:c1=qsin:c2=qsin{out_l};")
+        prev = out_l
+    if len(alab) == 1:
+        chain.append(f"{alab[0]}anull[a];")
+    graph = "".join(parts) + "".join(chain) + "".join(vlab) + f"concat=n={len(vlab)}:v=1:a=0[v]"
     dest = out_dir / "talking_head.repaired.mp4"
-    inputs = ["-i", str(video)] + [x for c, _, _ in clips for x in ("-i", str(c))]
+    inputs = ["-i", str(video)] + [x for c, _ in clips for x in ("-i", str(c))]
+    if tone:
+        inputs += [x for t in tone_len for x in ("-stream_loop", "-1", "-t", f"{t + 0.1:.3f}", "-i", str(tone))]
     _run("ffmpeg", "-y", "-hide_banner", "-loglevel", "error", *inputs, "-filter_complex", graph,
          "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
          "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", str(dest))

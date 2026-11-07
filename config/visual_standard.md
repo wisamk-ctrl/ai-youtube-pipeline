@@ -12,6 +12,10 @@ shot-list check enforces its numbers. Change it here only.
   on screen with the presenter's voice over it.
 - The old 10–20 % face share (`visuals.face_share`) applies only when `face_mode` is `normal`.
 - **No single visual shot longer than 12 seconds**: a long passage gets several visuals in a row.
+- **No card holds still longer than 5 seconds** (`visuals.max_card_seconds`): a longer source, number
+  or title shot shows the card for 5 s, then continues with a house tech animation.
+- **Cuts are hard, except at a `[Section]` boundary**: there a short dissolve (`visuals.dissolve_frames`,
+  12 frames). The picture keeps its exact length; the voice is never touched.
 - **Corner circle is OFF** (founder, 2026-11-07: it looked wrong). `visuals.corner.enabled: false`
   renders every `[Corner: …]` as a full-screen visual with the voice over it. The markers stay in
   the scripts so a better presence layout can be switched on later without redirecting.
@@ -42,6 +46,9 @@ shot-list check enforces its numbers. Change it here only.
   publisher, the headline and the date. It is the on-screen attribution; never skip it.
 - **Every important figure gets a number card**: the figure counting up, an Arabic label.
 - **A concept or a chapter gets a title card**: a short Arabic phrase, large and calm.
+- **Cards animate**: a ~1 s intro (the card lifts in, the key line's gold highlight sweeps from the
+  right, the source line appears; a number counts up), then a slow push-in that drifts sideways.
+  Never a frozen still.
 - **Stock search terms** are English, concrete and visual, and lean to animation:
   "neural network animation", "digital data flow", "circuit board macro", "code on screen".
 

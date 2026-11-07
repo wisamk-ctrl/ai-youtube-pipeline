@@ -69,6 +69,8 @@ def phase_script(cfg: dict, out: Path) -> None:
     _write_script_result(cfg, out, result, plan_too=True)
     if cfg.get("visuals", {}).get("enabled"):
         script = _directed(cfg, out, result.script)
+        from pipeline.video.voicefirst import write_voice_pack
+        write_voice_pack(script, cfg, out)          # for the voice-first route (needs the shot markers)
         from pipeline.script_format import count_spoken_words
         _shotlist(cfg, out, script, count_spoken_words(script) / cfg["scripting"]["words_per_minute"] * 60, None)
 
@@ -82,6 +84,8 @@ def _write_script_result(cfg: dict, out: Path, result, plan_too: bool) -> None:
     (out / "source_map.md").write_text(result.source_map_md, encoding="utf-8")
     from pipeline.video.manual import write_paste_pack
     write_paste_pack(result.script, cfg, out)   # for the manual HeyGen web-app route
+    from pipeline.video.voicefirst import write_voice_pack
+    write_voice_pack(result.script, cfg, out)   # voice-first route; skipped until the script is directed
     log.info("Quality: critic %s · sources: %s",
              " → ".join(str(r["minimum"]) for r in result.critique_rounds) or "n/a", result.source_stats)
     minutes = result.word_count / cfg["scripting"]["words_per_minute"]
@@ -118,14 +122,16 @@ def _directed(cfg: dict, out: Path, script: str) -> str:
 
 
 def _shotlist(cfg: dict, out: Path, script: str, duration: float, srt: Path | None,
-              hides: list | None = None) -> list:
+              hides: list | None = None, face_only: list | None = None) -> list:
     from pipeline.post import visuals
     v = cfg.get("visuals", {})
     shots = visuals.plan(script, duration, srt, cfg["scripting"]["words_per_minute"],
                          max_visual=float(v.get("max_visual_seconds", 12)),
+                         card_max=float(v.get("max_card_seconds", 5)),
                          corner=bool(v.get("corner", {}).get("enabled", False)),
                          face_mode=str(v.get("face_mode", "normal")),
-                         face_keep=float(v.get("face_keep_seconds", 8)), hide=hides)
+                         face_keep=float(v.get("face_keep_seconds", 8)), hide=hides,
+                         face_only=face_only)
     report = visuals.lint(shots, v)
     titles = {i.id: f"{i.source}: {i.title[:90]}" for i in _items(out)}
     (out / "shotlist.md").write_text(visuals.shotlist_md(shots, report, estimated=srt is None, titles=titles), encoding="utf-8")
@@ -238,15 +244,18 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         (out / "script.md").write_text(script, encoding="utf-8")
     from pipeline.post.subtitles import burn_in
     video, hides, heard = _repair_speech(cfg, out, video, spoken_text(script))
-    result = run_post(video, spoken_text(script), out, shorts, burn=False, heard=heard)
+    result = run_post(video, spoken_text(script), out, [], burn=False, heard=heard)   # Shorts: post/shorts.py below
     base, skip = video, []
     if cfg.get("visuals", {}).get("enabled"):
         # The premium cut (config/visual_standard.md): face for ~a quarter, visuals for the rest.
         from pipeline.post import edit, visual_assets
         script = _directed(cfg, out, script)
-        shots = _shotlist(cfg, out, script, edit.duration(video), result["srt"], hides)
+        from pipeline.video.voicefirst import face_spans
+        shots = _shotlist(cfg, out, script, edit.duration(video), result["srt"], hides, face_spans(out))
         clips, _ = visual_assets.build(shots, _items(out), cfg, out)
-        base = edit.compose(video, shots, clips, cfg, out)
+        from pipeline.post.audio import section_times
+        base = edit.compose(video, shots, clips, cfg, out,
+                            sections=section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]))
         skip = [(s.start, s.end) for n, s in enumerate(shots) if n in clips and s.kind in ("number", "title", "source")]
     if cfg.get("post", {}).get("overlays", {}).get("enabled", True):
         from pipeline.post.overlays import run_overlays
@@ -256,14 +265,28 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     sting = audio.sting_plan(cfg, script, result["srt"], base, ROOT)
     mix = audio.master(base, out / "final_audio.wav", cfg, out / "audio",
                        insert=sting, cuts=audio.section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]))
-    result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4", audio=mix, insert=sting)
+    from pipeline.post import packaging, shorts as shorts_mod
+    tail = packaging.end_card(cfg, out)          # 15 s branded end card (post.end_card), no captions over it
+    result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4", audio=mix, insert=sting, tail=tail)
+    sting_span = (sting[0], audio.duration_of(sting[1])) if sting else None
     if sting:   # the captions as they sit in the final cut (for a caption-track upload)
-        audio.shift_srt(result["srt"], sting[0], audio.duration_of(sting[1]), out / "subtitles.final.srt")
+        audio.shift_srt(result["srt"], sting[0], sting_span[1], out / "subtitles.final.srt")
+    # The YouTube package: chapters' timeline, thumbnail, native vertical Shorts (from the edit, pre-sting).
+    packaging.write_timeline(out, script, result["srt"], cfg, sting_span,
+                             audio.duration_of(tail) if tail else None, audio.duration_of(result["final"]))
+    try:
+        packaging.render_thumbnail(out, cfg, talking_head=out / "talking_head.mp4")
+    except Exception as e:  # noqa: BLE001 — a thumbnail must not sink the episode
+        log.warning("Thumbnail failed: %s", e)
+    try:
+        result["shorts"] = shorts_mod.build(base, script, result["srt"], shorts, cfg, out, sting=sting_span)
+    except Exception as e:  # noqa: BLE001
+        log.warning("Shorts failed: %s", e)
     import shutil  # intermediates are as large as the video itself; keep the artifact lean
     (out / "talking_head.repaired.mp4").unlink(missing_ok=True)
     if mix:
         mix.unlink(missing_ok=True)
-    for tmp in ("segments", "visuals", "repair", "audio"):
+    for tmp in ("segments", "visuals", "repair", "audio", "endcard"):
         shutil.rmtree(out / tmp, ignore_errors=True)
     log.info("Phase 4 done → %s (similarity %.2f, %d shorts)", result["final"], result["similarity"], len(result["shorts"]))
 
@@ -289,7 +312,57 @@ def phase_direct(cfg: dict, out: Path) -> None:
     from pipeline.script_format import strip_shots
     # Always a fresh plan: an earlier one (perhaps the rule-based fallback) is discarded.
     script = _directed(cfg, out, strip_shots((out / "script.md").read_text(encoding="utf-8")))
+    from pipeline.video.voicefirst import write_voice_pack
+    write_voice_pack(script, cfg, out)
     _shotlist(cfg, out, script, count_spoken_words(script) / cfg["scripting"]["words_per_minute"] * 60, None)
+
+
+def phase_voicepack(cfg: dict, out: Path) -> None:
+    """Voice-first route, step 1: the speech chunks of the directed script (voice_pack.md)."""
+    from pipeline.video.voicefirst import write_voice_pack
+    if not (out / "script.md").exists():
+        sys.exit(f"{out / 'script.md'} not found — run the script phase first.")
+    write_voice_pack(_directed(cfg, out, (out / "script.md").read_text(encoding="utf-8")), cfg, out)
+
+
+def phase_assemble(cfg: dict, out: Path) -> None:
+    """Voice-first route, step 3: speech chunks + face videos (reviewed/<week>/voice.yaml) →
+    talking_head.mp4, then post-production."""
+    from pipeline.video import voicefirst
+    if not (out / "voice_pack.json").exists():
+        phase_voicepack(cfg, out)
+    _sources_gate(out, "assemble")
+    voice = ROOT / "reviewed" / out.name / "voice.yaml"
+    if not voice.exists():
+        sys.exit(f"{voice} not found — make the speech and face videos from voice_pack.md first.")
+    chunks = json.loads((out / "voice_pack.json").read_text(encoding="utf-8"))["chunks"]
+    try:
+        entries = voicefirst.load_voice(voice, chunks)
+    except ValueError as exc:
+        sys.exit(f"phase assemble: {exc}")
+    voicefirst.assemble(entries, cfg, out)
+    phase_post(cfg, out, None)
+
+
+def phase_translate(cfg: dict, out: Path) -> None:
+    """English version: output/<week> (directed Arabic script) → output/<week>-en (same sources and
+    shot plan; English words, voice, captions, on-screen text). --week may name either folder."""
+    import copy
+    from pipeline.language import apply_language, english_week, source_week
+    from pipeline.scripting import translate
+    src, dst = ROOT / "output" / source_week(out.name), ROOT / "output" / english_week(out.name)
+    try:
+        summary = translate.run(src, dst, cfg)
+    except (FileNotFoundError, translate.TranslationError) as exc:
+        sys.exit(f"phase translate: {exc}")
+    cfg_en = apply_language(copy.deepcopy(cfg), dst.name)
+    script = (dst / "script.md").read_text(encoding="utf-8")
+    from pipeline.video.manual import write_paste_pack
+    write_paste_pack(script, cfg_en, dst)              # manual route, with the English voice clone
+    if cfg.get("visuals", {}).get("enabled"):
+        from pipeline.script_format import count_spoken_words
+        _shotlist(cfg_en, dst, script, count_spoken_words(script) / cfg["scripting"]["words_per_minute"] * 60, None)
+    log.info("English version → %s: %s", dst, summary)
 
 
 def phase_publish(cfg: dict, out: Path) -> None:
@@ -301,7 +374,8 @@ def phase_publish(cfg: dict, out: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "direct", "video", "import", "post", "publish", "all"])
+    ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "direct", "video", "import", "post", "publish",
+                                     "voicepack", "assemble", "translate", "all"])
     ap.add_argument("--fixture", help="Copy fixtures/<name>/items.json into the week folder instead of ingesting (offline testing)")
     ap.add_argument("--shorts", help='Comma-separated start-end seconds for vertical cuts, e.g. "12-55,180-240"')
     ap.add_argument("--week", help="Output folder name, default: current ISO week (e.g. 2026-W41)")
@@ -317,6 +391,12 @@ def main() -> None:
                         format="%(asctime)s %(levelname)-7s %(name)s: %(message)s")
     cfg = load_settings(args.config)
     out = week_dir(args.week)
+    from pipeline.language import apply_language
+    apply_language(cfg, out.name)                      # an <week>-en folder is the English version
+    if cfg["language"] == "en" and args.phase in ("ingest", "script", "polish", "score", "all"):
+        sys.exit(f"phase {args.phase} is the Arabic writer/critic; for {out.name} re-run phase translate on its Arabic week")
+    _RUN["out"] = out                                 # for the top-level error handler
+    (out / ERROR_FILE).unlink(missing_ok=True)         # a stale error must not outlive its run
 
     if args.fixture:
         import shutil
@@ -341,14 +421,53 @@ def main() -> None:
         phase_score(cfg, out)
     if args.phase == "direct":
         phase_direct(cfg, out)
+    if args.phase == "voicepack":
+        phase_voicepack(cfg, out)
+    if args.phase == "assemble":
+        phase_assemble(cfg, out)
     if args.phase == "import":
         phase_import(cfg, out, args.video_url)
     if args.phase == "post":
         phase_post(cfg, out, args.shorts)
+    if args.phase == "translate":
+        phase_translate(cfg, out)
     if args.phase == "publish":
         phase_publish(cfg, out)
     usage.write(out, cfg.get("pricing"))
 
 
+ERROR_FILE = "error.txt"   # read by .github/workflows/weekly.yml for the run-failed issue
+_RUN: dict = {}
+
+
+def write_error(out: Path | None, exc: BaseException) -> Path | None:
+    """Put the failure (a sys.exit message or the traceback) in output/<week>/error.txt."""
+    if out is None:
+        return None
+    import traceback
+    if isinstance(exc, SystemExit):
+        text = f"{exc.code}\n"
+    else:
+        text = "".join(traceback.format_exception(type(exc), exc, exc.__traceback__))
+    try:
+        path = out / ERROR_FILE
+        path.write_text(text[-20000:], encoding="utf-8")
+        return path
+    except OSError:
+        return None
+
+
+def _entry() -> None:
+    try:
+        main()
+    except SystemExit as e:
+        if e.code not in (None, 0):
+            write_error(_RUN.get("out"), e)
+        raise
+    except BaseException as e:   # noqa: BLE001 — record, then fail as before
+        write_error(_RUN.get("out"), e)
+        raise
+
+
 if __name__ == "__main__":
-    main()
+    _entry()

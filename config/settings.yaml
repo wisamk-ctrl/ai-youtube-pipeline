@@ -149,6 +149,10 @@ scripting:
   stories_max: 7
   channel_name: "أسبوع الذكاء الاصطناعي"   # spoken in the intro/outro
   presenter_name: "وسام"
+  # English version (phase translate → output/<week>-en). Unset model = `model` above.
+  channel_name_en: "This Week in AI"
+  presenter_name_en: "Wissam"
+  words_per_minute_en: 150    # English narration pace (estimate until measured on the English clone)
 
 video:
   provider: heygen            # heygen | elevenlabs_did
@@ -158,6 +162,10 @@ video:
   pause_style: ssml
   pause_seconds: 0.8
   max_chars_per_chunk: 1500   # sentence-aligned chunks; well under every provider's per-request limit
+  voicefirst:                 # voice-first route (pipeline/video/voicefirst.py): speech + avatar only on the face chunks
+    max_chars: 4500           # per speech call (voice chunks)
+    gap_seconds: 0.25         # natural pause between chunks in narration.wav
+    backdrop: "0x0B1220"      # behind the narration where no face video sits (always covered by visuals)
   poll_interval_s: 20
   poll_timeout_s: 3600
   tashkeel: false             # sparse diacritics before TTS (style guide §6); turn on after a voice test confirms the engine honours them
@@ -175,6 +183,10 @@ video:
     look_name: Professional in blue shirt         # as HeyGen's look picker shows it (paste-pack instructions)
     voice_id: 4c810d9c9906445f81dfd4f7d32259e0    # Jordanian voice clone, second recording
     voice_name: video1496943888                   # as HeyGen's voice picker shows it
+    # English version (week folders ending in -en, phase translate): the founder's English clone.
+    # pipeline/language.py swaps it in for voice_id on -en weeks (paste pack, API render, voice pack).
+    voice_id_en: e1412c8894c9462eb3aa8bc8ad1f6e26
+    voice_name_en: ""                             # as HeyGen's voice picker shows it, once known
     avatar_style: normal
     voice_speed: 1.0
     width: 3840               # 4K master; YouTube re-encodes 1080p from it at a visibly higher bitrate
@@ -223,6 +235,11 @@ post:
     enabled: true             # [On-Screen Text] cues become lower-third cards; [Show B-Roll] cues a corner marker
     card_seconds: 6
     broll_seconds: 4
+    disclosure:               # AI-twin disclosure lower-third in the first minute (review 2026-11-07, Tier 1 #11)
+      enabled: true
+      text: "توأم رقمي لوسام — بموافقة وسام"
+      at: 4                   # seconds; moved past any cue card it would cover, never after 60 s
+      seconds: 6
   audio:                      # final audio pass, post/audio.py (review 2026-11-07, Tier 1 #9)
     enabled: true
     music: generated          # generated (our own synthesised pad, never licensed music) | <path to a wav we own> | none
@@ -234,6 +251,18 @@ post:
   sting:
     enabled: true             # our code-rendered intro sting (sting/), spliced in after the cold open
     path: assets/intro_sting.mp4
+  end_card:                   # branded card appended to the final video (post/packaging.py); left side kept empty
+    enabled: true             # for YouTube's end-screen elements (add them in Studio: a video tile + subscribe)
+    seconds: 15
+    music_lufs: -20           # our generated bed under the card
+  thumbnail:                  # output/<week>/thumbnail.png from plan.thumbnail_text_ar (post/packaging.py)
+    enabled: true
+    face: true                # a small still of the presenter at the left
+  shorts:                     # native 9:16 Shorts (post/shorts.py); --shorts "a-b,c-d" overrides the picker
+    enabled: true
+    count: 3
+    min_seconds: 30
+    max_seconds: 58           # + the 2 s «الحلقة الكاملة على القناة» card
 
 # USD per million tokens, from anthropic.com/pricing. Left empty on purpose: the meter reports
 # tokens either way and only prints a cost once these are filled in.
@@ -250,3 +279,8 @@ publish:
   publish_hour_utc: 6         # 06:00 UTC = 10:00 Gulf
   tags: [الذكاء الاصطناعي, أخبار التقنية, AI, ChatGPT, OpenAI, Claude, Gemini, شركات, الإمارات, السعودية]
   hashtags: ["#الذكاء_الاصطناعي", "#أخبار_التقنية", "#AI"]
+  caption_track: true         # upload the script-exact Arabic SRT (needs the youtube.force-ssl scope on the token)
+  localizations: true         # English title/description from the plan's English fields
+  show_name_en: AI Week       # used in the English title only when the plan has no episode_title_en
+  shorts:
+    enabled: false            # upload the week's Shorts (each linked to the episode); founder turns this on

@@ -96,6 +96,7 @@ def extract_cues(script: str, words_per_minute: int) -> list[Cue]:
 # («بُعد» → «بوعد»). speakable() fixes all three, plus a pronunciation map.
 
 _AR = "\u0600-\u06FF"
+_HAS_AR = re.compile(f"[{_AR}]")
 _LATIN_RUN = re.compile(rf"(?P<ar>[{_AR}]+(?:\s+[{_AR}]+){{0,3}})\s+(?P<lat>[A-Za-z][A-Za-z0-9\-]*(?:\s+[A-Za-z][A-Za-z0-9\-]*){{0,3}})(?![A-Za-z0-9])")
 _GLOSS = re.compile(rf"\s*\((?=[^()]*[A-Za-z])[^(){_AR}]*\)")
 _NAME_IN_GLOSS = re.compile(r"[A-Z][a-z]|\d")       # «(Claude Opus 4.5)» is a name, «(AI agents)» a gloss
@@ -167,7 +168,13 @@ def speakable(text: str, pronunciation: dict[str, str] | None = None) -> str:
     """Spoken text → what the voice should read: names once, no English glosses, no vowel marks.
 
     Braced Latin («أوبن إيه آي{OpenAI}») is dropped outright; the consonant match below is only
-    for older scripts that wrote the two spellings side by side."""
+    for older scripts that wrote the two spellings side by side.
+
+    Text with no Arabic letters (the English version, phase translate) passes through as written:
+    its brackets are not glosses, and the Arabic respellings in config/pronunciation.yaml are not
+    for an English voice."""
+    if not _HAS_AR.search(text):
+        return re.sub(r"[ \t]+", " ", text)
     text = _GLOSS.sub(_drop_gloss, unbraced(text))
     pron = _pronunciation() if pronunciation is None else pronunciation
 
@@ -307,7 +314,10 @@ def voice_text(script: str, pronunciation: dict[str, str] | None = None) -> str:
 
 def lint_voice(script: str, pronunciation: dict[str, str] | None = None,
                config: dict | None = None) -> list[VoiceFinding]:
-    """Every place where what the voice reads breaks the voice rules (style guide §2–§6)."""
+    """Every place where what the voice reads breaks the voice rules (style guide §2–§6).
+    The rules are Arabic rules: a script with no Arabic letters (the English version) has none."""
+    if not _HAS_AR.search(MARKER_RE.sub(" ", script)):
+        return []
     cfg = _voice_config() if config is None else config
     allow = {str(x) for x in cfg.get("latin_allowlist", [])}
     banned = {str(k): str(v or "") for k, v in (cfg.get("banned_phrases") or {}).items()}

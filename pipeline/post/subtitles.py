@@ -18,6 +18,8 @@ First run downloads the Whisper model (~1.5 GB for `large-v3`, ~500 MB for
 
 from __future__ import annotations
 
+import hashlib
+import json
 import logging
 import os
 import re
@@ -58,15 +60,71 @@ class Word:
     word: str
 
 
-def transcribe_words(video: Path, model_size: str | None = None) -> list[Word]:
-    """Every word Whisper hears, with its own start and end time."""
+HEARD_CACHE = "heard.json"   # in the week folder, next to talking_head.mp4; travels in the artifact
+_HEARD_KEEP = 4              # entries kept (talking_head, a repaired cut, a re-import …)
+
+
+def _sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for block in iter(lambda: f.read(1 << 20), b""):
+            h.update(block)
+    return h.hexdigest()
+
+
+def _cache_read(cache: Path, key: str) -> list[Word] | None:
+    try:
+        entries = json.loads(cache.read_text(encoding="utf-8")).get("entries", {})
+        hit = entries.get(key)
+        return None if hit is None else [Word(float(s), float(e), str(w)) for s, e, w in hit["words"]]
+    except (OSError, ValueError, KeyError, TypeError, AttributeError):
+        return None   # missing or damaged cache: transcribe again
+
+
+def _cache_write(cache: Path, key: str, words: list[Word]) -> None:
+    try:
+        entries = json.loads(cache.read_text(encoding="utf-8")).get("entries", {}) if cache.exists() else {}
+        if not isinstance(entries, dict):
+            entries = {}
+    except (OSError, ValueError, AttributeError):
+        entries = {}
+    entries.pop(key, None)
+    entries[key] = {"words": [[w.start, w.end, w.word] for w in words]}
+    entries = dict(list(entries.items())[-_HEARD_KEEP:])
+    try:
+        cache.write_text(json.dumps({"version": 1, "entries": entries}, ensure_ascii=False), encoding="utf-8")
+    except OSError as e:
+        log.warning("Could not write the transcript cache %s: %s", cache, e)
+
+
+def transcribe_words(video: Path, model_size: str | None = None, cache: Path | None | bool = True,
+                     language: str | None = None) -> list[Word]:
+    """Every word Whisper hears, with its own start and end time.
+
+    Cached in <video folder>/heard.json, keyed by the video file's sha256, the model and the language, so a
+    post re-run on the same talking_head (repair and run_post both land here) skips Whisper.
+    `cache=False` disables it; a Path puts it elsewhere."""
+    model_size = model_size or os.environ.get("WHISPER_MODEL", "large-v3")
+    # The week folder names the language: output/<week>-en is the English version (pipeline/language.py).
+    from pipeline.language import week_language
+    language = language or week_language(Path(video).resolve().parent.name)
+    cache_path = (Path(video).parent / HEARD_CACHE) if cache is True else (cache or None)
+    key = f"{_sha256(Path(video))}:{model_size}:{language}" if cache_path else ""
+    if cache_path:
+        hit = _cache_read(cache_path, key)
+        if hit is not None:
+            log.info("Whisper %s: %d words from %s (same video, same model)", model_size, len(hit), cache_path.name)
+            return hit
+
     from faster_whisper import WhisperModel  # imported lazily: heavy, optional
 
-    model_size = model_size or os.environ.get("WHISPER_MODEL", "large-v3")
     model = WhisperModel(model_size, device="auto", compute_type="int8")
-    segments, info = model.transcribe(str(video), language="ar", word_timestamps=True, vad_filter=True)
+    segments, info = model.transcribe(str(video), language=language, word_timestamps=True, vad_filter=True)
     log.info("Whisper %s: language=%s p=%.2f", model_size, info.language, info.language_probability)
-    return [Word(w.start, w.end, w.word) for seg in segments for w in (seg.words or [])]
+    words = [Word(w.start, w.end, w.word) for seg in segments for w in (seg.words or [])]
+    if cache_path:
+        _cache_write(cache_path, key, words)
+    return words
 
 
 def transcribe(video: Path, model_size: str | None = None, max_chars: int = 42) -> list[Segment]:
@@ -241,7 +299,7 @@ def _geometry(video: Path) -> tuple[str, int, int]:
 
 
 def burn_in(video: Path, srt: Path, dest: Path, font_size: int = 54, audio: Path | None = None,
-            insert: tuple[float, Path] | None = None) -> Path:
+            insert: tuple[float, Path] | None = None, tail: Path | None = None) -> Path:
     """Hard-code captions in the episode's one final, high-quality encode. libass handles RTL shaping.
 
     Captions sit in a translucent navy box (BorderStyle=3), ~54 px on a 1080p frame (PlayRes is set
@@ -272,6 +330,15 @@ def burn_in(video: Path, srt: Path, dest: Path, font_size: int = 54, audio: Path
         amap = ["-map", f"{len(args) // 2 - 1}:a"]
     else:
         amap = ["-map", "0:a?"]
+    if tail:   # the end card (post/packaging.py): its own picture and sound after the programme, no captions
+        graph = vmap[1] if insert else f"[0:v]{subs}[v]"
+        a_in = amap[1].rstrip("?")
+        args += ["-i", str(tail)]
+        k = len(args) // 2 - 1
+        graph += (f";[v]format=yuv420p,setsar=1[pv];[{k}:v]scale={w}:{h},fps={fps},format=yuv420p,setsar=1[tv];"
+                  f"[{a_in}]aformat=sample_rates=48000:channel_layouts=stereo[pa];"
+                  f"[{k}:a]aformat=sample_rates=48000:channel_layouts=stereo[ta];[pv][pa][tv][ta]concat=n=2:v=1:a=1[vo][ao]")
+        vmap, amap = ["-filter_complex", graph, "-map", "[vo]"], ["-map", "[ao]"]
     _ffmpeg(*args, *vmap, *amap, "-c:v", "libx264", "-crf", "18", "-preset", "slow", "-pix_fmt", "yuv420p",
             "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", str(dest))
     iso.unlink(missing_ok=True)
@@ -279,7 +346,8 @@ def burn_in(video: Path, srt: Path, dest: Path, font_size: int = 54, audio: Path
 
 
 def cut_short(video: Path, start: float, end: float, dest: Path, srt: Path | None = None) -> Path:
-    """A 9:16 vertical cut for Shorts/Reels: centre-crop 16:9 → 9:16, 1080×1920."""
+    """A 9:16 centre-crop cut. Superseded by post/shorts.py (native vertical layouts; the centre crop
+    cut the cards in half); kept only for manual one-offs."""
     vf = "crop=ih*9/16:ih,scale=1080:1920"
     if srt:
         srt_path = str(srt).replace("\\", "\\\\").replace(":", "\\:")

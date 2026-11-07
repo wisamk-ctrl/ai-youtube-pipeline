@@ -47,8 +47,36 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
 - Per 9-min episode: narration ≈ 27 + face at open/sign-off only (~16 s) on Avatar IV ≈ 6 → **≈ 33 credits**,
   vs 63 for today's full Avatar III render, with better lip sync where the face shows.
 - Repairs: batch every phrase into ONE speech call and cut it by the returned timestamps (`url#t=a,b`).
+- **How to run it (built 2026-11-07, `pipeline/video/voicefirst.py`):**
+  1. `output/<week>/voice_pack.md` (+ `.json`) comes with every script/score/polish/direct run, or run phase
+     `voicepack` (it posts the pack on the review issue): ordered chunks `NN-face` / `NN-voice`; face chunks are the
+     opening and sign-off, capped to `visuals.face_keep_seconds`; voice chunks ≤ `video.voicefirst.max_chars`.
+  2. From chat (HeyGen connector): `create_speech` per chunk with the voice clone, text exactly as given (break tags
+     kept); for face chunks also `create_video_from_avatar` with that `audioUrl`, Avatar IV, 1080p.
+  3. Commit `reviewed/<week>/voice.yaml` (`<id>: {audio: <url>, duration: <s>, video: <url>}`; a voice chunk may be
+     just its URL; ids must match the pack exactly), then run weekly-roundup phase `assemble`, this week: it joins
+     the speech (0.25 s gaps) into `narration.wav`, builds `talking_head.mp4` with the face videos at their chunks
+     (`face_spans.json`), and runs post-production with the face only on those spans.
 - Founder decisions the same day: audience = enterprise leaders + broad audience + IT people/techies;
   repo stays public for now; music only if not licensed (we generate our own).
+
+## English version: how to run (built 2026-11-07, `pipeline/scripting/translate.py`)
+Same sources and shot plan as the Arabic week; only the words, voice, captions and on-screen text change.
+A week folder ending in `-en` is English everywhere (`pipeline/language.py`): the English voice clone
+`video.heygen.voice_id_en` (`e1412c88…`), Whisper in English, English pace (`words_per_minute_en`).
+1. **translate** — weekly-roundup phase `translate`, week = the *Arabic* week (its script must be directed:
+   run `direct` first if it has no shot markers). Writes `output/<week>-en/`: `script.md` (every marker kept in
+   place and order — checked, one retry, else the phase fails), `plan.json` (English title / description /
+   thumbnail), `items.json`, `critique.json` (one round, `config/critic_rubric_en.md`), `source_map.md`
+   (gates assemble/import like the Arabic one), `heygen_paste.md`, `shotlist.md`; artifact `week-<week>-en`.
+   Read `script.md` and `source_map.md` before going on; a hand-edited copy goes in `reviewed/<week>-en/script.md`.
+2. **voicepack** — phase `voicepack`, week `<week>-en` → `voice_pack.md` with the English clone's id.
+3. **From chat (HeyGen connector):** `create_speech` per chunk with the English clone; face chunks also
+   `create_video_from_avatar` with that `audioUrl`; commit `reviewed/<week>-en/voice.yaml`.
+4. **assemble** — phase `assemble`, week `<week>-en` → `talking_head.mp4`, then post (English captions).
+5. **post** (re-run only if needed) → **preview** workflow with week `<week>-en`.
+- Not covered for `-en` weeks: phases `script`, `polish` and `score` (they are the Arabic writer/critic);
+  re-run `translate` instead. YouTube tags and hashtags in `publish` are still the Arabic ones.
 
 ## Earlier test week (2026-W43, folder `2026-W43-jo`)
 - Approved script: `reviewed/2026-W43-jo/script.md` (one unsourced line removed by the founder).

@@ -62,14 +62,21 @@ def word_clock(segments: list[tuple[float, float, str]]) -> list[float]:
 def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
          snap: float = 2.0, min_shot: float = 1.5, max_visual: float = 12.0,
          corner: bool = True, face_mode: str = "normal", face_keep: float = 8.0,
-         hide: list[tuple[float, float]] | None = None) -> list[Shot]:
+         hide: list[tuple[float, float]] | None = None,
+         face_only: list[tuple[float, float]] | None = None, card_max: float = 5.0) -> list[Shot]:
     """Shot timeline for the edit.
+
+    A source, number or title card stays on screen at most `card_max` seconds; the rest of its shot
+    continues with a house tech animation (`_cap_cards`).
 
     `corner=False` (visuals.corner.enabled off) renders every corner shot as a full-screen visual.
     `face_mode="minimal"` keeps the presenter's face only for the opening and the sign-off (each at
     most `face_keep` seconds); every other face shot becomes a house tech animation.
     `hide` spans (repaired speech, see post/repair.py) never show the face: the voice there no
-    longer matches the lips."""
+    longer matches the lips.
+    `face_only` spans (a voice-first render, video/voicefirst.py) are the only places the face can
+    show: there the avatar video sits in the render, everywhere else is a visual. Minimal-face
+    trimming does not move them."""
     marks = extract_shots(script)
     total_words = max(1, count_spoken_words(script))
     segs = read_srt(srt)
@@ -114,7 +121,7 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
     # A full-screen visual that runs long switches to the corner layout halfway: same picture,
     # the presenter's circle joins, so the shot changes without inventing a new visual.
     out: list[Shot] = []
-    for s in merged:
+    for s in _cap_cards(merged, card_max, min_shot):
         if s.mode == "visual" and s.seconds > max_visual:
             mid = s.start + s.seconds / 2
             out.append(Shot("visual", s.kind, s.payload, s.start, mid, s.notes + ["split: long visual"]))
@@ -124,6 +131,8 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
                 out.append(Shot("visual", s.kind, s.payload, mid, s.end, ["split: second half of a long visual"]))
         else:
             out.append(s)
+    if face_only is not None:
+        return _only_faces(out, [(max(0.0, a), min(duration, b)) for a, b in face_only if b > a])
     return _less_face(out, face_mode, face_keep, hide or [])
 
 
@@ -136,6 +145,23 @@ HOUSE_EXTRA = ["futuristic user interface hologram animation", "glowing fiber op
                "smart city night lights, timelapse", "microchip production line", "abstract AI brain made of light",
                "cloud computing icons, animation", "cybersecurity padlock hologram", "motherboard close-up, slow pan",
                "server room corridor, slow walk"]
+
+
+def _cap_cards(shots: list[Shot], card_max: float, min_shot: float) -> list[Shot]:
+    """A card longer than `card_max` (plus a shot's worth of slack) holds for `card_max`, then the
+    shot continues with a house tech animation, taken from the far end of the pool so it does not
+    repeat the minimal-face rotation."""
+    from pipeline.scripting.director import HOUSE_STOCK
+    pool = HOUSE_STOCK + HOUSE_EXTRA
+    out: list[Shot] = []
+    for s in shots:
+        if s.mode != "face" and s.kind in ("source", "number", "title") and s.seconds > card_max + min_shot:
+            cut = s.start + card_max
+            out += [Shot(s.mode, s.kind, s.payload, s.start, cut, s.notes + [f"card held {card_max:g}s"]),
+                    Shot(s.mode, "stock", pool[-1 - len(out) % len(pool)], cut, s.end, ["after a card: house animation"])]
+        else:
+            out.append(s)
+    return out
 
 
 def _less_face(shots: list[Shot], face_mode: str, keep: float, hide: list[tuple[float, float]]) -> list[Shot]:
@@ -190,6 +216,38 @@ def _less_face(shots: list[Shot], face_mode: str, keep: float, hide: list[tuple[
     return out
 
 
+def _only_faces(shots: list[Shot], spans: list[tuple[float, float]]) -> list[Shot]:
+    from pipeline.scripting.director import HOUSE_STOCK
+    pool = HOUSE_STOCK + HOUSE_EXTRA
+    base = []
+    for n, s in enumerate(shots):   # no face (nor corner presenter) outside the spans: the render has none
+        if s.mode == "face":
+            base.append(Shot("visual", "stock", pool[n % len(pool)], s.start, s.end, ["voice-first: no face here"]))
+        else:
+            base.append(Shot("visual", s.kind, s.payload, s.start, s.end, list(s.notes)))
+    spans = sorted(spans)
+    pieces = [Shot("face", "", "", a, b, ["voice-first face span"]) for a, b in spans]
+    for s in base:
+        t = s.start
+        for fa, fb in spans:
+            if fb <= t or fa >= s.end:
+                continue
+            if fa > t:
+                pieces.append(Shot(s.mode, s.kind, s.payload, t, fa, list(s.notes)))
+            t = max(t, fb)
+        if t < s.end:
+            pieces.append(Shot(s.mode, s.kind, s.payload, t, s.end, list(s.notes)))
+    out: list[Shot] = []
+    for s in sorted(pieces, key=lambda x: x.start):
+        if s.seconds <= 1e-3:
+            continue
+        if s.mode == "visual" and s.seconds < 1.0 and out and out[-1].mode == "visual":
+            out[-1].end = s.end     # a visual sliver reads as a glitch: the previous visual holds instead
+            continue
+        out.append(s)
+    return out
+
+
 def lint(shots: list[Shot], std: dict[str, Any] | None = None) -> dict[str, Any]:
     std = std or {}
     lo, hi = std.get("face_share", [0.10, 0.20])
@@ -208,6 +266,8 @@ def lint(shots: list[Shot], std: dict[str, Any] | None = None) -> dict[str, Any]
             warnings.append(f"{s.seconds:.0f}s face stretch at {s.start:.0f}s (max {max_face}s)")
         if s.mode != "face" and s.seconds > max_visual:
             warnings.append(f"{s.seconds:.0f}s {s.kind} shot at {s.start:.0f}s (max {max_visual}s; the clip will loop or hold)")
+        if s.kind in ("source", "number", "title") and s.seconds > std.get("max_card_seconds", 5) + 1.5:
+            warnings.append(f"{s.seconds:.0f}s {s.kind} card at {s.start:.0f}s (max {std.get('max_card_seconds', 5)}s still)")
     kinds = {k: sum(1 for s in shots if s.kind == k) for k in ("source", "number", "title", "stock")}
     return {"face_share": round(share, 3), "shots": len(shots), "kinds": kinds,
             "corner": sum(1 for s in shots if s.mode == "corner"), "warnings": warnings}

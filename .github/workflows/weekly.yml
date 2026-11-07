@@ -21,10 +21,10 @@ on:
   workflow_dispatch:
     inputs:
       phase:
-        description: "script (ingest+script) | ingest (sources only, no Claude) | polish (apply the last critique, re-score) | score (critic only, on reviewed/<week>/script.md if present) | video | post | publish"
+        description: "script (ingest+script) | ingest (sources only, no Claude) | polish (apply the last critique, re-score) | score (critic only, on reviewed/<week>/script.md if present) | video | post | publish | voicepack (voice-first speech chunks) | assemble (voice-first: reviewed/<week>/voice.yaml → edit) | translate (English version of the Arabic <week> → <week>-en; then run the other phases with week <week>-en)"
         default: script
         type: choice
-        options: [script, ingest, polish, score, direct, video, import, post, publish]
+        options: [script, ingest, polish, score, direct, video, import, post, publish, voicepack, assemble, translate]
       week:
         description: "Week folder, e.g. 2026-W41 (default: current ISO week)"
         default: ""
@@ -46,6 +46,10 @@ on:
       video_url:
         description: "import only: the video you rendered in HeyGen's web app (its ID or share link), or a Drive/Dropbox/direct MP4 link"
         default: ""
+      force:
+        description: "script only: run even though the week's newest artifact already holds a rendered talking_head.mp4 (the new artifact would shadow it)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write            # the script job commits data/radar_state.json (the radar's memory)
@@ -55,21 +59,50 @@ permissions:
 env:
   PYTHON_VERSION: "3.12"
 
+# One run per week at a time: two runs for one week would race on the week-<week> artifact (the
+# later upload wins, and a script run can make a video-less artifact the "newest"). Runs queue,
+# they are never cancelled (a cancelled render is paid credits lost). GitHub keeps at most one
+# pending run per group: a third dispatch for the same week replaces the waiting one.
+concurrency:
+  group: weekly-${{ inputs.week || 'scheduled' }}
+  cancel-in-progress: false
+
 jobs:
   script:
     if: github.event_name == 'schedule' || inputs.phase == 'script' || inputs.phase == 'ingest'
     runs-on: ubuntu-latest
     timeout-minutes: 60          # write + up to 3 review passes + critic rounds + source map, each a long Opus call
+    outputs:
+      error: ${{ steps.fail.outputs.error }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
-      - run: pip install -r requirements.txt
+          cache-dependency-path: requirements.lock
+      - run: pip install -r requirements.lock      # exact pins; requirements.txt is the human-edited source
       - name: Resolve week folder
         id: week
         run: echo "week=${{ inputs.week || '' }}" >> "$GITHUB_OUTPUT"
+      - name: Refuse to shadow a rendered week
+        # A script run uploads week-<week> too, and the render job takes the NEWEST one: a stray
+        # script run would hide the rendered talking_head.mp4. Re-run with force=true to mean it.
+        if: inputs.phase != 'ingest' && !inputs.force
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WEEK: ${{ steps.week.outputs.week }}
+        run: |
+          W="${WEEK:-$(date -u +%G-W%V)}"     # the same ISO week run_pipeline.py defaults to
+          id=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?name=week-$W&per_page=50" \
+                 --jq '[.artifacts[] | select(.expired | not)] | sort_by(.updated_at) | last | .id // empty')
+          [ -z "$id" ] && { echo "No artifact week-$W yet."; exit 0; }
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" > "$RUNNER_TEMP/week.zip"
+          if unzip -l "$RUNNER_TEMP/week.zip" | grep -qE '[ /]talking_head\.mp4$'; then
+            echo "::error::week-$W already holds a rendered talking_head.mp4 (artifact $id). A script run would shadow it; re-run with force=true if that is intended."
+            exit 1
+          fi
+          rm -f "$RUNNER_TEMP/week.zip"
       - name: Ingest + script
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -79,6 +112,7 @@ jobs:
           GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
+          exec > >(tee -a "$RUNNER_TEMP/phase.log") 2>&1   # the alert quotes the log's tail
           WEEK_ARG=""; [ -n "${{ steps.week.outputs.week }}" ] && WEEK_ARG="--week ${{ steps.week.outputs.week }}"
           FIX_ARG=""; [ -n "${{ inputs.fixture }}" ] && FIX_ARG="--fixture ${{ inputs.fixture }}"
           python run_pipeline.py ${{ inputs.phase == 'ingest' && 'ingest' || 'all' }} $WEEK_ARG $FIX_ARG
@@ -100,13 +134,15 @@ jobs:
           # Ingest-only runs have no script.md; name them apart so a render never picks one up.
           name: ${{ inputs.phase == 'ingest' && 'sources' || 'week' }}-${{ env.WEEK_ID }}
           path: output/
-          retention-days: 30
-      - name: Close run-failed issues
+          retention-days: 90     # the maximum for a public repo
+      - name: Close run-failed issues (script job only)
+        # Per job type: a green script run says nothing about a broken render.
         uses: actions/github-script@v7
         with:
           script: |
-            const open = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'run-failed', state: 'open' });
-            for (const i of open.data) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: i.number, state: 'closed', state_reason: 'completed' });
+            const open = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'run-failed', state: 'open', per_page: 100 });
+            for (const i of open.data.filter(i => i.title.startsWith('Run failed: script job')))
+              await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: i.number, state: 'closed', state_reason: 'completed' });
       - name: Open sources issue (ingest only)
         if: inputs.phase == 'ingest'
         uses: actions/github-script@v7
@@ -116,15 +152,17 @@ jobs:
             const dir = process.env.WEEK_DIR;
             const srcs = fs.existsSync(`${dir}/sources.md`) ? fs.readFileSync(`${dir}/sources.md`, 'utf8') : 'no sources.md';
             const cov = fs.existsSync(`${dir}/coverage.md`) ? fs.readFileSync(`${dir}/coverage.md`, 'utf8') : '';
+            const clip = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/clip.js`);  // never cuts inside <details> or ```
             await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo,
               title: `Sources: ${dir.replace('output/','').replace('/','')}`, labels: ['sources'],
-              body: `Run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n${srcs}\n\n${cov}`.slice(0, 60000) });
+              body: clip(`Run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n${srcs}\n\n${cov}`) });
       - name: Open review issue
         if: inputs.phase != 'ingest'
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
+            const clip = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/clip.js`);  // never cuts inside <details> or ```
             const dir = process.env.WEEK_DIR;
             const script = fs.readFileSync(`${dir}/script.md`, 'utf8');
             const plan = JSON.parse(fs.readFileSync(`${dir}/plan.json`, 'utf8'));
@@ -147,47 +185,100 @@ jobs:
               owner: context.repo.owner, repo: context.repo.repo,
               title: `Review: ${plan.episode_title_ar} (${dir.replace('output/','').replace('/','')})`,
               labels: ['script-review'],
-              body: `Artifact run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
+              body: clip(`Artifact run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
                     `${quality}\n\n${sourceLine}\n\n${usageLine}\n\n` +
                     `When approved: render in HeyGen's web app from the paste pack below, then run **weekly-roundup** with phase=\`import\`, this week, and the video's link in \`video_url\`. (With API credits, phase=\`video\` renders it automatically instead.)\n\n` +
                     (shotlist ? `${shotlist}\n` : '') +
                     (paste ? `<details><summary>HeyGen paste pack (copy scene by scene)</summary>\n\n${paste}\n</details>\n\n` : '') +
-                    `<details><summary>script.md</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>\n\n${radar}\n\n${cov}\n\n${srcs}\n\nDecide from here: comment \`/promote <name> --track models --group gulf --ar <الاسم>\` or \`/ignore <name>\`.`.slice(0, 64000),
+                    `<details><summary>script.md</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>\n\n${radar}\n\n${cov}\n\n${srcs}\n\nDecide from here: comment \`/promote <name> --track models --group gulf --ar <الاسم>\` or \`/ignore <name>\`.`),
             });
+      - name: Describe the failure
+        # run_pipeline.py's top-level handler writes output/<week>/error.txt; with the log's tail it
+        # becomes the job output the alert quotes (random heredoc delimiter: the text is untrusted).
+        id: fail
+        if: failure()
+        run: |
+          D="EOF_$(openssl rand -hex 12)"
+          f=$(ls -t output/*/error.txt 2>/dev/null | head -n1 || true)
+          {
+            echo "error<<$D"
+            if [ -n "$f" ]; then echo "**Python error** (\`$f\`):"; echo '```'; tail -n 40 "$f" | sed "s/\`\`\`/'''/g"; echo '```'; fi
+            if [ -s "$RUNNER_TEMP/phase.log" ]; then echo "**Last 40 lines of the log:**"; echo '```'; tail -n 40 "$RUNNER_TEMP/phase.log" | sed "s/\`\`\`/'''/g"; echo '```'; fi
+            echo "$D"
+          } >> "$GITHUB_OUTPUT"
 
   alert:
-    # A red run with nobody watching is a missed Saturday. Open (or update) one issue per failure.
+    # A red run with nobody watching is a missed Saturday. One open issue per job type (script /
+    # render), updated on each new failure and closed by the next green run of that job; a render
+    # failure is also posted on the week's review issue, where the founder is looking.
     needs: [script, render]
     if: always() && (needs.script.result == 'failure' || needs.render.result == 'failure')
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
       - uses: actions/github-script@v7
+        env:
+          # Via env, never spliced into the script: the text comes from logs and exceptions.
+          SCRIPT_ERROR: ${{ needs.script.outputs.error }}
+          RENDER_ERROR: ${{ needs.render.outputs.error }}
+          WEEK: ${{ inputs.week }}
+          PHASE: ${{ inputs.phase }}
         with:
           script: |
+            const clip = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/clip.js`);
             const which = '${{ needs.script.result }}' === 'failure' ? 'script' : 'render';
+            const { WEEK: week, PHASE: phase } = process.env;
+            const detail = (which === 'script' ? process.env.SCRIPT_ERROR : process.env.RENDER_ERROR) ||
+              '_No error text was captured (the job failed before the pipeline ran); see the run log._';
             const url = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const title = `Run failed: ${which} job (${context.eventName}${'${{ inputs.phase }}' ? ', phase=${{ inputs.phase }}' : ''})`;
-            const open = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'run-failed', state: 'open' });
-            const body = `The **${which}** job failed: ${url}\n\nRe-run from the Actions tab once the cause is fixed; this issue closes itself when a later run succeeds.`;
-            if (open.data.length) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: open.data[0].number, body });
+            const prefix = `Run failed: ${which} job`;
+            const title = `${prefix} (${context.eventName}${phase ? `, phase=${phase}` : ''}${week ? `, ${week}` : ''})`;
+            const open = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'run-failed', state: 'open', per_page: 100 });
+            const mine = open.data.find(i => i.title.startsWith(prefix));
+            const body = clip(`The **${which}** job failed${phase ? ` (phase \`${phase}\`${week ? `, week ${week}` : ''})` : ''}: ${url}\n\n${detail}\n\n` +
+              `Re-run from the Actions tab once the cause is fixed; this issue closes itself when a later ${which} run succeeds.` +
+              (which === 'render' && week ? ` Work done before the failure is in the \`partial-week-${week}\` artifact.` : ''));
+            if (mine) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body });
             else await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, labels: ['run-failed'], body });
+            if (which === 'render' && week) {
+              const reviews = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'script-review', state: 'open', per_page: 50 });
+              const review = reviews.data.find(i => i.title.includes(`(${week})`));
+              if (review) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: review.number, body });
+            }
 
   render:
     if: github.event_name == 'workflow_dispatch' && inputs.phase != 'script' && inputs.phase != 'ingest'
     runs-on: ubuntu-latest
     timeout-minutes: 120           # avatar renders can take 30+ min
+    outputs:
+      error: ${{ steps.fail.outputs.error }}
+    env:
+      WHISPER_MODEL: medium        # also the Whisper cache key below
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
-      - run: pip install -r requirements.txt
+          cache-dependency-path: requirements.lock
+      - run: pip install -r requirements.lock      # exact pins; requirements.txt is the human-edited source
+      - name: Cache the Whisper model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-${{ env.WHISPER_MODEL }}-v1
+      - name: Cache Chromium (Playwright)
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('requirements.lock') }}
       - name: Install ffmpeg + Arabic font (post phase)
-        if: inputs.phase == 'post' || inputs.phase == 'import'
+        if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-core
       - name: Install Chromium for the cue cards (post phase)
-        if: inputs.phase == 'post' || inputs.phase == 'import'
+        if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble'
         run: python -m playwright install --with-deps chromium
       - name: Find the run that holds the week's artifact
         # download-artifact only sees the current run unless told which run to read;
@@ -229,11 +320,11 @@ jobs:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
-          WHISPER_MODEL: medium
           VIDEO_URL: ${{ inputs.video_url }}     # via env, never spliced into the shell line
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }} # stock footage; without a key, stock shots become branded backdrops
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
+          exec > >(tee -a "$RUNNER_TEMP/phase.log") 2>&1   # the alert quotes the log's tail
           SHORTS=""; [ -n "${{ inputs.shorts }}" ] && SHORTS="--shorts ${{ inputs.shorts }}"
           VURL=(); [ -n "$VIDEO_URL" ] && VURL=(--video-url "$VIDEO_URL")
           python run_pipeline.py ${{ inputs.phase }} --week ${{ inputs.week }} $SHORTS "${VURL[@]}"
@@ -242,9 +333,38 @@ jobs:
           name: week-${{ inputs.week }}
           path: output/
           overwrite: true
-          retention-days: 30
+          retention-days: 90     # the maximum for a public repo
+      - name: Keep the partial work (failed run)
+        # A failed render/post must not lose what it made (an imported video, heard.json, clips).
+        # Its own name: the "find the week's artifact" steps ask the API for the exact name
+        # week-<week>, so a partial upload is never picked up as the week.
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: partial-week-${{ inputs.week }}
+          path: output/
+          overwrite: true
+          retention-days: 90
+          if-no-files-found: ignore
+      - name: Close run-failed issues (render job only)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const open = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'run-failed', state: 'open', per_page: 100 });
+            for (const i of open.data.filter(i => i.title.startsWith('Run failed: render job')))
+              await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: i.number, state: 'closed', state_reason: 'completed' });
+      - name: Upload the English week as its own artifact (translate)
+        # The wildcard keeps the folder name in the artifact, so later phases with week <week>-en
+        # download it back into output/<week>-en/.
+        if: inputs.phase == 'translate'
+        uses: actions/upload-artifact@v4
+        with:
+          name: week-${{ inputs.week }}-en
+          path: output/${{ inputs.week }}-en*/
+          overwrite: true
+          retention-days: 90
       - name: Report the edit on the review issue (import / post)
-        if: inputs.phase == 'import' || inputs.phase == 'post' || inputs.phase == 'direct'
+        if: inputs.phase == 'import' || inputs.phase == 'post' || inputs.phase == 'direct' || inputs.phase == 'assemble' || inputs.phase == 'voicepack'
         uses: actions/github-script@v7
         with:
           script: |
@@ -257,9 +377,11 @@ jobs:
             const head = '${{ inputs.phase }}' === 'direct'
               ? `**Shot list ready** (run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) — the director's plan for this week, timings estimated until the video exists.`
               : `**Edit ready** (run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) — final_subtitled.mp4 is in the week's artifact; run the **preview** workflow for a 1080p copy.`;
-            const body = head + `\n\n` +
+            const body = '${{ inputs.phase }}' === 'voicepack'
+              ? `**Voice pack ready** (run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) — make the speech and face calls, commit reviewed/${{ inputs.week }}/voice.yaml, then run phase \`assemble\`.\n\n` + read('voice_pack.md')
+              : head + `\n\n` +
                          read('shotlist.md') + `\n` + read('repairs.md') + (credits.length ? `\n**Stock credits (for the description):** ${credits.map(c => `${c.author} — ${c.url}`).join(' · ')}` : '');
-            if (issue) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number, body: body.slice(0, 60000) });
+            if (issue) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number, body: require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/clip.js`)(body) });
       - name: Report the polish on the review issue
         if: inputs.phase == 'polish' || inputs.phase == 'score'
         uses: actions/github-script@v7
@@ -293,5 +415,18 @@ jobs:
                          (last.minimum >= bar ? '✅ Clears the quality bar.' : `⚠️ Still below the bar (${last.minimum} < ${bar}). Next three fixes:\n${fixes}`) + '\n\n' +
                          (unsourced === '0' ? '✅ Every claim traced to a source.' : `⚠️ **${unsourced} unsourced claim(s)**:\n${(smap.split('## ⚠️ Unsourced claims')[1] || '').split('\n| #')[0].trim().split('\n').filter(l => l.startsWith('- ')).join('\n')}`) + defectBlock + (usageLine ? `\n\n${usageLine}` : '') + '\n\n' +
                          `<details><summary>script.md (scored)</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>`;
-            if (issue) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number, body });
+            if (issue) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number, body: require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/clip.js`)(body) });
             else core.warning('No open script-review issue for this week; polish result is in the artifact only.');
+      - name: Describe the failure
+        # Same as the script job's: error.txt + the log's tail → the alert's issue and review comment.
+        id: fail
+        if: failure()
+        run: |
+          D="EOF_$(openssl rand -hex 12)"
+          f=$(ls -t output/*/error.txt 2>/dev/null | head -n1 || true)
+          {
+            echo "error<<$D"
+            if [ -n "$f" ]; then echo "**Python error** (\`$f\`):"; echo '```'; tail -n 40 "$f" | sed "s/\`\`\`/'''/g"; echo '```'; fi
+            if [ -s "$RUNNER_TEMP/phase.log" ]; then echo "**Last 40 lines of the log:**"; echo '```'; tail -n 40 "$RUNNER_TEMP/phase.log" | sed "s/\`\`\`/'''/g"; echo '```'; fi
+            echo "$D"
+          } >> "$GITHUB_OUTPUT"
