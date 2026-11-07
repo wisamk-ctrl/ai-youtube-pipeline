@@ -89,3 +89,11 @@ def test_paste_pack_carries_the_heygen_cost_rules():
     pack = manual.paste_pack(SCRIPT, load_settings(), "2026-W43-jo")
     assert "Avatar III" in pack and "Never Avatar V" in pack and "Layout **Original**" in pack
     assert "Professional in blue shirt" in pack and "video1496943888" in pack and "1080p" in pack
+
+
+def test_direct_heygen_file_links_download_as_is(monkeypatch):
+    monkeypatch.setattr(manual, "heygen_url", lambda *a: (_ for _ in ()).throw(AssertionError("no lookup")))
+    url = ("https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/"
+           "94712b9100228d97e2a8736f5bee467e.mp4?Expires=1&Signature=x&Key-Pair-Id=y")
+    assert manual.resolve(url) == url
+    assert manual.resolve("https://example.com/clip.mp4") == "https://example.com/clip.mp4"

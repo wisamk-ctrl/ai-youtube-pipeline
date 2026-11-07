@@ -75,6 +75,10 @@ def resolve(ref: str, api_key: str | None = None) -> str:
     ref = ref.strip()
     if not ref:
         raise ValueError("video_url is empty")
+    # A direct file link (HeyGen's CDN or any .mp4) downloads as is; only an app page or a bare ID
+    # needs the lookup. (A CDN path also holds the account id, which is not a video id.)
+    if re.search(r"^https?://[^/]*files\d*\.heygen\.ai/", ref) or re.search(r"\.mp4(\?|$)", ref):
+        return ref
     if "heygen" in ref or HEX_ID.fullmatch(ref):
         m = HEX_ID.search(ref)
         if not m:
