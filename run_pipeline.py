@@ -117,12 +117,15 @@ def _directed(cfg: dict, out: Path, script: str) -> str:
     return directed
 
 
-def _shotlist(cfg: dict, out: Path, script: str, duration: float, srt: Path | None) -> list:
+def _shotlist(cfg: dict, out: Path, script: str, duration: float, srt: Path | None,
+              hides: list | None = None) -> list:
     from pipeline.post import visuals
     v = cfg.get("visuals", {})
     shots = visuals.plan(script, duration, srt, cfg["scripting"]["words_per_minute"],
                          max_visual=float(v.get("max_visual_seconds", 12)),
-                         corner=bool(v.get("corner", {}).get("enabled", False)))
+                         corner=bool(v.get("corner", {}).get("enabled", False)),
+                         face_mode=str(v.get("face_mode", "normal")),
+                         face_keep=float(v.get("face_keep_seconds", 8)), hide=hides)
     report = visuals.lint(shots, v)
     titles = {i.id: f"{i.source}: {i.title[:90]}" for i in _items(out)}
     (out / "shotlist.md").write_text(visuals.shotlist_md(shots, report, estimated=srt is None, titles=titles), encoding="utf-8")
@@ -176,6 +179,27 @@ def phase_video(cfg: dict, out: Path, dry_run: bool, resume_id: str | None) -> N
         log.info("Phase 3 done → %s", path)
 
 
+def _repair_speech(cfg: dict, out: Path, video: Path, spoken: str):
+    """Re-voice the phrases the render got wrong (post/repair.py). Returns (video, face-hide spans,
+    heard words or None). The original talking_head.mp4 is left untouched so the edit can re-run."""
+    if not cfg.get("post", {}).get("repair", {}).get("enabled", True):
+        return video, [], None
+    from pipeline.post import repair
+    from pipeline.post.subtitles import transcribe_words
+    heard = transcribe_words(video)
+    voice, fixes = repair.load_voice(ROOT / "reviewed" / out.name)
+    repairs, skipped = repair.find(spoken, heard, cfg, fixes)
+    for r in repairs:
+        r.audio = voice.get(r.say, "")
+    (out / "repairs.json").write_text(json.dumps([vars(r) for r in repairs], ensure_ascii=False, indent=2),
+                                      encoding="utf-8")
+    fps = int(cfg.get("visuals", {}).get("fps", 30))
+    video, hides, heard = repair.apply(video, repairs, heard, out, fps)
+    (out / "repairs.md").write_text(repair.report_md(repairs, skipped), encoding="utf-8")
+    log.info("Speech repair: %d found, %d re-voiced, %d left", len(repairs), sum(1 for r in repairs if r.audio), len(skipped))
+    return video, hides, heard
+
+
 def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     from pipeline.post.subtitles import run_post
     from pipeline.script_format import spoken_text
@@ -186,13 +210,14 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     shorts = [tuple(map(float, s.split("-"))) for s in shorts_arg.split(",")] if shorts_arg else []
     script = (out / "script.md").read_text(encoding="utf-8")
     from pipeline.post.subtitles import burn_in
-    result = run_post(video, spoken_text(script), out, shorts, burn=False)
+    video, hides, heard = _repair_speech(cfg, out, video, spoken_text(script))
+    result = run_post(video, spoken_text(script), out, shorts, burn=False, heard=heard)
     base, skip = video, []
     if cfg.get("visuals", {}).get("enabled"):
         # The premium cut (config/visual_standard.md): face for ~a quarter, visuals for the rest.
         from pipeline.post import edit, visual_assets
         script = _directed(cfg, out, script)
-        shots = _shotlist(cfg, out, script, edit.duration(video), result["srt"])
+        shots = _shotlist(cfg, out, script, edit.duration(video), result["srt"], hides)
         clips, _ = visual_assets.build(shots, _items(out), cfg, out)
         base = edit.compose(video, shots, clips, cfg, out)
         skip = [(s.start, s.end) for n, s in enumerate(shots) if n in clips and s.kind in ("number", "title", "source")]
@@ -201,7 +226,8 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         base = run_overlays(base, script, cfg, out, result["srt"], skip_spans=skip)
     result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4")
     import shutil  # intermediates are as large as the video itself; keep the artifact lean
-    for tmp in ("segments", "visuals"):
+    (out / "talking_head.repaired.mp4").unlink(missing_ok=True)
+    for tmp in ("segments", "visuals", "repair"):
         shutil.rmtree(out / tmp, ignore_errors=True)
     log.info("Phase 4 done → %s (similarity %.2f, %d shorts)", result["final"], result["similarity"], len(result["shorts"]))
 

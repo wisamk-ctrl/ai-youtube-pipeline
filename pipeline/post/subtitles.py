@@ -104,17 +104,23 @@ def norm_word(w: str) -> str:
     return _PUNCT.sub("", w).lower()
 
 
+def anchor_map(script_words: list[str], heard: list[Word]) -> dict[int, int]:
+    """Script word index → index of the heard word it was matched to (only where the two agree)."""
+    sm = SequenceMatcher(None, [norm_word(w) for w in script_words], [norm_word(h.word) for h in heard], autojunk=False)
+    out = {}
+    for a, b, size in sm.get_matching_blocks():
+        for k in range(size):
+            if norm_word(script_words[a + k]):
+                out[a + k] = b + k
+    return out
+
+
 def align(script_words: list[str], heard: list[Word]) -> list[float]:
     """A start time for every script word."""
     n = len(script_words)
     if not heard:
         return [0.0] * n
-    sm = SequenceMatcher(None, [norm_word(w) for w in script_words], [norm_word(h.word) for h in heard], autojunk=False)
-    anchors = {}
-    for a, b, size in sm.get_matching_blocks():
-        for k in range(size):
-            if norm_word(script_words[a + k]):
-                anchors[a + k] = heard[b + k].start
+    anchors = {i: heard[j].start for i, j in anchor_map(script_words, heard).items()}
     end = heard[-1].end
     if not anchors:   # nothing matched: spread the script evenly over the speech
         first = heard[0].start
@@ -221,9 +227,11 @@ def cut_short(video: Path, start: float, end: float, dest: Path, srt: Path | Non
 
 
 def run_post(video: Path, spoken_script: str, out_dir: Path, shorts: list[tuple[float, float]] | None = None,
-             burn: bool = True) -> dict:
-    """Transcribe → SRT → similarity check → burned-in master → optional Shorts."""
-    heard = transcribe_words(video)
+             burn: bool = True, heard: list[Word] | None = None) -> dict:
+    """Transcribe → SRT → similarity check → burned-in master → optional Shorts.
+
+    `heard` skips transcription when the word timings are already known (post/repair.py)."""
+    heard = transcribe_words(video) if heard is None else heard
     segments = chunk_words(heard)
     write_srt(segments, out_dir / "transcript.srt")          # Whisper's own wording, for checking
     srt = write_srt(script_captions(spoken_script, heard), out_dir / "subtitles.srt")

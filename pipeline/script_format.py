@@ -105,11 +105,17 @@ def _lat_skeleton(word: str) -> str:
 
 def _same_name(arabic: list[str], latin: str) -> bool:
     """Is `latin` the English spelling of the Arabic words just before it? Compared on consonants."""
+    return _same_name_words(arabic, latin) > 0
+
+
+def _same_name_words(arabic: list[str], latin: str) -> int:
+    """How many of the trailing Arabic words `latin` spells (0 when it is not the same name)."""
     from difflib import SequenceMatcher
     lat = _lat_skeleton(latin)
     if len(lat) < 2:
-        return False
-    for n in range(1, len(arabic) + 1):
+        return 0
+    best, best_n = 0.0, 0
+    for n in range(1, len(arabic) + 1):      # the closest-spelled tail wins; ties keep fewer words
         words = arabic[-n:]
         first = words[0]
         for pre in ("",) + _AR_PREFIXES:
@@ -117,9 +123,10 @@ def _same_name(arabic: list[str], latin: str) -> bool:
                 continue
             ar = _ar_skeleton(first[len(pre):] + "".join(words[1:]))
             ar = re.sub(r"(.)\1+", r"\1", ar)
-            if ar and SequenceMatcher(None, ar, lat).ratio() >= 0.75:
-                return True
-    return False
+            ratio = SequenceMatcher(None, ar, lat).ratio() if ar else 0.0
+            if ratio >= 0.75 and ratio > best + 1e-9:
+                best, best_n = ratio, n
+    return best_n
 
 
 def _pronunciation(path=None) -> dict[str, str]:

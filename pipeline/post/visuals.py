@@ -61,8 +61,15 @@ def word_clock(segments: list[tuple[float, float, str]]) -> list[float]:
 
 def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
          snap: float = 2.0, min_shot: float = 1.5, max_visual: float = 12.0,
-         corner: bool = True) -> list[Shot]:
-    """`corner=False` (visuals.corner.enabled off) renders every corner shot as a full-screen visual."""
+         corner: bool = True, face_mode: str = "normal", face_keep: float = 8.0,
+         hide: list[tuple[float, float]] | None = None) -> list[Shot]:
+    """Shot timeline for the edit.
+
+    `corner=False` (visuals.corner.enabled off) renders every corner shot as a full-screen visual.
+    `face_mode="minimal"` keeps the presenter's face only for the opening and the sign-off (each at
+    most `face_keep` seconds); every other face shot becomes a house tech animation.
+    `hide` spans (repaired speech, see post/repair.py) never show the face: the voice there no
+    longer matches the lips."""
     marks = extract_shots(script)
     total_words = max(1, count_spoken_words(script))
     segs = read_srt(srt)
@@ -117,6 +124,34 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
                 out.append(Shot("visual", s.kind, s.payload, mid, s.end, ["split: second half of a long visual"]))
         else:
             out.append(s)
+    return _less_face(out, face_mode, face_keep, hide or [])
+
+
+def _less_face(shots: list[Shot], face_mode: str, keep: float, hide: list[tuple[float, float]]) -> list[Shot]:
+    from pipeline.scripting.director import HOUSE_STOCK
+    house = iter(range(10_000))
+
+    def visual(a: float, b: float, why: str) -> Shot:
+        return Shot("visual", "stock", HOUSE_STOCK[next(house) % len(HOUSE_STOCK)], a, b, [why])
+
+    faces = [n for n, s in enumerate(shots) if s.mode == "face"]
+    out: list[Shot] = []
+    for n, s in enumerate(shots):
+        if s.mode != "face":
+            out.append(s)
+            continue
+        if any(a < s.end and b > s.start for a, b in hide):
+            out.append(visual(s.start, s.end, "face hidden: repaired speech"))
+        elif face_mode != "minimal":
+            out.append(s)
+        elif n == faces[0] and s.seconds > keep:
+            out += [Shot("face", "", "", s.start, s.start + keep, s.notes), visual(s.start + keep, s.end, "minimal face")]
+        elif n == faces[-1] and n != faces[0] and s.seconds > keep:
+            out += [visual(s.start, s.end - keep, "minimal face"), Shot("face", "", "", s.end - keep, s.end, s.notes)]
+        elif n in (faces[0], faces[-1]):
+            out.append(s)
+        else:
+            out.append(visual(s.start, s.end, "minimal face"))
     return out
 
 
@@ -129,6 +164,8 @@ def lint(shots: list[Shot], std: dict[str, Any] | None = None) -> dict[str, Any]
     face = sum(s.seconds for s in shots if s.mode == "face")
     share = face / total
     warnings = []
+    if std.get("face_mode") == "minimal":
+        lo = 0.0       # founder choice 2026-11-07: face only at the open and the sign-off
     if share > cap or share < lo:
         warnings.append(f"face on screen {share:.0%} (standard: {lo:.0%}–{hi:.0%}, never above {cap:.0%})")
     for s in shots:

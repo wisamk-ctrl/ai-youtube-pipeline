@@ -1,10 +1,9 @@
 # How the presenter's voice says names it gets wrong. Applies to the voice text only
 # (paste pack + API); subtitles keep the written script. Keys match whole words,
 # case-sensitive; longer keys win. Add an entry whenever the inspect report shows a
-# name heard as something else.
+# name heard as something else. Every entry also triggers a speech repair on renders
+# already made (post/repair.py), so list only names the voice really gets wrong.
 Claude Code: كلود كود
 Claude: كلود
 G42: جي فورتي تو
 HUMAIN: هيوماين
-OTel: أو تيل
-x86: إكس إيتي سيكس

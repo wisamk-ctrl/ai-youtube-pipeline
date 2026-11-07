@@ -258,7 +258,7 @@ jobs:
               ? `**Shot list ready** (run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) — the director's plan for this week, timings estimated until the video exists.`
               : `**Edit ready** (run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) — final_subtitled.mp4 is in the week's artifact; run the **preview** workflow for a 1080p copy.`;
             const body = head + `\n\n` +
-                         read('shotlist.md') + (credits.length ? `\n**Stock credits (for the description):** ${credits.map(c => `${c.author} — ${c.url}`).join(' · ')}` : '');
+                         read('shotlist.md') + `\n` + read('repairs.md') + (credits.length ? `\n**Stock credits (for the description):** ${credits.map(c => `${c.author} — ${c.url}`).join(' · ')}` : '');
             if (issue) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number, body: body.slice(0, 60000) });
       - name: Report the polish on the review issue
         if: inputs.phase == 'polish' || inputs.phase == 'score'

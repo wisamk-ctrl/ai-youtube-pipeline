@@ -184,6 +184,8 @@ visuals:
   max_visual_seconds: 12      # longer visuals switch to the corner layout halfway
   stock:
     providers: [pixabay, pexels]   # first with a key wins: PIXABAY_API_KEY, PEXELS_API_KEY
+  face_mode: minimal          # founder 2026-11-07 (lip sync): face only at the open and the sign-off
+  face_keep_seconds: 8
   corner:
     enabled: false            # founder feedback 2026-11-07: the circle looked wrong; corner shots render full-screen
     size: 0.26                # circle diameter as a share of frame height
@@ -193,6 +195,9 @@ visuals:
     face_top: 0.0
 
 post:
+  repair:
+    enabled: true             # re-voice doubled / mispronounced phrases on a finished render (post/repair.py)
+    anchor_reach: 3           # words a splice may widen to reach a cleanly heard word
   overlays:
     enabled: true             # [On-Screen Text] cues become lower-third cards; [Show B-Roll] cues a corner marker
     card_seconds: 6
