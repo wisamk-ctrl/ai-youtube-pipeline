@@ -82,3 +82,9 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 - "Do all" on the enhancement list (voice-first route, upload package, Shorts, CI hardening, animated cards, smoother splices, English version, new recording guide) — 2026-11-07.
 - Repo stays public for now — 2026-11-07.
 - Music only if not licensed: we generate our own — 2026-11-07.
+
+## 6. 2026-11-07 W45 repair runs
+| Lesson | Detail |
+|---|---|
+| Repair spans depend on the code | A timing change (spoken-word counting, anchors) re-widened 3 spans, so their clip keys no longer matched: 21 of 24 instead of 24. After any change to captions/anchors, read the run's "Speech repairs" list and make the ⏳ clips in one batch call (1 credit) |
+| The final edit took 53 min | Animated cards (~13 s each) and the dissolve encode add ~20 min over the 30-min edit; the transcript cache makes the next re-run skip Whisper |
