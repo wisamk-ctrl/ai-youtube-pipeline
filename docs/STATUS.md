@@ -18,7 +18,15 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
 - **Secrets on the repo:** ANTHROPIC_API_KEY, YOUTUBE_API_KEY, HEYGEN_API_KEY, PIXABAY_API_KEY.
 - **Render route:** manual (HeyGen web app on the monthly plan; API credits not bought).
 
-## This week (2026-W43, folder `2026-W43-jo`)
+## First full episode — 2026-W45 (2026-11-07)
+- Rendered through the HeyGen connector from this chat: look "Professional in blue shirt",
+  voice clone, Avatar III, 1080p, 8 min 57 s, 63 credits (`94712b9100228d97e2a8736f5bee467e`).
+- Imported and edited (run 42393605088): transcript matches the approved script at 0.94,
+  face 10 %, 82 shots, every visual made, 46 Pixabay clips. 1080p master `final_subtitled.mp4`
+  in the `week-2026-W45` artifact; 720p preview on the `previews` branch.
+- Next: founder review → upload (manual in YouTube Studio, or connect publishing).
+
+## Earlier test week (2026-W43, folder `2026-W43-jo`)
 - Approved script: `reviewed/2026-W43-jo/script.md` (one unsourced line removed by the founder).
 - Paste pack for HeyGen: `reviewed/2026-W43-jo/heygen_paste.html` (5 scenes, copy buttons);
   the review issue #12 carries the same pack and the director's shot list (face 12 %, 75 shots).
