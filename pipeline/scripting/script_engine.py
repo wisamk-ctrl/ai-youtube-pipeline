@@ -124,6 +124,9 @@ class ScriptEngine:
         self.client = client or anthropic.Anthropic(max_retries=4)
         self.target_words = round(self.cfg["target_minutes"] * self.cfg["words_per_minute"])
         self.style_guide = (ROOT / "config" / "style_guide.md").read_text(encoding="utf-8")
+        lessons = ROOT / "config" / "lessons_editorial.md"   # past episodes' faults, seen by every pass
+        if lessons.exists():
+            self.style_guide += "\n\n" + lessons.read_text(encoding="utf-8")
         self.rubric = (ROOT / "config" / "critic_rubric.md").read_text(encoding="utf-8")
 
     # ── Step 1 ──

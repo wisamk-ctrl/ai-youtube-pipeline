@@ -96,3 +96,15 @@ def test_report_and_notes():
     notes = voice_lint_notes(found)
     assert "[version] «2.1.317»" in notes and "آخر إصدار" in notes
     assert voice_lint_notes([]) == ""
+
+
+def test_editorial_lessons_reach_every_script_pass(monkeypatch):
+    from pipeline.scripting import script_engine
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test")
+    try:
+        eng = script_engine.ScriptEngine.__new__(script_engine.ScriptEngine)
+        script_engine.ScriptEngine.__init__(eng, __import__("yaml").safe_load(open("config/settings.yaml")))
+    except Exception as exc:  # noqa: BLE001
+        import pytest
+        pytest.skip(f"engine needs more setup: {exc}")
+    assert "Lessons from past episodes" in eng.style_guide

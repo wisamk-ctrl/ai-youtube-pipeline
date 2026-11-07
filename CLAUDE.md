@@ -14,6 +14,9 @@ Weekly Arabic AI-news YouTube show, «أسبوع الذكاء الاصطناعي
 
 ## Current state
 Read `docs/STATUS.md` first: what is done, this week's episode, and the founder's open items.
+Then `docs/LESSONS.md`: every past run's faults and where each fix is enforced — apply them, and add
+to it whenever a run teaches something (script lessons also go in `config/lessons_editorial.md`,
+which the writer, reviewer and critic read on every run).
 
 ## Render routes
 - Automatic: phase `video` (needs HeyGen API credits).
