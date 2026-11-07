@@ -127,31 +127,66 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
     return _less_face(out, face_mode, face_keep, hide or [])
 
 
+# The house look for shots that were face: a wider rotation than the director's eight, so a
+# minimal-face episode does not loop the same few clips.
+HOUSE_EXTRA = ["futuristic user interface hologram animation", "glowing fiber optic cables, macro",
+               "binary code rain, blue", "robot arm in a modern lab", "data visualization dashboard, dark theme",
+               "quantum computer close-up, golden light", "network cables plugged into a switch",
+               "programmer typing at night, screen glow", "satellite orbiting earth at night",
+               "smart city night lights, timelapse", "microchip production line", "abstract AI brain made of light",
+               "cloud computing icons, animation", "cybersecurity padlock hologram", "motherboard close-up, slow pan",
+               "server room corridor, slow walk"]
+
+
 def _less_face(shots: list[Shot], face_mode: str, keep: float, hide: list[tuple[float, float]]) -> list[Shot]:
     from pipeline.scripting.director import HOUSE_STOCK
+    pool = HOUSE_STOCK + HOUSE_EXTRA
     house = iter(range(10_000))
 
     def visual(a: float, b: float, why: str) -> Shot:
-        return Shot("visual", "stock", HOUSE_STOCK[next(house) % len(HOUSE_STOCK)], a, b, [why])
+        return Shot("visual", "stock", pool[next(house) % len(pool)], a, b, [why])
+
+    def split_hidden(s: Shot) -> list[Shot]:
+        """Face shot minus the repaired spans: the face stays where its lips still match the voice."""
+        cuts = sorted((max(s.start, a - 0.2), min(s.end, b + 0.2)) for a, b in hide if a < s.end and b > s.start)
+        if not cuts:
+            return [s]
+        pieces, t = [], s.start
+        for a, b in cuts:
+            if a > t:
+                pieces.append(("face", t, a))
+            pieces.append(("hide", max(a, t), b))
+            t = max(t, b)
+        if t < s.end:
+            pieces.append(("face", t, s.end))
+        out: list[Shot] = []
+        for kind, a, b in pieces:      # face slivers under a second read as a glitch: cover them too
+            kind = "hide" if kind == "face" and b - a < 1.0 else kind
+            if out and kind == "hide" and out[-1].mode == "visual":
+                out[-1].end = b
+            elif kind == "hide":
+                out.append(visual(a, b, "face hidden: repaired speech") if s.mode == "face"
+                           else Shot("visual", s.kind, s.payload, a, b, ["corner hidden: repaired speech"]))
+            else:
+                out.append(Shot(s.mode, s.kind, s.payload, a, b, s.notes))
+        return out
 
     faces = [n for n, s in enumerate(shots) if s.mode == "face"]
-    out: list[Shot] = []
+    trimmed: list[Shot] = []
     for n, s in enumerate(shots):
-        if s.mode != "face":
-            out.append(s)
-            continue
-        if any(a < s.end and b > s.start for a, b in hide):
-            out.append(visual(s.start, s.end, "face hidden: repaired speech"))
-        elif face_mode != "minimal":
-            out.append(s)
+        if s.mode != "face" or face_mode != "minimal":
+            trimmed.append(s)
         elif n == faces[0] and s.seconds > keep:
-            out += [Shot("face", "", "", s.start, s.start + keep, s.notes), visual(s.start + keep, s.end, "minimal face")]
+            trimmed += [Shot("face", "", "", s.start, s.start + keep, s.notes), visual(s.start + keep, s.end, "minimal face")]
         elif n == faces[-1] and n != faces[0] and s.seconds > keep:
-            out += [visual(s.start, s.end - keep, "minimal face"), Shot("face", "", "", s.end - keep, s.end, s.notes)]
+            trimmed += [visual(s.start, s.end - keep, "minimal face"), Shot("face", "", "", s.end - keep, s.end, s.notes)]
         elif n in (faces[0], faces[-1]):
-            out.append(s)
+            trimmed.append(s)
         else:
-            out.append(visual(s.start, s.end, "minimal face"))
+            trimmed.append(visual(s.start, s.end, "minimal face"))
+    out: list[Shot] = []
+    for s in trimmed:
+        out += split_hidden(s) if s.mode in ("face", "corner") and hide else [s]
     return out
 
 

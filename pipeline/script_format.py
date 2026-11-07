@@ -79,6 +79,12 @@ def extract_cues(script: str, words_per_minute: int) -> list[Cue]:
 _AR = "\u0600-\u06FF"
 _LATIN_RUN = re.compile(rf"(?P<ar>[{_AR}]+(?:\s+[{_AR}]+){{0,3}})\s+(?P<lat>[A-Za-z][A-Za-z0-9\-]*(?:\s+[A-Za-z][A-Za-z0-9\-]*){{0,3}})(?![A-Za-z0-9])")
 _GLOSS = re.compile(rf"\s*\((?=[^()]*[A-Za-z])[^(){_AR}]*\)")
+_NAME_IN_GLOSS = re.compile(r"[A-Z][a-z]|\d")       # «(Claude Opus 4.5)» is a name, «(AI agents)» a gloss
+
+
+def _drop_gloss(m: re.Match) -> str:
+    inner = m.group(0).strip()[1:-1]
+    return " " + inner if _NAME_IN_GLOSS.search(inner) else ""
 _HARAKAT = re.compile("[\u064B-\u0650\u0652\u0670]")     # every mark except shadda (U+0651)
 _AR_CLASS = {**dict.fromkeys("بپ", "b"), **dict.fromkeys("تطث", "t"), **dict.fromkeys("دضذ", "d"),
              **dict.fromkeys("سص", "s"), **dict.fromkeys("كق", "k"), **dict.fromkeys("جغگ", "g"),
@@ -96,9 +102,9 @@ def _ar_skeleton(word: str) -> str:
 
 def _lat_skeleton(word: str) -> str:
     w = word.lower()
-    w = re.sub(r"c(?=[eiy])", "s", w).replace("c", "k")
-    for a, b in _LAT_DIGRAPH:
+    for a, b in _LAT_DIGRAPH:      # before c→k, or «ChatGPT» turns into k-h-…
         w = w.replace(a, b)
+    w = re.sub(r"c(?=[eiy])", "s", w).replace("c", "k")
     out = "".join(_LAT_CLASS.get(ch, "") for ch in w)
     return re.sub(r"(.)\1+", r"\1", out)
 
@@ -140,12 +146,16 @@ def _pronunciation(path=None) -> dict[str, str]:
 
 def speakable(text: str, pronunciation: dict[str, str] | None = None) -> str:
     """Spoken text → what the voice should read: names once, no English glosses, no vowel marks."""
-    text = _GLOSS.sub("", text)
+    text = _GLOSS.sub(_drop_gloss, text)
+    pron = _pronunciation() if pronunciation is None else pronunciation
 
     def _dedupe(m: re.Match) -> str:
-        return m.group("ar") if _same_name(m.group("ar").split(), m.group("lat")) else m.group(0)
+        ar, lat = m.group("ar"), m.group("lat")
+        said = pron.get(lat.strip())
+        if said and ar.replace("و", "").endswith(said.replace("و", "")):
+            return ar                        # «جي فورتي تو G42»: the respelling is already there
+        return ar if _same_name(ar.split(), lat) else m.group(0)
     text = _LATIN_RUN.sub(_dedupe, text)
-    pron = _pronunciation() if pronunciation is None else pronunciation
     for key in sorted(pron, key=len, reverse=True):
         text = re.sub(rf"(?<![A-Za-z0-9]){re.escape(key)}(?![A-Za-z0-9])", pron[key], text)
     text = _HARAKAT.sub("", text)

@@ -40,7 +40,7 @@ def test_mispronounced_name_and_hand_listed_phrase():
 
 
 def test_gloss_not_spoken_is_left_alone():
-    script = "عند الوكلاء (AI agents) اليوم"
+    script = "عند الوكلاء (AI agents) اليوم الصبح"
     words = script.split()
     repairs, skipped = repair.find(script, heard_for(words, drop={2, 3}), pron={})
     assert not repairs and "not spoken" in skipped[0]
@@ -79,3 +79,37 @@ def test_apply_splices_a_clip(tmp_path, monkeypatch):
     assert abs(repair._duration(out) - (6 - 2 + length)) < 0.15
     assert hides == [(2.0, round(2.0 + length, 3))]
     assert heard[-1].start == pytest.approx(5.0 - 2 + length, abs=1e-3)
+
+
+def test_hide_inside_opening_face_keeps_the_rest_of_the_face():
+    script = "[Face] " + "كلمة " * 30 + "[Visual: stock robot] " + "كلمة " * 30
+    shots = plan(script, 60.0, hide=[(10.0, 12.0)], corner=False)
+    modes = [(s.mode, round(s.start, 1), round(s.end, 1)) for s in shots if s.start < 30]
+    assert modes[0][0] == "face" and modes[1][0] == "visual" and modes[2][0] == "face"
+
+
+def test_clip_keys_ignore_punctuation_and_harakat():
+    assert repair.key("أوبن إيه آي، صفقة.") == repair.key("أوبن  إيه آي صفقة")
+
+
+def test_repair_is_opt_in(tmp_path):
+    assert repair.load_voice(tmp_path) is None
+    (tmp_path / "repairs.yaml").write_text("fix: [عن بُعد]\nvoice:\n  'أوبن إيه آي.': https://x/y.mp3\n", encoding="utf-8")
+    data = repair.load_voice(tmp_path)
+    assert data["fix"] == ["عن بُعد"] and data["voice"][repair.key("أوبن إيه آي")] == "https://x/y.mp3"
+
+
+def test_bad_clip_is_skipped_not_fatal(tmp_path, monkeypatch):
+    def boom(url, dest):
+        raise OSError("expired")
+    monkeypatch.setattr(repair, "_clip", boom)
+    r = repair.Repair((0, 1), 1.0, 2.0, "x", "y", "t", audio="https://example.invalid/a.mp3")
+    video = tmp_path / "v.mp4"
+    out, hides, heard = repair.apply(video, [r], [], tmp_path)
+    assert out == video and hides == [] and r.audio == ""
+
+
+def test_correction_rewrites_script_and_keeps_markers():
+    script = "رادار الأسبوع. تينسنت Tencent الصينية لسّا مش [Visual: stock chip] على القائمة. بس هالأسبوع"
+    out = repair.apply_corrections(script, {"تينسنت Tencent الصينية لسّا مش على القائمة. بس هالأسبوع": "تينسنت رجعت، وهالأسبوع"})
+    assert out == "رادار الأسبوع. تينسنت رجعت، وهالأسبوع [Visual: stock chip]"

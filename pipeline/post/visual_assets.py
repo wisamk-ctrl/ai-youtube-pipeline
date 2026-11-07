@@ -375,10 +375,10 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                     clips[n] = frames_clip(fdir, count, secs, dest, w, h, fps)
                 elif s.kind == "stock":
                     got = None
-                    if search:
-                        if s.payload not in stock_src:
-                            stock_src[s.payload] = fetch_stock(s.payload, work / "stock", used, search[1], w, secs)
-                        got = stock_src[s.payload]
+                    if search:   # fetched per shot: a repeated query gets the next unused clip, not the same one
+                        got = fetch_stock(s.payload, work / "stock", used, search[1], w, secs) or stock_src.get(s.payload)
+                        if got:
+                            stock_src[s.payload] = got
                     if got:
                         clips[n] = stock_clip(got[0], secs, dest, w, h, fps)
                         if got[1] not in credits:
@@ -391,8 +391,17 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                             "-frames:v", str(max(1, round(secs * fps))), *_enc(fps), str(dest))
                         clips[n] = dest
             except Exception as exc:  # noqa: BLE001 — one bad asset must not sink the episode
-                log.warning("Shot %d (%s %s) failed: %s; face instead", n, s.kind, s.payload[:40], exc)
+                # Never fall back to the face: its lip sync is why the face is kept to the open and close.
+                log.warning("Shot %d (%s %s) failed: %s; tech animation instead", n, s.kind, s.payload[:40], exc)
                 s.notes.append(f"asset failed: {exc}")
+                try:
+                    fdir = work / f"shot_{n:03d}_motion"
+                    count = renderer.tech_motion(s.payload or str(n), fdir, secs, fps=15)
+                    _ff("-framerate", "15", "-i", str(fdir / "f%04d.png"), "-vf", f"scale={w}:{h},fps={fps}",
+                        "-frames:v", str(max(1, round(secs * fps))), *_enc(fps), str(dest))
+                    clips[n] = dest
+                except Exception as exc2:  # noqa: BLE001
+                    log.warning("Shot %d fallback animation failed too: %s; face instead", n, exc2)
     finally:
         if renderer:
             renderer.__exit__(None, None, None)

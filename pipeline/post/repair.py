@@ -103,7 +103,7 @@ def find(spoken_script: str, heard: list[Word], cfg: dict[str, Any] | None = Non
     """Every faulty phrase, widened to clean anchors. Returns (repairs, skipped notes)."""
     words = spoken_script.split()
     pron = _pronunciation() if pron is None else pron
-    anchors = anchor_map(words, heard)
+    anchors = anchor_map(words, heard, min_block=2)
     reach = int(((cfg or {}).get("post", {}).get("repair", {}) or {}).get("anchor_reach", 3))
     spans: list[list[Any]] = []
     for i, j, why in _targets(words, pron, fixes or []):
@@ -138,15 +138,41 @@ def find(spoken_script: str, heard: list[Word], cfg: dict[str, Any] | None = Non
     return repairs, skipped
 
 
-def load_voice(reviewed_dir: Path) -> tuple[dict[str, str], list[str]]:
-    """(clip URL per text said, hand-listed phrases) from reviewed/<week>/repairs.yaml."""
+def key(say: str) -> str:
+    """Match key for a clip: the words only, so punctuation or spacing drift does not orphan it."""
+    return " ".join(norm_word(w) for w in say.split() if norm_word(w))
+
+
+def load_voice(reviewed_dir: Path) -> dict[str, Any] | None:
+    """reviewed/<week>/repairs.yaml as {render, fix, voice: {key: url}}; None when the week has none.
+
+    Repair is opt-in per week: a render made from a fixed script has nothing to repair, and the
+    written script alone cannot tell (it still carries both spellings of a name)."""
     p = reviewed_dir / "repairs.yaml"
     if not p.exists():
-        return {}, []
+        return None
     import yaml
     data = yaml.safe_load(p.read_text(encoding="utf-8")) or {}
-    voice = {re.sub(r"\s+", " ", str(k)).strip(): str(v) for k, v in (data.get("voice") or {}).items()}
-    return voice, [str(x) for x in data.get("fix") or []]
+    voice = {key(str(k)): str(v) for k, v in (data.get("voice") or {}).items()}
+    correct = {str(k): str(v) for k, v in (data.get("correct") or {}).items()}
+    fixes = [str(x) for x in data.get("fix") or []] + list(correct.values())
+    return {"render": str(data.get("render") or ""), "fix": fixes, "voice": voice, "correct": correct}
+
+
+def apply_corrections(script: str, correct: dict[str, str]) -> str:
+    """Rewrite on-air errors in the script (`correct:` in repairs.yaml), so the subtitles carry the
+    corrected text; the matching speech is re-voiced because the new phrase is also a `fix`."""
+    for old, new in correct.items():
+        # Shot markers may sit between the words; they are kept, moved after the corrected text.
+        gap = r"(?:\s+|\s*\[[^\[\]]*\]\s*)+"
+        pat = re.compile(gap.join(re.escape(w) for w in old.split()))
+        m = pat.search(script)
+        if not m:
+            log.warning("repairs.yaml correct: «%s» is not in the script; left as is", old)
+            continue
+        markers = " ".join(re.findall(r"\[[^\[\]]*\]", m.group(0)))
+        script = script[:m.start()] + new + (f" {markers}" if markers else "") + script[m.end():]
+    return script
 
 
 def report_md(repairs: list[Repair], skipped: list[str]) -> str:
@@ -203,12 +229,21 @@ def apply(video: Path, repairs: list[Repair], heard: list[Word], out_dir: Path, 
         return video, [], heard
     work = out_dir / "repair"
     work.mkdir(parents=True, exist_ok=True)
-    clips = []
+    clips, kept = [], []
     for n, r in enumerate(todo):
-        c = _clip(r.audio, work / f"clip_{n:02d}.wav")
-        length = _duration(c) + 2 * PAD
+        try:     # one expired or broken clip must not sink the edit: that phrase is left as it was
+            c = _clip(r.audio, work / f"clip_{n:02d}.wav")
+            length = _duration(c) + 2 * PAD
+        except Exception as exc:  # noqa: BLE001
+            log.warning("Repair clip for «%s» unusable (%s); left as rendered", r.say, exc)
+            r.audio = ""
+            continue
         gain = _mean_db(video, r.start, r.end - r.start) - _mean_db(c)
         clips.append((c, length, max(-12.0, min(12.0, gain))))
+        kept.append(r)
+    todo = kept
+    if not todo:
+        return video, [], heard
     total = _duration(video)
     norm = "aformat=sample_rates=48000:channel_layouts=stereo"
     parts, labels, hides, shifts = [], [], [], []

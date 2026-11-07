@@ -104,11 +104,16 @@ def norm_word(w: str) -> str:
     return _PUNCT.sub("", w).lower()
 
 
-def anchor_map(script_words: list[str], heard: list[Word]) -> dict[int, int]:
-    """Script word index → index of the heard word it was matched to (only where the two agree)."""
+def anchor_map(script_words: list[str], heard: list[Word], min_block: int = 1) -> dict[int, int]:
+    """Script word index → index of the heard word it was matched to (only where the two agree).
+
+    `min_block=2` keeps only matches inside runs of two or more agreeing words, so a lone «و» or
+    «في» matched by chance is not trusted as a splice point."""
     sm = SequenceMatcher(None, [norm_word(w) for w in script_words], [norm_word(h.word) for h in heard], autojunk=False)
     out = {}
     for a, b, size in sm.get_matching_blocks():
+        if size < min_block:
+            continue
         for k in range(size):
             if norm_word(script_words[a + k]):
                 out[a + k] = b + k

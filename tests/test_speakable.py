@@ -38,3 +38,15 @@ def test_corner_off_renders_corner_shots_full_screen():
     modes_on = {s.mode for s in plan(script, 60.0, corner=True)}
     modes_off = {s.mode for s in plan(script, 60.0, corner=False)}
     assert "corner" in modes_on and "corner" not in modes_off
+
+
+def test_respelled_name_followed_by_its_latin_is_said_once():
+    assert speakable("شركة جي فورتي تو G42 أعلنت", PRON) == "شركة جي فورتي تو أعلنت"
+
+
+def test_chatgpt_pair_is_deduped():
+    assert speakable("شات جي بي تي ChatGPT", {}) == "شات جي بي تي"
+
+
+def test_product_name_in_brackets_is_kept():
+    assert speakable("اللي اسمه (Claude Opus 4.5) مهم", {}) == "اللي اسمه Claude Opus 4.5 مهم"

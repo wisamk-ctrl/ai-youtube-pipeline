@@ -1,6 +1,12 @@
-# Speech repairs for this week's render (pipeline/post/repair.py).
-# fix: phrases the voice misread that no rule catches (here: «بُعد» read as «بوعد» from its vowel marks).
-# voice: what each re-voiced phrase says → the cloned-voice clip's URL (HeyGen speech tool).
+# Speech repairs for this week's render (pipeline/post/repair.py). Repair runs only for weeks
+# that have this file.
+# fix:     phrases the voice misread that no rule catches («بُعد» was read «بوعد»).
+# correct: on-air errors; the script (and so the subtitles) is rewritten, and the speech re-voiced.
+#          Tencent IS on the watchlist (as "Tencent Hunyuan"); the radar kept flagging it because
+#          it matched the full name only.
+# voice:   what each re-voiced phrase says → the cloned-voice clip's URL (HeyGen speech tool).
 fix:
   - عن بُعد
+correct:
+  "تينسنت Tencent الصينية لسّا مش على قائمة المتابعة عنا. بس هالأسبوع": "تينسنت الصينية رجعت عالرادار، وهالأسبوع"
 voice: {}

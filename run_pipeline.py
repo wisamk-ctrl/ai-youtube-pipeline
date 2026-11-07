@@ -186,11 +186,17 @@ def _repair_speech(cfg: dict, out: Path, video: Path, spoken: str):
         return video, [], None
     from pipeline.post import repair
     from pipeline.post.subtitles import transcribe_words
+    plan = repair.load_voice(ROOT / "reviewed" / out.name)
+    if plan is None:
+        return video, [], None
+    src = out / "talking_head.source.txt"
+    if plan["render"] and src.exists() and plan["render"] not in src.read_text(encoding="utf-8"):
+        log.warning("repairs.yaml is for render %s, not this one; no speech repair", plan["render"])
+        return video, [], None
     heard = transcribe_words(video)
-    voice, fixes = repair.load_voice(ROOT / "reviewed" / out.name)
-    repairs, skipped = repair.find(spoken, heard, cfg, fixes)
+    repairs, skipped = repair.find(spoken, heard, cfg, plan["fix"])
     for r in repairs:
-        r.audio = voice.get(r.say, "")
+        r.audio = plan["voice"].get(repair.key(r.say), "")
     (out / "repairs.json").write_text(json.dumps([vars(r) for r in repairs], ensure_ascii=False, indent=2),
                                       encoding="utf-8")
     fps = int(cfg.get("visuals", {}).get("fps", 30))
@@ -209,6 +215,11 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         sys.exit(f"{video} not found — run the video phase first.")
     shorts = [tuple(map(float, s.split("-"))) for s in shorts_arg.split(",")] if shorts_arg else []
     script = (out / "script.md").read_text(encoding="utf-8")
+    from pipeline.post import repair
+    plan = repair.load_voice(ROOT / "reviewed" / out.name)
+    if plan and plan["correct"]:
+        script = repair.apply_corrections(script, plan["correct"])
+        (out / "script.md").write_text(script, encoding="utf-8")
     from pipeline.post.subtitles import burn_in
     video, hides, heard = _repair_speech(cfg, out, video, spoken_text(script))
     result = run_post(video, spoken_text(script), out, shorts, burn=False, heard=heard)
