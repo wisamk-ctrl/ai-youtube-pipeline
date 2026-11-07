@@ -188,8 +188,8 @@ visuals:
     size: 0.26                # circle diameter as a share of frame height
     margin_x: 0.04
     margin_bottom: 0.20       # clear of the subtitles
-    face_crop: 0.62           # share of the presenter frame's height kept around the face
-    face_top: 0.06
+    face_crop: 0.72           # share of the presenter frame's height kept around the face (tuned 2026-11-07 for the blue-shirt look)
+    face_top: 0.0
 
 post:
   overlays:
