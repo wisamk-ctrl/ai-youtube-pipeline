@@ -294,3 +294,48 @@ def test_fallback_keeps_the_face_the_exception_without_cues():
     assert spoken_text(out).split() == spoken_text(plain).split()
     report = visuals.lint(visuals.plan(out, 60.0), {})
     assert report["face_share"] <= 0.25 and report["kinds"]["stock"] >= 8
+
+
+def test_dissolves_only_at_section_boundaries():
+    from pipeline.post import edit
+    shots = [visuals.Shot("face", "", "", 0, 4), visuals.Shot("visual", "stock", "a", 4, 9),
+             visuals.Shot("visual", "title", "b", 9, 12), visuals.Shot("visual", "stock", "c", 12, 20)]
+    assert edit.dissolve_shots(shots, [9.4, 30.0]) == {2}
+    assert edit.dissolve_shots(shots, None) == set()
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="needs ffmpeg")
+def test_compose_dissolve_keeps_the_frame_count_and_the_audio(tmp_path):
+    from pipeline.post import edit
+    th = tmp_path / "th.mp4"
+    subprocess.run(["ffmpeg", "-v", "error", "-f", "lavfi", "-i", "testsrc2=s=320x180:r=25:d=6",
+                    "-f", "lavfi", "-i", "sine=d=6", "-shortest", "-pix_fmt", "yuv420p", str(th)], check=True)
+    blue = tmp_path / "blue.mp4"
+    subprocess.run(["ffmpeg", "-v", "error", "-f", "lavfi", "-i", "color=c=blue:s=320x180:r=25:d=2",
+                    "-pix_fmt", "yuv420p", str(blue)], check=True)
+    cfg = {"visuals": {"width": 320, "height": 180, "fps": 25, "dissolve_frames": 10}}
+    shots = [visuals.Shot("face", "", "", 0, 2), visuals.Shot("visual", "stock", "x", 2, 4), visuals.Shot("face", "", "", 4, 6)]
+    out = edit.compose(th, shots, {1: blue}, cfg, tmp_path, sections=[4.0])
+    frames = subprocess.run(["ffprobe", "-v", "error", "-count_frames", "-select_streams", "v:0", "-show_entries",
+                             "stream=nb_read_frames", "-of", "csv=p=0", str(out)], capture_output=True, text=True).stdout
+    assert int(frames.strip()) == 150
+    assert abs(edit.duration(out) - 6.0) < 0.1
+
+    def blue_at(t):   # mean of the blue channel minus red at time t
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{t}", "-i", str(out), "-frames:v", "1", "-s", "8x8",
+                              "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True, check=True).stdout
+        return sum(raw[2::3]) / 64 - sum(raw[0::3]) / 64
+    assert blue_at(3.0) > 150                    # the visual, cut in hard at 2 s
+    assert 60 < blue_at(4.2) < 200               # halfway through the dissolve into the face (4.0–4.4 s)
+    assert blue_at(5.0) < 100                    # the face again
+
+
+def test_a_long_card_holds_five_seconds_then_a_house_animation():
+    script = "[Face]\nكلمة.\n[Visual: source abc]\n" + " ".join(["كلمة"] * 30) + "\n[Visual: title قصير]\n" + " ".join(["كلمة"] * 6)
+    shots = visuals.plan(script, 30.0, None, corner=False)
+    kinds = [(s.kind, round(s.seconds, 1)) for s in shots]
+    src = next(n for n, s in enumerate(shots) if s.kind == "source")
+    assert shots[src].seconds == pytest.approx(5.0) and shots[src + 1].kind == "stock"
+    assert shots[src + 1].start == pytest.approx(shots[src].end)
+    assert all(s.seconds <= 6.5 for s in shots if s.kind in ("source", "number", "title")), kinds
+    assert not any("card" in w for w in visuals.lint(shots, {})["warnings"])

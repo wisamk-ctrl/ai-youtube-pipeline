@@ -45,7 +45,8 @@ def paste_pack(script: str, cfg: dict[str, Any], week: str) -> str:
         f"{len(scenes)} scenes · about {minutes:.1f} minutes.",
         "",
         f"1. In HeyGen AI Studio, start a new landscape video. In every scene: look **{h.get('look_name', 'your presenter look')}**,",
-        f"   voice **{h.get('voice_name', 'your Arabic voice clone')}** (your Arabic clone)"
+        f"   voice **{h.get('voice_name', 'your voice clone')}** "
+        + ("(your English clone)" if cfg.get("language") == "en" else "(your Arabic clone)")
         + (f" (avatar `{h.get('avatar_id')}`, voice `{h.get('voice_id')}`)" if h.get("avatar_id") else "")
         + ", Layout **Original**, no background change (post-production builds the corner circle and face shots).",
         "2. **Motion engine: Avatar III** (4 credits/min) in every scene, the same engine throughout.",

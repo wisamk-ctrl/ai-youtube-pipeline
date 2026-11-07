@@ -40,7 +40,10 @@ class HeyGenClient:
             self.hcfg["avatar_type"] = os.environ["HEYGEN_AVATAR_TYPE"]
         # A secret or workflow input wins; otherwise the presenter's IDs in settings.yaml.
         self.avatar_id = os.environ.get("HEYGEN_AVATAR_ID") or self.hcfg.get("avatar_id") or require_env("HEYGEN_AVATAR_ID")
-        self.voice_id = os.environ.get("HEYGEN_VOICE_ID") or self.hcfg.get("voice_id") or require_env("HEYGEN_VOICE_ID")
+        if cfg.get("language") == "en":   # English week: the English clone (pipeline/language.py), never the Arabic secret
+            self.voice_id = os.environ.get("HEYGEN_VOICE_ID_EN") or self.hcfg.get("voice_id_en") or self.hcfg.get("voice_id") or require_env("HEYGEN_VOICE_ID_EN")
+        else:
+            self.voice_id = os.environ.get("HEYGEN_VOICE_ID") or self.hcfg.get("voice_id") or require_env("HEYGEN_VOICE_ID")
         self.session = requests.Session()
         self.session.headers.update({
             "X-Api-Key": require_env("HEYGEN_API_KEY"),

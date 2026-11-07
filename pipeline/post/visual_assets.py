@@ -2,9 +2,10 @@
 Visual assets for the shot timeline: every non-face shot becomes an MP4 clip of exactly the
 output size and frame rate, a little longer than the shot.
 
-- source  → a news-clipping card (publisher, headline, date) with a slow push-in
-- number  → the figure counting up, then holding, with an Arabic label
-- title   → a short Arabic phrase, large, with a slow push-in
+- source  → a news-clipping card (publisher, headline, date): a ~1 s intro (the card lifts in, the
+              headline's highlight sweeps, the source line appears), then a drifting push-in
+- number  → the figure counting up with an Arabic label, then the same drifting hold
+- title   → a short Arabic phrase, large, with the same intro and hold
 - stock   → Pixabay (PIXABAY_API_KEY) or Pexels (PEXELS_API_KEY) footage for English search terms,
               animations first, muted and cropped to fill; with no key or no result, a generated
               tech animation (a moving network in the brand colours)
@@ -118,6 +119,34 @@ def number_html(figure: str, label: str, w: int, h: int) -> str:
     return _page(f'<div class="n"><div id="fig">{html.escape(figure)}</div>{lab}</div>', w, h, css)
 
 
+# The cards' ~1 s intro, as CSS animations that end on the still design. Renderer.animate seeks
+# them frame by frame (paused, so every frame is deterministic). The highlight sweeps from the
+# right, the way the Arabic reads.
+INTRO_SECONDS = 1.0
+INTRO_CSS = f"""@keyframes fade{{from{{opacity:0}}}}
+@keyframes rise{{from{{opacity:0;translate:0 .5em}}}}
+@keyframes lift{{from{{opacity:0;translate:0 7%}}}}
+@keyframes slide{{from{{opacity:0;translate:1.2em 0}}}}
+@keyframes sweep{{from{{background-size:0% .34em}}}}
+@keyframes grow{{from{{scale:0 1}}}}
+.grid{{animation:fade .5s ease-out both}} .tag{{animation:fade .4s ease-out .1s both}}
+.clip{{animation:lift .55s cubic-bezier(.2,.7,.2,1) both}}
+.pub{{animation:slide .35s ease-out .25s both}}
+.hl,.p{{animation:rise .45s cubic-bezier(.2,.7,.2,1) .12s both}}
+.hi{{background:linear-gradient(rgba(232,178,74,.4),rgba(232,178,74,.4)) no-repeat right 0 bottom .1em/100% .34em;
+-webkit-box-decoration-break:clone;box-decoration-break:clone;animation:sweep .45s ease-in-out .5s both}}
+.meta{{animation:fade .3s ease-out .6s both}} .credit{{animation:rise .35s ease-out .65s both}}
+.bar{{animation:grow .5s cubic-bezier(.2,.7,.2,1) .35s both}}
+#fig{{animation:fade .3s ease-out both}} .l{{animation:rise .4s ease-out .3s both}}"""
+_SEEK_JS = """ms => { document.querySelectorAll('.hl,.p').forEach(e => { if (!e.querySelector('.hi'))
+  e.innerHTML = '<span class="hi">' + e.innerHTML + '</span>'; });
+  document.getAnimations().forEach(a => { a.pause(); a.currentTime = ms; }); }"""
+
+
+def animated(page_html: str) -> str:
+    return page_html.replace("</style>", INTRO_CSS + "</style>", 1)
+
+
 class Renderer:
     """One Chromium for all cards of an episode."""
 
@@ -146,6 +175,17 @@ class Renderer:
         self.page.screenshot(path=str(dest))
         return dest
 
+    def animate(self, page_html: str, frames_dir: Path, frames: int, fps: int = 30) -> int:
+        """A card's intro (INTRO_CSS) as numbered PNG frames, seeked frame by frame; returns the count."""
+        frames_dir.mkdir(parents=True, exist_ok=True)
+        self.page.set_content(animated(page_html), wait_until="load")
+        self.page.evaluate("document.fonts.ready")
+        n = max(1, min(frames, round(INTRO_SECONDS * fps)))
+        for k in range(n):
+            self.page.evaluate(_SEEK_JS, k * 1000 / fps)
+            self.page.screenshot(path=str(frames_dir / f"f{k:04d}.png"))
+        return n
+
     def tech_motion(self, seed: str, frames_dir: Path, seconds: float, fps: int = 30) -> int:
         """A moving network of nodes and travelling pulses, rendered frame by frame (deterministic)."""
         frames_dir.mkdir(parents=True, exist_ok=True)
@@ -157,24 +197,24 @@ class Renderer:
             self.page.screenshot(path=str(frames_dir / f"f{k:04d}.png"))
         return n
 
-    def count_up(self, figure: str, label: str, frames_dir: Path, frames: int) -> int:
-        """Render the count-up as numbered PNG frames; returns how many were written."""
+    def count_up(self, figure: str, label: str, frames_dir: Path, frames: int, fps: int = 30) -> int:
+        """Render the count-up (with the card's intro) as numbered PNG frames; returns how many were written."""
         frames_dir.mkdir(parents=True, exist_ok=True)
         # "61% → 84%": the left figure stays, the right one climbs from it. Otherwise from zero.
         left, arrow, right = figure.partition("→") if "→" in figure else ("", "", figure)
         parts = split_figure(right)
         start = (split_figure(left) or (None, 0.0))[1] if arrow else 0.0
         prefix = f"{left.strip()} → " if arrow else ""
-        self.page.set_content(number_html(figure, label, self.w, self.h), wait_until="load")
-        self.page.evaluate("document.fonts.ready")
         if not parts:
-            self.page.screenshot(path=str(frames_dir / "f0000.png"))
-            return 1
+            return self.animate(number_html(figure, label, self.w, self.h), frames_dir, frames, fps)
+        self.page.set_content(animated(number_html(figure, label, self.w, self.h)), wait_until="load")
+        self.page.evaluate("document.fonts.ready")
         for k in range(frames):
             x = (k + 1) / frames
             ease = 1 - (1 - x) ** 3
             value = start + (parts[1] - start) * ease
             self.page.evaluate("t => document.getElementById('fig').textContent = t", prefix + fmt_figure(parts, value))
+            self.page.evaluate(_SEEK_JS, k * 1000 / fps)
             self.page.screenshot(path=str(frames_dir / f"f{k:04d}.png"))
         return frames
 
@@ -201,6 +241,20 @@ def frames_clip(frames_dir: Path, count: int, seconds: float, dest: Path, w: int
     _ff("-framerate", str(fps), "-i", str(frames_dir / "f%04d.png"),
         "-vf", f"scale={w}:{h},tpad=stop_mode=clone:stop_duration={hold:.3f}",
         "-frames:v", str(n), *_enc(fps), str(dest))
+    return dest
+
+
+def card_clip(frames_dir: Path, count: int, seconds: float, dest: Path, w: int, h: int, fps: int,
+              drift: float = 0.03) -> Path:
+    """A card: its intro frames, then the last one held with a slow push-in that also drifts
+    sideways (a parallax-like hold instead of a frozen still)."""
+    n = max(1, round(seconds * fps))
+    m = max(1, n - count)
+    p = f"max(0,on-{count})/{m}"
+    vf = (f"tpad=stop_mode=clone:stop_duration={m / fps + 1:.3f},scale={w * 2}:{h * 2},"
+          f"zoompan=z='1+{drift}*{p}':x='iw/2-(iw/zoom/2)+iw*{drift / 3:.4f}*{p}':y='ih/2-(ih/zoom/2)'"
+          f":d=1:s={w}x{h}:fps={fps}")
+    _ff("-framerate", str(fps), "-i", str(frames_dir / "f%04d.png"), "-vf", vf, "-frames:v", str(n), *_enc(fps), str(dest))
     return dest
 
 
@@ -404,27 +458,27 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
             secs = s.seconds + 0.5
             dest = work / f"shot_{n:03d}_{s.kind}.mp4"
             try:
-                if s.kind == "source":
-                    item = by_id.get(s.payload)
+                if s.kind in ("source", "title"):
+                    item = by_id.get(s.payload) if s.kind == "source" else None
                     from pipeline.ingestion.publishers import on_screen_ok
-                    if item is not None and not on_screen_ok(item):   # radar note / tier-C outlet: never the credit
+                    if s.kind == "title":
+                        page = title_html(s.payload, w, h)
+                    elif item is not None and not on_screen_ok(item):   # radar note / tier-C outlet: never the credit
                         s.notes.append(f"source {s.payload} ({item.source}) is not creditable on screen; title card instead")
-                        png = renderer.still(title_html((item.entities[0] if item.track == "radar" and item.entities else item.title)[:80], w, h),
-                                             work / f"shot_{n:03d}.png")
+                        page = title_html((item.entities[0] if item.track == "radar" and item.entities else item.title)[:80], w, h)
                     elif item is None:
                         s.notes.append(f"unknown source id {s.payload}; title card instead")
-                        png = renderer.still(title_html("المصدر", w, h), work / f"shot_{n:03d}.png")
+                        page = title_html("المصدر", w, h)
                     else:
-                        png = renderer.still(source_html(item, w, h), work / f"shot_{n:03d}.png")
-                    clips[n] = still_clip(png, secs, dest, w, h, fps)
-                elif s.kind == "title":
-                    png = renderer.still(title_html(s.payload, w, h), work / f"shot_{n:03d}.png")
-                    clips[n] = still_clip(png, secs, dest, w, h, fps)
+                        page = source_html(item, w, h)
+                    fdir = work / f"shot_{n:03d}_frames"
+                    count = renderer.animate(page, fdir, round(secs * fps), fps)
+                    clips[n] = card_clip(fdir, count, secs, dest, w, h, fps)
                 elif s.kind == "number":
                     fig, _, label = s.payload.partition("|")
                     fdir = work / f"shot_{n:03d}_frames"
-                    count = renderer.count_up(fig.strip(), label.strip(), fdir, min(int(fps * 1.2), round(secs * fps)))
-                    clips[n] = frames_clip(fdir, count, secs, dest, w, h, fps)
+                    count = renderer.count_up(fig.strip(), label.strip(), fdir, min(int(fps * 1.2), round(secs * fps)), fps)
+                    clips[n] = card_clip(fdir, count, secs, dest, w, h, fps)
                 elif s.kind == "stock":
                     got = None
                     if search:   # fetched per shot: a repeated query gets the next unused clip, not the same one

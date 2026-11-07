@@ -66,7 +66,8 @@ def sentences(script: str) -> list[str]:
     return [s.strip() for s in SENTENCE_RE.split(spoken_text(script).replace("\n", " ")) if s.strip()]
 
 
-def build(script: str, items: list[NewsItem], model: str, client: anthropic.Anthropic) -> tuple[list[str], SourceMap]:
+def build(script: str, items: list[NewsItem], model: str, client: anthropic.Anthropic,
+          lang: str = "ar") -> tuple[list[str], SourceMap]:
     from pipeline.ingestion.publishers import is_radar
     items = [i for i in items if not is_radar(i)]   # a radar note is our own summary, never support
     sents = sentences(script)
@@ -86,7 +87,7 @@ def build(script: str, items: list[NewsItem], model: str, client: anthropic.Anth
     known = {i.id for i in items}
     for a in resp.parsed_output.sentences:          # never trust an id the model made up
         a.item_ids = [x for x in a.item_ids if x in known]
-    verify(sents, resp.parsed_output, items)
+    verify(sents, resp.parsed_output, items, lang)
     return sents, resp.parsed_output
 
 
@@ -197,9 +198,37 @@ def _english_figures(text: str) -> list[str]:
     return out
 
 
-def claim_figures(sentence: str) -> list[str]:
-    """Figures a spoken sentence states: digits (any script) and spoken Arabic numbers."""
-    return list(dict.fromkeys(_digit_figures(sentence) + _arabic_figures(sentence)))
+def _english_claim_figures(text: str) -> list[str]:
+    """Spoken English numbers in a claim (the English version): 'twenty-five' → 25, 'three point five
+    billion' → 3.5, 'sixty percent' → 60. Zero, one and two count only before a scale word, 'percent'
+    or 'point' ('one of the biggest', 'two things' are not figures), as with Arabic 1, 2, 6, 7."""
+    toks = re.findall(r"[a-z]+", text.lower())
+    out: list[str] = []
+    k = 0
+    while k < len(toks):
+        if toks[k] not in _EN_NUM:
+            k += 1
+            continue
+        v, j = Decimal(_EN_NUM[toks[k]]), k + 1
+        if v >= 20 and j < len(toks) and toks[j] in _EN_NUM and 0 < _EN_NUM[toks[j]] < 10:
+            v, j = v + _EN_NUM[toks[j]], j + 1
+        if j < len(toks) and toks[j] == "hundred":
+            v, j = v * 100, j + 1
+        point = j + 1 < len(toks) and toks[j] == "point" and toks[j + 1] in _EN_NUM and _EN_NUM[toks[j + 1]] < 10
+        if point:
+            v, j = v + Decimal(_EN_NUM[toks[j + 1]]) / 10, j + 2
+        nxt = toks[j] if j < len(toks) else ""
+        if v > 2 or point or nxt in _EN_SCALE or nxt in ("percent", "per"):
+            out.append(_canon(str(v)))
+        k = j
+    return out
+
+
+def claim_figures(sentence: str, lang: str = "ar") -> list[str]:
+    """Figures a spoken sentence states: digits (any script) and spoken numbers in the script's
+    language (Arabic, or English for the English version)."""
+    spoken = _english_claim_figures(sentence) if lang == "en" else _arabic_figures(sentence)
+    return list(dict.fromkeys(_digit_figures(sentence) + spoken))
 
 
 def item_figures(item: NewsItem) -> set[str]:
@@ -266,7 +295,7 @@ def attributions(sentence: str) -> list[Any]:
     return out
 
 
-def verify(sents: list[str], smap: SourceMap, items: list[NewsItem]) -> None:
+def verify(sents: list[str], smap: SourceMap, items: list[NewsItem], lang: str = "ar") -> None:
     """Deterministic checks on every claim, in place: problems are recorded on the attribution,
     and a claim whose figure or attribution fails is downgraded to support="none"."""
     from pipeline.ingestion.publishers import load_publishers
@@ -282,7 +311,7 @@ def verify(sents: list[str], smap: SourceMap, items: list[NewsItem]) -> None:
         pool: set[str] = set()
         for i in cited:
             pool |= item_figures(i)
-        missing = [f for f in claim_figures(sent) if not _figure_ok(f, pool)]
+        missing = [f for f in claim_figures(sent, lang) if not _figure_ok(f, pool)]
         if missing:
             a._problems.append(f"figure {', '.join(missing)} not in the cited item(s)")
             a.support = "none"

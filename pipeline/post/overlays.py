@@ -61,9 +61,9 @@ def render_card(text: str, dest: Path, kind: str = "onscreen", width: int = 1920
 
     small = kind != "onscreen"
     page_html = CARD_HTML.format(
-        font=_font_path(), w=width, h=height, bottom=int(height * 0.28) if not small else int(height * 0.05),
+        font=_font_path(), w=width, h=height, bottom=int(height * 0.05) if kind == "broll" else int(height * 0.28),
         maxw=int(width * 0.62), size=int(height * 0.052), small=int(height * 0.028),
-        cls="small" if small else "", tag='<div class="tag">B-ROLL</div><br>' if small else "", text=html.escape(text))
+        cls="small" if small else "", tag='<div class="tag">B-ROLL</div><br>' if kind == "broll" else "", text=html.escape(text))
     dest.parent.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
         b = p.chromium.launch(args=["--allow-file-access-from-files"])
@@ -133,6 +133,23 @@ def overlay(video: Path, cards: list[Card], dest: Path) -> Path:
     return dest
 
 
+DISCLOSURE_TEXT = "توأم رقمي لوسام — بموافقة وسام"
+
+
+def disclosure_card(cards: list[Card], d: dict[str, Any], out_dir: Path) -> Card | None:
+    """The AI-twin disclosure lower-third inside the first minute (review 2026-11-07, Tier 1 #11):
+    at `at` seconds, moved past any cue card it would sit on, never later than 60 s."""
+    if not d.get("enabled", True):
+        return None
+    secs, at = float(d.get("seconds", 6)), float(d.get("at", 4))
+    for c in sorted(cards, key=lambda c: c.at):
+        if c.at < at + secs and at < c.at + c.seconds:
+            at = c.at + c.seconds + 0.5
+    at = min(at, 60.0 - secs)
+    cue = Cue(kind="disclosure", text=str(d.get("text") or DISCLOSURE_TEXT), at_word=0, at_seconds=at)
+    return Card(cue, at, secs, out_dir / "cards" / "card_00_disclosure.png")
+
+
 def run_overlays(video: Path, script: str, cfg: dict[str, Any], out_dir: Path, srt: Path | None = None,
                  skip_spans: list[tuple[float, float]] | None = None) -> Path:
     """With the visual edit on, B-roll placeholders are gone (real footage replaced them) and a
@@ -144,6 +161,9 @@ def run_overlays(video: Path, script: str, cfg: dict[str, Any], out_dir: Path, s
                        ("onscreen",) if edited else ("onscreen", "broll"))
     if skip_spans:
         cards = [c for c in cards if not any(a - 0.5 <= c.at <= b for a, b in skip_spans)]
+    d = disclosure_card(cards, o.get("disclosure", {}), out_dir)
+    if d:   # compliance: never dropped for a full-screen card
+        cards = sorted(cards + [d], key=lambda c: c.at)
     for c in cards:
         render_card(c.cue.text, c.png, c.cue.kind)
     (out_dir / "cards.json").write_text(json.dumps(

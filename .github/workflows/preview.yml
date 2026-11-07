@@ -16,6 +16,12 @@ permissions:
   contents: write
   actions: read
 
+# Every preview force-pushes the one `previews` branch after fetching it: two at once (even for
+# different weeks) would drop one week's file. So one group for all previews; queue, never cancel.
+concurrency:
+  group: previews-branch
+  cancel-in-progress: false
+
 jobs:
   preview:
     runs-on: ubuntu-latest

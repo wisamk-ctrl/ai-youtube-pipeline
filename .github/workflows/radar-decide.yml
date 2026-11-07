@@ -29,50 +29,41 @@ jobs:
         run: echo "::error::only the repository owner or collaborators can promote/ignore" && exit 1
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
-      - run: pip install -r requirements.txt
+        with: { python-version: "3.12", cache: pip, cache-dependency-path: requirements.lock }
+      - run: pip install -r requirements.lock
       - name: Apply the decision
+        # The comment is untrusted text: it reaches Python through the environment, is split with
+        # shlex there (never eval'd), and the outputs come back through GITHUB_OUTPUT heredocs.
         id: apply
         env:
           BODY: ${{ github.event.comment.body }}
-        run: |
-          set -e
-          CMD=$(printf '%s' "$BODY" | head -n1)
-          if [[ "$CMD" == /promote* ]]; then
-            ARGS=${CMD#/promote }
-            # first token(s) up to the first --flag are the name
-            NAME=$(printf '%s' "$ARGS" | sed -E 's/ --.*$//')
-            FLAGS=$(printf '%s' "$ARGS" | grep -oE ' --.*$' || true)
-            eval python scripts/radar_decide.py promote "\"$NAME\"" $FLAGS | tee result.txt
-            echo "kind=promote" >> "$GITHUB_OUTPUT"
-          else
-            NAME=${CMD#/ignore }
-            python scripts/radar_decide.py ignore "$NAME" | tee result.txt
-            echo "kind=ignore" >> "$GITHUB_OUTPUT"
-          fi
-          echo "name=$NAME" >> "$GITHUB_OUTPUT"
-          echo "result=$(cat result.txt)" >> "$GITHUB_OUTPUT"
+        run: python scripts/radar_comment.py
       - name: Commit (ignore) or open a PR (promote)
         env:
           GH_TOKEN: ${{ github.token }}
+          KIND: ${{ steps.apply.outputs.kind }}
+          NAME: ${{ steps.apply.outputs.name }}
+          BR: ${{ steps.apply.outputs.branch }}
+          ISSUE: ${{ github.event.issue.number }}
         run: |
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
-          if [ "${{ steps.apply.outputs.kind }}" = "ignore" ]; then
-            git add data/radar_state.json && git commit -m "radar: ignore ${{ steps.apply.outputs.name }}" && git push
+          if [ "$KIND" = "ignore" ]; then
+            git add data/radar_state.json && git commit -m "radar: ignore $NAME" && git push
           else
-            BR="watchlist/$(echo '${{ steps.apply.outputs.name }}' | tr -cs 'A-Za-z0-9' '-' | tr 'A-Z' 'a-z')"
             git checkout -b "$BR"
             git add config/watchlist.yaml data/radar_state.json
-            git commit -m "watchlist: promote ${{ steps.apply.outputs.name }}"
+            git commit -m "watchlist: promote $NAME"
             git push -u origin "$BR"
-            gh pr create --title "Watchlist: add ${{ steps.apply.outputs.name }}" \
-              --body "Promoted from the radar via #${{ github.event.issue.number }}. Review the aliases/Arabic name, then merge." \
+            gh pr create --title "Watchlist: add $NAME" \
+              --body "Promoted from the radar via #$ISSUE. Review the aliases/Arabic name, then merge." \
               --base main --head "$BR"
           fi
       - name: Reply on the issue
         uses: actions/github-script@v7
+        env:
+          RESULT: ${{ steps.apply.outputs.result }}
         with:
           script: |
             await github.rest.issues.createComment({
               owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number,
-              body: `✅ ${{ steps.apply.outputs.result }}` });
+              body: `✅ ${process.env.RESULT}` });
