@@ -9,4 +9,24 @@ fix:
   - عن بُعد
 correct:
   "تينسنت Tencent الصينية لسّا مش على قائمة المتابعة عنا. بس هالأسبوع": "تينسنت الصينية رجعت عالرادار، وهالأسبوع"
-voice: {}
+# All clips are stretches of ONE speech call (2026-11-07, 59 s, 3 credits), cut by its word timestamps.
+voice:
+  "وأدنوك وجي فورتي تو": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=0.18,2.13"
+  "وإنفيديا": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=2.96,4.27"
+  "بتمرّ عالمعالج": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=5.10,6.62"
+  "ومجموعة جي فورتي تو": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=7.45,9.57"
+  "ومع جي فورتي تو": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=10.40,11.96"
+  "زي جي فورتي تو. وهاد": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=12.79,15.07"
+  "Magazine، هيوماين": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=15.90,18.23"   # says «ماغازين، هيوماين»
+  "PIF وأرامكو.": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=19.06,21.67"   # says «بي آي إف وأرامكو.»
+  "وللموديلات.": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=22.50,24.60"
+  "كلود كود": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=25.27,26.37"
+  "كوكيل عن بعد": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=27.20,29.14"   # says «كوكيل من بعيد»
+  "المستخدم. ليش هاد مهم؟": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=30.00,32.33"
+  "بتنتخطّى. وأنثروبيك": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=33.16,35.65"
+  "نزّلت كلود كود": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=36.48,38.09"
+  "الوكيل الضعف. بيربلكسيتي": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=38.92,42.02"
+  "أداء اسمه SemiAnalysis AgentX.": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=42.85,45.96"   # says «أداء اسمه سيمي أناليسيس إيجنت إكس.»
+  "الأسبوع. تينسنت الصينية رجعت عالرادار، وهالأسبوع": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=46.79,51.50"
+  "على أوبن راوتر. ليش بيهمّنا؟": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=52.33,55.32"
+  "وبالسعودية، سدايا": "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/4c810d9c9906445f81dfd4f7d32259e0/id=668568a9-805d-4a0e-b0e3-be91373e48d7.mp3#t=56.15,58.61"

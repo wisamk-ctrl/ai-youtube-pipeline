@@ -123,3 +123,9 @@ def test_clip_takes_a_stretch_of_one_recording(tmp_path, monkeypatch):
     repair._DOWNLOADS[f"https://example.invalid/{tmp_path.name}.mp3"] = src
     out = repair._clip(f"https://example.invalid/{tmp_path.name}.mp3#t=1.0,2.5", tmp_path / "c.wav")
     assert abs(repair._duration(out) - 1.5) < 0.05
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="needs ffmpeg")
+def test_silence_clip_for_a_dropped_gloss(tmp_path):
+    out = repair._clip("silence:0.15", tmp_path / "s.wav")
+    assert abs(repair._duration(out) - 0.15) < 0.02

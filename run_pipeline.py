@@ -196,7 +196,8 @@ def _repair_speech(cfg: dict, out: Path, video: Path, spoken: str):
     heard = transcribe_words(video)
     repairs, skipped = repair.find(spoken, heard, cfg, plan["fix"])
     for r in repairs:
-        r.audio = plan["voice"].get(repair.key(r.say), "")
+        # Nothing left to say (a dropped gloss): cut it to a short pause, no clip needed.
+        r.audio = plan["voice"].get(repair.key(r.say), "") or ("" if repair.key(r.say) else "silence:0.15")
     (out / "repairs.json").write_text(json.dumps([vars(r) for r in repairs], ensure_ascii=False, indent=2),
                                       encoding="utf-8")
     fps = int(cfg.get("visuals", {}).get("fps", 30))

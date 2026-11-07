@@ -218,6 +218,10 @@ def _clip(url: str, dest: Path) -> Path:
 
     `<url>#t=<start>,<end>` takes that stretch of a longer recording: every phrase of a week can
     come from one speech call (one credit minimum per call), split by its word timestamps."""
+    if url.startswith("silence:"):   # a dropped gloss: the span becomes a short natural pause
+        _run("ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-f", "lavfi", "-i",
+             "anullsrc=r=48000:cl=stereo", "-t", url.partition(":")[2] or "0.15", str(dest))
+        return dest
     base, _, frag = url.partition("#t=")
     raw = _DOWNLOADS.get(base)
     if raw is None or not raw.exists():
@@ -253,7 +257,7 @@ def apply(video: Path, repairs: list[Repair], heard: list[Word], out_dir: Path, 
             log.warning("Repair clip for «%s» unusable (%s); left as rendered", r.say, exc)
             r.audio = ""
             continue
-        gain = _mean_db(video, r.start, r.end - r.start) - _mean_db(c)
+        gain = 0.0 if r.audio.startswith("silence:") else _mean_db(video, r.start, r.end - r.start) - _mean_db(c)
         clips.append((c, length, max(-12.0, min(12.0, gain))))
         kept.append(r)
     todo = kept
