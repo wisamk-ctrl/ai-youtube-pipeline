@@ -1,0 +1,87 @@
+# ─────────────────────────────────────────────────────────────────────
+# Publisher tiers (review 2026-11-07, Tier 1 #7). Read by pipeline/ingestion/publishers.py.
+#
+#   A  wires and primary sources (the company's own newsroom, a government agency, the
+#      paper itself, a model card, a release page): weight 1.3, may be the on-screen credit
+#   B  trade press and analysis newsletters: weight 1.0, may be the on-screen credit
+#   C  aggregators, curators, video channels, social posts and anything unknown: weight 0.6.
+#      A lead to verify against an A/B source; never the on-screen source card.
+#
+# A publisher is recognised by its source name (case-insensitive, also "Google News · X"
+# publishers) or by the domain of its URL. `ar` lists the names a script may use in an
+# attribution («حسب رويترز»); source_map checks that such a name matches the cited item.
+# ─────────────────────────────────────────────────────────────────────
+
+tiers:
+  A: {weight: 1.3, label: wire / primary source}
+  B: {weight: 1.0, label: trade press}
+  C: {weight: 0.6, label: aggregator / unknown}
+default_tier: C
+
+publishers:
+  # ── Wires and national news agencies ──
+  - {name: Reuters, ar: [رويترز], tier: A, domains: [reuters.com]}
+  - {name: Associated Press, ar: [أسوشيتد برس, اسوشيتد برس, الأسوشيتد برس], aliases: [AP, AP News], tier: A, domains: [apnews.com]}
+  - {name: Bloomberg, ar: [بلومبرغ, بلومبيرغ, بلومبرج], aliases: [Bloomberg News, Bloomberg.com], tier: A, domains: [bloomberg.com]}
+  - {name: AFP, ar: [فرانس برس, وكالة الصحافة الفرنسية], aliases: [Agence France-Presse], tier: A, domains: [afp.com]}
+  - {name: WAM, ar: [وام, وكالة أنباء الإمارات], aliases: [Emirates News Agency], tier: A, domains: [wam.ae]}
+  - {name: SPA, ar: [واس, وكالة الأنباء السعودية], aliases: [Saudi Press Agency], tier: A, domains: [spa.gov.sa]}
+  - {name: Petra, ar: [بترا, وكالة الأنباء الأردنية], aliases: [Jordan News Agency], tier: A, domains: [petra.gov.jo]}
+  - {name: QNA, ar: [قنا, وكالة الأنباء القطرية], aliases: [Qatar News Agency], tier: A, domains: [qna.org.qa]}
+
+  # ── Major papers (their own reporting is primary) ──
+  - {name: Financial Times, ar: [فايننشال تايمز, فاينانشال تايمز], aliases: [FT], tier: A, domains: [ft.com]}
+  - {name: Wall Street Journal, ar: [وول ستريت جورنال], aliases: [WSJ, The Wall Street Journal], tier: A, domains: [wsj.com]}
+  - {name: The New York Times, ar: [نيويورك تايمز], aliases: [New York Times, NYT], tier: A, domains: [nytimes.com]}
+  - {name: The Information, ar: [ذا إنفورميشن, ذي إنفورميشن], tier: A, domains: [theinformation.com]}
+  - {name: CNBC, ar: [سي إن بي سي], tier: A, domains: [cnbc.com]}
+
+  # ── Company newsrooms, official blogs, release pages (primary for their own news) ──
+  - {name: OpenAI, ar: [أوبن إيه آي], tier: A, domains: [openai.com]}
+  - {name: Anthropic, ar: [أنثروبيك], tier: A, domains: [anthropic.com]}
+  - {name: Google, ar: [جوجل], aliases: [Google DeepMind, Google Blog], tier: A, domains: [blog.google, deepmind.google, research.google]}
+  - {name: Microsoft, ar: [مايكروسوفت], tier: A, domains: [microsoft.com, blogs.microsoft.com]}
+  - {name: Meta, ar: [ميتا], aliases: [Meta AI], tier: A, domains: [about.fb.com, ai.meta.com]}
+  - {name: Amazon, ar: [أمازون], aliases: [AWS], tier: A, domains: [aws.amazon.com, aboutamazon.com]}
+  - {name: Apple, ar: [آبل], tier: A, domains: [apple.com, machinelearning.apple.com]}
+  - {name: NVIDIA, ar: [إنفيديا, انفيديا], tier: A, domains: [nvidia.com, blogs.nvidia.com, nvidianews.nvidia.com]}
+  - {name: Mistral, ar: [ميسترال], tier: A, domains: [mistral.ai]}
+  - {name: Hugging Face, aliases: [huggingface], tier: A, domains: [huggingface.co]}
+  - {name: GitHub, tier: A, domains: [github.com, github.blog]}
+  - {name: arXiv, tier: A, domains: [arxiv.org]}
+  - {name: G42, ar: [جي 42], tier: A, domains: [g42.ai]}
+  - {name: TII, ar: [معهد الابتكار التكنولوجي], tier: A, domains: [tii.ae]}
+  - {name: SDAIA, ar: [سدايا], tier: A, domains: [sdaia.gov.sa]}
+  - {name: MoDEE, ar: [وزارة الاقتصاد الرقمي والريادة], tier: A, domains: [modee.gov.jo]}
+
+  # ── Trade press and regional business press ──
+  - {name: TechCrunch, ar: [تك كرانش], tier: B, domains: [techcrunch.com]}
+  - {name: The Verge, ar: [ذا فيرج], tier: B, domains: [theverge.com]}
+  - {name: Wired, ar: [وايرد], tier: B, domains: [wired.com]}
+  - {name: Ars Technica, ar: [آرس تكنيكا], tier: B, domains: [arstechnica.com]}
+  - {name: VentureBeat, ar: [فنتشر بيت], tier: B, domains: [venturebeat.com]}
+  - {name: MIT Technology Review, ar: [إم آي تي تكنولوجي ريفيو], tier: B, domains: [technologyreview.com]}
+  - {name: The Register, tier: B, domains: [theregister.com]}
+  - {name: ZDNet, tier: B, domains: [zdnet.com]}
+  - {name: SiliconANGLE, tier: B, domains: [siliconangle.com]}
+  - {name: The Economic Times, aliases: [ET Datacenters, ETCIO, ETTelecom, Economic Times], tier: B, domains: [economictimes.indiatimes.com]}
+  - {name: Data Center Dynamics, aliases: [DCD, DatacenterDynamics], tier: B, domains: [datacenterdynamics.com]}
+  - {name: Tom's Hardware, tier: B, domains: [tomshardware.com]}
+  - {name: The Next Platform, tier: B, domains: [nextplatform.com]}
+  - {name: Axios, ar: [أكسيوس], tier: B, domains: [axios.com]}
+  - {name: Semafor, tier: B, domains: [semafor.com]}
+  - {name: The National, ar: [ذا ناشونال], tier: B, domains: [thenationalnews.com]}
+  - {name: Arab News, ar: [عرب نيوز], tier: B, domains: [arabnews.com]}
+  - {name: Gulf News, ar: [جلف نيوز], tier: B, domains: [gulfnews.com]}
+  - {name: Khaleej Times, ar: [خليج تايمز], tier: B, domains: [khaleejtimes.com]}
+  - {name: Zawya, ar: [زاوية], tier: B, domains: [zawya.com]}
+  - {name: Wamda, ar: [ومضة], tier: B, domains: [wamda.com]}
+  - {name: Asharq Business, ar: [الشرق للأعمال, الشرق بلومبرغ], tier: B, domains: [asharqbusiness.com]}
+  - {name: Import AI, tier: B, domains: [importai.substack.com, jack-clark.net]}
+  - {name: The Batch (DeepLearning.AI), aliases: [The Batch], tier: B, domains: [deeplearning.ai]}
+
+  # ── Aggregators and curators: leads, never the credit ──
+  - {name: TLDR AI, aliases: [TLDR AI (email), TLDR], tier: C, domains: [tldr.tech]}
+  - {name: AlphaSignal, tier: C, domains: [alphasignal.ai]}
+  - {name: The Rundown AI, tier: C, domains: [therundown.ai]}
+  - {name: Google News, tier: C, domains: [news.google.com]}

@@ -70,7 +70,8 @@ class Critique(BaseModel):
 
 SYSTEM = """You are the head of content at a popular Jordanian Arabic YouTube channel about technology,
 reviewing a script minutes before recording. You did not write it and you owe it nothing. Read it as the
-audience will HEAR it: people in Jordan, the Levant and the Gulf who follow AI and business, on a phone,
+audience will HEAR it: enterprise leaders, a broad audience curious about AI, and IT people and techies, in
+Jordan, the Levant and the Gulf, on a phone,
 often with the sound low, who want a host who talks like them and not like a newsreader.
 
 You score by the rubric, not by taste. Procedure:

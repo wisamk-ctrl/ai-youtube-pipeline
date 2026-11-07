@@ -74,7 +74,7 @@ def source_html(item: NewsItem, w: int, h: int) -> str:
 width:{w * 0.66:.0f}px;background:{SAND};color:#14161c;border-radius:{h * 0.012:.0f}px;padding:{h * 0.05:.0f}px {w * 0.04:.0f}px;
 box-shadow:0 {h * 0.03:.0f}px {h * 0.08:.0f}px rgba(0,0,0,.55)}}
 .pub{{display:inline-block;font:700 {h * 0.03:.0f}px Kufi,sans-serif;background:{NAVY};color:{GOLD};padding:.25em .7em;border-radius:.3em}}
-.hl{{font:700 {h * 0.055:.0f}px/1.28 Naskh,Kufi,sans-serif;margin:.55em 0 .5em}}
+.hl{{font:700 {h * 0.055:.0f}px/1.28 Naskh,Kufi,sans-serif;margin:.55em 0 .5em;hyphens:none;-webkit-hyphens:none;word-break:normal;overflow-wrap:normal}}
 .meta{{font:500 {h * 0.024:.0f}px Kufi,sans-serif;color:#5d5a52}}
 .credit{{position:absolute;bottom:{h * 0.07:.0f}px;right:{w * 0.05:.0f}px;font:500 {h * 0.026:.0f}px Kufi;color:{SAND};opacity:.75}}"""
     body = f"""<div class="clip"><div class="pub">{html.escape(item.source)}</div>
@@ -146,7 +146,7 @@ class Renderer:
         self.page.screenshot(path=str(dest))
         return dest
 
-    def tech_motion(self, seed: str, frames_dir: Path, seconds: float, fps: int = 15) -> int:
+    def tech_motion(self, seed: str, frames_dir: Path, seconds: float, fps: int = 30) -> int:
         """A moving network of nodes and travelling pulses, rendered frame by frame (deterministic)."""
         frames_dir.mkdir(parents=True, exist_ok=True)
         self.page.set_content(_page(TECH_MOTION_HTML.format(w=self.w, h=self.h, seed=_seed(seed)), self.w, self.h),
@@ -242,6 +242,7 @@ def _pixabay(query: str, key: str, per_page: int, video_type: str) -> list[dict[
         files = [{"file_type": "video/mp4", "width": v.get("width") or 0, "height": v.get("height") or 0, "link": v.get("url")}
                  for v in (h.get("videos") or {}).values() if v.get("url")]
         out.append({"id": f"pixabay_{h['id']}", "duration": h.get("duration", 0), "animation": video_type == "animation",
+                    "tags": h.get("tags") or "",
                     "width": max((f["width"] for f in files), default=0), "url": h.get("pageURL"),
                     "user": {"name": h.get("user"), "url": f"https://pixabay.com/users/{h.get('user')}-{h.get('user_id')}/"},
                     "video_files": files})
@@ -252,7 +253,8 @@ def pexels_search(query: str, key: str, per_page: int = 8) -> list[dict[str, Any
     r = requests.get("https://api.pexels.com/videos/search", headers={"Authorization": key}, timeout=30,
                      params={"query": query, "orientation": "landscape", "per_page": per_page, "size": "medium"})
     r.raise_for_status()
-    return [dict(v, id=f"pexels_{v['id']}") for v in r.json().get("videos") or []]
+    return [dict(v, id=f"pexels_{v['id']}", tags=" ".join(re.findall(r"[a-z]+", (v.get("url") or "").split("/video/")[-1])))
+            for v in r.json().get("videos") or []]
 
 
 PROVIDERS = {"pixabay": ("PIXABAY_API_KEY", pixabay_search), "pexels": ("PEXELS_API_KEY", pexels_search)}
@@ -269,10 +271,55 @@ def stock_search(cfg: dict[str, Any]):
     return None
 
 
+# Off-brand subjects the W45 preview showed (a mermaid, strawberries, a bicycle wheel): a hit tagged
+# with any of these is dropped unless the query itself asks for it.
+OFF_TOPIC = {
+    "mermaid", "fantasy", "fairy", "angel", "unicorn", "dragon", "witch", "magic", "princess",
+    "strawberry", "strawberries", "fruit", "fruits", "food", "cake", "coffee", "drink", "cooking", "vegetable",
+    "flower", "flowers", "rose", "tree", "trees", "forest", "nature", "garden", "beach", "sea", "ocean",
+    "sunset", "landscape", "mountain", "waterfall", "snow", "rain", "grass", "leaf", "leaves",
+    "woman", "women", "man", "men", "girl", "boy", "child", "children", "baby", "people", "person", "face",
+    "portrait", "couple", "family", "model", "wedding", "love", "heart", "christmas",
+    "cat", "dog", "animal", "animals", "bird", "fish", "horse", "butterfly", "insect",
+    "bicycle", "bike", "car", "wheel", "sport", "football", "dance", "fashion",
+}
+_STOP = {"a", "an", "the", "of", "in", "on", "and", "with", "to", "for", "at", "by", "from", "light", "view", "close", "up"}
+
+
+def _words(text: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z]+", text.lower()) if w not in _STOP and len(w) > 1}
+
+
+def _stem(w: str) -> str:
+    return w[:-1] if len(w) > 3 and w.endswith("s") else w
+
+
+def relevance(query: str, tags: str) -> int | None:
+    """How many of the query's words a hit's tags share; None when the hit must be rejected
+    (no shared word, or an off-topic subject the query did not ask for)."""
+    q, t = _words(query), _words(tags)
+    if (t & OFF_TOPIC) - q:
+        return None
+    qs, ts = {_stem(w) for w in q}, {_stem(w) for w in t}
+    score = len(qs & ts)
+    return score if score else None
+
+
 def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int, min_seconds: float) -> tuple[Path, dict] | None:
-    """Best unused clip for the query that is long enough; cached on disk by provider id."""
-    vids = [v for v in search(query) if v.get("id") not in used]
-    vids.sort(key=lambda v: (not v.get("animation", False), v.get("duration", 0) < min_seconds, -(v.get("width") or 0)))
+    """Best unused, relevant clip for the query that is long enough; cached on disk by provider id.
+
+    Relevance (tags shared with the query) ranks first, then animation (the house look), then length.
+    A hit without tags (a provider that sends none) is kept with the lowest relevance."""
+    scored = []
+    for v in search(query):
+        if v.get("id") in used:
+            continue
+        r = relevance(query, v["tags"]) if v.get("tags") else 0
+        if r is not None:
+            scored.append((r, v))
+    scored.sort(key=lambda rv: (-rv[0], not rv[1].get("animation", False), rv[1].get("duration", 0) < min_seconds,
+                                -(rv[1].get("width") or 0)))
+    vids = [v for _, v in scored]
     for v in vids:
         f = pick_file(v, min_width)
         if not f:
@@ -359,7 +406,12 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
             try:
                 if s.kind == "source":
                     item = by_id.get(s.payload)
-                    if item is None:
+                    from pipeline.ingestion.publishers import on_screen_ok
+                    if item is not None and not on_screen_ok(item):   # radar note / tier-C outlet: never the credit
+                        s.notes.append(f"source {s.payload} ({item.source}) is not creditable on screen; title card instead")
+                        png = renderer.still(title_html((item.entities[0] if item.track == "radar" and item.entities else item.title)[:80], w, h),
+                                             work / f"shot_{n:03d}.png")
+                    elif item is None:
                         s.notes.append(f"unknown source id {s.payload}; title card instead")
                         png = renderer.still(title_html("المصدر", w, h), work / f"shot_{n:03d}.png")
                     else:
@@ -386,8 +438,8 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                     else:
                         s.notes.append("no stock key" if not search else "no stock result")
                         fdir = work / f"shot_{n:03d}_motion"
-                        count = renderer.tech_motion(s.payload, fdir, secs, fps=15)
-                        _ff("-framerate", "15", "-i", str(fdir / "f%04d.png"), "-vf", f"scale={w}:{h},fps={fps}",
+                        count = renderer.tech_motion(s.payload, fdir, secs, fps=fps)
+                        _ff("-framerate", str(fps), "-i", str(fdir / "f%04d.png"), "-vf", f"scale={w}:{h},fps={fps}",
                             "-frames:v", str(max(1, round(secs * fps))), *_enc(fps), str(dest))
                         clips[n] = dest
             except Exception as exc:  # noqa: BLE001 — one bad asset must not sink the episode
@@ -396,8 +448,8 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                 s.notes.append(f"asset failed: {exc}")
                 try:
                     fdir = work / f"shot_{n:03d}_motion"
-                    count = renderer.tech_motion(s.payload or str(n), fdir, secs, fps=15)
-                    _ff("-framerate", "15", "-i", str(fdir / "f%04d.png"), "-vf", f"scale={w}:{h},fps={fps}",
+                    count = renderer.tech_motion(s.payload or str(n), fdir, secs, fps=fps)
+                    _ff("-framerate", str(fps), "-i", str(fdir / "f%04d.png"), "-vf", f"scale={w}:{h},fps={fps}",
                         "-frames:v", str(max(1, round(secs * fps))), *_enc(fps), str(dest))
                     clips[n] = dest
                 except Exception as exc2:  # noqa: BLE001

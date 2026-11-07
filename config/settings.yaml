@@ -29,20 +29,22 @@ ingestion:
   # channel per run) and the same list is read through the API. Give a handle (resolved
   # to a channel id on first run and cached in data/youtube_channels.json) or a channel_id.
   # Weight below 1: a video is a lead to verify against a written source, not a source itself.
+  # lead_only: true → the channel feeds the radar (new names) but never reaches the script
+  # as a source (review 2026-11-07: hype channels are radar leads only).
   youtube:
     enabled: true
     max_per_channel: 5
     channels:
       - { name: "Matt Wolfe",        handle: mreflow,              weight: 0.8 }
       - { name: "AI Explained",      handle: aiexplained-official, weight: 0.9 }
-      - { name: "Wes Roth",          handle: WesRoth,              weight: 0.8 }
-      - { name: "TheAIGRID",         handle: TheAIGRID,            weight: 0.7 }
+      - { name: "Wes Roth",          handle: WesRoth,              weight: 0.8, lead_only: true }
+      - { name: "TheAIGRID",         handle: TheAIGRID,            weight: 0.7, lead_only: true }
       - { name: "Two Minute Papers", handle: TwoMinutePapers,      weight: 0.8 }
-      - { name: "MattVidPro AI",     handle: MattVidPro,           weight: 0.7 }
+      - { name: "MattVidPro AI",     handle: MattVidPro,           weight: 0.7, lead_only: true }
       - { name: "Fireship",          handle: Fireship,             weight: 0.7 }
       - { name: "bycloud",           handle: bycloudAI,            weight: 0.7 }
       - { name: "Yannic Kilcher",    handle: YannicKilcher,        weight: 0.8 }
-      - { name: "The AI Advantage",  handle: aiadvantage,          weight: 0.7 }
+      - { name: "The AI Advantage",  handle: aiadvantage,          weight: 0.7, lead_only: true }
 
   # Newsletters that arrive by email. Needs GOOGLE_CLIENT_ID/SECRET + GMAIL_REFRESH_TOKEN
   # (scripts/google_authorize.py gmail). Each email is split into its stories.
@@ -78,6 +80,25 @@ ingestion:
     github: true              # releases of watched repos (set GITHUB_TOKEN to lift the anonymous rate limit)
     huggingface: true         # new models from watched organisations
     max_per_entity: 8         # Google News items kept per name per week
+    # Google News items carry only headline + publisher. Resolve the link to the publisher's page
+    # and keep the article text (best effort; paywalls and failures keep the headline).
+    fetch_articles:
+      enabled: true
+      max_items: 60           # page fetches per run (two requests each at most)
+      timeout_s: 8
+      max_chars: 2500         # same cap as RSS bodies
+
+  # Regional outlets (Gulf + Levant), read as Google News site: searches so no feed URL has to be
+  # guessed. Publisher tiers for the credit come from config/publishers.yaml.
+  google_news_sites:
+    - { name: The National,  query: "site:thenationalnews.com", region: gulf }
+    - { name: Arab News,     query: "site:arabnews.com",        region: gulf }
+    - { name: WAM,           query: "site:wam.ae",              region: gulf }
+    - { name: SPA,           query: "site:spa.gov.sa",          region: gulf }
+    - { name: Zawya,         query: "site:zawya.com",           region: gulf }
+    - { name: Wamda,         query: "site:wamda.com",           region: levant }
+    - { name: MoDEE Jordan,  query: "site:modee.gov.jo",        region: levant }
+    - { name: Jordan News Agency, query: "site:petra.gov.jo",   region: levant }
 
 scoring:
   min_score: 2.0              # items below this are dropped as noise
@@ -202,6 +223,17 @@ post:
     enabled: true             # [On-Screen Text] cues become lower-third cards; [Show B-Roll] cues a corner marker
     card_seconds: 6
     broll_seconds: 4
+  audio:                      # final audio pass, post/audio.py (review 2026-11-07, Tier 1 #9)
+    enabled: true
+    music: generated          # generated (our own synthesised pad, never licensed music) | <path to a wav we own> | none
+    music_db: -24             # bed level under speech, dB relative to the voice (ducked by the voice)
+    whoosh: true              # synthesised swish on each [Section] cut
+    loudness_lufs: -14        # YouTube reference; W45 measured -19.6
+    true_peak: -1.5
+    lra: 7
+  sting:
+    enabled: true             # our code-rendered intro sting (sting/), spliced in after the cold open
+    path: assets/intro_sting.mp4
 
 # USD per million tokens, from anthropic.com/pricing. Left empty on purpose: the meter reports
 # tokens either way and only prints a cost once these are filled in.

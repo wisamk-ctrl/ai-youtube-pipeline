@@ -1,0 +1,16 @@
+# Voice-text rules (style guide §3, §6), read by script_format.lint_voice on what the voice reads.
+# Respellings of names the voice gets wrong live in pronunciation.yaml, not here.
+
+# Latin the presenter's clone says well; it may stay bare in the script. Everything else is
+# written in Arabic letters with the Latin in braces: «أوبن إيه آي{OpenAI}».
+latin_allowlist: [AI, GPU, CPU, API]
+
+# Phrase → what to say instead. A trailing «ـ» means the phrase is a prefix («مقارنة بـ» matches
+# «مقارنة بالسنة»). Matching ignores harakat and shadda.
+banned_phrases:
+  عن بعد: من بعيد
+  بالمقابل: من الناحية التانية
+  مقارنة بـ: إذا قارنّاه بـ
+  بشكل متوافق مع: بيمشي مع
+  الماء: المية
+  مدوّنة: مجموعة نصوص

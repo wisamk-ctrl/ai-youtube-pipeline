@@ -27,6 +27,8 @@ from dataclasses import dataclass
 from difflib import SequenceMatcher
 from pathlib import Path
 
+from pipeline.script_format import caption_text, spoken_words, unbraced
+
 log = logging.getLogger(__name__)
 
 # Fonts with full Arabic coverage, in preference order. Install Noto with
@@ -149,10 +151,13 @@ def align(script_words: list[str], heard: list[Word]) -> list[float]:
 
 
 def script_captions(spoken_script: str, heard: list[Word], max_chars: int = 42) -> list[Segment]:
-    words = spoken_script.split()
-    if not words:
+    """Braced names («أوبن إيه آي{OpenAI}») are timed on the Arabic the voice said and shown
+    as «أوبن إيه آي (OpenAI)»."""
+    tokens = spoken_words(spoken_script)
+    if not tokens:
         return []
-    times = align(words, heard)
+    times = align([unbraced(t) for t in tokens], heard)
+    words = [caption_text(t).strip() for t in tokens]
     end = heard[-1].end if heard else times[-1] + 2
     lines: list[tuple[int, int]] = []
     start = 0
@@ -210,13 +215,66 @@ def _font() -> str:
     return ARABIC_FONTS[-1]
 
 
-def burn_in(video: Path, srt: Path, dest: Path, font_size: int = 22) -> Path:
-    """Hard-code captions. libass handles RTL shaping; Alignment=2 = bottom-centre."""
-    style = f"FontName={_font()},FontSize={font_size},Outline=2,Shadow=0,MarginV=40,Alignment=2"
+_LATIN_RUN = re.compile(r"[A-Za-z0-9][A-Za-z0-9.%+\-]*(?:[ .\-][A-Za-z0-9][A-Za-z0-9.%+\-]*)*")
+
+
+def isolate_latin(text: str) -> str:
+    """Wrap each Latin run (names, versions, figures) in FSI…PDI, so the bidi algorithm lays it out
+    as one left-to-right unit inside the Arabic line instead of flipping its punctuation and words."""
+    return _LATIN_RUN.sub(lambda m: f"⁨{m[0]}⁩", text)
+
+
+def _isolated_srt(srt: Path, dest: Path) -> Path:
+    lines = srt.read_text(encoding="utf-8").splitlines()
+    out = [ln if (not ln.strip() or ln.strip().isdigit() or "-->" in ln) else isolate_latin(ln) for ln in lines]
+    dest.write_text("\n".join(out) + "\n", encoding="utf-8")
+    return dest
+
+
+def _geometry(video: Path) -> tuple[str, int, int]:
+    """(frame rate as ffprobe writes it, width, height) of the first video stream."""
+    import json
+    r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=r_frame_rate,width,height",
+                        "-of", "json", str(video)], capture_output=True, text=True, check=True)
+    st = json.loads(r.stdout)["streams"][0]
+    return st.get("r_frame_rate", "30/1"), int(st["width"]), int(st["height"])
+
+
+def burn_in(video: Path, srt: Path, dest: Path, font_size: int = 54, audio: Path | None = None,
+            insert: tuple[float, Path] | None = None) -> Path:
+    """Hard-code captions in the episode's one final, high-quality encode. libass handles RTL shaping.
+
+    Captions sit in a translucent navy box (BorderStyle=3), ~54 px on a 1080p frame (PlayRes is set
+    to the frame, so sizes are pixels). `audio` replaces the soundtrack (post/audio.master);
+    `insert=(t, sting.mp4)` splices the sting's picture in at t, after the captions are drawn, so
+    every caption after it moves with the picture."""
+    fps, w, h = _geometry(video)
+    scale = h / 1080
+    style = (f"PlayResX={w},PlayResY={h},FontName={_font()},FontSize={round(font_size * scale)},PrimaryColour=&H00F4F1EA,"
+             f"BorderStyle=3,Outline={max(1, round(10 * scale))},OutlineColour=&H50201209,BackColour=&H50201209,"
+             f"Shadow=0,MarginV={round(56 * scale)},MarginL={round(120 * scale)},MarginR={round(120 * scale)},Alignment=2")
+    iso = _isolated_srt(srt, dest.with_suffix(".isolated.srt"))
     # Escape for ffmpeg's filter parser: ':' and '\' inside the path.
-    srt_path = str(srt).replace("\\", "\\\\").replace(":", "\\:")
-    _ffmpeg("-i", str(video), "-vf", f"subtitles='{srt_path}':force_style='{style}'",
-            "-c:a", "copy", str(dest))
+    srt_path = str(iso).replace("\\", "\\\\").replace(":", "\\:")
+    subs = f"subtitles='{srt_path}':original_size={w}x{h}:force_style='{style}'"
+    args = ["-i", str(video)]
+    if insert:
+        at, sting = insert
+        args += ["-i", str(sting)]
+        graph = (f"[0:v]{subs},split=2[s1][s2];[s1]trim=end={at:.3f},setpts=PTS-STARTPTS[v1];"
+                 f"[s2]trim=start={at:.3f},setpts=PTS-STARTPTS[v2];"
+                 f"[1:v]scale={w}:{h},fps={fps},format=yuv420p,setsar=1[st];[v1][st][v2]concat=n=3:v=1:a=0[v]")
+        vmap = ["-filter_complex", graph, "-map", "[v]"]
+    else:
+        vmap = ["-vf", subs, "-map", "0:v"]
+    if audio:
+        args += ["-i", str(audio)]
+        amap = ["-map", f"{len(args) // 2 - 1}:a"]
+    else:
+        amap = ["-map", "0:a?"]
+    _ffmpeg(*args, *vmap, *amap, "-c:v", "libx264", "-crf", "18", "-preset", "slow", "-pix_fmt", "yuv420p",
+            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", str(dest))
+    iso.unlink(missing_ok=True)
     return dest
 
 

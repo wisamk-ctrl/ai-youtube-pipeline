@@ -47,7 +47,7 @@ tracks:
           - {name: Zhipu AI, ar: جيبو, aliases: [GLM, Z.ai, ChatGLM], hf: zai-org}
           - {name: ByteDance Seed, ar: بايت دانس, aliases: [Doubao, Seed, ByteDance AI], hf: ByteDance-Seed}
           - {name: Baidu ERNIE, ar: بايدو, aliases: [ERNIE, Baidu AI], hf: baidu}
-          - {name: Tencent Hunyuan, ar: تينسنت, aliases: [Hunyuan], hf: tencent}
+          - {name: Tencent Hunyuan, ar: تينسنت, aliases: [Hunyuan, Tencent, Hy4], hf: tencent}
           - {name: MiniMax, ar: ميني ماكس, hf: MiniMaxAI}
           - {name: StepFun, ar: ستيب فن, aliases: [Step-3, Juejue Xingchen, 阶跃星辰], hf: stepfun-ai}
       gulf:
@@ -60,6 +60,7 @@ tracks:
           - {name: SDAIA, ar: سدايا, aliases: [ALLaM, Saudi Data and AI Authority], x: SDAIA_SA}
           - {name: MBZUAI, ar: جامعة محمد بن زايد للذكاء الاصطناعي, aliases: [K2 Think], hf: MBZUAI, x: mbzuai}
           - {name: Misraj, ar: مسراج, aliases: [Misraj AI]}
+          - {name: QCRI, ar: معهد قطر لبحوث الحوسبة, aliases: [Fanar, Qatar Computing Research Institute], query: '"Fanar" OR QCRI'}
 
   agents:
     label_ar: الوكلاء

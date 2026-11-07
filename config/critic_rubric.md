@@ -20,17 +20,26 @@ Quote the exact words of every defect. A defect without a quote does not count.
 A model or product name that contains digits (Kimi K3, GPT-5, Claude Haiku 5.5, G42) is a name,
 not a figure: it never counts toward "two numbers in one breath" or "three or more figures".
 
+Text in {curly braces} right after a word («أوبن إيه آي{OpenAI}») is the Latin spelling for the
+subtitles; it is never spoken. A braced name is glossed. Bare Latin is unglossed, except AI, GPU, CPU, API.
+
+This rubric may be followed by "Voice-lint findings": a deterministic check of what the voice will read.
+Each one names a rule below; count it under that rule only if the quoted script words confirm it.
+
 ## hook — the first 20 seconds (before the greeting)
 - MAJOR: the first spoken sentence is a greeting, a date or a channel name, not a news fact.
 - MAJOR: no number, name or decision in the first two sentences.
 - MINOR: the first sentence exceeds 18 spoken words.
 - MINOR: the question to the audience is missing or comes after the greeting.
+- MINOR: the hook (everything before the greeting) exceeds 45 spoken words.
+- MINOR: the hook carries more than one story, one number or one question.
 - Not a defect: a pause placed before a number, even mid-sentence; that is the house style (§4).
 
 ## clarity — understood on first hearing
 - MAJOR: a pronoun or «ذلك/هذا» whose referent could be two different things in the previous two sentences.
 - MAJOR: a comparison with no stated reference point («أسرع بثلاثين في المئة» with no "than what").
 - MAJOR: a sentence carrying three or more figures (numbers, dates, percentages).
+- MAJOR: three or more unglossed Latin names or terms in one sentence («IAM… PrivateLink… CloudTrail»).
 - MINOR: a sentence over 25 spoken words.
 - MINOR: a technical term not in the approved list (§5) and not explained in the same sentence.
 
@@ -39,13 +48,14 @@ not a figure: it never counts toward "two numbers in one breath" or "three or mo
 - MAJOR: two important numbers inside one breath with no pause between them.
 - MINOR: [Pause 2s] used inside a segment rather than between segments.
 - MINOR: three consecutive sentences under 6 words, or three over 20.
+- MINOR: a pause between a one-letter preposition and its number («لـ [Pause] خمس سنين»; right: «[Pause] لخمس سنين»).
 - Not a defect: a pause between a verb and its subject or object when the pause precedes a number.
 
 ## flow — signposts and transitions
 - MAJOR: a segment starts with no spoken transition (§4 list or equivalent).
 - MAJOR: a story appears in two segments without a cross-reference.
 - MINOR: the same transition phrase used more than twice in the episode.
-- MINOR: the same "why it matters" question wording used more than three times.
+- MAJOR: the same "why it matters" question («ليش بيهمّنا؟», «ليش هاد بيهمّنا هون؟») used more than three times in the episode; vary it.
 
 ## arabic — Jordanian colloquial (Ammani), style guide §1–§3, §5–§6
 - MAJOR: a sentence in formal Modern Standard Arabic where a Jordanian would say it differently: «إنّ», «لقد», «سوف», «الذي/التي», «هذا/هذه», audible case endings, newsreader phrasing.
@@ -53,7 +63,9 @@ not a figure: it never counts toward "two numbers in one breath" or "three or mo
 - MAJOR: a term rendered two different ways in one episode (§5 one-word rule).
 - MINOR: a calque from English («بيعمل إطلاق», «على مستوى», «بشكل» where a plain word fits).
 - MINOR: crude slang or overused fillers («يا زلمة», «والله» more than twice in the episode).
-- MINOR: a company or person on first mention without the §3 form (Arabic name + Latin name / full name + title).
+- MINOR: a company or person on first mention without the §3 form (spoken Arabic form + Latin in braces «أوبن إيه آي{OpenAI}» / full name + title).
+- MINOR: a name written twice without braces («أوبن إيه آي OpenAI»), bare Latin outside AI/GPU/CPU/API, an English gloss in parentheses («(AI agents)»), harakat, or a spoken version string («2.1.317» instead of «آخر إصدار» + on-screen text).
+- MINOR: an MSA word the §5 table replaces («بالمقابل», «مقارنة بـ», «الماء», «مدوّنة», «بشكل متوافق مع», «عن بعد»).
 - MINOR: a large number written in digits instead of words, or in formal form where §2 gives the spoken one («ثلاثة» for «تلاتة», «مئة» for «مية»).
 - MINOR: an epithet («عملاق التقنية», «الشركة الرائدة»).
 
@@ -61,7 +73,9 @@ not a figure: it never counts toward "two numbers in one breath" or "three or mo
 - MAJOR: a segment with no sentence about what it means for companies, governments or people in Jordan, the Gulf or the Arab world.
 - MAJOR: an imperative or recommendation («لازم», «عليكم», «اشتروا», «استثمروا») outside a quotation. «اشتركوا بالقناة» in the outro is not a recommendation.
 - MAJOR: a forecast stated as fact with no attribution and no conditional («رح يغيّر» rather than «ممكن يغيّر» / «في محللين شايفين»).
+- MAJOR: a vendor figure (the company's own claim about its product) or a figure from a tier-C publisher with no spoken caveat in the same sentence («حسب الشركة نفسها», «بأرقامهم هم»).
 - MINOR: the regional implication is generic and could be pasted under any story (no named sector, buyer type or regulation).
+- MINOR: more than four vendor figures in one segment (one defect per segment).
 - Not a defect: an implication in the conditional («ممكن», «يمكن», «قد») or framed as a question to watch; §7 asks for attribution of *opinions*, and a hedged implication is not an opinion.
 
 ## worst_three

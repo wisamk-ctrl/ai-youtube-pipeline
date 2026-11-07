@@ -6,7 +6,11 @@ fast, and debuggable: every item carries a `score_breakdown` so you can see
 *why* something made or missed the cut. The LLM in Phase 2 then does the
 editorial judgement on the much smaller survivor set.
 
-score = (topic_relevance + regional_bonus + engagement + recency) × source_weight − noise_penalty
+score = (topic_relevance + regional_bonus + engagement + recency) × source_weight × publisher_tier − noise_penalty
+
+publisher_tier comes from config/publishers.yaml: A (wires, primary sources) 1.3, B (trade
+press) 1.0, C (aggregators, unknown outlets) 0.6. Near-duplicate headlines (syndicated copies
+of one wire story) are counted once: the best-scored copy is kept.
 
 Tune the keyword tables below to your audience. They are weighted toward what
 an Arabic-speaking enterprise/tech viewer acts on: model launches, enterprise
@@ -22,6 +26,7 @@ from datetime import datetime, timezone
 from difflib import SequenceMatcher
 from typing import Any
 
+from pipeline.ingestion.publishers import load_publishers
 from pipeline.models import NewsItem
 
 log = logging.getLogger(__name__)
@@ -104,8 +109,9 @@ def score_item(item: NewsItem, now: datetime | None = None) -> NewsItem:
         "noise": -_keyword_score(item, "noise"),
     }
     positive = parts["watchlist"] + parts["enterprise"] + parts["regional"] + parts["engagement"] + parts["recency"]
-    item.score = round(positive * item.source_weight + parts["noise"], 3)
-    item.score_breakdown = {k: round(v, 3) for k, v in parts.items()}
+    tier_w = load_publishers().weight(item)
+    item.score = round(positive * item.source_weight * tier_w + parts["noise"], 3)
+    item.score_breakdown = {k: round(v, 3) for k, v in parts.items()} | {"publisher_tier": tier_w}
     return item
 
 

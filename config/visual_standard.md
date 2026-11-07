@@ -5,24 +5,34 @@ tech, AI and computers"): the channel looks like a premium YouTube explainer, no
 This file is the single source of truth. The director pass reads it on every run and the
 shot-list check enforces its numbers. Change it here only.
 
-## Screen time
-- **Face on screen 10–20 % of the runtime**, never more than 25 %.
-- **No face stretch longer than 12 seconds.** No single visual shot longer than 12 seconds:
-  a long passage gets several visuals in a row.
-- The presenter stays present through **corner shots** (the visual full screen, the presenter
-  in a small circle) rather than full-frame face shots.
+## Screen time (minimal-face mode — founder, 2026-11-07)
+- **The face is on screen only at the open and at the sign-off** (`visuals.face_mode: minimal`,
+  up to `face_keep_seconds`, 8 s, at each end). Lip sync is visible on a full-frame face, so the
+  face is kept to where it earns trust: the greeting and the goodbye. Everywhere else a visual is
+  on screen with the presenter's voice over it.
+- The old 10–20 % face share (`visuals.face_share`) applies only when `face_mode` is `normal`.
+- **No single visual shot longer than 12 seconds**: a long passage gets several visuals in a row.
 - **Corner circle is OFF** (founder, 2026-11-07: it looked wrong). `visuals.corner.enabled: false`
   renders every `[Corner: …]` as a full-screen visual with the voice over it. The markers stay in
   the scripts so a better presence layout can be switched on later without redirecting.
 
 ## When the face is on screen (full frame)
 - The cold open's first sentence, and the greeting.
-- The outro.
-- At most one short reaction or question to the viewer per story.
+- The sign-off.
+- Nowhere else: a `[Face]` marker mid-episode becomes a visual from the house stock queries.
 
-## When the presenter is in the corner
-- The first sentence of each story (the presenter introduces it over its first visual).
-- Every «ليش بيهمّنا؟» answer: the regional angle is the presenter's voice, over a visual.
+## The presenter's presence elsewhere
+- The voice carries the presence. The first sentence of each story and every «ليش بيهمّنا؟» answer
+  are the presenter's voice over a visual (the `[Corner: …]` markers, rendered full-screen).
+
+## Sound and the sting
+- The intro sting (`assets/intro_sting.mp4`, our own code-rendered sting) plays after the cold open.
+- A music bed we synthesise ourselves (never licensed third-party music) sits ~24 dB under the voice
+  and ducks under it; a soft synthesised whoosh marks each section cut. The master is −14 LUFS.
+
+## Captions and lower-thirds
+- Captions: bottom-centre, ~54 px at 1080p, in a translucent navy box; Latin runs are kept intact.
+- Lower-thirds sit at 28 % from the bottom, clear of two-line captions.
 
 ## When a visual is on screen
 - **Tech, AI and computer animation is the house look.** Abstract and animated: neural
@@ -47,13 +57,14 @@ shot-list check enforces its numbers. Change it here only.
 - `[Visual: number <figure> | <Arabic label>]` — e.g. `[Visual: number 80% | من الأسئلة بتنحلّ بدون مهندس]`.
 - `[Visual: title <short Arabic phrase>]` — e.g. `[Visual: title نافذة السياق]`.
 - `[Visual: stock <English search terms>]` — e.g. `[Visual: stock server racks in a data centre, blue light]`.
-- `[Corner: <same forms as Visual>]` — that visual with the presenter in the corner circle.
+- `[Corner: <same forms as Visual>]` — that visual with the presenter in the corner circle (full-screen while the circle is off).
 Each marker sits on its own line directly before the sentence where the shot starts. A shot
 lasts until the next shot marker.
 
 ## Fallbacks (the episode never fails for want of a picture)
-- Stock footage comes from Pixabay, animations first, then live footage (Pexels if
-  configured instead). No key, or no result: the shot becomes a generated tech animation
+- Stock footage comes from Pixabay (Pexels if configured instead). A hit must share a tag with
+  the query and carry no off-brand subject (people, food, animals, nature, fantasy) the query did not
+  ask for; among relevant hits the most relevant wins, animation first on a tie. No key, or no result: the shot becomes a generated tech animation
   (a moving network of nodes in the brand colours, no text), never a face shot.
 - An asset that fails to render: the shot becomes a face shot.
 - A source id that is not in the week's items: the shot becomes a title card with the

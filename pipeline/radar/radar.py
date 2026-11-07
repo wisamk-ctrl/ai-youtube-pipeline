@@ -54,6 +54,7 @@ class Candidate:
     region: str = "unknown"
     sources: set[str] = field(default_factory=set)      # distinct publishers / feeds
     item_ids: list[str] = field(default_factory=list)
+    dates: list[datetime] = field(default_factory=list)   # published dates of the underlying items
     signals: list[Signal] = field(default_factory=list)
     events: set[str] = field(default_factory=set)
 
@@ -69,12 +70,54 @@ class Candidate:
         return len(self.sources) >= min_sources and len(self.signals) >= min_signals
 
 
+def _words(name: str) -> list[str]:
+    return [w for w in re.findall(r"\w+", name.lower()) if w not in _SUFFIXES]
+
+
+_SUFFIXES = {"inc", "llc", "ltd", "corp", "corporation", "ai", "lab", "labs", "technologies", "the"}
+
+
+def _contains(longer: list[str], shorter: list[str]) -> bool:
+    n = len(shorter)
+    return n > 0 and any(longer[k:k + n] == shorter for k in range(len(longer) - n + 1))
+
+
+def is_known(name: str, watch_terms: list[str]) -> bool:
+    """A candidate is known when it contains a watched term or a watched term contains it:
+    "Tencent" and "Tencent Hy4" both match "Tencent Hunyuan". Whole words, so "Arm" never
+    matches "Armada"; glued spellings ("TencentHunyuan") match on norm() keys of 6+ letters."""
+    key, words = norm(name), _words(name)
+    for t in watch_terms:
+        k = norm(t)
+        if not k:
+            continue
+        if key == k:
+            return True
+        tw = _words(t)
+        if _contains(words, tw) or _contains(tw, words):
+            return True
+        short, long_ = sorted((key, k), key=len)
+        if len(short) >= 6 and short in long_:
+            return True
+    return False
+
+
 def build_candidates(items: list[NewsItem], tags: dict[str, ItemTags], signals: list[Signal],
                      watch: Watchlist) -> dict[str, Candidate]:
-    known = {norm(t) for e in watch.entities for t in e.terms}
+    terms = [t for e in watch.entities for t in e.terms]
+    known_cache: dict[str, bool] = {}
+
+    def known(name: str) -> bool:
+        if name not in known_cache:
+            known_cache[name] = is_known(name, terms)
+        return known_cache[name]
+
     noise = {norm(n) for n in NOISE}
     cands: dict[str, Candidate] = {}
     by_id = {i.id: i for i in items}
+    # A wire story syndicated by three outlets is one source, not three.
+    from pipeline.ingestion.articles import syndication_groups
+    story_of = syndication_groups([by_id[i] for i in tags if i in by_id])
 
     for item_id, t in tags.items():
         item = by_id.get(item_id)
@@ -84,18 +127,21 @@ def build_candidates(items: list[NewsItem], tags: dict[str, ItemTags], signals: 
             if m.role != "subject" or m.kind == "person":
                 continue
             key = norm(m.name)
-            if not key or key in known or key in noise or len(key) < 3:
+            if not key or key in noise or len(key) < 3 or known(m.name):
                 continue
             c = cands.setdefault(key, Candidate(name=m.name, track=m.track))
-            c.sources.add(item.source)
+            if not any(story_of.get(x) == story_of.get(item.id) and by_id[x].source != item.source
+                       for x in c.item_ids if x in by_id):
+                c.sources.add(item.source)
             c.item_ids.append(item.id)
+            c.dates.append(item.published)
             c.events.add(t.event)
             if t.region != "unknown":
                 c.region = t.region
 
     for s in signals:
         key = norm(s.name)
-        if not key or key in known or key in noise or len(key) < 3:
+        if not key or key in noise or len(key) < 3 or known(s.name):
             continue
         c = cands.setdefault(key, Candidate(name=s.name, track=s.track_hint or "other"))
         c.signals.append(s)
@@ -129,14 +175,19 @@ def surface(cands: dict[str, Candidate], state: dict[str, Any], cfg: dict[str, A
             continue
         weeks_seen = len(rec.get("weeks", {}))
         evidence = [f"- {s.note}: {s.url}" for s in c.signals[:4]]
+        # Not a source: a summary we wrote. Its date is the oldest underlying report's, so a
+        # story that broke last week is not presented as today's; claims cite the item ids.
+        published = min(c.dates) if c.dates else datetime.now(timezone.utc)
         out.append(NewsItem(
             source="Radar", source_type="rss",
             title=f"Radar: {c.name} — new name in {c.track} ({len(c.sources)} sources, {len(c.signals)} signals)",
             summary=(f"{c.name} is not on the watchlist but was the subject of {len(c.sources)} independent reports this week "
                      f"({', '.join(sorted(c.events))}) and shows hard signals:\n" + "\n".join(evidence) +
-                     f"\nSeen in {weeks_seen} week(s). Source items: {', '.join(c.item_ids[:6])}."),
+                     f"\nSeen in {weeks_seen} week(s). Source items: {', '.join(c.item_ids[:6])}."
+                     f"\nThis radar note is not a citable source: cite the source items above, and select them "
+                     f"together with this note."),
             url=c.signals[0].url if c.signals else f"radar://{norm(c.name)}",
-            published=datetime.now(timezone.utc), source_weight=1.0,
+            published=published, source_weight=1.0,
             track="radar", region=c.region, entities=[c.name],
         ))
         if len(out) >= r.get("max_surfaced", 3):

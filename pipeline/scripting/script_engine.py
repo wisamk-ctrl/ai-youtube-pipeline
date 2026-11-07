@@ -41,7 +41,7 @@ from pydantic import BaseModel, Field
 from pipeline import usage
 from pipeline.config import ROOT
 from pipeline.models import NewsItem
-from pipeline.script_format import count_spoken_words
+from pipeline.script_format import count_spoken_words, lint_voice, voice_lint_md, voice_lint_notes
 from pipeline.scripting import critic as critic_mod
 from pipeline.scripting import prompts
 from pipeline.scripting import source_map as smap_mod
@@ -80,6 +80,7 @@ class ScriptResult:
     critique_rounds: list[dict[str, Any]] = field(default_factory=list)
     source_map_md: str = ""
     source_stats: dict[str, Any] = field(default_factory=dict)
+    voice_lint_md: str = ""
 
 
 class ScriptGenerationError(RuntimeError):
@@ -192,10 +193,9 @@ class ScriptEngine:
     # ── Step 2 ──
     def write(self, plan: EditorialPlan, items: list[NewsItem]) -> str:
         selected = self.selected_items(plan, items)
-        system = prompts.WRITER_SYSTEM.format(
-            presenter_name=self.cfg["presenter_name"], channel_name=self.cfg["channel_name"],
-            style_guide=self.style_guide,
-        )
+        system = (prompts.WRITER_SYSTEM.replace("{presenter_name}", self.cfg["presenter_name"])
+                  .replace("{channel_name}", self.cfg["channel_name"])
+                  .replace("{style_guide}", self.style_guide))
         user = prompts.WRITER_USER.format(
             target_words=self.target_words,
             target_minutes=self.cfg["target_minutes"],
@@ -217,12 +217,13 @@ class ScriptEngine:
         else:
             instruction = f"Cut about {-delta} words, trimming the least important passages first."
 
+        notes = voice_lint_notes(lint_voice(draft))
         user = prompts.REVIEWER_USER.format(
             current_words=current,
             target_words=self.target_words,
             tolerance_pct=round(tol * 100),
             length_instruction=instruction,
-            extra_instructions=extra_instructions,
+            extra_instructions="\n\n".join(x for x in (extra_instructions, notes) if x),
             draft=draft,
             items_block=_items_block(items),
         )
@@ -265,14 +266,30 @@ class ScriptEngine:
 
         source_md, source_stats = self.source_map(script, sources)
         return ScriptResult(plan=plan, script=script, word_count=words, target_words=self.target_words,
-                            critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats)
+                            critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats,
+                            voice_lint_md=self.voice_lint(script, week_label))
 
     def critique(self, script: str) -> tuple[critic_mod.Critique, dict[str, Any]]:
-        """Double-scored, rubric-based critique; returns the consensus and its critique.json record."""
+        """Double-scored, rubric-based critique; returns the consensus and its critique.json record.
+
+        The voice lint of the script goes to the critic as evidence: the critic reads the written
+        script, the lint reads what the voice will say."""
         ccfg = self.cfg.get("critic", {})
-        c, samples, stable = critic_mod.consensus(script, self.style_guide, self.rubric, ccfg,
+        notes = voice_lint_notes(lint_voice(script))
+        rubric = f"{self.rubric}\n\n## Voice-lint findings for this script\n{notes}" if notes else self.rubric
+        c, samples, stable = critic_mod.consensus(script, self.style_guide, rubric, ccfg,
                                                   ccfg.get("model", self.cfg["model"]), self.client)
         return c, critic_mod.round_record(c, samples, stable)
+
+    def voice_lint(self, script: str, week: str | None = None) -> str:
+        """voice_lint.md for the script; written to output/<week>/ when that week's folder exists."""
+        findings = lint_voice(script)
+        md = voice_lint_md(findings, f"Voice lint · {week}" if week else "Voice lint")
+        out = ROOT / "output" / week if week else None
+        if out is not None and out.is_dir():
+            (out / "voice_lint.md").write_text(md, encoding="utf-8")
+            log.info("Voice lint: %d finding(s) → %s", len(findings), out / "voice_lint.md")
+        return md
 
     def source_map(self, script: str, sources: list[NewsItem]) -> tuple[str, dict[str, Any]]:
         """Every spoken sentence attributed to its sources; unsourced claims are listed first."""
@@ -283,7 +300,7 @@ class ScriptEngine:
         return source_md, source_stats
 
     def score(self, plan: EditorialPlan, script: str, items: list[NewsItem],
-              rounds: list[dict[str, Any]]) -> ScriptResult:
+              rounds: list[dict[str, Any]], week: str | None = None) -> ScriptResult:
         """Critic + source map only, on a script as given (e.g. one edited by hand). No rewriting."""
         sources = self.selected_items(plan, items)
         ccfg = self.cfg.get("critic", {})
@@ -292,10 +309,11 @@ class ScriptEngine:
         log.info("Critic round %d: min %d (samples %s) — %s", len(rounds), c.minimum, rec["samples"], c.verdict)
         source_md, source_stats = self.source_map(script, sources)
         return ScriptResult(plan=plan, script=script, word_count=count_spoken_words(script), target_words=self.target_words,
-                            critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats)
+                            critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats,
+                            voice_lint_md=self.voice_lint(script, week))
 
     def polish(self, plan: EditorialPlan, script: str, items: list[NewsItem],
-               rounds: list[dict[str, Any]]) -> ScriptResult:
+               rounds: list[dict[str, Any]], week: str | None = None) -> ScriptResult:
         """Apply the last critique's three fixes to an existing script, score again, rebuild the source map.
 
         One reviewer pass + one critic round, so a below-bar script can be nudged without
@@ -316,4 +334,5 @@ class ScriptEngine:
             log.warning("Script still below the quality bar (min %d) — review the critique", c.minimum)
         source_md, source_stats = self.source_map(script, sources)
         return ScriptResult(plan=plan, script=script, word_count=words, target_words=self.target_words,
-                            critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats)
+                            critique_rounds=rounds, source_map_md=source_md, source_stats=source_stats,
+                            voice_lint_md=self.voice_lint(script, week))

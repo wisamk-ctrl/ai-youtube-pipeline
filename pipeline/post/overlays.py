@@ -23,7 +23,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from pipeline.script_format import Cue, extract_cues, spoken_text
+from pipeline.script_format import Cue, extract_cues, spoken_text, spoken_words
 
 log = logging.getLogger(__name__)
 
@@ -61,7 +61,7 @@ def render_card(text: str, dest: Path, kind: str = "onscreen", width: int = 1920
 
     small = kind != "onscreen"
     page_html = CARD_HTML.format(
-        font=_font_path(), w=width, h=height, bottom=int(height * 0.16) if not small else int(height * 0.05),
+        font=_font_path(), w=width, h=height, bottom=int(height * 0.28) if not small else int(height * 0.05),
         maxw=int(width * 0.62), size=int(height * 0.052), small=int(height * 0.028),
         cls="small" if small else "", tag='<div class="tag">B-ROLL</div><br>' if small else "", text=html.escape(text))
     dest.parent.mkdir(parents=True, exist_ok=True)
@@ -105,7 +105,7 @@ def plan_cards(script: str, wpm: int, out_dir: Path, srt: Path | None = None,
                card_seconds: float = 6.0, broll_seconds: float = 4.0,
                kinds: tuple[str, ...] = ("onscreen", "broll")) -> list[Card]:
     cues = [c for c in extract_cues(script, wpm) if c.kind in kinds]
-    words = spoken_text(script).split()
+    words = spoken_words(spoken_text(script))
     idx = _srt_index(srt)
     cards: list[Card] = []
     for n, c in enumerate(cues, 1):

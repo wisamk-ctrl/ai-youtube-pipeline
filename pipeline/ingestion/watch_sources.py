@@ -6,8 +6,9 @@ Phase 1e — sources driven by the watchlist. All free, no keys required.
   GitHub releases   new tagged releases of the repos we follow (agents, open models)
   Hugging Face      new or updated models in the organisations we follow
 
-Each source is isolated: a failure logs and moves on. Google News links are redirect
-URLs, which is fine: the scorer de-duplicates on title similarity as well as URL.
+Each source is isolated: a failure logs and moves on. Google News items are resolved to the
+publisher's URL and article text where possible (pipeline/ingestion/articles.py, best effort);
+syndicated copies of one story are collapsed to the best-tier publisher's copy.
 """
 
 from __future__ import annotations
@@ -40,6 +41,21 @@ def google_news_url(query: str, days: int, lang: str = "en", country: str = "US"
     return f"https://news.google.com/rss/search?q={quote_plus(q)}&hl={lang}&gl={country}&ceid={country}:{lang}"
 
 
+def _split_publisher(i: NewsItem) -> None:
+    # Google News titles end with " - Publisher"; keep the publisher as the source.
+    title, _, publisher = i.title.rpartition(" - ")
+    if publisher and title:
+        i.title, i.source = title.strip(), publisher.strip()
+
+
+def _finish_google_news(items: list[NewsItem], cfg: dict[str, Any]) -> list[NewsItem]:
+    """One copy per syndicated story, then the publisher's article text where it can be fetched."""
+    from pipeline.ingestion.articles import collapse_syndicated, enrich
+    items = collapse_syndicated(items, cfg.get("scoring", {}).get("dedupe_similarity", 0.82))
+    enrich(items, cfg["ingestion"].get("watchlist", {}).get("fetch_articles") or {})
+    return items
+
+
 def fetch_google_news(watch: Watchlist, cfg: dict[str, Any], entities: Iterable[Entity] | None = None) -> list[NewsItem]:
     ing = cfg["ingestion"]
     days = ing["lookback_days"]
@@ -52,14 +68,34 @@ def fetch_google_news(watch: Watchlist, cfg: dict[str, Any], entities: Iterable[
             log.warning("Google News for %s failed: %s", e.name, exc)
             continue
         for i in items[: ing["watchlist"].get("max_per_entity", 8)]:
-            # Google News titles end with " - Publisher"; keep the publisher as the source.
-            title, _, publisher = i.title.rpartition(" - ")
-            if publisher and title:
-                i.title, i.source = title.strip(), publisher.strip()
+            _split_publisher(i)
             i.track, i.region, i.entities = e.track, e.group, [e.name]
             out.append(i)
     log.info("Google News: %d items across %d names", len(out), len(list(entities or watch.entities)))
-    return out
+    return _finish_google_news(out, cfg)
+
+
+def fetch_site_queries(cfg: dict[str, Any]) -> list[NewsItem]:
+    """Regional outlets without a feed we trust, read as Google News `site:` searches
+    (settings: ingestion.google_news_sites). Items get the configured region; the watchlist
+    tagger sets track and names afterwards."""
+    ing = cfg["ingestion"]
+    out: list[NewsItem] = []
+    for site in ing.get("google_news_sites") or []:
+        url = google_news_url(site["query"], ing["lookback_days"], site.get("lang", "en"), site.get("country", "US"))
+        try:
+            items = fetch_feed(f"Google News · {site['name']}", url, float(site.get("weight", 1.0)), _since(cfg),
+                               ing["request_timeout_s"])
+        except Exception as exc:  # noqa: BLE001
+            log.warning("Google News site search %s failed: %s", site.get("name"), exc)
+            continue
+        for i in items[: int(site.get("max_items", 6))]:
+            _split_publisher(i)
+            i.region = site.get("region", "")
+            out.append(i)
+    if out:
+        log.info("Google News site searches: %d items", len(out))
+    return _finish_google_news(out, cfg) if out else out
 
 
 # ── Official feeds ────────────────────────────────────────────────────────────
@@ -152,6 +188,7 @@ def fetch_watchlist_sources(watch: Watchlist, cfg: dict[str, Any]) -> list[NewsI
     out: list[NewsItem] = []
     if w.get("google_news", True):
         out += fetch_google_news(watch, cfg)
+        out += fetch_site_queries(cfg)
     if w.get("official_feeds", True):
         out += fetch_official_feeds(watch, cfg)
     if w.get("github", True):

@@ -145,7 +145,7 @@ def phase_score(cfg: dict, out: Path) -> None:
     if reviewed.exists():
         script = reviewed.read_text(encoding="utf-8").rstrip("\n")
         log.info("Scoring the reviewed script %s", reviewed)
-    result = ScriptEngine(cfg).score(plan, script, items, rounds)
+    result = ScriptEngine(cfg).score(plan, script, items, rounds, week=out.name)
     _write_script_result(cfg, out, result, plan_too=False)
 
 
@@ -155,8 +155,21 @@ def phase_polish(cfg: dict, out: Path) -> None:
 
     items, plan, script, rounds = _load_week(out)
     (out / f"script.before-polish-{len(rounds)}.md").write_text(script + "\n", encoding="utf-8")
-    result = ScriptEngine(cfg).polish(plan, script, items, rounds)
+    result = ScriptEngine(cfg).polish(plan, script, items, rounds, week=out.name)
     _write_script_result(cfg, out, result, plan_too=False)
+
+
+def _sources_gate(out: Path, phase: str, warn_only: bool = False) -> None:
+    """No render or import while the week's source map shows unsourced claims (review Tier 1 #8)."""
+    from pipeline.scripting.source_map import gate
+    ok, msg = gate(out)
+    if ok:
+        (log.warning if "not audited" in msg else log.info)("Sources: %s", msg)
+        return
+    if warn_only:
+        log.warning("Sources (dry run, not blocking): %s", msg)
+        return
+    sys.exit(f"phase {phase}: {msg}")
 
 
 def phase_video(cfg: dict, out: Path, dry_run: bool, resume_id: str | None) -> None:
@@ -164,8 +177,10 @@ def phase_video(cfg: dict, out: Path, dry_run: bool, resume_id: str | None) -> N
 
     if resume_id:
         # Accept either the bare ID or the "provider:id" line from talking_head.job.txt.
+        # A render already paid for is collected; the gate applies to new renders.
         resume_video(resume_id.split(":", 1)[-1], cfg, out)
         return
+    _sources_gate(out, "video", warn_only=dry_run)
 
     script_path = out / "script.md"
     if not script_path.exists():
@@ -236,10 +251,19 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     if cfg.get("post", {}).get("overlays", {}).get("enabled", True):
         from pipeline.post.overlays import run_overlays
         base = run_overlays(base, script, cfg, out, result["srt"], skip_spans=skip)
-    result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4")
+    # Final audio (music bed, whooshes, loudness) and the sting, then the one high-quality encode.
+    from pipeline.post import audio
+    sting = audio.sting_plan(cfg, script, result["srt"], base, ROOT)
+    mix = audio.master(base, out / "final_audio.wav", cfg, out / "audio",
+                       insert=sting, cuts=audio.section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]))
+    result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4", audio=mix, insert=sting)
+    if sting:   # the captions as they sit in the final cut (for a caption-track upload)
+        audio.shift_srt(result["srt"], sting[0], audio.duration_of(sting[1]), out / "subtitles.final.srt")
     import shutil  # intermediates are as large as the video itself; keep the artifact lean
     (out / "talking_head.repaired.mp4").unlink(missing_ok=True)
-    for tmp in ("segments", "visuals", "repair"):
+    if mix:
+        mix.unlink(missing_ok=True)
+    for tmp in ("segments", "visuals", "repair", "audio"):
         shutil.rmtree(out / tmp, ignore_errors=True)
     log.info("Phase 4 done → %s (similarity %.2f, %d shorts)", result["final"], result["similarity"], len(result["shorts"]))
 
@@ -252,6 +276,7 @@ def phase_import(cfg: dict, out: Path, video_ref: str | None) -> None:
         sys.exit("phase import needs --video-url (a HeyGen video ID or link, Drive, Dropbox or direct MP4 URL)")
     if not (out / "script.md").exists():
         sys.exit(f"{out / 'script.md'} not found — the week needs its script for subtitles and cue cards.")
+    _sources_gate(out, "import")
     import_video(video_ref, out)
     phase_post(cfg, out, None)
 

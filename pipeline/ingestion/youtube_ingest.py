@@ -141,6 +141,16 @@ def fetch_uploads_api(cid: str, api_key: str, weight: float, since: datetime, ma
     return items
 
 
+def lead_only_channels(cfg: dict[str, Any]) -> set[str]:
+    """Channels flagged `lead_only`: their videos feed the radar, never the script."""
+    yt = cfg.get("ingestion", {}).get("youtube") or {}
+    return {ch["name"] for ch in yt.get("channels", []) if ch.get("lead_only")}
+
+
+def is_lead_only(item: NewsItem, cfg: dict[str, Any]) -> bool:
+    return item.source_type == "youtube" and item.source in lead_only_channels(cfg)
+
+
 def fetch_youtube_channels(cfg: dict[str, Any]) -> list[NewsItem]:
     ing = cfg["ingestion"]
     yt = ing.get("youtube") or {}

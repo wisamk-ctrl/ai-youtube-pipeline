@@ -25,8 +25,27 @@ def spoken_text(script: str) -> str:
     return re.sub(r"[ \t]+", " ", re.sub(r"\n\s*\n+", "\n", text)).strip()
 
 
+# «أوبن إيه آي{OpenAI}»: the Latin spelling of the name just before it. Never spoken; subtitles
+# show it as «أوبن إيه آي (OpenAI)». A word with its braces is one word, spaces inside or not.
+_BRACED = re.compile(r"\{[^{}]*\}")
+_WORD_RE = re.compile(r"[^\s{}]*\{[^{}]*\}[^\s{}]*|\S+")
+
+
+def spoken_words(text: str) -> list[str]:
+    return _WORD_RE.findall(text)
+
+
 def count_spoken_words(script: str) -> int:
-    return len(spoken_text(script).split())
+    return len(spoken_words(spoken_text(script)))
+
+
+def unbraced(text: str) -> str:
+    return _BRACED.sub("", text)
+
+
+def caption_text(text: str) -> str:
+    """Braced Latin names as subtitles show them: «أوبن إيه آي{OpenAI}» → «أوبن إيه آي (OpenAI)»."""
+    return _BRACED.sub(lambda m: f" ({m.group(0)[1:-1].strip()})", text)
 
 
 @dataclass
@@ -48,7 +67,7 @@ def extract_cues(script: str, words_per_minute: int) -> list[Cue]:
     words_so_far = 0
     pos = 0
     for m in MARKER_RE.finditer(script):
-        words_so_far += len(script[pos : m.start()].split())
+        words_so_far += len(spoken_words(script[pos : m.start()]))
         pos = m.end()
         body = m.group("body").strip()
         head, _, rest = body.partition(":")
@@ -145,8 +164,11 @@ def _pronunciation(path=None) -> dict[str, str]:
 
 
 def speakable(text: str, pronunciation: dict[str, str] | None = None) -> str:
-    """Spoken text → what the voice should read: names once, no English glosses, no vowel marks."""
-    text = _GLOSS.sub(_drop_gloss, text)
+    """Spoken text → what the voice should read: names once, no English glosses, no vowel marks.
+
+    Braced Latin («أوبن إيه آي{OpenAI}») is dropped outright; the consonant match below is only
+    for older scripts that wrote the two spellings side by side."""
+    text = _GLOSS.sub(_drop_gloss, unbraced(text))
     pron = _pronunciation() if pronunciation is None else pronunciation
 
     def _dedupe(m: re.Match) -> str:
@@ -183,6 +205,189 @@ def to_tts_text(script: str, pause_style: str = "ssml", default_pause: float = 0
         text = speakable(text)
     text = re.sub(r"[ \t]+", " ", text)
     return re.sub(r"\s*\n\s*", "\n", text).strip()
+
+
+# ── Voice lint: what the voice will read, checked against style guide §2–§6 ──────────────────
+# The critic reads the written script; this reads speakable() output, which is what the clone
+# says. Findings go to output/<week>/voice_lint.md and into the reviewer's and critic's notes.
+
+PAUSE_MARK = "⏸"
+_SENT_SPLIT = re.compile(r"(?<=[.!?؟…])\s+|\n+")
+_LAT_TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9.+\-]*")
+_VERSION = re.compile(r"(?<![\w.])[vV]?\d+(?:\.\d+){2,}(?!\w|\.\d)")
+_WHY_IT_MATTERS = re.compile(r"ليش\s+(?:(?:هاد|هاي|هالإشي|الإشي)\s+)?(?:بيهم|مهم)")
+_PREP_PAUSE = re.compile(rf"(?<![{_AR}])[لبك]ـ?\s*{PAUSE_MARK}")
+_GREETING = re.compile(r"أهلا\s+فيكم|أهلا\s+وسهلا")
+_NUMBER_WORDS = {
+    "اتنين", "تنين", "تلات", "تلاته", "تلاتين", "اربع", "اربعه", "اربعين", "خمس", "خمسه",
+    "خمسين", "ست", "سته", "ستين", "سبع", "سبعه", "سبعين", "تمان", "تمانيه", "تمانين", "تسع", "تسعه",
+    "تسعين", "عشر", "عشره", "عشرين", "ميه", "مئه", "ميتين", "تلتميه", "اربعميه", "خمسميه",
+    "ستميه", "سبعميه", "تمنميه", "تسعميه", "الف", "الفين", "الاف", "مليون",
+    "مليونين", "ملايين", "مليار", "مليارين", "مليارات", "تريليون", "بالميه",
+}
+_NUMBER_JOINERS = {"فاصله", "و", "ونص", "وربع"}
+HOOK_MAX_WORDS = 45
+WHY_IT_MATTERS_MAX = 3
+LATIN_PER_SENTENCE_MAX = 2
+
+RULES = {
+    "latin": "Latin word the voice reads: write it in Arabic letters with the Latin in braces on first mention («أوبن إيه آي{OpenAI}»); bare Latin only for the allowlist",
+    "digits": "letters and digits in one token: add it to config/pronunciation.yaml, write it as spoken with the Latin in braces, or paraphrase",
+    "version": "version string read aloud: say «آخر إصدار» and put the number in an [On-Screen Text] cue",
+    "parentheses": "parentheses left in the voice text: no glosses or asides in brackets",
+    "latin-stack": f"more than {LATIN_PER_SENTENCE_MAX} Latin words in one sentence: split it or say them in Arabic",
+    "figures": "two figures in one breath: put a [Pause] between them or split the sentence",
+    "preposition-pause": "pause between a one-letter preposition and its number: «لخمس سنين», not «لـ [Pause] خمس سنين»",
+    "banned": "banned phrase",
+    "why-it-matters": f"«ليش بيهمّنا» wording used more than {WHY_IT_MATTERS_MAX} times: vary the question",
+    "hook-length": f"hook (before the greeting) over {HOOK_MAX_WORDS} words: one story, one number, one question",
+}
+
+
+@dataclass
+class VoiceFinding:
+    rule: str
+    quote: str
+    detail: str = ""
+
+
+def _voice_config(path=None) -> dict:
+    from pathlib import Path
+    p = Path(path) if path else Path(__file__).resolve().parent.parent / "config" / "voice.yaml"
+    if not p.exists():
+        return {}
+    import yaml
+    return yaml.safe_load(p.read_text(encoding="utf-8")) or {}
+
+
+def _norm_ar(word: str) -> str:
+    w = re.sub("[ً-ْٰـ]", "", word)
+    return re.sub("[أإآ]", "ا", w).replace("ة", "ه").replace("ى", "ي")
+
+
+def _is_number_word(word: str) -> bool:
+    w = _norm_ar(re.sub(rf"[^{_AR}]", "", word))
+    candidates = {w}
+    if w[:1] in ("و", "ب", "ل"):
+        candidates.add(w[1:])
+    if w[:2] in ("وب", "ول"):
+        candidates.add(w[2:])
+    return bool(candidates & _NUMBER_WORDS)
+
+
+def _figures(chunk: str) -> int:
+    """Figures in a pause-free stretch: runs of number words or bare digits, not digits in a name."""
+    n, in_run, prev_latin = 0, False, False
+    for tok in chunk.split():
+        bare = tok.strip("«»\"'،,.:؛;!?؟%")
+        is_digits = bool(re.fullmatch(r"\d+(?:[.,]\d+)?%?", bare)) and not prev_latin
+        is_num = is_digits or _is_number_word(tok)
+        if in_run and _norm_ar(bare) in _NUMBER_JOINERS:
+            continue
+        if is_num and not in_run:
+            n += 1
+        in_run = is_num
+        prev_latin = bool(re.search(r"[A-Za-z]", bare))
+    return n
+
+
+def _short(s: str, n: int = 90) -> str:
+    s = s.replace(PAUSE_MARK, "...").strip()
+    return s if len(s) <= n else s[:n].rstrip() + "…"
+
+
+def voice_text(script: str, pronunciation: dict[str, str] | None = None) -> str:
+    """speakable() of the spoken text, with every pause ([Pause], or «...» in a paste pack) kept as ⏸."""
+    def _marker(m: re.Match) -> str:
+        return f" {PAUSE_MARK} " if PAUSE_RE.match(m.group("body").strip()) else " "
+    text = MARKER_RE.sub(_marker, script)
+    text = text.replace("...", f" {PAUSE_MARK} ")
+    return speakable(text, pronunciation)
+
+
+def lint_voice(script: str, pronunciation: dict[str, str] | None = None,
+               config: dict | None = None) -> list[VoiceFinding]:
+    """Every place where what the voice reads breaks the voice rules (style guide §2–§6)."""
+    cfg = _voice_config() if config is None else config
+    allow = {str(x) for x in cfg.get("latin_allowlist", [])}
+    banned = {str(k): str(v or "") for k, v in (cfg.get("banned_phrases") or {}).items()}
+    text = voice_text(script, pronunciation)
+    sentences = [s.strip() for s in _SENT_SPLIT.split(text) if s.strip(f" {PAUSE_MARK}")]
+    out: list[VoiceFinding] = []
+    latin: dict[str, int] = {}
+    mixed: dict[str, int] = {}
+
+    for sent in sentences:
+        for m in _VERSION.finditer(sent):
+            out.append(VoiceFinding("version", m.group(0), _short(sent)))
+        no_versions = _VERSION.sub(" ", sent)
+        words = [t.rstrip(".-") for t in _LAT_TOKEN.findall(no_versions)]
+        words = [t for t in words if re.search(r"[A-Za-z]", t)]
+        for t in words:
+            if re.search(r"\d", t):
+                mixed[t] = mixed.get(t, 0) + 1
+            elif t not in allow:
+                latin[t] = latin.get(t, 0) + 1
+        if len([t for t in words if t not in allow]) > LATIN_PER_SENTENCE_MAX:
+            out.append(VoiceFinding("latin-stack", _short(sent), ", ".join(words)))
+        if "(" in sent or ")" in sent:
+            out.append(VoiceFinding("parentheses", _short(sent)))
+        if any(_figures(chunk) >= 2 for chunk in sent.split(PAUSE_MARK)):
+            out.append(VoiceFinding("figures", _short(sent)))
+        for m in _PREP_PAUSE.finditer(sent):
+            out.append(VoiceFinding("preposition-pause", _short(sent[max(0, m.start() - 30):m.end() + 30])))
+
+    for t, n in sorted(mixed.items(), key=lambda kv: -kv[1]):
+        out.append(VoiceFinding("digits", t, f"{n}×"))
+    for t, n in sorted(latin.items(), key=lambda kv: -kv[1]):
+        out.append(VoiceFinding("latin", t, f"{n}×"))
+
+    flat = _norm_ar(text.replace("ّ", ""))
+    for phrase, instead in banned.items():
+        prefix = phrase.endswith("ـ")
+        key = _norm_ar(phrase.rstrip("ـ"))
+        pat = rf"(?<![{_AR}]){re.escape(key)}" + ("" if prefix else rf"(?![{_AR}])")
+        n = len(re.findall(pat, flat))
+        if n:
+            out.append(VoiceFinding("banned", phrase, f"{n}× → «{instead}»" if instead else f"{n}×"))
+
+    why = _WHY_IT_MATTERS.findall(text.replace("ّ", ""))
+    if len(why) > WHY_IT_MATTERS_MAX:
+        out.append(VoiceFinding("why-it-matters", "ليش بيهمّنا", f"{len(why)}×"))
+
+    g = _GREETING.search(text)
+    if g:
+        hook_words = [w for w in text[:g.start()].split() if w != PAUSE_MARK]
+        if len(hook_words) > HOOK_MAX_WORDS:
+            out.append(VoiceFinding("hook-length", _short(" ".join(hook_words[:12])), f"{len(hook_words)} words"))
+    return out
+
+
+def voice_lint_md(findings: list[VoiceFinding], title: str = "Voice lint") -> str:
+    lines = [f"# {title}", "",
+             f"**{len(findings)} findings** on the text the voice reads (`speakable()` output). "
+             "Rules: `config/style_guide.md` §2–§6, `config/voice.yaml`.", ""]
+    for rule, why in RULES.items():
+        hits = [f for f in findings if f.rule == rule]
+        if not hits:
+            continue
+        lines += [f"## {rule} ({len(hits)})", f"_{why}_", ""]
+        lines += [f"- «{f.quote}»" + (f" — {f.detail}" if f.detail else "") for f in hits]
+        lines.append("")
+    return "\n".join(lines)
+
+
+def voice_lint_notes(findings: list[VoiceFinding], limit: int = 40) -> str:
+    """The findings as instructions for the reviewer, or as evidence for the critic. Empty if clean."""
+    if not findings:
+        return ""
+    lines = [f"A deterministic lint of the text the voice will read found {len(findings)} voice-rule problems "
+             "(style guide §2–§6). Fix each one in the script:"]
+    for f in findings[:limit]:
+        lines.append(f"- [{f.rule}] «{f.quote}»" + (f" ({f.detail})" if f.detail else "") + f": {RULES[f.rule]}")
+    if len(findings) > limit:
+        lines.append(f"- … and {len(findings) - limit} more of the same kinds.")
+    return "\n".join(lines)
 
 
 def chunk_text(text: str, max_chars: int) -> list[str]:
@@ -247,7 +452,7 @@ def extract_shots(script: str) -> list[ShotMark]:
     shots: list[ShotMark] = []
     words, pos = 0, 0
     for m in MARKER_RE.finditer(script):
-        words += len(MARKER_RE.sub(" ", script[pos:m.start()]).split())
+        words += len(spoken_words(MARKER_RE.sub(" ", script[pos:m.start()])))
         pos = m.end()
         parsed = parse_shot(m.group("body"))
         if parsed:
