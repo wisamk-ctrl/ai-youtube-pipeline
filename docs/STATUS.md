@@ -39,6 +39,17 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
 - W45 repair in progress: circle off, minimal face, re-voiced phrases and the Tencent correction
   (`reviewed/2026-W45/repairs.yaml`), on the existing render.
 
+## Voice-first render — founder go-ahead 2026-11-07, measured the same day
+- Speech (connector `create_speech`, voice clone): 20.6 s → 1 credit; 58.8 s → 3 credits ≈ **3 credits/min**,
+  1 credit minimum per call. Word timestamps come back with the audio (no Whisper needed for timing).
+- Avatar IV driven by our audio (`create_video_from_avatar` + `audioUrl`, photo look, 1080p): 20.6 s →
+  **7 credits** ≈ 21/min (test video `ed4c026aba096782e42305365f197a08`).
+- Per 9-min episode: narration ≈ 27 + face at open/sign-off only (~16 s) on Avatar IV ≈ 6 → **≈ 33 credits**,
+  vs 63 for today's full Avatar III render, with better lip sync where the face shows.
+- Repairs: batch every phrase into ONE speech call and cut it by the returned timestamps (`url#t=a,b`).
+- Founder decisions the same day: audience = enterprise leaders + broad audience + IT people/techies;
+  repo stays public for now; music only if not licensed (we generate our own).
+
 ## Earlier test week (2026-W43, folder `2026-W43-jo`)
 - Approved script: `reviewed/2026-W43-jo/script.md` (one unsourced line removed by the founder).
 - Paste pack for HeyGen: `reviewed/2026-W43-jo/heygen_paste.html` (5 scenes, copy buttons);
