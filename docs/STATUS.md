@@ -35,6 +35,9 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
 - Lip sync: the edit takes video and audio from the same HeyGen file, frame-exact, so the drift is
   most likely the Avatar III photo-avatar engine. Compare the raw HeyGen render to confirm.
 - Next: re-render W45 with the fixed voice text when credits allow, then upload.
+- 2026-11-07 six-specialist review and ranked plan: `docs/REVIEW_2026-11-07.md`.
+- W45 repair in progress: circle off, minimal face, re-voiced phrases and the Tencent correction
+  (`reviewed/2026-W45/repairs.yaml`), on the existing render.
 
 ## Earlier test week (2026-W43, folder `2026-W43-jo`)
 - Approved script: `reviewed/2026-W43-jo/script.md` (one unsourced line removed by the founder).
