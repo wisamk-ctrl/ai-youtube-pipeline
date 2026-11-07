@@ -11,6 +11,9 @@ shot-list check enforces its numbers. Change it here only.
   a long passage gets several visuals in a row.
 - The presenter stays present through **corner shots** (the visual full screen, the presenter
   in a small circle) rather than full-frame face shots.
+- **Corner circle is OFF** (founder, 2026-11-07: it looked wrong). `visuals.corner.enabled: false`
+  renders every `[Corner: …]` as a full-screen visual with the voice over it. The markers stay in
+  the scripts so a better presence layout can be switched on later without redirecting.
 
 ## When the face is on screen (full frame)
 - The cold open's first sentence, and the greeting.

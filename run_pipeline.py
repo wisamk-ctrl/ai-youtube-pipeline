@@ -121,7 +121,8 @@ def _shotlist(cfg: dict, out: Path, script: str, duration: float, srt: Path | No
     from pipeline.post import visuals
     v = cfg.get("visuals", {})
     shots = visuals.plan(script, duration, srt, cfg["scripting"]["words_per_minute"],
-                         max_visual=float(v.get("max_visual_seconds", 12)))
+                         max_visual=float(v.get("max_visual_seconds", 12)),
+                         corner=bool(v.get("corner", {}).get("enabled", False)))
     report = visuals.lint(shots, v)
     titles = {i.id: f"{i.source}: {i.title[:90]}" for i in _items(out)}
     (out / "shotlist.md").write_text(visuals.shotlist_md(shots, report, estimated=srt is None, titles=titles), encoding="utf-8")

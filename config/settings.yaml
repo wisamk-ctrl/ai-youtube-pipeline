@@ -185,6 +185,7 @@ visuals:
   stock:
     providers: [pixabay, pexels]   # first with a key wins: PIXABAY_API_KEY, PEXELS_API_KEY
   corner:
+    enabled: false            # founder feedback 2026-11-07: the circle looked wrong; corner shots render full-screen
     size: 0.26                # circle diameter as a share of frame height
     margin_x: 0.04
     margin_bottom: 0.20       # clear of the subtitles

@@ -121,7 +121,8 @@ def _screen_time(directed: str, cfg: dict[str, Any], attempt: int) -> list[str]:
     v = cfg.get("visuals", {})
     wpm = cfg.get("scripting", {}).get("words_per_minute", 130)
     seconds = count_spoken_words(directed) / wpm * 60
-    report = lint(plan(directed, seconds, None, wpm, max_visual=float(v.get("max_visual_seconds", 12))), v)
+    report = lint(plan(directed, seconds, None, wpm, max_visual=float(v.get("max_visual_seconds", 12)),
+                     corner=bool(v.get("corner", {}).get("enabled", False))), v)
     lo, hi = v.get("face_share", [0.10, 0.20])
     share = report["face_share"]
     if lo <= share <= hi:

@@ -70,7 +70,83 @@ def extract_cues(script: str, words_per_minute: int) -> list[Cue]:
     return cues
 
 
-def to_tts_text(script: str, pause_style: str = "ssml", default_pause: float = 0.8) -> str:
+# ---- Voice text: what the presenter's voice reads, as opposed to what subtitles show ----
+# The W45 inspect report (2026-11-07) heard three faults the written script invites:
+# a name written in both scripts («أوبن إيه آي OpenAI») is said twice, an English gloss in
+# brackets («(AI agents)») is read aloud, and vowel marks make the voice misread
+# («بُعد» → «بوعد»). speakable() fixes all three, plus a pronunciation map.
+
+_AR = "\u0600-\u06FF"
+_LATIN_RUN = re.compile(rf"(?P<ar>[{_AR}]+(?:\s+[{_AR}]+){{0,3}})\s+(?P<lat>[A-Za-z][A-Za-z0-9\-]*(?:\s+[A-Za-z][A-Za-z0-9\-]*){{0,3}})(?![A-Za-z0-9])")
+_GLOSS = re.compile(rf"\s*\((?=[^()]*[A-Za-z])[^(){_AR}]*\)")
+_HARAKAT = re.compile("[\u064B-\u0650\u0652\u0670]")     # every mark except shadda (U+0651)
+_AR_CLASS = {**dict.fromkeys("بپ", "b"), **dict.fromkeys("تطث", "t"), **dict.fromkeys("دضذ", "d"),
+             **dict.fromkeys("سص", "s"), **dict.fromkeys("كق", "k"), **dict.fromkeys("جغگ", "g"),
+             **dict.fromkeys("فڤ", "f"), **dict.fromkeys("هح", "h"), "ش": "S", "ز": "z", "ر": "r",
+             "ل": "l", "م": "m", "ن": "n", "خ": "k"}
+_LAT_DIGRAPH = [("th", "t"), ("sh", "S"), ("ch", "S"), ("ph", "f"), ("ck", "k"), ("x", "ks")]
+_LAT_CLASS = {"b": "b", "p": "b", "t": "t", "d": "d", "s": "s", "k": "k", "q": "k", "g": "g", "j": "g",
+              "f": "f", "v": "f", "h": "h", "z": "z", "r": "r", "l": "l", "m": "m", "n": "n", "S": "S"}
+_AR_PREFIXES = ("وال", "بال", "لل", "ال", "و", "ب", "ل", "ف")
+
+
+def _ar_skeleton(word: str) -> str:
+    return "".join(_AR_CLASS.get(ch, "") for ch in word)
+
+
+def _lat_skeleton(word: str) -> str:
+    w = word.lower()
+    w = re.sub(r"c(?=[eiy])", "s", w).replace("c", "k")
+    for a, b in _LAT_DIGRAPH:
+        w = w.replace(a, b)
+    out = "".join(_LAT_CLASS.get(ch, "") for ch in w)
+    return re.sub(r"(.)\1+", r"\1", out)
+
+
+def _same_name(arabic: list[str], latin: str) -> bool:
+    """Is `latin` the English spelling of the Arabic words just before it? Compared on consonants."""
+    from difflib import SequenceMatcher
+    lat = _lat_skeleton(latin)
+    if len(lat) < 2:
+        return False
+    for n in range(1, len(arabic) + 1):
+        words = arabic[-n:]
+        first = words[0]
+        for pre in ("",) + _AR_PREFIXES:
+            if pre and not (first.startswith(pre) and len(first) > len(pre) + 1):
+                continue
+            ar = _ar_skeleton(first[len(pre):] + "".join(words[1:]))
+            ar = re.sub(r"(.)\1+", r"\1", ar)
+            if ar and SequenceMatcher(None, ar, lat).ratio() >= 0.75:
+                return True
+    return False
+
+
+def _pronunciation(path=None) -> dict[str, str]:
+    from pathlib import Path
+    p = Path(path) if path else Path(__file__).resolve().parent.parent / "config" / "pronunciation.yaml"
+    if not p.exists():
+        return {}
+    import yaml
+    return {str(k): str(v) for k, v in (yaml.safe_load(p.read_text(encoding="utf-8")) or {}).items()}
+
+
+def speakable(text: str, pronunciation: dict[str, str] | None = None) -> str:
+    """Spoken text → what the voice should read: names once, no English glosses, no vowel marks."""
+    text = _GLOSS.sub("", text)
+
+    def _dedupe(m: re.Match) -> str:
+        return m.group("ar") if _same_name(m.group("ar").split(), m.group("lat")) else m.group(0)
+    text = _LATIN_RUN.sub(_dedupe, text)
+    pron = _pronunciation() if pronunciation is None else pronunciation
+    for key in sorted(pron, key=len, reverse=True):
+        text = re.sub(rf"(?<![A-Za-z0-9]){re.escape(key)}(?![A-Za-z0-9])", pron[key], text)
+    text = _HARAKAT.sub("", text)
+    return re.sub(r"[ \t]+", " ", text)
+
+
+def to_tts_text(script: str, pause_style: str = "ssml", default_pause: float = 0.8,
+                voice_fixes: bool = True) -> str:
     """Convert the script into what the speech engine should receive.
 
     * [Pause] / [Pause 2s] → an SSML break tag (or an ellipsis for engines without SSML)
@@ -86,6 +162,8 @@ def to_tts_text(script: str, pause_style: str = "ssml", default_pause: float = 0
         return f' <break time="{secs:.1f}s"/> ' if pause_style == "ssml" else " ... "
 
     text = MARKER_RE.sub(_replace, script)
+    if voice_fixes:
+        text = speakable(text)
     text = re.sub(r"[ \t]+", " ", text)
     return re.sub(r"\s*\n\s*", "\n", text).strip()
 

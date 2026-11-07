@@ -24,7 +24,17 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
 - Imported and edited (run 42393605088): transcript matches the approved script at 0.94,
   face 10 %, 82 shots, every visual made, 46 Pixabay clips. 1080p master `final_subtitled.mp4`
   in the `week-2026-W45` artifact; 720p preview on the `previews` branch.
-- Next: founder review → upload (manual in YouTube Studio, or connect publishing).
+- Founder review: lip sync off, words mispronounced or said twice, the corner circle looks wrong.
+  The inspect report (issue #15) traced the speech faults to the written script: names written in
+  both scripts were read twice, bracketed English glosses were read aloud, vowel marks were misread
+  («بُعد» → «بوعد»), and G42 / Claude / HUMAIN were mispronounced.
+- Fixed (2026-11-07): `speakable()` in `pipeline/script_format.py` now shapes the voice text only
+  (paste pack and API): a name followed by its English spelling is said once, bracketed English is
+  dropped, harakat except shadda are stripped, and `config/pronunciation.yaml` respells hard
+  names. Subtitles keep the full written script. The corner circle is switched off.
+- Lip sync: the edit takes video and audio from the same HeyGen file, frame-exact, so the drift is
+  most likely the Avatar III photo-avatar engine. Compare the raw HeyGen render to confirm.
+- Next: re-render W45 with the fixed voice text when credits allow, then upload.
 
 ## Earlier test week (2026-W43, folder `2026-W43-jo`)
 - Approved script: `reviewed/2026-W43-jo/script.md` (one unsourced line removed by the founder).

@@ -60,7 +60,9 @@ def word_clock(segments: list[tuple[float, float, str]]) -> list[float]:
 
 
 def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
-         snap: float = 2.0, min_shot: float = 1.5, max_visual: float = 12.0) -> list[Shot]:
+         snap: float = 2.0, min_shot: float = 1.5, max_visual: float = 12.0,
+         corner: bool = True) -> list[Shot]:
+    """`corner=False` (visuals.corner.enabled off) renders every corner shot as a full-screen visual."""
     marks = extract_shots(script)
     total_words = max(1, count_spoken_words(script))
     segs = read_srt(srt)
@@ -81,7 +83,8 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
         shots.append(Shot("face", "", "", 0.0, 0.0))
     for mk in marks:
         t = 0.0 if mk.at_word == 0 else at(mk.at_word)
-        shots.append(Shot(mk.mode, mk.kind, mk.payload, t, t))
+        mode = "visual" if mk.mode == "corner" and not corner else mk.mode
+        shots.append(Shot(mode, mk.kind, mk.payload, t, t))
     # Close each shot at the next one's start; drop zero-length shots, then merge slivers forward.
     shots.sort(key=lambda s: s.start)
     for a, b in zip(shots, shots[1:]):
@@ -108,7 +111,10 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
         if s.mode == "visual" and s.seconds > max_visual:
             mid = s.start + s.seconds / 2
             out.append(Shot("visual", s.kind, s.payload, s.start, mid, s.notes + ["split: long visual"]))
-            out.append(Shot("corner", s.kind, s.payload, mid, s.end, ["split: second half in corner layout"]))
+            if corner:
+                out.append(Shot("corner", s.kind, s.payload, mid, s.end, ["split: second half in corner layout"]))
+            else:
+                out.append(Shot("visual", s.kind, s.payload, mid, s.end, ["split: second half of a long visual"]))
         else:
             out.append(s)
     return out
