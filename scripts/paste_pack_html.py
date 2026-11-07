@@ -4,6 +4,10 @@ Usage: python scripts/paste_pack_html.py <heygen_paste.md> <out.html> <week labe
 """
 import re, html, sys
 md, out, week = sys.argv[1], sys.argv[2], sys.argv[3]
+import yaml  # look and voice names come from settings, so a new look needs no code change
+from pathlib import Path
+_h = yaml.safe_load((Path(__file__).resolve().parents[1] / "config" / "settings.yaml").read_text(encoding="utf-8"))["video"]["heygen"]
+look, voice = html.escape(_h.get("look_name", "your presenter look")), html.escape(_h.get("voice_name", "your Arabic voice clone"))
 p=open(md,encoding='utf-8').read()
 scenes=re.findall(r'## Scene (\d+)\n\n```\n(.*?)\n```', p, re.S)
 mins=re.search(r'about ([\d.]+) minutes', p).group(1)
@@ -24,8 +28,8 @@ button.ok{{background:#2e7d32}}
 .text{{padding:14px 16px;font:21px/1.9 "Noto Naskh Arabic","Geeza Pro",system-ui,sans-serif;white-space:pre-wrap;word-break:break-word}}
 </style></head><body>
 <h1>HeyGen paste pack · {week}</h1>
-<p class="sub">{len(scenes)} scenes, about {mins} minutes. Avatar “Sam -- 1”, your Jordanian voice clone. The “...” marks are pauses; keep them.</p>
-<ol><li>In HeyGen AI Studio, start a new landscape video. In every scene set: look <b>Sam -- 1</b> (the video look, not a photo look), voice <b>video1496943888</b> (Arabic), Layout <b>Original</b> and no background change (post-production builds the corner circle and face shots itself).</li>
+<p class="sub">{len(scenes)} scenes, about {mins} minutes. Look “{look}”, your Jordanian voice clone. The “...” marks are pauses; keep them.</p>
+<ol><li>In HeyGen AI Studio, start a new landscape video. In every scene set: look <b>{look}</b>, voice <b>{voice}</b> (Arabic), Layout <b>Original</b> and no background change (post-production builds the corner circle and face shots itself).</li>
 <li><b>Motion Engine: Avatar III</b> (4 credits/min) by default, the same engine in every scene. Avatar IV (31/min) only when the balance allows. <b>Never Avatar V</b> (48/min, the HeyGen default).</li>
 <li>Make one scene per block below and paste each block into its scene, in order.</li>
 <li>Before Generate, check HeyGen's credit estimate against the plan balance. Render at 1080p (4K is Pro only).</li>

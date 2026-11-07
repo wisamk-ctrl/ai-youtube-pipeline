@@ -88,4 +88,4 @@ def test_whisper_can_decode_audio(tmp_path: Path):
 def test_paste_pack_carries_the_heygen_cost_rules():
     pack = manual.paste_pack(SCRIPT, load_settings(), "2026-W43-jo")
     assert "Avatar III" in pack and "Never Avatar V" in pack and "Layout **Original**" in pack
-    assert "Sam -- 1" in pack and "1080p" in pack
+    assert "Professional in blue shirt" in pack and "video1496943888" in pack and "1080p" in pack

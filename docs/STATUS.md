@@ -12,7 +12,8 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
   circle for presence; Pixabay animations first, generated network animation as fallback.
 - **Sourcing:** the source map checks the full article text the writer saw (the 1,500-character
   false alarm is fixed).
-- **Presenter:** HeyGen avatar `dd64d6001c4e41c5a91b2fb9eead42a6` ("Sam -- 1") and Jordanian voice
+- **Presenter (2026-11-07):** the landscape look "Professional in blue shirt" (`1df5311275d0482cbe916ab841005526`,
+  a photo look, 2752×1536) replaces the portrait twin "Sam -- 1" (`dd64d6001c4e41c5a91b2fb9eead42a6`). Jordanian voice
   clone `4c810d9c9906445f81dfd4f7d32259e0`, both in `config/settings.yaml`.
 - **Secrets on the repo:** ANTHROPIC_API_KEY, YOUTUBE_API_KEY, HEYGEN_API_KEY, PIXABAY_API_KEY.
 - **Render route:** manual (HeyGen web app on the monthly plan; API credits not bought).
@@ -42,7 +43,8 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
   presenter track, so engines cannot be mixed per shot). Avatar III by default, Avatar IV when the
   balance allows, never Avatar V. Layout Original, no background change.
 - Avatar group default voice is now the Arabic clone `4c810d9c…` (it was the English clone).
-  New AI Studio videos may still open on a photo look, so pick **Sam -- 1** in every scene.
+  New AI Studio videos may open on another look, so pick the look named in `config/settings.yaml`
+  (`video.heygen.look_name`) in every scene; the paste pack names it.
 - Duplicate voice clones (`d6ee6521…` Arabic, `e1412c88…` and `9bc2309f…` English) are unused; left in place.
 - Creative Studio on Creator: HeyGen Video model 0.24 credits/s (~14/min), renders the avatar in **16:9**
   (a landscape hero-shot workaround for the portrait avatar); images 2 credits each.
