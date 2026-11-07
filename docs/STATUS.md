@@ -55,6 +55,10 @@ here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_
   Monthly (~4.3 episodes): III ≈ 140–180 incl. hero shots and thumbnails (fits Creator);
   IV ≈ 1,070 (needs Pro above the 1,000 base tier).
 - W43 next step: render on Avatar III (~32 of the 119 credits left) and judge the lip-sync quality.
+- **Measured 2026-11-07, HeyGen connector (API-style render, not the web app):** W45, 5 scenes,
+  8 min 57 s, photo look "Professional in blue shirt", Avatar III, 1080p → **63 credits
+  (≈ 7 credits/min)**, nearly double the 4/min the web-app audit found. Budget connector renders
+  at ~7/min; the web app may still be cheaper for the same engine.
 
 ## Ideas not built yet
 - HeyGen's AI B-roll generator and Video Agent (web app only as far as known) for hero shots.
