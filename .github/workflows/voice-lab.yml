@@ -31,7 +31,7 @@ jobs:
       - name: Install the lab's tools
         run: |
           pip install -q torch torchaudio --index-url https://download.pytorch.org/whl/cpu
-          pip install -q pyyaml faster-whisper edge-tts speechbrain coqui-tts
+          pip install -q pyyaml faster-whisper "av>=15,<19" edge-tts speechbrain "coqui-tts[codec]" torchcodec   # av<19: see LESSONS (PyAV 19 breaks faster-whisper)
       - name: Find the run that holds the week's artifact
         id: art
         uses: actions/github-script@v7
