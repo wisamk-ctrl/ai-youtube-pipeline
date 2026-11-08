@@ -145,12 +145,34 @@ def write_voice_pack(script: str, cfg: dict[str, Any], out_dir: Path) -> Path | 
     return p
 
 
+def own_voice(data: dict[str, Any]) -> list[dict[str, Any]]:
+    """The founder's own recording (founder decision 2026-11-08): `narration:` one audio file of the
+    whole read; optional `open:` / `close:` selfie videos of the opening and the sign-off, whose own
+    sound is used, so the lips always match. Without them the episode has no face at all. Drive and
+    Dropbox share links work (they are converted to direct downloads)."""
+    from pipeline.video.manual import resolve
+    out = []
+    for key, role in (("open", "face"), ("narration", "voice"), ("close", "face")):
+        ref = str(data.get(key) or "").strip()
+        if not ref:
+            if key == "narration":
+                raise ValueError("voice.yaml: `narration:` needs the link to your recording")
+            continue
+        url = resolve(ref)
+        out.append({"id": key, "role": role, "text": "", "audio": url, "video": url if role == "face" else "",
+                    "duration": None})
+    return out
+
+
 def load_voice(path: Path, chunks: list[dict[str, str]]) -> list[dict[str, Any]]:
-    """reviewed/<week>/voice.yaml checked against the pack: one entry per chunk, in pack order."""
+    """reviewed/<week>/voice.yaml checked against the pack: one entry per chunk, in pack order —
+    or, with a `narration:` key, the founder's own recording (`own_voice`)."""
     import yaml
     data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     if not isinstance(data, dict):
         raise ValueError(f"{path.name}: expected a mapping of chunk id → audio/video links")
+    if "narration" in data:
+        return own_voice(data)
     data = {str(k): v for k, v in data.items()}
     ids = [c["id"] for c in chunks]
     missing, extra = [i for i in ids if i not in data], [i for i in data if i not in ids]

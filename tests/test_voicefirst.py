@@ -126,3 +126,17 @@ def test_assemble_places_faces_on_the_narration(tmp_path, monkeypatch):
     assert mean_luma(1.0) > 60 and mean_luma(3.5) < 30 and mean_luma(spans[1]["start"] + 0.7) > 60
     (out / "talking_head.source.txt").write_text("manual import\n")
     assert voicefirst.face_spans(out) is None
+
+
+def test_own_voice_narration_with_optional_selfies(tmp_path, monkeypatch):
+    from pipeline.video import manual, voicefirst
+    monkeypatch.setattr(manual, "resolve", lambda ref, api_key=None: ref.replace("share", "direct"))
+    p = tmp_path / "voice.yaml"
+    p.write_text("narration: https://x/share/read.m4a\nclose: https://x/share/bye.mp4\n", encoding="utf-8")
+    e = voicefirst.load_voice(p, [])
+    assert [x["id"] for x in e] == ["narration", "close"]
+    assert e[0]["role"] == "voice" and e[1]["role"] == "face" and e[1]["video"] == "https://x/direct/bye.mp4"
+    p.write_text("open: https://x/a.mp4\n", encoding="utf-8")
+    import pytest
+    with pytest.raises(ValueError):
+        voicefirst.load_voice(p, [])

@@ -211,6 +211,9 @@ def _repair_speech(cfg: dict, out: Path, video: Path, spoken: str):
     if plan is None:
         return video, [], None
     src = out / "talking_head.source.txt"
+    if src.exists() and src.read_text(encoding="utf-8").startswith("voice-first"):
+        log.info("Voice-first or own-voice recording: no speech repair (repairs.yaml is for avatar renders)")
+        return video, [], None
     if plan["render"] and src.exists() and plan["render"] not in src.read_text(encoding="utf-8"):
         log.warning("repairs.yaml is for render %s, not this one; no speech repair", plan["render"])
         return video, [], None

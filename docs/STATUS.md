@@ -129,3 +129,14 @@ A week folder ending in `-en` is English everywhere (`pipeline/language.py`): th
 - Re-plan shots: weekly-roundup phase `direct`, week `<week>`
 - HeyGen IDs: run the `heygen-assets` workflow
 - Watchable copy of any week: run the `preview` workflow; the MP4 lands on branch `previews`
+
+## Own-voice route (founder decision 2026-11-08)
+The founder reads the script himself; no avatar, no lip-sync, no HeyGen credits.
+1. Reading script: `reviewed/<week>/read_script.html` (phone-friendly; names written as said, no
+   glosses or version numbers). W45's is ready.
+2. He records the whole read as one audio file (phone is fine), optionally the opening and the
+   sign-off as short landscape selfie videos, and shares links (Drive/Dropbox, anyone-with-link).
+3. `reviewed/<week>/voice.yaml`: `narration: <link>` (+ optional `open:` / `close:` video links).
+4. Run weekly-roundup phase `assemble`: talking head from his recording (selfie clips keep their own
+   sound, so lips match; without them no face at all), then the normal edit. No speech repair runs on
+   an own-voice recording.
