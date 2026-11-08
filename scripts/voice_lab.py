@@ -256,22 +256,37 @@ def repair_clips(model, week: Path, out: Path) -> str:
     says = {m.group(1): m.group(2) for m in re.finditer(r'^\s*"([^"]+)":.*#\s*says «([^»]+)»', raw, re.M)}
     clips = out / "clips"
     clips.mkdir(parents=True, exist_ok=True)
+    from pipeline.post import repair
+    current = (yaml.safe_load(raw) or {}).get("voice") or {}
     rows, mapping = [], {}
     for n, key in enumerate(keys, 1):
         text = says.get(key, key)
         dest = clips / f"{n:02d}.wav"
+        old_err = new_err = None
+        old_heard = new_heard = ""
+        try:   # the clip in use now (HeyGen clone), scored the same way
+            w0 = to_wav(repair._clip(current[key], clips / f"{n:02d}_now.wav"), clips / f"{n:02d}_now16.wav")
+            old_heard = " ".join(w[2] for w in words_of(model, w0))
+            old_err = cer(text, old_heard)
+        except Exception:  # noqa: BLE001
+            traceback.print_exc()
         try:
             wav = knnvc_voice(edge_voice("ar-JO-TaimNeural", text, dest.with_name(dest.stem + "_src.wav")), week, out, dest)
-            heard = " ".join(w[2] for w in words_of(model, wav))
+            new_heard = " ".join(w[2] for w in words_of(model, wav))
+            new_err = cer(text, new_heard)
             sh("ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), "-ar", "44100", "-b:a", "128k", str(dest.with_suffix(".mp3")))
-            mapping[key] = f"file:reviewed/{week.name}/clips/{n:02d}.mp3"
-            rows.append(f"| {n:02d} | {text} | {heard} | {cer(text, heard):.2f} |")
-        except Exception as exc:  # noqa: BLE001
+        except Exception:  # noqa: BLE001
             traceback.print_exc()
-            rows.append(f"| {n:02d} | {text} | failed: {type(exc).__name__} | |")
+        # Keep the full-band HeyGen clip unless the converted one is clearly clearer.
+        pick = "converted" if new_err is not None and (old_err is None or new_err + 0.05 < old_err) else "current"
+        if pick == "converted":
+            mapping[key] = f"file:reviewed/{week.name}/clips/{n:02d}.mp3"
+        fmt = lambda e: "—" if e is None else f"{e:.2f}"  # noqa: E731
+        rows.append(f"| {n:02d} | {text} | {old_heard} | {fmt(old_err)} | {new_heard} | {fmt(new_err)} | **{pick}** |")
     (out / "clips.yaml").write_text(yaml.safe_dump({"voice": mapping}, allow_unicode=True, sort_keys=False), encoding="utf-8")
-    return "\n".join(["## 3. Repair clips, no credits (Jordanian reading → show voice)\n",
-                      "| # | says | Whisper heard | error |", "|---|---|---|---|", *rows]) + "\n"
+    return "\n".join(["## 3. Repair clips: current (HeyGen clone) vs converted (Jordanian reading → show voice)\n",
+                      "| # | says | current: heard | error | converted: heard | error | use |",
+                      "|---|---|---|---|---|---|---|", *rows]) + "\n"
 
 
 def main() -> None:
