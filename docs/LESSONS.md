@@ -90,3 +90,12 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 | The final edit took 53 min | Animated cards (~13 s each) and the dissolve encode add ~20 min over the 30-min edit; the transcript cache makes the next re-run skip Whisper |
 | A successful run can still be wrong | The first full new-look W45 edit came out 6:21 instead of ~9:20 — programme cut at ~6:01, end card after it — and every step reported success. Now each stage's length is logged and checked against the talking head (`_check_length` in `run_pipeline.py`); a short stage fails the run and names itself; each short segment is logged. Cause confirmed by elimination: with section dissolves off (`visuals.dissolve_frames: 0`) the same edit came out full length (9:19). The xfade join in `edit.compose` loses time on the real episode though it passes on synthetic clips — keep it off until it is fixed and tested on a real week |
 | Always watch the preview's length before sending it | 381 s vs the 542 s of the previous preview was the only signal |
+
+## 7. 2026-11-08 voice lab (no HeyGen credits)
+| Lesson | Detail |
+|---|---|
+| Check each repair clip on its own before splicing | The founder heard ADNOC wrong at 0:03; the voice lab showed the HeyGen clip itself said «نوك و G42» (the «وأد» was lost from its cut), and «تشغّل كلود كود» was unintelligible. `voice-lab --clips` now transcribes every clip in use and every alternative and picks the clearer |
+| The spelling «أدنوك» is right | Microsoft's Jordanian/Saudi voices, XTTS and the converted voice all say «أدنوك» correctly; «آدنوك» and «أد نوك» are worse |
+| Why the clone's Arabic sounds off | Whisper large-v3-turbo on W45: versions read as MSA («اثنان نقطة واحد…»), English names mangled (Perplexity → «بربلك سيتي», SemiAnalysis → «CME Analysis»), emphatics softened («ذكاء اصطناعي» → «دكاء استناعي»). The first two are script rules (braces, no spoken versions); the third is the clone itself → re-record (docs/recording_script.md) |
+| Free voice tools, scored | Microsoft ar-JO-TaimNeural: error 4 %, similarity 0.14 (not the founder). XTTS-v2: 5 %, 0.74, but non-commercial licence. kNN-VC (MIT) converting the Jordanian reading into the show voice: 7 %, 0.73 on sentences — but weak on short phrases (13 % mean, «جي» → «دي»); 16 kHz output |
+| Whisper writes names in Latin letters | «G42», «NVIDIA», «Claude Code» in Latin count as errors to a character score though the pronunciation may be right; judge those by ear |
