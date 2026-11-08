@@ -30,8 +30,9 @@ jobs:
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - name: Install the lab's tools
         run: |
-          pip install -q torch torchaudio --index-url https://download.pytorch.org/whl/cpu
-          pip install -q pyyaml faster-whisper "av>=15,<19" edge-tts speechbrain "coqui-tts[codec]" torchcodec   # av<19: see LESSONS (PyAV 19 breaks faster-whisper)
+          # torch 2.8: from 2.9 torchaudio needs torchcodec, whose shared libraries fail to load on the runner
+          pip install -q "torch==2.8.0" "torchaudio==2.8.0" --index-url https://download.pytorch.org/whl/cpu
+          pip install -q pyyaml faster-whisper "av>=15,<19" edge-tts speechbrain coqui-tts six soundfile   # av<19: see LESSONS
       - name: Find the run that holds the week's artifact
         id: art
         uses: actions/github-script@v7
