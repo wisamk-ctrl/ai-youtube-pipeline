@@ -1,0 +1,72 @@
+name: voice-lab
+# Diagnoses the week's Arabic (where the voice goes wrong) and tests free voice tools on the hard
+# names, with no HeyGen credits. Posts the report on the review issue and puts the samples on the
+# previews branch under lab/. See scripts/voice_lab.py.
+on:
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "Week folder, e.g. 2026-W45"
+        required: true
+
+permissions:
+  contents: write
+  issues: write
+  actions: read
+
+concurrency:
+  group: previews-branch
+  cancel-in-progress: false
+
+jobs:
+  lab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Install the lab's tools
+        run: |
+          pip install -q torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+          pip install -q pyyaml faster-whisper edge-tts speechbrain coqui-tts
+      - name: Find the run that holds the week's artifact
+        id: art
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const name = `week-${{ inputs.week }}`;
+            const { data } = await github.rest.actions.listArtifactsForRepo({ owner: context.repo.owner, repo: context.repo.repo, name, per_page: 20 });
+            const live = data.artifacts.filter(a => !a.expired).sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+            if (!live.length) core.setFailed(`No artifact named ${name}`);
+            else core.setOutput('run_id', String(live[0].workflow_run.id));
+      - uses: actions/download-artifact@v4
+        with:
+          name: week-${{ inputs.week }}
+          path: output/
+          run-id: ${{ steps.art.outputs.run_id }}
+          github-token: ${{ github.token }}
+      - name: Run the lab
+        env:
+          WEEK: ${{ inputs.week }}
+        run: python scripts/voice_lab.py "output/$WEEK" lab
+      - name: Put the samples on the previews branch (lab/)
+        env:
+          WEEK: ${{ inputs.week }}
+        run: |
+          mkdir -p branch && cd branch
+          git init -q -b previews
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git fetch -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previews 2>/dev/null && git checkout -q FETCH_HEAD -- . 2>/dev/null || true
+          rm -rf lab && mkdir -p lab && cp ../lab/report.md lab/ && cp ../lab/samples/*.mp3 lab/ 2>/dev/null || true
+          git add -A && git commit -q -m "voice lab: $WEEK ($(date -u +%FT%H:%MZ))"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" HEAD:previews
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const body = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/clip.js`)(require('fs').readFileSync('lab/report.md', 'utf8'));
+            const issues = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'script-review', state: 'open', per_page: 50 });
+            const issue = issues.data.find(i => i.title.includes(`(${{ inputs.week }})`));
+            if (issue) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number, body });
