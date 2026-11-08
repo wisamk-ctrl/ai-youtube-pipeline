@@ -8,6 +8,10 @@ on:
       week:
         description: "Week folder, e.g. 2026-W45"
         required: true
+      clips:
+        description: "Make the week's repair clips (Jordanian reading converted to the show voice) instead of the tests"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -52,7 +56,8 @@ jobs:
       - name: Run the lab
         env:
           WEEK: ${{ inputs.week }}
-        run: python scripts/voice_lab.py "output/$WEEK" lab
+          CLIPS: ${{ inputs.clips }}
+        run: python scripts/voice_lab.py "output/$WEEK" lab $([ "$CLIPS" = "true" ] && echo --clips)
       - name: Put the samples on the previews branch (lab/)
         env:
           WEEK: ${{ inputs.week }}
@@ -62,6 +67,7 @@ jobs:
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
           git fetch -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previews 2>/dev/null && git checkout -q FETCH_HEAD -- . 2>/dev/null || true
           rm -rf lab && mkdir -p lab && cp ../lab/report.md lab/ && cp ../lab/samples/*.mp3 lab/ 2>/dev/null || true
+          if [ -d ../lab/clips ]; then mkdir -p lab/clips && cp ../lab/clips/*.mp3 lab/clips/ && cp ../lab/clips.yaml lab/; fi
           git add -A && git commit -q -m "voice lab: $WEEK ($(date -u +%FT%H:%MZ))"
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" HEAD:previews
       - uses: actions/github-script@v7

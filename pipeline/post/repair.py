@@ -286,6 +286,8 @@ def _clip(url: str, dest: Path) -> Path:
              "anullsrc=r=48000:cl=stereo", "-t", url.partition(":")[2] or "0.15", str(dest))
         return dest
     base, _, frag = url.partition("#t=")
+    if base.startswith("file:"):     # a clip committed to the repo (e.g. made by the voice lab, no credits)
+        _DOWNLOADS[base] = Path(__file__).resolve().parents[2] / base[5:]
     raw = _DOWNLOADS.get(base)
     if raw is None or not raw.exists():
         raw = dest.with_suffix(".src")

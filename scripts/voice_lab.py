@@ -245,10 +245,44 @@ def candidates(model, week: Path, out: Path) -> str:
     return "\n".join(lines) + "\n"
 
 
+def repair_clips(model, week: Path, out: Path) -> str:
+    """Re-voice the week's repair phrases with no credits: the Jordanian reading (right pronunciation)
+    converted into the show voice. Writes lab/clips/NN.mp3 and lab/clips.yaml, whose `voice:` lines
+    go into reviewed/<week>/repairs.yaml once the clips are copied to reviewed/<week>/clips/."""
+    import yaml
+    src = ROOT / "reviewed" / week.name / "repairs.yaml"
+    raw = src.read_text(encoding="utf-8")
+    keys = list((yaml.safe_load(raw) or {}).get("voice") or {})
+    says = {m.group(1): m.group(2) for m in re.finditer(r'^\s*"([^"]+)":.*#\s*says «([^»]+)»', raw, re.M)}
+    clips = out / "clips"
+    clips.mkdir(parents=True, exist_ok=True)
+    rows, mapping = [], {}
+    for n, key in enumerate(keys, 1):
+        text = says.get(key, key)
+        dest = clips / f"{n:02d}.wav"
+        try:
+            wav = knnvc_voice(edge_voice("ar-JO-TaimNeural", text, dest.with_name(dest.stem + "_src.wav")), week, out, dest)
+            heard = " ".join(w[2] for w in words_of(model, wav))
+            sh("ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), "-ar", "44100", "-b:a", "128k", str(dest.with_suffix(".mp3")))
+            mapping[key] = f"file:reviewed/{week.name}/clips/{n:02d}.mp3"
+            rows.append(f"| {n:02d} | {text} | {heard} | {cer(text, heard):.2f} |")
+        except Exception as exc:  # noqa: BLE001
+            traceback.print_exc()
+            rows.append(f"| {n:02d} | {text} | failed: {type(exc).__name__} | |")
+    (out / "clips.yaml").write_text(yaml.safe_dump({"voice": mapping}, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    return "\n".join(["## 3. Repair clips, no credits (Jordanian reading → show voice)\n",
+                      "| # | says | Whisper heard | error |", "|---|---|---|---|", *rows]) + "\n"
+
+
 def main() -> None:
     week, out = Path(sys.argv[1]), Path(sys.argv[2])
     out.mkdir(parents=True, exist_ok=True)
     model = whisper()
+    if "--clips" in sys.argv:
+        report = f"# Voice lab · {week.name} · repair clips\n\n" + repair_clips(model, week, out)
+        (out / "report.md").write_text(report, encoding="utf-8")
+        print(report)
+        return
     parts = [f"# Voice lab · {week.name}\n"]
     for step in (diagnose, candidates):
         try:

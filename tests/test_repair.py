@@ -192,3 +192,9 @@ def test_splice_cuts_in_the_gap_crossfades_and_keeps_length_exact(tmp_path, monk
     pad = env_out[int((a + 0.02) / repair.HOP):int((a + repair.PAD - 0.02) / repair.HOP)]
     assert 1e-8 < pad.mean() < 1e-4                          # room tone in the padding, not digital silence
     assert abs(repair.speech_db(env_out, a + 0.2, a + 0.9) - repair.speech_db(repair._envelope(video), 0.0, 1.9)) < 1.0
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="needs ffmpeg")
+def test_clip_from_a_file_in_the_repo(tmp_path):
+    out = repair._clip("file:assets/intro_sting.mp4#t=0.5,1.5", tmp_path / "f.wav")
+    assert 0.2 < repair._duration(out) <= 1.05
