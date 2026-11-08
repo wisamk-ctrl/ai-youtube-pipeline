@@ -55,6 +55,8 @@ TOOLS = {
                              "use through Azure AI Speech (free tier 0.5M characters/month, then paid)",
     "edge:ar-SA-HamedNeural": "Microsoft neural voice, Saudi male (same terms as above)",
     "xtts": "XTTS-v2 (Coqui) cloning the show voice — Coqui Public Model License: NON-COMMERCIAL only",
+    "knnvc:taim→show": "the Jordanian Microsoft reading (right pronunciation) converted into the show voice with "
+                       "kNN-VC (MIT licence, open source), learning the voice from 5 min of the original render",
 }
 
 
@@ -154,6 +156,24 @@ def xtts_voice(text: str, ref: Path, dest: Path) -> Path:
     return to_wav(dest, dest.with_name(dest.stem + "_16k.wav"))
 
 
+_KNN = None
+_MATCH = None
+
+
+def knnvc_voice(src: Path, week: Path, out: Path, dest: Path) -> Path:
+    """Voice conversion: keep the source's words and pronunciation, give it the show voice."""
+    global _KNN, _MATCH
+    import torch
+    import torchaudio
+    if _KNN is None:
+        _KNN = torch.hub.load("bshall/knn-vc", "knn_vc", prematched=True, trust_repo=True, pretrained=True, device="cpu")
+        refs = [to_wav(week / "talking_head.mp4", out / f"match_{i}.wav", 30.0 + i * 60, 60.0) for i in range(5)]
+        _MATCH = _KNN.get_matching_set([str(r) for r in refs])
+    wav = _KNN.match(_KNN.get_features(str(src)), _MATCH, topk=4)
+    torchaudio.save(str(dest), wav[None], 16000)
+    return dest
+
+
 _ECAPA = None
 
 
@@ -182,6 +202,7 @@ def candidates(model, week: Path, out: Path) -> str:
         "edge:ar-JO-TaimNeural": lambda t, d: edge_voice("ar-JO-TaimNeural", t, d),
         "edge:ar-SA-HamedNeural": lambda t, d: edge_voice("ar-SA-HamedNeural", t, d),
         "xtts": lambda t, d: xtts_voice(t, ref, d),
+        "knnvc:taim→show": lambda t, d: knnvc_voice(edge_voice("ar-JO-TaimNeural", t, d.with_name(d.stem + "_src.wav")), week, out, d),
     }
     for tool, make in makers.items():
         slug = re.sub(r"[^a-z0-9]+", "-", tool.lower())
