@@ -27,7 +27,13 @@ def main(week_dir: str) -> str:
         words = text.split()
         for k, w in enumerate(words):
             heard.append((a + (b - a) * k / max(1, len(words)), w))
-    script = spoken_text((d / "script.md").read_text(encoding="utf-8")).split()
+    # An own-voice week is checked against what the founder was asked to read, not the written script.
+    read = Path(__file__).resolve().parents[1] / "reviewed" / d.name / "read_script.md"
+    if read.exists() and (d / "ownvoice.md").exists():
+        text = "\n".join(l for l in read.read_text(encoding="utf-8").splitlines() if l and not l.startswith(("#", "~")))
+        script = text.split()
+    else:
+        script = spoken_text((d / "script.md").read_text(encoding="utf-8")).split()
     sm = SequenceMatcher(None, [norm_word(w) for w in script], [norm_word(w) for _, w in heard], autojunk=False)
     inserted, replaced, missing = [], [], []
     for op, i1, i2, j1, j2 in sm.get_opcodes():
