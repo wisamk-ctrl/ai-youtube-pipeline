@@ -99,3 +99,10 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 | Why the clone's Arabic sounds off | Whisper large-v3-turbo on W45: versions read as MSA («اثنان نقطة واحد…»), English names mangled (Perplexity → «بربلك سيتي», SemiAnalysis → «CME Analysis»), emphatics softened («ذكاء اصطناعي» → «دكاء استناعي»). The first two are script rules (braces, no spoken versions); the third is the clone itself → re-record (docs/recording_script.md) |
 | Free voice tools, scored | Microsoft ar-JO-TaimNeural: error 4 %, similarity 0.14 (not the founder). XTTS-v2: 5 %, 0.74, but non-commercial licence. kNN-VC (MIT) converting the Jordanian reading into the show voice: 7 %, 0.73 on sentences — but weak on short phrases (13 % mean, «جي» → «دي»); 16 kHz output |
 | Whisper writes names in Latin letters | «G42», «NVIDIA», «Claude Code» in Latin count as errors to a character score though the pronunciation may be right; judge those by ear |
+
+## 8. 2026-11-09 own-voice W45
+| Lesson | Detail |
+|---|---|
+| Don't denoise a quiet room | The founder's read (phone memo, 63 kbps AAC, −71 dB noise floor) came out "muffled": afftdn took ~3 dB off 3–10 kHz on a recording that was already dark. The voice chain now has no denoise, a mud cut, presence/air lift and a de-esser (3–6 kHz +9 dB, 6–10 kHz +12 dB against the old chain) |
+| Record lossless if you can | The phone memo is compressed at 63 kbps; iPhone Voice Memos → Settings → Audio Quality → Lossless (or any WAV recorder) keeps the top end |
+| Stale reports | An own-voice run posted the previous avatar run's repairs list (the artifact still held repairs.md); own-voice runs now delete it |

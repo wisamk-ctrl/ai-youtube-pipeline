@@ -22,9 +22,12 @@ from pipeline.post.subtitles import Word, norm_word, transcribe_words
 
 log = logging.getLogger(__name__)
 
-VOICE_CHAIN = ("highpass=f=70,afftdn=nf=-30,"
-               "acompressor=threshold=-24dB:ratio=3:attack=5:release=150:makeup=4,"
-               "loudnorm=I=-16:TP=-1.5:LRA=9")
+# No noise reduction: the W45 room measured a -71 dB floor, and afftdn dulled the voice ("muffled",
+# founder 2026-11-09). A phone memo is dark (3-6 kHz ~-28 dB under the total), so: mud cut, presence
+# and air lift, de-esser, gentle compression.
+VOICE_CHAIN = ("highpass=f=80,equalizer=f=220:t=q:w=1.2:g=-2.5,equalizer=f=3200:t=q:w=1.0:g=4,"
+               "highshelf=f=7500:g=4,acompressor=threshold=-22dB:ratio=2.5:attack=8:release=180:makeup=3,"
+               "deesser=i=0.4,loudnorm=I=-16:TP=-1.5:LRA=9")
 
 
 def _ff(*args: str) -> None:
