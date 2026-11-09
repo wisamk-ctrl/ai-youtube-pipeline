@@ -160,7 +160,7 @@ def own_voice(data: dict[str, Any]) -> list[dict[str, Any]]:
             continue
         url = resolve(ref)
         out.append({"id": key, "role": role, "text": "", "audio": url, "video": url if role == "face" else "",
-                    "duration": None})
+                    "duration": None, "clean": role == "voice"})
     return out
 
 
@@ -215,6 +215,10 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path) 
         src = download(e["audio"], work / f"{e['id']}.audio")
         wav = work / f"{e['id']}.wav"
         _run("-i", str(src), "-vn", "-ar", "48000", "-ac", "2", str(wav))
+        if e.get("clean"):   # the founder's own read: retakes cut, pauses capped, voice polished
+            from pipeline.video.ownvoice import clean
+            wav, report = clean(wav, work / f"{e['id']}.clean.wav", cfg)
+            (out_dir / "ownvoice.md").write_text(report, encoding="utf-8")
         d = _duration(wav)
         if e.get("duration") and abs(d - e["duration"]) > 0.5:
             log.warning("Chunk %s is %.1fs, voice.yaml says %.1fs", e["id"], d, e["duration"])
