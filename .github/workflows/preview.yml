@@ -33,11 +33,16 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const name = `week-${{ inputs.week }}`;
-            const { data } = await github.rest.actions.listArtifactsForRepo({ owner: context.repo.owner, repo: context.repo.repo, name, per_page: 20 });
-            const live = data.artifacts.filter(a => !a.expired).sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-            if (!live.length) core.setFailed(`No artifact named ${name}`);
-            else core.setOutput('run_id', String(live[0].workflow_run.id));
+            // The newest of week-<week> and partial-week-<week>: a run whose finished edit failed only at
+            // the upload (GitHub's artifact service erroring, 2026-11-11) still saved it as partial-week-.
+            let live = [];
+            for (const name of [`week-${{ inputs.week }}`, `partial-week-${{ inputs.week }}`]) {
+              const { data } = await github.rest.actions.listArtifactsForRepo({ owner: context.repo.owner, repo: context.repo.repo, name, per_page: 20 });
+              live = live.concat(data.artifacts.filter(a => !a.expired));
+            }
+            live.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+            if (!live.length) core.setFailed(`No artifact for week ${{ inputs.week }}`);
+            else { core.info(`Using ${live[0].name} from run ${live[0].workflow_run.id}`); core.setOutput('run_id', String(live[0].workflow_run.id)); core.setOutput('name', live[0].name); }
       - name: Download the given video
         if: inputs.video_url != ''
         env:
@@ -46,7 +51,7 @@ jobs:
       - uses: actions/download-artifact@v4
         if: inputs.video_url == ''
         with:
-          name: week-${{ inputs.week }}
+          name: ${{ steps.art.outputs.name }}
           path: art/
           run-id: ${{ steps.art.outputs.run_id }}
           github-token: ${{ github.token }}
@@ -57,6 +62,7 @@ jobs:
           for f in final_subtitled.mp4 with_cards.mp4 talking_head.mp4; do [ -f "$d/$f" ] && src="$d/$f" && break; done
           [ -n "${src:-}" ] || { echo "::error::no video in $d"; ls -R art; exit 1; }
           echo "Source: $src"
+          [ -f "$d/ownvoice.md" ] && { sed '/<details>/,$d' "$d/ownvoice.md"; cat "$d/ownvoice.md" >> "$GITHUB_STEP_SUMMARY"; } || true
           mkdir -p out
           # GitHub refuses files over 100 MB: size the bitrate to the length so any episode lands under ~90 MB,
           # and drop to 720p when that bitrate would be too thin for 1080p.
