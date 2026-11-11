@@ -1,13 +1,11 @@
 # Own-voice route (founder decision 2026-11-08): the founder's own read of read_script.html.
 # No selfie clips this week, so the episode has no face.
 narration: https://raw.githubusercontent.com/wisamk-ctrl/ai-youtube-pipeline/main/reviewed/2026-W45/narration.m4a
-# Stumbles found by the inspect report (2026-11-09): each phrase was said twice in a row; the first
-# saying is cut. Spellings the recogniser may use are joined with "|". Exact back-to-back repeats are
-# cut without being listed. Anything still missed: add a `cut:` span ("3:19.4-3:21.0") read off the
-# timed transcript in the issue's own-voice report.
-cut_repeats:
-  - يطلعوا من | يطلعو من
-  - Okta Cross | Octa Cross | أوكتا كروس | اوكتا كروس
-  - وكيل واحد
-  - AgentCore | agent core | ايجنت كور | إيجنت كور | أجنت كور
-cut: []
+# Stumbles, cut by recording time (word times from the `words` workflow, Whisper large-v3-turbo,
+# 2026-11-11). The phrase list missed them: CI's Whisper medium heard each one only once.
+cut_repeats: []
+cut:
+  - "3:38.34-3:40.56"   # «يطلعوا من اللابتوب المطور» said twice: the first saying cut
+  - "3:59.06-4:01.22"   # «Bedrock AgentCore أو AgentCore Bedrock»: «أو AgentCore Bedrock» cut
+  - "5:15.54-5:16.36"   # «Okta Cross App Access Okta Cross»: the trailing «Okta Cross» cut
+  - "5:17.76-5:27.72"   # «وكيل واحد وأداتين وأداتين … وكيل واحد وأداتين إشي»: the first take cut
