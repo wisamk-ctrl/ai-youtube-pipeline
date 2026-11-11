@@ -1,13 +1,18 @@
 """
 The founder's own recording (founder decision 2026-11-08): clean it before it becomes the episode.
 
-1. Voice chain: high-pass, light noise reduction, gentle compression (a phone voice memo).
+1. Voice chain: high-pass, mud cut, presence and air lift, de-esser, gentle compression (no denoise:
+   it muffled the W45 read).
 2. Retakes: the read is split at pauses; a stretch whose opening words come back in one of the next
    two stretches is a retake ("pause two seconds and say the sentence again"), so the earlier one is
    cut and the last take kept.
-3. Pauses: any pause longer than `max_pause` is shortened to it.
+3. Stumbles: the same 2-4 words said twice back to back are cut to one; so is any phrase listed in
+   voice.yaml `cut_repeats:` (alternative spellings joined with `|`); `cut:` spans ("3:19.4-3:21.0",
+   recording time) are cut as given, for anything the recogniser hides.
+4. Pauses: any pause longer than `max_pause` is shortened to it.
 
-Writes the cleaned wav and <work>/ownvoice.md listing what was cut, for the review issue.
+Writes the cleaned wav and a markdown report (what was cut, the phrases not found, and the timed
+transcript of the recording) for the review issue.
 """
 
 from __future__ import annotations
@@ -67,25 +72,67 @@ def retakes(parts: list[list[Word]], look: int = 2) -> set[int]:
     return drop
 
 
-def repeat_cuts(words: list[Word], phrases: list[str], within: float = 8.0) -> list[tuple[float, float, str]]:
-    """Spans to cut where a listed phrase is said twice in a row (a stumble with no long pause):
-    from the first saying's start to the second's start, so the second (complete) one stays."""
-    heard = [norm_word(w.word) for w in words]
-    cuts = []
-    for phrase in phrases:
-        toks = [norm_word(t) for t in phrase.split() if norm_word(t)][:2]   # a stumble rarely gets past two words
-        if not toks:
+def back_to_back(words: list[Word]) -> list[tuple[float, float, str]]:
+    """The same 2-4 words twice in a row: cut from the first saying's start to the second's."""
+    hw = [norm_word(w.word) for w in words]
+    cuts, taken = [], -1
+    for k in range(len(hw)):
+        if k <= taken:
             continue
-
-        def at(i: int) -> bool:
-            return i + len(toks) <= len(heard) and all(
-                SequenceMatcher(None, heard[i + k], toks[k]).ratio() >= 0.75 for k in range(len(toks)))
-        hits = [i for i in range(len(heard)) if at(i)]
-        for a, b in zip(hits, hits[1:]):
-            if 0 < words[b].start - words[a].start <= within:
-                cuts.append((words[a].start, words[b].start, phrase))
+        for n in (4, 3, 2):
+            if k + 2 * n <= len(hw) and all(hw[k:k + n]) and hw[k:k + n] == hw[k + n:k + 2 * n]:
+                cuts.append((words[k].start, words[k + n].start, " ".join(w.word.strip() for w in words[k:k + n])))
+                taken = k + n - 1
                 break
     return cuts
+
+
+def repeat_cuts(words: list[Word], phrases: list[str], within: float = 4.0
+                ) -> tuple[list[tuple[float, float, str]], list[str]]:
+    """Spans to cut where a listed phrase is said twice in a row (a stumble with no long pause):
+    from the first saying's start to the second's start, so the second (complete) one stays.
+    A phrase may list spellings as "a | b"; any two sayings in any spelling count. Returns
+    (cuts, phrases not found)."""
+    heard = [norm_word(w.word) for w in words]
+    cuts, missed = [], []
+    for phrase in phrases:
+        starts: set[int] = set()   # the first word: a stumble is often cut off after it
+        full: set[int] = set()     # the first two words: the complete saying that stays
+        for alt in phrase.split("|"):
+            toks = [norm_word(t) for t in alt.split() if norm_word(t)][:2]
+            if not toks:
+                continue
+            for i in range(len(heard)):
+                if SequenceMatcher(None, heard[i], toks[0]).ratio() >= 0.75:
+                    starts.add(i)
+                    if i + len(toks) <= len(heard) and all(
+                            SequenceMatcher(None, heard[i + k], toks[k]).ratio() >= 0.75 for k in range(len(toks))):
+                        full.add(i)
+        found = False
+        order = sorted(starts)
+        for a, b in zip(order, order[1:]):
+            if b in full and 0 < words[b].start - words[a].start <= within:
+                cuts.append((words[a].start, words[b].start, phrase.strip()))
+                found = True
+                break
+        if not found:
+            missed.append(phrase.strip())
+    return cuts, missed
+
+
+def parse_spans(spans: list[str]) -> list[tuple[float, float]]:
+    """["3:19.4-3:21.0", "200.5-201"] → [(199.4, 201.0), (200.5, 201.0)]."""
+    def sec(x: str) -> float:
+        parts = [float(p) for p in x.strip().split(":")]
+        return sum(v * 60 ** i for i, v in enumerate(reversed(parts)))
+    out = []
+    for s in spans:
+        a, b = str(s).split("-", 1)
+        a_s, b_s = sec(a), sec(b)
+        if b_s <= a_s:
+            raise ValueError(f"voice.yaml cut: {s!r} ends before it starts")
+        out.append((a_s, b_s))
+    return out
 
 
 def _minus(spans: list[tuple[float, float]], cuts: list[tuple[float, float]]) -> list[tuple[float, float]]:
@@ -108,7 +155,7 @@ def _minus(spans: list[tuple[float, float]], cuts: list[tuple[float, float]]) ->
 
 
 def clean(src: Path, dest: Path, cfg: dict[str, Any] | None = None,
-          cut_repeats: list[str] | None = None) -> tuple[Path, str]:
+          cut_repeats: list[str] | None = None, cut: list[str] | None = None) -> tuple[Path, str]:
     """src (any audio) → dest wav, cleaned. Returns (dest, markdown report)."""
     o = ((cfg or {}).get("video", {}).get("own_voice") or {})
     max_pause, pad = float(o.get("max_pause", 0.5)), 0.08
@@ -118,8 +165,11 @@ def clean(src: Path, dest: Path, cfg: dict[str, Any] | None = None,
     parts = stretches(words)
     drop = retakes(parts) if o.get("cut_retakes", True) else set()
     keep = [(max(0.0, p[0].start - pad), p[-1].end + pad) for i, p in enumerate(parts) if i not in drop]
-    stumbles = repeat_cuts(words, cut_repeats or [])
-    keep = _minus(keep, [(a, b) for a, b, _ in stumbles])
+    stumbles = back_to_back(words) if o.get("cut_back_to_back", True) else []
+    listed, missed = repeat_cuts(words, cut_repeats or [])
+    stumbles += [c for c in listed if not any(abs(c[0] - s[0]) < 1.0 for s in stumbles)]
+    spans = parse_spans(cut or [])
+    keep = _minus(keep, [(a, b) for a, b, _ in stumbles] + spans)
     if not keep:
         raise RuntimeError("own voice: no speech found in the recording")
     # Join the kept stretches, each pause capped at max_pause, 15 ms fades at every joint.
@@ -135,12 +185,19 @@ def clean(src: Path, dest: Path, cfg: dict[str, Any] | None = None,
     polished.unlink(missing_ok=True)
 
     def ts(x: float) -> str:
-        return f"{int(x // 60)}:{int(x % 60):02d}"
-    cut = [f"- {ts(parts[i][0].start)} «{' '.join(w.word.strip() for w in parts[i])[:120]}»" for i in sorted(drop)]
-    cut += [f"- {ts(a)} repeated «{p}» ({b - a:.1f} s)" for a, b, p in stumbles]
+        return f"{int(x // 60)}:{x % 60:04.1f}"
+    cut = [f"- {ts(parts[i][0].start)} retake «{' '.join(w.word.strip() for w in parts[i])[:120]}»" for i in sorted(drop)]
+    cut += [f"- {ts(a)} repeated «{p}» ({b - a:.1f} s)" for a, b, p in sorted(stumbles)]
+    cut += [f"- {ts(a)}–{ts(b)} cut as given in voice.yaml" for a, b in spans]
     before = words[-1].end - words[0].start if words else 0
-    report = (f"## Own-voice recording\n\nCleaned: noise reduction and gentle compression; pauses over "
-              f"{max_pause:.1f} s shortened; {len(drop)} retake(s) cut (the last take kept). Speech span "
-              f"{before / 60:.1f} min → the cleaned read.\n" + ("\nCut as retakes:\n" + "\n".join(cut) + "\n" if cut else ""))
-    log.info("Own voice: %d stretches, %d retakes cut", len(parts), len(drop))
+    report = (f"## Own-voice recording\n\nCleaned: voice polish (no denoise) and gentle compression; pauses over "
+              f"{max_pause:.1f} s shortened; {len(drop)} retake(s), {len(stumbles)} repeat(s) and {len(spans)} "
+              f"given span(s) cut. Speech span {before / 60:.1f} min → the cleaned read.\n"
+              + ("\nCut:\n" + "\n".join(cut) + "\n" if cut else "")
+              + ("\n⚠️ Listed in `cut_repeats` but not heard twice — find it in the transcript below and add a "
+                 "`cut:` span:\n" + "\n".join(f"- «{m}»" for m in missed) + "\n" if missed else "")
+              + "\n<details><summary>Timed transcript of the recording (before cuts)</summary>\n\n"
+              + "\n".join(f"- {ts(p[0].start)} {' '.join(w.word.strip() for w in p)}" for p in parts)
+              + "\n\n</details>\n")
+    log.info("Own voice: %d stretches, %d retakes, %d repeats, %d spans cut", len(parts), len(drop), len(stumbles), len(spans))
     return dest, report

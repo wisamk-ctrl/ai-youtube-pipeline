@@ -2,9 +2,12 @@
 # No selfie clips this week, so the episode has no face.
 narration: https://raw.githubusercontent.com/wisamk-ctrl/ai-youtube-pipeline/main/reviewed/2026-W45/narration.m4a
 # Stumbles found by the inspect report (2026-11-09): each phrase was said twice in a row; the first
-# saying is cut. Spelled as the recogniser hears them.
+# saying is cut. Spellings the recogniser may use are joined with "|". Exact back-to-back repeats are
+# cut without being listed. Anything still missed: add a `cut:` span ("3:19.4-3:21.0") read off the
+# timed transcript in the issue's own-voice report.
 cut_repeats:
-  - يطلعوا من لابتك
-  - Octa-Cross
+  - يطلعوا من | يطلعو من
+  - Okta Cross | Octa Cross | أوكتا كروس | اوكتا كروس
   - وكيل واحد
-  - agent core
+  - AgentCore | agent core | ايجنت كور | إيجنت كور | أجنت كور
+cut: []

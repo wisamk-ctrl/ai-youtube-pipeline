@@ -161,7 +161,8 @@ def own_voice(data: dict[str, Any]) -> list[dict[str, Any]]:
         url = resolve(ref)
         out.append({"id": key, "role": role, "text": "", "audio": url, "video": url if role == "face" else "",
                     "duration": None, "clean": role == "voice",
-                    "cut_repeats": [str(x) for x in data.get("cut_repeats") or []] if role == "voice" else []})
+                    "cut_repeats": [str(x) for x in data.get("cut_repeats") or []] if role == "voice" else [],
+                    "cut": [str(x) for x in data.get("cut") or []] if role == "voice" else []})
     return out
 
 
@@ -218,7 +219,7 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path) 
         _run("-i", str(src), "-vn", "-ar", "48000", "-ac", "2", str(wav))
         if e.get("clean"):   # the founder's own read: retakes cut, pauses capped, voice polished
             from pipeline.video.ownvoice import clean
-            wav, report = clean(wav, work / f"{e['id']}.clean.wav", cfg, e.get("cut_repeats"))
+            wav, report = clean(wav, work / f"{e['id']}.clean.wav", cfg, e.get("cut_repeats"), e.get("cut"))
             (out_dir / "ownvoice.md").write_text(report, encoding="utf-8")
         d = _duration(wav)
         if e.get("duration") and abs(d - e["duration"]) > 0.5:
