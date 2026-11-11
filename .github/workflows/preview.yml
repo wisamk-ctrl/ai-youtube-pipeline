@@ -63,6 +63,12 @@ jobs:
           [ -n "${src:-}" ] || { echo "::error::no video in $d"; ls -R art; exit 1; }
           echo "Source: $src"
           [ -f "$d/ownvoice.md" ] && { cat "$d/ownvoice.md"; cat "$d/ownvoice.md" >> "$GITHUB_STEP_SUMMARY"; } || true
+          # Word times of the own-voice recording, for `cut:` spans in voice.yaml (recording time).
+          [ -f "$d/assemble/heard.json" ] && python3 -c "
+          import json, sys
+          for e in json.load(open(sys.argv[1]))['entries'].values():
+              print('WORDS', ' '.join(f'{a // 60:.0f}:{a % 60:04.1f}-{b % 60:04.1f}={w.strip()}' for a, b, w in e['words']))
+          " "$d/assemble/heard.json" | fold -w 3000 || true
           mkdir -p out
           # GitHub refuses files over 100 MB: size the bitrate to the length so any episode lands under ~90 MB,
           # and drop to 720p when that bitrate would be too thin for 1080p.
