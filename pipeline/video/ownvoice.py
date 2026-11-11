@@ -67,7 +67,48 @@ def retakes(parts: list[list[Word]], look: int = 2) -> set[int]:
     return drop
 
 
-def clean(src: Path, dest: Path, cfg: dict[str, Any] | None = None) -> tuple[Path, str]:
+def repeat_cuts(words: list[Word], phrases: list[str], within: float = 8.0) -> list[tuple[float, float, str]]:
+    """Spans to cut where a listed phrase is said twice in a row (a stumble with no long pause):
+    from the first saying's start to the second's start, so the second (complete) one stays."""
+    heard = [norm_word(w.word) for w in words]
+    cuts = []
+    for phrase in phrases:
+        toks = [norm_word(t) for t in phrase.split() if norm_word(t)][:2]   # a stumble rarely gets past two words
+        if not toks:
+            continue
+
+        def at(i: int) -> bool:
+            return i + len(toks) <= len(heard) and all(
+                SequenceMatcher(None, heard[i + k], toks[k]).ratio() >= 0.75 for k in range(len(toks)))
+        hits = [i for i in range(len(heard)) if at(i)]
+        for a, b in zip(hits, hits[1:]):
+            if 0 < words[b].start - words[a].start <= within:
+                cuts.append((words[a].start, words[b].start, phrase))
+                break
+    return cuts
+
+
+def _minus(spans: list[tuple[float, float]], cuts: list[tuple[float, float]]) -> list[tuple[float, float]]:
+    out = []
+    for a, b in spans:
+        pieces = [(a, b)]
+        for c, d in cuts:
+            nxt = []
+            for x, y in pieces:
+                if d <= x or c >= y:
+                    nxt.append((x, y))
+                    continue
+                if c > x:
+                    nxt.append((x, c))
+                if d < y:
+                    nxt.append((d, y))
+            pieces = nxt
+        out += [p for p in pieces if p[1] - p[0] > 0.05]
+    return out
+
+
+def clean(src: Path, dest: Path, cfg: dict[str, Any] | None = None,
+          cut_repeats: list[str] | None = None) -> tuple[Path, str]:
     """src (any audio) → dest wav, cleaned. Returns (dest, markdown report)."""
     o = ((cfg or {}).get("video", {}).get("own_voice") or {})
     max_pause, pad = float(o.get("max_pause", 0.5)), 0.08
@@ -77,6 +118,8 @@ def clean(src: Path, dest: Path, cfg: dict[str, Any] | None = None) -> tuple[Pat
     parts = stretches(words)
     drop = retakes(parts) if o.get("cut_retakes", True) else set()
     keep = [(max(0.0, p[0].start - pad), p[-1].end + pad) for i, p in enumerate(parts) if i not in drop]
+    stumbles = repeat_cuts(words, cut_repeats or [])
+    keep = _minus(keep, [(a, b) for a, b, _ in stumbles])
     if not keep:
         raise RuntimeError("own voice: no speech found in the recording")
     # Join the kept stretches, each pause capped at max_pause, 15 ms fades at every joint.
@@ -94,6 +137,7 @@ def clean(src: Path, dest: Path, cfg: dict[str, Any] | None = None) -> tuple[Pat
     def ts(x: float) -> str:
         return f"{int(x // 60)}:{int(x % 60):02d}"
     cut = [f"- {ts(parts[i][0].start)} «{' '.join(w.word.strip() for w in parts[i])[:120]}»" for i in sorted(drop)]
+    cut += [f"- {ts(a)} repeated «{p}» ({b - a:.1f} s)" for a, b, p in stumbles]
     before = words[-1].end - words[0].start if words else 0
     report = (f"## Own-voice recording\n\nCleaned: noise reduction and gentle compression; pauses over "
               f"{max_pause:.1f} s shortened; {len(drop)} retake(s) cut (the last take kept). Speech span "

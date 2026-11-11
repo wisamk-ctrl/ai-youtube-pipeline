@@ -16,3 +16,11 @@ def test_abandoned_take_is_cut_and_the_last_kept():
 def test_different_sentences_are_kept():
     words = ws("خلينا نبلش من الخليج", 0) + ws("حسب رويترز أدنوك وقعت", 4) + ws("ياهو فاينانس وصفت الاتفاق", 8)
     assert retakes(stretches(words)) == set()
+
+
+def test_phrase_said_twice_cuts_the_first():
+    from pipeline.video.ownvoice import _minus, repeat_cuts
+    words = ws("الفكرة بسيطة وكيل واحد وكيل واحد وأداتين إشي", 0)
+    cuts = repeat_cuts(words, ["وكيل واحد وأداتين"])
+    assert len(cuts) == 1 and cuts[0][0] == words[2].start and cuts[0][1] == words[4].start
+    assert _minus([(0.0, 10.0)], [(1.0, 2.0)]) == [(0.0, 1.0), (2.0, 10.0)]
