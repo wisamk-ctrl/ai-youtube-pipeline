@@ -62,7 +62,7 @@ jobs:
           for f in final_subtitled.mp4 with_cards.mp4 talking_head.mp4; do [ -f "$d/$f" ] && src="$d/$f" && break; done
           [ -n "${src:-}" ] || { echo "::error::no video in $d"; ls -R art; exit 1; }
           echo "Source: $src"
-          [ -f "$d/ownvoice.md" ] && { sed '/<details>/,$d' "$d/ownvoice.md"; cat "$d/ownvoice.md" >> "$GITHUB_STEP_SUMMARY"; } || true
+          [ -f "$d/ownvoice.md" ] && { cat "$d/ownvoice.md"; cat "$d/ownvoice.md" >> "$GITHUB_STEP_SUMMARY"; } || true
           mkdir -p out
           # GitHub refuses files over 100 MB: size the bitrate to the length so any episode lands under ~90 MB,
           # and drop to 720p when that bitrate would be too thin for 1080p.
