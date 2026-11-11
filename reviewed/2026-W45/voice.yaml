@@ -7,6 +7,7 @@ cut_repeats: []
 cut:
   - "0:55.60-0:56.00"   # «تاني تاني»: the first cut
   - "2:08.90-2:10.90"   # «واللي بدوروا للحكومة واللي بوردوا للحكومة»: the misread first take cut
+  - "3:04.32-3:04.94"   # «وشركات وشركات»: the first cut (CI Whisper hears it twice only some runs)
   - "3:38.34-3:40.56"   # «يطلعوا من اللابتوب المطور» said twice: the first saying cut
   - "3:59.06-4:01.22"   # «Bedrock AgentCore أو AgentCore Bedrock»: «أو AgentCore Bedrock» cut
   - "5:15.54-5:16.36"   # «Okta Cross App Access Okta Cross»: the trailing «Okta Cross» cut
