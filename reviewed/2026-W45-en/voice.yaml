@@ -4,7 +4,12 @@
 # 01-face is the whole opening (cold open + «Hi everyone … I'm Wissam», 20.9 s), re-cut 2026-11-12 so the
 # face can carry it; 02-voice starts at «Let's start in the Gulf». Add `video:` to 01-face once the avatar
 # clip is rendered from that audio (a face chunk without a video is narration only).
-01-face: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=47cec7e223574484aaaf5d8adf928580.wav
+01-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=47cec7e223574484aaaf5d8adf928580.wav
+  duration: 20.88
+  # Avatar IV, look "Professional in blue shirt", driven by that audio (HeyGen video 41ab2755…, 2026-11-12).
+  # The link is signed and stops working on 2026-11-19: re-fetch it with get_video for a later re-run.
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/41ab2755ac6a262d6e57778fa5f01b61.mp4?Expires=1795114467&Signature=F2N87Hk8NUgF3Ord~kXoq2LSLbtSOOevXZjLs34cJvFv~lJ5iUQEEhFgXg~WxdJO03hhyeh1~0BsLklUNZNe3kqBv8LHGCPTLqAocrOwuby1afVXM3mFciSUfrz7gpEvd1aaVRaotnzytHGBCNzIYPIs4LV4JSO07TGlOyZ0Oi25cvg7ch5Th1usH9GHYPWWx0Unb5vrEyV45OhgAjiUwpCcJdNN754dl6HRN8VVD2~JhKbRLM~jKZ4vhYbTvsdijiPJWTPUepMgZc23xOX194WQMXpjQ-7S4S-RLXflVX1-8UcnykwXisSMg1eH227A7OtuWBYrgcUEtCMGg-WF8A__&Key-Pair-Id=K38HBHX5LX3X2H"
 02-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=0403a043646d49899ecb1a9ecafc91ab.wav
 03-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=76a4decf2543408f912e881be464d5c8.wav
 04-face: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=e218e8a98a064e18ac47b82507870d01.wav
