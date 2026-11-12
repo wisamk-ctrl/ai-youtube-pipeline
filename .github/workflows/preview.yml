@@ -9,9 +9,9 @@ on:
         description: "Week folder whose artifact holds the video, e.g. voicetest or 2026-W43 (also the preview's file name)"
         required: true
       what:
-        description: "video (the most finished cut) or voice (the own-voice check: cleaned read + cut report, from phase voicecheck)"
+        description: "text (the week's script, voice pack and source map, as <week>-files/), video (the most finished cut) or voice (the own-voice check: cleaned read + cut report, from phase voicecheck)"
         type: choice
-        options: [video, voice]
+        options: [video, voice, text]
         default: video
       video_url:
         description: "Optional: preview this video instead of the week's artifact (a direct MP4 link, e.g. from HeyGen)"
@@ -65,6 +65,14 @@ jobs:
         run: |
           d="art/${{ inputs.week }}"
           mkdir -p out
+          if [ "${{ inputs.what }}" = "text" ]; then   # the session that drives the pipeline cannot download artifacts
+            mkdir -p "out/${{ inputs.week }}-files"
+            for f in script.md voice_pack.md voice_pack.json source_map.md plan.json critique.json shotlist.md; do
+              [ -f "$d/$f" ] && cp "$d/$f" "out/${{ inputs.week }}-files/" || true
+            done
+            ls -la "out/${{ inputs.week }}-files"
+            exit 0
+          fi
           if [ "${{ inputs.what }}" = "voice" ]; then
             [ -f "$d/voice_check.mp3" ] || { echo "::error::no voice_check.mp3 in $d (run phase voicecheck first)"; exit 1; }
             cp "$d/voice_check.mp3" "out/${{ inputs.week }}-voice.mp3"
@@ -101,6 +109,6 @@ jobs:
           git init -q -b previews
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
           git fetch -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previews 2>/dev/null && git checkout -q FETCH_HEAD -- . 2>/dev/null || true
-          cp -f ../out/* .
+          cp -rf ../out/* .
           git add -A && git commit -q -m "preview: ${{ inputs.week }} ($(date -u +%FT%H:%MZ)) from ${{ inputs.video_url != '' && 'a direct link' || format('run {0}', steps.art.outputs.run_id) }}"
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" HEAD:previews
