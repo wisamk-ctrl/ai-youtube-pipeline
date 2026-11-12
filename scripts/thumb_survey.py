@@ -59,7 +59,7 @@ def main(out: Path, per: int = 4) -> None:
         ins = [x for f in part for x in ("-i", str(f))]
         subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *ins, "-filter_complex",
                         f"vstack=inputs={len(part)}" if len(part) > 1 else "null", "-frames:v", "1",
-                        str(out / f"sheet_{n // 5 + 1}.jpg")], check=True)
+                        str(out / f"sheet-{n // 5 + 1}.jpg")], check=True)
     (out / "titles.md").write_text("\n".join(titles) + "\n", encoding="utf-8")
     for f in out.glob("*_[0-9].jpg"):
         f.unlink()
