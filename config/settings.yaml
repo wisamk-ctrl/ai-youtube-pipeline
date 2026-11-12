@@ -148,7 +148,6 @@ scripting:
   stories_min: 5
   stories_max: 7
   channel_name: "أسبوع الذكاء الاصطناعي"   # spoken in the intro/outro
-  channel_name_en: "This Week in AI"      # English weeks (<week>-en): every on-screen text is English
   presenter_name: "وسام"
   # English version (phase translate → output/<week>-en). Unset model = `model` above.
   channel_name_en: "This Week in AI"
