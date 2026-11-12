@@ -70,10 +70,15 @@ def _ratio(a: str, b: str) -> float:
     return r
 
 
+_CLITICS = "وبلف"      # «وجي» is «جي» with «و» attached
+
+
 def _sim(a: str, b: str) -> bool:
     if not a or not b:
         return False
-    return a == b or (min(len(a), len(b)) >= 3 and _ratio(a, b) >= 0.75)
+    if a == b or (min(len(a), len(b)) >= 3 and _ratio(a, b) >= 0.75):
+        return True
+    return any(len(y) >= 2 and x[0] in _CLITICS and x[1:] == y for x, y in ((a, b), (b, a)))
 
 
 def follow(script: list[str], heard: list[str], file_starts: frozenset[int] | set[int] = frozenset()
@@ -105,7 +110,7 @@ def follow(script: list[str], heard: list[str], file_starts: frozenset[int] | se
             if not _sim(heard[k], script[j]):
                 continue
             c = chain(k, j)
-            if c < min(need, avail, n - j) or c < 2:
+            if c < (need if need > 3 else min(need, avail, n - j)) or c < 2:
                 continue
             sc = (c, -abs(j - pos) - (0.5 if j > pos else 0))     # longest match, then nearest, back before ahead
             if best is None or sc > score:
@@ -145,7 +150,7 @@ def follow(script: list[str], heard: list[str], file_starts: frozenset[int] | se
                     j = next((c for c in range(pos + 1, min(n, pos + 3)) if _ratio(h, script[c]) >= 0.85
                               and len(h) >= 3), None)
                     if j is None:
-                        j = jump(k, 0, n, 4, pos)           # far from the expected word: a strong match only
+                        j = jump(k, 0, n, 5, pos)           # far from the expected word: a strong match only
                     if j is not None and not pos < j < pos + AHEAD:
                         cur += 1
                         take[k] = cur

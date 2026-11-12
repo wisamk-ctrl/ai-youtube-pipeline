@@ -246,6 +246,12 @@ def voice_check(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Pat
     wav = work / f"{e['id']}.wav"
     _run("-i", str(src), "-vn", "-ar", "48000", "-ac", "2", str(wav))
     wav, _ = _own_read(e, wav, work, cfg, out_dir, spoken)
+    try:    # the recogniser's words per recording, published with the check: a wrong cut can be traced
+        heard = json.loads((out_dir / "heard.json").read_text(encoding="utf-8"))["entries"]
+        (out_dir / "voice_words.json").write_text(json.dumps(
+            [v["words"] for k, v in heard.items() if k.endswith(":novad")], ensure_ascii=False), encoding="utf-8")
+    except (OSError, ValueError, KeyError):
+        pass
     dest = out_dir / "voice_check.mp3"
     _run("-i", str(wav), "-ac", "1", "-c:a", "libmp3lame", "-b:a", "96k", str(dest))
     shutil.rmtree(work, ignore_errors=True)

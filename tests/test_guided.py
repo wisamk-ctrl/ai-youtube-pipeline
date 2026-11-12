@@ -175,3 +175,12 @@ def test_a_word_said_out_of_order_is_kept():
     heard = say("وناوية تستخدم بنظام فيرا بالانتاج الجاي ودايتونا شغلت الف بيئة")
     plan, _, at, raw = guided.guide(script, heard, [0] * len(heard), [heard[-1].end + 1])
     assert not plan.dropped                                   # a misread to check by ear, not a stumble to cut
+
+
+def test_a_phrase_that_comes_again_later_is_not_a_far_jump():
+    script = ("سام ألتمان بالإمارات، وأدنوك وجي فورتي تو بيوقّعوا صفقة ذكاء اصطناعي معها. وبنفس الأسبوع، في موديل جديد. "
+              "خلّينا نبلّش من الخليج. حسب رويترز، أدنوك ومجموعة جي فورتي تو وقّعوا صفقة مع الشركة.")
+    heard = say("سام التمان بالامارات هو ادنكو جي فورتي تو بوقع صدق ذكاء اصطناعي معه وبنفس الاسبوع في موديل جديد "
+                "خلينا نبلش من الخليج حسب رويترز ادنوك ومجموعة جي فورتي تو وقعوا صفقة مع الشركة")
+    plan, _, at, raw = guided.guide(script, heard, [0] * len(heard), [heard[-1].end + 1])
+    assert not plan.dropped and len(plan.pieces) == 1

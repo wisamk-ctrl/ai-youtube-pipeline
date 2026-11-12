@@ -69,6 +69,7 @@ jobs:
             [ -f "$d/voice_check.mp3" ] || { echo "::error::no voice_check.mp3 in $d (run phase voicecheck first)"; exit 1; }
             cp "$d/voice_check.mp3" "out/${{ inputs.week }}-voice.mp3"
             cp "$d/ownvoice.md" "out/${{ inputs.week }}-voice.md"
+            [ -f "$d/voice_words.json" ] && cp "$d/voice_words.json" "out/${{ inputs.week }}-voice.words.json" || true
             cat "$d/ownvoice.md" | tee -a "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
