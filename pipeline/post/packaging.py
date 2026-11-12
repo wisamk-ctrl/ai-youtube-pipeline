@@ -54,13 +54,15 @@ def thumbnail_html(text: str, show: str, face_jpg: bytes | None = None, w: int =
         b64 = base64.b64encode(face_jpg).decode()
         face = (f'<div class="face"><img src="data:image/jpeg;base64,{b64}" alt=""></div>')
     text_w = w * (0.64 if face_jpg else 0.86)
+    from pipeline.language import ui
+    d, align = ui("dir"), ("right" if ui("dir") == "rtl" else "left")
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}
 body{{background:radial-gradient(110% 95% at 78% 30%,#1b2a4a 0%,{NAVY} 58%,#060a12 100%);color:{SAND};font-family:Kufi,Naskh,sans-serif}}
 .grid{{position:absolute;inset:0;background-image:linear-gradient(rgba(244,241,234,.04) 1px,transparent 1px),
 linear-gradient(90deg,rgba(244,241,234,.04) 1px,transparent 1px);background-size:{w // 20}px {w // 20}px}}
 .glow{{position:absolute;inset:0;background:radial-gradient(45% 55% at 70% 55%,rgba(232,178,74,.18) 0%,transparent 70%)}}
-.words{{position:absolute;right:{w * 0.05:.0f}px;top:50%;transform:translateY(-50%);width:{text_w:.0f}px;text-align:right;
+.words{{position:absolute;right:{w * 0.05:.0f}px;top:50%;transform:translateY(-50%);width:{text_w:.0f}px;text-align:{align};
 font:800 {size:.0f}px/1.18 Kufi,sans-serif;color:{SAND};text-shadow:0 {h * 0.008:.0f}px {h * 0.03:.0f}px rgba(0,0,0,.6);
 hyphens:none;word-break:keep-all;overflow-wrap:normal}}
 .words b{{color:{GOLD};font-weight:800}}
@@ -70,8 +72,8 @@ hyphens:none;word-break:keep-all;overflow-wrap:normal}}
 border-radius:50%;overflow:hidden;border:{h * 0.012:.0f}px solid {GOLD};box-shadow:0 {h * 0.02:.0f}px {h * 0.06:.0f}px rgba(0,0,0,.55)}}
 .face img{{width:100%;height:100%;object-fit:cover}}
 </style></head><body><div class="grid"></div><div class="glow"></div>
-<div class="show" dir="rtl">{html.escape(show)}</div>{face}
-<div class="words" dir="rtl">{_accent_last(words)}</div><div class="bar"></div></body></html>"""
+<div class="show" dir="{d}">{html.escape(show)}</div>{face}
+<div class="words" dir="{d}">{_accent_last(words)}</div><div class="bar"></div></body></html>"""
 
 
 def _accent_last(words: list[str]) -> str:
@@ -104,9 +106,10 @@ def render_thumbnail(out_dir: Path, cfg: dict[str, Any], plan: dict[str, Any] | 
     if plan is None:
         p = out_dir / "plan.json"
         plan = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
-    text = str(plan.get("thumbnail_text_ar") or "").strip()
+    key = f"thumbnail_text_{cfg.get('language', 'ar')}"       # an English week takes the plan's English words
+    text = str(plan.get(key) or "").strip()
     if not text:
-        log.warning("No thumbnail_text_ar in plan.json; thumbnail not made")
+        log.warning("No %s in plan.json; thumbnail not made", key)
         return None
     face = face_still(talking_head, cfg) if (t.get("face", True) and talking_head) else None
     from pipeline.post.visual_assets import Renderer
