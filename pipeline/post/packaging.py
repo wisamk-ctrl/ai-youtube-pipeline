@@ -33,7 +33,10 @@ YOUTUBE_THUMB_MAX = 2 * 1024 * 1024        # thumbnails().set refuses files over
 
 
 def _show_name(cfg: dict[str, Any]) -> str:
-    return str(cfg.get("scripting", {}).get("channel_name") or "أسبوع الذكاء الاصطناعي")
+    from pipeline.language import ui
+    if cfg.get("language", "ar") != "ar":
+        return str(cfg.get("scripting", {}).get(f"channel_name_{cfg['language']}") or ui("show", cfg["language"]))
+    return str(cfg.get("scripting", {}).get("channel_name") or ui("show", "ar"))
 
 
 def _ff(*args: str) -> None:
@@ -120,6 +123,7 @@ def render_thumbnail(out_dir: Path, cfg: dict[str, Any], plan: dict[str, Any] | 
 def end_card_html(show: str, w: int = 1920, h: int = 1080) -> str:
     """Show name and «اشترك» in the right column; the left ~55 % stays empty for YouTube's
     end-screen elements (a video tile and the subscribe button are placed there in Studio)."""
+    from pipeline.language import ui
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}
 body{{background:radial-gradient(120% 90% at 80% 30%,#16213a 0%,{NAVY} 60%,#070b14 100%);color:{SAND};font-family:Kufi,Naskh,sans-serif}}
@@ -131,9 +135,9 @@ justify-content:center;align-items:flex-start;gap:{h * 0.045:.0f}px;text-align:r
 .bar{{width:{w * 0.08:.0f}px;height:{h * 0.008:.0f}px;background:{GOLD};border-radius:9px}}
 .sub{{font:800 {h * 0.06:.0f}px Kufi,sans-serif;color:{NAVY};background:{GOLD};padding:.18em .9em .28em;border-radius:.5em}}
 .note{{font:500 {h * 0.032:.0f}px Naskh,Kufi,sans-serif;opacity:.8}}
-</style></head><body><div class="grid"></div><div class="col" dir="rtl">
-<div class="show">{html.escape(show)}</div><div class="bar"></div><div class="sub">اشترك</div>
-<div class="note">حلقة جديدة كل أسبوع</div></div></body></html>"""
+</style></head><body><div class="grid"></div><div class="col" dir="{ui("dir")}">
+<div class="show">{html.escape(show)}</div><div class="bar"></div><div class="sub">{ui("subscribe")}</div>
+<div class="note">{ui("weekly")}</div></div></body></html>"""
 
 
 def end_card(cfg: dict[str, Any], out_dir: Path) -> Path | None:

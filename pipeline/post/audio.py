@@ -172,6 +172,8 @@ def sting_plan(cfg: dict[str, Any], script: str, srt: Path | None, video: Path, 
     """(cut time, sting video): the sting goes after the cold open, i.e. at the first [Section] after it."""
     s = cfg.get("post", {}).get("sting", {})
     path = root / s.get("path", "assets/intro_sting.mp4")
+    if cfg.get("language", "ar") != "ar":      # the sting carries the show's name: one render per language
+        path = root / s.get(f"path_{cfg['language']}", f"assets/intro_sting_{cfg['language']}.mp4")
     if not s.get("enabled") or not path.exists():
         return None
     times = section_times(script, srt, cfg["scripting"]["words_per_minute"])

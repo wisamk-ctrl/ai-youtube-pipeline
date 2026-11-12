@@ -148,6 +148,7 @@ scripting:
   stories_min: 5
   stories_max: 7
   channel_name: "أسبوع الذكاء الاصطناعي"   # spoken in the intro/outro
+  channel_name_en: "This Week in AI"      # English weeks (<week>-en): every on-screen text is English
   presenter_name: "وسام"
   # English version (phase translate → output/<week>-en). Unset model = `model` above.
   channel_name_en: "This Week in AI"
@@ -256,6 +257,7 @@ post:
   sting:
     enabled: true             # our code-rendered intro sting (sting/), spliced in after the cold open
     path: assets/intro_sting.mp4
+    path_en: assets/intro_sting_en.mp4   # sting/index.html?lang=en («This Week in AI · with Wissam»)
   end_card:                   # branded card appended to the final video (post/packaging.py); left side kept empty
     enabled: true             # for YouTube's end-screen elements (add them in Studio: a video tile + subscribe)
     seconds: 15

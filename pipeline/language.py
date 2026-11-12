@@ -28,13 +28,30 @@ def english_week(week: str) -> str:
     return week if week.endswith(EN_SUFFIX) else week + EN_SUFFIX
 
 
+# Every fixed on-screen string, per language (founder 2026-11-12: an English episode shows no Arabic).
+UI = {
+    "ar": {"show": "أسبوع الذكاء الاصطناعي", "source": "المصدر", "subscribe": "اشترك",
+           "weekly": "حلقة جديدة كل أسبوع", "disclosure": "توأم رقمي لوسام — بموافقة وسام", "dir": "rtl"},
+    "en": {"show": "This Week in AI", "source": "Source", "subscribe": "Subscribe",
+           "weekly": "A new episode every week", "disclosure": "Wissam's AI digital twin — with his consent",
+           "dir": "ltr"},
+}
+_current = "ar"
+
+
+def ui(key: str, lang: str | None = None) -> str:
+    """A fixed on-screen string in the episode's language (set by apply_language)."""
+    return UI.get(lang or _current, UI["ar"])[key]
+
+
 def apply_language(cfg: dict[str, Any], week: str) -> dict[str, Any]:
     """Set cfg['language'] for this week and, for an English week, swap in the English voice
     clone (video.heygen.voice_id_en / voice_name_en), so the paste pack, the API render and the
     voice pack all use it without each knowing about languages; scripting.words_per_minute becomes
     words_per_minute_en (English pace, for shot timings). Returns cfg (changed in place)."""
+    global _current
     lang = week_language(week)
-    cfg["language"] = lang
+    cfg["language"] = _current = lang
     s = cfg.get("scripting")
     if lang == "en" and isinstance(s, dict) and s.get("words_per_minute_en"):
         s["words_per_minute"] = s["words_per_minute_en"]

@@ -146,7 +146,9 @@ def disclosure_card(cards: list[Card], d: dict[str, Any], out_dir: Path) -> Card
         if c.at < at + secs and at < c.at + c.seconds:
             at = c.at + c.seconds + 0.5
     at = min(at, 60.0 - secs)
-    cue = Cue(kind="disclosure", text=str(d.get("text") or DISCLOSURE_TEXT), at_word=0, at_seconds=at)
+    from pipeline.language import _current, ui
+    text = str(d.get("text") or DISCLOSURE_TEXT) if _current == "ar" else str(d.get(f"text_{_current}") or ui("disclosure"))
+    cue = Cue(kind="disclosure", text=text, at_word=0, at_seconds=at)
     return Card(cue, at, secs, out_dir / "cards" / "card_00_disclosure.png")
 
 

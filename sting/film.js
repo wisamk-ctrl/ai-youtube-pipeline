@@ -7,9 +7,11 @@ const { W, H, FORMAT, E, prog, lerp, clamp, springU, springKeys, SPRING, wobble,
 // assets/brand.json — one accent.
 const C = { navy: '#0B1220', paper: '#F4F1EA', accent: '#E9B44C', muted: '#5C6B86' };
 const DISPLAY = 'Display', UI = 'UI';
-const TITLE = ['أسبوع', 'الذكاء', 'الاصطناعي'];          // reading order, right to left
-const TAGLINE = 'نشرة أسبوعية لقادة الأعمال والتقنية';
-const PRESENTER = 'مع وسام';
+// ?lang=en renders the English sting (assets/intro_sting_en.mp4): same film, read left to right.
+const EN = new URLSearchParams(location.search).get('lang') === 'en';
+const TITLE = EN ? ['This Week', 'in', 'AI'] : ['أسبوع', 'الذكاء', 'الاصطناعي'];   // reading order
+const TAGLINE = EN ? 'The weekly briefing for business and tech leaders' : 'نشرة أسبوعية لقادة الأعمال والتقنية';
+const PRESENTER = EN ? 'with Wissam' : 'مع وسام';
 
 // [beat, label, sfx, opts] — sfx.mjs voices every one of these.
 const HITS = [
@@ -40,11 +42,11 @@ function widths(ctx, words, f) {
 }
 // Right edge x of word i when the whole line is right-aligned at `right` with `gap` between words.
 const wordRight = (ws, i, right, gap) => right - ws.slice(0, i).reduce((a, b) => a + b, 0) - gap * i;
-function word(ctx, str, x, y, f, color, { sx = 1, sy = 1, alpha = 1 } = {}) {
+function word(ctx, str, x, y, f, color, { sx = 1, sy = 1, alpha = 1, left = false } = {}) {
   ctx.save();
   ctx.globalAlpha = alpha;
   ctx.translate(x, y); ctx.scale(sx, sy);
-  ctx.font = f; ctx.fillStyle = color; ctx.textAlign = 'right'; ctx.direction = 'rtl';
+  ctx.font = f; ctx.fillStyle = color; ctx.textAlign = left ? 'left' : 'right'; ctx.direction = EN ? 'ltr' : 'rtl';
   ctx.fillText(str, 0, 0);
   ctx.restore();
 }
@@ -99,10 +101,11 @@ function draw(ctx, u) {
   TITLE.forEach((w, i) => {
     const k = springU(u, starts[i], SPRING.bouncy);
     if (k <= 0) return;
-    const xr = wordRight(L.ws, i, right0, GAP);
+    // English mirrors the line: word i's right edge counted from the left, later words arrive from the right.
+    const xr = EN ? W - wordRight(L.ws, i, right0, GAP) + L.ws[i] : wordRight(L.ws, i, right0, GAP);
     let x = xr, y = lineY0, sx = 1, sy = 1;
     if (i === 0) { y = lineY0 - (1 - k) * 220; const q = 0.05 * wobble((u - 0.5) * 0.469, 2.6, 7); sx = 1 + q; sy = 1 - q; }
-    else x = xr - (1 - Math.min(k, 1)) * 360;
+    else x = xr + (EN ? 1 : -1) * (1 - Math.min(k, 1)) * 360;
     word(ctx, w, x, y, f, i === 2 ? C.accent : C.paper, { sx, sy, alpha: Math.min(1, k * 1.5) });
   });
   ctx.restore();
@@ -140,13 +143,13 @@ function draw(ctx, u) {
     const fade = 1 - E.inQuad(prog(u, 7.3, 7.8));   // gone before the lockup drops through
     const tf = font(72, 500, UI); ctx.font = tf;
     const tw = ctx.measureText(TAGLINE).width;          // centre the full line; it types on from the right
-    word(ctx, TAGLINE.slice(0, typed), W / 2 + tw / 2, H * 0.30 + 190, tf, C.paper, { alpha: fade });
+    word(ctx, TAGLINE.slice(0, typed), W / 2 + (EN ? -1 : 1) * tw / 2, H * 0.30 + 190, tf, C.paper, { alpha: fade, left: EN });
   }
 
   // --- presenter line (u 8..): small, under the underline
   const pk = springU(u, 8, SPRING.gentle);
   if (pk > 0) {
-    word(ctx, PRESENTER, lineR, lineY + 96 + (1 - pk) * 24, font(58, 500, UI), C.paper, { alpha: 0.85 * pk });
+    word(ctx, PRESENTER, EN ? lineL : lineR, lineY + 96 + (1 - pk) * 24, font(58, 500, UI), C.paper, { alpha: 0.85 * pk, left: EN });
   }
 }
 

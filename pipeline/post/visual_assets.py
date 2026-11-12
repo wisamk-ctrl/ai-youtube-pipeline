@@ -31,6 +31,7 @@ from typing import Any
 
 import requests
 
+from pipeline.language import ui
 from pipeline.models import NewsItem
 
 log = logging.getLogger(__name__)
@@ -65,7 +66,7 @@ font-family:Naskh,Kufi,sans-serif}}
 .grid{{position:absolute;inset:0;background-image:linear-gradient(rgba(244,241,234,.035) 1px,transparent 1px),
 linear-gradient(90deg,rgba(244,241,234,.035) 1px,transparent 1px);background-size:{w // 24}px {w // 24}px}}
 .tag{{position:absolute;top:{h * 0.06:.0f}px;right:{w * 0.05:.0f}px;font:600 {h * 0.026:.0f}px Kufi;color:{GOLD};letter-spacing:.02em}}
-{extra_css}</style></head><body><div class="grid"></div><div class="tag">أسبوع الذكاء الاصطناعي</div>{body}</body></html>"""
+{extra_css}</style></head><body><div class="grid"></div><div class="tag">{ui("show")}</div>{body}</body></html>"""
 
 
 def source_html(item: NewsItem, w: int, h: int) -> str:
@@ -83,7 +84,7 @@ box-shadow:0 {h * 0.03:.0f}px {h * 0.08:.0f}px rgba(0,0,0,.55)}}
     body = f"""<div class="clip"><div class="pub">{html.escape(item.source)}</div>
 <div class="hl" dir="auto">{html.escape(item.title.strip())}</div>
 <div class="meta" dir="ltr">{html.escape(" · ".join(x for x in (domain, date) if x))}</div></div>
-<div class="credit" dir="rtl">المصدر: {html.escape(item.source)}</div>"""
+<div class="credit" dir="{ui("dir")}">{ui("source")}: {html.escape(item.source)}</div>"""
     return _page(body, w, h, css)
 
 
@@ -486,7 +487,7 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                         page = title_html((item.entities[0] if item.track == "radar" and item.entities else item.title)[:80], w, h)
                     elif item is None:
                         s.notes.append(f"unknown source id {s.payload}; title card instead")
-                        page = title_html("المصدر", w, h)
+                        page = title_html(ui("source"), w, h)
                     else:
                         page = source_html(item, w, h)
                     fdir = work / f"shot_{n:03d}_frames"

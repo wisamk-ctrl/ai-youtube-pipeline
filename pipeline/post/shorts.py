@@ -32,6 +32,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
+from pipeline.language import ui
 from pipeline.post.visual_assets import GOLD, NAVY, SAND, _fonts
 from pipeline.script_format import MARKER_RE, caption_text, spoken_text, spoken_words
 
@@ -168,8 +169,8 @@ html,body{{margin:0;width:{W}px;height:{H}px;background:transparent;overflow:hid
 padding:.12em .45em .22em;border-radius:.35em;text-shadow:0 4px 18px rgba(0,0,0,.45)}}
 .bar{{width:150px;height:12px;margin:34px auto 0;background:{variant['bar']};border-radius:9px}}
 .show{{position:absolute;top:70px;left:0;right:0;text-align:center;font:600 34px Kufi,sans-serif;color:{GOLD};opacity:.9}}
-</style></head><body><div class="show" dir="rtl">أسبوع الذكاء الاصطناعي</div>
-<div class="t"><div class="p" dir="rtl">{html.escape(title)}</div><div class="bar"></div></div></body></html>"""
+</style></head><body><div class="show" dir="{ui("dir")}">{ui("show")}</div>
+<div class="t"><div class="p" dir="{ui("dir")}">{html.escape(title)}</div><div class="bar"></div></div></body></html>"""
 
 
 def end_html(show: str) -> str:

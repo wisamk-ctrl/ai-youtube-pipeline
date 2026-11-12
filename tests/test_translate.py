@@ -286,3 +286,24 @@ def test_english_claim_with_an_unsourced_figure_is_flagged():
     source_map.verify(sents, smap, [ITEM], "en")
     assert smap.sentences[0].support == "direct" and smap.sentences[1].support == "none"
 
+
+
+def test_an_english_week_shows_no_arabic_on_screen():
+    """Founder 2026-11-12: everything on screen in the English episode is English."""
+    import re
+    from pipeline import language
+    from pipeline.post import overlays, packaging, visual_assets
+    arabic = re.compile(r"[؀-ۿ]")
+    cfg = language.apply_language({"scripting": {"channel_name": "أسبوع الذكاء الاصطناعي"}, "post": {"sting": {"enabled": True}}},
+                                  "2026-W45-en")
+    try:
+        assert packaging._show_name(cfg) == "This Week in AI"
+        pages = [packaging.end_card_html(packaging._show_name(cfg)), visual_assets.title_html("OpenAI and G42", 1920, 1080)]
+        assert not any(arabic.search(re.sub(r"<style>.*?</style>", "", p, flags=re.S)) for p in pages)
+        card = overlays.disclosure_card([], {"text": "توأم رقمي لوسام — بموافقة وسام"}, Path("/tmp"))
+        assert card.cue.text == "Wissam's AI digital twin — with his consent"
+        from pipeline.post.audio import sting_plan  # noqa: F401 — the English sting file exists in the repo
+        assert (Path(__file__).resolve().parents[1] / "assets" / "intro_sting_en.mp4").exists()
+    finally:
+        language.apply_language({}, "2026-W45")
+    assert language.ui("subscribe") == "اشترك"
