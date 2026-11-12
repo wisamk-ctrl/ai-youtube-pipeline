@@ -166,6 +166,8 @@ video:
   voicefirst:                 # voice-first route (pipeline/video/voicefirst.py): speech + avatar only on the face chunks
     max_chars: 4500           # per speech call (voice chunks)
     gap_seconds: 0.25         # natural pause between chunks in narration.wav
+    tempo: 1.0                # speed of generated speech (and its face clips); the pitch is kept
+    tempo_en: 0.88            # the English clone speaks ~185 words/min; first viewers asked for slower (→ ~163)
     backdrop: "0x0B1220"      # behind the narration where no face video sits (always covered by visuals)
   own_voice:                  # the founder's own recording (pipeline/video/guided.py, ownvoice.py)
     model: large-v3-turbo     # recogniser for the edit: hears short repeats that `medium` hides
@@ -241,6 +243,10 @@ post:
     enabled: true             # [On-Screen Text] cues become lower-third cards; [Show B-Roll] cues a corner marker
     card_seconds: 6
     broll_seconds: 4
+    guide:                    # signposts for viewers who follow by reading (first viewers' feedback 2026-11-12)
+      enabled: true
+      topics: true            # each [Section] title as a corner chip for the whole section
+      questions: true         # a question asked just before a [Pause], as a lower-third
     disclosure:               # AI-twin disclosure lower-third in the first minute (review 2026-11-07, Tier 1 #11)
       enabled: true
       text: "توأم رقمي لوسام — بموافقة وسام"

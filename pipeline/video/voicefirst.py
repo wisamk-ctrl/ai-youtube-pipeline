@@ -268,6 +268,9 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
     v, vf = cfg.get("visuals", {}), _cfg(cfg)
     w, h, fps = int(v.get("width", 1920)), int(v.get("height", 1080)), int(v.get("fps", 30))
     gap = float(vf.get("gap_seconds", 0.25))
+    # Generated speech can be slowed (pitch kept); a face clip is slowed with its audio so the lips still match.
+    tempo = float(vf.get(f"tempo_{cfg.get('language', 'ar')}", vf.get("tempo", 1.0)) or 1.0)
+    tempo = tempo if 0.5 <= tempo <= 2.0 else 1.0
     work = out_dir / "assemble"
     work.mkdir(parents=True, exist_ok=True)
     wavs, faces, t = [], [], 0.0
@@ -275,7 +278,8 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
     for n, e in enumerate(entries):
         src = download(e["audio"], work / f"{e['id']}.audio")
         wav = work / f"{e['id']}.wav"
-        _run("-i", str(src), "-vn", "-ar", "48000", "-ac", "2", str(wav))
+        slow = [] if e.get("clean") or tempo == 1.0 else ["-af", f"atempo={tempo:.3f}"]   # never the founder's own read
+        _run("-i", str(src), "-vn", *slow, "-ar", "48000", "-ac", "2", str(wav))
         words = None
         if e.get("clean"):   # the founder's own read: retakes cut, pauses capped, voice polished
             wav, words = _own_read(e, wav, work, cfg, out_dir, spoken)
@@ -298,7 +302,7 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
          "-map", "[a]", "-c:a", "pcm_s16le", str(narration))
     graph = f"color=c={vf.get('backdrop', '0x0B1220')}:s={w}x{h}:r={fps}:d={total:.3f}[v0];"
     for k, (_, _, a, b) in enumerate(faces, 1):
-        graph += (f"[{k - 1}:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={fps},setsar=1,"
+        graph += (f"[{k - 1}:v]setpts=PTS/{tempo:.3f},scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={fps},setsar=1,"
                   f"tpad=stop_mode=clone:stop_duration={b - a:.3f},trim=duration={b - a:.3f},"
                   f"setpts=PTS-STARTPTS+{a:.3f}/TB[f{k}];"
                   f"[v{k - 1}][f{k}]overlay=enable='between(t,{a:.3f},{b:.3f})':eof_action=pass[v{k}];")

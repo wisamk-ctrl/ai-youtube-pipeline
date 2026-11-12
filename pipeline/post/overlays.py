@@ -27,14 +27,17 @@ from pipeline.script_format import Cue, extract_cues, spoken_text, spoken_words
 
 log = logging.getLogger(__name__)
 
-CARD_HTML = """<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8">
+CARD_HTML = """<!doctype html><html dir="{dir}"><meta charset="utf-8">
 <style>
 @font-face {{ font-family: Kufi; src: url("{font}"); }}
 html,body {{ margin:0; width:{w}px; height:{h}px; background:transparent; }}
-.card {{ position:absolute; right:96px; bottom:{bottom}px; max-width:{maxw}px; padding:22px 36px;
-  background:rgba(11,18,32,.82); border-right:10px solid #E8B24A; border-radius:8px;
+.card {{ position:absolute; {side}:96px; bottom:{bottom}px; max-width:{maxw}px; padding:22px 36px;
+  background:rgba(11,18,32,.82); border-{side}:10px solid #E8B24A; border-radius:8px;
   color:#F4F1EA; font:{size}px/1.45 Kufi, "Noto Kufi Arabic", sans-serif; }}
 .small {{ font-size:{small}px; opacity:.85; }}
+.question {{ font-weight:700; }}
+.topic {{ bottom:auto; top:{top}px; {side}:{edge}px; padding:10px 22px 12px; font-size:{chip}px; font-weight:700;
+  border-{side}-width:8px; background:rgba(11,18,32,.78); }}
 .tag {{ display:inline-block; font-size:22px; color:#0B1220; background:#E8B24A; border-radius:4px;
   padding:2px 12px; margin-bottom:10px; }}
 </style><body><div class="card {cls}">{tag}{text}</div></body></html>"""
@@ -59,11 +62,16 @@ def render_card(text: str, dest: Path, kind: str = "onscreen", width: int = 1920
     """Render one transparent PNG card with Playwright/Chromium."""
     from playwright.sync_api import sync_playwright  # lazy: only the post phase needs it
 
-    small = kind != "onscreen"
+    from pipeline.language import ui
+    rtl = ui("dir") == "rtl"
+    small = kind == "broll"
     page_html = CARD_HTML.format(
+        dir=ui("dir"), side="right" if rtl else "left",
         font=_font_path(), w=width, h=height, bottom=int(height * 0.05) if kind == "broll" else int(height * 0.28),
-        maxw=int(width * 0.62), size=int(height * 0.052), small=int(height * 0.028),
-        cls="small" if small else "", tag='<div class="tag">B-ROLL</div><br>' if kind == "broll" else "", text=html.escape(text))
+        maxw=int(width * (0.5 if kind == "topic" else 0.62)), size=int(height * 0.052), small=int(height * 0.028),
+        top=int(height * 0.055), edge=int(width * 0.04), chip=int(height * 0.03),
+        cls="small" if small else kind if kind in ("topic", "question") else "",
+        tag='<div class="tag">B-ROLL</div><br>' if kind == "broll" else "", text=html.escape(text))
     dest.parent.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
         b = p.chromium.launch(args=["--allow-file-access-from-files"])
@@ -111,6 +119,51 @@ def plan_cards(script: str, wpm: int, out_dir: Path, srt: Path | None = None,
     for n, c in enumerate(cues, 1):
         png = out_dir / "cards" / f"card_{n:02d}_{c.kind}.png"
         cards.append(Card(c, anchor(c, words, idx), card_seconds if c.kind == "onscreen" else broll_seconds, png))
+    return cards
+
+
+_QUESTION_END = ("?", "؟")
+_SENT = re.compile(r"(?<=[.!?؟…])\s+")
+
+
+def guide_cards(script: str, wpm: int, out_dir: Path, srt: Path | None, total: float,
+                o: dict[str, Any]) -> list[Card]:
+    """On-screen signposts for viewers who follow by reading (first viewers' feedback, 2026-11-12):
+
+    - topic: each [Section] title as a small chip in the top corner for the whole section (the
+      first section, the cold open, has none);
+    - question: a question the script puts just before a [Pause] («Why does this matter here?»),
+      as a lower-third while it is asked and through the pause."""
+    from pipeline.script_format import MARKER_RE, PAUSE_RE
+    words = spoken_words(spoken_text(script))
+    idx = _srt_index(srt)
+    cards: list[Card] = []
+    if o.get("topics", True):
+        secs = [c for c in extract_cues(script, wpm) if c.kind == "section"][1:]
+        times = [anchor(c, words, idx) for c in secs]
+        for n, (c, t) in enumerate(zip(secs, times)):
+            end = times[n + 1] if n + 1 < len(times) else total
+            if end - t >= 3 and c.text:
+                cards.append(Card(Cue("topic", c.text, c.at_word, t), t + 0.4, end - t - 0.8,
+                                  out_dir / "cards" / f"topic_{n + 1:02d}.png"))
+    if o.get("questions", True):
+        pos = count = n = 0
+        for m in MARKER_RE.finditer(script):
+            chunk = script[pos:m.start()]
+            before = count
+            count += len(spoken_words(chunk))
+            pos = m.end()
+            sents = [x.strip() for x in _SENT.split(chunk.strip()) if x.strip()]
+            if not sents or not PAUSE_RE.match(m.group("body").strip()) or not sents[-1].endswith(_QUESTION_END):
+                continue
+            q = sents[-1]
+            size = len(spoken_words(q))
+            if not 3 <= size <= 16:
+                continue
+            n += 1
+            cue = Cue("question", q, count - size, round((count - size) / wpm * 60, 1))
+            cards.append(Card(cue, anchor(cue, words, idx), max(3.5, size / wpm * 60 + 2.5),
+                              out_dir / "cards" / f"question_{n:02d}.png"))
     return cards
 
 
@@ -163,7 +216,18 @@ def run_overlays(video: Path, script: str, cfg: dict[str, Any], out_dir: Path, s
                        ("onscreen",) if edited else ("onscreen", "broll"))
     if skip_spans:
         cards = [c for c in cards if not any(a - 0.5 <= c.at <= b for a, b in skip_spans)]
-    d = disclosure_card(cards, o.get("disclosure", {}), out_dir)
+    g = o.get("guide", {})
+    if g.get("enabled", True):
+        from pipeline.post.edit import duration
+        guides = guide_cards(script, cfg["scripting"]["words_per_minute"], out_dir, srt, duration(video), g)
+        busy = [(c.at, c.at + c.seconds) for c in cards]
+        for c in guides:   # a question never sits on a cue card or a full-screen card; a topic chip always shows
+            if c.cue.kind == "question":
+                if any(a < c.at + c.seconds and c.at < b for a, b in busy + list(skip_spans or [])):
+                    continue
+                busy.append((c.at, c.at + c.seconds))      # nor on the question before it
+            cards.append(c)
+    d = disclosure_card([c for c in cards if c.cue.kind != "topic"], o.get("disclosure", {}), out_dir)
     if d:   # compliance: never dropped for a full-screen card
         cards = sorted(cards + [d], key=lambda c: c.at)
     for c in cards:
@@ -171,6 +235,7 @@ def run_overlays(video: Path, script: str, cfg: dict[str, Any], out_dir: Path, s
     (out_dir / "cards.json").write_text(json.dumps(
         [{"kind": c.cue.kind, "text": c.cue.text, "at": round(c.at, 2), "seconds": c.seconds, "png": c.png.name} for c in cards],
         ensure_ascii=False, indent=2), encoding="utf-8")
-    log.info("Overlaying %d cue cards (%d on-screen, %d b-roll markers)", len(cards),
-             sum(c.cue.kind == "onscreen" for c in cards), sum(c.cue.kind == "broll" for c in cards))
+    log.info("Overlaying %d cue cards (%d on-screen, %d b-roll markers, %d topic chips, %d questions)", len(cards),
+             sum(c.cue.kind == "onscreen" for c in cards), sum(c.cue.kind == "broll" for c in cards),
+             sum(c.cue.kind == "topic" for c in cards), sum(c.cue.kind == "question" for c in cards))
     return overlay(video, cards, out_dir / "with_cards.mp4")

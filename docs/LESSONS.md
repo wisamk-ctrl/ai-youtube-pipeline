@@ -119,3 +119,11 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 | Fix a sentence with a sentence | A misread no longer needs the whole take again: read the sentence into a new file, list it under `pickups:` |
 | Don't cut what is not a repeat | Words not in the script (an ad-lib «طيب يعني») stay; only repeats of the words around them are cut. `keep:` protects anything cut by mistake |
 | Where the 71 minutes went | Whisper ×2 22 min, final encode 15, visuals 11, cue-card overlay 10, edit 5, Shorts 4. Still open: one encode for overlay + captions + master instead of three |
+
+## 10. 2026-11-12 first viewers' feedback (English W45)
+| Lesson | Detail |
+|---|---|
+| Dense news needs a slower voice | The English clone read ~185 words/min; viewers asked for slower (they can speed up themselves). Generated speech is now slowed at assemble (`video.voicefirst.tempo_en: 0.88`, pitch kept, the face clip with it); the founder's own read is never touched |
+| Show the topic and the question in text | Viewers who follow by reading got lost at topic changes. Every [Section] title is a corner chip for its whole section, and a question asked just before a [Pause] is a lower-third (`post.overlays.guide`) |
+| An English episode shows no Arabic | The first English cut carried the Arabic sting, brand tag, source credit, disclosure and end card. Fixed strings now come from `pipeline/language.py` `ui()`; the sting has an English render (`assets/intro_sting_en.mp4`) |
+| The clone is an instant voice | It takes no `<break>` tags (use `[pause]`) and no `speed`; HeyGen's free Turbo model speaks it at no credit cost |

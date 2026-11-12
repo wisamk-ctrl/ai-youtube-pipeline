@@ -143,3 +143,10 @@ def test_own_voice_narration_with_optional_selfies(tmp_path, monkeypatch):
     import pytest
     with pytest.raises(ValueError):
         voicefirst.load_voice(p, [])
+
+
+def test_generated_speech_tempo_is_per_language_and_spares_the_own_read():
+    import inspect
+    src = inspect.getsource(voicefirst.assemble)
+    assert 'tempo_{cfg.get(\'language\', \'ar\')}' in src and 'e.get("clean") or tempo == 1.0' in src
+    assert "setpts=PTS/{tempo:.3f}" in src          # a face clip slows with its audio, so the lips still match

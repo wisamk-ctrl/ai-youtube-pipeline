@@ -258,3 +258,17 @@ def test_english_week_uploads_with_english_title_and_language():
     body = yu.video_body(plan, "d", cfg, datetime(2026, 11, 8, tzinfo=timezone.utc), {"en": {"title": "x"}})
     assert body["snippet"]["title"] == "AI Week: the deal" and body["snippet"]["defaultLanguage"] == "en"
     assert "localizations" not in body
+
+
+def test_guide_cards_put_topics_and_pivot_questions_on_screen(tmp_path):
+    """First viewers, 2026-11-12: show the topic and the question in text when the talk moves on."""
+    from pipeline.post import overlays
+    script = ("[Section: Opening]\n\nHello there everyone.\n\n[Pause]\n\n[Section: ADNOC and G42]\n\n"
+              "They signed a deal this week. Why does this matter for us here?\n\n[Pause]\n\nBecause it does. "
+              "Is it big? Yes it is.\n\n[Section: Wrap-up]\n\nThat is all for this week, thanks.\n")
+    cards = overlays.guide_cards(script, 150, tmp_path, None, 60.0, {})
+    topics = [c for c in cards if c.cue.kind == "topic"]
+    assert [c.cue.text for c in topics] == ["ADNOC and G42", "Wrap-up"]          # the cold open has no chip
+    assert topics[0].at + topics[0].seconds < topics[1].at and topics[1].at + topics[1].seconds <= 60
+    assert [c.cue.text for c in cards if c.cue.kind == "question"] == ["Why does this matter for us here?"]
+    assert overlays.guide_cards(script, 150, tmp_path, None, 60.0, {"topics": False, "questions": False}) == []
