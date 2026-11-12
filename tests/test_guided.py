@@ -168,3 +168,10 @@ def test_tiny_words_are_never_cut_as_repeats():
 def test_the_reading_script_is_the_text_under_its_headings():
     md = "# W45 — نص القراءة\n\n~1106 كلمة · حوالي 9 دقائق\n\n## الافتتاحية (سيلفي)\n\nأهلا فيكم.\n\n## النص\n\nخلّينا نبلّش."
     assert guided.reading_text(md) == "أهلا فيكم.\n\n\nخلّينا نبلّش."
+
+
+def test_a_word_said_out_of_order_is_kept():
+    script = "وناوية تستخدم Vera بنظام إنتاج جاي. ودايتونا شغّلت ألف بيئة"
+    heard = say("وناوية تستخدم بنظام فيرا بالانتاج الجاي ودايتونا شغلت الف بيئة")
+    plan, _, at, raw = guided.guide(script, heard, [0] * len(heard), [heard[-1].end + 1])
+    assert not plan.dropped                                   # a misread to check by ear, not a stumble to cut

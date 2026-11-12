@@ -205,8 +205,11 @@ def choose(script: list[str], heard: list[str], at: list[int | None], take: list
                 if hit is not None:
                     mine.add(x)
                     ptr = hit + 1
-            near = script[max(0, ja - 6):jb + 7]
-            pairs = [p + q for p, q in zip(near, near[1:])]
+            # A stumble repeats words that are also said properly nearby. A word whose script word
+            # nobody said is not a repeat: the speaker moved it («بنظام Vera» for «Vera بنظام»), keep it.
+            said = [j for j in range(max(0, ja - 6), min(n, jb + 7)) if j in owner]
+            near = [script[j] for j in said]
+            pairs = [script[j] + script[j + 1] for j in said if j + 1 in owner and j + 1 < n]
 
             def echo(i: int) -> bool:
                 x = run[i]
