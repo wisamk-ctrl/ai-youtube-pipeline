@@ -109,3 +109,13 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 | Phrase lists miss what the recogniser hides | The first W45 cut run listed four stumbles and cut none: CI's Whisper (medium) spelled them differently, or heard the stumble once. Now exact back-to-back repeats are cut without a list, phrases take `|` spellings and match a cut-off first saying, a stumble cut is at most 4 s, `cut:` takes time spans, and the issue report carries the timed transcript and the phrases not found |
 | One bad secret stops every Claude phase | 2026-11-11: `ANTHROPIC_API_KEY` returned 401 (invalid x-api-key), so `translate` failed while the Claude-free `assemble` passed. ingest/script/polish/translate all need it: check the key before a Saturday run |
 | Cut stumbles by time, from a strong recogniser | Even with spellings and back-to-back detection, CI's Whisper medium heard three of W45's four stumbles once. The `words` workflow (large-v3-turbo, no VAD) lists every word with its time; `cut:` spans read off it are exact. Run it first on every own-voice week, then set `cut:` before the assemble run |
+
+## 9. 2026-11-12 process review: the edit follows the script
+| Lesson | Detail |
+|---|---|
+| Compare with what was meant, not only with what was said | W45's stumbles were listed by hand over six 71-minute runs. The script is known, so `guided.py` walks the recording against it: a jump back is a retake, words repeating their neighbours between two script words are a stumble, a later file's sentence replaces the main take's. On W45's word list it found all 7 hand-found cuts, a retake nobody had heard (6:03) and a swapped name pair (8:45) |
+| One recogniser, once | Two recognisers disagreed and CI's `medium` changed its mind between runs («وشركات وشركات»). The own-voice edit uses large-v3-turbo without VAD, cached per recording file; the captions reuse those words, so the edit pays for Whisper once instead of twice (~22 min → one pass) |
+| Hear before you render | A wrong cut used to cost a full edit. Phase `voicecheck` makes only the cleaned read and its report; the video is made after the founder has heard it |
+| Fix a sentence with a sentence | A misread no longer needs the whole take again: read the sentence into a new file, list it under `pickups:` |
+| Don't cut what is not a repeat | Words not in the script (an ad-lib «طيب يعني») stay; only repeats of the words around them are cut. `keep:` protects anything cut by mistake |
+| Where the 71 minutes went | Whisper ×2 22 min, final encode 15, visuals 11, cue-card overlay 10, edit 5, Shorts 4. Still open: one encode for overlay + captions + master instead of three |

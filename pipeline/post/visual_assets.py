@@ -18,11 +18,13 @@ presenter's face (config/visual_standard.md, "Fallbacks").
 from __future__ import annotations
 
 import base64
+import hashlib
 import html
 import json
 import logging
 import os
 import re
+import shutil
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -448,6 +450,22 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
     credits: list[dict] = []
     stock_src: dict[str, tuple[Path, dict] | None] = {}
     cards_needed = any(s.mode != "face" for s in shots)   # stock needs it too, for the backdrop fallback
+    # Cards are a pure function of their page and length: a re-run with the same card (a voice fix
+    # moves only the shots near it) copies last run's clip instead of animating it again (~13 s each).
+    store, kept_keys, reused = out_dir / "card_cache", set(), 0
+
+    def cached(key_parts: tuple, make) -> Path:
+        nonlocal reused
+        key = hashlib.sha256(repr((key_parts, w, h, fps)).encode()).hexdigest()[:24]
+        hit = store / f"{key}.mp4"
+        kept_keys.add(hit.name)
+        if hit.exists() and hit.stat().st_size > 0:
+            reused += 1
+            return hit
+        made = make()
+        store.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(made, hit)
+        return made
     renderer = Renderer(w, h) if cards_needed else None
     if renderer:
         renderer.__enter__()
@@ -472,13 +490,14 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                     else:
                         page = source_html(item, w, h)
                     fdir = work / f"shot_{n:03d}_frames"
-                    count = renderer.animate(page, fdir, round(secs * fps), fps)
-                    clips[n] = card_clip(fdir, count, secs, dest, w, h, fps)
+                    clips[n] = cached(("card", page, round(secs * fps)), lambda: card_clip(
+                        fdir, renderer.animate(page, fdir, round(secs * fps), fps), secs, dest, w, h, fps))
                 elif s.kind == "number":
                     fig, _, label = s.payload.partition("|")
                     fdir = work / f"shot_{n:03d}_frames"
-                    count = renderer.count_up(fig.strip(), label.strip(), fdir, min(int(fps * 1.2), round(secs * fps)), fps)
-                    clips[n] = card_clip(fdir, count, secs, dest, w, h, fps)
+                    clips[n] = cached(("number", fig.strip(), label.strip(), round(secs * fps)), lambda: card_clip(
+                        fdir, renderer.count_up(fig.strip(), label.strip(), fdir, min(int(fps * 1.2), round(secs * fps)), fps),
+                        secs, dest, w, h, fps))
                 elif s.kind == "stock":
                     got = None
                     if search:   # fetched per shot: a repeated query gets the next unused clip, not the same one
@@ -511,7 +530,12 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
     finally:
         if renderer:
             renderer.__exit__(None, None, None)
+    if store.is_dir():      # only this run's cards travel in the artifact
+        for old in store.iterdir():
+            if old.name not in kept_keys:
+                old.unlink(missing_ok=True)
     (out_dir / "credits.json").write_text(json.dumps(credits, ensure_ascii=False, indent=2), encoding="utf-8")
+    log.info("Visuals: %d card clips reused from the last run", reused)
     log.info("Visuals: %d clips made, %d shots fell back to the face, %d stock credits",
              len(clips), sum(1 for k, s in enumerate(shots) if s.mode != "face" and k not in clips), len(credits))
     return clips, credits

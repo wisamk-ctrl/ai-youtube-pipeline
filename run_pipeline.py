@@ -349,7 +349,7 @@ def phase_voicepack(cfg: dict, out: Path) -> None:
     write_voice_pack(_directed(cfg, out, (out / "script.md").read_text(encoding="utf-8")), cfg, out)
 
 
-def phase_assemble(cfg: dict, out: Path) -> None:
+def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
     """Voice-first route, step 3: speech chunks + face videos (reviewed/<week>/voice.yaml) →
     talking_head.mp4, then post-production."""
     from pipeline.video import voicefirst
@@ -364,7 +364,15 @@ def phase_assemble(cfg: dict, out: Path) -> None:
         entries = voicefirst.load_voice(voice, chunks)
     except ValueError as exc:
         sys.exit(f"phase assemble: {exc}")
-    voicefirst.assemble(entries, cfg, out)
+    from pipeline.script_format import spoken_text
+    spoken = spoken_text((out / "script.md").read_text(encoding="utf-8"))
+    if check_only:
+        try:
+            voicefirst.voice_check(entries, cfg, out, spoken)
+        except ValueError as exc:
+            sys.exit(f"phase voicecheck: {exc}")
+        return
+    voicefirst.assemble(entries, cfg, out, spoken)
     phase_post(cfg, out, None)
 
 
@@ -399,7 +407,7 @@ def phase_publish(cfg: dict, out: Path) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "direct", "video", "import", "post", "publish",
-                                     "voicepack", "assemble", "translate", "all"])
+                                     "voicepack", "voicecheck", "assemble", "translate", "all"])
     ap.add_argument("--fixture", help="Copy fixtures/<name>/items.json into the week folder instead of ingesting (offline testing)")
     ap.add_argument("--shorts", help='Comma-separated start-end seconds for vertical cuts, e.g. "12-55,180-240"')
     ap.add_argument("--week", help="Output folder name, default: current ISO week (e.g. 2026-W41)")
@@ -447,6 +455,8 @@ def main() -> None:
         phase_direct(cfg, out)
     if args.phase == "voicepack":
         phase_voicepack(cfg, out)
+    if args.phase == "voicecheck":   # own-voice route: the cleaned read alone, before any video
+        phase_assemble(cfg, out, check_only=True)
     if args.phase == "assemble":
         phase_assemble(cfg, out)
     if args.phase == "import":

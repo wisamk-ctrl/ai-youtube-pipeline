@@ -1,4 +1,7 @@
-# Status and handoff — 2026-10-26
+# Status and handoff — 2026-11-12
+
+> Newest first: read "Own-voice route" at the end and `docs/LESSONS.md` §8–9. The corner circle and
+> the HeyGen render notes below are history; the founder reads the script himself (2026-11-08).
 
 Where the channel stands, so any new session (cloud or on the founder's computer) picks up
 here. Standards live in `CLAUDE.md`, `config/style_guide.md` and `config/visual_standard.md`.
@@ -140,3 +143,22 @@ The founder reads the script himself; no avatar, no lip-sync, no HeyGen credits.
 4. Run weekly-roundup phase `assemble`: talking head from his recording (selfie clips keep their own
    sound, so lips match; without them no face at all), then the normal edit. No speech repair runs on
    an own-voice recording.
+
+### Script-guided edit (built 2026-11-12)
+The own-voice edit now follows the approved script (`pipeline/video/guided.py`), so nobody lists stumbles by hand:
+- a sentence said again → the later saying stays; doubled words and re-spoken names are cut;
+- `pickups:` in voice.yaml = further files with sentences read again; each replaces its sentence in the main read;
+- `narration:` may be a list of files read in order; `cut:` / `keep:` spans (first file's time) override the edit;
+  `guided: false` switches it off.
+- **How to run a recording:** commit the file(s) + `reviewed/<week>/voice.yaml` → weekly-roundup phase
+  **`voicecheck`** (minutes: cleaned read + report, no video) → `preview` workflow with `what: voice` →
+  `<week>-voice.mp3` and `<week>-voice.md` on the `previews` branch → founder listens → phase `assemble`.
+- The report lists every cut and the script passages the recogniser did not find (check by ear; a real misread
+  is fixed with a pickup). W45 check: all 7 hand-found stumbles found, plus a retake at 6:03 and a swapped
+  «Blackwell Ultra / Vera Rubin» at 8:45.
+- Speed: one recogniser pass (large-v3-turbo) per recording, cached by file; captions reuse its words (no second
+  Whisper pass); card clips are reused between runs (`card_cache/`).
+- English W45: the founder reads `reviewed/2026-W45-en/read_script.md`. Before `voicecheck`, make that text the
+  week's script (commit it as `reviewed/2026-W45-en/script.md`, run `direct` for `2026-W45-en`): the edit follows
+  `output/<week>/script.md`, and `translate` wrote a different wording there.
+- `ANTHROPIC_API_KEY` replaced by the founder 2026-11-12 (translate passed).

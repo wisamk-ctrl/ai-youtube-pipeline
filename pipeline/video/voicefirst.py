@@ -146,23 +146,32 @@ def write_voice_pack(script: str, cfg: dict[str, Any], out_dir: Path) -> Path | 
 
 
 def own_voice(data: dict[str, Any]) -> list[dict[str, Any]]:
-    """The founder's own recording (founder decision 2026-11-08): `narration:` one audio file of the
-    whole read; optional `open:` / `close:` selfie videos of the opening and the sign-off, whose own
-    sound is used, so the lips always match. Without them the episode has no face at all. Drive and
-    Dropbox share links work (they are converted to direct downloads)."""
+    """The founder's own recording (founder decision 2026-11-08): `narration:` the audio of the read
+    (one link, or a list read in order); `pickups:` further files with sentences read again, which
+    replace the same sentences of the main read; optional `open:` / `close:` selfie videos of the
+    opening and the sign-off, whose own sound is used, so the lips always match. Without them the
+    episode has no face at all. `cut:` / `keep:` spans (first file's time) force or forbid a cut;
+    `guided: false` goes back to the edit that does not follow the script. Drive and Dropbox share
+    links work (they are converted to direct downloads)."""
     from pipeline.video.manual import resolve
+
+    def links(v) -> list[str]:
+        return [resolve(str(x).strip()) for x in (v if isinstance(v, list) else [v]) if str(x or "").strip()]
     out = []
     for key, role in (("open", "face"), ("narration", "voice"), ("close", "face")):
-        ref = str(data.get(key) or "").strip()
-        if not ref:
+        urls = links(data.get(key))
+        if not urls:
             if key == "narration":
                 raise ValueError("voice.yaml: `narration:` needs the link to your recording")
             continue
-        url = resolve(ref)
-        out.append({"id": key, "role": role, "text": "", "audio": url, "video": url if role == "face" else "",
-                    "duration": None, "clean": role == "voice",
-                    "cut_repeats": [str(x) for x in data.get("cut_repeats") or []] if role == "voice" else [],
-                    "cut": [str(x) for x in data.get("cut") or []] if role == "voice" else []})
+        voice = role == "voice"
+        out.append({"id": key, "role": role, "text": "", "audio": urls[0], "video": "" if voice else urls[0],
+                    "duration": None, "clean": voice,
+                    "more": urls[1:] + links(data.get("pickups")) if voice else [],
+                    "guided": bool(data.get("guided", True)),
+                    "cut_repeats": [str(x) for x in data.get("cut_repeats") or []] if voice else [],
+                    "cut": [str(x) for x in data.get("cut") or []] if voice else [],
+                    "keep": [str(x) for x in data.get("keep") or []] if voice else []})
     return out
 
 
@@ -205,7 +214,46 @@ def _duration(path: Path) -> float:
     return float(out.strip())
 
 
-def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path) -> Path:
+def _own_read(e: dict[str, Any], wav: Path, work: Path, cfg: dict[str, Any], out_dir: Path,
+              spoken: str | None) -> tuple[Path, list | None]:
+    """The founder's read, cleaned. With the script: edited by following it (words returned at
+    their new times). Without it, or with `guided: false`: retakes, repeats and given spans only."""
+    from pipeline.video import ownvoice
+    dest = work / f"{e['id']}.clean.wav"
+    if spoken and e.get("guided", True):
+        srcs = [work / f"{e['id']}.audio"] + [download(u, work / f"{e['id']}.{n}.audio")
+                                               for n, u in enumerate(e.get("more") or [], 1)]
+        wav, report, words = ownvoice.clean_guided(srcs, dest, spoken, cfg, e.get("cut"), e.get("keep"),
+                                                   cache=out_dir / "heard.json")
+    else:
+        if e.get("more"):
+            raise ValueError("voice.yaml: several files or `pickups:` need the script-guided edit (guided: true)")
+        wav, report = ownvoice.clean(wav, dest, cfg, e.get("cut_repeats"), e.get("cut"))
+        words = None
+    (out_dir / "ownvoice.md").write_text(report, encoding="utf-8")
+    return wav, words
+
+
+def voice_check(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, spoken: str) -> Path:
+    """The cleaned read alone, as voice_check.mp3 + ownvoice.md: a few minutes instead of the full
+    edit, so the founder hears the cuts before any video is made."""
+    work = out_dir / "assemble"
+    work.mkdir(parents=True, exist_ok=True)
+    e = next((x for x in entries if x.get("clean")), None)
+    if e is None:
+        raise ValueError("voice check is for the own-voice route (voice.yaml with `narration:`)")
+    src = download(e["audio"], work / f"{e['id']}.audio")
+    wav = work / f"{e['id']}.wav"
+    _run("-i", str(src), "-vn", "-ar", "48000", "-ac", "2", str(wav))
+    wav, _ = _own_read(e, wav, work, cfg, out_dir, spoken)
+    dest = out_dir / "voice_check.mp3"
+    _run("-i", str(wav), "-ac", "1", "-c:a", "libmp3lame", "-b:a", "96k", str(dest))
+    shutil.rmtree(work, ignore_errors=True)
+    log.info("Voice check → %s (%.0f s)", dest, _duration(dest))
+    return dest
+
+
+def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, spoken: str | None = None) -> Path:
     """narration.wav + talking_head.mp4 (+ face_spans.json, talking_head.source.txt) from the chunks."""
     v, vf = cfg.get("visuals", {}), _cfg(cfg)
     w, h, fps = int(v.get("width", 1920)), int(v.get("height", 1080)), int(v.get("fps", 30))
@@ -213,14 +261,18 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path) 
     work = out_dir / "assemble"
     work.mkdir(parents=True, exist_ok=True)
     wavs, faces, t = [], [], 0.0
+    known: list | None = []            # every word of the narration with its time, when all chunks know theirs
     for n, e in enumerate(entries):
         src = download(e["audio"], work / f"{e['id']}.audio")
         wav = work / f"{e['id']}.wav"
         _run("-i", str(src), "-vn", "-ar", "48000", "-ac", "2", str(wav))
+        words = None
         if e.get("clean"):   # the founder's own read: retakes cut, pauses capped, voice polished
-            from pipeline.video.ownvoice import clean
-            wav, report = clean(wav, work / f"{e['id']}.clean.wav", cfg, e.get("cut_repeats"), e.get("cut"))
-            (out_dir / "ownvoice.md").write_text(report, encoding="utf-8")
+            wav, words = _own_read(e, wav, work, cfg, out_dir, spoken)
+        if words is None:
+            known = None
+        elif known is not None:
+            known += [type(x)(round(x.start + t, 3), round(x.end + t, 3), x.word) for x in words]
         d = _duration(wav)
         if e.get("duration") and abs(d - e["duration"]) > 0.5:
             log.warning("Chunk %s is %.1fs, voice.yaml says %.1fs", e["id"], d, e["duration"])
@@ -245,6 +297,9 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path) 
          graph + f"[v{len(faces)}]format=yuv420p[v]", "-map", "[v]", "-map", f"{len(faces)}:a",
          "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-r", str(fps), "-c:a", "aac", "-b:a", "192k",
          "-t", f"{total:.3f}", "-movflags", "+faststart", str(dest))
+    if known:   # the edit already knows every word and its time: captions need no second Whisper pass
+        from pipeline.post.subtitles import remember
+        remember(dest, known)
     spans = [{"id": i, "start": a, "end": b} for i, _, a, b in faces]
     (out_dir / "face_spans.json").write_text(json.dumps(spans, indent=2), encoding="utf-8")
     (out_dir / "talking_head.source.txt").write_text(

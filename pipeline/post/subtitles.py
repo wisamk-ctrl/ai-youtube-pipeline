@@ -61,7 +61,7 @@ class Word:
 
 
 HEARD_CACHE = "heard.json"   # in the week folder, next to talking_head.mp4; travels in the artifact
-_HEARD_KEEP = 4              # entries kept (talking_head, a repaired cut, a re-import …)
+_HEARD_KEEP = 12             # entries kept (talking_head, a repaired cut, own-voice files and pickups …)
 
 
 def _sha256(path: Path) -> str:
@@ -97,8 +97,20 @@ def _cache_write(cache: Path, key: str, words: list[Word]) -> None:
         log.warning("Could not write the transcript cache %s: %s", cache, e)
 
 
+def heard_key(video: Path, model_size: str | None = None, language: str | None = None) -> str:
+    """The transcript-cache key `transcribe_words` uses for this file."""
+    from pipeline.language import week_language
+    model_size = model_size or os.environ.get("WHISPER_MODEL", "large-v3")
+    return f"{_sha256(Path(video))}:{model_size}:{language or week_language(Path(video).resolve().parent.name)}"
+
+
+def remember(video: Path, words: list[Word]) -> None:
+    """Store words already known for this file (the own-voice edit knows them), so post skips Whisper."""
+    _cache_write(Path(video).parent / HEARD_CACHE, heard_key(video), words)
+
+
 def transcribe_words(video: Path, model_size: str | None = None, cache: Path | None | bool = True,
-                     language: str | None = None) -> list[Word]:
+                     language: str | None = None, vad: bool = True, key: str | None = None) -> list[Word]:
     """Every word Whisper hears, with its own start and end time.
 
     Cached in <video folder>/heard.json, keyed by the video file's sha256, the model and the language, so a
@@ -109,7 +121,7 @@ def transcribe_words(video: Path, model_size: str | None = None, cache: Path | N
     from pipeline.language import week_language
     language = language or week_language(Path(video).resolve().parent.name)
     cache_path = (Path(video).parent / HEARD_CACHE) if cache is True else (cache or None)
-    key = f"{_sha256(Path(video))}:{model_size}:{language}" if cache_path else ""
+    key = (key or f"{_sha256(Path(video))}:{model_size}:{language}" + ("" if vad else ":novad")) if cache_path else ""
     if cache_path:
         hit = _cache_read(cache_path, key)
         if hit is not None:
@@ -119,7 +131,7 @@ def transcribe_words(video: Path, model_size: str | None = None, cache: Path | N
     from faster_whisper import WhisperModel  # imported lazily: heavy, optional
 
     model = WhisperModel(model_size, device="auto", compute_type="int8")
-    segments, info = model.transcribe(str(video), language=language, word_timestamps=True, vad_filter=True)
+    segments, info = model.transcribe(str(video), language=language, word_timestamps=True, vad_filter=vad)
     log.info("Whisper %s: language=%s p=%.2f", model_size, info.language, info.language_probability)
     words = [Word(w.start, w.end, w.word) for seg in segments for w in (seg.words or [])]
     if cache_path:

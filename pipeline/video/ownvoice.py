@@ -201,3 +201,48 @@ def clean(src: Path, dest: Path, cfg: dict[str, Any] | None = None,
               + "\n\n</details>\n")
     log.info("Own voice: %d stretches, %d retakes, %d repeats, %d spans cut", len(parts), len(drop), len(stumbles), len(spans))
     return dest, report
+
+
+def clean_guided(srcs: list[Path], dest: Path, spoken: str, cfg: dict[str, Any] | None = None,
+                 cut: list[str] | None = None, keep: list[str] | None = None,
+                 cache: Path | None = None, language: str | None = None) -> tuple[Path, str, list[Word]]:
+    """The recordings edited by following the script (pipeline/video/guided.py): retakes and
+    stumbles cut, pickups from the later files put in place, pauses capped. Returns (dest, report,
+    the kept words at their new times)."""
+    import hashlib
+
+    from pipeline.post.subtitles import _sha256
+    from pipeline.video import guided
+    o = ((cfg or {}).get("video", {}).get("own_voice") or {})
+    model = str(o.get("model", "large-v3-turbo"))
+    chain = hashlib.sha256(VOICE_CHAIN.encode()).hexdigest()[:8]
+    wavs, words, files, lengths = [], [], [], []
+    for n, src in enumerate(srcs):
+        wav = dest.with_name(f"{dest.stem}.{n}.polished.wav")
+        _ff("-i", str(src), "-af", VOICE_CHAIN, "-ar", "48000", "-ac", "2", "-c:a", "pcm_s16le", str(wav))
+        # No VAD: it hides the short repeats this edit exists to find (LESSONS section 8).
+        got = transcribe_words(wav, model, cache if cache else False, language, vad=False,
+                               key=f"{_sha256(src)}:{chain}:{model}:{language or ''}:novad")
+        wavs.append(wav)
+        lengths.append(len(guided.read_wav(wav)[0]) / 48000)
+        words += got
+        files += [n] * len(got)
+    if not words:
+        raise RuntimeError("own voice: no speech found in the recording")
+    plan, spans, at, raw = guided.guide(spoken, words, files, lengths, parse_spans(cut or []), parse_spans(keep or []),
+                                        float(o.get("max_pause", 0.5)))
+    if not spans:
+        raise RuntimeError("own voice: nothing in the recording matches the script")
+    moved = guided.render(wavs, spans, dest, words)
+    after = sum(a.b - a.a + a.pad for a in spans)
+    names = [f"file {n + 1}" for n in range(len(srcs))]
+    report = guided.report(plan, words, files, at, raw, names, sum(lengths), after)
+    lost = 1 - after / max(1.0, sum(lengths[:1]))
+    if len(srcs) == 1 and lost > float(o.get("max_cut_share", 0.2)):
+        report = (f"> ⚠️ {lost:.0%} of the recording was cut — more than a normal read loses. Listen to the voice "
+                  "check; `guided: false` in voice.yaml switches this edit off.\n\n") + report
+    for w in wavs:
+        w.unlink(missing_ok=True)
+    log.info("Own voice (guided): %d words heard, %d cuts, %d passages to check, %.0f s → %.0f s",
+             len(words), len(plan.dropped), len(plan.unheard), sum(lengths), after)
+    return dest, report, moved
