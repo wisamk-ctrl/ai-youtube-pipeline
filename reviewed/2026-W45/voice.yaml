@@ -1,14 +1,7 @@
 # Own-voice route (founder decision 2026-11-08): the founder's own read of read_script.html.
 # No selfie clips this week, so the episode has no face.
 narration: https://raw.githubusercontent.com/wisamk-ctrl/ai-youtube-pipeline/main/reviewed/2026-W45/narration.m4a
-# Stumbles, cut by recording time (word times from the `words` workflow, Whisper large-v3-turbo,
-# 2026-11-11). The phrase list missed them: CI's Whisper medium heard each one only once.
-cut_repeats: []
-cut:
-  - "0:55.60-0:56.00"   # «تاني تاني»: the first cut
-  - "2:08.90-2:10.90"   # «واللي بدوروا للحكومة واللي بوردوا للحكومة»: the misread first take cut
-  - "3:04.32-3:04.94"   # «وشركات وشركات»: the first cut (CI Whisper hears it twice only some runs)
-  - "3:38.34-3:40.56"   # «يطلعوا من اللابتوب المطور» said twice: the first saying cut
-  - "3:59.06-4:01.22"   # «Bedrock AgentCore أو AgentCore Bedrock»: «أو AgentCore Bedrock» cut
-  - "5:15.54-5:16.36"   # «Okta Cross App Access Okta Cross»: the trailing «Okta Cross» cut
-  - "5:17.76-5:27.72"   # «وكيل واحد وأداتين وأداتين … وكيل واحد وأداتين إشي»: the first take cut
+# Since 2026-11-12 the edit follows the script (pipeline/video/guided.py) and finds the stumbles
+# itself; the seven hand-listed `cut:` spans this file carried are in git history (1f46e19).
+# `cut:` / `keep:` ("m:ss-m:ss", recording time) still force or forbid a cut.
+cut: []
