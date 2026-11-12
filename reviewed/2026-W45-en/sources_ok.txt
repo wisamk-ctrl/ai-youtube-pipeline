@@ -1,0 +1,4 @@
+The two claims the English source map flags (Tencent on the radar with 6 reports; Hy4 on OpenRouter)
+are the translation of the Arabic W45 lines the founder approved (reviewed/2026-W45/sources_ok.txt,
+with the 2026-11-07 Tencent correction in repairs.yaml). Radar lines trace to the radar's own notes,
+not to a news item. Cleared for the English render on the same basis, 2026-11-12.

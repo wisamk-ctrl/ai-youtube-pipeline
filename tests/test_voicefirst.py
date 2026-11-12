@@ -60,6 +60,9 @@ def test_voice_yaml_must_match_the_pack(tmp_path):
     with pytest.raises(ValueError, match="does not match"):
         voicefirst.load_voice(p, chunks)
     p.write_text("01-face: https://r/a.mp3\n02-voice: https://r/b.mp3\n")
+    got = voicefirst.load_voice(p, chunks)          # no face video: the chunk is narration only
+    assert (got[0]["id"], got[0]["role"], got[0]["video"]) == ("01-face", "voice", "")
+    p.write_text("01-face: {audio: https://r/a.mp3, video: face.mp4}\n02-voice: https://r/b.mp3\n")
     with pytest.raises(ValueError, match="video"):
         voicefirst.load_voice(p, chunks)
 

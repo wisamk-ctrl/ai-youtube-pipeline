@@ -194,10 +194,14 @@ def load_voice(path: Path, chunks: list[dict[str, str]]) -> list[dict[str, Any]]
     for c in chunks:
         e = data[c["id"]]
         e = {"audio": e} if isinstance(e, str) else dict(e or {})
-        for k in ("audio", "video") if c["role"] == "face" else ("audio",):
-            if not str(e.get(k) or "").startswith(("http://", "https://")):
-                raise ValueError(f"{path.name}: chunk {c['id']} needs an http(s) `{k}` link")
-        out.append({**c, "audio": str(e["audio"]), "video": str(e.get("video") or ""),
+        if not str(e.get("audio") or "").startswith(("http://", "https://")):
+            raise ValueError(f"{path.name}: chunk {c['id']} needs an http(s) `audio` link")
+        video = str(e.get("video") or "")
+        if video and not video.startswith(("http://", "https://")):
+            raise ValueError(f"{path.name}: chunk {c['id']}: `video` must be an http(s) link")
+        if c["role"] == "face" and not video:   # narration only: the chunk keeps its id and is voice, no face shown
+            c = {**c, "role": "voice"}
+        out.append({**c, "audio": str(e["audio"]), "video": video if c["role"] == "face" else "",
                     "duration": float(e["duration"]) if e.get("duration") else None})
     return out
 

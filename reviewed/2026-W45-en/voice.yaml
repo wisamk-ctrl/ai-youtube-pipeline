@@ -1,0 +1,8 @@
+# English W45, narrated by HeyGen in the founder's cloned English voice (founder request 2026-11-12).
+# Speech: voice e1412c88…, free Turbo model (no credits; 20 left until the 19 Nov reset), the voice
+# pack's four chunks with each <break> written as [pause] (instant voices take no break tags).
+# No face videos: the face chunks are narration only, like the Arabic own-voice episode.
+01-face: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=763648c1ec0c4f5185ed371284ea0035.wav
+02-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=4ae35ae3202440259d646d9702eab4e3.wav
+03-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=76a4decf2543408f912e881be464d5c8.wav
+04-face: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=e218e8a98a064e18ac47b82507870d01.wav
