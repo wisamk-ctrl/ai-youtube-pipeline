@@ -366,6 +366,10 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
         sys.exit(f"phase assemble: {exc}")
     from pipeline.script_format import spoken_text
     spoken = spoken_text((out / "script.md").read_text(encoding="utf-8"))
+    read = ROOT / "reviewed" / out.name / "read_script.md"
+    if read.exists():   # the own-voice edit follows what the founder read from (names as said, no glosses)
+        from pipeline.video.guided import reading_text
+        spoken = reading_text(read.read_text(encoding="utf-8")) or spoken
     if check_only:
         try:
             voicefirst.voice_check(entries, cfg, out, spoken)

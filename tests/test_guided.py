@@ -144,3 +144,27 @@ def test_voice_yaml_takes_several_files_and_pickups():
     assert e["audio"] == "https://x/a.m4a" and e["more"] == ["https://x/b.m4a", "https://x/p.m4a"]
     assert e["guided"] is True and e["keep"] == ["1:00-1:02"]
     assert own_voice({"narration": "https://x/a.m4a", "guided": False})[0]["guided"] is False
+
+
+def test_a_name_in_either_alphabet_is_the_same_name():
+    assert guided.skeleton("اوكتا") == guided.skeleton("okta") and guided.skeleton("بدروك") == guided.skeleton("bedrock")
+    assert guided._sim("كلاود", "cloud") and guided._sim("فرتكس", "vertex") and guided._sim("سايبر", "cyber")
+    assert not guided._sim("كتاب", "cloud")
+    heard = say("خلينا نبلش من الخليج حسب رويترز ادنوك ومجموعة جي فورتي تو وقعوا صفقة مع اوبن الوكلاء الوكلاء "
+                "بلشوا يطلعوا من لابتوب المطور ويصيروا بنية تحتية الها قواعد وحوكمة امازون نشرت كيف تشغل كلود كود "
+                "على منصة بدروك اي جنت كور او اي جنت كور بدروك كل مهمة بتشتغل بجلسة معزولة")
+    plan, _, kept = run(heard)
+    assert cut_text(plan, heard)[-1].endswith("جنت كور بدروك") and kept.count("بدروك") == 1
+    assert not plan.unheard
+
+
+def test_tiny_words_are_never_cut_as_repeats():
+    script = "بتنحفظ أو لا. والمنصة داخلة بنطاق شهادات زي SOC وISO، وبتنفع تستخدمها"
+    heard = say("بتنحفظ او لا والمنصة داخلة بنطاق شهادات زي اس سوك او ايزو وبتنفع تستخدمها")
+    plan, _, at, raw = guided.guide(script, heard, [0] * len(heard), [heard[-1].end + 1])
+    assert not plan.dropped
+
+
+def test_the_reading_script_is_the_text_under_its_headings():
+    md = "# W45 — نص القراءة\n\n~1106 كلمة · حوالي 9 دقائق\n\n## الافتتاحية (سيلفي)\n\nأهلا فيكم.\n\n## النص\n\nخلّينا نبلّش."
+    assert guided.reading_text(md) == "أهلا فيكم.\n\n\nخلّينا نبلّش."

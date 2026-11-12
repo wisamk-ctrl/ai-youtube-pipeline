@@ -33,8 +33,41 @@ AHEAD = 12          # script words searched ahead of the expected one
 SENTENCE_END = (".", "؟", "?", "!", "…", ":")
 
 
+_AR = {"ب": "b", "ت": "t", "ث": "t", "ج": "j", "ح": "h", "خ": "k", "د": "d", "ذ": "d", "ر": "r", "ز": "s",
+       "س": "s", "ش": "s", "ص": "s", "ض": "d", "ط": "t", "ظ": "s", "غ": "j", "ف": "f", "ق": "k", "ك": "k",
+       "ل": "l", "م": "m", "ن": "n", "ه": "h", "ة": "", "پ": "b", "ڤ": "f", "چ": "j"}
+_LAT = {"b": "b", "c": "k", "d": "d", "f": "f", "g": "j", "h": "h", "j": "j", "k": "k", "l": "l", "m": "m",
+        "n": "n", "p": "b", "q": "k", "r": "r", "s": "s", "t": "t", "v": "f", "x": "ks", "z": "s"}
+
+
+def skeleton(word: str) -> str:
+    """Consonants only, in one alphabet: «اوكتا» and «okta» both give «kt», «بدروك» and «bedrock»
+    «bdrk». The recogniser writes an English name in either script, run to run."""
+    out = []
+    for i, ch in enumerate(word):
+        if ch == "c" and word[i + 1:i + 2] in ("e", "i", "y"):
+            c = "s"
+        else:
+            c = _AR.get(ch) or _LAT.get(ch, "")
+        for x in c:
+            if not out or out[-1] != x:
+                out.append(x)
+    return "".join(out)
+
+
+def _latin(w: str) -> bool:
+    return any("a" <= c <= "z" for c in w)
+
+
 def _ratio(a: str, b: str) -> float:
-    return 1.0 if a == b else SequenceMatcher(None, a, b).ratio()
+    if a == b:
+        return 1.0
+    r = SequenceMatcher(None, a, b).ratio()
+    if a and b and _latin(a) != _latin(b):     # one in Latin letters, one in Arabic: compare the consonants
+        x, y = skeleton(a), skeleton(b)
+        if min(len(x), len(y)) >= 2:
+            r = max(r, 1.0 if x == y else SequenceMatcher(None, x, y).ratio() * (0.9 if min(len(x), len(y)) >= 3 else 0.0))
+    return r
 
 
 def _sim(a: str, b: str) -> bool:
@@ -180,6 +213,8 @@ def choose(script: list[str], heard: list[str], at: list[int | None], take: list
                 if x in mine:
                     return False
                 h = heard[x]
+                if len(h) < 3:              # «أو», «با», spelled letters: never a repeat by themselves
+                    return False
                 if any(_sim(h, s) for s in near) or (len(h) >= 6 and any(_ratio(h, s) >= 0.8 for s in pairs)):
                     return True
                 sides = [run[i + d] for d in (-1, 1) if 0 <= i + d < len(run) and run[i + d] not in mine]
@@ -332,6 +367,19 @@ def render(wavs: list[Path], spans: list[Atom], dest: Path, words: list[Word], f
         w.setframerate(rate)
         w.writeframes(joined.tobytes())
     return moved
+
+
+def reading_text(md: str) -> str:
+    """The words of a reading script (reviewed/<week>/read_script.md): everything under its `##`
+    headings; the title, the word count and the headings themselves are not read aloud."""
+    lines, seen = [], False
+    for line in md.splitlines():
+        if line.startswith("#"):
+            seen = seen or line.startswith("## ")
+            continue
+        if seen:
+            lines.append(line)
+    return "\n".join(lines).strip()
 
 
 def script_tokens(spoken: str) -> tuple[list[str], list[str]]:
