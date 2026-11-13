@@ -294,6 +294,8 @@ publish:
   publish_hour_utc: 6         # 06:00 UTC = 10:00 Gulf
   tags: [الذكاء الاصطناعي, أخبار التقنية, AI, ChatGPT, OpenAI, Claude, Gemini, شركات, الإمارات, السعودية]
   hashtags: ["#الذكاء_الاصطناعي", "#أخبار_التقنية", "#AI"]
+  tags_en: [AI, AI news, artificial intelligence, OpenAI, Claude, Gemini, NVIDIA, AI agents, Middle East, UAE, Saudi Arabia, enterprise AI]
+  hashtags_en: ["#AI", "#AINews", "#ArtificialIntelligence"]
   caption_track: true         # upload the script-exact Arabic SRT (needs the youtube.force-ssl scope on the token)
   localizations: true         # English title/description from the plan's English fields
   show_name_en: AI Week       # used in the English title only when the plan has no episode_title_en

@@ -63,23 +63,22 @@ def _media(path: Path, mimetype: str | None = None, resumable: bool = False):
 
 
 def _status(cfg: dict[str, Any], publish_at: datetime) -> dict[str, Any]:
-    return {
-        "privacyStatus": cfg["publish"].get("privacy", "unlisted"),
-        "publishAt": publish_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "selfDeclaredMadeForKids": False,
-        "containsSyntheticMedia": True,
-    }
+    privacy = cfg["publish"].get("privacy", "unlisted")
+    out = {"privacyStatus": privacy, "selfDeclaredMadeForKids": False, "containsSyntheticMedia": True}
+    if privacy == "private":     # YouTube takes a publish time only on a private video (it goes public then)
+        out["publishAt"] = publish_at.strftime("%Y-%m-%dT%H:%M:%SZ")
+    return out
 
 
 def video_body(plan: dict[str, Any], description: str, cfg: dict[str, Any], publish_at: datetime,
-               locs: dict[str, Any] | None = None) -> dict[str, Any]:
-    lang = "en" if plan.get("language") == "en" else "ar"     # an -en week (pipeline/scripting/translate.py)
+               locs: dict[str, Any] | None = None, lang: str | None = None) -> dict[str, Any]:
+    lang = lang or ("en" if plan.get("language") == "en" else "ar")     # an -en week (pipeline/scripting/translate.py)
     title = plan.get("episode_title_en") if lang == "en" else None
     body: dict[str, Any] = {
         "snippet": {
             "title": desc.clean(title or plan["episode_title_ar"])[: desc.TITLE_LIMIT],
             "description": description,
-            "tags": cfg["publish"].get("tags", [])[:30],
+            "tags": cfg["publish"].get("tags_en" if lang == "en" else "tags", [])[:30],
             "categoryId": CATEGORY_SCIENCE_TECH,
             "defaultLanguage": lang,
             "defaultAudioLanguage": lang,
@@ -134,10 +133,12 @@ def upload(video: Path, plan: dict[str, Any], sources: list[dict[str, Any]], cfg
         from pipeline.google_auth import client  # lazy
         yt = client("youtube")
     publish_at = publish_at or next_publish_time(cfg)
-    text = description if description is not None else desc.build_description(plan, sources, cfg)
+    text = description if description is not None else desc.build_description(plan, sources, cfg, lang=language)
     locs = desc.localizations(plan, sources, cfg) if cfg["publish"].get("localizations", True) else {}
-    video_id = _insert(yt, video_body(plan, text, cfg, publish_at, locs), video)
-    log.info("Uploaded https://youtu.be/%s — scheduled for %s", video_id, publish_at.isoformat())
+    body = video_body(plan, text, cfg, publish_at, locs, language)
+    video_id = _insert(yt, body, video)
+    log.info("Uploaded https://youtu.be/%s — %s%s", video_id, body["status"]["privacyStatus"],
+             f", goes public {publish_at.isoformat()}" if "publishAt" in body["status"] else "")
     if thumbnail and thumbnail.exists():
         try:
             yt.thumbnails().set(videoId=video_id, media_body=_media(thumbnail)).execute()
@@ -148,11 +149,13 @@ def upload(video: Path, plan: dict[str, Any], sources: list[dict[str, Any]], cfg
     return video_id
 
 
-def short_description(short: dict[str, Any], episode_id: str, cfg: dict[str, Any]) -> str:
+def short_description(short: dict[str, Any], episode_id: str, cfg: dict[str, Any], lang: str = "ar") -> str:
     t = int(short.get("episode_start") or 0)
     link = f"https://youtu.be/{episode_id}" + (f"?t={t}" if t else "")
-    lines = [desc.clean(short["title"]), "", f"الحلقة الكاملة: {link}", "", desc.DISCLOSURE_AR, "",
-             " ".join(["#Shorts", *cfg["publish"].get("hashtags", [])])]
+    en = lang == "en"
+    lines = [desc.clean(short["title"]), "", f"{'Full episode' if en else 'الحلقة الكاملة'}: {link}", "",
+             desc.DISCLOSURE_EN if en else desc.DISCLOSURE_AR, "",
+             " ".join(["#Shorts", *cfg["publish"].get("hashtags_en" if en else "hashtags", [])])]
     return "\n".join(lines)[: desc.DESC_LIMIT]
 
 
@@ -169,8 +172,8 @@ def upload_shorts(out_dir: Path, episode_id: str, cfg: dict[str, Any], publish_a
         if not f.exists():
             continue
         title = f"{desc.clean(s['title'])[:90]} #Shorts"
-        body = {"snippet": {"title": title, "description": short_description(s, episode_id, cfg),
-                            "tags": cfg["publish"].get("tags", [])[:30], "categoryId": CATEGORY_SCIENCE_TECH,
+        body = {"snippet": {"title": title, "description": short_description(s, episode_id, cfg, _week_language(out_dir)),
+                            "tags": cfg["publish"].get("tags_en" if _week_language(out_dir) == "en" else "tags", [])[:30], "categoryId": CATEGORY_SCIENCE_TECH,
                             "defaultLanguage": _week_language(out_dir), "defaultAudioLanguage": _week_language(out_dir)},
                 "status": _status(cfg, publish_at)}
         vid = _insert(yt, body, f)
@@ -199,7 +202,9 @@ def run_publish(out_dir: Path, cfg: dict[str, Any], yt=None) -> str:
     script = (out_dir / "script.md").read_text(encoding="utf-8") if (out_dir / "script.md").exists() else None
     cred = out_dir / "credits.json"
     credits = json.loads(cred.read_text(encoding="utf-8")) if cred.exists() else []
-    text = desc.build_description(plan, sources, cfg, sections=sections, duration=duration, script=script, credits=credits)
+    lang = _week_language(out_dir)
+    text = desc.build_description(plan, sources, cfg, sections=sections, duration=duration, script=script,
+                                  credits=credits, lang=lang)
     (out_dir / "description.txt").write_text(text, encoding="utf-8")   # what was sent, for review
     if yt is None:
         from pipeline.google_auth import client  # lazy
@@ -209,7 +214,7 @@ def run_publish(out_dir: Path, cfg: dict[str, Any], yt=None) -> str:
     raw_srt = out_dir / "subtitles.srt"
     captions = caption_file(out_dir) if video.name.startswith("final_") else (raw_srt if raw_srt.exists() else None)
     video_id = upload(video, plan, sources, cfg, thumbnail=thumbnail_file(out_dir), publish_at=publish_at,
-                      description=text, captions=captions, language=_week_language(out_dir), yt=yt)
+                      description=text, captions=captions, language=lang, yt=yt)
     shorts = upload_shorts(out_dir, video_id, cfg, publish_at, yt)
     (out_dir / "youtube.json").write_text(json.dumps({"video_id": video_id, "url": f"https://youtu.be/{video_id}",
                                                       "shorts": shorts}, ensure_ascii=False), encoding="utf-8")

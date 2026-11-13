@@ -187,25 +187,33 @@ def _fit(head: list[str], sources: list[str], tail: list[str], limit: int = DESC
 
 def build_description(plan: dict[str, Any], sources: list[dict[str, Any]], cfg: dict[str, Any],
                       sections: list[tuple[str, float]] | None = None, duration: float | None = None,
-                      script: str | None = None, credits: list[dict[str, Any]] | None = None) -> str:
+                      script: str | None = None, credits: list[dict[str, Any]] | None = None,
+                      lang: str = "ar") -> str:
+    """The video description in the episode's own language (an English week is described in English)."""
+    en = lang == "en"
     sections = sections or []
     head = []
-    hook = hook_ar(plan, script)
+    hook = clean(plan.get("cold_open_hook_en", "")) if en else ""
+    hook = hook or hook_ar(plan, script)          # the cold open as approved, in the script's own language
     if hook:
         head += [hook, ""]
     ch = chapters(sections, duration)
-    heads = headlines_ar(plan, sections)
+    heads = [clean(x.get("headline_en", "")) for x in plan.get("segments", []) if x.get("headline_en")] if en else []
+    heads = heads or headlines_ar({} if en else plan, sections)
+    intro = "In this episode:" if en else "في هذه الحلقة:"
     if ch:
-        head += ["في هذه الحلقة:", *chapter_lines(ch), ""]
+        head += [intro, *chapter_lines(ch), ""]
     elif heads:
-        head += ["في هذه الحلقة:", *[f"• {h}" for h in heads], ""]
+        head += [intro, *[f"• {h}" for h in heads], ""]
     src = [f"- {clean(s.get('title', ''))}: {s['url']}" for s in sources]
-    src = (["المصادر:"] + src + [""]) if src else []
+    src = (["Sources:" if en else "المصادر:"] + src + [""]) if src else []
     tail = []
-    cl = credits_line(credits or [])
+    cl = credits_line(credits or [], lang)
     if cl:
         tail += [cl, ""]
-    tail += [DISCLOSURE_AR, "", " ".join(cfg.get("publish", {}).get("hashtags", []))]
+    p = cfg.get("publish", {})
+    tags = p.get("hashtags_en", ["#AI"]) if en else p.get("hashtags", [])
+    tail += [DISCLOSURE_EN if en else DISCLOSURE_AR, "", " ".join(tags)]
     return clean(_fit(head, src, tail))
 
 

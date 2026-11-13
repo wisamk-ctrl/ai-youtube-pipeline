@@ -272,3 +272,21 @@ def test_guide_cards_put_topics_and_pivot_questions_on_screen(tmp_path):
     assert topics[0].at + topics[0].seconds < topics[1].at and topics[1].at + topics[1].seconds <= 60
     assert [c.cue.text for c in cards if c.cue.kind == "question"] == ["Why does this matter for us here?"]
     assert overlays.guide_cards(script, 150, tmp_path, None, 60.0, {"topics": False, "questions": False}) == []
+
+
+def test_an_english_week_uploads_in_english_and_unlisted_has_no_publish_time():
+    import re
+    from datetime import datetime, timezone
+    from pipeline.publish import description as desc, youtube_upload as yu
+    cfg = {"publish": {"privacy": "unlisted", "tags": ["الذكاء"], "tags_en": ["AI"], "hashtags": ["#عربي"],
+                       "hashtags_en": ["#AI"]}}
+    plan = {"episode_title_en": "ADNOC and G42 Sign OpenAI Deal", "episode_title_ar": "عنوان",
+            "cold_open_hook_en": "OpenAI's Sam Altman is in the UAE."}
+    text = desc.build_description(plan, [{"title": "Reuters", "url": "https://x.y"}], cfg, lang="en")
+    assert not re.search(r"[؀-ۿ]", text) and "Sources:" in text and "#AI" in text
+    body = yu.video_body(plan, text, cfg, datetime(2026, 11, 15, tzinfo=timezone.utc), {}, "en")
+    assert body["snippet"]["title"].startswith("ADNOC") and body["snippet"]["tags"] == ["AI"]
+    assert body["snippet"]["defaultLanguage"] == "en" and "publishAt" not in body["status"]
+    cfg["publish"]["privacy"] = "private"
+    assert "publishAt" in yu.video_body(plan, text, cfg, datetime(2026, 11, 15, tzinfo=timezone.utc), {}, "en")["status"]
+    assert "Full episode" in yu.short_description({"title": "t"}, "abc", cfg, "en")
