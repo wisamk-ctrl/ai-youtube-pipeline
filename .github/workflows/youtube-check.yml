@@ -1,0 +1,46 @@
+name: youtube-check
+# Checks the YouTube sign-in (GOOGLE_CLIENT_ID/SECRET + YOUTUBE_REFRESH_TOKEN): prints the channel the
+# token uploads to and the scopes it carries. Read-only: uploads and changes nothing.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q google-api-python-client google-auth requests
+      - env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python - <<'PY'
+          import os, sys, requests
+          for k in ("GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "YOUTUBE_REFRESH_TOKEN"):
+              print(f"{k}: {'set' if os.environ.get(k) else 'MISSING'}")
+          if not all(os.environ.get(k) for k in ("GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "YOUTUBE_REFRESH_TOKEN")):
+              sys.exit("a secret is missing")
+          r = requests.post("https://oauth2.googleapis.com/token", timeout=30, data={
+              "client_id": os.environ["GOOGLE_CLIENT_ID"], "client_secret": os.environ["GOOGLE_CLIENT_SECRET"],
+              "refresh_token": os.environ["YOUTUBE_REFRESH_TOKEN"], "grant_type": "refresh_token"})
+          if r.status_code != 200:
+              sys.exit(f"token refresh failed: HTTP {r.status_code} {r.json().get('error')}: {r.json().get('error_description')}")
+          tok = r.json()
+          print("scopes:", tok.get("scope"))
+          info = requests.get("https://www.googleapis.com/youtube/v3/channels", timeout=30,
+                              params={"part": "snippet,statistics", "mine": "true"},
+                              headers={"Authorization": f"Bearer {tok['access_token']}"})
+          print("channels.list:", info.status_code)
+          for c in info.json().get("items", []):
+              print("CHANNEL:", c["snippet"]["title"], "| id", c["id"], "| videos", c["statistics"].get("videoCount"),
+                    "| subscribers", c["statistics"].get("subscriberCount"))
+          if info.status_code != 200 or not info.json().get("items"):
+              sys.exit(f"no channel: {info.text[:300]}")
+          PY
