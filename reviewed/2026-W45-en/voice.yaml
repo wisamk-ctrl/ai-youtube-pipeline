@@ -7,9 +7,10 @@
 01-face:
   audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=47cec7e223574484aaaf5d8adf928580.wav
   duration: 20.88
-  # Avatar IV, look "Professional in blue shirt", driven by that audio (HeyGen video 41ab2755…, 2026-11-12).
-  # The link is signed and stops working on 2026-11-19: re-fetch it with get_video for a later re-run.
-  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/41ab2755ac6a262d6e57778fa5f01b61.mp4?Expires=1795114467&Signature=F2N87Hk8NUgF3Ord~kXoq2LSLbtSOOevXZjLs34cJvFv~lJ5iUQEEhFgXg~WxdJO03hhyeh1~0BsLklUNZNe3kqBv8LHGCPTLqAocrOwuby1afVXM3mFciSUfrz7gpEvd1aaVRaotnzytHGBCNzIYPIs4LV4JSO07TGlOyZ0Oi25cvg7ch5Th1usH9GHYPWWx0Unb5vrEyV45OhgAjiUwpCcJdNN754dl6HRN8VVD2~JhKbRLM~jKZ4vhYbTvsdijiPJWTPUepMgZc23xOX194WQMXpjQ-7S4S-RLXflVX1-8UcnykwXisSMg1eH227A7OtuWBYrgcUEtCMGg-WF8A__&Key-Pair-Id=K38HBHX5LX3X2H"
+  # Look "Smiling person in grey hoodie" (casual, founder 2026-11-13), upright 9:16, HeyGen's default engine,
+  # driven by that audio (HeyGen video 3a8c32a4…). The edit sets it beside the opening frame.
+  # The link is signed and stops working on 2026-11-20: re-fetch it with get_video for a later re-run.
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/3a8c32a4f388d8f42a94bdf485b20bff.mp4?Expires=1795147994&Signature=KmYhCsdqAbPV2W5kTNUCNk9KmGPPy7lBOFnqNpw9phQ6jMaAERmrvd2MXSQvUX1-E0478zzYxkMNiCnNdsKbBYJwQjD9HLJRMAQzTAqstWNiI5dB9A5V8uBlNrCcyv4~TMh2fwbdCjCLN5bAAldtBX2wb0g3qLpOnxyXqsZ94yT6nxUkuXk~ncnmRHmHP1pg5yMIx7QSBpS6p7rKtiY3spvkRIrBReb9C4lkoOQQlD6EZse9DS3x8hOVAbGkIPbTknnFZVFNHQIwp0NAuBecxXVPiSSsLHMSMbWnJ9BjFtlJ58BoclJNqkK~DIEQtLvZk4-jh96jmgV4k6k1kM-auA__&Key-Pair-Id=K38HBHX5LX3X2H"
 02-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=0403a043646d49899ecb1a9ecafc91ab.wav
 03-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=76a4decf2543408f912e881be464d5c8.wav
 04-face: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=e218e8a98a064e18ac47b82507870d01.wav

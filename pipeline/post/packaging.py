@@ -122,6 +122,46 @@ def render_thumbnail(out_dir: Path, cfg: dict[str, Any], plan: dict[str, Any] | 
     return dest
 
 
+# ── Opening backdrop ────────────────────────────────────────────────────────
+def opening_backdrop_html(show: str, headline: str, line: str, clip_w: int, w: int = 1920, h: int = 1080) -> str:
+    """The frame an upright presenter clip sits in (founder 2026-11-13: the casual, natural look is an
+    upright clip): the clip fills the far side at full height, this page is everything else — the show's
+    name, the episode's two or three words, one line under them. Also the episode's landing frame."""
+    from pipeline.language import ui
+    rtl = ui("dir") == "rtl"
+    near, far = ("right", "left") if rtl else ("left", "right")
+    words = headline.split()
+    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}
+html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}
+body{{background:radial-gradient(110% 95% at {'75%' if rtl else '25%'} 30%,#1b2a4a 0%,{NAVY} 58%,#060a12 100%);color:{SAND};font-family:Kufi,Naskh,sans-serif}}
+.grid{{position:absolute;inset:0;background-image:linear-gradient(rgba(244,241,234,.04) 1px,transparent 1px),
+linear-gradient(90deg,rgba(244,241,234,.04) 1px,transparent 1px);background-size:{w // 24}px {w // 24}px}}
+.edge{{position:absolute;top:0;bottom:0;{far}:{clip_w}px;width:{w * 0.004:.0f}px;background:{GOLD}}}
+.col{{position:absolute;{near}:{w * 0.05:.0f}px;top:{h * 0.1:.0f}px;width:{w - clip_w - w * 0.1:.0f}px;text-align:{near}}}
+.show{{display:inline-block;font:800 {h * 0.034:.0f}px Kufi,sans-serif;color:{NAVY};background:{GOLD};padding:.25em .7em .35em;border-radius:.35em}}
+.words{{font:800 {h * (0.15 if len(words) <= 3 else 0.115):.0f}px/1.08 Kufi,sans-serif;margin-top:{h * 0.05:.0f}px;
+text-shadow:0 {h * 0.008:.0f}px {h * 0.03:.0f}px rgba(0,0,0,.6);hyphens:none;overflow-wrap:normal}}
+.words b{{color:{GOLD}}}
+.line{{font:600 {h * 0.036:.0f}px/1.35 Kufi,sans-serif;margin-top:{h * 0.035:.0f}px;opacity:.85}}
+</style></head><body><div class="grid"></div><div class="edge"></div>
+<div class="col" dir="{ui('dir')}"><div class="show">{html.escape(show)}</div>
+<div class="words">{_accent_last(words)}</div><div class="line">{html.escape(line)}</div></div></body></html>"""
+
+
+def opening_backdrop(out_dir: Path, cfg: dict[str, Any], clip_w: int, w: int, h: int) -> Path:
+    plan = {}
+    if (out_dir / "plan.json").exists():
+        plan = json.loads((out_dir / "plan.json").read_text(encoding="utf-8"))
+    lang = cfg.get("language", "ar")
+    headline = str(plan.get(f"thumbnail_text_{lang}") or _show_name(cfg)).strip()
+    line = str(plan.get(f"episode_title_{lang}") or "").strip()
+    from pipeline.post.visual_assets import Renderer
+    dest = out_dir / "opening_backdrop.png"
+    with Renderer(w, h) as r:
+        r.still(opening_backdrop_html(_show_name(cfg), headline, line, clip_w, w, h), dest)
+    return dest
+
+
 # ── End card ────────────────────────────────────────────────────────────────
 def end_card_html(show: str, w: int = 1920, h: int = 1080) -> str:
     """Show name and «اشترك» in the right column; the left ~55 % stays empty for YouTube's

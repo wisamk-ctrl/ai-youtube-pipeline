@@ -213,6 +213,13 @@ def _run(*args: str) -> None:
         raise RuntimeError(f"ffmpeg failed: {r.stderr[-1500:]}")
 
 
+def _size(path: Path) -> tuple[int, int]:
+    out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height",
+                          "-of", "csv=p=0:s=x", str(path)], capture_output=True, text=True, check=True).stdout
+    w, h = out.strip().split("x")[:2]
+    return int(w), int(h)
+
+
 def _duration(path: Path) -> float:
     out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
                          capture_output=True, text=True, check=True).stdout
@@ -303,16 +310,30 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
          pads + "".join(f"[a{n}]" for n in range(len(wavs))) + f"concat=n={len(wavs)}:v=0:a=1[a]",
          "-map", "[a]", "-c:a", "pcm_s16le", str(narration))
     graph = f"color=c={vf.get('backdrop', '0x0B1220')}:s={w}x{h}:r={fps}:d={total:.3f}[v0];"
-    for k, (_, _, a, b) in enumerate(faces, 1):
-        # An upright face clip in a wide frame: `top` says where the crop sits (0 = the top edge, 0.5 = the
-        # middle). The middle of an upright portrait is the chest, not the face (hoodie test, 2026-11-13).
-        graph += (f"[{k - 1}:v]setpts=PTS/{tempo:.3f},scale={w}:{h}:force_original_aspect_ratio=increase,"
-                  f"crop={w}:{h}:(iw-{w})/2:(ih-{h})*{tops[k - 1]:.3f},fps={fps},setsar=1,"
-                  f"tpad=stop_mode=clone:stop_duration={b - a:.3f},trim=duration={b - a:.3f},"
+    extra: list[str] = []          # one looped backdrop image per upright face clip, after the narration input
+    for k, (_, clip, a, b) in enumerate(faces, 1):
+        cw, ch = _size(clip)
+        if ch > cw and str(vf.get("upright_face", "side")) == "side":
+            # An upright clip keeps its whole height (the hands and shoulders are what make it look natural)
+            # on the far side of a branded frame; cropping it to the wide frame leaves a face and nothing else.
+            from pipeline.post.packaging import opening_backdrop
+            pw = int(round(cw * h / ch / 2) * 2)
+            bg = opening_backdrop(out_dir, cfg, pw, w, h)
+            idx = len(faces) + 1 + len(extra) // 4
+            extra += ["-loop", "1", "-i", str(bg)]
+            x = 0 if cfg.get("language", "ar") == "ar" else w - pw
+            graph += (f"[{idx}:v]fps={fps},scale={w}:{h},setsar=1[bg{k}];"
+                      f"[{k - 1}:v]setpts=PTS/{tempo:.3f},scale={pw}:{h},fps={fps},setsar=1[pf{k}];"
+                      f"[bg{k}][pf{k}]overlay=x={x}:y=0:shortest=1,")
+        else:
+            # `top` says where the crop sits (0 = the top edge, 0.5 = the middle).
+            graph += (f"[{k - 1}:v]setpts=PTS/{tempo:.3f},scale={w}:{h}:force_original_aspect_ratio=increase,"
+                      f"crop={w}:{h}:(iw-{w})/2:(ih-{h})*{tops[k - 1]:.3f},fps={fps},setsar=1,")
+        graph += (f"tpad=stop_mode=clone:stop_duration={b - a:.3f},trim=duration={b - a:.3f},"
                   f"setpts=PTS-STARTPTS+{a:.3f}/TB[f{k}];"
                   f"[v{k - 1}][f{k}]overlay=enable='between(t,{a:.3f},{b:.3f})':eof_action=pass[v{k}];")
     dest = out_dir / "talking_head.mp4"
-    _run(*[x for f in faces for x in ("-i", str(f[1]))], "-i", str(narration), "-filter_complex",
+    _run(*[x for f in faces for x in ("-i", str(f[1]))], "-i", str(narration), *extra, "-filter_complex",
          graph + f"[v{len(faces)}]format=yuv420p[v]", "-map", "[v]", "-map", f"{len(faces)}:a",
          "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-r", str(fps), "-c:a", "aac", "-b:a", "192k",
          "-t", f"{total:.3f}", "-movflags", "+faststart", str(dest))
