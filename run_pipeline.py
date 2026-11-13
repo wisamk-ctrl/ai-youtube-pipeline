@@ -292,6 +292,16 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4", audio=mix, insert=sting, tail=tail)
     extra = (audio.duration_of(sting[1]) if sting else 0) + (audio.duration_of(tail) if tail else 0)
     _check_length("final (programme + sting + end card)", result["final"], _dur(video) + extra)
+    up = int(cfg.get("post", {}).get("upload_height", 0) or 0)
+    if up > int(cfg.get("visuals", {}).get("height", 1080)):
+        # The file for YouTube: the finished cut scaled up (founder 2026-11-13: at least 4K). YouTube gives a
+        # 4K upload its better codec and bitrate; the detail is still what the 1080p sources hold.
+        import subprocess
+        big = out / f"final_{up}p.mp4"
+        subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(result["final"]),
+                        "-vf", f"scale=-2:{up}:flags=lanczos", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+                        "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart", str(big)], check=True)
+        _check_length(f"{up}p upload master", big, _dur(result["final"]))
     sting_span = (sting[0], audio.duration_of(sting[1])) if sting else None
     if sting:   # the captions as they sit in the final cut (for a caption-track upload)
         audio.shift_srt(result["srt"], sting[0], sting_span[1], out / "subtitles.final.srt")

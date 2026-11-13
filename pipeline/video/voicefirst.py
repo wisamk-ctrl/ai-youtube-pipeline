@@ -201,7 +201,8 @@ def load_voice(path: Path, chunks: list[dict[str, str]]) -> list[dict[str, Any]]
             raise ValueError(f"{path.name}: chunk {c['id']}: `video` must be an http(s) link")
         if c["role"] == "face" and not video:   # narration only: the chunk keeps its id and is voice, no face shown
             c = {**c, "role": "voice"}
-        out.append({**c, "audio": str(e["audio"]), "video": video if c["role"] == "face" else "",
+        out.append({**c, **({"top": float(e["top"])} if e.get("top") is not None else {}),
+                    "audio": str(e["audio"]), "video": video if c["role"] == "face" else "",
                     "duration": float(e["duration"]) if e.get("duration") else None})
     return out
 
@@ -273,7 +274,7 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
     tempo = tempo if 0.5 <= tempo <= 2.0 else 1.0
     work = out_dir / "assemble"
     work.mkdir(parents=True, exist_ok=True)
-    wavs, faces, t = [], [], 0.0
+    wavs, faces, tops, t = [], [], [], 0.0
     known: list | None = []            # every word of the narration with its time, when all chunks know theirs
     for n, e in enumerate(entries):
         src = download(e["audio"], work / f"{e['id']}.audio")
@@ -292,6 +293,7 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
             log.warning("Chunk %s is %.1fs, voice.yaml says %.1fs", e["id"], d, e["duration"])
         if e["role"] == "face":
             faces.append((e["id"], download(e["video"], work / f"{e['id']}.face.mp4"), round(t, 3), round(t + d, 3)))
+            tops.append(min(1.0, max(0.0, float(e.get("top", vf.get("face_top", 0.5))))))
         wavs.append(wav)
         t += d + (gap if n < len(entries) - 1 else 0.0)
     total = t
@@ -302,7 +304,10 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
          "-map", "[a]", "-c:a", "pcm_s16le", str(narration))
     graph = f"color=c={vf.get('backdrop', '0x0B1220')}:s={w}x{h}:r={fps}:d={total:.3f}[v0];"
     for k, (_, _, a, b) in enumerate(faces, 1):
-        graph += (f"[{k - 1}:v]setpts=PTS/{tempo:.3f},scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={fps},setsar=1,"
+        # An upright face clip in a wide frame: `top` says where the crop sits (0 = the top edge, 0.5 = the
+        # middle). The middle of an upright portrait is the chest, not the face (hoodie test, 2026-11-13).
+        graph += (f"[{k - 1}:v]setpts=PTS/{tempo:.3f},scale={w}:{h}:force_original_aspect_ratio=increase,"
+                  f"crop={w}:{h}:(iw-{w})/2:(ih-{h})*{tops[k - 1]:.3f},fps={fps},setsar=1,"
                   f"tpad=stop_mode=clone:stop_duration={b - a:.3f},trim=duration={b - a:.3f},"
                   f"setpts=PTS-STARTPTS+{a:.3f}/TB[f{k}];"
                   f"[v{k - 1}][f{k}]overlay=enable='between(t,{a:.3f},{b:.3f})':eof_action=pass[v{k}];")

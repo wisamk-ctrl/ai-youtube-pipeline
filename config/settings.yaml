@@ -165,6 +165,7 @@ video:
   voicefirst:                 # voice-first route (pipeline/video/voicefirst.py): speech + avatar only on the face chunks
     max_chars: 4500           # per speech call (voice chunks)
     gap_seconds: 0.25         # natural pause between chunks in narration.wav
+    face_top: 0.5             # where a face clip is cropped to the frame: 0 = its top edge, 0.5 = the middle
     tempo: 1.0                # speed of generated speech (and its face clips); the pitch is kept
     tempo_en: 0.88            # the English clone speaks ~185 words/min; first viewers asked for slower (→ ~163)
     backdrop: "0x0B1220"      # behind the narration where no face video sits (always covered by visuals)
@@ -235,6 +236,7 @@ visuals:
     face_top: 0.0
 
 post:
+  upload_height: 2160         # the YouTube file is the finished cut scaled to 4K (final_2160p.mp4); 0 = off
   repair:
     enabled: true             # re-voice doubled / mispronounced phrases on a finished render (post/repair.py)
     anchor_reach: 3           # words a splice may widen to reach a cleanly heard word

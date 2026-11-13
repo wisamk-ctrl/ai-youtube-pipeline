@@ -188,7 +188,8 @@ def _week_language(out_dir: Path) -> str:
 
 
 def run_publish(out_dir: Path, cfg: dict[str, Any], yt=None) -> str:
-    video = next((p for p in (out_dir / "final_subtitled.mp4", out_dir / "talking_head.mp4") if p.exists()), None)
+    masters = sorted(out_dir.glob("final_*p.mp4"), key=lambda p: int(p.stem.split("_")[1][:-1]), reverse=True)
+    video = next((p for p in (*masters, out_dir / "final_subtitled.mp4", out_dir / "talking_head.mp4") if p.exists()), None)
     if not video:
         raise FileNotFoundError("no rendered video in " + str(out_dir))
     plan = json.loads((out_dir / "plan.json").read_text(encoding="utf-8"))
@@ -206,7 +207,7 @@ def run_publish(out_dir: Path, cfg: dict[str, Any], yt=None) -> str:
     publish_at = next_publish_time(cfg)
     # The raw render has no sting, so its captions are the unshifted ones.
     raw_srt = out_dir / "subtitles.srt"
-    captions = caption_file(out_dir) if video.name == "final_subtitled.mp4" else (raw_srt if raw_srt.exists() else None)
+    captions = caption_file(out_dir) if video.name.startswith("final_") else (raw_srt if raw_srt.exists() else None)
     video_id = upload(video, plan, sources, cfg, thumbnail=thumbnail_file(out_dir), publish_at=publish_at,
                       description=text, captions=captions, language=_week_language(out_dir), yt=yt)
     shorts = upload_shorts(out_dir, video_id, cfg, publish_at, yt)
