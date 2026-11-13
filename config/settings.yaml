@@ -301,3 +301,14 @@ publish:
   show_name_en: AI Week       # used in the English title only when the plan has no episode_title_en
   shorts:
     enabled: false            # upload the week's Shorts (each linked to the episode); founder turns this on
+
+social:                       # Shorts / Reels / TikTok on the platforms' own APIs (pipeline/publish/social.py)
+  platforms: [youtube, instagram, tiktok]   # a platform without its secrets is skipped
+  days: [0, 2, 4]             # Monday, Wednesday, Friday after the episode
+  hour_utc: 15                # 19:00 Gulf
+  require_approval: true      # a week's clips wait for `social` approve <week> (the founder's OK)
+  youtube_privacy: public
+  tiktok_privacy: PUBLIC_TO_EVERYONE   # an app TikTok has not audited gets SELF_ONLY: flip each post in the app
+  instagram_api_version: v23.0
+  max_attempts: 3             # per platform, then it is marked skipped
+  hashtags_en: ["#AI", "#AINews", "#ArtificialIntelligence", "#TechNews"]

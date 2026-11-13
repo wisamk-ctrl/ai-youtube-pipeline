@@ -1,0 +1,53 @@
+name: connect
+# Connect the show's YouTube / Instagram / TikTok accounts (docs/SOCIAL.md).
+#   1. Run with platform = links → the sign-in links appear on the "Connect accounts" issue.
+#   2. Click a link, allow, copy the address your browser lands on.
+#   3. Run with platform = youtube | instagram | tiktok and paste that address as `code`.
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        type: choice
+        options: [links, youtube, instagram, tiktok]
+        default: links
+      code:
+        description: "The whole address the sign-in ended on (or just its code). Single-use, expires in minutes."
+        default: ""
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  connect:
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      INSTAGRAM_APP_ID: ${{ secrets.INSTAGRAM_APP_ID }}
+      INSTAGRAM_APP_SECRET: ${{ secrets.INSTAGRAM_APP_SECRET }}
+      TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+      TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+      SECRETS_PAT: ${{ secrets.SECRETS_PAT }}
+      SOCIAL_REDIRECT_URI: ${{ vars.SOCIAL_REDIRECT_URI }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests
+      - name: Sign-in links → the "Connect accounts" issue
+        if: inputs.platform == 'links'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/connect.py links > links.md
+          n=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "Connect accounts in:title" --json number -q '.[0].number')
+          if [ -n "$n" ]; then gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --body-file links.md; else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "Connect accounts" --body-file links.md; fi
+          echo "Links are on the Connect accounts issue: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/issues"
+      - name: Exchange the code and store the token
+        if: inputs.platform != 'links'
+        env:
+          CODE: ${{ inputs.code }}
+        run: python scripts/connect.py exchange "${{ inputs.platform }}" "$CODE"
