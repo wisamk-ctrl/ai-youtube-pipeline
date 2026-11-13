@@ -23,7 +23,8 @@ from pipeline.config import require_env
 
 SCOPES = {
     "gmail": ["https://www.googleapis.com/auth/gmail.readonly"],
-    "youtube": ["https://www.googleapis.com/auth/youtube.upload"],
+    # upload alone cannot add the caption track (captions.insert needs force-ssl), found 2026-11-13
+    "youtube": ["https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtube.force-ssl"],
 }
 TOKEN_ENV = {"gmail": "GMAIL_REFRESH_TOKEN", "youtube": "YOUTUBE_REFRESH_TOKEN"}
 
