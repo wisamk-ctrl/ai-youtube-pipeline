@@ -168,6 +168,8 @@ def test_shorts_upload_only_when_enabled(tmp_path):
     assert yt.videos.return_value.insert.call_count == 1                     # off by default
     cfg = json.loads(json.dumps(CFG))
     cfg["publish"]["shorts"] = {"enabled": True}
+    assert yu.run_publish(out, cfg, yt=yt) and yt.videos.return_value.insert.call_count == 1   # never twice a week
+    (out / "youtube.json").unlink()
     yt = _yt(("vid1", "s1"))
     yu.run_publish(out, cfg, yt=yt)
     body = yt.videos.return_value.insert.call_args_list[1].kwargs["body"]

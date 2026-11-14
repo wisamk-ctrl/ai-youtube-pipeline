@@ -19,7 +19,7 @@ on:
 
 permissions:
   contents: write
-  actions: read
+  actions: write
 
 concurrency:
   group: social-queue
@@ -90,6 +90,12 @@ jobs:
             post) python scripts/social.py post ${ONLY:+--id "$ONLY"} ;;
             *) python scripts/social.py "$ACTION" $WEEK ;;
           esac
+          # Approving a week also uploads its episode (scheduled, see publish: in settings.yaml); the upload
+          # refuses to run twice for one week.
+          if [ "$ACTION" = approve ]; then
+            gh workflow run weekly.yml --repo "$GITHUB_REPOSITORY" --ref main -f phase=publish -f week="$WEEK"
+            echo "Episode upload started for $WEEK"
+          fi
       - name: Save the queue
         if: always() && steps.due.outputs.run == 'true'
         run: |

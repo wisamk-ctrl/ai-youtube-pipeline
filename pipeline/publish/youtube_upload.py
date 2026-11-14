@@ -26,6 +26,7 @@ Quota: an upload costs ~1,600 of the default 10,000 daily units, a caption track
 from __future__ import annotations
 
 import json
+import os
 import logging
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -191,6 +192,11 @@ def _week_language(out_dir: Path) -> str:
 
 
 def run_publish(out_dir: Path, cfg: dict[str, Any], yt=None) -> str:
+    done = out_dir / "youtube.json"
+    if done.exists() and not os.environ.get("PUBLISH_AGAIN"):   # one upload per week, whatever re-runs it
+        vid = json.loads(done.read_text(encoding="utf-8"))["video_id"]
+        log.info("Already uploaded: https://youtu.be/%s (PUBLISH_AGAIN=1 uploads again)", vid)
+        return vid
     masters = sorted(out_dir.glob("final_*p.mp4"), key=lambda p: int(p.stem.split("_")[1][:-1]), reverse=True)
     video = next((p for p in (*masters, out_dir / "final_subtitled.mp4", out_dir / "talking_head.mp4") if p.exists()), None)
     if not video:

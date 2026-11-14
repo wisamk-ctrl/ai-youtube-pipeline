@@ -289,9 +289,9 @@ pricing:
 publish:
   # YouTube Data API. Needs GOOGLE_CLIENT_ID/SECRET + YOUTUBE_REFRESH_TOKEN
   # (scripts/google_authorize.py youtube). Uploads private + scheduled.
-  privacy: unlisted           # pilot: unlisted for the first 5 episodes; switch to private+scheduled or public when the pilot passes
+  privacy: private            # uploaded private and scheduled: YouTube makes it public at publish time (founder 2026-11-14)
   publish_weekday: 6          # 0=Mon … 6=Sun
-  publish_hour_utc: 6         # 06:00 UTC = 10:00 Gulf
+  publish_hour_utc: 7         # 07:00 UTC = 11:00 Gulf, the slot the founder picked for W45
   tags: [الذكاء الاصطناعي, أخبار التقنية, AI, ChatGPT, OpenAI, Claude, Gemini, شركات, الإمارات, السعودية]
   hashtags: ["#الذكاء_الاصطناعي", "#أخبار_التقنية", "#AI"]
   tags_en: [AI, AI news, artificial intelligence, OpenAI, Claude, Gemini, NVIDIA, AI agents, Middle East, UAE, Saudi Arabia, enterprise AI]
