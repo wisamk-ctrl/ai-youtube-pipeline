@@ -1,0 +1,38 @@
+name: youtube-delete
+# Deletes ONE video from the show's channel by its id (run by hand, e.g. a duplicate upload). Cannot be undone.
+on:
+  workflow_dispatch:
+    inputs:
+      video_id:
+        description: "The video id (the part after youtu.be/), e.g. byp0-wQAfLk"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          VIDEO_ID: ${{ inputs.video_id }}
+        run: |
+          python3 - <<'PY'
+          import os, sys, json, urllib.request, urllib.parse
+          tok = json.load(urllib.request.urlopen(urllib.request.Request("https://oauth2.googleapis.com/token",
+              data=urllib.parse.urlencode({"client_id": os.environ["GOOGLE_CLIENT_ID"], "client_secret": os.environ["GOOGLE_CLIENT_SECRET"],
+                    "refresh_token": os.environ["YOUTUBE_REFRESH_TOKEN"], "grant_type": "refresh_token"}).encode())))["access_token"]
+          vid = os.environ["VIDEO_ID"].strip()
+          h = {"Authorization": f"Bearer {tok}"}
+          info = json.load(urllib.request.urlopen(urllib.request.Request(
+              f"https://www.googleapis.com/youtube/v3/videos?part=snippet,status&id={urllib.parse.quote(vid)}", headers=h)))
+          if not info.get("items"):
+              sys.exit(f"no video {vid} on this channel")
+          print("Deleting:", vid, "|", info["items"][0]["snippet"]["title"], "|", info["items"][0]["status"]["privacyStatus"])
+          r = urllib.request.urlopen(urllib.request.Request(
+              f"https://www.googleapis.com/youtube/v3/videos?id={urllib.parse.quote(vid)}", headers=h, method="DELETE"))
+          print("Deleted, HTTP", r.status)
+          PY
