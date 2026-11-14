@@ -21,10 +21,10 @@ on:
   workflow_dispatch:
     inputs:
       phase:
-        description: "script (ingest+script) | ingest (sources only, no Claude) | polish (apply the last critique, re-score) | score (critic only, on reviewed/<week>/script.md if present) | video | post | publish | voicepack (voice-first speech chunks) | voicecheck (own voice: the cleaned read alone, minutes, before any video) | assemble (voice-first: reviewed/<week>/voice.yaml → edit) | translate (English version of the Arabic <week> → <week>-en; then run the other phases with week <week>-en)"
+        description: "script (ingest+script) | ingest (sources only, no Claude) | polish (apply the last critique, re-score) | score (critic only, on reviewed/<week>/script.md if present) | video | post | publish | voicepack (voice-first speech chunks) | shorts (rebuild only the vertical clips from the finished edit) | voicecheck (own voice: the cleaned read alone, minutes, before any video) | assemble (voice-first: reviewed/<week>/voice.yaml → edit) | translate (English version of the Arabic <week> → <week>-en; then run the other phases with week <week>-en)"
         default: script
         type: choice
-        options: [script, ingest, polish, score, direct, video, import, post, publish, voicepack, voicecheck, assemble, translate]
+        options: [script, ingest, polish, score, direct, video, import, post, publish, voicepack, voicecheck, assemble, shorts, translate]
       week:
         description: "Week folder, e.g. 2026-W41 (default: current ISO week)"
         default: ""
@@ -275,10 +275,10 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('requirements.lock') }}
       - name: Install ffmpeg + Arabic font (post phase)
-        if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble' || inputs.phase == 'voicecheck'
+        if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble' || inputs.phase == 'voicecheck' || inputs.phase == 'shorts'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-core
       - name: Install Chromium for the cue cards (post phase)
-        if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble'
+        if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble' || inputs.phase == 'shorts'
         run: python -m playwright install --with-deps chromium
       - name: Find the run that holds the week's artifact
         # download-artifact only sees the current run unless told which run to read;

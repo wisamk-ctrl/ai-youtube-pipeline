@@ -331,6 +331,9 @@ def stock_search(cfg: dict[str, Any]):
 # Off-brand subjects the W45 preview showed (a mermaid, strawberries, a bicycle wheel): a hit tagged
 # with any of these is dropped unless the query itself asks for it.
 OFF_TOPIC = {
+    # green-screen and social-media "subscribe / share" overlays (a chroma-key ninja reached W45's Shorts)
+    "greenscreen", "green", "chroma", "chromakey", "keying", "subscribe", "share", "like", "button", "youtube",
+    "youtuber", "instagram", "tiktok", "notification", "bell", "ninja", "cartoon",
     "mermaid", "fantasy", "fairy", "angel", "unicorn", "dragon", "witch", "magic", "princess",
     "strawberry", "strawberries", "fruit", "fruits", "food", "cake", "coffee", "drink", "cooking", "vegetable",
     "flower", "flowers", "rose", "tree", "trees", "forest", "nature", "garden", "beach", "sea", "ocean",

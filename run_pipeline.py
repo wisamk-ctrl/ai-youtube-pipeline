@@ -325,6 +325,19 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     log.info("Phase 4 done → %s (similarity %.2f, %d shorts)", result["final"], result["similarity"], len(result["shorts"]))
 
 
+def phase_shorts(cfg: dict, out: Path) -> None:
+    """Rebuild only the vertical clips from the finished edit (with_cards.mp4), minutes instead of the full edit."""
+    from pipeline.post import audio, shorts as shorts_mod
+    base, srt = out / "with_cards.mp4", out / "subtitles.srt"
+    if not base.exists():
+        sys.exit(f"{base} not found — run assemble or post first.")
+    script = (out / "script.md").read_text(encoding="utf-8")
+    sting = audio.sting_plan(cfg, script, srt if srt.exists() else None, base, ROOT)
+    span = (sting[0], audio.duration_of(sting[1])) if sting else None
+    made = shorts_mod.build(base, script, srt if srt.exists() else None, [], cfg, out, sting=span)
+    log.info("Shorts rebuilt: %d", len(made))
+
+
 def phase_import(cfg: dict, out: Path, video_ref: str | None) -> None:
     """Manual route: bring in a video rendered in HeyGen's web app, then run post-production."""
     from pipeline.video.manual import import_video
@@ -421,7 +434,7 @@ def phase_publish(cfg: dict, out: Path) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "direct", "video", "import", "post", "publish",
-                                     "voicepack", "voicecheck", "assemble", "translate", "all"])
+                                     "voicepack", "voicecheck", "assemble", "shorts", "translate", "all"])
     ap.add_argument("--fixture", help="Copy fixtures/<name>/items.json into the week folder instead of ingesting (offline testing)")
     ap.add_argument("--shorts", help='Comma-separated start-end seconds for vertical cuts, e.g. "12-55,180-240"')
     ap.add_argument("--week", help="Output folder name, default: current ISO week (e.g. 2026-W41)")
@@ -469,6 +482,8 @@ def main() -> None:
         phase_direct(cfg, out)
     if args.phase == "voicepack":
         phase_voicepack(cfg, out)
+    if args.phase == "shorts":
+        phase_shorts(cfg, out)
     if args.phase == "voicecheck":   # own-voice route: the cleaned read alone, before any video
         phase_assemble(cfg, out, check_only=True)
     if args.phase == "assemble":

@@ -36,10 +36,14 @@ def repo() -> str:
     return os.environ["GITHUB_REPOSITORY"]
 
 
-def plan(week: str) -> None:
+def plan(week: str, replan: bool = False) -> None:
     out = ROOT / "output" / week
     cfg = apply_language(load_settings(), week)
     queue = social.load_queue(QUEUE)
+    if replan:   # rebuilt clips: drop the week's entries that have not gone out anywhere yet
+        keep = [e for e in queue if e["week"] != week or any(r.get("status") == "posted" for r in e["posts"].values())]
+        print(f"replan: dropped {len(queue) - len(keep)} unposted entries of {week}")
+        queue[:] = keep
     tag = f"social-{week}"
     base = f"https://github.com/{repo()}/releases/download/{tag}"
     new = social.plan_week(out, cfg, queue, lambda name: f"{base}/{name}")
@@ -103,14 +107,14 @@ def status() -> None:
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("action", choices=["plan", "post", "approve", "status"])
+    ap.add_argument("action", choices=["plan", "replan", "post", "approve", "status"])
     ap.add_argument("week", nargs="?")
     ap.add_argument("--id")
     a = ap.parse_args()
-    if a.action in ("plan", "approve") and not a.week:
+    if a.action in ("plan", "replan", "approve") and not a.week:
         sys.exit("week required")
-    if a.action == "plan":
-        plan(a.week)
+    if a.action in ("plan", "replan"):
+        plan(a.week, a.action == "replan")
     elif a.action == "post":
         sys.exit(post(a.id))
     elif a.action == "approve":

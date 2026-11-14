@@ -31,9 +31,9 @@ def english_week(week: str) -> str:
 # Every fixed on-screen string, per language (founder 2026-11-12: an English episode shows no Arabic).
 UI = {
     "ar": {"show": "أسبوع الذكاء الاصطناعي", "source": "المصدر", "subscribe": "اشترك",
-           "weekly": "حلقة جديدة كل أسبوع", "disclosure": "توأم رقمي لوسام — بموافقة وسام", "dir": "rtl"},
+           "weekly": "حلقة جديدة كل أسبوع", "full": "الحلقة الكاملة على القناة", "disclosure": "توأم رقمي لوسام — بموافقة وسام", "dir": "rtl"},
     "en": {"show": "This Week in AI", "source": "Source", "subscribe": "Subscribe",
-           "weekly": "A new episode every week", "disclosure": "Wissam's AI digital twin — with his consent",
+           "weekly": "A new episode every week", "full": "Full episode on the channel", "disclosure": "Wissam's AI digital twin — with his consent",
            "dir": "ltr"},
 }
 _current = "ar"

@@ -180,7 +180,7 @@ body{{background:radial-gradient(120% 80% at 50% 35%,#16213a 0%,{NAVY} 60%,#070b
 display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px;font-family:Kufi,sans-serif}}
 .a{{font:800 96px/1.3 Kufi,sans-serif;text-align:center;max-width:900px}}
 .b{{font:800 54px Kufi,sans-serif;color:{NAVY};background:{GOLD};padding:.15em .8em .25em;border-radius:.5em}}
-</style></head><body dir="rtl"><div class="a">الحلقة الكاملة على القناة</div><div class="b">{html.escape(show)}</div></body></html>"""
+</style></head><body dir="{ui("dir")}"><div class="a">{ui("full")}</div><div class="b">{html.escape(show)}</div></body></html>"""
 
 
 def _short_srt(srt: Path, a: float, b: float, dest: Path) -> Path:
