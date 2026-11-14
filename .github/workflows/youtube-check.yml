@@ -47,6 +47,27 @@ jobs:
                     "| subscribers", c["statistics"].get("subscriberCount"))
           if info.status_code != 200 or not info.json().get("items"):
               sys.exit(f"no channel: {info.text[:300]}")
+          # The channel's videos (also the scheduled and private ones), newest first
+          up = info.json()["items"][0]["id"]
+          pl = requests.get("https://www.googleapis.com/youtube/v3/channels", timeout=30,
+                            params={"part": "contentDetails", "mine": "true"},
+                            headers={"Authorization": f"Bearer {tok['access_token']}"}).json()["items"][0]
+          uploads = pl["contentDetails"]["relatedPlaylists"]["uploads"]
+          items = requests.get("https://www.googleapis.com/youtube/v3/playlistItems", timeout=30,
+                               params={"part": "contentDetails", "playlistId": uploads, "maxResults": 20},
+                               headers={"Authorization": f"Bearer {tok['access_token']}"}).json().get("items", [])
+          ids = ",".join(i["contentDetails"]["videoId"] for i in items)
+          if ids:
+              vids = requests.get("https://www.googleapis.com/youtube/v3/videos", timeout=30,
+                                  params={"part": "snippet,status,contentDetails", "id": ids},
+                                  headers={"Authorization": f"Bearer {tok['access_token']}"}).json().get("items", [])
+              for v in vids:
+                  st = v["status"]
+                  print("VIDEO:", v["id"], "|", v["snippet"]["title"][:70], "|", st.get("privacyStatus"),
+                        "| goes public", st.get("publishAt", "-"), "|", v["contentDetails"].get("duration"),
+                        "| uploaded", v["snippet"].get("publishedAt"))
+          else:
+              print("VIDEO: none")
           # Backup of the channel's look and text (title, handle, description, keywords, picture, banner).
           import json, pathlib
           full = requests.get("https://www.googleapis.com/youtube/v3/channels", timeout=30,
