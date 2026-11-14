@@ -257,8 +257,18 @@ def test_gate_blocks_unsourced_unless_overridden(tmp_path, monkeypatch):
     assert source_map.gate(out, root=tmp_path)[0]
     monkeypatch.delenv("SOURCES_OVERRIDE")
     (tmp_path / "reviewed" / "2026-W46").mkdir(parents=True)
-    (tmp_path / "reviewed" / "2026-W46" / "sources_ok.txt").write_text("checked by hand", encoding="utf-8")
+    note = tmp_path / "reviewed" / "2026-W46" / "sources_ok.txt"
+    note.write_text("checked by hand", encoding="utf-8")
+    ok, msg = source_map.gate(out, root=tmp_path)
+    assert not ok and "(3)" in msg                                     # a blanket note no longer clears a week
+    note.write_text("(3) Mistral headcount: removed from the script, re-scored", encoding="utf-8")
     assert source_map.gate(out, root=tmp_path)[0]
+    old = tmp_path / "output" / "2026-W45"
+    old.mkdir()
+    (old / "source_map.md").write_text((out / "source_map.md").read_text(encoding="utf-8"), encoding="utf-8")
+    (tmp_path / "reviewed" / "2026-W45").mkdir()
+    (tmp_path / "reviewed" / "2026-W45" / "sources_ok.txt").write_text("checked", encoding="utf-8")
+    assert source_map.gate(old, root=tmp_path)[0]                      # weeks before W46 keep their notes
 
 
 def test_phase_video_and_import_refuse_on_unsourced(tmp_path, monkeypatch):

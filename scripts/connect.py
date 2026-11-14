@@ -19,7 +19,8 @@ import requests
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from pipeline.publish.social import store_secret  # noqa: E402
 
-GOOGLE_SCOPES = "https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.force-ssl"
+GOOGLE_SCOPES = ("https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.force-ssl "
+                 "https://www.googleapis.com/auth/yt-analytics.readonly")   # analytics: watch time in the weekly report
 GOOGLE_REDIRECT = "http://localhost"   # the browser shows "can't connect"; the code is in its address bar
 IG_SCOPES = "instagram_business_basic,instagram_business_content_publish"
 TT_SCOPES = "user.info.basic,video.publish,video.upload"

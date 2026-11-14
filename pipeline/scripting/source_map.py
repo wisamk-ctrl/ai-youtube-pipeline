@@ -386,6 +386,11 @@ def unsourced_in_md(md: str) -> tuple[int, list[str]]:
     return count, [ln for ln in section.splitlines() if ln.startswith("- ")]
 
 
+def _before_strict(week: str, first: str = "2026-W46") -> bool:
+    m = re.match(r"(\d{4})-W(\d{2})", week)
+    return bool(m) and (int(m.group(1)), int(m.group(2))) < (int(first[:4]), int(first[6:8]))
+
+
 def gate(out: Path, root: Path | None = None) -> tuple[bool, str]:
     """May this week be rendered / imported? (ok, message).
 
@@ -400,9 +405,19 @@ def gate(out: Path, root: Path | None = None) -> tuple[bool, str]:
     if count == 0:
         return True, "every claim traced to a source"
     override = (root or ROOT) / "reviewed" / out.name / "sources_ok.txt"
-    if os.environ.get("SOURCES_OVERRIDE") == "1" or override.exists():
-        why = "SOURCES_OVERRIDE=1" if os.environ.get("SOURCES_OVERRIDE") == "1" else str(override)
-        return True, f"{count} unsourced claim(s), overridden by {why}"
+    if os.environ.get("SOURCES_OVERRIDE") == "1":
+        return True, f"{count} unsourced claim(s), overridden by SOURCES_OVERRIDE=1"
+    if override.exists():
+        # Strict from 2026-W46 (founder 2026-11-14: the fact gate is the show's credibility): the editor's
+        # note must answer every flagged claim by its number, e.g. "(87) radar note, checked: …".
+        # A blanket "checked" no longer clears a week; earlier weeks keep their notes as written.
+        note = override.read_text(encoding="utf-8")
+        nums = [m.group(1) for ln in lines if (m := re.match(r"- \((\d+)\)", ln))]
+        missing = [n for n in nums if f"({n})" not in note]
+        if not missing or _before_strict(out.name):
+            return True, f"{count} unsourced claim(s), each answered in {override}"
+        return False, (f"Refusing: {override} does not answer claim(s) {', '.join('(' + n + ')' for n in missing)}. "
+                       "Write one line per flagged claim, starting with its number, saying how it was checked.")
     msg = "\n".join([f"Refusing: {count} unsourced claim(s) in {path}:", *lines,
                       f"Fix the script (then re-run phase score), or after checking each claim create {override} "
                       "or set SOURCES_OVERRIDE=1."])
