@@ -1,0 +1,41 @@
+{
+  "kind": "youtube#channel",
+  "etag": "fFw_DQwhxMVHI0NMFul-qCxgFO4",
+  "id": "UCjSni6rUvhyuXCCU0-s_i5w",
+  "snippet": {
+    "title": "AI This Week",
+    "description": "AI news that matters — and why it matters to you.\n\nEvery Sunday we cover the week's biggest AI developments worldwide, with a special focus on the Middle East: model launches, investment, regulation and how organisations are putting AI to work. We don't just report what happened; we explain why it's important and what it means for your work, your business and your region.\n\nThe twist: your presenter is an AI. Wissam Kishek, an enterprise technology executive with 20+ years across the Middle East and Africa, cloned himself to brief you every week. His digital twin's video and voice are AI-generated; the editorial choices are his. \n\nRecurring segment — From the Region: one country, one AI development, and what it means.\n\nNew episode every Sunday, 8:00 AM Gulf time.\n",
+    "customUrl": "@aithisweekshow",
+    "publishedAt": "2012-01-27T05:09:39Z",
+    "thumbnails": {
+      "default": {
+        "url": "https://yt3.ggpht.com/5SP9BXh2odn0SO8sSwxA1D9CuPLlYzZ8bvtq1b926DSB_jTRRYCCFCm-d1QXXk_qZWJ2NgeNZtg=s88-c-k-c0x00ffffff-no-rj",
+        "width": 88,
+        "height": 88
+      },
+      "medium": {
+        "url": "https://yt3.ggpht.com/5SP9BXh2odn0SO8sSwxA1D9CuPLlYzZ8bvtq1b926DSB_jTRRYCCFCm-d1QXXk_qZWJ2NgeNZtg=s240-c-k-c0x00ffffff-no-rj",
+        "width": 240,
+        "height": 240
+      },
+      "high": {
+        "url": "https://yt3.ggpht.com/5SP9BXh2odn0SO8sSwxA1D9CuPLlYzZ8bvtq1b926DSB_jTRRYCCFCm-d1QXXk_qZWJ2NgeNZtg=s800-c-k-c0x00ffffff-no-rj",
+        "width": 800,
+        "height": 800
+      }
+    },
+    "localized": {
+      "title": "AI This Week",
+      "description": "AI news that matters — and why it matters to you.\n\nEvery Sunday we cover the week's biggest AI developments worldwide, with a special focus on the Middle East: model launches, investment, regulation and how organisations are putting AI to work. We don't just report what happened; we explain why it's important and what it means for your work, your business and your region.\n\nThe twist: your presenter is an AI. Wissam Kishek, an enterprise technology executive with 20+ years across the Middle East and Africa, cloned himself to brief you every week. His digital twin's video and voice are AI-generated; the editorial choices are his. \n\nRecurring segment — From the Region: one country, one AI development, and what it means.\n\nNew episode every Sunday, 8:00 AM Gulf time.\n"
+    }
+  },
+  "brandingSettings": {
+    "channel": {
+      "title": "AI This Week",
+      "description": "AI news that matters — and why it matters to you.\n\nEvery Sunday we cover the week's biggest AI developments worldwide, with a special focus on the Middle East: model launches, investment, regulation and how organisations are putting AI to work. We don't just report what happened; we explain why it's important and what it means for your work, your business and your region.\n\nThe twist: your presenter is an AI. Wissam Kishek, an enterprise technology executive with 20+ years across the Middle East and Africa, cloned himself to brief you every week. His digital twin's video and voice are AI-generated; the editorial choices are his. \n\nRecurring segment — From the Region: one country, one AI development, and what it means.\n\nNew episode every Sunday, 8:00 AM Gulf time.\n"
+    },
+    "image": {
+      "bannerExternalUrl": "https://yt3.googleusercontent.com/ZlHKHdiD2lH0zUPdsZ9oIn-GmnLzJcaJVR1Lg8Lz_c-_hLhIi7i2YjJJCY0dfPEbFftT1Gqt"
+    }
+  }
+}

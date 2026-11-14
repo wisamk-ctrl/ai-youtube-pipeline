@@ -1,0 +1,171 @@
+[
+  {
+    "scores": {
+      "hook": 10,
+      "clarity": 8,
+      "pacing": 8,
+      "flow": 10,
+      "arabic": 10,
+      "value": 9
+    },
+    "minimum": 8,
+    "verdict": "Sourced and cautious, with a clean hook, but the agents section is an unbroken wall of AWS jargon that needs pauses and plain-English glosses before we record.",
+    "defects": [
+      {
+        "axis": "hook",
+        "severity": "minor",
+        "rule": "Hook carries more than one story",
+        "quote": "That same week, OpenAI is launching a model"
+      },
+      {
+        "axis": "hook",
+        "severity": "minor",
+        "rule": "Hook exceeds 45 words",
+        "quote": "So what does this mean for companies here?"
+      },
+      {
+        "axis": "clarity",
+        "severity": "major",
+        "rule": "Sentence carrying three or more figures",
+        "quote": "1,000 isolated sandboxes in 10.8 seconds, versus 88.4 seconds"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Technical term not explained in same sentence",
+        "quote": "temporary IAM permissions, private connectivity through PrivateLink"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Technical term not explained in same sentence",
+        "quote": "Cedar policies in one place, at the gateway"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Technical term not explained in same sentence",
+        "quote": "through on-behalf-of token exchange"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Technical term not explained in same sentence",
+        "quote": "There are also new fields in OTel metrics"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Technical term not explained in same sentence",
+        "quote": "HBM capacity per GPU went up by about"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Technical term not explained in same sentence",
+        "quote": "in scope for certifications like SOC and ISO"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Sentence over 25 words",
+        "quote": "how much work do you get out of the same memory"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "Because OpenAI is tying itself, for years, to ADNOC"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "Now let's change pace a little, from deals"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "There are temporary IAM permissions, private connectivity"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "In another post, AWS explained how AgentCore Gateway works"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "Because without it, the request arrives under the app's name"
+      },
+      {
+        "axis": "pacing",
+        "severity": "minor",
+        "rule": "Three consecutive sentences over 20 words",
+        "quote": "The idea is simple: one agent and two tools"
+      },
+      {
+        "axis": "flow",
+        "severity": "minor",
+        "rule": "New story starts with no spoken signpost",
+        "quote": "And Anthropic released Claude Code version 2.1.317."
+      },
+      {
+        "axis": "value",
+        "severity": "minor",
+        "rule": "Story never says why it matters",
+        "quote": "TII in the UAE and Naval Group have partnered"
+      },
+      {
+        "axis": "value",
+        "severity": "minor",
+        "rule": "Story never says why it matters",
+        "quote": "launched the BAREC 2.0 project, a corpus"
+      },
+      {
+        "axis": "value",
+        "severity": "minor",
+        "rule": "Story never says why it matters",
+        "quote": "OpenAI released Codex update 0.167.0"
+      },
+      {
+        "axis": "value",
+        "severity": "minor",
+        "rule": "Story never says why it matters",
+        "quote": "held an \"AI for Impact\" event"
+      }
+    ],
+    "worst_three": [
+      {
+        "where": "There are temporary IAM permissions",
+        "problem": "The listener gets around 100 words of AWS security features with no breath, and loses the thread before the gateway story even starts.",
+        "fix": "Insert [Pause] after 'audit logs in CloudTrail.' and again after 'with the model providers.' Then add a spoken signpost before the gateway part: '[Pause] Second AWS post, and this one is about scale.' Also add [Pause] after 'something else.' and after 'unless there's a permission.'"
+      },
+      {
+        "where": "Daytona launched 1,000 isolated sandboxes",
+        "problem": "Three numbers land in one breath, so the listener can't hold which is fast and which is slow.",
+        "fix": "Split it into two sentences: 'And Daytona started a thousand isolated sandboxes. [Pause] On Vera that took 10.8 seconds. [Pause] On x86, 88.4 seconds.'"
+      },
+      {
+        "where": "temporary IAM permissions, private connectivity",
+        "problem": "Three AWS product names in a row mean nothing to the leaders and the general audience, so most listeners tune out.",
+        "fix": "Lead with plain meaning: 'On security, the agent only gets access for as long as the task runs. Its traffic never touches the public internet. And everything it does is logged for audit. [Pause] For the techies: that's temporary IAM roles, PrivateLink and CloudTrail.' Do the same for Cedar ('a single rulebook at the gateway'), on-behalf-of ('the agent acts under your name') and OTel ('standard monitoring data')."
+      }
+    ],
+    "samples": [
+      {
+        "hook": 10,
+        "clarity": 8,
+        "pacing": 8,
+        "flow": 10,
+        "arabic": 10,
+        "value": 9
+      }
+    ],
+    "stable": true,
+    "language": "en"
+  }
+]
