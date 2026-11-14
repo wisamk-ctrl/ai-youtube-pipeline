@@ -135,3 +135,54 @@ def test_connect_reads_the_code_from_a_pasted_address():
     assert connect.code_of("http://localhost/?state=x&code=4/0Ab-c_d&scope=a") == "4/0Ab-c_d"
     assert connect.code_of("https://github.com/o/r?code=AQB12#_") == "AQB12"
     assert connect.code_of("  plaincode ") == "plaincode"
+
+
+class Hdr(Resp):
+    def __init__(self, data, status=200, headers=None):
+        super().__init__(data, status)
+        self.headers = headers or {}
+
+
+def test_linkedin_uploads_in_parts_waits_for_processing_then_posts(tmp_path):
+    f = tmp_path / "v.mp4"
+    f.write_bytes(b"y" * 30)
+    calls = []
+
+    class Http:
+        status = [{"status": "PROCESSING"}, {"status": "AVAILABLE"}]
+
+        def get(self, url, **kw):
+            calls.append(("GET", url))
+            return Hdr({"sub": "abc"}) if url.endswith("/v2/userinfo") else Hdr(self.status.pop(0))
+
+        def post(self, url, **kw):
+            calls.append(("POST", url, kw.get("json")))
+            if "initializeUpload" in url:
+                return Hdr({"value": {"video": "urn:li:video:V", "uploadToken": "",
+                                      "uploadInstructions": [{"uploadUrl": "https://up/1", "firstByte": 0, "lastByte": 19},
+                                                             {"uploadUrl": "https://up/2", "firstByte": 20, "lastByte": 29}]}})
+            if "finalizeUpload" in url:
+                return Hdr({})
+            return Hdr({}, 201, {"x-restli-id": "urn:li:share:9"})
+
+        def put(self, url, **kw):
+            calls.append(("PUT", url, len(kw["data"])))
+            return Hdr({}, 200, {"ETag": f"etag-{url[-1]}"})
+    res = social.LinkedIn("tok", http=Http(), sleep=lambda s: None).post_video(f, "text", "Title")
+    assert res["url"] == "https://www.linkedin.com/feed/update/urn:li:share:9"
+    assert [c[2] for c in calls if c[0] == "PUT"] == [20, 10]
+    final = next(c[2] for c in calls if c[0] == "POST" and "finalizeUpload" in c[1])
+    assert final["finalizeUploadRequest"]["uploadedPartIds"] == ["etag-1", "etag-2"]
+    post = next(c[2] for c in calls if c[0] == "POST" and c[1].endswith("/rest/posts"))
+    assert post["author"] == "urn:li:person:abc" and post["content"]["media"]["id"] == "urn:li:video:V"
+
+
+def test_linkedin_caption_links_the_channel_and_keeps_few_tags(tmp_path):
+    cfg = {"publish": {"hashtags_en": ["#A", "#B", "#C", "#D", "#E", "#F"]},
+           "social": {"channel_url": "https://www.youtube.com/@aithisweekshow",
+                      "platforms": ["linkedin", "tiktok"], "require_approval": True}}
+    q = []
+    social.plan_week(week(tmp_path, 1), cfg, q, lambda f: f, datetime(2026, 11, 15, tzinfo=timezone.utc))
+    li, tt = q[0]["captions"]["linkedin"], q[0]["captions"]["tiktok"]
+    assert "Full episode: https://www.youtube.com/@aithisweekshow" in li and "link in bio" in tt
+    assert li.count("#") == 4 and "linkedin" in q[0]["posts"]

@@ -33,7 +33,8 @@ import requests
 
 log = logging.getLogger(__name__)
 
-PLATFORMS = ("youtube", "instagram", "tiktok")
+PLATFORMS = ("youtube", "instagram", "tiktok", "linkedin")
+LI = "https://api.linkedin.com"
 IG = "https://graph.instagram.com"
 TT = "https://open.tiktokapis.com"
 
@@ -84,6 +85,10 @@ def caption(short: dict[str, Any], cfg: dict[str, Any], lang: str, platform: str
     if platform == "youtube":
         tags = ["#Shorts", *tags]
     more = s.get(f"more_{lang}", "Full episode on YouTube: link in bio" if lang == "en" else "الحلقة الكاملة على يوتيوب")
+    if platform in ("linkedin", "youtube") and s.get("channel_url"):   # these show links: give the real one
+        more = (f"Full episode: {s['channel_url']}" if lang == "en" else f"الحلقة الكاملة: {s['channel_url']}")
+    if platform == "linkedin":   # fewer, broader tags read better on LinkedIn
+        tags = list(s.get(f"linkedin_hashtags_{lang}", tags))[:4]
     note = desc.DISCLOSURE_EN if lang == "en" else desc.DISCLOSURE_AR
     return "\n\n".join(x for x in (desc.clean(short.get("title", "")), more, note, " ".join(tags)) if x)
 
@@ -226,6 +231,61 @@ class TikTok:
         return data
 
 
+# ── LinkedIn ─────────────────────────────────────────────────────────────────
+class LinkedIn:
+    """A member post with a video ("Share on LinkedIn", scope w_member_social): Videos API upload
+    (initialize → parts → finalize), then the Posts API. The founder's own profile: no app review."""
+
+    def __init__(self, token: str, version: str = "202510", http=requests, sleep=time.sleep):
+        self.token, self.version, self.http, self.sleep = token, version, http, sleep
+
+    def _h(self, extra: dict[str, str] | None = None) -> dict[str, str]:
+        return {"Authorization": f"Bearer {self.token}", "LinkedIn-Version": self.version,
+                "X-Restli-Protocol-Version": "2.0.0", **(extra or {})}
+
+    def author(self) -> str:
+        r = self.http.get(f"{LI}/v2/userinfo", headers={"Authorization": f"Bearer {self.token}"}, timeout=30)
+        return f"urn:li:person:{_ok(r, 'LinkedIn')['sub']}"
+
+    def post_video(self, path: Path, text: str, title: str, wait_s: int = 600) -> dict[str, Any]:
+        owner, size = self.author(), path.stat().st_size
+        init = _ok(self.http.post(f"{LI}/rest/videos?action=initializeUpload", timeout=60, headers=self._h(), json={
+            "initializeUploadRequest": {"owner": owner, "fileSizeBytes": size,
+                                        "uploadCaptions": False, "uploadThumbnail": False}}), "LinkedIn")["value"]
+        etags = []
+        with open(path, "rb") as f:
+            for part in init["uploadInstructions"]:
+                a, b = int(part["firstByte"]), int(part["lastByte"])
+                f.seek(a)
+                r = self.http.put(part["uploadUrl"], data=f.read(b - a + 1), timeout=300,
+                                  headers={"Content-Type": "application/octet-stream"})
+                if r.status_code not in (200, 201):
+                    raise RuntimeError(f"LinkedIn upload part {a}-{b}: HTTP {r.status_code}")
+                etags.append(r.headers.get("ETag") or r.headers.get("etag"))
+        _ok(self.http.post(f"{LI}/rest/videos?action=finalizeUpload", timeout=60, headers=self._h(), json={
+            "finalizeUploadRequest": {"video": init["video"], "uploadToken": init.get("uploadToken", ""),
+                                      "uploadedPartIds": etags}}), "LinkedIn")
+        from urllib.parse import quote
+        waited = 0
+        while True:   # the post must wait until LinkedIn has processed the video
+            st = _ok(self.http.get(f"{LI}/rest/videos/{quote(init['video'], safe='')}", timeout=30,
+                                   headers=self._h()), "LinkedIn").get("status")
+            if st == "AVAILABLE":
+                break
+            if st in ("PROCESSING_FAILED",) or waited >= wait_s:
+                raise RuntimeError(f"LinkedIn video {init['video']}: {st} after {waited} s")
+            self.sleep(10)
+            waited += 10
+        r = self.http.post(f"{LI}/rest/posts", timeout=60, headers=self._h(), json={
+            "author": owner, "commentary": text[:3000], "visibility": "PUBLIC",
+            "distribution": {"feedDistribution": "MAIN_FEED", "targetEntities": [], "thirdPartyDistributionChannels": []},
+            "content": {"media": {"title": title[:200], "id": init["video"]}},
+            "lifecycleState": "PUBLISHED", "isReshareDisabledByAuthor": False})
+        _ok(r, "LinkedIn post")
+        post = r.headers.get("x-restli-id") or r.headers.get("X-RestLi-Id") or ""
+        return {"post": post, "url": f"https://www.linkedin.com/feed/update/{post}" if post else ""}
+
+
 def _ok(r, who: str) -> dict[str, Any]:
     try:
         data = r.json()
@@ -317,12 +377,22 @@ def tiktok_poster(cfg: dict[str, Any]):
     return post
 
 
+def linkedin_poster(cfg: dict[str, Any]):
+    li = LinkedIn(os.environ["LINKEDIN_TOKEN"], str(cfg.get("social", {}).get("linkedin_version", "202510")))
+
+    def post(e: dict[str, Any], local: Path) -> dict[str, Any]:
+        return li.post_video(local, e["captions"]["linkedin"], e.get("title") or e["file"])
+    return post
+
+
 def posters(cfg: dict[str, Any]) -> dict[str, Callable]:
     """The platforms whose secrets are present (a platform not yet connected is simply not posted to)."""
     need = {"youtube": ("GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "YOUTUBE_REFRESH_TOKEN"),
             "instagram": ("INSTAGRAM_TOKEN",),
-            "tiktok": ("TIKTOK_CLIENT_KEY", "TIKTOK_CLIENT_SECRET", "TIKTOK_REFRESH_TOKEN")}
-    make = {"youtube": youtube_poster, "instagram": instagram_poster, "tiktok": tiktok_poster}
+            "tiktok": ("TIKTOK_CLIENT_KEY", "TIKTOK_CLIENT_SECRET", "TIKTOK_REFRESH_TOKEN"),
+            "linkedin": ("LINKEDIN_TOKEN",)}
+    make = {"youtube": youtube_poster, "instagram": instagram_poster, "tiktok": tiktok_poster,
+            "linkedin": linkedin_poster}
     out = {}
     for p in cfg.get("social", {}).get("platforms", PLATFORMS):
         if all(os.environ.get(k) for k in need[p]):

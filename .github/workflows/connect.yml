@@ -8,7 +8,7 @@ on:
     inputs:
       platform:
         type: choice
-        options: [links, youtube, instagram, tiktok]
+        options: [links, youtube, instagram, tiktok, linkedin]
         default: links
       code:
         description: "The whole address the sign-in ended on (or just its code). Single-use, expires in minutes."
@@ -28,6 +28,8 @@ jobs:
       INSTAGRAM_APP_SECRET: ${{ secrets.INSTAGRAM_APP_SECRET }}
       TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
       TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+      LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
+      LINKEDIN_CLIENT_SECRET: ${{ secrets.LINKEDIN_CLIENT_SECRET }}
       SECRETS_PAT: ${{ secrets.SECRETS_PAT }}
       SOCIAL_REDIRECT_URI: ${{ vars.SOCIAL_REDIRECT_URI }}
     steps:

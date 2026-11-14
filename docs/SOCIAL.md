@@ -40,6 +40,14 @@ developers.tiktok.com → Manage apps → Connect an app → add products **Logi
 copy **Client key** and **Client secret** into `TIKTOK_CLIENT_KEY`, `TIKTOK_CLIENT_SECRET`.
 Submit the app for review when you can (it lifts the private-only limit).
 
+### 3b. LinkedIn (posts on your own profile)
+linkedin.com/developers/apps → Create app (it asks for a company page: pick or create one; posting still goes
+to your own profile) → Products: add **Share on LinkedIn** and **Sign In with LinkedIn using OpenID Connect**
+→ Auth → Authorized redirect URLs: `https://github.com/wisamk-ctrl/ai-youtube-pipeline` → copy **Client ID**
+and **Primary Client Secret** into `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`.
+LinkedIn gives a personal app no refresh token: the sign-in lasts 60 days. The Saturday check opens a
+"Show at risk" note 10 days before it ends; reconnecting takes a minute.
+
 ### 4. Connect (each platform, about a minute)
 Actions → **connect** → Run workflow → platform **links**. The sign-in links appear on the
 **Connect accounts** issue. Click one, sign in as the show's account, allow; copy the whole address

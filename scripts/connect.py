@@ -24,6 +24,7 @@ GOOGLE_SCOPES = ("https://www.googleapis.com/auth/youtube.upload https://www.goo
 GOOGLE_REDIRECT = "http://localhost"   # the browser shows "can't connect"; the code is in its address bar
 IG_SCOPES = "instagram_business_basic,instagram_business_content_publish"
 TT_SCOPES = "user.info.basic,video.publish,video.upload"
+LI_SCOPES = "openid profile w_member_social"
 
 
 def redirect() -> str:
@@ -48,8 +49,13 @@ def links() -> str:
         out.append("- **TikTok**: https://www.tiktok.com/v2/auth/authorize/?" + urlencode({
             "client_key": e["TIKTOK_CLIENT_KEY"], "redirect_uri": redirect(), "response_type": "code",
             "scope": TT_SCOPES, "state": "connect"}, quote_via=quote))
+    if e.get("LINKEDIN_CLIENT_ID"):
+        out.append("- **LinkedIn** (your profile; the token lasts 60 days, the Saturday check reminds you): "
+                   "https://www.linkedin.com/oauth/v2/authorization?" + urlencode({
+            "response_type": "code", "client_id": e["LINKEDIN_CLIENT_ID"], "redirect_uri": redirect(),
+            "scope": LI_SCOPES, "state": "connect"}, quote_via=quote))
     missing = [p for p, k in (("YouTube", "GOOGLE_CLIENT_ID"), ("Instagram", "INSTAGRAM_APP_ID"),
-                              ("TikTok", "TIKTOK_CLIENT_KEY")) if not e.get(k)]
+                              ("TikTok", "TIKTOK_CLIENT_KEY"), ("LinkedIn", "LINKEDIN_CLIENT_ID")) if not e.get(k)]
     if missing:
         out += ["", f"Not set up yet (app keys missing): {', '.join(missing)}."]
     return "\n".join(out) + "\n"
@@ -107,8 +113,18 @@ def exchange(platform: str, raw: str) -> None:
                           headers={"Authorization": f"Bearer {d['access_token']}"}).json()
         print(f"TikTok account: {me.get('data', {}).get('user', {}).get('display_name')}  scopes: {d.get('scope')}")
         ok = store_secret("TIKTOK_REFRESH_TOKEN", d["refresh_token"])
+    elif platform == "linkedin":
+        d = _json(requests.post("https://www.linkedin.com/oauth/v2/accessToken", timeout=60, data={
+            "grant_type": "authorization_code", "code": code, "redirect_uri": redirect(),
+            "client_id": e["LINKEDIN_CLIENT_ID"], "client_secret": e["LINKEDIN_CLIENT_SECRET"]}), "LinkedIn")
+        me = requests.get("https://api.linkedin.com/v2/userinfo", timeout=60,
+                          headers={"Authorization": f"Bearer {d['access_token']}"}).json()
+        from datetime import datetime, timedelta, timezone
+        until = (datetime.now(timezone.utc) + timedelta(seconds=int(d.get("expires_in", 5184000)))).strftime("%Y-%m-%d")
+        print(f"LinkedIn profile: {me.get('name')}  token valid until {until}")
+        ok = store_secret("LINKEDIN_TOKEN", d["access_token"]) and store_secret("LINKEDIN_TOKEN_UNTIL", until)
     else:
-        sys.exit("platform: youtube | instagram | tiktok")
+        sys.exit("platform: youtube | instagram | tiktok | linkedin")
     if not ok:
         sys.exit("token obtained but not stored: add the SECRETS_PAT secret (see docs/SOCIAL.md)")
     print("Connected and stored.")

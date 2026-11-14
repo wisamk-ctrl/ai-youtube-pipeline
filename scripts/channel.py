@@ -88,6 +88,10 @@ def watch_script() -> None:
               "Fix and re-run phase `script`, or the episode will not be ready for Sunday.")
     else:
         print("script ok:", today[0]["url"])
+    until = os.environ.get("LINKEDIN_TOKEN_UNTIL", "")
+    if until and datetime.strptime(until, "%Y-%m-%d").replace(tzinfo=timezone.utc) - NOW < timedelta(days=10):
+        alarm("LinkedIn sign-in expires " + until, "LinkedIn tokens last 60 days. Re-connect: Actions → connect → "
+              "links, click LinkedIn on the Connect accounts issue, then connect → linkedin with the address.")
 
 
 def watch_publish() -> None:

@@ -303,7 +303,10 @@ publish:
     enabled: false            # upload the week's Shorts (each linked to the episode); founder turns this on
 
 social:                       # Shorts / Reels / TikTok on the platforms' own APIs (pipeline/publish/social.py)
-  platforms: [youtube, instagram, tiktok]   # a platform without its secrets is skipped
+  platforms: [youtube, instagram, tiktok, linkedin]   # a platform without its secrets is skipped
+  channel_url: https://www.youtube.com/@aithisweekshow
+  linkedin_version: "202510"  # LinkedIn API version (YYYYMM); each is supported about a year, then bump it
+  linkedin_hashtags_en: ["#AI", "#EnterpriseAI", "#GCC", "#DigitalTransformation"]
   days: [0, 2, 4]             # Monday, Wednesday, Friday after the episode
   hour_utc: 15                # 19:00 Gulf
   require_approval: true      # a week's clips wait for `social` approve <week> (the founder's OK)
