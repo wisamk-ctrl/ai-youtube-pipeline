@@ -280,7 +280,8 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         _check_length("edited cut", base, edit.duration(video))
     if cfg.get("post", {}).get("overlays", {}).get("enabled", True):
         from pipeline.post.overlays import run_overlays
-        base = run_overlays(base, script, cfg, out, result["srt"], skip_spans=skip)
+        from pipeline.video.voicefirst import face_spans as _faces
+        base = run_overlays(base, script, cfg, out, result["srt"], face=_faces(out), skip_spans=skip)
         _check_length("with cue cards", base, _dur(video))
     # Final audio (music bed, whooshes, loudness) and the sting, then the one high-quality encode.
     from pipeline.post import audio
@@ -313,7 +314,10 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     except Exception as e:  # noqa: BLE001 — a thumbnail must not sink the episode
         log.warning("Thumbnail failed: %s", e)
     try:
-        result["shorts"] = shorts_mod.build(base, script, result["srt"], shorts, cfg, out, sting=sting_span)
+        # From the edit before the lower-thirds: a Short has its own title band, and the episode's topic chips
+        # and question cards from the neighbouring story leaked into its first second (W45 clip 3).
+        clean_cut = out / "edited.mp4" if (out / "edited.mp4").exists() else base
+        result["shorts"] = shorts_mod.build(clean_cut, script, result["srt"], shorts, cfg, out, sting=sting_span)
     except Exception as e:  # noqa: BLE001
         log.warning("Shorts failed: %s", e)
     import shutil  # intermediates are as large as the video itself; keep the artifact lean
@@ -328,7 +332,9 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
 def phase_shorts(cfg: dict, out: Path) -> None:
     """Rebuild only the vertical clips from the finished edit (with_cards.mp4), minutes instead of the full edit."""
     from pipeline.post import audio, shorts as shorts_mod
-    base, srt = out / "with_cards.mp4", out / "subtitles.srt"
+    base, srt = out / "edited.mp4", out / "subtitles.srt"
+    if not base.exists():
+        base = out / "with_cards.mp4"
     if not base.exists():
         sys.exit(f"{base} not found — run assemble or post first.")
     script = (out / "script.md").read_text(encoding="utf-8")

@@ -67,7 +67,7 @@ def render_card(text: str, dest: Path, kind: str = "onscreen", width: int = 1920
     small = kind == "broll"
     page_html = CARD_HTML.format(
         dir=ui("dir"), side="right" if rtl else "left",
-        font=_font_path(), w=width, h=height, bottom=int(height * 0.05) if kind == "broll" else int(height * 0.28),
+        font=_font_path(), w=width, h=height, bottom=int(height * 0.05) if kind == "broll" else int(height * 0.17),   # just above the captions
         maxw=int(width * (0.5 if kind == "topic" else 0.62)), size=int(height * 0.052), small=int(height * 0.028),
         top=int(height * 0.055), edge=int(width * 0.04), chip=int(height * 0.03),
         cls="small" if small else kind if kind in ("topic", "question") else "",
@@ -162,7 +162,7 @@ def guide_cards(script: str, wpm: int, out_dir: Path, srt: Path | None, total: f
                 continue
             n += 1
             cue = Cue("question", q, count - size, round((count - size) / wpm * 60, 1))
-            cards.append(Card(cue, anchor(cue, words, idx), max(3.5, size / wpm * 60 + 2.5),
+            cards.append(Card(cue, anchor(cue, words, idx), max(3.0, size / wpm * 60 + 1.0),
                               out_dir / "cards" / f"question_{n:02d}.png"))
     return cards
 
@@ -206,6 +206,7 @@ def disclosure_card(cards: list[Card], d: dict[str, Any], out_dir: Path) -> Card
 
 
 def run_overlays(video: Path, script: str, cfg: dict[str, Any], out_dir: Path, srt: Path | None = None,
+                 face: list[tuple[float, float]] | None = None,
                  skip_spans: list[tuple[float, float]] | None = None) -> Path:
     """With the visual edit on, B-roll placeholders are gone (real footage replaced them) and a
     lower-third is skipped where a full-screen card already shows the same moment."""
@@ -223,7 +224,8 @@ def run_overlays(video: Path, script: str, cfg: dict[str, Any], out_dir: Path, s
         busy = [(c.at, c.at + c.seconds) for c in cards]
         for c in guides:   # a question never sits on a cue card or a full-screen card; a topic chip always shows
             if c.cue.kind == "question":
-                if any(a < c.at + c.seconds and c.at < b for a, b in busy + list(skip_spans or [])):
+                # never over the presenter (the face spans carry their own headline frame), a card, or a full-screen card
+                if any(a < c.at + c.seconds and c.at < b for a, b in busy + list(skip_spans or []) + list(face or [])):
                     continue
                 busy.append((c.at, c.at + c.seconds))      # nor on the question before it
             cards.append(c)
