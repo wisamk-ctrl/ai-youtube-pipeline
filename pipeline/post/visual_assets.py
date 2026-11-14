@@ -365,6 +365,24 @@ def relevance(query: str, tags: str) -> int | None:
     return score if score else None
 
 
+def keyed(clip: Path, share: float = 0.2) -> bool:
+    """True when a clip is a chroma-key plate: in any of three sampled frames, more than `share` of the
+    pixels are saturated key green. Tags do not say so reliably. (Blue is not tested: blue glows are the
+    house look and would be rejected with it.)"""
+    import numpy as np
+    for at in ("0.5", "2", "4"):
+        r = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-ss", at, "-i", str(clip), "-frames:v", "1",
+                            "-vf", "scale=64:36", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True)
+        if r.returncode != 0 or len(r.stdout) < 64 * 36 * 3:
+            continue
+        px = np.frombuffer(r.stdout[: 64 * 36 * 3], dtype=np.uint8).reshape(-1, 3).astype(int)
+        red, green, blue = px[:, 0], px[:, 1], px[:, 2]
+        g = (green > 150) & (green > red * 1.6) & (green > blue * 1.6)
+        if g.mean() > share:
+            return True
+    return False
+
+
 def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int, min_seconds: float) -> tuple[Path, dict] | None:
     """Best unused, relevant clip for the query that is long enough; cached on disk by provider id.
 
@@ -389,6 +407,9 @@ def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int,
             from pipeline.video.common import download
             download(f["link"], dest)
         used.add(v["id"])
+        if keyed(dest):   # a green-screen clip meant for compositing (W45: a ninja, then a pirate flag)
+            log.info("Stock %s rejected: chroma-key green screen", v["id"])
+            continue
         user = v.get("user") or {}
         return dest, {"query": query, "id": v["id"], "url": v.get("url"),
                       "author": user.get("name"), "author_url": user.get("url")}

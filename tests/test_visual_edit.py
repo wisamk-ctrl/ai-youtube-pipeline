@@ -339,3 +339,18 @@ def test_a_long_card_holds_five_seconds_then_a_house_animation():
     assert shots[src + 1].start == pytest.approx(shots[src].end)
     assert all(s.seconds <= 6.5 for s in shots if s.kind in ("source", "number", "title")), kinds
     assert not any("card" in w for w in visuals.lint(shots, {})["warnings"])
+
+
+def test_a_green_screen_stock_clip_is_rejected(tmp_path):
+    import shutil
+    import subprocess
+
+    import pytest
+    from pipeline.post.visual_assets import keyed
+    if not shutil.which("ffmpeg"):
+        pytest.skip("needs ffmpeg")
+    for name, colour in (("green", "0x00FF00"), ("navy", "0x0B1220"), ("blue_glow", "0x2050C0")):
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", f"color=c={colour}:s=320x180:d=5",
+                        str(tmp_path / f"{name}.mp4")], check=True)
+    assert keyed(tmp_path / "green.mp4")
+    assert not keyed(tmp_path / "navy.mp4") and not keyed(tmp_path / "blue_glow.mp4")
