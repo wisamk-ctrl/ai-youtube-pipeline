@@ -10,3 +10,9 @@ was made, so the map does not list it. Its claims and where each was checked (se
   Al Jazeera; Washington Post, 12 Nov. Stated on air as allegations.
 - "Wissam's view" is the founder's opinion, labelled on screen, approved by him 2026-11-15.
 - "Many AI programs in our region are built on NVIDIA's chips": general context, not from a W46 item.
+
+Plain-word explanations added 2026-11-15 after first viewers' feedback (unfamiliar names must be explained). They are
+definitions, not news claims, and are not in the source map: inference; open models; GPUs; exit poll; foundation
+models; NVLink Fusion (NVIDIA's chip-interconnect programme for other vendors' chips); Dynamo (NVIDIA's model-serving
+software); SK Telecom (Korea's largest mobile operator); Rebellions (Korean AI chip startup); Claude Code and Codex
+(coding agents).

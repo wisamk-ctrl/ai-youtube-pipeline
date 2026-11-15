@@ -38,7 +38,7 @@ We start with the biggest story of the week.
 On November 12, NVIDIA announced that Jensen Huang has resigned as president, CEO and board member, effective immediately.
 
 [Visual: stock stock exchange screens, glowing numbers]
-The company's CFO, Colette Kress, is now interim CEO.
+The company's finance chief, Colette Kress, is now interim CEO.
 
 And the board says it will consider candidates from inside and outside the company.
 
@@ -81,7 +81,7 @@ Now to the models.
 [Visual: stock market trading screens, glowing charts]
 Anthropic is the company behind the Claude family of models.
 
-And it's now getting ready to go public, most likely in mid-November, on the Nasdaq.
+And it's now getting ready to go public, most likely in mid-November, on the Nasdaq stock exchange.
 
 [Visual: source ae356485e4]
 According to CNBC, investors in the company are seeing a valuation that starts
@@ -129,7 +129,7 @@ In the US midterms, voters sent a clear message.
 Candidates who called for tighter AI regulation won in states like Michigan and Texas.
 
 [Visual: stock data center server racks, blue light]
-And according to an NBC News exit poll, more than half of voters said data centers were a deciding or major factor in how they chose their congressional candidates.
+And according to an NBC News exit poll, a survey of people as they leave the voting booth, more than half of voters said data centers were a deciding or major factor in how they chose their congressional candidates.
 
 [Pause]
 
@@ -140,7 +140,7 @@ Maura Austin, a behavioral science researcher at the University of Virginia, tol
 She added that an Anthropic listing at such a high valuation brings it closer to the image of big tech and billionaires, and she doesn't expect people to like that.
 
 [Visual: stock stock exchange screens, glowing numbers]
-Anthropic could be the first pure-play AI company to go public, and in exactly this climate.
+Anthropic could be the first company that does nothing but AI to go public, and in exactly this climate.
 
 [Visual: title What does this mean for us?]
 So what does this mean for us?
@@ -165,19 +165,21 @@ From the US to Saudi Arabia, and this is our top story from the region.
 [Visual: source 0669df2705]
 Riyadh-based OmniOps has launched the Bunyan Inference Hub, according to a statement published by Wamda and Zawya.
 
+Inference just means running a trained model to get answers from it.
+
 The platform is for governments, companies, startups and developers.
 
 [Pause]
 
 [Visual: stock code on screen, dark background]
-It has a library of open models, or you can bring your own model.
+It has a library of open models, the kind anyone can download and run, or you can bring your own model.
 
 And the data and the running of the model all stay inside Saudi Arabia.
 
 [Visual: stock server racks with GPU hardware, glowing data]
 Access to the models comes in ready-made token packages. A token is the unit of text a model reads and writes.
 
-And if you need more capacity or full isolation, there are dedicated GPUs just for you.
+And if you need more capacity or full isolation, there are dedicated GPUs, the chips that run AI models, just for you.
 
 [Pause]
 
@@ -307,9 +309,9 @@ This whole story comes from NVIDIA's own announcements, so let's hear it in that
 NVIDIA and Korea's Ministry of Science and ICT have expanded their sovereign AI collaboration.
 
 [Visual: stock chip interconnect animation, glowing circuits]
-According to NVIDIA, the collaboration opens the door for Korean chip companies to try joining the NVLink Fusion ecosystem.
+According to NVIDIA, the collaboration opens the door for Korean chip companies to try joining NVLink Fusion, NVIDIA's technology for linking other companies' chips with its own.
 
-NVIDIA also announced work with SK Telecom and with Rebellions on sovereign infrastructure for Korean models.
+NVIDIA also announced work with SK Telecom, Korea's largest mobile operator, and with Rebellions, a Korean AI chip startup, on sovereign infrastructure for Korean models.
 
 [Visual: stock layered technology stack animation, chips and data centers]
 And by their own numbers, they'll be working
@@ -320,10 +322,10 @@ with 3 consortiums
 
 [Pause]
 
-and with 4 Korean companies building foundation models.
+and with 4 Korean companies building foundation models, the large general models that other products are built on.
 
 [Visual: stock code on screen, model serving software]
-That's using the Dynamo software for running models.
+That's using Dynamo, NVIDIA's software for serving models at scale.
 
 [Pause]
 
@@ -357,14 +359,14 @@ Sovereign programs in the Gulf can compare their own deals against it, keeping i
 Before we wrap up, a quick roundup of developer tools.
 
 [Visual: source 3578b3def0]
-Anthropic's Claude Code shipped its latest release, and the first item in it is a fix for a security issue in decompressing compressed responses.
+Claude Code, Anthropic's coding agent, shipped its latest release, and the first item in it is a fix for a security issue in how it unpacks compressed data.
 
 [On-Screen Text: Claude Code v2.1.325]
 
 [Pause]
 
 [Visual: source 720dff5fdc]
-OpenAI's Codex: the latest release lets you add a custom model provider from the command line.
+Codex, OpenAI's coding agent: the latest release lets you add a custom model provider from the command line.
 
 [Visual: stock terminal command line, code on screen]
 And it still blocks project settings in untrusted folders, a security point that matters to engineers.

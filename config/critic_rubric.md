@@ -41,7 +41,8 @@ Each one names a rule below; count it under that rule only if the quoted script 
 - MAJOR: a sentence carrying three or more figures (numbers, dates, percentages).
 - MAJOR: three or more unglossed Latin names or terms in one sentence («IAM… PrivateLink… CloudTrail»).
 - MINOR: a sentence over 25 spoken words.
-- MINOR: a technical term not in the approved list (§5) and not explained in the same sentence.
+- MAJOR: a product, company or technical name a non-specialist would not know, not in the approved list (§5), with no
+  few-word explanation in the same or the next sentence (first viewers 2026-11-15: «Rubin» and «Daytona» lost them).
 
 ## pacing — nothing drags or rushes
 - MAJOR: a segment with no [Pause] across more than 60 spoken words.

@@ -22,7 +22,10 @@ means **the English itself**.
 ## clarity — clear for the ear, on first hearing
 - MAJOR: a sentence carrying three or more figures.
 - MAJOR: a pronoun whose referent could be two different things.
-- MINOR: a sentence over 25 words, or a technical term not explained in the same sentence.
+- MAJOR: a product, company or technical name a non-specialist would not know (Rubin, Daytona, NVLink, Dynamo,
+  "inference", "foundation model") with no few-word explanation in the same or the next sentence. First viewers,
+  2026-11-15: even a technical viewer got lost at unexplained names. Household names (OpenAI, Google, NVIDIA) need none.
+- MINOR: a sentence over 25 words.
 - MINOR: written-English constructions that do not work aloud (long parentheticals, "the former/the latter", abbreviations like "e.g.").
 
 ## pacing — nothing drags or rushes

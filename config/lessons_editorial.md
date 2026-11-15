@@ -27,3 +27,9 @@ Each lesson comes from a real fault heard or caught in a past episode. Treat a r
     minutes. Lead with what changes something for people here.
 13. **Formal Arabic leaks in.** «بالمقابل», «مقارنة بـ», «الماء», «بشكل متوافق مع» were flagged in W45.
     Use the Ammani table in the style guide.
+
+- **Explain every unfamiliar name the moment it appears (first viewers, 2026-11-15).** A technical friend could not
+  follow «Rubin» or «Daytona». Any product, company or term a non-specialist would not know gets a few plain words
+  right there: «Daytona, a company that runs code sandboxes for AI agents». One short clause, not a lecture; names
+  everyone knows (OpenAI, Google, NVIDIA) need none. If a story needs more than three such names, drop the least
+  important ones instead of explaining them all.
