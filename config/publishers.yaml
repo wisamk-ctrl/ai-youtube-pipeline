@@ -83,6 +83,10 @@ publishers:
   - {name: Anadolu Agency, aliases: [Anadolu Ajansı, AA], tier: B, domains: [aa.com.tr]}
   - {name: Dawn, tier: B, domains: [dawn.com]}
   - {name: Business Recorder, tier: B, domains: [brecorder.com]}
+  - {name: Enterprise, aliases: [Enterprise Egypt], tier: B, domains: [enterprise.news]}
+  - {name: TechCabal, tier: B, domains: [techcabal.com]}
+  - {name: Hürriyet Daily News, aliases: [Hurriyet Daily News], tier: B, domains: [hurriyetdailynews.com]}
+  - {name: ProPakistani, tier: B, domains: [propakistani.pk]}
   - {name: Asharq Business, ar: [الشرق للأعمال, الشرق بلومبرغ], tier: B, domains: [asharqbusiness.com]}
   - {name: Import AI, tier: B, domains: [importai.substack.com, jack-clark.net]}
   - {name: The Batch (DeepLearning.AI), aliases: [The Batch], tier: B, domains: [deeplearning.ai]}

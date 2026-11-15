@@ -109,6 +109,10 @@ ingestion:
     - { name: Anadolu Agency,     query: 'site:aa.com.tr "artificial intelligence"',            region: turkey, max_items: 4 }
     - { name: Dawn,               query: 'site:dawn.com "artificial intelligence"',             region: pakistan, max_items: 4 }
     - { name: Business Recorder,  query: 'site:brecorder.com "artificial intelligence"',        region: pakistan, max_items: 4 }
+    - { name: Enterprise Egypt,   query: 'site:enterprise.news "artificial intelligence"',      region: egypt, max_items: 4 }
+    - { name: TechCabal,          query: 'site:techcabal.com "artificial intelligence" (Egypt OR Morocco OR Tunisia OR Algeria)', region: north_africa, max_items: 4 }
+    - { name: Hurriyet Daily News, query: 'site:hurriyetdailynews.com "artificial intelligence"', region: turkey, max_items: 4 }
+    - { name: ProPakistani,       query: 'site:propakistani.pk "artificial intelligence"',      region: pakistan, max_items: 4 }
 
 scoring:
   min_score: 2.0              # items below this are dropped as noise
@@ -301,10 +305,9 @@ publish:
   # (scripts/google_authorize.py youtube). Uploads private + scheduled.
   # Shown under the chapters in every English description. Facts from the founder's CV (July 2026).
   host_bio_en: >-
-    Wissam Kishek has spent more than 20 years building enterprise software businesses across the
-    Middle East, Turkey and Africa, leading the region for TIBCO, Hortonworks (now Cloudera) and
-    New Relic. He now advises AI and software companies entering the region and builds AI products
-    of his own.
+    Wissam Kishek has spent 25 years in enterprise software across the Middle East, Turkey and
+    Africa, at companies including Microsoft, Oracle and TIBCO. He now advises AI and software
+    companies entering the region and builds AI products of his own.
   privacy: private            # uploaded private and scheduled: YouTube makes it public at publish time (founder 2026-11-14)
   publish_weekday: 6          # 0=Mon … 6=Sun
   publish_hour_utc: 7         # 07:00 UTC = 11:00 Gulf, the slot the founder picked for W45

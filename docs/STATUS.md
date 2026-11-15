@@ -164,9 +164,8 @@ The own-voice edit now follows the approved script (`pipeline/video/guided.py`),
 - `ANTHROPIC_API_KEY` replaced by the founder 2026-11-12 (translate passed).
 
 ## Founder decisions 2026-11-15 (host bio, wider region)
-- **Host bio:** `publish.host_bio_en` goes under the chapters in every English description. Open:
-  founder to confirm "more than 20 years" (CV) vs "25 years" (said), and that naming TIBCO,
-  Hortonworks/Cloudera and New Relic is fine. Channel About text: founder pastes it in YouTube Studio.
+- **Host bio:** `publish.host_bio_en` goes under the chapters in every English description. Founder
+  confirmed: "25 years", and name the large companies (Microsoft, Oracle, TIBCO), not all five. Channel About text: founder pastes it in YouTube Studio.
 - **In the video:** one line about the host in the Welcome section. For W46 it goes in with
   Wednesday's revision (the Nvidia earnings line), so narration is regenerated once.
 - **Wider region:** Egypt and North Africa, Turkey, Pakistan are now ingested (AI-narrowed searches in
