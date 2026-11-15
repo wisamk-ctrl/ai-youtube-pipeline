@@ -173,42 +173,6 @@ What should we watch? Who the first customers will be, and which models land in 
 
 [Pause 2s]
 
-[Section: ADNOC and Industrial Sovereignty]
-
-[Visual: stock digital globe, glowing network connections]
-We're staying in the Gulf, but this time in the UAE.
-
-[Visual: title The ADNOC Partnership]
-An analysis piece on the site debuglies talks about a partnership that brings together ADNOC, the Abu Dhabi National Oil Company, with OpenAI.
-
-[Visual: stock industrial plant at dusk with digital data overlay, animation]
-And the third party in the partnership is G42.
-
-[Pause]
-
-[Visual: stock AI agent animation, glowing nodes and lines]
-The article reads this partnership through the lens of AI agents and national security.
-
-[On-Screen Text: The New Architecture of Industrial Sovereignty]
-
-And its headline calls it "The New Architecture of Industrial Sovereignty."
-
-[Visual: title Why does it matter to us?]
-Who here is going to feel this difference?
-
-[Pause]
-
-[Visual: stock energy and industry digital control room, animation]
-The first to feel it could be energy and industrial companies in the Gulf.
-
-[Visual: stock digital security shield, blue glow, network]
-Because the article frames the AI agent as a matter of sovereignty and national security, not just a purchase for the IT department.
-
-[Visual: stock data flow between servers, glowing streams]
-And if that reading takes hold, it could affect who you pick as a partner, and where your data stays.
-
-[Pause 2s]
-
 [Section: The AI Agent Wallet]
 
 [Visual: stock AI agent animation, glowing nodes]
