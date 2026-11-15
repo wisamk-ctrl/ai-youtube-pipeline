@@ -25,14 +25,58 @@ So if people there don't want data centers next to their homes, who's going to h
 Hi everyone, welcome to This Week in AI. I'm Wissam.
 
 [Visual: stock neural network animation, glowing nodes]
-Today we've got Anthropic's IPO under pressure, a Saudi platform that keeps data inside the Kingdom, and a wallet that lets an AI agent shop for you.
+Today: Jensen Huang leaves NVIDIA. Plus Anthropic's IPO under pressure, a Saudi platform that keeps data inside the Kingdom, and a wallet that lets an AI agent shop for you.
+
+[Pause 2s]
+
+[Section: Jensen Huang Leaves NVIDIA]
+
+[Visual: title Jensen Huang resigns]
+We start with the biggest story of the week.
+
+[Visual: stock chip under light, macro, circuit board]
+On November 12, NVIDIA announced that Jensen Huang has resigned as president, CEO and board member, effective immediately.
+
+[Visual: stock stock exchange screens, glowing numbers]
+The company's CFO, Colette Kress, is now interim CEO.
+
+And the board says it will consider candidates from inside and outside the company.
+
+[Pause]
+
+[Visual: stock abstract data flow, glowing streams]
+NVIDIA gave no reason.
+
+Press reports, including Al Jazeera and the Washington Post, tie his exit to allegations about his private life. One of them involves a woman alleged to be a Chinese spy.
+
+These are allegations, not established facts.
+
+[Visual: title Why does it matter to us?]
+Why does this matter here in the region?
+
+[Pause]
+
+[Visual: stock data center server racks, blue light]
+Many AI programs in our region are built on NVIDIA's chips. And that roadmap now depends on a company without its founder.
+
+[On-Screen Text: Wissam's view]
+
+[Visual: stock neural network animation, blue and gold nodes]
+My view: the AI industry just lost its most important leader over matters that began in his private life.
+
+If the security allegations are proven, that's a different conversation.
+
+But until then, I think this is a loss the industry didn't need.
+
+[Visual: stock digital globe, glowing network connections]
+And there's a lesson for us in the Gulf: don't build a national AI strategy around one man, or one vendor.
 
 [Pause 2s]
 
 [Section: Anthropic's IPO Under Pressure]
 
 [Visual: title Anthropic's IPO]
-Let's start with the models.
+Now to the models.
 
 [Visual: stock market trading screens, glowing charts]
 Anthropic is the company behind the Claude family of models.
@@ -253,7 +297,7 @@ So the question for banks and retailers in the region is: how will they handle a
 [Section: NVIDIA and Korea]
 
 [Visual: stock chip under light, macro, circuit board]
-Now to chips, and this time to Korea.
+Staying with NVIDIA, and this time in Korea.
 
 [On-Screen Text: Source: NVIDIA announcement]
 

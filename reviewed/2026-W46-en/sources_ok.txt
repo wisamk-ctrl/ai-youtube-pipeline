@@ -1,1 +1,12 @@
 (33) "A token is the unit of text a model reads and writes." A general definition added to explain the term, not a news claim; it needs no source item. Checked 2026-11-15.
+
+The "Jensen Huang Leaves NVIDIA" section was added by hand on 2026-11-15 (founder's request), after the source map
+was made, so the map does not list it. Its claims and where each was checked (search summaries of the coverage):
+- Resigned as president, CEO and board member, effective immediately, announced 12 Nov: NVIDIA Form 8-K / press
+  release (sec.gov, 0001045810-26-000082); Semafor, CNN, TechCrunch, 12 Nov.
+- Colette Kress interim CEO; board to consider inside and outside candidates: the same 8-K; CNN; Quartz.
+- NVIDIA gave no reason: Semafor; Al Jazeera, 12 Nov.
+- Reports tie the exit to allegations about his private life, one involving a woman alleged to be a Chinese spy:
+  Al Jazeera; Washington Post, 12 Nov. Stated on air as allegations.
+- "Wissam's view" is the founder's opinion, labelled on screen, approved by him 2026-11-15.
+- "Many AI programs in our region are built on NVIDIA's chips": general context, not from a W46 item.
