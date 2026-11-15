@@ -163,7 +163,7 @@ video:
   pause_seconds: 0.8
   max_chars_per_chunk: 1500   # sentence-aligned chunks; well under every provider's per-request limit
   voicefirst:                 # voice-first route (pipeline/video/voicefirst.py): speech + avatar only on the face chunks
-    max_chars: 4500           # per speech call (voice chunks)
+    max_chars: 2400           # per speech call (voice chunks); 4500 timed out at HeyGen after 60 s (W46)
     gap_seconds: 0.25         # natural pause between chunks in narration.wav
     upright_face: side        # an upright face clip: side = full height beside a branded frame; crop = cut to the wide frame
     face_top: 0.5             # where a face clip is cropped to the frame: 0 = its top edge, 0.5 = the middle
