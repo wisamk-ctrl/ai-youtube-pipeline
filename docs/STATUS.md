@@ -162,3 +162,12 @@ The own-voice edit now follows the approved script (`pipeline/video/guided.py`),
   week's script (commit it as `reviewed/2026-W45-en/script.md`, run `direct` for `2026-W45-en`): the edit follows
   `output/<week>/script.md`, and `translate` wrote a different wording there.
 - `ANTHROPIC_API_KEY` replaced by the founder 2026-11-12 (translate passed).
+
+## Founder decisions 2026-11-15 (host bio, wider region)
+- **Host bio:** `publish.host_bio_en` goes under the chapters in every English description. Open:
+  founder to confirm "more than 20 years" (CV) vs "25 years" (said), and that naming TIBCO,
+  Hortonworks/Cloudera and New Relic is fine. Channel About text: founder pastes it in YouTube Studio.
+- **In the video:** one line about the host in the Welcome section. For W46 it goes in with
+  Wednesday's revision (the Nvidia earnings line), so narration is regenerated once.
+- **Wider region:** Egypt and North Africa, Turkey, Pakistan are now ingested (AI-narrowed searches in
+  `ingestion.google_news_sites`) and the editor mentions them only when the news is major. No quota.

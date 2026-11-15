@@ -70,6 +70,10 @@ Story mix:
     story, and base the segment on the independent item when both exist.
   - Prefer the regional angle: a Gulf or Levant outlet's report, a regional customer, regulator or
     deployment beats the same story told only from the US.
+  - The wider region is Egypt and North Africa, Turkey and Pakistan (items with region="egypt",
+    "north_africa", "turkey" or "pakistan"). When one of them has MAJOR AI news this week (a national
+    programme or law, a large investment or data centre, a deployment at scale, a local model), give
+    it a segment or a roundup line. No quota: a week with nothing major there mentions none of them.
   - A "Radar:" item is our own note, not a source. If you pick it, also put the source items listed
     in its body into that segment's item_ids; those are what the script cites.
 

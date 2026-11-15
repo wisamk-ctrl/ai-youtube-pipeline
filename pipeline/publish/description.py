@@ -208,6 +208,9 @@ def build_description(plan: dict[str, Any], sources: list[dict[str, Any]], cfg: 
     src = [f"- {clean(s.get('title', ''))}: {s['url']}" for s in sources]
     src = (["Sources:" if en else "المصادر:"] + src + [""]) if src else []
     tail = []
+    bio = clean(cfg.get("publish", {}).get("host_bio_en" if en else "host_bio", ""))
+    if bio:
+        tail += ["About the host:" if en else "عن مقدّم البرنامج:", bio, ""]
     cl = credits_line(credits or [], lang)
     if cl:
         tail += [cl, ""]

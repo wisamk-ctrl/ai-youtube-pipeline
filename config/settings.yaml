@@ -99,6 +99,16 @@ ingestion:
     - { name: Wamda,         query: "site:wamda.com",           region: levant }
     - { name: MoDEE Jordan,  query: "site:modee.gov.jo",        region: levant }
     - { name: Jordan News Agency, query: "site:petra.gov.jo",   region: levant }
+    # Egypt and North Africa, Turkey, Pakistan (founder decision 2026-11-15: his network there).
+    # These are general outlets, so each search is narrowed to AI; a story still has to earn its
+    # place (prompts.py: major news only, never a weekly quota).
+    - { name: Ahram Online,       query: 'site:english.ahram.org.eg "artificial intelligence"', region: egypt, max_items: 4 }
+    - { name: Daily News Egypt,   query: 'site:dailynewsegypt.com "artificial intelligence"',   region: egypt, max_items: 4 }
+    - { name: Morocco World News, query: 'site:moroccoworldnews.com "artificial intelligence"', region: north_africa, max_items: 4 }
+    - { name: Daily Sabah,        query: 'site:dailysabah.com "artificial intelligence"',       region: turkey, max_items: 4 }
+    - { name: Anadolu Agency,     query: 'site:aa.com.tr "artificial intelligence"',            region: turkey, max_items: 4 }
+    - { name: Dawn,               query: 'site:dawn.com "artificial intelligence"',             region: pakistan, max_items: 4 }
+    - { name: Business Recorder,  query: 'site:brecorder.com "artificial intelligence"',        region: pakistan, max_items: 4 }
 
 scoring:
   min_score: 2.0              # items below this are dropped as noise
@@ -289,6 +299,12 @@ pricing:
 publish:
   # YouTube Data API. Needs GOOGLE_CLIENT_ID/SECRET + YOUTUBE_REFRESH_TOKEN
   # (scripts/google_authorize.py youtube). Uploads private + scheduled.
+  # Shown under the chapters in every English description. Facts from the founder's CV (July 2026).
+  host_bio_en: >-
+    Wissam Kishek has spent more than 20 years building enterprise software businesses across the
+    Middle East, Turkey and Africa, leading the region for TIBCO, Hortonworks (now Cloudera) and
+    New Relic. He now advises AI and software companies entering the region and builds AI products
+    of his own.
   privacy: private            # uploaded private and scheduled: YouTube makes it public at publish time (founder 2026-11-14)
   publish_weekday: 6          # 0=Mon … 6=Sun
   publish_hour_utc: 7         # 07:00 UTC = 11:00 Gulf, the slot the founder picked for W45
