@@ -184,3 +184,14 @@ def test_a_phrase_that_comes_again_later_is_not_a_far_jump():
                 "خلينا نبلش من الخليج حسب رويترز ادنوك ومجموعة جي فورتي تو وقعوا صفقة مع الشركة")
     plan, _, at, raw = guided.guide(script, heard, [0] * len(heard), [heard[-1].end + 1])
     assert not plan.dropped and len(plan.pieces) == 1
+
+
+def test_labels_follow_the_captions_not_the_words_per_minute_setting():
+    """W46-en: narration ran faster than the setting, so chips and questions came up to 50 s late."""
+    from pipeline.post.overlays import locate
+    words = [f"w{n}" for n in range(200)]
+    idx = [(k * 2.0, " ".join(w.upper() + "," for w in words[k * 5:k * 5 + 5])) for k in range(40)]   # 80 s of captions
+    late = 150 / 100 * 60                       # where a 100 wpm setting would put word 150: 90 s
+    assert abs(locate(150, words, idx, late) - 60.0) < 0.5
+    assert abs(locate(152, words, idx, late) - 60.8) < 0.5      # inside a caption, across its break
+    assert locate(10, words, [], 4.2) == 4.2                    # no captions: the estimate stands

@@ -97,16 +97,49 @@ def _srt_index(srt: Path | None) -> list[tuple[float, str]]:
     return out
 
 
-def anchor(cue: Cue, script_words: list[str], srt_idx: list[tuple[float, str]], window: float = 20.0) -> float:
-    """Snap the cue to the subtitle that contains the words spoken just before it, if one is near the estimate."""
-    if not srt_idx or cue.at_word < 3:
-        return cue.at_seconds
-    probe = " ".join(script_words[max(0, cue.at_word - 3):cue.at_word])
-    best = None
-    for t, text in srt_idx:
-        if abs(t - cue.at_seconds) <= window and probe and probe in text:
-            best = t if best is None or abs(t - cue.at_seconds) < abs(best - cue.at_seconds) else best
-    return best if best is not None else cue.at_seconds
+def _norm(word: str) -> str:
+    return re.sub(r"[^\w]", "", word, flags=re.UNICODE).lower()
+
+
+def _heard(srt_idx: list[tuple[float, str]]) -> list[tuple[float, str]]:
+    """Every caption word with its own time, spread evenly from its caption's start to the next one's."""
+    out = []
+    for k, (t, text) in enumerate(srt_idx):
+        ws = [w for w in (_norm(x) for x in text.split()) if w]
+        end = srt_idx[k + 1][0] if k + 1 < len(srt_idx) else t + 0.4 * len(ws)
+        out += [(t + (end - t) * n / max(1, len(ws)), w) for n, w in enumerate(ws)]
+    return out
+
+
+def locate(at_word: int, script_words: list[str], srt_idx: list[tuple[float, str]], fallback: float,
+           window: float = 45.0) -> float:
+    """When script word number `at_word` is heard. The first guess is its share of the way through the
+    captions (the real pace, not a words-per-minute setting: W46-en ran 12% faster than the setting and
+    every label came late). It is then snapped to the words around it in the captions, matched
+    without case or punctuation and across caption breaks."""
+    heard = _heard(srt_idx)
+    if not heard or not script_words:
+        return fallback
+    est = heard[0][0] + (heard[-1][0] - heard[0][0]) * min(1.0, at_word / len(script_words))
+    sw = [_norm(w) for w in script_words]
+    hw = [w for _, w in heard]
+    # (probe, where the cue sits inside it): the words after the cue, then the words before it
+    probes = [(sw[at_word:at_word + n], 0) for n in (4, 3)] + [(sw[max(0, at_word - n):at_word], n) for n in (4, 3)]
+    for probe, lead in probes:
+        probe = [w for w in probe if w]
+        if len(probe) < 3:
+            continue
+        hits = [k for k in range(len(hw) - len(probe) + 1) if hw[k:k + len(probe)] == probe]
+        hits = [min(k + min(lead, len(probe)), len(heard) - 1) for k in hits]
+        near = [heard[k][0] for k in hits if abs(heard[k][0] - est) <= window]
+        if near:
+            return min(near, key=lambda t: abs(t - est))
+    return est
+
+
+def anchor(cue: Cue, script_words: list[str], srt_idx: list[tuple[float, str]], window: float = 45.0) -> float:
+    """The cue's time in the video: where its place in the script is heard (see `locate`)."""
+    return locate(cue.at_word, script_words, srt_idx, cue.at_seconds, window)
 
 
 def plan_cards(script: str, wpm: int, out_dir: Path, srt: Path | None = None,
@@ -118,7 +151,9 @@ def plan_cards(script: str, wpm: int, out_dir: Path, srt: Path | None = None,
     cards: list[Card] = []
     for n, c in enumerate(cues, 1):
         png = out_dir / "cards" / f"card_{n:02d}_{c.kind}.png"
-        cards.append(Card(c, anchor(c, words, idx), card_seconds if c.kind == "onscreen" else broll_seconds, png))
+        at = anchor(c, words, idx)
+        at = max([t for t, _ in idx if t <= at], default=at)   # with the caption that says it, not after it
+        cards.append(Card(c, at, card_seconds if c.kind == "onscreen" else broll_seconds, png))
     return cards
 
 

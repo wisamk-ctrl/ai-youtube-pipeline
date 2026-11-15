@@ -156,16 +156,12 @@ def section_times(script: str, srt: Path | None, wpm: int) -> list[float]:
     section's first spoken words (the estimate from words-per-minute when no caption matches)."""
     from pipeline.post.overlays import _srt_index
     from pipeline.script_format import extract_cues, spoken_text
-    words = spoken_text(script).split()
+    from pipeline.post.overlays import locate
+    from pipeline.script_format import spoken_words
+    words = spoken_words(spoken_text(script))
     idx = _srt_index(srt)
-    out = []
-    for c in extract_cues(script, wpm):
-        if c.kind != "section" or c.at_word == 0:
-            continue
-        probe = " ".join(words[c.at_word:c.at_word + 3])
-        hits = [t for t, text in idx if probe and text.startswith(probe)]
-        out.append(min(hits, key=lambda t: abs(t - c.at_seconds)) if hits else c.at_seconds)
-    return out
+    return [locate(c.at_word, words, idx, c.at_seconds) for c in extract_cues(script, wpm)
+            if c.kind == "section" and c.at_word != 0]
 
 
 def sting_plan(cfg: dict[str, Any], script: str, srt: Path | None, video: Path, root: Path) -> tuple[float, Path] | None:

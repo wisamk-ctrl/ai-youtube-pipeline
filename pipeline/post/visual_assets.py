@@ -332,6 +332,8 @@ def stock_search(cfg: dict[str, Any]):
 # with any of these is dropped unless the query itself asks for it.
 OFF_TOPIC = {
     # green-screen and social-media "subscribe / share" overlays (a chroma-key ninja reached W45's Shorts)
+    # W46-en: a German flag, a spaceship cockpit, cartoon clouds, a barcode, a walking stick figure
+    "flag", "flags", "germany", "spaceship", "cockpit", "spacecraft", "clouds", "sky", "barcode", "stickman", "figure",
     "greenscreen", "green", "chroma", "chromakey", "keying", "subscribe", "share", "like", "button", "youtube",
     "youtuber", "instagram", "tiktok", "notification", "bell", "ninja", "cartoon",
     "mermaid", "fantasy", "fairy", "angel", "unicorn", "dragon", "witch", "magic", "princess",
@@ -380,6 +382,10 @@ def keyed(clip: Path, share: float = 0.2) -> bool:
         g = (green > 150) & (green > red * 1.6) & (green > blue * 1.6)
         if g.mean() > share:
             return True
+        # a white or pale plate (W46-en: white network, flat illustration, pale dashboard) breaks the
+        # dark house look as badly as a key plate does
+        if (px.min(axis=1) > 170).mean() > 0.45:
+            return True
     return False
 
 
@@ -407,7 +413,7 @@ def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int,
             from pipeline.video.common import download
             download(f["link"], dest)
         used.add(v["id"])
-        if keyed(dest):   # a green-screen clip meant for compositing (W45: a ninja, then a pirate flag)
+        if keyed(dest):   # a green-screen or white plate (W45: a ninja, then a pirate flag; W46: white plates)
             log.info("Stock %s rejected: chroma-key green screen", v["id"])
             continue
         user = v.get("user") or {}

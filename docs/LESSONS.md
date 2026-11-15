@@ -127,3 +127,14 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 | Show the topic and the question in text | Viewers who follow by reading got lost at topic changes. Every [Section] title is a corner chip for its whole section, and a question asked just before a [Pause] is a lower-third (`post.overlays.guide`) |
 | An English episode shows no Arabic | The first English cut carried the Arabic sting, brand tag, source credit, disclosure and end card. Fixed strings now come from `pipeline/language.py` `ui()`; the sting has an English render (`assets/intro_sting_en.mp4`) |
 | The clone is an instant voice | It takes no `<break>` tags (use `[pause]`) and no `speed`; HeyGen's free Turbo model speaks it at no credit cost |
+
+## 11. W46-en preview review (2026-11-15)
+- **Labels came up to 50 s late.** Topic chips, question labels and lower-thirds were placed from a
+  words-per-minute setting and only snapped to a caption on an exact, case-sensitive match; the
+  English narration ran faster than the setting. Fixed in `overlays.locate`: the first guess is the
+  word's share of the way through the real captions, then it snaps to the words around it. Chapters
+  (`audio.section_times`) use the same function. Test: `test_labels_follow_the_captions…`.
+- **Pale and off-topic stock.** White plates and a flag, cockpit, clouds, barcode and stick figure got
+  through. `keyed()` now also rejects pale plates; the tags are in `OFF_TOPIC`.
+- **Still open:** stock clips that show made-up numbers (line charts, dashboards) sit beside real
+  figures; the disclosure label overlaps the opening number card; no chip for Roundup and Closing.
