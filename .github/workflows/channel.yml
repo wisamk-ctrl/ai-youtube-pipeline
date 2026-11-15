@@ -5,11 +5,12 @@ on:
     - cron: "41 11 * * 6"     # Saturday 15:41 Gulf: did this week's script run succeed?
     - cron: "17 4 * * 0"      # Sunday 08:17 Gulf: is an episode going out today?
     - cron: "29 5 * * 1"      # Monday 09:29 Gulf: the weekly numbers
+    - cron: "47 * * * *"      # hourly: an episode just went public → the WhatsApp status kit
   workflow_dispatch:
     inputs:
       check:
         type: choice
-        options: [report, watch-script, watch-publish]
+        options: [report, watch-script, watch-publish, status-kit]
         default: report
 
 permissions:
@@ -38,6 +39,7 @@ jobs:
             "41 11 * * 6") c=watch-script ;;
             "17 4 * * 0") c=watch-publish ;;
             "29 5 * * 1") c=report ;;
+            "47 * * * *") c=status-kit ;;
             *) c="${{ inputs.check }}" ;;
           esac
           python scripts/channel.py "$c"
@@ -45,7 +47,7 @@ jobs:
         if: always()
         run: |
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
-          git add data/channel_stats.json 2>/dev/null || exit 0
+          git add data/channel_stats.json data/status_kits.json 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -q -m "channel: weekly numbers ($(date -u +%F))"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done

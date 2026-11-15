@@ -165,5 +165,39 @@ def report() -> None:
            f"Weekly numbers {NOW:%Y-%m-%d}", "--body", body)
 
 
+def status_kit() -> None:
+    """Hourly: when an episode has just gone public, open a "Status kit" issue (GitHub e-mails it) with a
+    vertical teaser to save and a caption with the link, ready for the founder's WhatsApp status. WhatsApp
+    has no official way for software to post a personal status, so the last tap stays his."""
+    seen_file = ROOT / "data" / "status_kits.json"
+    seen = json.loads(seen_file.read_text(encoding="utf-8")) if seen_file.exists() else []
+    queue_file = ROOT / "data" / "social_queue.json"
+    queue = json.loads(queue_file.read_text(encoding="utf-8")) if queue_file.exists() else []
+    for v in videos(token(), 10):
+        if v["id"] in seen or v["status"].get("privacyStatus") != "public":
+            continue
+        if seconds(v["contentDetails"].get("duration")) <= 60:
+            continue
+        t = datetime.fromisoformat(v["snippet"]["publishedAt"].replace("Z", "+00:00"))
+        if NOW - t > timedelta(hours=24):
+            seen.append(v["id"])           # older than a day: never announce it late
+            continue
+        title, link = v["snippet"]["title"], f"https://youtu.be/{v['id']}"
+        clip = next((e["url"] for e in reversed(queue) if e["id"].endswith("#1")), "")
+        body = "\n".join([
+            f"**{title}** is live: {link}", "",
+            "### For your WhatsApp status", "",
+            f"1. Open this on your phone and save the video: {clip}" if clip else "1. Share the YouTube link below.",
+            "2. WhatsApp → Updates → My status → pick the video (WhatsApp lets you trim it if it is too long).",
+            "3. Paste this caption:", "", "```", f"New episode of This Week in AI is out: {title}", link, "```", "",
+            "Or the 10-second way: open the YouTube link → Share → WhatsApp → My status."])
+        gh("issue", "create", "--repo", os.environ["GITHUB_REPOSITORY"], "--title", f"Status kit: {title[:60]}",
+           "--body", body)
+        seen.append(v["id"])
+        print("status kit:", title)
+    seen_file.write_text(json.dumps(seen[-50:]), encoding="utf-8")
+
+
 if __name__ == "__main__":
-    {"watch-script": watch_script, "watch-publish": watch_publish, "report": report}[sys.argv[1]]()
+    {"watch-script": watch_script, "watch-publish": watch_publish, "report": report,
+     "status-kit": status_kit}[sys.argv[1]]()
