@@ -1,0 +1,1 @@
+(33) "A token is the unit of text a model reads and writes." A general definition added to explain the term, not a news claim; it needs no source item. Checked 2026-11-15.
