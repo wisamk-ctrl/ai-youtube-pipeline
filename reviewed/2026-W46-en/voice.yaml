@@ -1,0 +1,9 @@
+# English W46, narrated by HeyGen in the founder's cloned English voice (free Turbo model, 2026-11-15).
+# 01-face is the whole opening (cold open + welcome, 16.7 s). Its avatar clip waits for the HeyGen
+# credit reset on 19 Nov: add `video:` to 01-face then (a face chunk without a video is narration only).
+01-face: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=b0794fbf35064dcaad131be0f51524e7.wav
+02-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=0f649cff6997403c9669d8b1bff68065.wav
+03-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=bf73703412904c5cb5ce4a030f580e7d.wav
+04-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=40615c652d8d4082a7a27a6c43eceedd.wav
+05-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=4f6c10cb30f54a0588b02733b5ec49a1.wav
+06-face: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=cfcd80ad1fc6478b908db9c9db92efd9.wav
