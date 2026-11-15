@@ -92,7 +92,7 @@ def title_html(text: str, w: int, h: int) -> str:
     css = f""".t{{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:{h * 0.03:.0f}px}}
 .p{{font:700 {h * 0.1:.0f}px/1.3 Kufi,sans-serif;text-align:center;max-width:{w * 0.8:.0f}px}}
 .bar{{width:{w * 0.09:.0f}px;height:{h * 0.008:.0f}px;background:{GOLD};border-radius:9px}}"""
-    return _page(f'<div class="t"><div class="p" dir="rtl">{html.escape(text)}</div><div class="bar"></div></div>', w, h, css)
+    return _page(f'<div class="t"><div class="p" dir="auto">{html.escape(text)}</div><div class="bar"></div></div>', w, h, css)
 
 
 NUM_RE = re.compile(r"^(?P<pre>[^\d]*)(?P<num>\d[\d,]*(?:\.\d+)?)(?P<post>.*)$")
@@ -118,7 +118,7 @@ def number_html(figure: str, label: str, w: int, h: int) -> str:
     css = f""".n{{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:{h * 0.02:.0f}px}}
 #fig{{font:800 {h * 0.22:.0f}px/1 Kufi,sans-serif;color:{GOLD};direction:ltr;font-variant-numeric:tabular-nums}}
 .l{{font:600 {h * 0.055:.0f}px/1.35 Naskh,Kufi,sans-serif;max-width:{w * 0.75:.0f}px;text-align:center}}"""
-    lab = f'<div class="l" dir="rtl">{html.escape(label)}</div>' if label.strip() else ""
+    lab = f'<div class="l" dir="auto">{html.escape(label)}</div>' if label.strip() else ""
     return _page(f'<div class="n"><div id="fig">{html.escape(figure)}</div>{lab}</div>', w, h, css)
 
 
