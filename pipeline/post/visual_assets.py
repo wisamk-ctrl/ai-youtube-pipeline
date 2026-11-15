@@ -330,6 +330,13 @@ def stock_search(cfg: dict[str, Any]):
 
 # Off-brand subjects the W45 preview showed (a mermaid, strawberries, a bicycle wheel): a hit tagged
 # with any of these is dropped unless the query itself asks for it.
+# Founder rule 2026-11-15: every number on screen is ours and vetted. Stock that shows figures (charts,
+# dashboards, tickers) carries numbers nobody checked, so it is never used, even when the shot asks for it.
+NO_FIGURES = {
+    "chart", "charts", "graph", "graphs", "statistics", "stats", "infographic", "dashboard", "diagram",
+    "ticker", "numbers", "percent", "percentage", "report", "analytics", "counter", "countdown", "trading",
+}
+
 OFF_TOPIC = {
     # green-screen and social-media "subscribe / share" overlays (a chroma-key ninja reached W45's Shorts)
     # W46-en: a German flag, a spaceship cockpit, cartoon clouds, a barcode, a walking stick figure
@@ -360,7 +367,7 @@ def relevance(query: str, tags: str) -> int | None:
     """How many of the query's words a hit's tags share; None when the hit must be rejected
     (no shared word, or an off-topic subject the query did not ask for)."""
     q, t = _words(query), _words(tags)
-    if (t & OFF_TOPIC) - q:
+    if (t & OFF_TOPIC) - q or t & NO_FIGURES:
         return None
     qs, ts = {_stem(w) for w in q}, {_stem(w) for w in t}
     score = len(qs & ts)

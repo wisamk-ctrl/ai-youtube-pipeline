@@ -55,6 +55,9 @@ shot-list check enforces its numbers. Change it here only.
 ## Never
 - Clips from other companies' keynotes, other YouTube channels, films or TV: copyright risk.
 - Stock shots that pretend to show a specific real person, product or event.
+- Stock that shows figures: charts, graphs, dashboards, tickers, trading screens. Their numbers are
+  nobody's, and the viewer cannot tell them from ours. A figure on screen is always our own number
+  card, traced to a source (founder rule 2026-11-15; `NO_FIGURES` in the stock filter enforces it).
 - Logos animated or altered; text-heavy visuals the viewer cannot read in two seconds.
 - A visual that contradicts or adds to what the narration says.
 

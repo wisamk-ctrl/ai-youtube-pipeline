@@ -37,7 +37,7 @@ We start with the biggest story of the week.
 [Visual: stock chip under light, macro, circuit board]
 On November 12, NVIDIA announced that Jensen Huang has resigned as president, CEO and board member, effective immediately.
 
-[Visual: stock stock exchange screens, glowing numbers]
+[Visual: stock empty boardroom table, dark blue light]
 The company's finance chief, Colette Kress, is now interim CEO.
 
 And the board says it will consider candidates from inside and outside the company.
@@ -78,7 +78,7 @@ And there's a lesson for us in the Gulf: don't build a national AI strategy arou
 [Visual: title Anthropic's IPO]
 Now to the models.
 
-[Visual: stock market trading screens, glowing charts]
+[Visual: stock abstract data stream, blue particles, animation]
 Anthropic is the company behind the Claude family of models.
 
 And it's now getting ready to go public, most likely in mid-November, on the Nasdaq stock exchange.
@@ -94,7 +94,7 @@ at $1 trillion
 
 and goes up to $1.5 trillion.
 
-[Visual: stock financial chart rising and falling, digital animation]
+[Visual: stock coins falling, dark background, animation]
 A few months ago, the number people were talking about was
 
 [Pause]
@@ -104,7 +104,7 @@ $2 trillion.
 
 [On-Screen Text: Valuation: $2T → $1T–1.5T]
 
-[Visual: stock falling stock chart, red and blue glow, animation]
+[Visual: stock red warning light pulse, dark background, animation]
 So expectations have come down. Why?
 
 [Pause]
@@ -139,7 +139,7 @@ Maura Austin, a behavioral science researcher at the University of Virginia, tol
 [Visual: stock city skyline of glass towers, digital overlay, animation]
 She added that an Anthropic listing at such a high valuation brings it closer to the image of big tech and billionaires, and she doesn't expect people to like that.
 
-[Visual: stock stock exchange screens, glowing numbers]
+[Visual: stock digital globe rotating, blue network, animation]
 Anthropic could be the first company that does nothing but AI to go public, and in exactly this climate.
 
 [Visual: title What does this mean for us?]
@@ -190,7 +190,7 @@ The goal, in their words, is to raise GPU utilization and cut the cost per token
 
 And the platform runs on different types of chips, so it isn't tied to a single vendor.
 
-[Visual: stock analytics dashboard animation, glowing graphs]
+[Visual: stock server racks in a data centre, blue light]
 You can also set usage limits and track how much each team is consuming.
 
 [Pause]
@@ -211,7 +211,7 @@ For organizations required to keep their data inside the country, the only optio
 
 Now, according to the company, they have another path.
 
-[Visual: stock analytics dashboard, cost control graphs, animation]
+[Visual: stock circuit board macro, blue light, animation]
 And the packages and per-team limits give the finance department control over costs.
 
 [Visual: stock neural network animation, glowing nodes]
