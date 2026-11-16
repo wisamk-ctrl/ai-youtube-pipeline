@@ -56,7 +56,7 @@ Why does this matter here in the region?
 
 [Pause]
 
-[Visual: stock data center server racks, blue light]
+[Visual: stock server room aisle, blue led lights]
 Many AI programs in our region are built on NVIDIA's chips. And that roadmap now depends on a company without its founder.
 
 [On-Screen Text: Wissam's view]
@@ -104,7 +104,7 @@ $2 trillion.
 
 [On-Screen Text: Valuation: $2T → $1T–1.5T]
 
-[Visual: stock red warning light pulse, dark background, animation]
+[Visual: stock abstract blue particles drifting, dark background]
 So expectations have come down. Why?
 
 [Pause]
@@ -118,7 +118,7 @@ The Nasdaq posted its sharpest drop
 [Visual: number 19 months | The Nasdaq's sharpest drop]
 in 19 months.
 
-[Visual: stock computer chip under light, macro, animation]
+[Visual: stock microchip close-up, circuit board, blue light]
 And the hardest hit were chip companies, and the newer companies that rent out computing power for AI.
 
 [Pause]
@@ -253,12 +253,12 @@ And most importantly, according to OpenAI, the agent never sees your card detail
 
 The payment network gives it a payment token just for that transaction.
 
-[Visual: stock digital token, encryption code on screen]
+[Visual: stock binary code rain, blue]
 The token has a card number, a security code and an expiry date, all limited to that one purchase.
 
 [On-Screen Text: No cut of transactions — for now]
 
-[Visual: stock online shopping interface animation, glowing data]
+[Visual: stock smartphone in hand, dark background, screen glow]
 And the company says it isn't taking a commission on purchases, at least at the start.
 
 [Pause]
@@ -370,7 +370,7 @@ Claude Code, Anthropic's coding agent, shipped its latest release, and the first
 [Visual: source 720dff5fdc]
 Codex, OpenAI's coding agent: the latest release lets you add a custom model provider from the command line.
 
-[Visual: stock terminal command line, code on screen]
+[Visual: stock programmer typing at night, screen glow]
 And it still blocks project settings in untrusted folders, a security point that matters to engineers.
 
 [On-Screen Text: OpenAI Codex 0.169.0]
