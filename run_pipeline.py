@@ -265,7 +265,7 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     from pipeline.post.subtitles import burn_in
     video, hides, heard = _repair_speech(cfg, out, video, spoken_text(script))
     result = run_post(video, spoken_text(script), out, [], burn=False, heard=heard)   # Shorts: post/shorts.py below
-    base, skip = video, []
+    base, skip, accents = video, [], []
     if cfg.get("visuals", {}).get("enabled"):
         # The premium cut (config/visual_standard.md): face for ~a quarter, visuals for the rest.
         from pipeline.post import edit, visual_assets
@@ -277,6 +277,7 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         base = edit.compose(video, shots, clips, cfg, out,
                             sections=section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]))
         skip = [(s.start, s.end) for n, s in enumerate(shots) if n in clips and s.kind in ("number", "title", "source")]
+        accents = [s.start for n, s in enumerate(shots) if n in clips and s.kind in ("number", "title") and s.start > 1.0]
         _check_length("edited cut", base, edit.duration(video))
     if cfg.get("post", {}).get("overlays", {}).get("enabled", True):
         from pipeline.post.overlays import run_overlays
@@ -287,7 +288,8 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     from pipeline.post import audio
     sting = audio.sting_plan(cfg, script, result["srt"], base, ROOT)
     mix = audio.master(base, out / "final_audio.wav", cfg, out / "audio",
-                       insert=sting, cuts=audio.section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]))
+                       insert=sting, cuts=audio.section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]),
+                       accents=accents)
     from pipeline.post import packaging, shorts as shorts_mod
     tail = packaging.end_card(cfg, out)          # 15 s branded end card (post.end_card), no captions over it
     result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4", audio=mix, insert=sting, tail=tail)

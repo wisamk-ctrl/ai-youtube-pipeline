@@ -58,8 +58,10 @@ def _write_wav(dest: Path, stereo: np.ndarray) -> Path:
     return dest
 
 
-def music_loop(dest: Path) -> Path:
-    """One 32 s loop of the bed: a slow pad (detuned sines, stereo) and a soft pulse on the beat."""
+def music_loop(dest: Path, shift: int = 0) -> Path:
+    """One 32 s loop of the bed: a slow pad (detuned sines, stereo) and a soft pulse on the beat.
+    `shift` moves the whole loop by that many semitones: each story gets its own key."""
+    base = _D3 * 2 ** (shift / 12)
     t = np.arange(LOOP_SECONDS * RATE) / RATE
     left, right = np.zeros_like(t), np.zeros_like(t)
     seg = LOOP_SECONDS / len(CHORDS)
@@ -69,14 +71,14 @@ def music_loop(dest: Path) -> Path:
         env = np.where(d < xf, np.sin(np.pi / 2 * d / xf) ** 2,
                        np.where(d < seg, 1.0, np.where(d < seg + xf, np.cos(np.pi / 2 * (d - seg) / xf) ** 2, 0.0)))
         for k, semi in enumerate(chord):
-            f = _D3 * 2 ** (semi / 12)
+            f = base * 2 ** (semi / 12)
             amp = 0.16 / (1 + 0.25 * k)
             breath = 0.75 + 0.25 * np.sin(2 * np.pi * t * (k + 1) / LOOP_SECONDS + k)   # slow swell, periodic
             for ch, detune in ((left, 0.0), (right, 3 / LOOP_SECONDS)):
                 ff = _periodic(f) + detune
                 ch += env * amp * breath * (np.sin(2 * np.pi * ff * t) + 0.18 * np.sin(2 * np.pi * 2 * ff * t))
         # The pulse: a soft high blip on every beat (90 bpm → 48 beats a loop), the chord's root two octaves up.
-        root = _periodic(_D3 * 2 ** (chord[0] / 12) * 4)
+        root = _periodic(base * 2 ** (chord[0] / 12) * 4)
         beat = 60 / 90
         phase = (t - i * seg) % LOOP_SECONDS
         inside = phase < seg
@@ -84,7 +86,7 @@ def music_loop(dest: Path) -> Path:
         blip = np.exp(-local / 0.12) * np.sin(2 * np.pi * root * t) * 0.05 * inside
         left += blip * 0.8
         right += blip
-        sub = np.exp(-local / 0.35) * np.sin(2 * np.pi * _periodic(_D3 / 2 * 2 ** (chord[0] / 12)) * t) * 0.12 * inside
+        sub = np.exp(-local / 0.35) * np.sin(2 * np.pi * _periodic(base / 2 * 2 ** (chord[0] / 12)) * t) * 0.12 * inside
         sub *= (np.floor(phase / beat) % 2 == 0)              # every other beat
         left += sub
         right += sub
@@ -115,6 +117,19 @@ def whoosh(dest: Path, seconds: float = 0.9) -> Path:
     out *= (sweep ** 1.5)[:, None]
     out *= WHOOSH_RMS / np.sqrt(np.mean(out ** 2))       # a known level (too short for loudnorm to measure)
     return _write_wav(dest, out)
+
+
+KEYS = [0, 3, -2, 5, -4, 2]              # semitone shift of the bed for each story in turn
+
+
+def accent(dest: Path, seconds: float = 0.45) -> Path:
+    """A soft two-note chime (a fifth, quick decay) for the moment a number or title card lands."""
+    n = int(seconds * RATE)
+    t = np.arange(n) / RATE
+    tone = sum(a * np.sin(2 * np.pi * f * t) * np.exp(-t / d) for f, a, d in ((880.0, 1.0, 0.10), (1318.5, 0.6, 0.14)))
+    tone *= np.minimum(1.0, t / 0.004)                    # 4 ms attack: no click
+    tone *= WHOOSH_RMS / np.sqrt(np.mean(tone ** 2))
+    return _write_wav(dest, np.stack([tone, tone], axis=1))
 
 
 def measure(path: Path, start: float | None = None, end: float | None = None) -> dict[str, float]:
@@ -180,7 +195,7 @@ def sting_plan(cfg: dict[str, Any], script: str, srt: Path | None, video: Path, 
 
 
 def master(video: Path, dest: Path, cfg: dict[str, Any], work: Path, insert: tuple[float, Path] | None = None,
-           cuts: list[float] | None = None) -> Path | None:
+           cuts: list[float] | None = None, accents: list[float] | None = None) -> Path | None:
     """The episode's final audio as a 48 kHz wav: voice + ducked bed (+ whooshes) (+ sting), loudnormed.
 
     Times in `cuts` and `insert` are on the edit's own timeline (before the sting is spliced in)."""
@@ -201,9 +216,20 @@ def master(video: Path, dest: Path, cfg: dict[str, Any], work: Path, insert: tup
         bed_i = measure(bed)["input_i"]
         # Ducking takes ~6 dB off the bed under speech; so set it ~6 dB above where it should sit.
         gain = voice["input_i"] + float(a.get("music_db", -24)) + 6 - bed_i
-        inputs += ["-stream_loop", "-1", "-i", str(bed)]
-        count += 1
-        graph.append(f"[1:a]aformat=sample_rates=48000:channel_layouts=stereo,atrim=0:{dur:.3f},volume={gain:.2f}dB,"
+        edges = [0.0] + sorted(c for c in (cuts or []) if 2.0 < c < dur - 2.0) + [dur]
+        if music != "generated" or not a.get("music_keys", True) or len(edges) == 2:
+            edges = [0.0, dur]
+        parts = []
+        for k, (s0, s1) in enumerate(zip(edges, edges[1:])):      # one key per story, crossfaded on the cut
+            loop = bed if k == 0 else music_loop(work / f"bed_loop_{k % len(KEYS)}.wav", KEYS[k % len(KEYS)])
+            inputs += ["-stream_loop", "-1", "-i", str(loop)]
+            fin = f"afade=t=in:st={max(0.0, s0 - 0.75):.3f}:d=1.5," if k else ""
+            fout = f"afade=t=out:st={s1 - 0.75:.3f}:d=1.5," if s1 < dur else ""
+            graph.append(f"[{count}:a]aformat=sample_rates=48000:channel_layouts=stereo,atrim=0:{dur:.3f},"
+                         f"{fin}{fout}volume={gain:.2f}dB[bed{k}]")
+            parts.append(f"[bed{k}]")
+            count += 1
+        graph.append(f"{''.join(parts)}amix=inputs={len(parts)}:normalize=0:duration=longest,"
                      f"afade=t=in:d=3,afade=t=out:st={max(0.0, dur - 4):.3f}:d=4[bed]")
         graph.append("[bed][sc]sidechaincompress=threshold=0.03:ratio=6:attack=30:release=500:knee=4[duck]")
         mix.append("[duck]")
@@ -218,6 +244,14 @@ def master(video: Path, dest: Path, cfg: dict[str, Any], work: Path, insert: tup
             ms = max(0, int((t - 0.63) * 1000))           # the swish peaks on the cut
             graph.append(f"[{n}:a]volume={sw_gain:.2f}dB,adelay={ms}:all=1[w{k}]")
             mix.append(f"[w{k}]")
+    if a.get("accents", True) and accents:
+        ac = accent(work / "accent.wav")
+        ac_gain = voice["input_i"] - 14 + 20                 # ~14 dB under the voice
+        for k, t in enumerate(sorted(accents)):
+            n, count = count, count + 1
+            inputs += ["-i", str(ac)]
+            graph.append(f"[{n}:a]volume={ac_gain:.2f}dB,adelay={max(0, int(t * 1000))}:all=1[ac{k}]")
+            mix.append(f"[ac{k}]")
     graph.append(f"{''.join(mix)}amix=inputs={len(mix)}:normalize=0:duration=first[prog]")
     out = "[prog]"
     if insert:

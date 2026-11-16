@@ -138,3 +138,7 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   through. `keyed()` now also rejects pale plates; the tags are in `OFF_TOPIC`.
 - **Still open:** stock clips that show made-up numbers (line charts, dashboards) sit beside real
   figures; the disclosure label overlaps the opening number card; no chip for Roundup and Closing.
+- **Keeping attention (founder 2026-11-16).** English pace 0.94 (0.88 sounded flat); a visual longer
+  than 9 s is cut into parts, each a new clip of the same search; the music bed changes key at each
+  story; a soft chime lands with each number and title card. Settings: `video.voicefirst.tempo_en`,
+  `visuals.max_visual_seconds`, `post.audio.music_keys`, `post.audio.accents`.

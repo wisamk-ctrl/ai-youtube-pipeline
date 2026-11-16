@@ -118,17 +118,23 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
     if merged:
         merged[0].start = 0.0
         merged[-1].end = duration
-    # A full-screen visual that runs long switches to the corner layout halfway: same picture,
-    # the presenter's circle joins, so the shot changes without inventing a new visual.
+    # A full-screen visual that runs long is cut into equal parts no longer than `max_visual`. Stock
+    # parts keep the same search, and the asset builder never reuses a clip, so each part is a new
+    # picture of the same subject (W46-en held single shots for 20–30 s). With the corner layout on,
+    # a long visual still switches to it halfway instead.
     out: list[Shot] = []
     for s in _cap_cards(merged, card_max, min_shot):
         if s.mode == "visual" and s.seconds > max_visual:
-            mid = s.start + s.seconds / 2
-            out.append(Shot("visual", s.kind, s.payload, s.start, mid, s.notes + ["split: long visual"]))
             if corner:
+                mid = s.start + s.seconds / 2
+                out.append(Shot("visual", s.kind, s.payload, s.start, mid, s.notes + ["split: long visual"]))
                 out.append(Shot("corner", s.kind, s.payload, mid, s.end, ["split: second half in corner layout"]))
-            else:
-                out.append(Shot("visual", s.kind, s.payload, mid, s.end, ["split: second half of a long visual"]))
+                continue
+            n = int(-(-s.seconds // max_visual))
+            step = s.seconds / n
+            for k in range(n):
+                out.append(Shot("visual", s.kind, s.payload, s.start + k * step, s.start + (k + 1) * step,
+                                s.notes + ["split: long visual"] if k == 0 else [f"split: part {k + 1} of a long visual"]))
         else:
             out.append(s)
     if face_only is not None:

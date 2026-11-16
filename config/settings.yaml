@@ -182,7 +182,7 @@ video:
     upright_face: side        # an upright face clip: side = full height beside a branded frame; crop = cut to the wide frame
     face_top: 0.5             # where a face clip is cropped to the frame: 0 = its top edge, 0.5 = the middle
     tempo: 1.0                # speed of generated speech (and its face clips); the pitch is kept
-    tempo_en: 0.88            # the English clone speaks ~185 words/min; first viewers asked for slower (→ ~163)
+    tempo_en: 0.94              # 0.88 after the first feedback sounded flat; founder picked the faster sample 2026-11-16
     backdrop: "0x0B1220"      # behind the narration where no face video sits (always covered by visuals)
   own_voice:                  # the founder's own recording (pipeline/video/guided.py, ownvoice.py)
     model: large-v3-turbo     # recogniser for the edit: hears short repeats that `medium` hides
@@ -236,7 +236,7 @@ visuals:
   face_share: [0.10, 0.20]    # target share of runtime with the presenter full-frame (founder, 2026-10-26)
   face_share_max: 0.25
   max_face_seconds: 12
-  max_visual_seconds: 12      # longer visuals switch to the corner layout halfway
+  max_visual_seconds: 9       # a longer visual is cut into parts, each a new clip of the same subject (W46-en)
   stock:
     providers: [pixabay, pexels]   # first with a key wins: PIXABAY_API_KEY, PEXELS_API_KEY
   dissolve_frames: 0          # off until the W45 length loss (2026-11-07) is traced; 12 = the designed dissolve
@@ -273,6 +273,8 @@ post:
     music: generated          # generated (our own synthesised pad, never licensed music) | <path to a wav we own> | none
     music_db: -24             # bed level under speech, dB relative to the voice (ducked by the voice)
     whoosh: true              # synthesised swish on each [Section] cut
+    music_keys: true          # the bed changes key at each story (generated music only)
+    accents: true             # a soft chime when a number or title card lands
     loudness_lufs: -14        # YouTube reference; W45 measured -19.6
     true_peak: -1.5
     lra: 7
