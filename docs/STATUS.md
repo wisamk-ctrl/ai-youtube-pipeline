@@ -195,3 +195,7 @@ TikTok cannot be read by an app and are listed to check by hand. Likes are never
   lettering. Source of truth `config/brand.md`. Cards, overlays, thumbnail, end card, Shorts cards and the
   English sting use it; `assets/brand/` has the new logo, YouTube banner and LinkedIn banner for the founder
   to upload. The earlier channel logo and banner are in `assets/brand/previous/`.
+- **Presenter look (founder 2026-11-16):** look C, navy blazer over a white t-shirt in a bright studio with a
+  violet glow (`assets/brand/presenter/look_c_navy_blazer.png`), wide format, replaces the grey hoodie. Made
+  from the original avatar photo: the dark-studio looks A and B made him look older and were rejected.
+  Rendered with `create_video_from_image` (the still, not a saved HeyGen look).
