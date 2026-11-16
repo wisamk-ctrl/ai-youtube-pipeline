@@ -22,7 +22,7 @@ So if people there don't want data centers next to their homes, who's going to h
 [Section: Welcome]
 
 [Face]
-Hi everyone, welcome to AI This Week. I'm Wissam.
+Hi everyone, welcome to AI This Week. I'm Wissam. I've spent 25 years in enterprise software across the Middle East, Turkey and Africa.
 
 [Visual: stock neural network animation, glowing nodes]
 Today: Jensen Huang leaves NVIDIA. Plus Anthropic's IPO under pressure, a Saudi platform that keeps data inside the Kingdom, and a wallet that lets an AI agent shop for you.
@@ -34,7 +34,7 @@ Today: Jensen Huang leaves NVIDIA. Plus Anthropic's IPO under pressure, a Saudi 
 [Visual: title Jensen Huang resigns]
 We start with the biggest story of the week.
 
-[Visual: stock chip under light, macro, circuit board]
+[Face]
 On November 12, NVIDIA announced that Jensen Huang has resigned as president, CEO and board member, effective immediately.
 
 [Visual: stock empty boardroom table, dark blue light]
@@ -78,7 +78,7 @@ And there's a lesson for us in the Gulf: don't build a national AI strategy arou
 [Visual: title Anthropic's IPO]
 Now to the models.
 
-[Visual: stock abstract data stream, blue particles, animation]
+[Face]
 Anthropic is the company behind the Claude family of models.
 
 And it's now getting ready to go public, most likely in mid-November, on the Nasdaq stock exchange.
@@ -159,7 +159,7 @@ And when US politics gets tough on data centers, a question comes up: where will
 
 [Section: Saudi Arabia's Bunyan Platform]
 
-[Visual: stock digital globe with glowing network map]
+[Face]
 From the US to Saudi Arabia, and this is our top story from the region.
 
 [Visual: source 0669df2705]
@@ -221,11 +221,13 @@ What should we watch? Who the first customers will be, and which models land in 
 
 [Section: The AI Agent Wallet]
 
-[Visual: stock AI agent animation, glowing nodes]
+[Face]
 Now let's move on to agents.
 
-[Visual: source 88d77a52ad]
+
 On Friday, OpenAI announced ChatGPT Wallet.
+
+[Visual: source 88d77a52ad]
 
 It's a payment wallet that lets its AI agents, called "dots," make purchases for you.
 
@@ -298,7 +300,7 @@ So the question for banks and retailers in the region is: how will they handle a
 
 [Section: NVIDIA and Korea]
 
-[Visual: stock chip under light, macro, circuit board]
+[Face]
 Staying with NVIDIA, and this time in Korea.
 
 [On-Screen Text: Source: NVIDIA announcement]

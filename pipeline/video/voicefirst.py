@@ -90,7 +90,14 @@ def pack(script: str, cfg: dict[str, Any]) -> list[dict[str, str]]:
         return got
 
     face: set[int] = set()
-    if faces:
+    if faces and str(_cfg(cfg).get("faces", "ends")) == "all":
+        # Founder 2026-11-16: the presenter also appears at each story change. Every [Face] stretch is a
+        # face chunk, whole, up to face_words_max words (the script keeps each one to a sentence or two).
+        cap = float(_cfg(cfg).get("face_words_max", 32))
+        for n in faces:
+            idx = [i for i, (m, _) in enumerate(sents) if m == n]
+            face |= take(list(reversed(idx)) if n == faces[-1] and n != faces[0] else idx)
+    elif faces:
         face |= take([i for i, (n, _) in enumerate(sents) if n == faces[0]])
         if faces[-1] != faces[0]:
             face |= take([i for i, (n, _) in reversed(list(enumerate(sents))) if n == faces[-1]])
