@@ -43,7 +43,7 @@ According to Reuters, the round was led by SoftBank.
 [Visual: number $40 billion | raised by the company]
 [On-Screen Text: $40 billion]
 [Visual: stock data center servers, blue light]
-Hi everyone, welcome to This Week in AI, I'm Wissam.
+Hi everyone, welcome to AI This Week, I'm Wissam.
 [Pause 2s]"""
 
 PLAN = {"episode_title_ar": "أوبن إيه آي تجمع أربعين مليار", "cold_open_hook_en": "OpenAI raises $40bn",
@@ -139,7 +139,7 @@ def test_two_bad_answers_fail_loudly():
 def test_prompt_carries_the_rules():
     s = translate._system(load_settings())
     for rule in ("enterprise leaders", "IT people", "never tell viewers to buy", "OpenAI", "no Arabic script",
-                 "same order", "never changed", "This Week in AI"):
+                 "same order", "never changed", "AI This Week"):
         assert rule in s
 
 
@@ -297,7 +297,7 @@ def test_an_english_week_shows_no_arabic_on_screen():
     cfg = language.apply_language({"scripting": {"channel_name": "أسبوع الذكاء الاصطناعي"}, "post": {"sting": {"enabled": True}}},
                                   "2026-W45-en")
     try:
-        assert packaging._show_name(cfg) == "This Week in AI"
+        assert packaging._show_name(cfg) == "AI This Week"
         pages = [packaging.end_card_html(packaging._show_name(cfg)), visual_assets.title_html("OpenAI and G42", 1920, 1080)]
         assert not any(arabic.search(re.sub(r"<style>.*?</style>", "", p, flags=re.S)) for p in pages)
         card = overlays.disclosure_card([], {"text": "توأم رقمي لوسام — بموافقة وسام"}, Path("/tmp"))

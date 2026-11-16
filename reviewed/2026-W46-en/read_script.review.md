@@ -1,4 +1,4 @@
-# This Week in AI · W46 · English script for review
+# AI This Week · W46 · English script for review
 
 ~1,420 words, about 9 minutes at the slower pace.
 
@@ -16,7 +16,7 @@ So if people there don't want data centers next to their homes, who's going to h
 
 ## Welcome
 
-Hi everyone, welcome to This Week in AI. I'm Wissam.
+Hi everyone, welcome to AI This Week. I'm Wissam.
 
 Today we've got Anthropic's IPO under pressure, a Saudi platform that keeps data inside the Kingdom, and a wallet that lets an AI agent shop for you.
 

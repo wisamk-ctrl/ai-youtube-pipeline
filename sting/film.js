@@ -9,7 +9,7 @@ const C = { navy: '#0B1220', paper: '#F4F1EA', accent: '#E9B44C', muted: '#5C6B8
 const DISPLAY = 'Display', UI = 'UI';
 // ?lang=en renders the English sting (assets/intro_sting_en.mp4): same film, read left to right.
 const EN = new URLSearchParams(location.search).get('lang') === 'en';
-const TITLE = EN ? ['This Week', 'in', 'AI'] : ['أسبوع', 'الذكاء', 'الاصطناعي'];   // reading order
+const TITLE = EN ? ['AI', 'This', 'Week'] : ['أسبوع', 'الذكاء', 'الاصطناعي'];   // reading order
 const TAGLINE = EN ? 'The weekly briefing for business and tech leaders' : 'نشرة أسبوعية لقادة الأعمال والتقنية';
 const PRESENTER = EN ? 'with Wissam' : 'مع وسام';
 
@@ -106,7 +106,7 @@ function draw(ctx, u) {
     let x = xr, y = lineY0, sx = 1, sy = 1;
     if (i === 0) { y = lineY0 - (1 - k) * 220; const q = 0.05 * wobble((u - 0.5) * 0.469, 2.6, 7); sx = 1 + q; sy = 1 - q; }
     else x = xr + (EN ? 1 : -1) * (1 - Math.min(k, 1)) * 360;
-    word(ctx, w, x, y, f, i === 2 ? C.accent : C.paper, { sx, sy, alpha: Math.min(1, k * 1.5) });
+    word(ctx, w, x, y, f, i === (EN ? 0 : 2) ? C.accent : C.paper, { sx, sy, alpha: Math.min(1, k * 1.5) });
   });
   ctx.restore();
 

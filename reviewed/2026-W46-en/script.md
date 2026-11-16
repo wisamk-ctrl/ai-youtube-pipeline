@@ -22,7 +22,7 @@ So if people there don't want data centers next to their homes, who's going to h
 [Section: Welcome]
 
 [Face]
-Hi everyone, welcome to This Week in AI. I'm Wissam.
+Hi everyone, welcome to AI This Week. I'm Wissam.
 
 [Visual: stock neural network animation, glowing nodes]
 Today: Jensen Huang leaves NVIDIA. Plus Anthropic's IPO under pressure, a Saudi platform that keeps data inside the Kingdom, and a wallet that lets an AI agent shop for you.

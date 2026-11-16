@@ -149,7 +149,7 @@ def _model(cfg: dict[str, Any]) -> str:
 def _system(cfg: dict[str, Any]) -> str:
     s = cfg["scripting"]
     return SYSTEM.format(presenter=s.get("presenter_name_en") or "Wissam",
-                         channel=s.get("channel_name_en") or "This Week in AI")
+                         channel=s.get("channel_name_en") or "AI This Week")
 
 
 def translate_script(script: str, items: list[NewsItem], cfg: dict[str, Any],

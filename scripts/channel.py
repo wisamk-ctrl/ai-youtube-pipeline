@@ -189,7 +189,7 @@ def status_kit() -> None:
             "### For your WhatsApp status", "",
             f"1. Open this on your phone and save the video: {clip}" if clip else "1. Share the YouTube link below.",
             "2. WhatsApp → Updates → My status → pick the video (WhatsApp lets you trim it if it is too long).",
-            "3. Paste this caption:", "", "```", f"New episode of This Week in AI is out: {title}", link, "```", "",
+            "3. Paste this caption:", "", "```", f"New episode of AI This Week is out: {title}", link, "```", "",
             "Or the 10-second way: open the YouTube link → Share → WhatsApp → My status."])
         gh("issue", "create", "--repo", os.environ["GITHUB_REPOSITORY"], "--title", f"Status kit: {title[:60]}",
            "--body", body)

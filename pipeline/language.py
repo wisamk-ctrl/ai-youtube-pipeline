@@ -32,7 +32,7 @@ def english_week(week: str) -> str:
 UI = {
     "ar": {"show": "أسبوع الذكاء الاصطناعي", "source": "المصدر", "subscribe": "اشترك",
            "weekly": "حلقة جديدة كل أسبوع", "full": "الحلقة الكاملة على القناة", "disclosure": "توأم رقمي لوسام — بموافقة وسام", "dir": "rtl"},
-    "en": {"show": "This Week in AI", "source": "Source", "subscribe": "Subscribe",
+    "en": {"show": "AI This Week", "source": "Source", "subscribe": "Subscribe",
            "weekly": "A new episode every week", "full": "Full episode on the channel", "disclosure": "Wissam's AI digital twin — with his consent",
            "dir": "ltr"},
 }
