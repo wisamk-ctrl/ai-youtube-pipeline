@@ -33,13 +33,13 @@ CARD_HTML = """<!doctype html><html dir="{dir}"><meta charset="utf-8">
 {fonts}
 html,body {{ margin:0; width:{w}px; height:{h}px; background:transparent; }}
 .card {{ position:absolute; {side}:96px; bottom:{bottom}px; max-width:{maxw}px; padding:20px 34px;
-  background:rgba(20,17,15,.93); border-{side}:10px solid #E5432A;
-  color:#F3EEE3; font:600 {size}px/1.35 Sans, Kufi, "Noto Kufi Arabic", sans-serif; }}
+  background:rgba(30,10,71,.94); border-{side}:10px solid #D9B13B;
+  color:#FFFFFF; font:600 {size}px/1.35 Sans, Kufi, "Noto Kufi Arabic", sans-serif; }}
 .small {{ font-size:{small}px; opacity:.9; }}
-.question {{ font:700 {size}px/1.25 Display, Kufi, serif; letter-spacing:-.01em; }}
+.question {{ font:700 {size}px/1.25 Display, Kufi, sans-serif; letter-spacing:-.02em; }}
 .topic {{ bottom:auto; top:{top}px; {side}:{edge}px; padding:12px 20px; font:700 {chip}px/1 Mono, Kufi, monospace;
-  letter-spacing:.12em; text-transform:uppercase; border-{side}-width:8px; background:#14110F; }}
-.tag {{ display:inline-block; font:700 20px/1 Mono, monospace; letter-spacing:.12em; color:#F3EEE3; background:#E5432A;
+  letter-spacing:.12em; text-transform:uppercase; border-{side}-width:8px; background:#1E0A47; }}
+.tag {{ display:inline-block; font:700 20px/1 Mono, monospace; letter-spacing:.12em; color:#1E0A47; background:#D9B13B;
   padding:5px 12px; margin-bottom:10px; }}
 </style><body><div class="card {cls}">{tag}{text}</div></body></html>"""
 

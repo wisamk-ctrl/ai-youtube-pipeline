@@ -138,8 +138,8 @@ body{{background:{INK};color:{PAPER};font-family:{TEXT}}}
 .show{{display:inline-block;font:700 {h * 0.026:.0f}px {MONO};letter-spacing:.14em;text-transform:uppercase;color:{RED}}}
 .words{{font:800 {h * (0.15 if len(words) <= 3 else 0.115):.0f}px/1.02 {DISPLAY};letter-spacing:-.035em;margin-top:{h * 0.05:.0f}px;
 hyphens:none;overflow-wrap:normal}}
-.words b{{color:{RED}}}
-.line{{font:500 {h * 0.036:.0f}px/1.35 {TEXT};margin-top:{h * 0.04:.0f}px;color:#d8d1c2}}
+.words b{{{FOIL_TEXT};padding-right:.05em}}
+.line{{font:500 {h * 0.036:.0f}px/1.35 {TEXT};margin-top:{h * 0.04:.0f}px;color:#E4DCF7}}
 </style></head><body><div class="grid"></div><div class="edge"></div>
 <div class="col" dir="{ui('dir')}"><div class="show">{html.escape(show)}</div>
 <div class="words">{_accent_last(words)}</div><div class="line">{html.escape(line)}</div></div></body></html>"""
@@ -171,9 +171,9 @@ body{{background:{INK};color:{PAPER};font-family:{TEXT}}}
 .col{{position:absolute;right:{w * 0.06:.0f}px;top:0;bottom:0;width:{w * 0.36:.0f}px;display:flex;flex-direction:column;
 justify-content:center;align-items:flex-start;gap:{h * 0.045:.0f}px;text-align:right}}
 .show{{font:800 {h * 0.085:.0f}px/1.05 {DISPLAY};letter-spacing:-.035em}}
-.show::after{{content:'.';color:{RED}}}
+.show{{{FOIL_TEXT}}}
 .bar{{width:{w * 0.08:.0f}px;height:{h * 0.012:.0f}px;background:{RED}}}
-.sub{{font:700 {h * 0.045:.0f}px {TEXT};color:{PAPER};background:{RED};padding:.3em 1em .36em}}
+.sub{{font:700 {h * 0.045:.0f}px {TEXT};color:{INK};background:{RED};padding:.3em 1em .36em}}
 .note{{font:500 {h * 0.024:.0f}px {MONO};letter-spacing:.1em;text-transform:uppercase;opacity:.75}}
 </style></head><body><div class="grid"></div><div class="col" dir="{ui("dir")}">
 <div class="show">{html.escape(show)}</div><div class="bar"></div><div class="sub">{ui("subscribe")}</div>

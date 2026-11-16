@@ -1,40 +1,41 @@
-"""Channel banner (2560x1440, text inside YouTube's 1546x423 safe area) and logo (800x800).
+"""The channel's brand files (config/brand.md): logo 800x800, YouTube banner 2560x1440 (text inside
+the 1546x423 area every device shows) and the LinkedIn page banner 2256x382.
 
     python scripts/brand_assets.py assets/brand
 """
 import sys
 sys.path.insert(0, '.')
 from pathlib import Path
-from pipeline.post.visual_assets import _fonts, Renderer, NAVY, SAND, GOLD
+
+from pipeline.post.visual_assets import DISPLAY, FOIL, FOIL_TEXT, INK, MONO, PAPER, STONE, TEXT, Renderer, _fonts
+
 out = Path(sys.argv[1])
-grid = ("background-image:linear-gradient(rgba(244,241,234,.045) 1px,transparent 1px),"
-        "linear-gradient(90deg,rgba(244,241,234,.045) 1px,transparent 1px);")
-bars = "".join(f'<div style="width:{w}px;height:{h}px;background:{c};border-radius:6px"></div>'
-               for w, h, c in ((26, 60, "#5C6B86"), (26, 82, "#5C6B86"), (26, 104, "#5C6B86"), (26, 126, "#5C6B86"),
-                               (26, 148, "#5C6B86"), (26, 170, "#5C6B86"), (26, 214, GOLD)))
-banner = f"""<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}
-html,body{{margin:0;width:2560px;height:1440px;overflow:hidden}}
-body{{background:radial-gradient(70% 70% at 50% 50%,#1b2a4a 0%,{NAVY} 60%,#060a12 100%);color:{SAND};font-family:Kufi,sans-serif}}
-.g{{position:absolute;inset:0;{grid}background-size:64px 64px}}
-.safe{{position:absolute;left:507px;top:508px;width:1546px;height:423px;display:flex;align-items:center;gap:70px}}
-.bars{{display:flex;align-items:flex-end;gap:14px;height:230px}}
-.t{{font:800 132px/1 Kufi;letter-spacing:-.01em}} .t b{{color:{GOLD}}}
-.u{{height:10px;background:{GOLD};border-radius:9px;margin:22px 0 26px;width:100%}}
-.s{{font:600 44px/1.3 Kufi;opacity:.9}}
-</style></head><body><div class="g"></div><div class="safe"><div class="bars">{bars}</div>
-<div><div class="t">This Week in <b>AI</b></div><div class="u"></div>
-<div class="s">The AI news that matters for the Gulf<br>Every Sunday · with Wissam</div></div></div></body></html>"""
-logo = f"""<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}
-html,body{{margin:0;width:800px;height:800px;overflow:hidden}}
-body{{background:radial-gradient(80% 80% at 35% 30%,#1f3157 0%,{NAVY} 65%,#060a12 100%);display:grid;place-items:center;font-family:Kufi}}
-.w{{display:flex;flex-direction:column;align-items:center;gap:26px}}
-.bars{{display:flex;align-items:flex-end;gap:16px;height:250px}}
-.bars div{{width:46px;border-radius:9px}}
-.t{{font:800 120px/1 Kufi;color:{SAND}}} .t b{{color:{GOLD}}}
-</style></head><body><div class="w"><div class="bars">
-{''.join(f'<div style="height:{h}px;background:{c}"></div>' for h, c in ((90, "#5C6B86"), (130, "#5C6B86"), (170, "#5C6B86"), (250, GOLD)))}
-</div><div class="t">TW<b>AI</b></div></div></body></html>"""
-with Renderer(2560, 1440) as r:
-    r.still(banner, out / "banner.png")
-with Renderer(800, 800) as r:
-    r.still(logo, out / "logo.png")
+LINE = "What changed in AI, and what it means for business."
+HOST = "With Wissam Kishek"
+
+
+def page(w: int, h: int, css: str, body: str) -> str:
+    return (f'<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}'
+            f'html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}body{{background:{INK};color:{PAPER};font-family:{TEXT}}}'
+            f'.g{{{FOIL_TEXT};padding-right:.04em}}{css}</style></head><body>{body}</body></html>')
+
+
+logo = page(800, 800, f""".w{{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 110px}}
+.a{{font:800 300px/.9 {DISPLAY};letter-spacing:-.06em}} .b{{font:700 92px/1 {DISPLAY};letter-spacing:-.04em;margin-top:26px}}
+.r{{width:150px;height:14px;background:{FOIL};margin-top:44px}}""",
+            '<div class="w"><div class="a"><span class="g">AI</span></div><div class="b">This Week</div><div class="r"></div></div>')
+
+
+def banner(w: int, h: int, left: int, top: int, size: int) -> str:
+    return page(w, h, f""".s{{position:absolute;left:{left}px;top:{top}px}}
+.t{{font:800 {size}px/1 {DISPLAY};letter-spacing:-.045em}} .r{{width:{size * 1.1:.0f}px;height:{size * 0.07:.0f}px;background:{FOIL};margin:{size * 0.22:.0f}px 0}}
+.l{{font:500 {size * 0.3:.0f}px/1.3 {TEXT}}} .h{{font:600 {size * 0.17:.0f}px/1 {MONO};letter-spacing:.14em;text-transform:uppercase;color:{STONE};margin-top:{size * 0.2:.0f}px}}""",
+                f'<div class="s"><div class="t"><span class="g">AI</span> This Week</div><div class="r"></div>'
+                f'<div class="l">{LINE}</div><div class="h">{HOST}</div></div>')
+
+
+for name, w, h, html in (("logo_800.png", 800, 800, logo),
+                         ("youtube_banner_2560x1440.png", 2560, 1440, banner(2560, 1440, 560, 548, 150)),
+                         ("linkedin_banner_2256x382.png", 2256, 382, banner(2256, 382, 620, 62, 110))):
+    with Renderer(w, h) as r:
+        r.still(html, out / name)

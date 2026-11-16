@@ -191,3 +191,7 @@ TikTok cannot be read by an app and are listed to check by hand. Likes are never
 - **Brand (founder 2026-11-16):** the official logo and banner are the ones live on the YouTube channel
   (`assets/brand/channel_logo_800.jpg`, `channel_banner_2560x1440.png`; gold "AI THIS WEEK" in a ring). The
   generated bars logo (`logo_800.png`) and four symbol concepts were rejected. Use the channel logo on every platform.
+- **Brand settled (founder 2026-11-16, option 2 of the last round):** royal violet, white and gold, Sora
+  lettering. Source of truth `config/brand.md`. Cards, overlays, thumbnail, end card, Shorts cards and the
+  English sting use it; `assets/brand/` has the new logo, YouTube banner and LinkedIn banner for the founder
+  to upload. The earlier channel logo and banner are in `assets/brand/previous/`.

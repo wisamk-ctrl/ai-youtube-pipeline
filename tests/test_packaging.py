@@ -216,7 +216,7 @@ def test_shorts_layout_varies():
 def test_thumbnail_html_builds():
     h = packaging.thumbnail_html("سباق الرقائق الجديد", "أسبوع الذكاء الاصطناعي", b"\xff\xd8jpeg")
     assert 'dir="rtl"' in h and "سباق الرقائق <b>الجديد</b>" in h and "data:image/jpeg;base64," in h
-    assert "width:1280px" in h.replace(" ", "") and "#E5432A" in h
+    assert "width:1280px" in h.replace(" ", "") and "#2C0F66" in h
     assert "<img" not in packaging.thumbnail_html("كلمتين فقط", "s")
 
 

@@ -37,15 +37,17 @@ from pipeline.models import NewsItem
 log = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[2]
-# The brand (config/brand.md, founder 2026-11-16): ink, paper and one signal red; an editorial serif
-# for names and headlines, a plain sans for text, a monospace for sources and dates. No glows, no
-# gradients, no circuit lines.
-INK, PAPER, RED, STONE = "#14110F", "#F3EEE3", "#E5432A", "#8A8377"
+# The brand (config/brand.md, founder 2026-11-16): royal violet, white and gold; a clean modern sans
+# (Sora) for names and headlines, Inter for text, a monospace for sources and dates. Gold marks the
+# show's name and the key figure; everything else is white. No glows, gradients on backgrounds,
+# particles or circuit lines.
+INK, PAPER, RED, STONE = "#2C0F66", "#FFFFFF", "#D9B13B", "#B9A9DD"     # ground, text, gold, quiet text
+DEEP = "#1E0A47"                                                        # a darker violet for label plates
 NAVY, GOLD, SAND = INK, RED, PAPER          # the names the older templates import
 # Gold as foil: a soft metal gradient for the one gold element on a page, flat gold for thin rules.
 FOIL = "linear-gradient(115deg,#F3E2A0 0%,#D9B44A 30%,#B8892B 55%,#E8CD7C 78%,#C79A35 100%)"
 FOIL_TEXT = f"background:{FOIL};-webkit-background-clip:text;background-clip:text;color:transparent"
-DISPLAY, TEXT, MONO = "Display,Kufi,serif", "Sans,Naskh,Kufi,sans-serif", "Mono,Kufi,monospace"
+DISPLAY, TEXT, MONO = "Display,Kufi,sans-serif", "Sans,Naskh,Kufi,sans-serif", "Mono,Kufi,monospace"
 
 
 def _font_face(name: str, rel: str) -> str:
@@ -64,7 +66,7 @@ def _fonts() -> str:
     global FONTS
     if FONTS is None:
         FONTS = (_font_face("Kufi", "lowerthird/fonts/display.ttf") + _font_face("Naskh", "lowerthird/fonts/ui.ttf")
-                 + _font_face("Display", "assets/fonts/fraunces.woff2") + _font_face("Sans", "assets/fonts/inter.woff2")
+                 + _font_face("Display", "assets/fonts/sora.woff2") + _font_face("Sans", "assets/fonts/inter.woff2")
                  + _font_face("Mono", "assets/fonts/jetbrainsmono.woff2"))
     return FONTS
 
@@ -91,9 +93,9 @@ def source_html(item: NewsItem, w: int, h: int) -> str:
     css = f""".clip{{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%) rotate(-1.2deg);
 width:{w * 0.64:.0f}px;background:{PAPER};color:{INK};padding:{h * 0.055:.0f}px {w * 0.04:.0f}px;
 box-shadow:{h * 0.02:.0f}px {h * 0.02:.0f}px 0 {RED}}}
-.pub{{display:inline-block;font:700 {h * 0.024:.0f}px {MONO};letter-spacing:.14em;text-transform:uppercase;color:{RED}}}
+.pub{{display:inline-block;font:700 {h * 0.024:.0f}px {MONO};letter-spacing:.14em;text-transform:uppercase;color:#9A7A1E}}
 .hl{{font:700 {h * 0.062:.0f}px/1.14 {DISPLAY};letter-spacing:-.02em;margin:.5em 0 .5em;hyphens:none;-webkit-hyphens:none;word-break:normal;overflow-wrap:normal}}
-.meta{{font:500 {h * 0.022:.0f}px {MONO};letter-spacing:.08em;color:#6d665b}}
+.meta{{font:500 {h * 0.022:.0f}px {MONO};letter-spacing:.08em;color:#6B5E8C}}
 .credit{{position:absolute;bottom:{h * 0.07:.0f}px;right:{w * 0.045:.0f}px;font:500 {h * 0.022:.0f}px {MONO};letter-spacing:.1em;text-transform:uppercase;color:{PAPER};opacity:.7}}"""
     body = f"""<div class="clip"><div class="pub">{html.escape(item.source)}</div>
 <div class="hl" dir="auto">{html.escape(item.title.strip())}</div>
@@ -132,7 +134,7 @@ def fmt_figure(parts: tuple[str, float, str, int, bool], value: float) -> str:
 def number_html(figure: str, label: str, w: int, h: int) -> str:
     css = f""".n{{position:absolute;inset:0;padding:0 {w * 0.08:.0f}px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:{h * 0.03:.0f}px}}
 #fig{{font:800 {h * 0.3:.0f}px/1.0 {DISPLAY};letter-spacing:-.04em;{FOIL_TEXT};direction:ltr;font-variant-numeric:tabular-nums;padding-right:.06em}}
-.l{{font:500 {h * 0.05:.0f}px/1.3 {TEXT};max-width:{w * 0.72:.0f}px;text-align:start;color:#d8d1c2;
+.l{{font:500 {h * 0.05:.0f}px/1.3 {TEXT};max-width:{w * 0.72:.0f}px;text-align:start;color:#E4DCF7;
 border-top:{h * 0.006:.0f}px solid {RED};padding-top:{h * 0.03:.0f}px}}"""
     lab = f'<div class="l" dir="auto">{html.escape(label)}</div>' if label.strip() else ""
     return _page(f'<div class="n"><div id="fig">{html.escape(figure)}</div>{lab}</div>', w, h, css)
@@ -152,7 +154,7 @@ INTRO_CSS = f"""@keyframes fade{{from{{opacity:0}}}}
 .clip{{animation:lift .55s cubic-bezier(.2,.7,.2,1) both}}
 .pub{{animation:slide .35s ease-out .25s both}}
 .hl,.p{{animation:rise .45s cubic-bezier(.2,.7,.2,1) .12s both}}
-.hi{{background:linear-gradient(rgba(229,67,42,.3),rgba(229,67,42,.3)) no-repeat left 0 bottom .06em/100% .3em;
+.hi{{background:linear-gradient(rgba(217,177,59,.38),rgba(217,177,59,.38)) no-repeat left 0 bottom .06em/100% .3em;
 -webkit-box-decoration-break:clone;box-decoration-break:clone;animation:sweep .45s ease-in-out .5s both}}
 .meta{{animation:fade .3s ease-out .6s both}} .credit{{animation:rise .35s ease-out .65s both}}
 .bar{{animation:grow .5s cubic-bezier(.2,.7,.2,1) .35s both}}

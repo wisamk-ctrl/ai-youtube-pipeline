@@ -5,8 +5,9 @@ import * as M from './lib/motion.js';
 const { W, H, FORMAT, E, prog, lerp, clamp, springU, springKeys, SPRING, wobble, font, fill, rrect } = M;
 
 // assets/brand.json — one accent.
-const C = { navy: '#0B1220', paper: '#F4F1EA', accent: '#E9B44C', muted: '#5C6B86' };
-const DISPLAY = 'Display', UI = 'UI';
+const C = { navy: '#2C0F66', paper: '#FFFFFF', accent: '#D9B13B', muted: '#6B52A8' };   // config/brand.md
+const LATIN = new URLSearchParams(location.search).get('lang') === 'en';
+const DISPLAY = LATIN ? 'DisplayEN' : 'Display', UI = LATIN ? 'UIEN' : 'UI';
 // ?lang=en renders the English sting (assets/intro_sting_en.mp4): same film, read left to right.
 const EN = new URLSearchParams(location.search).get('lang') === 'en';
 const TITLE = EN ? ['AI', 'This', 'Week'] : ['أسبوع', 'الذكاء', 'الاصطناعي'];   // reading order

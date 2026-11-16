@@ -46,9 +46,9 @@ SKIP_TITLES = ("سريع", "سريعة", "quick", "خلاصة", "ختام", "ا�
 # Per-Short variations: (title band top as a share of the top band, title colour, title backing,
 # middle band offset in px from centre). Cycled, so Shorts 1–3 of an episode all differ.
 VARIANTS = [
-    {"title_top": 0.30, "color": SAND, "pill": "rgba(20,17,15,.0)", "bar": GOLD, "mid": 0},
+    {"title_top": 0.30, "color": SAND, "pill": "rgba(30,10,71,.0)", "bar": GOLD, "mid": 0},
     {"title_top": 0.42, "color": NAVY, "pill": GOLD, "bar": SAND, "mid": -60},
-    {"title_top": 0.22, "color": GOLD, "pill": "rgba(20,17,15,.85)", "bar": SAND, "mid": 60},
+    {"title_top": 0.22, "color": GOLD, "pill": "rgba(30,10,71,.9)", "bar": SAND, "mid": 60},
 ]
 
 
@@ -179,7 +179,7 @@ html,body{{margin:0;width:{W}px;height:{H}px;overflow:hidden}}
 body{{background:{NAVY};color:{SAND};
 display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px;font-family:{TEXT}}}
 .a{{font:800 104px/1.05 {DISPLAY};letter-spacing:-.035em;text-align:center;max-width:900px}}
-.b{{font:700 46px {TEXT};color:{SAND};background:{GOLD};padding:.3em 1em .36em}}
+.b{{font:700 46px {TEXT};color:{NAVY};background:{GOLD};padding:.3em 1em .36em}}
 </style></head><body dir="{ui("dir")}"><div class="a">{ui("full")}</div><div class="b">{html.escape(show)}</div></body></html>"""
 
 
