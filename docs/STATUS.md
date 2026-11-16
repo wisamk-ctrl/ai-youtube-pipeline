@@ -188,3 +188,6 @@ The own-voice edit now follows the approved script (`pipeline/video/guided.py`),
 YouTube and Instagram are read and answered (after the founder's `approve` on the Inbox issue); LinkedIn and
 TikTok cannot be read by an app and are listed to check by hand. Likes are never automatic (no API). See
 `docs/SOCIAL.md`. Open: founder to create the LinkedIn, Instagram and TikTok apps, in that order.
+- **Brand (founder 2026-11-16):** the official logo and banner are the ones live on the YouTube channel
+  (`assets/brand/channel_logo_800.jpg`, `channel_banner_2560x1440.png`; gold "AI THIS WEEK" in a ring). The
+  generated bars logo (`logo_800.png`) and four symbol concepts were rejected. Use the channel logo on every platform.
