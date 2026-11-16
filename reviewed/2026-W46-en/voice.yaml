@@ -1,9 +1,34 @@
-# English W46, narrated by HeyGen in the founder's cloned English voice (free Turbo model, 2026-11-15).
-# 01-face is the whole opening (cold open + welcome, 16.7 s). Its avatar clip waits for the HeyGen
-# credit reset on 19 Nov: add `video:` to 01-face then (a face chunk without a video is narration only).
-01-face: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=b0794fbf35064dcaad131be0f51524e7.wav
-02-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=0f649cff6997403c9669d8b1bff68065.wav
-03-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=bf73703412904c5cb5ce4a030f580e7d.wav
-04-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=40615c652d8d4082a7a27a6c43eceedd.wav
-05-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=4f6c10cb30f54a0588b02733b5ec49a1.wav
-06-face: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=cfcd80ad1fc6478b908db9c9db92efd9.wav
+# English W46, narrated in the founder's cloned English voice on the paid model (heygen-voice-1, 2026-11-16).
+# The presenter (look C, navy blazer) appears at the opening, at each story change and at the sign-off.
+# The face links are signed and expire about a week after 2026-11-16: assemble before then.
+01-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=22e3b9c2addb4f6c892de0ac2a2da34f.wav
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/7f4a8ae7d9c9f86ecc753bc02256d9f8.mp4?Expires=1795456818&Signature=v3hAg55iTMiCeAmcppARN2StuI~E1BnNFdhKaZHTZ48mwJm6B-PHqggkqJ7hC2DPHZKj7He4OZgfwWujwcjnu8dwaomz0zqkE1iTPu7vs2kgeHqygRgYalQIsdEtusFFX9NvmPHZzpTDTkRxc3VQ~putXtzBpnU4RO59Bqd25BsKg051exVtoYnmbwQMp0WhASYsNl6Jo1lLbnZgx9oJ8yeOC98~K4xN7FzBS1OUNkxmezw4MXK9wtNm3SuEJBrmb8lLR7LmW5Czps-Yl9hd-05QWnMs~DwjBkOc8BjT3tbHdpk2w~0xgdlqAyuky6GFdDhLIbzDL8nplIEQ7xIlPw__&Key-Pair-Id=K3TSZ3KU01LY58"
+02-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=49828302ea6f45739834446c82a8f1b0.wav
+03-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=e7bfd4b71c1e4a0e8ea2be670757d76c.wav
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/7650e2cda960e8c40282f9ef0c89b628.mp4?Expires=1795456830&Signature=DluUMM9oKxwo0BXoL0zutpDkFSGwofhCe7AD~apx8Y9HvrZqf4a895Mm0xjuKu2Hqz2zrEHHz-2C~-sf7WKNziQOBaNNqaSa5Zeg7rAyTVNOZjy44LXBydxrV1GDJBdqV99IHI0IgAJ6avGsjEzrMoQ~XfRTt9T5tKa3jo31jaPlFMkzSIMhQC2NEFL8fW4IAjxiOEnERy2VkdHK06XGMpg9eLK--eiJAukr-J6NDhdnzpea-m3aG01sOPY44g7f71yNDXpy4XsMw4l0vvXfJsTOoNFLQbXwyBNfTQyOxWLMtdeOttGlt19zCBOYO6TGxOCvd8oGCuVt63r56bfv4Q__&Key-Pair-Id=K3TSZ3KU01LY58"
+04-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=79244b18605d450f8a19ad9d7f65102b.wav
+05-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=c57847fa91e04580b576aca091e2559a.wav
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/ebe545c7aa3e5474cbd7f853c4e3aff2.mp4?Expires=1795456838&Signature=bOoXQBQ~mq6orhyi6mVi8lHu3RjBCTxuGxkXcYekBuccV09FRQ66Dfrye93gFUuMRRDDgZDT4KXBtj19s-ro34CI6RBd13ybSlZUNpuQeIVVtLF6IsX1~~XRYwT-lOTmruUUhchUxXOacJW3dPtjT~YcsZtsFsZvjxGYoGew7PpB6WIztGLNs5jbIOc~Yx-wcFAs1DUDdyIN1qJWkXZhoadMLoU5YraMYQrqvQShc9mQku-N2oD6x57X33I9Oz0btPkGZo-I2nU72w6QJyLRmR46UGwJZatnU9trDrSPlCnA5Xv0OrTsjEkRjQK8-b8rhm5KAF8KhfPmuY3Z91JXXA__&Key-Pair-Id=K3TSZ3KU01LY58"
+06-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=8f03f2c22b2e4103889d33d8a0f4f125.wav
+07-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=62dbd362a1ae4815883f99684b88c342.wav
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/c52b72f3596e17cc5dc078a03ca06141.mp4?Expires=1795456923&Signature=qKa0xSNXViDzc5FvLam8~~4kVddcGQ6ejeYQkhQq786aqVbGUmCEsNQk3vGzZ~~wFIUzMGPjYggSUw7F0anPOCBb9kL~bZejXScUVflR82Hh5n0usZB1tEhDYll6yKf1y1gp3bOzi5ik7Ai16PyOW2oYj42N42Rna5bWt0JYGrv0pnyevP8Ni~demFxr-mHA97qBFmrNKatMJ-zmDIpHwc1KRRv8ezRHOnngx6mYF8nf1Omj6R~ubdD0~59IfNK71PAWaUtjKmicYWvZtd1woOxP0miFdbExWaAvd~jS6UxycRTRTrwSZlJ5CMJ7SpEbdZqdpcL4ULFUHNpvXRh26Q__&Key-Pair-Id=K3TSZ3KU01LY58"
+08-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=54587ef58aa64a358d2a2cd16d5d3b03.wav
+09-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=a393828b919f49cda1cc1bb70d460c49.wav
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/9128ec94e96e0a36eb495c7860d916d9.mp4?Expires=1795456950&Signature=rfIaxD21Ti8IRK8ffaCKD0Csh-F02ODtMrUAaqy4ReMp3PfrYn4hN1fUplKTIaAHPNKPzUGZNJCj2x-Vq5xee2ozdVS3wbSZ-n0CD17GaGtPhNnTW-VNtlkP3iYsJQqEfqhsZa6JYzE3K0SwsDsVXAw4LYyFUiwfDkgENh1KP3PaB7anj4KQ75TRhJ41XQL-WFSFmqopAm6zI2xM4vmK7-duS9c7JzXm23fAG~uo9MNV3Ir~EWdXI1dPVHW8tCRnEb6nxYelM6R5SjW-eiF5SFBkGt6zHdtdeypPBX66kGLYJZN8hMaFtOKTJMWLj8KCTsYq2ILsQJse3AqVG3p0HA__&Key-Pair-Id=K3TSZ3KU01LY58"
+10-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=b5156d7334e64681974fab7119386ae5.wav
+11-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=86f8b39859504595bf86a54edf06154a.wav
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/e5407d0c9e72b99e534e8dad49e2342b.mp4?Expires=1795456957&Signature=KRk3qYA4PSFJGZ2jrc5AWXyU6XhAXxWQznwgMRXBDAE~9NMcxFnDOvJ8akISxurGE7V9yIuWI4QSCZTAGsRuCm4RPp57brSYakkgikhyvaJ3Zsstu8fzUxALMv6Cc7n~Ve0lxfpDL3bWjTjBX7v4SWw0~IX2VSYbvHpLu7xl2JxGwrc2b1LxR2dr6dG234Eo6L0jpUjrAKv7O6ELHbgdrFiV2TowMJhytVm3j70iypRzlpx8fP7h60bZTnKs5fUek3JRa0~~pIpjBVCwOPHH4LPfWAKrhOsb~mtcXns~Mb3dpTr0T134bLSYlJWkuMXLmiaqUrhJUXM17hV59u~QTQ__&Key-Pair-Id=K3TSZ3KU01LY58"
+12-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=ea416465f99b4af8858a99c11b5fa4be.wav
+13-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=bc46639548b545649f7ad1fe07036809.wav
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/00d078825a64953772bbf3cfa6f69c21.mp4?Expires=1795457026&Signature=WHAKY5CtwtK5j7zEuCpPbdzxdxvnba0GqmY-zoNqfeDHKW3T2-7ESIOYdLgixITkiTfuZyVSWZaFSR4qaE1jrgNitD0d4eHp--v7X9rOhOD4Wx1ln77iBzaWoCH8Zv36jFEpsHggQGj8G9XupQ6dZA~tLULOLJ49-3i8U~QO9a7rlPb9ojqRu0Iyyatj6mLPX5iVQmnsS~n~IqAvuPseKsYTWtuD3DEKmnRoJc1d~H6sJ5Pgo0Jmz5sGS0uDvdGoUJB2Iqovic4dlNlP7iXCbe48EBmxHnMwKuemYUfvSYPobCA-HaJqMmb~zwRYvV-AwJoVOnBg42W8sclZPhOghw__&Key-Pair-Id=K3TSZ3KU01LY58"
+14-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=c23d238ab8d54aee9119680e13ceb97d.wav
+15-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=36b1d59b42564a59a1180f7ae3f685e1.wav
+  # video: PENDING 15-face
