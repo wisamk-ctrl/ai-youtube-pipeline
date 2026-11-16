@@ -23,7 +23,7 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from pipeline.post.visual_assets import DISPLAY, GOLD, INK, MONO, NAVY, PAPER, RED, SAND, TEXT, _fonts
+from pipeline.post.visual_assets import DISPLAY, FOIL, FOIL_TEXT, GOLD, INK, MONO, NAVY, PAPER, RED, SAND, TEXT, _fonts
 from pipeline.script_format import caption_text, extract_cues, spoken_text, spoken_words
 
 log = logging.getLogger(__name__)
@@ -58,14 +58,14 @@ def thumbnail_html(text: str, show: str, face_jpg: bytes | None = None, w: int =
     d, align = ui("dir"), ("right" if ui("dir") == "rtl" else "left")
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}
-body{{background:{PAPER};color:{INK};font-family:{TEXT}}}
+body{{background:{INK};color:{PAPER};font-family:{TEXT}}}
 .grid,.glow{{display:none}}
 .words{{position:absolute;right:{w * 0.05:.0f}px;top:50%;transform:translateY(-50%);width:{text_w:.0f}px;text-align:{align};
-font:800 {size:.0f}px/1.04 {DISPLAY};letter-spacing:-.035em;color:{INK};
+font:800 {size:.0f}px/1.06 {DISPLAY};letter-spacing:-.035em;color:{PAPER};
 hyphens:none;word-break:keep-all;overflow-wrap:normal}}
-.words b{{color:{RED};font-weight:800}}
-.bar{{position:absolute;right:{w * 0.05:.0f}px;bottom:{h * 0.09:.0f}px;width:{w * 0.12:.0f}px;height:{h * 0.022:.0f}px;background:{RED}}}
-.show{{position:absolute;right:{w * 0.05:.0f}px;top:{h * 0.07:.0f}px;font:700 {h * 0.034:.0f}px {MONO};letter-spacing:.12em;text-transform:uppercase;color:{INK}}}
+.words b{{{FOIL_TEXT};font-weight:800;padding-right:.05em}}
+.bar{{position:absolute;right:{w * 0.05:.0f}px;bottom:{h * 0.09:.0f}px;width:{w * 0.12:.0f}px;height:{h * 0.014:.0f}px;background:{FOIL}}}
+.show{{position:absolute;right:{w * 0.05:.0f}px;top:{h * 0.07:.0f}px;font:700 {h * 0.034:.0f}px {MONO};letter-spacing:.12em;text-transform:uppercase;color:{RED}}}
 .face{{position:absolute;left:{w * 0.05:.0f}px;top:50%;transform:translateY(-50%);width:{h * 0.42:.0f}px;height:{h * 0.42:.0f}px;
 border-radius:50%;overflow:hidden;box-shadow:{h * 0.018:.0f}px {h * 0.018:.0f}px 0 {RED}}}
 .face img{{width:100%;height:100%;object-fit:cover}}

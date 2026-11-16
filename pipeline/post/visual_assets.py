@@ -42,6 +42,9 @@ ROOT = Path(__file__).resolve().parents[2]
 # gradients, no circuit lines.
 INK, PAPER, RED, STONE = "#14110F", "#F3EEE3", "#E5432A", "#8A8377"
 NAVY, GOLD, SAND = INK, RED, PAPER          # the names the older templates import
+# Gold as foil: a soft metal gradient for the one gold element on a page, flat gold for thin rules.
+FOIL = "linear-gradient(115deg,#F3E2A0 0%,#D9B44A 30%,#B8892B 55%,#E8CD7C 78%,#C79A35 100%)"
+FOIL_TEXT = f"background:{FOIL};-webkit-background-clip:text;background-clip:text;color:transparent"
 DISPLAY, TEXT, MONO = "Display,Kufi,serif", "Sans,Naskh,Kufi,sans-serif", "Mono,Kufi,monospace"
 
 
@@ -76,6 +79,7 @@ body{{background:{bg};color:{fg};font-family:{TEXT}}}
 .grid{{display:none}}
 .tag{{position:absolute;top:{h * 0.055:.0f}px;right:{w * 0.045:.0f}px;font:800 {h * 0.034:.0f}px/1 {DISPLAY};letter-spacing:-.02em}}
 .tag b{{color:{dot}}}
+.tag{{color:{RED}}}
 {extra_css}</style></head><body><div class="grid"></div><div class="tag">{ui("show")}<b>.</b></div>{body}</body></html>"""
 
 
@@ -102,7 +106,7 @@ def title_html(text: str, w: int, h: int) -> str:
     """A story opener: the headline set left like a front page, one accent rule under it."""
     css = f""".t{{position:absolute;inset:0;padding:0 {w * 0.08:.0f}px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:{h * 0.04:.0f}px}}
 .p{{font:800 {h * 0.135:.0f}px/1.02 {DISPLAY};letter-spacing:-.035em;text-align:start;max-width:{w * 0.8:.0f}px}}
-.bar{{width:{w * 0.09:.0f}px;height:{h * 0.012:.0f}px;background:{RED};transform-origin:left}}"""
+.bar{{width:{w * 0.09:.0f}px;height:{h * 0.01:.0f}px;background:{FOIL};transform-origin:left}}"""
     return _page(f'<div class="t"><div class="p" dir="auto">{html.escape(text)}</div><div class="bar"></div></div>', w, h, css)
 
 
@@ -127,9 +131,9 @@ def fmt_figure(parts: tuple[str, float, str, int, bool], value: float) -> str:
 
 def number_html(figure: str, label: str, w: int, h: int) -> str:
     css = f""".n{{position:absolute;inset:0;padding:0 {w * 0.08:.0f}px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:{h * 0.03:.0f}px}}
-#fig{{font:800 {h * 0.3:.0f}px/.95 {DISPLAY};letter-spacing:-.04em;color:{PAPER};direction:ltr;font-variant-numeric:tabular-nums}}
+#fig{{font:800 {h * 0.3:.0f}px/1.0 {DISPLAY};letter-spacing:-.04em;{FOIL_TEXT};direction:ltr;font-variant-numeric:tabular-nums;padding-right:.06em}}
 .l{{font:500 {h * 0.05:.0f}px/1.3 {TEXT};max-width:{w * 0.72:.0f}px;text-align:start;color:#d8d1c2;
-border-top:{h * 0.012:.0f}px solid {RED};padding-top:{h * 0.03:.0f}px}}"""
+border-top:{h * 0.006:.0f}px solid {RED};padding-top:{h * 0.03:.0f}px}}"""
     lab = f'<div class="l" dir="auto">{html.escape(label)}</div>' if label.strip() else ""
     return _page(f'<div class="n"><div id="fig">{html.escape(figure)}</div>{lab}</div>', w, h, css)
 
