@@ -1,0 +1,4 @@
+# Our own generated clips (HeyGen: Nano Banana 2 still, then image-to-video). Each key is the text after
+# "stock" in a [Visual] line of script.md; the edit uses these before any stock search.
+"empty boardroom table, dark blue light":
+  - https://resource2.heygen.ai/videos/2f16236adaa04e91bb62e1a24f311c5b/2f16236adaa04e91bb62e1a24f311c5b/01a1e2a4-2f2b-707b-adab-367d1d7c0b78.mp4

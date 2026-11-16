@@ -179,3 +179,6 @@ The own-voice edit now follows the approved script (`pipeline/video/guided.py`),
 - **Founder decision:** the face appears at the opening, the sign-off and for 6-8 s at each story
   change (about 35-45 credits an episode), not full length. First month keeps credits for tests.
 - Own generated clips for a shot go in `reviewed/<week>/visuals.yaml` (see `visual_assets.own_clips`).
+- **Founder 2026-11-16:** narrate W46 on the paid voice model `heygen-voice-1` (about 10 credits an
+  episode); up to about 50 credits of generated clips for W46's key shots. Cinematic Avatar failed
+  with the blue-shirt look too (same "reference file" error, not charged): parked.
