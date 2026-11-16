@@ -66,8 +66,9 @@ def _fonts() -> str:
     return FONTS
 
 
-def _page(body: str, w: int, h: int, extra_css: str = "", bg: str = INK, fg: str = PAPER) -> str:
+def _page(body: str, w: int, h: int, extra_css: str = "", bg: str | None = None, fg: str | None = None) -> str:
     """A flat page in the brand's colours with the show's wordmark in the top corner."""
+    bg, fg = bg or INK, fg or PAPER
     dot = INK if bg == RED else RED
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}
@@ -98,12 +99,11 @@ box-shadow:{h * 0.02:.0f}px {h * 0.02:.0f}px 0 {RED}}}
 
 
 def title_html(text: str, w: int, h: int) -> str:
-    """A story opener: the headline on the signal red, set left like a front page."""
+    """A story opener: the headline set left like a front page, one accent rule under it."""
     css = f""".t{{position:absolute;inset:0;padding:0 {w * 0.08:.0f}px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:{h * 0.04:.0f}px}}
 .p{{font:800 {h * 0.135:.0f}px/1.02 {DISPLAY};letter-spacing:-.035em;text-align:start;max-width:{w * 0.8:.0f}px}}
-.bar{{width:{w * 0.09:.0f}px;height:{h * 0.014:.0f}px;background:{INK};transform-origin:left}}"""
-    return _page(f'<div class="t"><div class="p" dir="auto">{html.escape(text)}</div><div class="bar"></div></div>', w, h, css,
-                 bg=RED)
+.bar{{width:{w * 0.09:.0f}px;height:{h * 0.012:.0f}px;background:{RED};transform-origin:left}}"""
+    return _page(f'<div class="t"><div class="p" dir="auto">{html.escape(text)}</div><div class="bar"></div></div>', w, h, css)
 
 
 NUM_RE = re.compile(r"^(?P<pre>[^\d]*)(?P<num>\d[\d,]*(?:\.\d+)?)(?P<post>.*)$")
