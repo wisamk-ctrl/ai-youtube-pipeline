@@ -63,7 +63,8 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
          snap: float = 2.0, min_shot: float = 1.5, max_visual: float = 12.0,
          corner: bool = True, face_mode: str = "normal", face_keep: float = 8.0,
          hide: list[tuple[float, float]] | None = None,
-         face_only: list[tuple[float, float]] | None = None, card_max: float = 5.0) -> list[Shot]:
+         face_only: list[tuple[float, float]] | None = None, card_max: float = 5.0,
+         card_min: float = 3.0) -> list[Shot]:
     """Shot timeline for the edit.
 
     A source, number or title card stays on screen at most `card_max` seconds; the rest of its shot
@@ -110,7 +111,7 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
         if merged and s.mode == "face" and merged[-1].mode == "face":
             merged[-1].end = s.end      # two [Face] markers in a row are one continuous shot
             continue
-        if merged and s.seconds < min_shot:
+        if merged and s.seconds < min_shot and s.kind not in CARDS:   # a card is never dropped: it is held longer below
             merged[-1].end = s.end
             merged[-1].notes.append(f"absorbed a {s.seconds:.1f}s {s.mode} shot")
             continue
@@ -137,6 +138,7 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
                                 s.notes + ["split: long visual"] if k == 0 else [f"split: part {k + 1} of a long visual"]))
         else:
             out.append(s)
+    out = _hold_cards(out, card_min, min_shot)
     if face_only is not None:
         return _only_faces(out, [(max(0.0, a), min(duration, b)) for a, b in face_only if b > a])
     return _less_face(out, face_mode, face_keep, hide or [])
@@ -151,6 +153,31 @@ HOUSE_EXTRA = ["futuristic user interface hologram animation", "glowing fiber op
                "smart city night lights, timelapse", "microchip production line", "abstract AI brain made of light",
                "cloud computing icons, animation", "cybersecurity padlock hologram", "motherboard close-up, slow pan",
                "server room corridor, slow walk"]
+
+
+CARDS = ("source", "number", "title")
+
+
+def _hold_cards(shots: list[Shot], card_min: float, min_shot: float) -> list[Shot]:
+    """A card stays long enough to read. W46-en: the faster pace left number and title cards on screen for
+    one or two seconds, and two number cards were dropped as slivers. A card shorter than `card_min`
+    takes the time from the footage after it, or before it when the presenter or another card follows."""
+    for i, s in enumerate(shots):
+        if s.mode == "face" or s.kind not in CARDS or s.seconds >= card_min:
+            continue
+        need = card_min - s.seconds
+        nxt = shots[i + 1] if i + 1 < len(shots) else None
+        if nxt and nxt.mode != "face" and nxt.kind not in CARDS:
+            take = min(need, max(0.0, nxt.seconds - min_shot))
+            s.end += take
+            nxt.start += take
+            need -= take
+        prev = shots[i - 1] if i else None
+        if need > 0.05 and prev and prev.mode != "face" and prev.kind not in CARDS:
+            take = min(need, max(0.0, prev.seconds - min_shot))
+            s.start -= take
+            prev.end -= take
+    return shots
 
 
 def _cap_cards(shots: list[Shot], card_max: float, min_shot: float) -> list[Shot]:

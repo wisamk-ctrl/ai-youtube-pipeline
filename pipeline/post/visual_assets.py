@@ -411,6 +411,9 @@ def keyed(clip: Path, share: float = 0.2) -> bool:
         # dark house look as badly as a key plate does
         if (px.min(axis=1) > 170).mean() > 0.45:
             return True
+        # ...and so does a bright one of any colour (W46-en: pale teal squares, a flat desk illustration)
+        if (0.299 * red + 0.587 * green + 0.114 * blue).mean() > 135:
+            return True
     return False
 
 
