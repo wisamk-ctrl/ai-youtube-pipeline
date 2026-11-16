@@ -1,0 +1,40 @@
+name: fetch
+# Copy files from direct links to the `previews` branch (under fetch/), for a session that cannot
+# reach the host itself. One "name url" pair per line.
+on:
+  workflow_dispatch:
+    inputs:
+      files:
+        description: "Lines of: <file name> <direct https link>"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: previews-branch
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download
+        env:
+          FILES: ${{ inputs.files }}
+        run: |
+          mkdir -p out/fetch
+          printf '%s\n' "$FILES" | tr ';' '\n' | while read -r name url; do
+            [ -n "$url" ] || continue
+            name=$(basename "$name")
+            case "$url" in https://*) curl -sSfL --max-filesize 100000000 -o "out/fetch/$name" "$url" ;; *) echo "skipped $name" ;; esac
+          done
+          ls -la out/fetch
+      - name: Push to the previews branch
+        run: |
+          mkdir -p branch && cd branch && git init -q
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git fetch -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previews 2>/dev/null && git checkout -q FETCH_HEAD -- . 2>/dev/null || true
+          cp -rf ../out/* .
+          git add -A && git commit -q -m "fetch: $(date -u +%FT%H:%MZ)"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" HEAD:previews
