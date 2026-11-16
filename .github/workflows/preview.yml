@@ -70,6 +70,8 @@ jobs:
             for f in script.md voice_pack.md voice_pack.json source_map.md plan.json critique.json shotlist.md cards.json subtitles.srt timeline.json; do
               [ -f "$d/$f" ] && cp "$d/$f" "out/${{ inputs.week }}-files/" || true
             done
+            [ -d "$d/cards" ] && cp -r "$d/cards" "out/${{ inputs.week }}-files/cards" || true
+            [ -f "$d/with_cards.mp4" ] && ffmpeg -hide_banner -loglevel error -y -ss 40 -t 12 -i "$d/with_cards.mp4" -vf scale=-2:540 -an "out/${{ inputs.week }}-files/with_cards_40s.mp4" || true
             ls -la "out/${{ inputs.week }}-files"
             exit 0
           fi
