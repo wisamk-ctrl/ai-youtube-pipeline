@@ -15,7 +15,10 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-16T15:35:28Z",
+        "url": "https://youtube.com/shorts/5BTcn7jT9wM"
       },
       "instagram": {
         "status": "queued"
