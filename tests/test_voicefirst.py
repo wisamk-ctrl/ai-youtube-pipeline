@@ -22,6 +22,7 @@ def directed(n_mid: int = 40) -> str:
 
 def test_pack_face_first_and_last_capped_on_sentences():
     cfg = load_settings()
+    cfg["video"]["voicefirst"]["faces"] = "ends"
     chunks = voicefirst.pack(directed(), cfg)
     assert chunks[0]["role"] == "face" and chunks[-1]["role"] == "face"
     assert [c["role"] for c in chunks].count("face") == 2          # the middle [Face] is voice
@@ -33,6 +34,16 @@ def test_pack_face_first_and_last_capped_on_sentences():
     joined = " ".join(c["text"] for c in chunks)
     assert voicefirst._words(joined) == 6 * 5 + 5 + 80 * 5 + 2 + 6 * 5 + 2
     assert [c["id"] for c in chunks] == [f"{n:02d}-{c['role']}" for n, c in enumerate(chunks, 1)]
+
+
+def test_pack_can_show_the_presenter_at_every_face_stretch():
+    cfg = load_settings()
+    cfg["video"]["voicefirst"]["faces"] = "all"
+    chunks = voicefirst.pack(directed(), cfg)
+    assert [c["role"] for c in chunks].count("face") == 3          # opening, the middle one, sign-off
+    assert all(voicefirst._words(c["text"]) <= cfg["video"]["voicefirst"]["face_words_max"] or c["text"].count(".") == 1
+               for c in chunks if c["role"] == "face")
+    assert voicefirst._words(" ".join(c["text"] for c in chunks)) == 6 * 5 + 5 + 80 * 5 + 2 + 6 * 5 + 2
 
 
 def test_pack_voice_chunks_fit_the_limit_and_keep_breaks():
