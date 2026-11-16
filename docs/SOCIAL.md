@@ -79,3 +79,17 @@ You can answer from the GitHub app or by replying to the e-mail. Only the reposi
 - A piece of feedback about the show that three different viewers raise is written to `docs/LESSONS.md`.
 - The repository is public, so the Inbox issues are public too. The comments in them are already public
   on the platforms; the drafts are not until you approve them.
+
+## The quick way to connect LinkedIn and Instagram (no address to copy)
+The sign-in link ends on a GitHub page, and GitHub can drop the code from the address bar (it did on
+2026-11-16). Both platforms can hand you the token directly instead:
+
+- **LinkedIn:** linkedin.com/developers/tools/oauth/token-generator → pick your app → tick `openid`,
+  `profile`, `w_member_social` → Request access token → sign in and allow → copy the token into a repository
+  secret named `LINKEDIN_TOKEN`. Add a second secret `LINKEDIN_TOKEN_UNTIL` with the date 60 days ahead
+  (YYYY-MM-DD) so the Saturday check reminds you to renew it.
+- **Instagram:** in your Meta app → Instagram → API setup with Instagram login → next to your account,
+  Generate token → copy it into a repository secret named `INSTAGRAM_TOKEN`. The pipeline keeps it fresh.
+
+Then Actions → **connect** → platform **check**: it replies on the Connect accounts issue with the
+account each saved sign-in reaches.

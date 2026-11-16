@@ -78,8 +78,33 @@ def _json(r, who):
     return data
 
 
+def check() -> str:
+    """Which accounts the stored sign-ins reach, by asking each platform who we are. No secret is printed."""
+    e, out = os.environ, ["**Connected accounts**", ""]
+    if e.get("LINKEDIN_TOKEN"):
+        r = requests.get("https://api.linkedin.com/v2/userinfo", timeout=60, headers={"Authorization": f"Bearer {e['LINKEDIN_TOKEN']}"})
+        out.append(f"- LinkedIn: connected as **{r.json().get('name')}**" if r.status_code == 200 else
+                   f"- LinkedIn: the saved token was refused (HTTP {r.status_code}). Make a new one.")
+    else:
+        out.append("- LinkedIn: not connected (no `LINKEDIN_TOKEN` secret)")
+    if e.get("INSTAGRAM_TOKEN"):
+        r = requests.get("https://graph.instagram.com/v23.0/me", timeout=60,
+                         params={"fields": "username,account_type", "access_token": e["INSTAGRAM_TOKEN"]})
+        d = r.json() if r.status_code == 200 else {}
+        out.append(f"- Instagram: connected as **@{d.get('username')}** ({d.get('account_type')})" if d else
+                   f"- Instagram: the saved token was refused (HTTP {r.status_code}). Make a new one.")
+    else:
+        out.append("- Instagram: not connected (no `INSTAGRAM_TOKEN` secret)")
+    out.append("- YouTube: sign-in saved" if e.get("YOUTUBE_REFRESH_TOKEN") else "- YouTube: not connected")
+    out.append("- TikTok: sign-in saved" if e.get("TIKTOK_REFRESH_TOKEN") else "- TikTok: not connected")
+    return "\n".join(out) + "\n"
+
+
 def exchange(platform: str, raw: str) -> None:
     code, e = code_of(raw), os.environ
+    if "code=" not in raw and (not code or code.startswith("http")):
+        sys.exit("The address you pasted has no sign-in code in it (GitHub can drop it from the address bar). "
+                 "For LinkedIn and Instagram, make the token on the platform's own page instead: see docs/SOCIAL.md.")
     if platform == "youtube":
         d = _json(requests.post("https://oauth2.googleapis.com/token", timeout=60, data={
             "code": code, "client_id": e["GOOGLE_CLIENT_ID"], "client_secret": e["GOOGLE_CLIENT_SECRET"],
@@ -133,6 +158,8 @@ def exchange(platform: str, raw: str) -> None:
 if __name__ == "__main__":
     if len(sys.argv) >= 2 and sys.argv[1] == "links":
         print(links())
+    elif len(sys.argv) >= 2 and sys.argv[1] == "check":
+        print(check())
     elif len(sys.argv) == 4 and sys.argv[1] == "exchange":
         exchange(sys.argv[2], sys.argv[3])
     else:
