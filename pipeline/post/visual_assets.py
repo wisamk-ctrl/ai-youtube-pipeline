@@ -475,6 +475,33 @@ def backdrop_html(seed: str, w: int, h: int) -> str:
 
 
 # ── Episode assets ───────────────────────────────────────────────────────────
+def own_clips(out_dir: Path) -> dict[str, list[str]]:
+    """Clips we generated ourselves for this week (HeyGen video models), by the shot's search text:
+    reviewed/<week>/visuals.yaml, `"<the words after 'stock' in the [Visual] line>": [url, ...]`.
+    They are used before any stock search, one per shot in order; when a shot's list runs out the
+    search takes over."""
+    import yaml
+    f = ROOT / "reviewed" / out_dir.name / "visuals.yaml"
+    if not f.exists():
+        return {}
+    data = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
+    return {" ".join(str(k).lower().split()): [v] if isinstance(v, str) else list(v or []) for k, v in data.items()}
+
+
+def own_clip(payload: str, own: dict[str, list[str]], cache: Path) -> Path | None:
+    urls = own.get(" ".join(payload.lower().split()))
+    if not urls:
+        return None
+    url = urls.pop(0)
+    cache.mkdir(parents=True, exist_ok=True)
+    dest = cache / (hashlib.sha1(url.split("?")[0].encode()).hexdigest()[:16] + ".mp4")
+    if not dest.exists():
+        r = requests.get(url, timeout=120)
+        r.raise_for_status()
+        dest.write_bytes(r.content)
+    return dest
+
+
 def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path) -> tuple[dict[int, Path], list[dict]]:
     """A clip for every non-face shot that can be made; missing ones fall back to the face."""
     v = cfg.get("visuals", {})
@@ -484,6 +511,7 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
     by_id = {i.id: i for i in items}
     search = stock_search(cfg)
     used: set[str] = set()
+    own = own_clips(out_dir)
     clips: dict[int, Path] = {}
     credits: list[dict] = []
     stock_src: dict[str, tuple[Path, dict] | None] = {}
@@ -537,7 +565,11 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                         fdir, renderer.count_up(fig.strip(), label.strip(), fdir, min(int(fps * 1.2), round(secs * fps)), fps),
                         secs, dest, w, h, fps))
                 elif s.kind == "stock":
-                    got = None
+                    got = own_clip(s.payload, own, work / "own")
+                    if got:
+                        s.notes.append("our own generated clip")
+                        clips[n] = stock_clip(got, secs, dest, w, h, fps)
+                        continue
                     if search:   # fetched per shot: a repeated query gets the next unused clip, not the same one
                         got = fetch_stock(s.payload, work / "stock", used, search[1], w, secs) or stock_src.get(s.payload)
                         if got:
