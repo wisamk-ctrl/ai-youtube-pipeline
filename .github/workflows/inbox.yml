@@ -1,0 +1,75 @@
+name: inbox
+# The daily comment inbox (scripts/inbox.py): collect, sort, draft; post only what the founder approves.
+on:
+  schedule:
+    - cron: "13 5 * * *"       # every day 09:13 Gulf
+  workflow_dispatch:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: inbox
+  cancel-in-progress: false
+
+jobs:
+  daily:
+    if: github.event_name != 'issue_comment'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests pyyaml pydantic anthropic
+      - run: python scripts/inbox.py daily
+      - name: Keep the inbox state and any new lesson
+        if: always()
+        run: |
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git add data/inbox.json docs/LESSONS.md 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -q -m "inbox: $(date -u +%F)"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+
+  act:
+    # Only the repository owner's own comment on an "Inbox:" issue can post replies. The repo is
+    # public: anyone can comment, so anyone else's comment is ignored here, before any step runs.
+    if: >-
+      github.event_name == 'issue_comment' && github.event.comment.author_association == 'OWNER'
+      && github.event.comment.user.login == github.repository_owner
+      && !github.event.issue.pull_request && startsWith(github.event.issue.title, 'Inbox:')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      COMMANDS: ${{ github.event.comment.body }}
+      ISSUE: ${{ github.event.issue.number }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests pyyaml pydantic
+      - run: python scripts/inbox.py act
+      - name: Keep the inbox state
+        if: always()
+        run: |
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git add data/inbox.json 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -q -m "inbox: replies ($(date -u +%F))"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done

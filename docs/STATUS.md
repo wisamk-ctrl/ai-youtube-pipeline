@@ -182,3 +182,9 @@ The own-voice edit now follows the approved script (`pipeline/video/guided.py`),
 - **Founder 2026-11-16:** narrate W46 on the paid voice model `heygen-voice-1` (about 10 credits an
   episode); up to about 50 credits of generated clips for W46's key shots. Cinematic Avatar failed
   with the blue-shirt look too (same "reference file" error, not charged): parked.
+
+## Daily comment inbox (built 2026-11-16)
+`inbox` workflow, daily 05:13 UTC: `pipeline/publish/inbox.py`, `scripts/inbox.py`, state in `data/inbox.json`.
+YouTube and Instagram are read and answered (after the founder's `approve` on the Inbox issue); LinkedIn and
+TikTok cannot be read by an app and are listed to check by hand. Likes are never automatic (no API). See
+`docs/SOCIAL.md`. Open: founder to create the LinkedIn, Instagram and TikTok apps, in that order.

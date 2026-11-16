@@ -336,3 +336,15 @@ social:                       # Shorts / Reels / TikTok on the platforms' own AP
   instagram_api_version: v23.0
   max_attempts: 3             # per platform, then it is marked skipped
   hashtags_en: ["#AI", "#AINews", "#ArtificialIntelligence", "#TechNews"]
+
+inbox:                        # the daily comment inbox (pipeline/publish/inbox.py, workflow `inbox`)
+  model: claude-opus-5-5      # sorts the day's comments and drafts replies, one call a day
+  max_per_day: 80             # comments sorted per run; the rest wait a day
+  recurring_after: 3          # a feedback theme raised by this many different viewers goes to docs/LESSONS.md
+  by_hand_days: 3             # LinkedIn/TikTok posts this recent are listed to check by hand
+  auto_thanks: false          # true: a short fixed thank-you under positive comments (YouTube, Instagram)
+  thanks_per_day: 20
+  thanks:                     # fixed texts, used in turn; never model-written
+    - "Thank you, glad it was useful!"
+    - "Thanks for watching, much appreciated."
+    - "Appreciate it, thank you!"

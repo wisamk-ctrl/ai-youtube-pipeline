@@ -31,6 +31,7 @@ developers.facebook.com → My Apps → Create app → use case **Manage messagi
 (instagram.com → Settings → App and websites → Tester invites) → Business login settings →
 redirect URI `https://github.com/wisamk-ctrl/ai-youtube-pipeline` → copy the **Instagram app ID**
 and **secret** into secrets `INSTAGRAM_APP_ID`, `INSTAGRAM_APP_SECRET`.
+In the app's permissions, keep **instagram_business_manage_comments** on: the daily inbox reads and answers comments with it.
 No app review is needed while the only account is your own (the app stays in development mode).
 
 ### 3. TikTok
@@ -54,3 +55,27 @@ Actions → **connect** → Run workflow → platform **links**. The sign-in lin
 the browser lands on (for YouTube a "can't connect" localhost page — expected), then
 Actions → **connect** → platform `youtube|instagram|tiktok`, paste it as **code**. The run prints the
 account it connected, so you can see it is the right one.
+
+## The daily comment inbox
+Every morning (09:13 Gulf) the `inbox` workflow reads new comments, sorts them and drafts replies, then opens an
+**Inbox: <date>** issue (GitHub e-mails it to you). Nothing substantive is posted until you answer that issue:
+
+    approve 3 5        post the drafts numbered 3 and 5
+    approve all        post every draft still waiting
+    edit 3: your text  post your own words under comment 3
+    skip 4             leave comment 4 unanswered
+
+You can answer from the GitHub app or by replying to the e-mail. Only the repository owner's comment counts.
+
+| Platform | Read comments | Reply | Like a comment |
+|---|---|---|---|
+| YouTube | yes | yes, after your approval | not offered to apps: the issue lists links |
+| Instagram | yes, once connected | yes, after your approval | not offered to apps: the issue lists links |
+| LinkedIn (your profile) | no: LinkedIn has closed that permission | no | no: the issue links your recent posts |
+| TikTok | no: there is no comment access for a posting app | no | no: the issue links your recent posts |
+
+- Positive comments are listed with one-tap links to like. `inbox.auto_thanks: true` in `config/settings.yaml`
+  also posts a short fixed thank-you under them on YouTube and Instagram (off by default).
+- A piece of feedback about the show that three different viewers raise is written to `docs/LESSONS.md`.
+- The repository is public, so the Inbox issues are public too. The comments in them are already public
+  on the platforms; the drafts are not until you approve them.
