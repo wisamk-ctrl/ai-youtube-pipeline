@@ -199,3 +199,5 @@ TikTok cannot be read by an app and are listed to check by hand. Likes are never
   violet glow (`assets/brand/presenter/look_c_navy_blazer.png`), wide format, replaces the grey hoodie. Made
   from the original avatar photo: the dark-studio looks A and B made him look older and were rejected.
   Rendered with `create_video_from_image` (the still, not a saved HeyGen look).
+  Skin warmed on 2026-11-16 (the first render looked pale); founder approved the look for the W46 edit.
+  For W46: render face chunks with `create_video_from_image` from this still, wide format, no side layout.
