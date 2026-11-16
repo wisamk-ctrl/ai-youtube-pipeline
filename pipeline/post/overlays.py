@@ -30,16 +30,17 @@ log = logging.getLogger(__name__)
 CARD_HTML = """<!doctype html><html dir="{dir}"><meta charset="utf-8">
 <style>
 @font-face {{ font-family: Kufi; src: url("{font}"); }}
+{fonts}
 html,body {{ margin:0; width:{w}px; height:{h}px; background:transparent; }}
-.card {{ position:absolute; {side}:96px; bottom:{bottom}px; max-width:{maxw}px; padding:22px 36px;
-  background:rgba(11,18,32,.82); border-{side}:10px solid #E8B24A; border-radius:8px;
-  color:#F4F1EA; font:{size}px/1.45 Kufi, "Noto Kufi Arabic", sans-serif; }}
-.small {{ font-size:{small}px; opacity:.85; }}
-.question {{ font-weight:700; }}
-.topic {{ bottom:auto; top:{top}px; {side}:{edge}px; padding:10px 22px 12px; font-size:{chip}px; font-weight:700;
-  border-{side}-width:8px; background:rgba(11,18,32,.78); }}
-.tag {{ display:inline-block; font-size:22px; color:#0B1220; background:#E8B24A; border-radius:4px;
-  padding:2px 12px; margin-bottom:10px; }}
+.card {{ position:absolute; {side}:96px; bottom:{bottom}px; max-width:{maxw}px; padding:20px 34px;
+  background:rgba(30,10,71,.94); border-{side}:10px solid #D9B13B;
+  color:#FFFFFF; font:600 {size}px/1.35 Sans, Kufi, "Noto Kufi Arabic", sans-serif; }}
+.small {{ font-size:{small}px; opacity:.9; }}
+.question {{ font:700 {size}px/1.25 Display, Kufi, sans-serif; letter-spacing:-.02em; }}
+.topic {{ bottom:auto; top:{top}px; {side}:{edge}px; padding:12px 20px; font:700 {chip}px/1 Mono, Kufi, monospace;
+  letter-spacing:.12em; text-transform:uppercase; border-{side}-width:8px; background:#1E0A47; }}
+.tag {{ display:inline-block; font:700 20px/1 Mono, monospace; letter-spacing:.12em; color:#1E0A47; background:#D9B13B;
+  padding:5px 12px; margin-bottom:10px; }}
 </style><body><div class="card {cls}">{tag}{text}</div></body></html>"""
 
 
@@ -58,6 +59,12 @@ def _font_path() -> str:
     return ""
 
 
+def _brand_fonts() -> str:
+    """The brand's faces embedded in the page (a file link is not reliably loaded by set_content)."""
+    from pipeline.post.visual_assets import _fonts
+    return _fonts()
+
+
 def render_card(text: str, dest: Path, kind: str = "onscreen", width: int = 1920, height: int = 1080) -> Path:
     """Render one transparent PNG card with Playwright/Chromium."""
     from playwright.sync_api import sync_playwright  # lazy: only the post phase needs it
@@ -67,9 +74,9 @@ def render_card(text: str, dest: Path, kind: str = "onscreen", width: int = 1920
     small = kind == "broll"
     page_html = CARD_HTML.format(
         dir=ui("dir"), side="right" if rtl else "left",
-        font=_font_path(), w=width, h=height, bottom=int(height * 0.05) if kind == "broll" else int(height * 0.17),   # just above the captions
+        font=_font_path(), fonts=_brand_fonts(), w=width, h=height, bottom=int(height * 0.05) if kind == "broll" else int(height * 0.17),   # just above the captions
         maxw=int(width * (0.5 if kind == "topic" else 0.62)), size=int(height * 0.052), small=int(height * 0.028),
-        top=int(height * 0.055), edge=int(width * 0.04), chip=int(height * 0.03),
+        top=int(height * 0.055), edge=int(width * 0.04), chip=int(height * 0.022),
         cls="small" if small else kind if kind in ("topic", "question") else "",
         tag='<div class="tag">B-ROLL</div><br>' if kind == "broll" else "", text=html.escape(text))
     dest.parent.mkdir(parents=True, exist_ok=True)

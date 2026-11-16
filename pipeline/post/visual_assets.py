@@ -37,7 +37,17 @@ from pipeline.models import NewsItem
 log = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[2]
-NAVY, GOLD, SAND = "#0B1220", "#E8B24A", "#F4F1EA"
+# The brand (config/brand.md, founder 2026-11-16): royal violet, white and gold; a clean modern sans
+# (Sora) for names and headlines, Inter for text, a monospace for sources and dates. Gold marks the
+# show's name and the key figure; everything else is white. No glows, gradients on backgrounds,
+# particles or circuit lines.
+INK, PAPER, RED, STONE = "#2C0F66", "#FFFFFF", "#D9B13B", "#B9A9DD"     # ground, text, gold, quiet text
+DEEP = "#1E0A47"                                                        # a darker violet for label plates
+NAVY, GOLD, SAND = INK, RED, PAPER          # the names the older templates import
+# Gold as foil: a soft metal gradient for the one gold element on a page, flat gold for thin rules.
+FOIL = "linear-gradient(115deg,#F3E2A0 0%,#D9B44A 30%,#B8892B 55%,#E8CD7C 78%,#C79A35 100%)"
+FOIL_TEXT = f"background:{FOIL};-webkit-background-clip:text;background-clip:text;color:transparent"
+DISPLAY, TEXT, MONO = "Display,Kufi,sans-serif", "Sans,Naskh,Kufi,sans-serif", "Mono,Kufi,monospace"
 
 
 def _font_face(name: str, rel: str) -> str:
@@ -45,7 +55,8 @@ def _font_face(name: str, rel: str) -> str:
     if not p.exists():
         return ""
     b64 = base64.b64encode(p.read_bytes()).decode()
-    return f'@font-face{{font-family:{name};src:url(data:font/ttf;base64,{b64}) format("truetype");font-weight:100 900}}'
+    kind, fmt = ("font/woff2", "woff2") if rel.endswith(".woff2") else ("font/ttf", "truetype")
+    return f'@font-face{{font-family:{name};src:url(data:{kind};base64,{b64}) format("{fmt}");font-weight:100 900}}'
 
 
 FONTS = None
@@ -54,19 +65,24 @@ FONTS = None
 def _fonts() -> str:
     global FONTS
     if FONTS is None:
-        FONTS = _font_face("Kufi", "lowerthird/fonts/display.ttf") + _font_face("Naskh", "lowerthird/fonts/ui.ttf")
+        FONTS = (_font_face("Kufi", "lowerthird/fonts/display.ttf") + _font_face("Naskh", "lowerthird/fonts/ui.ttf")
+                 + _font_face("Display", "assets/fonts/sora.woff2") + _font_face("Sans", "assets/fonts/inter.woff2")
+                 + _font_face("Mono", "assets/fonts/jetbrainsmono.woff2"))
     return FONTS
 
 
-def _page(body: str, w: int, h: int, extra_css: str = "") -> str:
+def _page(body: str, w: int, h: int, extra_css: str = "", bg: str | None = None, fg: str | None = None) -> str:
+    """A flat page in the brand's colours with the show's wordmark in the top corner."""
+    bg, fg = bg or INK, fg or PAPER
+    dot = INK if bg == RED else RED
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}
-body{{background:radial-gradient(120% 90% at 70% 20%,#16213a 0%,{NAVY} 60%,#070b14 100%);color:{SAND};
-font-family:Naskh,Kufi,sans-serif}}
-.grid{{position:absolute;inset:0;background-image:linear-gradient(rgba(244,241,234,.035) 1px,transparent 1px),
-linear-gradient(90deg,rgba(244,241,234,.035) 1px,transparent 1px);background-size:{w // 24}px {w // 24}px}}
-.tag{{position:absolute;top:{h * 0.06:.0f}px;right:{w * 0.05:.0f}px;font:600 {h * 0.026:.0f}px Kufi;color:{GOLD};letter-spacing:.02em}}
-{extra_css}</style></head><body><div class="grid"></div><div class="tag">{ui("show")}</div>{body}</body></html>"""
+body{{background:{bg};color:{fg};font-family:{TEXT}}}
+.grid{{display:none}}
+.tag{{position:absolute;top:{h * 0.055:.0f}px;right:{w * 0.045:.0f}px;font:800 {h * 0.034:.0f}px/1 {DISPLAY};letter-spacing:-.02em}}
+.tag b{{color:{dot}}}
+.tag{{color:{RED}}}
+{extra_css}</style></head><body><div class="grid"></div><div class="tag">{ui("show")}<b>.</b></div>{body}</body></html>"""
 
 
 def source_html(item: NewsItem, w: int, h: int) -> str:
@@ -75,12 +91,12 @@ def source_html(item: NewsItem, w: int, h: int) -> str:
         domain = ""
     date = item.published.strftime("%Y-%m-%d") if item.published else ""
     css = f""".clip{{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%) rotate(-1.2deg);
-width:{w * 0.66:.0f}px;background:{SAND};color:#14161c;border-radius:{h * 0.012:.0f}px;padding:{h * 0.05:.0f}px {w * 0.04:.0f}px;
-box-shadow:0 {h * 0.03:.0f}px {h * 0.08:.0f}px rgba(0,0,0,.55)}}
-.pub{{display:inline-block;font:700 {h * 0.03:.0f}px Kufi,sans-serif;background:{NAVY};color:{GOLD};padding:.25em .7em;border-radius:.3em}}
-.hl{{font:700 {h * 0.055:.0f}px/1.28 Naskh,Kufi,sans-serif;margin:.55em 0 .5em;hyphens:none;-webkit-hyphens:none;word-break:normal;overflow-wrap:normal}}
-.meta{{font:500 {h * 0.024:.0f}px Kufi,sans-serif;color:#5d5a52}}
-.credit{{position:absolute;bottom:{h * 0.07:.0f}px;right:{w * 0.05:.0f}px;font:500 {h * 0.026:.0f}px Kufi;color:{SAND};opacity:.75}}"""
+width:{w * 0.64:.0f}px;background:{PAPER};color:{INK};padding:{h * 0.055:.0f}px {w * 0.04:.0f}px;
+box-shadow:{h * 0.02:.0f}px {h * 0.02:.0f}px 0 {RED}}}
+.pub{{display:inline-block;font:700 {h * 0.024:.0f}px {MONO};letter-spacing:.14em;text-transform:uppercase;color:#9A7A1E}}
+.hl{{font:700 {h * 0.062:.0f}px/1.14 {DISPLAY};letter-spacing:-.02em;margin:.5em 0 .5em;hyphens:none;-webkit-hyphens:none;word-break:normal;overflow-wrap:normal}}
+.meta{{font:500 {h * 0.022:.0f}px {MONO};letter-spacing:.08em;color:#6B5E8C}}
+.credit{{position:absolute;bottom:{h * 0.07:.0f}px;right:{w * 0.045:.0f}px;font:500 {h * 0.022:.0f}px {MONO};letter-spacing:.1em;text-transform:uppercase;color:{PAPER};opacity:.7}}"""
     body = f"""<div class="clip"><div class="pub">{html.escape(item.source)}</div>
 <div class="hl" dir="auto">{html.escape(item.title.strip())}</div>
 <div class="meta" dir="ltr">{html.escape(" · ".join(x for x in (domain, date) if x))}</div></div>
@@ -89,9 +105,10 @@ box-shadow:0 {h * 0.03:.0f}px {h * 0.08:.0f}px rgba(0,0,0,.55)}}
 
 
 def title_html(text: str, w: int, h: int) -> str:
-    css = f""".t{{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:{h * 0.03:.0f}px}}
-.p{{font:700 {h * 0.1:.0f}px/1.3 Kufi,sans-serif;text-align:center;max-width:{w * 0.8:.0f}px}}
-.bar{{width:{w * 0.09:.0f}px;height:{h * 0.008:.0f}px;background:{GOLD};border-radius:9px}}"""
+    """A story opener: the headline set left like a front page, one accent rule under it."""
+    css = f""".t{{position:absolute;inset:0;padding:0 {w * 0.08:.0f}px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:{h * 0.04:.0f}px}}
+.p{{font:800 {h * 0.135:.0f}px/1.02 {DISPLAY};letter-spacing:-.035em;text-align:start;max-width:{w * 0.8:.0f}px}}
+.bar{{width:{w * 0.09:.0f}px;height:{h * 0.01:.0f}px;background:{FOIL};transform-origin:left}}"""
     return _page(f'<div class="t"><div class="p" dir="auto">{html.escape(text)}</div><div class="bar"></div></div>', w, h, css)
 
 
@@ -115,9 +132,10 @@ def fmt_figure(parts: tuple[str, float, str, int, bool], value: float) -> str:
 
 
 def number_html(figure: str, label: str, w: int, h: int) -> str:
-    css = f""".n{{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:{h * 0.02:.0f}px}}
-#fig{{font:800 {h * 0.22:.0f}px/1 Kufi,sans-serif;color:{GOLD};direction:ltr;font-variant-numeric:tabular-nums}}
-.l{{font:600 {h * 0.055:.0f}px/1.35 Naskh,Kufi,sans-serif;max-width:{w * 0.75:.0f}px;text-align:center}}"""
+    css = f""".n{{position:absolute;inset:0;padding:0 {w * 0.08:.0f}px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:{h * 0.03:.0f}px}}
+#fig{{font:800 {h * 0.3:.0f}px/1.0 {DISPLAY};letter-spacing:-.04em;{FOIL_TEXT};direction:ltr;font-variant-numeric:tabular-nums;padding-right:.06em}}
+.l{{font:500 {h * 0.05:.0f}px/1.3 {TEXT};max-width:{w * 0.72:.0f}px;text-align:start;color:#E4DCF7;
+border-top:{h * 0.006:.0f}px solid {RED};padding-top:{h * 0.03:.0f}px}}"""
     lab = f'<div class="l" dir="auto">{html.escape(label)}</div>' if label.strip() else ""
     return _page(f'<div class="n"><div id="fig">{html.escape(figure)}</div>{lab}</div>', w, h, css)
 
@@ -136,7 +154,7 @@ INTRO_CSS = f"""@keyframes fade{{from{{opacity:0}}}}
 .clip{{animation:lift .55s cubic-bezier(.2,.7,.2,1) both}}
 .pub{{animation:slide .35s ease-out .25s both}}
 .hl,.p{{animation:rise .45s cubic-bezier(.2,.7,.2,1) .12s both}}
-.hi{{background:linear-gradient(rgba(232,178,74,.4),rgba(232,178,74,.4)) no-repeat right 0 bottom .1em/100% .34em;
+.hi{{background:linear-gradient(rgba(217,177,59,.38),rgba(217,177,59,.38)) no-repeat left 0 bottom .06em/100% .3em;
 -webkit-box-decoration-break:clone;box-decoration-break:clone;animation:sweep .45s ease-in-out .5s both}}
 .meta{{animation:fade .3s ease-out .6s both}} .credit{{animation:rise .35s ease-out .65s both}}
 .bar{{animation:grow .5s cubic-bezier(.2,.7,.2,1) .35s both}}
