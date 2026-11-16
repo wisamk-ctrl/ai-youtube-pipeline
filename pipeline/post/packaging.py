@@ -23,7 +23,7 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from pipeline.post.visual_assets import GOLD, NAVY, SAND, _fonts
+from pipeline.post.visual_assets import DISPLAY, GOLD, INK, MONO, NAVY, PAPER, RED, SAND, TEXT, _fonts
 from pipeline.script_format import caption_text, extract_cues, spoken_text, spoken_words
 
 log = logging.getLogger(__name__)
@@ -58,18 +58,16 @@ def thumbnail_html(text: str, show: str, face_jpg: bytes | None = None, w: int =
     d, align = ui("dir"), ("right" if ui("dir") == "rtl" else "left")
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}
-body{{background:radial-gradient(110% 95% at 78% 30%,#1b2a4a 0%,{NAVY} 58%,#060a12 100%);color:{SAND};font-family:Kufi,Naskh,sans-serif}}
-.grid{{position:absolute;inset:0;background-image:linear-gradient(rgba(244,241,234,.04) 1px,transparent 1px),
-linear-gradient(90deg,rgba(244,241,234,.04) 1px,transparent 1px);background-size:{w // 20}px {w // 20}px}}
-.glow{{position:absolute;inset:0;background:radial-gradient(45% 55% at 70% 55%,rgba(232,178,74,.18) 0%,transparent 70%)}}
+body{{background:{PAPER};color:{INK};font-family:{TEXT}}}
+.grid,.glow{{display:none}}
 .words{{position:absolute;right:{w * 0.05:.0f}px;top:50%;transform:translateY(-50%);width:{text_w:.0f}px;text-align:{align};
-font:800 {size:.0f}px/1.18 Kufi,sans-serif;color:{SAND};text-shadow:0 {h * 0.008:.0f}px {h * 0.03:.0f}px rgba(0,0,0,.6);
+font:800 {size:.0f}px/1.04 {DISPLAY};letter-spacing:-.035em;color:{INK};
 hyphens:none;word-break:keep-all;overflow-wrap:normal}}
-.words b{{color:{GOLD};font-weight:800}}
-.bar{{position:absolute;right:{w * 0.05:.0f}px;bottom:{h * 0.1:.0f}px;width:{w * 0.12:.0f}px;height:{h * 0.014:.0f}px;background:{GOLD};border-radius:9px}}
-.show{{position:absolute;right:{w * 0.05:.0f}px;top:{h * 0.07:.0f}px;font:700 {h * 0.042:.0f}px Kufi,sans-serif;color:{GOLD}}}
+.words b{{color:{RED};font-weight:800}}
+.bar{{position:absolute;right:{w * 0.05:.0f}px;bottom:{h * 0.09:.0f}px;width:{w * 0.12:.0f}px;height:{h * 0.022:.0f}px;background:{RED}}}
+.show{{position:absolute;right:{w * 0.05:.0f}px;top:{h * 0.07:.0f}px;font:700 {h * 0.034:.0f}px {MONO};letter-spacing:.12em;text-transform:uppercase;color:{INK}}}
 .face{{position:absolute;left:{w * 0.05:.0f}px;top:50%;transform:translateY(-50%);width:{h * 0.42:.0f}px;height:{h * 0.42:.0f}px;
-border-radius:50%;overflow:hidden;border:{h * 0.012:.0f}px solid {GOLD};box-shadow:0 {h * 0.02:.0f}px {h * 0.06:.0f}px rgba(0,0,0,.55)}}
+border-radius:50%;overflow:hidden;box-shadow:{h * 0.018:.0f}px {h * 0.018:.0f}px 0 {RED}}}
 .face img{{width:100%;height:100%;object-fit:cover}}
 </style></head><body><div class="grid"></div><div class="glow"></div>
 <div class="show" dir="{d}">{html.escape(show)}</div>{face}
@@ -133,16 +131,15 @@ def opening_backdrop_html(show: str, headline: str, line: str, clip_w: int, w: i
     words = headline.split()
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}
-body{{background:radial-gradient(110% 95% at {'75%' if rtl else '25%'} 30%,#1b2a4a 0%,{NAVY} 58%,#060a12 100%);color:{SAND};font-family:Kufi,Naskh,sans-serif}}
-.grid{{position:absolute;inset:0;background-image:linear-gradient(rgba(244,241,234,.04) 1px,transparent 1px),
-linear-gradient(90deg,rgba(244,241,234,.04) 1px,transparent 1px);background-size:{w // 24}px {w // 24}px}}
-.edge{{position:absolute;top:0;bottom:0;{far}:{clip_w}px;width:{w * 0.004:.0f}px;background:{GOLD}}}
+body{{background:{INK};color:{PAPER};font-family:{TEXT}}}
+.grid{{display:none}}
+.edge{{position:absolute;top:0;bottom:0;{far}:{clip_w}px;width:{w * 0.008:.0f}px;background:{RED}}}
 .col{{position:absolute;{near}:{w * 0.05:.0f}px;top:{h * 0.1:.0f}px;width:{w - clip_w - w * 0.1:.0f}px;text-align:{near}}}
-.show{{display:inline-block;font:800 {h * 0.034:.0f}px Kufi,sans-serif;color:{NAVY};background:{GOLD};padding:.25em .7em .35em;border-radius:.35em}}
-.words{{font:800 {h * (0.15 if len(words) <= 3 else 0.115):.0f}px/1.08 Kufi,sans-serif;margin-top:{h * 0.05:.0f}px;
-text-shadow:0 {h * 0.008:.0f}px {h * 0.03:.0f}px rgba(0,0,0,.6);hyphens:none;overflow-wrap:normal}}
-.words b{{color:{GOLD}}}
-.line{{font:600 {h * 0.036:.0f}px/1.35 Kufi,sans-serif;margin-top:{h * 0.035:.0f}px;opacity:.85}}
+.show{{display:inline-block;font:700 {h * 0.026:.0f}px {MONO};letter-spacing:.14em;text-transform:uppercase;color:{RED}}}
+.words{{font:800 {h * (0.15 if len(words) <= 3 else 0.115):.0f}px/1.02 {DISPLAY};letter-spacing:-.035em;margin-top:{h * 0.05:.0f}px;
+hyphens:none;overflow-wrap:normal}}
+.words b{{color:{RED}}}
+.line{{font:500 {h * 0.036:.0f}px/1.35 {TEXT};margin-top:{h * 0.04:.0f}px;color:#d8d1c2}}
 </style></head><body><div class="grid"></div><div class="edge"></div>
 <div class="col" dir="{ui('dir')}"><div class="show">{html.escape(show)}</div>
 <div class="words">{_accent_last(words)}</div><div class="line">{html.escape(line)}</div></div></body></html>"""
@@ -169,15 +166,15 @@ def end_card_html(show: str, w: int = 1920, h: int = 1080) -> str:
     from pipeline.language import ui
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}
-body{{background:radial-gradient(120% 90% at 80% 30%,#16213a 0%,{NAVY} 60%,#070b14 100%);color:{SAND};font-family:Kufi,Naskh,sans-serif}}
-.grid{{position:absolute;inset:0;background-image:linear-gradient(rgba(244,241,234,.03) 1px,transparent 1px),
-linear-gradient(90deg,rgba(244,241,234,.03) 1px,transparent 1px);background-size:{w // 24}px {w // 24}px}}
+body{{background:{INK};color:{PAPER};font-family:{TEXT}}}
+.grid{{display:none}}
 .col{{position:absolute;right:{w * 0.06:.0f}px;top:0;bottom:0;width:{w * 0.36:.0f}px;display:flex;flex-direction:column;
 justify-content:center;align-items:flex-start;gap:{h * 0.045:.0f}px;text-align:right}}
-.show{{font:800 {h * 0.075:.0f}px/1.25 Kufi,sans-serif}}
-.bar{{width:{w * 0.08:.0f}px;height:{h * 0.008:.0f}px;background:{GOLD};border-radius:9px}}
-.sub{{font:800 {h * 0.06:.0f}px Kufi,sans-serif;color:{NAVY};background:{GOLD};padding:.18em .9em .28em;border-radius:.5em}}
-.note{{font:500 {h * 0.032:.0f}px Naskh,Kufi,sans-serif;opacity:.8}}
+.show{{font:800 {h * 0.085:.0f}px/1.05 {DISPLAY};letter-spacing:-.035em}}
+.show::after{{content:'.';color:{RED}}}
+.bar{{width:{w * 0.08:.0f}px;height:{h * 0.012:.0f}px;background:{RED}}}
+.sub{{font:700 {h * 0.045:.0f}px {TEXT};color:{PAPER};background:{RED};padding:.3em 1em .36em}}
+.note{{font:500 {h * 0.024:.0f}px {MONO};letter-spacing:.1em;text-transform:uppercase;opacity:.75}}
 </style></head><body><div class="grid"></div><div class="col" dir="{ui("dir")}">
 <div class="show">{html.escape(show)}</div><div class="bar"></div><div class="sub">{ui("subscribe")}</div>
 <div class="note">{ui("weekly")}</div></div></body></html>"""

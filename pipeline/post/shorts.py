@@ -33,7 +33,7 @@ from pathlib import Path
 from typing import Any
 
 from pipeline.language import ui
-from pipeline.post.visual_assets import GOLD, NAVY, SAND, _fonts
+from pipeline.post.visual_assets import DISPLAY, GOLD, MONO, NAVY, SAND, TEXT, _fonts
 from pipeline.script_format import MARKER_RE, caption_text, spoken_text, spoken_words
 
 log = logging.getLogger(__name__)
@@ -46,9 +46,9 @@ SKIP_TITLES = ("سريع", "سريعة", "quick", "خلاصة", "ختام", "ا�
 # Per-Short variations: (title band top as a share of the top band, title colour, title backing,
 # middle band offset in px from centre). Cycled, so Shorts 1–3 of an episode all differ.
 VARIANTS = [
-    {"title_top": 0.30, "color": SAND, "pill": "rgba(11,18,32,.0)", "bar": GOLD, "mid": 0},
+    {"title_top": 0.30, "color": SAND, "pill": "rgba(20,17,15,.0)", "bar": GOLD, "mid": 0},
     {"title_top": 0.42, "color": NAVY, "pill": GOLD, "bar": SAND, "mid": -60},
-    {"title_top": 0.22, "color": GOLD, "pill": "rgba(11,18,32,.72)", "bar": SAND, "mid": 60},
+    {"title_top": 0.22, "color": GOLD, "pill": "rgba(20,17,15,.85)", "bar": SAND, "mid": 60},
 ]
 
 
@@ -165,10 +165,10 @@ def title_html(title: str, variant: dict[str, Any], band: int) -> str:
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{W}px;height:{H}px;background:transparent;overflow:hidden}}
 .t{{position:absolute;left:70px;right:70px;top:{band * variant['title_top']:.0f}px;text-align:center}}
-.p{{display:inline-block;font:800 {size}px/1.3 Kufi,sans-serif;color:{variant['color']};background:{variant['pill']};
+.p{{display:inline-block;font:800 {size}px/1.08 {DISPLAY};letter-spacing:-.03em;color:{variant['color']};background:{variant['pill']};
 padding:.12em .45em .22em;border-radius:.35em;text-shadow:0 4px 18px rgba(0,0,0,.45)}}
 .bar{{width:150px;height:12px;margin:34px auto 0;background:{variant['bar']};border-radius:9px}}
-.show{{position:absolute;top:70px;left:0;right:0;text-align:center;font:600 34px Kufi,sans-serif;color:{GOLD};opacity:.9}}
+.show{{position:absolute;top:70px;left:0;right:0;text-align:center;font:700 28px {MONO};letter-spacing:.14em;text-transform:uppercase;color:{SAND}}}
 </style></head><body><div class="show" dir="{ui("dir")}">{ui("show")}</div>
 <div class="t"><div class="p" dir="{ui("dir")}">{html.escape(title)}</div><div class="bar"></div></div></body></html>"""
 
@@ -176,10 +176,10 @@ padding:.12em .45em .22em;border-radius:.35em;text-shadow:0 4px 18px rgba(0,0,0,
 def end_html(show: str) -> str:
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{W}px;height:{H}px;overflow:hidden}}
-body{{background:radial-gradient(120% 80% at 50% 35%,#16213a 0%,{NAVY} 60%,#070b14 100%);color:{SAND};
-display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px;font-family:Kufi,sans-serif}}
-.a{{font:800 96px/1.3 Kufi,sans-serif;text-align:center;max-width:900px}}
-.b{{font:800 54px Kufi,sans-serif;color:{NAVY};background:{GOLD};padding:.15em .8em .25em;border-radius:.5em}}
+body{{background:{NAVY};color:{SAND};
+display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px;font-family:{TEXT}}}
+.a{{font:800 104px/1.05 {DISPLAY};letter-spacing:-.035em;text-align:center;max-width:900px}}
+.b{{font:700 46px {TEXT};color:{SAND};background:{GOLD};padding:.3em 1em .36em}}
 </style></head><body dir="{ui("dir")}"><div class="a">{ui("full")}</div><div class="b">{html.escape(show)}</div></body></html>"""
 
 
