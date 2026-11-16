@@ -214,29 +214,35 @@ def overlay(video: Path, cards: list[Card], dest: Path) -> Path:
     if not cards:
         log.info("No cue cards to overlay")
         return video
+    # The cut is joined from segments without re-encoding, and a presenter clip can carry other picture
+    # properties (colour tags) than a generated shot. At each such change ffmpeg rebuilds the filter chain:
+    # a label image read once is then gone for good (W46-en, first edit: no labels after the first presenter
+    # clip), and any clock restarted there drops the picture (second edit: frozen from 1:46). So the picture
+    # keeps its own clock, and each label image keeps playing for the whole length, so a rebuilt chain has it.
     args = ["ffmpeg", "-y", "-i", str(video)]
     for c in cards:
-        args += ["-i", str(c.png)]
-    # The picture is first given clean, evenly spaced times. W46-en: once the cut carried several presenter
-    # clips, every label after the first minute silently failed to show, though each was planned at the
-    # right second and drew correctly on a test picture: the labels are switched on by the picture's own
-    # clock, so that clock must not depend on how the segments were joined.
-    probe = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
-                            "stream=r_frame_rate,start_time,nb_frames,duration", "-of", "default=nw=1", str(video)],
-                           capture_output=True, text=True).stdout.replace("\n", " ")
-    log.info("Overlay input: %s", probe.strip())
-    chain, prev = ["[0:v]setpts=N/FRAME_RATE/TB[v0]"], "v0"
+        args += ["-loop", "1", "-framerate", "2", "-i", str(c.png)]
+    chain, prev = [], "0:v"
     for i, c in enumerate(cards, 1):
         out = f"v{i}"
-        chain.append(f"[{prev}][{i}:v]overlay=0:0:eof_action=repeat:enable='between(t,{c.at:.2f},{c.at + c.seconds:.2f})'[{out}]")
+        chain.append(f"[{prev}][{i}:v]overlay=0:0:shortest=1:enable='between(t,{c.at:.2f},{c.at + c.seconds:.2f})'[{out}]")
         prev = out
     args += ["-filter_complex", ";".join(chain), "-map", f"[{prev}]", "-map", "0:a?", "-c:a", "copy",
              "-c:v", "libx264", "-crf", "18", "-preset", "medium", str(dest)]
     subprocess.run(args, check=True, capture_output=True)
+    had, has = _frames(video), _frames(dest)
+    if had and abs(has - had) > max(3, had * 0.002):
+        raise RuntimeError(f"the picture has {has} frames after the labels, {had} before: part of it was lost")
     late = max(cards, key=lambda c: c.at)                  # the failure hid every label but the first
     if not _drawn(video, dest, late):
         raise RuntimeError(f"label {late.png.name} was planned at {late.at:.1f}s but is not in the picture")
     return dest
+
+
+def _frames(video: Path) -> int:
+    out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-count_packets", "-show_entries",
+                          "stream=nb_read_packets", "-of", "csv=p=0", str(video)], capture_output=True, text=True).stdout
+    return int(out.strip()) if out.strip().isdigit() else 0
 
 
 def _drawn(before: Path, after: Path, card: Card) -> bool:
