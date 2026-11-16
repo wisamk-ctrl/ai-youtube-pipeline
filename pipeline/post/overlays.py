@@ -217,15 +217,45 @@ def overlay(video: Path, cards: list[Card], dest: Path) -> Path:
     args = ["ffmpeg", "-y", "-i", str(video)]
     for c in cards:
         args += ["-i", str(c.png)]
-    chain, prev = [], "0:v"
+    # The picture is first given clean, evenly spaced times. W46-en: once the cut carried several presenter
+    # clips, every label after the first minute silently failed to show, though each was planned at the
+    # right second and drew correctly on a test picture: the labels are switched on by the picture's own
+    # clock, so that clock must not depend on how the segments were joined.
+    probe = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                            "stream=r_frame_rate,start_time,nb_frames,duration", "-of", "default=nw=1", str(video)],
+                           capture_output=True, text=True).stdout.replace("\n", " ")
+    log.info("Overlay input: %s", probe.strip())
+    chain, prev = ["[0:v]setpts=N/FRAME_RATE/TB[v0]"], "v0"
     for i, c in enumerate(cards, 1):
         out = f"v{i}"
-        chain.append(f"[{prev}][{i}:v]overlay=0:0:enable='between(t,{c.at:.2f},{c.at + c.seconds:.2f})'[{out}]")
+        chain.append(f"[{prev}][{i}:v]overlay=0:0:eof_action=repeat:enable='between(t,{c.at:.2f},{c.at + c.seconds:.2f})'[{out}]")
         prev = out
     args += ["-filter_complex", ";".join(chain), "-map", f"[{prev}]", "-map", "0:a?", "-c:a", "copy",
              "-c:v", "libx264", "-crf", "18", "-preset", "medium", str(dest)]
     subprocess.run(args, check=True, capture_output=True)
+    late = max(cards, key=lambda c: c.at)                  # the failure hid every label but the first
+    if not _drawn(video, dest, late):
+        raise RuntimeError(f"label {late.png.name} was planned at {late.at:.1f}s but is not in the picture")
     return dest
+
+
+def _drawn(before: Path, after: Path, card: Card) -> bool:
+    """True when the card's pixels differ between the cut without labels and the cut with them."""
+    import numpy as np
+
+    def frame(src: Path, fmt: str, at: float | None) -> "np.ndarray | None":
+        seek = ["-ss", f"{at:.2f}"] if at is not None else []
+        r = subprocess.run(["ffmpeg", "-v", "error", *seek, "-i", str(src), "-frames:v", "1", "-vf", "scale=480:270",
+                            "-f", "rawvideo", "-pix_fmt", fmt, "-"], capture_output=True)
+        n = 4 if fmt == "rgba" else 3
+        return np.frombuffer(r.stdout, dtype=np.uint8).reshape(270, 480, n).astype(int) if len(r.stdout) == 270 * 480 * n else None
+
+    at = card.at + min(card.seconds / 2, 2.0)
+    png, a, b = frame(card.png, "rgba", None), frame(before, "rgb24", at), frame(after, "rgb24", at)
+    if png is None or a is None or b is None:
+        return True                                        # cannot tell: do not fail the edit on the check itself
+    mask = png[:, :, 3] > 200
+    return bool(mask.sum() < 20 or np.abs(a - b)[mask].mean() > 6)
 
 
 DISCLOSURE_TEXT = "توأم رقمي لوسام — بموافقة وسام"
