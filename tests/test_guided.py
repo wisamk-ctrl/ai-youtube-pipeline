@@ -201,7 +201,7 @@ def test_our_own_clip_is_used_before_stock(tmp_path, monkeypatch):
     from pipeline.post import visual_assets as va
     monkeypatch.setattr(va, "ROOT", tmp_path)
     (tmp_path / "reviewed" / "2099-W01-en").mkdir(parents=True)
-    (tmp_path / "reviewed" / "2099-W01-en" / "visuals.yaml").write_text('"Server  racks, blue light": [https://x/a.mp4?sig=1]\n')
+    (tmp_path / "reviewed" / "2099-W01-en" / "visuals.yaml").write_text('"Server  racks, blue light": ["https://x/a.mp4?sig=1"]\n')
     own = va.own_clips(tmp_path / "output" / "2099-W01-en")
     monkeypatch.setattr(va.requests, "get", lambda url, timeout: type("R", (), {"content": b"v", "raise_for_status": lambda self: None})())
     got = va.own_clip("server racks, blue light", own, tmp_path / "own")
