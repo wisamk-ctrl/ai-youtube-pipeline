@@ -380,6 +380,24 @@ def phase_voicepack(cfg: dict, out: Path) -> None:
     write_voice_pack(_directed(cfg, out, (out / "script.md").read_text(encoding="utf-8")), cfg, out)
 
 
+def _numbers_gate(cfg: dict, out: Path) -> None:
+    """Every figure on screen is checked a second time, mechanically (scripts/number_check.py)."""
+    mode = str(cfg.get("post", {}).get("numbers_gate", "warn"))
+    script = out / "script.md"
+    if mode == "off" or not script.exists():
+        return
+    from scripts.number_check import check, source_text
+    ok = ROOT / "reviewed" / out.name / "numbers_ok.txt"
+    cleared = ok.read_text(encoding="utf-8") if ok.exists() else ""
+    bad = [b for b in check(script.read_text(encoding="utf-8"), source_text(out / "items.json"))
+           if b.split(":")[-1].split()[0] not in cleared.split()]
+    for b in bad:
+        log.warning("On-screen figure: %s", b)
+    if bad and mode == "block":
+        sys.exit("phase assemble: on-screen figures failed the second check (see above). Fix the script, or "
+                 f"name each figure in {ok.relative_to(ROOT)} with the source that carries it.")
+
+
 def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
     """Voice-first route, step 3: speech chunks + face videos (reviewed/<week>/voice.yaml) →
     talking_head.mp4, then post-production."""
@@ -387,6 +405,7 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
     if not (out / "voice_pack.json").exists():
         phase_voicepack(cfg, out)
     _sources_gate(out, "assemble")
+    _numbers_gate(cfg, out)
     voice = ROOT / "reviewed" / out.name / "voice.yaml"
     if not voice.exists():
         sys.exit(f"{voice} not found — make the speech and face videos from voice_pack.md first.")

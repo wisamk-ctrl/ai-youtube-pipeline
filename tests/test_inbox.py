@@ -89,3 +89,18 @@ def test_youtube_skips_our_own_comments_and_marks_answered_threads():
     got = inbox.YouTube("tok", http).comments()
     assert [(x["id"], x["answered"], x["on"]) for x in got] == [("2", True, "Ep"), ("3", False, "Ep")]
     assert got[1]["url"].endswith("v=v1&lc=3")
+
+
+def test_on_screen_figures_must_be_spoken_and_in_the_sources():
+    from scripts.number_check import check
+    script = """[Visual: number $2 trillion | Talked about]
+$2 trillion.
+[On-Screen Text: 40 / 41]
+in 40 cases out of 41.
+[Visual: number 19 months | Drop]
+in 19 months.
+[On-Screen Text: Claude Code v2.1.325]
+[On-Screen Text: 7 days]
+"""
+    bad = check(script, "valued at $2 trillion; 40 of 41 measures failed")
+    assert len(bad) == 2 and "19 is not in the text" in bad[0] and "7 is on screen but never spoken" in bad[1]

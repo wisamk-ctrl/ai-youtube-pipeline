@@ -254,6 +254,7 @@ visuals:
 
 post:
   upload_height: 2160         # the YouTube file is the finished cut scaled to 4K (final_2160p.mp4); 0 = off
+  numbers_gate: warn          # second check on every on-screen figure (scripts/number_check.py): warn | block | off
   repair:
     enabled: true             # re-voice doubled / mispronounced phrases on a finished render (post/repair.py)
     anchor_reach: 3           # words a splice may widen to reach a cleanly heard word
