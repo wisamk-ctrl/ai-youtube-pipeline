@@ -70,8 +70,51 @@ function lockupPose(u) {
 }
 
 // ---------------------------------------------------------------- draw
+// The backdrop (config/brand.md): a soft violet glow, a gold ring that draws itself, circuit rays that
+// grow out of it with a node on each tip, and slow gold motes drifting outward. All a function of u.
+const rnd = (i) => { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+function backdrop(ctx, u) {
+  const cx = W / 2, cy = H / 2, R = H * 0.41;
+  const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, H * 0.95);
+  g.addColorStop(0, '#45219E'); g.addColorStop(0.55, C.navy); g.addColorStop(1, '#1E0A47');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const ring = E.outQuint(prog(u, 0, 2.4));
+  ctx.strokeStyle = C.accent; ctx.globalAlpha = 0.5; ctx.lineWidth = 7;
+  ctx.beginPath(); ctx.arc(cx, cy, R, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * ring); ctx.stroke();
+  const N = 34, turn = u * 0.012;
+  for (let k = 0; k < N; k++) {
+    const a = (Math.PI * 2 * k) / N + (rnd(k) - 0.5) * 0.1 + turn - Math.PI / 2;
+    const start = 0.5 + (k / N) * 2.2;                       // follows the ring round
+    const grow = E.outQuint(prog(u, start, start + 1.1));
+    if (grow <= 0) continue;
+    const r0 = R + 26, r1 = r0 + (70 + rnd(k + 50) * 150) * grow;
+    const x0 = cx + r0 * Math.cos(a), y0 = cy + r0 * Math.sin(a), x1 = cx + r1 * Math.cos(a), y1 = cy + r1 * Math.sin(a);
+    const pulse = 0.5 + 0.5 * Math.sin(u * 1.3 + k * 1.7);
+    ctx.globalAlpha = (0.3 + 0.45 * rnd(k + 9)) * (0.7 + 0.3 * pulse);
+    ctx.lineWidth = 3.5; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1);
+    let tx = x1, ty = y1;
+    if (rnd(k + 20) < 0.45) {                                // an elbow, like a circuit trace
+      const b = a + (rnd(k + 30) < 0.5 ? -1 : 1) * Math.PI / 2, len = (30 + rnd(k + 40) * 50) * clamp(grow * 1.6 - 0.6);
+      tx = x1 + len * Math.cos(b); ty = y1 + len * Math.sin(b); ctx.lineTo(tx, ty);
+    }
+    ctx.stroke();
+    const pop = clamp(grow * 2 - 1);
+    if (pop > 0) { ctx.fillStyle = C.accent; ctx.beginPath(); ctx.arc(tx, ty, 8 * pop * (0.85 + 0.3 * pulse), 0, Math.PI * 2); ctx.fill(); }
+  }
+  for (let k = 0; k < 70; k++) {                             // motes drifting outward
+    const a = rnd(k + 100) * Math.PI * 2, life = (rnd(k + 200) + u * (0.035 + 0.03 * rnd(k + 300))) % 1;
+    const r = R * 0.9 + life * H * 0.75;
+    ctx.globalAlpha = Math.sin(life * Math.PI) * 0.55 * clamp(u / 1.5);
+    ctx.fillStyle = k % 5 ? C.accent : C.paper;
+    ctx.beginPath(); ctx.arc(cx + r * Math.cos(a), cy + r * Math.sin(a), 2 + 3 * rnd(k + 400), 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+
 function draw(ctx, u) {
-  fill(ctx, C.navy);
+  backdrop(ctx, u);
   const safe = FORMAT.safe;
   const f = font(SIZE, 800, DISPLAY);
   const L = lockup(ctx, f);
