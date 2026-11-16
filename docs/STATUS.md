@@ -170,3 +170,12 @@ The own-voice edit now follows the approved script (`pipeline/video/guided.py`),
   Wednesday's revision (the Nvidia earnings line), so narration is regenerated once.
 - **Wider region:** Egypt and North Africa, Turkey, Pakistan are now ingested (AI-narrowed searches in
   `ingestion.google_news_sites`) and the editor mentions them only when the news is major. No quota.
+
+## HeyGen on the Pro plan: measured costs and decisions (2026-11-16)
+- Account reads plan `pro`. Measured: paid voice `heygen-voice-1` 1 credit for 58 s; one Nano Banana 2
+  image 3 credits; 5 s image-to-video at 1080p 4 credits; talking face about 7 credits per 21 s.
+- Cinematic Avatar (Seedance 2) with the grey-hoodie look failed ("reference file could not be
+  downloaded"), not charged. Not retried; founder to decide.
+- **Founder decision:** the face appears at the opening, the sign-off and for 6-8 s at each story
+  change (about 35-45 credits an episode), not full length. First month keeps credits for tests.
+- Own generated clips for a shot go in `reviewed/<week>/visuals.yaml` (see `visual_assets.own_clips`).
