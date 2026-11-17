@@ -212,3 +212,8 @@ TikTok cannot be read by an app and are listed to check by hand. Likes are never
   clip (or ask for a longer clip and cut early) and check every clip's last second in the preview.
 - **Shorts need a proper review before any go out:** listen to each one, not only look. W46-en faults:
   dead silence at the script's pauses, an opening that started on the episode's hand-over sentence.
+
+- **Presenter look D approved (founder, 2026-11-17):** `assets/brand/presenter/look_d_navy_blazer_hands.png`, the
+  hands-visible body with the original look C face pasted back unchanged (the AI edit had altered the face; the first
+  file under this name was rejected). Use from W47. The face must never be regenerated: body edits only, face copied
+  from look C. Still to do: a speaking test with this still, hand gestures now and then, natural clip endings.
