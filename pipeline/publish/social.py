@@ -20,6 +20,7 @@ new ones back (`store_secret`).
 
 from __future__ import annotations
 
+from urllib.parse import urlsplit
 import json
 import logging
 import os
@@ -294,7 +295,9 @@ def _ok(r, who: str) -> dict[str, Any]:
     if r.status_code >= 400:
         err = data.get("error")
         msg = err.get("message") if isinstance(err, dict) else (data.get("error_description") or err or r.text[:300])
-        raise RuntimeError(f"{who}: HTTP {r.status_code}: {msg}")
+        code = err.get("code") if isinstance(err, dict) else None
+        where = urlsplit(str(getattr(r, "url", "") or "")).path      # path only: query strings can hold tokens
+        raise RuntimeError(f"{who}: HTTP {r.status_code}" + (f" {where}" if where else "") + (f" [{code}]" if code else "") + f": {msg}")
     return data
 
 
