@@ -26,6 +26,8 @@ def main(out_dir: Path, dest: Path) -> None:
     en = lang == "en"
     p = cfg["publish"]
     dest.mkdir(parents=True, exist_ok=True)
+    from scripts.apply_reviewed import apply_meta
+    print(apply_meta(out_dir.name, out_dir))
     plan = json.loads((out_dir / "plan.json").read_text(encoding="utf-8"))
     items = json.loads((out_dir / "items.json").read_text(encoding="utf-8"))
     sources = desc.pick_sources(out_dir, plan, items)

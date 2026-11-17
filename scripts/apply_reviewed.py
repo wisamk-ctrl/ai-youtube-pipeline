@@ -27,5 +27,21 @@ def main(week: str) -> str:
     return "using reviewed script"
 
 
+def apply_meta(week: str, out_dir: Path | None = None) -> str:
+    """reviewed/<week>/meta.yaml (title, description, thumbnail text) wins over the generated plan.json:
+    the plan is written before a story is added by hand (W46-en: the title left out the lead story)."""
+    import json
+    import yaml
+    meta, plan = Path("reviewed") / week / "meta.yaml", (out_dir or Path("output") / week) / "plan.json"
+    if not meta.exists() or not plan.exists():
+        return "no reviewed title or description"
+    data = json.loads(plan.read_text(encoding="utf-8"))
+    over = yaml.safe_load(meta.read_text(encoding="utf-8")) or {}
+    data.update({k: v for k, v in over.items() if isinstance(v, (str, list))})
+    plan.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    return "using reviewed " + ", ".join(sorted(over))
+
+
 if __name__ == "__main__":
     print(main(sys.argv[1]))
+    print(apply_meta(sys.argv[1]))

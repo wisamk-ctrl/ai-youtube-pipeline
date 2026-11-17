@@ -344,6 +344,11 @@ def phase_shorts(cfg: dict, out: Path) -> None:
     span = (sting[0], audio.duration_of(sting[1])) if sting else None
     made = shorts_mod.build(base, script, srt if srt.exists() else None, [], cfg, out, sting=span)
     log.info("Shorts rebuilt: %d", len(made))
+    try:   # the thumbnail too: its text can change after the edit (reviewed/<week>/meta.yaml)
+        from pipeline.post import packaging
+        packaging.render_thumbnail(out, cfg, talking_head=out / "talking_head.mp4")
+    except Exception as e:  # noqa: BLE001
+        log.warning("Thumbnail failed: %s", e)
 
 
 def phase_import(cfg: dict, out: Path, video_ref: str | None) -> None:

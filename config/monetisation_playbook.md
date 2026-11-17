@@ -17,9 +17,12 @@ CLAUDE.md (facts traced to a source, no invented figures, no investment advice, 
   mid-roll ads on natural breaks.
 
 ## The presenter is a digital twin
-- The twin reports and explains. It never gives a personal view on politics, regulation, law, health or
-  money. Where a view is wanted, the script marks the spot with `[Wissam on camera: …]` for the founder to
-  record himself, and the episode must still work without it.
+- The twin reports and explains, and it may also give the founder's own view (founder 2026-11-17: "I want to keep
+  posting my view through my digital twin since I will not be earning any money from YouTube anyway. We will
+  reconsider this later"). A view is always the founder's own words or approved by him, is labelled on screen
+  "Wissam's view", and is kept apart from the reported facts. Review this rule before the channel applies for
+  monetisation: the playbook's original advice was that the twin never gives a personal view on politics,
+  regulation, law, health or money, with `[Wissam on camera: …]` marking a spot for him to record himself.
 - Finance stays factual: figures with their source, no stock calls, no price targets, nothing about what
   a viewer should buy, sell or hold. No personal-finance, FIRE or K25x content on this channel.
 - Politics and regulation: say what a government or regulator did and who reported it. No verdicts.

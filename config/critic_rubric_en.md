@@ -45,4 +45,4 @@ means **the English itself**.
 - MAJOR: an imperative or recommendation about investing, buying, selling, legal or tax matters ("you should buy", "invest now").
 - MAJOR: a figure or claim stated with no attribution where the Arabic script attributed it ("according to …").
 - MAJOR: a story with no regional-lens beat (what it means for the Gulf and the wider region), or one that only reads the source with no analysis (config/monetisation_playbook.md).
-- MAJOR: the presenter gives a personal view on politics, regulation, law or money instead of reporting what was done and who reported it.
+- MAJOR: the presenter gives a personal view that is not labelled on screen as "Wissam's view", or mixes a view into the reported facts (founder 2026-11-17: labelled views are allowed; never investment advice).
