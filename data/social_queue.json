@@ -24,9 +24,10 @@
         "status": "queued"
       },
       "tiktok": {
-        "status": "failed",
+        "status": "posted",
         "attempts": 1,
-        "error": "dict.update() got multiple values for keyword argument 'status'"
+        "at": "2026-11-17T17:20:00Z",
+        "note": "posted privately (SELF_ONLY) by social #104; recorded by hand after the status-key crash"
       }
     }
   },

@@ -322,7 +322,8 @@ def post_due(queue: list[dict[str, Any]], cfg: dict[str, Any], fetch: Callable[[
             r["attempts"] = int(r.get("attempts", 0)) + 1
             try:
                 res = posters[p](e, local)
-                r.update(status="posted", at=now.strftime("%Y-%m-%dT%H:%M:%SZ"), **res)
+                r.update({("platform_status" if k == "status" else k): v for k, v in res.items()})  # TikTok returns its own status
+                r.update(status="posted", at=now.strftime("%Y-%m-%dT%H:%M:%SZ"))
                 r.pop("error", None)
                 lines.append(f"✅ {e['id']} {p}: {res}")
             except Exception as exc:  # noqa: BLE001 — one platform failing must not stop the others
