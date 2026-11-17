@@ -353,6 +353,14 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             r.page.set_content(title_html(sp.title, var, mid_y), wait_until="load")
             r.page.evaluate("document.fonts.ready")
             r.page.screenshot(path=str(title_png), omit_background=True)
+            # Open in the pause before the first word, not at the caption's start time: the caption ran
+            # ~0.1 s late and "Anthropic" came out as "thropic" (W46-en, Short 2, founder).
+            try:
+                from pipeline.post import audio as audio_mod
+                cut = audio_mod.silence_cut(video, sp.start, before=0.8, after=0.05)
+                sp.start = round(cut if cut < sp.start else max(0.0, sp.start - 0.15), 2)
+            except Exception:  # noqa: BLE001
+                pass
             span_s = sp.end - sp.start
             sub = _short_srt(srt, sp.start, sp.end, dest_dir / f"short_{k:02d}.srt") if srt and srt.exists() else None
             dest = dest_dir / f"short_{k:02d}.mp4"
@@ -360,7 +368,7 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             # The span is first cut to one uniform clip: the edit is joined from segments whose picture
             # properties differ, and the Shorts step twice sat for over half an hour on it (W46-en, runs
             # cancelled by hand). Every encode here is also time-limited, so a stall costs one Short.
-            clip = dest_dir / f"span_{k:02d}.mkv"
+            clip =dest_dir / f"span_{k:02d}.mkv"
             log.info("Short %d: %s, %.1f–%.1f s", k, sp.title, sp.start, sp.end)
             if not _timed("-ss", f"{sp.start:.3f}", "-t", f"{span_s:.3f}", "-i", str(video),
                    "-vf", f"scale={SRC_W}:{SRC_H},setsar=1,fps={fps},format=yuv420p", "-af", "aresample=48000",
