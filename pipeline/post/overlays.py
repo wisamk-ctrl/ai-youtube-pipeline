@@ -219,18 +219,38 @@ def overlay(video: Path, cards: list[Card], dest: Path) -> Path:
     # a label image read once is then gone for good (W46-en, first edit: no labels after the first presenter
     # clip), and any clock restarted there drops the picture (second edit: frozen from 1:46). So the picture
     # keeps its own clock, and each label image keeps playing for the whole length, so a rebuilt chain has it.
-    args = ["ffmpeg", "-y", "-i", str(video)]
-    for c in cards:
-        args += ["-loop", "1", "-framerate", "2", "-i", str(c.png)]
-    chain, prev = [], "0:v"
-    for i, c in enumerate(cards, 1):
-        out = f"v{i}"
-        chain.append(f"[{prev}][{i}:v]overlay=0:0:shortest=1:enable='between(t,{c.at:.2f},{c.at + c.seconds:.2f})'[{out}]")
-        prev = out
-    args += ["-filter_complex", ";".join(chain), "-map", f"[{prev}]", "-map", "0:a?", "-c:a", "copy",
-             "-c:v", "libx264", "-crf", "18", "-preset", "medium", str(dest)]
-    subprocess.run(args, check=True, capture_output=True)
-    had, has = _frames(video), _frames(dest)
+    def run(src: Path) -> int:
+        args = ["ffmpeg", "-y", "-i", str(src)]
+        for c in cards:
+            args += ["-loop", "1", "-framerate", "2", "-i", str(c.png)]
+        chain, prev = [], "0:v"
+        for i, c in enumerate(cards, 1):
+            out = f"v{i}"
+            chain.append(f"[{prev}][{i}:v]overlay=0:0:shortest=1:enable='between(t,{c.at:.2f},{c.at + c.seconds:.2f})'[{out}]")
+            prev = out
+        args += ["-filter_complex", ";".join(chain), "-map", f"[{prev}]", "-map", "0:a?", "-c:a", "copy",
+                 "-c:v", "libx264", "-crf", "18", "-preset", "medium", str(dest)]
+        subprocess.run(args, check=True, capture_output=True)
+        return _frames(dest)
+
+    had, has = _frames(video), 0
+    has = run(video)
+    if had and abs(has - had) > max(3, had * 0.002):
+        # W46-en, fourth edit: 45 of 18350 frames were still lost at the joins. Re-encode the cut to one
+        # uniform stream first (one input, nothing to lose at a join), then lay the labels on that.
+        log.warning("Labels: %d of %d frames lost at the joins; re-encoding the cut to one uniform stream first", had - has, had)
+        uniform = dest.with_name(dest.stem + ".uniform.mp4")
+        size = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height",
+                               "-of", "csv=p=0:s=x", str(video)], capture_output=True, text=True).stdout.strip() or "1920x1080"
+        subprocess.run(["ffmpeg", "-y", "-i", str(video), "-vf", f"scale={size.replace('x', ':')},setsar=1,format=yuv420p", "-map", "0:v:0",
+                        "-map", "0:a?", "-c:a", "copy", "-c:v", "libx264", "-crf", "14", "-preset", "veryfast",
+                        str(uniform)], check=True, capture_output=True)
+        got = _frames(uniform)
+        if abs(got - had) > max(3, had * 0.002):
+            uniform.unlink(missing_ok=True)
+            raise RuntimeError(f"the uniform copy of the cut has {got} frames, the cut {had}: part of it was lost")
+        has = run(uniform)
+        uniform.unlink(missing_ok=True)
     if had and abs(has - had) > max(3, had * 0.002):
         raise RuntimeError(f"the picture has {has} frames after the labels, {had} before: part of it was lost")
     late = max(cards, key=lambda c: c.at)                  # the failure hid every label but the first

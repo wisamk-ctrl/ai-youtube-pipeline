@@ -245,7 +245,7 @@ def _ff(*args: str) -> None:
 
 
 def _enc(fps: int) -> list[str]:
-    return ["-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-r", str(fps)]
+    return ["-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-color_range", "tv", "-r", str(fps)]
 
 
 def still_clip(png: Path, seconds: float, dest: Path, w: int, h: int, fps: int, push: float = 0.05) -> Path:
@@ -282,7 +282,7 @@ def card_clip(frames_dir: Path, count: int, seconds: float, dest: Path, w: int, 
 def stock_clip(src: Path, seconds: float, dest: Path, w: int, h: int, fps: int) -> Path:
     n = max(1, round(seconds * fps))
     _ff("-stream_loop", "-1", "-i", str(src),
-        "-vf", f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={fps},eq=brightness=-0.03:saturation=0.95",
+        "-vf", f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={fps},eq=brightness=-0.03:saturation=0.95,scale=out_range=tv,setsar=1",
         "-frames:v", str(n), *_enc(fps), str(dest))
     return dest
 

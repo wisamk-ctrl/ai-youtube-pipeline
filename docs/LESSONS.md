@@ -179,3 +179,8 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   settings bans a clip by id. After every preview: name the bad clips from that file and add them.
 - **Check that preview files are fresh before measuring them.** I measured Shorts from the previous run (fetched before
   the text preview finished) and read their silences as a new fault.
+
+- **2026-11-17, W46-en fourth edit: the label pass lost 45 of 18350 frames and the frame check stopped the run.** The
+  looped label inputs fixed the missing labels, not every loss at a join. `overlays.overlay` now retries on a uniform
+  re-encode of the cut when frames are lost, and stock clips are encoded with square pixels and limited range. Cause of
+  the loss itself not reproduced locally.
