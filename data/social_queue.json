@@ -24,7 +24,9 @@
         "status": "queued"
       },
       "tiktok": {
-        "status": "queued"
+        "status": "failed",
+        "attempts": 1,
+        "error": "TikTok: HTTP 403: Please review our integration guidelines at https://developers.tiktok.com/doc/content-sharing-guidelines/"
       }
     }
   },
