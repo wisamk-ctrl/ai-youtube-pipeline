@@ -38,12 +38,12 @@ body{{background:radial-gradient({glow} at {px + d / 2:.0f}px {py + d / 2:.0f}px
 .l{{font:500 {size * 0.3:.0f}px/1.28 {TEXT};max-width:{wrap}px}}
 .h{{font:600 {size * 0.165:.0f}px/1 {MONO};letter-spacing:.14em;text-transform:uppercase;color:#E8CD7C;margin-top:{size * 0.2:.0f}px}}
 .p{{position:absolute;left:{px}px;top:{py}px;width:{d}px;height:{d}px}}
-.f{{position:absolute;inset:0;border-radius:50%;background:url(data:image/png;base64,{face}) 50% 12%/168% auto no-repeat;
+.f{{position:absolute;inset:0;border-radius:50%;background:url(data:image/png;base64,{face}) 50% 16%/215% auto no-repeat;
 box-shadow:0 0 0 {d * 0.022:.1f}px {G},0 0 {d * 0.25:.0f}px rgba(217,177,59,.25)}}
 </style></head><body><div class="s"><div class="t"><span class="g">AI</span> This Week</div><div class="r"></div>
 <div class="l">What changed in AI, and what it means for business.</div><div class="h">With Wissam Kishek</div></div>
 <div class="p">{svg}<div class="f"></div></div></body></html>"""
 with Renderer(2560, 1440) as r:   # everything inside the 1546×423 centre that every device shows
-    r.still(page(2560, 1440, 540, 560, 132, 600, 330, 1620, 555, "900px 700px"), out / "youtube_banner_2560x1440.png")
+    r.still(page(2560, 1440, 540, 560, 132, 600, 372, 1610, 534, "900px 700px"), out / "youtube_banner_2560x1440.png")
 with Renderer(2256, 382) as r:
-    r.still(page(2256, 382, 300, 62, 100, 900, 250, 1700, 66, "700px 500px"), out / "linkedin_banner_2256x382.png")
+    r.still(page(2256, 382, 300, 62, 100, 900, 290, 1690, 46, "700px 500px"), out / "linkedin_banner_2256x382.png")
