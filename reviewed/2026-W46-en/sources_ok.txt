@@ -31,3 +31,16 @@ made, so the map does not list it. Its claims and the collected article each was
   (item a9daf0fb16), quoting his post.
 - "not related to cyber or AI/agents": Ars Technica, quoting Microsoft's report.
 - "My view" lines are the founder's opinion, given by him on 2026-11-17, labelled on screen as his view.
+
+Jensen Huang section re-checked on 2026-11-17 against the full article texts (founder's request), and one passage
+reworded and re-read (voice chunk 06):
+- Read in full: Al Jazeera, "Why did Nvidia CEO Jensen Huang resign, and who is Colette Kress?" (12 Nov);
+  TechCrunch, "Nvidia's Jensen Huang resigns, chipmaker names CFO Colette Kress as interim CEO" (12 Nov).
+- Confirmed by both or by Al Jazeera: resigned as president and CEO, announced Thursday 12 Nov; also resigned from
+  the board; Kress interim CEO; internal and external candidates; "Nvidia did not give a reason".
+- Corrected: the script called everything about his private life "allegations, not established facts". Al Jazeera:
+  "On Sunday, Huang admitted to being unfaithful to his wife". Still an allegation: the woman in the first reported
+  relationship "is alleged to have worked for Chinese intelligence"; "There is no established evidence he knowingly
+  assisted Beijing or that company secrets were compromised" (Al Jazeera's correspondent).
+- The Washington Post was named on air but not confirmed; replaced by TechCrunch.
+- Not verified from an article text: "effective immediately" (most likely NVIDIA's 8-K; sec.gov refused the fetch).

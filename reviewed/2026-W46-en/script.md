@@ -47,9 +47,11 @@ And the board says it will consider candidates from inside and outside the compa
 [Visual: stock abstract data flow, glowing streams]
 NVIDIA gave no reason.
 
-Press reports, including Al Jazeera and the Washington Post, tie his exit to allegations about his private life. One of them involves a woman alleged to be a Chinese spy.
+Press reports, including Al Jazeera and TechCrunch, tie his exit to his private life. Al Jazeera reports that he admitted being unfaithful to his wife.
 
-These are allegations, not established facts.
+One of the reported relationships was with a woman alleged to have worked for Chinese intelligence.
+
+That part is an allegation: Al Jazeera notes there is no established evidence that company secrets were compromised.
 
 [Visual: title Why does it matter to us?]
 Why does this matter here in the region?
