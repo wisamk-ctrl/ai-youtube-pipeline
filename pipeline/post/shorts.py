@@ -245,6 +245,20 @@ def _fmt(x: float) -> str:
     return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
 
 
+SRC_W, SRC_H = 1920, 1080          # the uniform clip each Short is built from
+ENCODE_LIMIT = 600                 # seconds one ffmpeg call may take; a Short is under a minute long
+
+
+def _timed(*args: str) -> bool:
+    """ffmpeg with a time limit: a stalled encode is logged and skipped instead of holding the whole run."""
+    try:
+        subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *args], check=True, timeout=ENCODE_LIMIT)
+        return True
+    except subprocess.TimeoutExpired:
+        log.error("Shorts: ffmpeg passed %d s and was stopped: %s", ENCODE_LIMIT, " ".join(args)[:1500])
+        return False
+
+
 def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: int = 30, hook: float = 0.0,
                  bed: tuple[int, float] | None = None, voice_gain: float | None = None) -> str:
     """[0]=edit span, [1]=title PNG, [2]=end card PNG, with a hook also [3]=hook PNG and [4]=chime → [v], [a]."""
@@ -343,16 +357,25 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             sub = _short_srt(srt, sp.start, sp.end, dest_dir / f"short_{k:02d}.srt") if srt and srt.exists() else None
             dest = dest_dir / f"short_{k:02d}.mp4"
             hook_text = hooks.get(sp.title.strip().lower(), "")
+            # The span is first cut to one uniform clip: the edit is joined from segments whose picture
+            # properties differ, and the Shorts step twice sat for over half an hour on it (W46-en, runs
+            # cancelled by hand). Every encode here is also time-limited, so a stall costs one Short.
+            clip = dest_dir / f"span_{k:02d}.mkv"
+            log.info("Short %d: %s, %.1f–%.1f s", k, sp.title, sp.start, sp.end)
+            if not _timed("-ss", f"{sp.start:.3f}", "-t", f"{span_s:.3f}", "-i", str(video),
+                   "-vf", f"scale={SRC_W}:{SRC_H},setsar=1,fps={fps},format=yuv420p", "-af", "aresample=48000",
+                   "-c:v", "libx264", "-preset", "veryfast", "-crf", "14", "-c:a", "pcm_s16le", str(clip)):
+                continue
             try:
                 from pipeline.post import audio as audio_mod
-                voice_gain = min(12.0, -14.0 - audio_mod.measure(video, sp.start, sp.end)["input_i"])
+                voice_gain = min(12.0, -14.0 - audio_mod.measure(clip)["input_i"])
             except Exception:  # noqa: BLE001 — an unmeasurable span falls back to the levelling filter
                 voice_gain = None
             lead, extra, hook_png = (HOOK_SECONDS if hook_text else 0.0), [], dest_dir / f"hook_{k:02d}.png"
             if hook_text:
                 r.still(hook_html(hook_text, _show_name(cfg)), hook_png)
                 extra = ["-loop", "1", "-i", str(hook_png), "-i", str(chime)]
-            _ffmpeg("-ss", f"{sp.start:.3f}", "-t", f"{span_s:.3f}", "-i", str(video),
+            done = _timed("-i", str(clip),
                     "-loop", "1", "-i", str(title_png), "-loop", "1", "-i", str(end_png), *extra,
                     *(["-stream_loop", "-1", "-i", str(bed_wav)] if bed_wav else []),
                     "-filter_complex", filter_graph(span_s, mid_y, sub, _font(), fps, lead,
@@ -360,9 +383,13 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
                     "-map", "[v]", "-map", "[a]", "-t", f"{lead + span_s + CARD_SECONDS:.3f}",
                     "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", str(fps),
                     "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", str(dest))
-            for p in (title_png, sub, hook_png):
+            for p in (title_png, sub, hook_png, clip):
                 if p:
                     p.unlink(missing_ok=True)
+            if not done:
+                dest.unlink(missing_ok=True)
+                continue
+            log.info("Short %d written: %s", k, dest.name)
             made.append(dict(asdict(sp), file=dest.name, episode_start=round(to_final(sp.start, sting), 2),
                              hook=hook_text))
         end_png.unlink(missing_ok=True)

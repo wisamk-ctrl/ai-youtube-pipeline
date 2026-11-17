@@ -164,3 +164,8 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 - **News was read once a week.** Until 2026-11-17 the only collection was Saturday 10:00 Gulf, looking back
   seven days. `.github/workflows/news-watch.yml` now reads every six hours, keeps what it finds in
   `data/news_watch.json` for the weekly collection, and posts big stories to the "News watch" issue.
+
+- **2026-11-17, W46-en: the Shorts step sat for 27 and 46 minutes after the episode and its 4K master were done** (two
+  runs stopped by hand, the finished episode lost with them). Not reproduced locally, cause not proven. Now each Short
+  is built from its own uniform clip, every Shorts encode stops after 10 minutes and is logged, and a failed Short is
+  skipped (`pipeline/post/shorts.py`). If a run still stalls there, the log names the Short and the command.
