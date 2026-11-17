@@ -67,7 +67,7 @@ jobs:
           mkdir -p out
           if [ "${{ inputs.what }}" = "text" ]; then   # the session that drives the pipeline cannot download artifacts
             mkdir -p "out/${{ inputs.week }}-files"
-            for f in items.json script.md voice_pack.md voice_pack.json source_map.md plan.json critique.json shotlist.md cards.json subtitles.srt timeline.json credits.json stock_used.json; do
+            for f in items.json script.md voice_pack.md voice_pack.json source_map.md plan.json critique.json shotlist.md cards.json subtitles.srt timeline.json credits.json stock_used.json thumbnail.png; do
               [ -f "$d/$f" ] && cp "$d/$f" "out/${{ inputs.week }}-files/" || true
             done
             [ -d "$d/cards" ] && cp -r "$d/cards" "out/${{ inputs.week }}-files/cards" || true
