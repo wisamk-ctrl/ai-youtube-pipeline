@@ -456,6 +456,7 @@ def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int,
 
 TECH_MOTION_HTML = """<canvas id="c" width="{w}" height="{h}" style="position:absolute;inset:0"></canvas>
 <script>
+(()=>{{   // own scope: the page is reused, and a second top-level `const` would not run (blank shots, W46-en)
 const W={w}, H={h}; let seed={seed};
 const rnd=()=>((seed=(seed*1664525+1013904223)>>>0)/4294967296);
 const N=120, nodes=[...Array(N)].map(()=>({{x:rnd()*W,y:rnd()*H,vx:(rnd()-.5)*W*.02,vy:(rnd()-.5)*H*.02,p:rnd()*6.28}}));
@@ -474,6 +475,7 @@ window.draw=(t)=>{{
     ctx.fillStyle='rgba(232,178,74,.9)';ctx.beginPath();ctx.arc(A.x+(B.x-A.x)*k,A.y+(B.y-A.y)*k,W/480,0,6.29);ctx.fill();}}
 }};
 draw(0);
+}})();
 </script>"""
 
 
@@ -535,7 +537,9 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
     work.mkdir(parents=True, exist_ok=True)
     by_id = {i.id: i for i in items}
     search = stock_search(cfg)
-    used: set[str] = set()
+    # Clips a review rejected by eye (figures on screen, off-topic picture): never picked again.
+    used: set[str] = {str(i) for i in v.get("stock", {}).get("blocklist", [])}
+    stock_used: list[dict] = []          # which clip went on which shot, so a bad one can be named and blocked
     own = own_clips(out_dir)
     clips: dict[int, Path] = {}
     credits: list[dict] = []
@@ -601,6 +605,8 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                             stock_src[s.payload] = got
                     if got:
                         clips[n] = stock_clip(got[0], secs, dest, w, h, fps)
+                        stock_used.append({"shot": n, "start": round(s.start, 1), "end": round(s.end, 1),
+                                           "search": s.payload, "id": got[1].get("id"), "url": got[1].get("url")})
                         if got[1] not in credits:
                             credits.append(dict(got[1], provider=search[0]))
                     else:
@@ -629,6 +635,7 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
         for old in store.iterdir():
             if old.name not in kept_keys:
                 old.unlink(missing_ok=True)
+    (out_dir / "stock_used.json").write_text(json.dumps(stock_used, ensure_ascii=False, indent=2), encoding="utf-8")
     (out_dir / "credits.json").write_text(json.dumps(credits, ensure_ascii=False, indent=2), encoding="utf-8")
     log.info("Visuals: %d card clips reused from the last run", reused)
     log.info("Visuals: %d clips made, %d shots fell back to the face, %d stock credits",
