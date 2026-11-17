@@ -142,3 +142,13 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   than 9 s is cut into parts, each a new clip of the same search; the music bed changes key at each
   story; a soft chime lands with each number and title card. Settings: `video.voicefirst.tempo_en`,
   `visuals.max_visual_seconds`, `post.audio.music_keys`, `post.audio.accents`.
+
+## 2026-11-17: W46-en edit and the monetisation playbook
+- **Frozen picture / missing labels.** The label step broke whenever a presenter clip changed the picture's
+  properties inside the cut. Enforced in `pipeline/post/overlays.py`: label images loop for the whole length
+  and the step fails if the frame count changes. A length check alone does not prove the picture moves.
+- **Stock with figures got through** (a bar chart tagged "hud, data, interface"). `NO_FIGURES` in
+  `pipeline/post/visual_assets.py` now bans those tags; tags are still the only defence, so every preview
+  is checked by eye for figures before it goes to the founder.
+- **Playbook adopted.** `config/monetisation_playbook.md` is read by the writer, reviewer and critic.
+  Not built yet: three title options per episode in the plan, Shorts with a newly written opening line.

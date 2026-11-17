@@ -12,6 +12,9 @@ Weekly Arabic AI-news YouTube show, «أسبوع الذكاء الاصطناعي
   `config/visual_standard.md`; the director pass and the shot-list check enforce it.
 - **Facts:** every claim traces to a source item; `source_map.md` lists any that do not.
 - **Never** prescribe investments, never invent figures, never use third-party video clips.
+- **Monetisation playbook** (founder 2026-11-17, applies to every episode): `config/monetisation_playbook.md`.
+  Episode length, the three beats per story (what happened, why it matters, the regional lens), what the
+  digital twin may and may not say, packaging, Shorts and the Sunday 17:00 Gulf publish slot.
 
 ## Current state
 Read `docs/STATUS.md` first: what is done, this week's episode, and the founder's open items.

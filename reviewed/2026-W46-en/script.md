@@ -128,7 +128,7 @@ In the US midterms, voters sent a clear message.
 
 Candidates who called for tighter AI regulation won in states like Michigan and Texas.
 
-[Visual: stock data center server racks, blue light]
+[Visual: stock data center corridor, blue light]
 And according to an NBC News exit poll, a survey of people as they leave the voting booth, more than half of voters said data centers were a deciding or major factor in how they chose their congressional candidates.
 
 [Pause]
@@ -290,7 +290,7 @@ So where do our banks and retailers stand in all this?
 [Visual: stock digital globe, network map]
 The service is still US-only.
 
-[Visual: stock digital payment network animation, glowing nodes]
+[Visual: stock digital payment animation, glowing cards and network]
 But the approach itself, partnering with card networks and using a payment token for each transaction, could be a model banks here look at.
 
 [Visual: stock neural network animation, blue and gold nodes]
@@ -326,7 +326,7 @@ with 3 consortiums
 
 and with 4 Korean companies building foundation models, the large general models that other products are built on.
 
-[Visual: stock code on screen, model serving software]
+[Visual: stock layered technology stack animation, chips and data centers]
 That's using Dynamo, NVIDIA's software for serving models at scale.
 
 [Pause]
@@ -334,7 +334,7 @@ That's using Dynamo, NVIDIA's software for serving models at scale.
 [Visual: stock circuit board macro, glowing traces]
 On the investment side, NVIDIA announced it has invested in a Korean startup called Point2.
 
-[Visual: stock server racks, wireless data signal animation]
+[Visual: stock data center server racks, blue light, animation]
 That company moves data between chips and racks using radio waves, instead of copper and optical fiber.
 
 [Visual: source 57a8ba0d55]

@@ -353,12 +353,15 @@ def stock_search(cfg: dict[str, Any]):
 NO_FIGURES = {
     "chart", "charts", "graph", "graphs", "statistics", "stats", "infographic", "dashboard", "diagram",
     "ticker", "numbers", "percent", "percentage", "report", "analytics", "counter", "countdown", "trading",
+    # W46-en: a bar chart with made-up totals reached the edit under the tags "hud, data, interface"
+    "bar", "bars", "histogram", "hud", "interface", "finance", "financial", "economy", "growth", "spreadsheet",
 }
 
 OFF_TOPIC = {
     # green-screen and social-media "subscribe / share" overlays (a chroma-key ninja reached W45's Shorts)
     # W46-en: a German flag, a spaceship cockpit, cartoon clouds, a barcode, a walking stick figure
     "flag", "flags", "germany", "spaceship", "cockpit", "spacecraft", "clouds", "sky", "barcode", "stickman", "figure",
+    "candle", "candles", "spa", "bedroom", "interior", "relax", "relaxation", "cozy",
     "greenscreen", "green", "chroma", "chromakey", "keying", "subscribe", "share", "like", "button", "youtube",
     "youtuber", "instagram", "tiktok", "notification", "bell", "ninja", "cartoon",
     "mermaid", "fantasy", "fairy", "angel", "unicorn", "dragon", "witch", "magic", "princess",

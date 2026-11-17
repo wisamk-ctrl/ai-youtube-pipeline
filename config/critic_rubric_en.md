@@ -44,4 +44,5 @@ means **the English itself**.
 ## value — sourced, informational, never advice
 - MAJOR: an imperative or recommendation about investing, buying, selling, legal or tax matters ("you should buy", "invest now").
 - MAJOR: a figure or claim stated with no attribution where the Arabic script attributed it ("according to …").
-- MINOR: a story that never says why it matters to businesses or to the region.
+- MAJOR: a story with no regional-lens beat (what it means for the Gulf and the wider region), or one that only reads the source with no analysis (config/monetisation_playbook.md).
+- MAJOR: the presenter gives a personal view on politics, regulation, law or money instead of reporting what was done and who reported it.
