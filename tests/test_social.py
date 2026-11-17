@@ -179,10 +179,10 @@ def test_linkedin_uploads_in_parts_waits_for_processing_then_posts(tmp_path):
 
 def test_linkedin_caption_links_the_channel_and_keeps_few_tags(tmp_path):
     cfg = {"publish": {"hashtags_en": ["#A", "#B", "#C", "#D", "#E", "#F"]},
-           "social": {"channel_url": "https://www.youtube.com/@aithisweekshow",
+           "social": {"channel_url": "https://www.youtube.com/@AIThisWeekME",
                       "platforms": ["linkedin", "tiktok"], "require_approval": True}}
     q = []
     social.plan_week(week(tmp_path, 1), cfg, q, lambda f: f, datetime(2026, 11, 15, tzinfo=timezone.utc))
     li, tt = q[0]["captions"]["linkedin"], q[0]["captions"]["tiktok"]
-    assert "Full episode: https://www.youtube.com/@aithisweekshow" in li and "link in bio" in tt
+    assert "Full episode: https://www.youtube.com/@AIThisWeekME" in li and "link in bio" in tt
     assert li.count("#") == 4 and "linkedin" in q[0]["posts"]
