@@ -251,7 +251,7 @@ jobs:
   render:
     if: github.event_name == 'workflow_dispatch' && inputs.phase != 'script' && inputs.phase != 'ingest'
     runs-on: ubuntu-latest
-    timeout-minutes: 120           # avatar renders can take 30+ min
+    timeout-minutes: 210           # avatar renders can take 30+ min; the W46-en edit with 4K master ran 116 min, then was cut off at 120
     outputs:
       error: ${{ steps.fail.outputs.error }}
     env:

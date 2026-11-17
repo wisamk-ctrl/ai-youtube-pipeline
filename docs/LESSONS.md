@@ -184,3 +184,8 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   looped label inputs fixed the missing labels, not every loss at a join. `overlays.overlay` now retries on a uniform
   re-encode of the cut when frames are lost, and stock clips are encoded with square pixels and limited range. Cause of
   the loss itself not reproduced locally.
+
+- **2026-11-17, W46-en: the final edit was cut off by the job's own 120-minute limit** (shown as "cancelled", log not
+  kept). The run before it had taken 116 minutes: 4K master about 36, labels twice when the first pass loses frames,
+  slower runners in the evening. Limit raised to 210. A run shown as cancelled that nobody cancelled: check
+  `timeout-minutes` first.
