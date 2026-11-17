@@ -337,7 +337,7 @@ publish:
 
 social:                       # Shorts / Reels / TikTok on the platforms' own APIs (pipeline/publish/social.py)
   platforms: [youtube, instagram, tiktok, linkedin]   # a platform without its secrets is skipped
-  channel_url: https://www.youtube.com/@aithisweekshow
+  channel_url: https://www.youtube.com/@AIThisWeekME
   linkedin_version: "202510"  # LinkedIn API version (YYYYMM); each is supported about a year, then bump it
   linkedin_hashtags_en: ["#AI", "#EnterpriseAI", "#GCC", "#DigitalTransformation"]
   days: [0, 2, 4]             # Monday, Wednesday, Friday after the episode
