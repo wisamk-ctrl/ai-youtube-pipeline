@@ -147,7 +147,7 @@ So what does this mean for us?
 
 [Pause]
 
-[Visual: stock neural network animation, blue and gold nodes]
+[Visual: stock glowing sphere of connections, AI model]
 Anthropic sells most of its products to businesses, not individuals.
 
 So for a company here in the region that runs on Claude, its provider could soon be a listed company, under the market's eye.
@@ -171,12 +171,12 @@ The platform is for governments, companies, startups and developers.
 
 [Pause]
 
-[Visual: stock code on screen, dark background]
+[Visual: stock open model library, glowing data cubes]
 It has a library of open models, the kind anyone can download and run, or you can bring your own model.
 
 And the data and the running of the model all stay inside Saudi Arabia.
 
-[Visual: stock server racks with GPU hardware, glowing data]
+[Visual: stock GPU server racks close-up, violet and gold]
 Access to the models comes in ready-made token packages. A token is the unit of text a model reads and writes.
 
 And if you need more capacity or full isolation, there are dedicated GPUs, the chips that run AI models, just for you.
@@ -290,7 +290,7 @@ So where do our banks and retailers stand in all this?
 [Visual: stock digital globe, network map]
 The service is still US-only.
 
-[Visual: stock digital payment animation, glowing cards and network]
+[Visual: stock glass payment cards linked by gold light]
 But the approach itself, partnering with card networks and using a payment token for each transaction, could be a model banks here look at.
 
 [Visual: stock neural network animation, blue and gold nodes]
@@ -309,23 +309,23 @@ On November 12, Outlook email, calendars and Teams meetings stopped working for 
 [Visual: number 24 hours | How long the outage lasted, per Microsoft's preliminary report]
 Microsoft's preliminary incident report puts the outage at just under 24 hours, according to Ars Technica.
 
-[Visual: stock data center corridor, blue light]
+[Visual: stock office tower at night, floors going dark]
 In the UAE, Khaleej Times reported disruption for businesses and residents.
 
 [Visual: title What went wrong?]
 So what went wrong? Microsoft says three things came together.
 
-[Visual: stock layered technology stack animation, chips and data centers]
+[Visual: stock network traffic jamming at a gateway ring]
 A software defect that had been sitting in its network gateway since July. A shift that put Teams traffic onto the same system that carries email. And part of that system's server capacity already offline for a separate reason.
 
-[Visual: stock data center server racks, blue light, animation]
+[Visual: stock server hall with one dark row of racks]
 Recovery was slow because servers coming back online were immediately overwhelmed again, a Microsoft executive, Charles Lamanna, told customers, as reported by ABC News.
 
 Microsoft says it was not a cyberattack and had nothing to do with AI agents. And it apologized.
 
 [On-Screen Text: Wissam's view]
 
-[Visual: stock neural network animation, blue and gold nodes]
+[Visual: stock three data centers linked by bridges of light]
 My view: this is not acceptable from a company of Microsoft's size. A defect that sat unnoticed for months should not be able to take email and meetings down across the world for a day.
 
 [Visual: title Why does it matter to us?]
@@ -345,12 +345,12 @@ This whole story comes from NVIDIA's own announcements, so let's hear it in that
 [Visual: source 22dc4f77b8]
 NVIDIA and Korea's Ministry of Science and ICT have expanded their sovereign AI collaboration.
 
-[Visual: stock chip interconnect animation, glowing circuits]
+[Visual: stock silicon wafer under gold light, robotic arm]
 According to NVIDIA, the collaboration opens the door for Korean chip companies to try joining NVLink Fusion, NVIDIA's technology for linking other companies' chips with its own.
 
 NVIDIA also announced work with SK Telecom, Korea's largest mobile operator, and with Rebellions, a Korean AI chip startup, on sovereign infrastructure for Korean models.
 
-[Visual: stock layered technology stack animation, chips and data centers]
+[Visual: stock chips linked by beams of gold light]
 And by their own numbers, they'll be working
 
 [Pause]
@@ -366,10 +366,10 @@ That's using Dynamo, NVIDIA's software for serving models at scale.
 
 [Pause]
 
-[Visual: stock circuit board macro, glowing traces]
+[Visual: stock glowing sphere of connections, AI model]
 On the investment side, NVIDIA announced it has invested in a Korean startup called Point2.
 
-[Visual: stock data center server racks, blue light, animation]
+[Visual: stock chips linked by beams of gold light]
 That company moves data between chips and racks using radio waves, instead of copper and optical fiber.
 
 [Visual: source 57a8ba0d55]
@@ -385,7 +385,7 @@ So what's the takeaway for the Gulf states?
 [Visual: stock digital globe, glowing network connections]
 Korea shows us what a sovereign package between a government and a vendor looks like: local chips, local models, training, and startup funding.
 
-[Visual: stock neural network animation, blue and gold nodes]
+[Visual: stock three data centers linked by bridges of light]
 Sovereign programs in the Gulf can compare their own deals against it, keeping in mind this is NVIDIA's version of events.
 
 [Pause 2s]
