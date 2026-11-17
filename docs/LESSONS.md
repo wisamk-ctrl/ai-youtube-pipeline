@@ -151,4 +151,5 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   `pipeline/post/visual_assets.py` now bans those tags; tags are still the only defence, so every preview
   is checked by eye for figures before it goes to the founder.
 - **Playbook adopted.** `config/monetisation_playbook.md` is read by the writer, reviewer and critic.
-  Not built yet: three title options per episode in the plan, Shorts with a newly written opening line.
+  Built the same day: three title options per episode (`title_options_en` in plan.json and `titles.md`),
+  and Shorts that open on a newly written line (`short_hooks` in the plan, or `reviewed/<week>/shorts.yaml`).

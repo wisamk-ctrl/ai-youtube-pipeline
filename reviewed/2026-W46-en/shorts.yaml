@@ -1,0 +1,8 @@
+# The opening line of each Short, by section title (2.5 s, full screen, before the episode's picture).
+# Each line states only what the script says. A section with no line here gets no opening card.
+hooks:
+  "Jensen Huang Leaves NVIDIA": "NVIDIA just lost its CEO."
+  "Anthropic's IPO Under Pressure": "Anthropic's IPO has a voter problem."
+  "Saudi Arabia's Bunyan Platform": "AI that never leaves Saudi Arabia."
+  "The AI Agent Wallet": "Would you let an AI pay for you?"
+  "NVIDIA and Korea": "What Korea just got from NVIDIA."

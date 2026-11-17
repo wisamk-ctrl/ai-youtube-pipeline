@@ -75,7 +75,9 @@ class FakeClient:
         fmt = kw["output_format"]
         self.parses.append(fmt.__name__)
         if fmt is translate.EnglishMeta:
-            out = fmt(title="OpenAI raises $40 billion", description="What the round means.", thumbnail_text="$40 billion")
+            out = fmt(title="OpenAI raises $40 billion", description="What the round means.", thumbnail_text="$40 billion",
+                      title_options=["OpenAI raises $40 billion", "Why OpenAI's round matters", "What $40 billion buys"],
+                      short_hooks=[translate.ShortHook(section="OpenAI", hook="Where does $40 billion go?")])
         elif fmt is translate.CritiqueEn:
             out = fmt(hook=9, clarity=8, pacing=8, flow=9, arabic=8, value=9,
                       worst_three=[translate.FixEn(where="So what does that", problem="p", fix="f")], verdict="Airable.")
@@ -168,7 +170,17 @@ def test_existing_en_fields_are_reused(tmp_path):
     client = FakeClient([EN])
     translate.run(src, tmp_path / "output" / "2026-W45-en", load_settings(), client)
     out = json.loads((tmp_path / "output" / "2026-W45-en" / "plan.json").read_text(encoding="utf-8"))
-    assert out["episode_title_en"] == "Given title" and "EnglishMeta" not in client.parses
+    assert out["episode_title_en"] == "Given title"
+    assert out["title_options_en"][0] == "Given title" and len(out["title_options_en"]) == 3   # the title in use leads
+    assert out["short_hooks"][0]["hook"] == "Where does $40 billion go?"
+
+
+def test_a_plan_with_everything_needs_no_model_call(tmp_path):
+    plan = {**PLAN, "episode_title_en": "Given title", "description_en": "Given.", "thumbnail_text_en": "Given",
+            "title_options_en": ["Given title", "B", "C"], "short_hooks": [{"section": "S", "hook": "H"}]}
+    client = FakeClient([EN])
+    translate.run(_week(tmp_path, plan), tmp_path / "output" / "2026-W45-en", load_settings(), client)
+    assert "EnglishMeta" not in client.parses
 
 
 def test_english_critic_uses_the_english_rubric(tmp_path):

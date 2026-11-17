@@ -183,6 +183,39 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
 </style></head><body dir="{ui("dir")}"><div class="a">{ui("full")}</div><div class="b">{html.escape(show)}</div></body></html>"""
 
 
+HOOK_SECONDS = 2.5
+
+
+def hook_html(hook: str, show: str) -> str:
+    """The Short's own opening: one newly written line, full screen, before the episode's picture starts
+    (monetisation playbook: a Short is a re-edit with a new opening, never a straight cut)."""
+    size = 124 if len(hook) <= 32 else 100 if len(hook) <= 52 else 84
+    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}
+html,body{{margin:0;width:{W}px;height:{H}px;overflow:hidden}}
+body{{background:{NAVY};color:{SAND};display:flex;flex-direction:column;justify-content:center;gap:56px;
+padding:0 84px;box-sizing:border-box;font-family:{TEXT}}}
+.k{{font:700 40px {TEXT};color:{GOLD};letter-spacing:.02em}}
+.h{{font:800 {size}px/1.06 {DISPLAY};letter-spacing:-.035em}}
+.bar{{width:200px;height:12px;background:{GOLD}}}
+</style></head><body dir="{ui("dir")}"><div class="k">{html.escape(show)}</div><div class="h">{html.escape(hook)}</div><div class="bar"></div></body></html>"""
+
+
+def hooks_for(out_dir: Path) -> dict[str, str]:
+    """Opening lines by section title: the founder's `reviewed/<week>/shorts.yaml` first, then the plan's
+    `short_hooks` (written with the title options). A section with no line gets no opening card."""
+    found: dict[str, str] = {}
+    plan = out_dir / "plan.json"
+    if plan.exists():
+        for h in json.loads(plan.read_text(encoding="utf-8")).get("short_hooks") or []:
+            found[str(h.get("section", "")).strip().lower()] = str(h.get("hook", "")).strip()
+    own = Path(__file__).resolve().parents[2] / "reviewed" / out_dir.name / "shorts.yaml"
+    if own.exists():
+        import yaml
+        for k, v in ((yaml.safe_load(own.read_text(encoding="utf-8")) or {}).get("hooks") or {}).items():
+            found[str(k).strip().lower()] = str(v).strip()
+    return {k: v for k, v in found.items() if k and v}
+
+
 def _short_srt(srt: Path, a: float, b: float, dest: Path) -> Path:
     """The captions inside [a, b], moved to start at 0, Latin runs isolated for libass."""
     from pipeline.post.subtitles import isolate_latin
@@ -208,8 +241,8 @@ def _fmt(x: float) -> str:
     return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
 
 
-def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: int = 30) -> str:
-    """[0]=edit span, [1]=title PNG, [2]=end card PNG → [v], [a]."""
+def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: int = 30, hook: float = 0.0) -> str:
+    """[0]=edit span, [1]=title PNG, [2]=end card PNG, with a hook also [3]=hook PNG and [4]=chime → [v], [a]."""
     mid_h = round(W * 9 / 16 / 2) * 2                        # 608: the 16:9 picture at full width
     g = [f"[0:v]fps={fps},setsar=1,split=2[a][b]",
          f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=28:2,eq=brightness=-0.18:saturation=0.8[bg]",
@@ -224,10 +257,20 @@ def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: in
                  f"MarginV={H - (mid_y + mid_h) - 330},MarginL=80,MarginR=80")
         g.append(f"[m2]subtitles='{path}':original_size={W}x{H}:force_style='{style}'[m3]")
         last = "m3"
-    g.append(f"[{last}]tpad=stop_mode=clone:stop_duration={CARD_SECONDS}[m4]")
-    g.append(f"[m4][2:v]overlay=0:0:shortest=1:enable='gte(t,{span_s:.3f})',format=yuv420p[v]")
-    g.append(f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,afade=t=out:st={max(0.0, span_s - 0.25):.3f}:d=0.25,"
-             f"apad=pad_dur={CARD_SECONDS},loudnorm=I=-14:TP=-1.5:LRA=7[a]")
+    lead = f"start_mode=clone:start_duration={hook}:" if hook else ""
+    g.append(f"[{last}]tpad={lead}stop_mode=clone:stop_duration={CARD_SECONDS}[m4]")
+    end = f"[m4][2:v]overlay=0:0:shortest=1:enable='gte(t,{hook + span_s:.3f})'"
+    voice = (f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,afade=t=out:st={max(0.0, span_s - 0.25):.3f}:d=0.25,"
+             f"apad=pad_dur={CARD_SECONDS}")
+    if hook:
+        g.append(f"{end}[m5]")
+        g.append(f"[m5][3:v]overlay=0:0:shortest=1:enable='lt(t,{hook})',format=yuv420p[v]")
+        g.append(f"{voice},adelay={int(hook * 1000)}:all=1[sp]")
+        g.append("[4:a]aformat=sample_rates=48000:channel_layouts=stereo,adelay=150:all=1[ch]")
+        g.append("[sp][ch]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=7[a]")
+    else:
+        g.append(f"{end},format=yuv420p[v]")
+        g.append(f"{voice},loudnorm=I=-14:TP=-1.5:LRA=7[a]")
     return ";".join(g)
 
 
@@ -261,6 +304,11 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
     with Renderer(W, H) as r:
         end_png = dest_dir / "end_card.png"
         r.still(end_html(_show_name(cfg)), end_png)
+        hooks = hooks_for(out_dir)
+        chime = dest_dir / "hook_chime.wav"
+        if hooks:
+            from pipeline.post.audio import accent
+            accent(chime)
         for k, sp in enumerate(spans, 1):
             var = VARIANTS[(k - 1) % len(VARIANTS)]
             mid_y = (H - mid_h) // 2 + int(var["mid"])
@@ -271,17 +319,24 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             span_s = sp.end - sp.start
             sub = _short_srt(srt, sp.start, sp.end, dest_dir / f"short_{k:02d}.srt") if srt and srt.exists() else None
             dest = dest_dir / f"short_{k:02d}.mp4"
+            hook_text = hooks.get(sp.title.strip().lower(), "")
+            lead, extra, hook_png = (HOOK_SECONDS if hook_text else 0.0), [], dest_dir / f"hook_{k:02d}.png"
+            if hook_text:
+                r.still(hook_html(hook_text, _show_name(cfg)), hook_png)
+                extra = ["-loop", "1", "-i", str(hook_png), "-i", str(chime)]
             _ffmpeg("-ss", f"{sp.start:.3f}", "-t", f"{span_s:.3f}", "-i", str(video),
-                    "-loop", "1", "-i", str(title_png), "-loop", "1", "-i", str(end_png),
-                    "-filter_complex", filter_graph(span_s, mid_y, sub, _font(), fps),
-                    "-map", "[v]", "-map", "[a]", "-t", f"{span_s + CARD_SECONDS:.3f}",
+                    "-loop", "1", "-i", str(title_png), "-loop", "1", "-i", str(end_png), *extra,
+                    "-filter_complex", filter_graph(span_s, mid_y, sub, _font(), fps, lead),
+                    "-map", "[v]", "-map", "[a]", "-t", f"{lead + span_s + CARD_SECONDS:.3f}",
                     "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", str(fps),
                     "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", str(dest))
-            for p in (title_png, sub):
+            for p in (title_png, sub, hook_png):
                 if p:
                     p.unlink(missing_ok=True)
-            made.append(dict(asdict(sp), file=dest.name, episode_start=round(to_final(sp.start, sting), 2)))
+            made.append(dict(asdict(sp), file=dest.name, episode_start=round(to_final(sp.start, sting), 2),
+                             hook=hook_text))
         end_png.unlink(missing_ok=True)
+        chime.unlink(missing_ok=True)
     (dest_dir / "shorts.json").write_text(json.dumps(made, ensure_ascii=False, indent=2), encoding="utf-8")
     log.info("Shorts: %d made → %s", len(made), dest_dir)
     return made

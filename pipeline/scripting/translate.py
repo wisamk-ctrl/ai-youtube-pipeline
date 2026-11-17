@@ -179,6 +179,23 @@ class EnglishMeta(BaseModel):
     title: str = Field(description="YouTube title in English, at most 70 characters, informative, no clickbait")
     description: str = Field(description="Two or three plain sentences for the YouTube description, informational only")
     thumbnail_text: str = Field(description="2-4 English words for the thumbnail")
+    title_options: list[str] = Field(min_length=3, max_length=3, description=(
+        "Three different titles for YouTube's Test & Compare, the first one the same as `title`. Each 50 to 60 "
+        "characters, says the story and why it matters, a different angle each, no clickbait, nothing the script "
+        "does not say"))
+    short_hooks: list["ShortHook"] = Field(description=(
+        "One opening line for a vertical Short per story section of the script (not the opening, welcome, "
+        "roundup or closing)"))
+
+
+class ShortHook(BaseModel):
+    section: str = Field(description="The section title exactly as written in its [Section: …] marker")
+    hook: str = Field(description="A new line of at most 8 words that makes a viewer stop scrolling: a question or "
+                      "a plain statement of the stake. Not a sentence from the script, no hype words, no figure "
+                      "the script does not state, no advice")
+
+
+EnglishMeta.model_rebuild()
 
 
 _EN_FIELDS = {"title": ("episode_title_en", "title_en"), "description": ("description_en",),
@@ -186,10 +203,11 @@ _EN_FIELDS = {"title": ("episode_title_en", "title_en"), "description": ("descri
 
 
 def english_meta(plan: dict[str, Any], script_en: str, cfg: dict[str, Any],
-                 client: anthropic.Anthropic) -> dict[str, str]:
+                 client: anthropic.Anthropic) -> dict[str, Any]:
     """English title / description / thumbnail text: the plan's own *_en fields where present,
     the model only for what is missing."""
-    have = {k: next((str(plan[f]) for f in fields if plan.get(f)), "") for k, fields in _EN_FIELDS.items()}
+    have: dict[str, Any] = {k: next((str(plan[f]) for f in fields if plan.get(f)), "") for k, fields in _EN_FIELDS.items()}
+    have["title_options"], have["short_hooks"] = plan.get("title_options_en") or [], plan.get("short_hooks") or []
     if all(have.values()):
         return have
     model = cfg["scripting"].get("aux_model") or cfg["scripting"]["model"]
@@ -207,7 +225,10 @@ def english_meta(plan: dict[str, Any], script_en: str, cfg: dict[str, Any],
     if resp.stop_reason != "end_turn" or resp.parsed_output is None:
         raise TranslationError(f"English title/description stopped early: {resp.stop_reason}")
     made = resp.parsed_output.model_dump()
-    return {k: have[k] or made[k] for k in _EN_FIELDS}
+    out = {k: have[k] or made[k] for k in have}
+    if out["title_options"][0] != out["title"]:            # the title in use is always the first option
+        out["title_options"] = [out["title"], *[t for t in out["title_options"] if t != out["title"]]][:3]
+    return out
 
 
 # ── English critic: one round ────────────────────────────────────────────────
@@ -281,7 +302,10 @@ def run(src: Path, dst: Path, cfg: dict[str, Any], client: anthropic.Anthropic |
 
     meta = english_meta(plan, script_en, cfg, client)
     plan_en = {**plan, "language": "en", "translated_from": src.name, "episode_title_en": meta["title"],
-               "description_en": meta["description"], "thumbnail_text_en": meta["thumbnail_text"]}
+               "description_en": meta["description"], "thumbnail_text_en": meta["thumbnail_text"],
+               "title_options_en": meta["title_options"], "short_hooks": meta["short_hooks"]}
+    (dst / "titles.md").write_text("# Title options for Test & Compare\n\n" + "\n".join(
+        f"{n}. {t}" for n, t in enumerate(meta["title_options"], 1)) + "\n", encoding="utf-8")
     (dst / "plan.json").write_text(json.dumps(plan_en, ensure_ascii=False, indent=2), encoding="utf-8")
 
     try:
