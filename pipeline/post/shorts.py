@@ -245,7 +245,8 @@ def _fmt(x: float) -> str:
     return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
 
 
-def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: int = 30, hook: float = 0.0) -> str:
+def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: int = 30, hook: float = 0.0,
+                 bed: tuple[int, float] | None = None, voice_gain: float | None = None) -> str:
     """[0]=edit span, [1]=title PNG, [2]=end card PNG, with a hook also [3]=hook PNG and [4]=chime → [v], [a]."""
     mid_h = round(W * 9 / 16 / 2) * 2                        # 608: the 16:9 picture at full width
     g = [f"[0:v]fps={fps},setsar=1,split=2[a][b]",
@@ -264,17 +265,30 @@ def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: in
     lead = f"start_mode=clone:start_duration={hook}:" if hook else ""
     g.append(f"[{last}]tpad={lead}stop_mode=clone:stop_duration={CARD_SECONDS}[m4]")
     end = f"[m4][2:v]overlay=0:0:shortest=1:enable='gte(t,{hook + span_s:.3f})'"
-    voice = (f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,afade=t=out:st={max(0.0, span_s - 0.25):.3f}:d=0.25,"
-             f"apad=pad_dur={CARD_SECONDS}")
+    # The voice is levelled on its own, then the rest is laid under it at fixed levels: levelling the mix
+    # made the voice dip after the chime. `bed` = (input index, gain in dB) of our generated music, which
+    # carries the script's pauses (W46-en: a Short went silent for 2 s twice; the edit it is cut from has
+    # no music yet).
+    total = hook + span_s + CARD_SECONDS
+    # One fixed gain from the span's measured loudness: a levelling filter that follows the signal lifted
+    # the voice after each pause.
+    level = f"volume={voice_gain:.2f}dB" if voice_gain is not None else "loudnorm=I=-14:TP=-1.5:LRA=7"
+    g.append(f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,afade=t=out:st={max(0.0, span_s - 0.25):.3f}:d=0.25,"
+             f"{level},apad=pad_dur={CARD_SECONDS}" + (f",adelay={int(hook * 1000)}:all=1" if hook else "") + "[sp]")
+    mix = ["[sp]"]
     if hook:
         g.append(f"{end}[m5]")
         g.append(f"[m5][3:v]overlay=0:0:shortest=1:enable='lt(t,{hook})',format=yuv420p[v]")
-        g.append(f"{voice},adelay={int(hook * 1000)}:all=1[sp]")
-        g.append("[4:a]aformat=sample_rates=48000:channel_layouts=stereo,adelay=150:all=1[ch]")
-        g.append("[sp][ch]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=7[a]")
+        g.append("[4:a]aformat=sample_rates=48000:channel_layouts=stereo,volume=-6dB,adelay=150:all=1[ch]")
+        mix.append("[ch]")
     else:
         g.append(f"{end},format=yuv420p[v]")
-        g.append(f"{voice},loudnorm=I=-14:TP=-1.5:LRA=7[a]")
+    if bed:
+        g.append(f"[{bed[0]}:a]atrim=0:{total:.3f},asetpts=PTS-STARTPTS,aformat=sample_rates=48000:channel_layouts=stereo,"
+                 f"volume={bed[1]:.2f}dB,afade=t=in:d=0.4,afade=t=out:st={max(0.0, total - 1.5):.3f}:d=1.5[bd]")
+        mix.append("[bd]")
+    g.append(f"{''.join(mix)}amix=inputs={len(mix)}:duration=first:normalize=0,alimiter=limit=0.84[a]" if len(mix) > 1
+             else "[sp]alimiter=limit=0.84[a]")
     return ";".join(g)
 
 
@@ -309,6 +323,11 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
         end_png = dest_dir / "end_card.png"
         r.still(end_html(_show_name(cfg)), end_png)
         hooks = hooks_for(out_dir)
+        bed_wav, bed_gain = None, 0.0
+        if str(cfg.get("post", {}).get("audio", {}).get("music", "generated")) == "generated":
+            from pipeline.post import audio as audio_mod
+            bed_wav = audio_mod.music_loop(dest_dir / "bed.wav")
+            bed_gain = float(s.get("music_lufs", -30)) - audio_mod.measure(bed_wav)["input_i"]
         chime = dest_dir / "hook_chime.wav"
         if hooks:
             from pipeline.post.audio import accent
@@ -324,13 +343,20 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             sub = _short_srt(srt, sp.start, sp.end, dest_dir / f"short_{k:02d}.srt") if srt and srt.exists() else None
             dest = dest_dir / f"short_{k:02d}.mp4"
             hook_text = hooks.get(sp.title.strip().lower(), "")
+            try:
+                from pipeline.post import audio as audio_mod
+                voice_gain = min(12.0, -14.0 - audio_mod.measure(video, sp.start, sp.end)["input_i"])
+            except Exception:  # noqa: BLE001 — an unmeasurable span falls back to the levelling filter
+                voice_gain = None
             lead, extra, hook_png = (HOOK_SECONDS if hook_text else 0.0), [], dest_dir / f"hook_{k:02d}.png"
             if hook_text:
                 r.still(hook_html(hook_text, _show_name(cfg)), hook_png)
                 extra = ["-loop", "1", "-i", str(hook_png), "-i", str(chime)]
             _ffmpeg("-ss", f"{sp.start:.3f}", "-t", f"{span_s:.3f}", "-i", str(video),
                     "-loop", "1", "-i", str(title_png), "-loop", "1", "-i", str(end_png), *extra,
-                    "-filter_complex", filter_graph(span_s, mid_y, sub, _font(), fps, lead),
+                    *(["-stream_loop", "-1", "-i", str(bed_wav)] if bed_wav else []),
+                    "-filter_complex", filter_graph(span_s, mid_y, sub, _font(), fps, lead,
+                                                    (5 if extra else 3, bed_gain) if bed_wav else None, voice_gain),
                     "-map", "[v]", "-map", "[a]", "-t", f"{lead + span_s + CARD_SECONDS:.3f}",
                     "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", str(fps),
                     "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", str(dest))
@@ -341,6 +367,8 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
                              hook=hook_text))
         end_png.unlink(missing_ok=True)
         chime.unlink(missing_ok=True)
+        if bed_wav:
+            bed_wav.unlink(missing_ok=True)
     (dest_dir / "shorts.json").write_text(json.dumps(made, ensure_ascii=False, indent=2), encoding="utf-8")
     log.info("Shorts: %d made → %s", len(made), dest_dir)
     return made

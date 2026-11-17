@@ -153,3 +153,7 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 - **Playbook adopted.** `config/monetisation_playbook.md` is read by the writer, reviewer and critic.
   Built the same day: three title options per episode (`title_options_en` in plan.json and `titles.md`),
   and Shorts that open on a newly written line (`short_hooks` in the plan, or `reviewed/<week>/shorts.yaml`).
+- **Shorts went silent at the pauses.** They are cut from the voice-only edit, so a `[Pause]` was dead air,
+  and the levelling filter lifted the voice after it. `pipeline/post/shorts.py` now lays our music under
+  each Short and levels the voice with one fixed gain. A frame check does not catch sound faults: trace
+  the loudness of every Short before sending it.

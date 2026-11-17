@@ -201,3 +201,14 @@ TikTok cannot be read by an app and are listed to check by hand. Likes are never
   Rendered with `create_video_from_image` (the still, not a saved HeyGen look).
   Skin warmed on 2026-11-16 (the first render looked pale); founder approved the look for the W46 edit.
   For W46: render face chunks with `create_video_from_image` from this still, wide format, no side layout.
+
+## Founder notes for future videos (2026-11-17)
+- **Presenter look:** his shoulders are wider than the navy-blazer photo shows. Regenerate the look with
+  broader shoulders (a more solid build), then re-test a speaking clip before any episode uses it.
+- **Hand gestures:** some presenter clips should show hand gestures. The current look is cropped at the
+  chest; this needs a wider framing (waist up) and a gesture-capable render. Needs a HeyGen credit test
+  the founder approves first.
+- **Clip endings:** the last moment of some presenter clips looks artificial. Trim the tail of each face
+  clip (or ask for a longer clip and cut early) and check every clip's last second in the preview.
+- **Shorts need a proper review before any go out:** listen to each one, not only look. W46-en faults:
+  dead silence at the script's pauses, an opening that started on the episode's hand-over sentence.

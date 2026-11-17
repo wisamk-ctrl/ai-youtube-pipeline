@@ -12,6 +12,14 @@ def test_without_a_hook_the_short_is_unchanged():
     assert "start_duration" not in g and "adelay" not in g and "enable='gte(t,40.000)'" in g
 
 
+def test_music_carries_the_pauses_and_the_voice_is_levelled_alone():
+    g = shorts.filter_graph(40.0, 656, None, "Inter", 30, shorts.HOOK_SECONDS, (5, -12.0))
+    assert "[5:a]atrim" in g and "amix=inputs=3" in g
+    assert g.index("loudnorm") < g.index("amix")
+    fixed = shorts.filter_graph(40.0, 656, None, "Inter", 30, 0.0, (3, -12.0), 3.5)
+    assert "volume=3.50dB" in fixed and "loudnorm" not in fixed
+
+
 def test_hooks_come_from_the_plan_and_the_reviewed_file_wins(tmp_path, monkeypatch):
     out = tmp_path / "output" / "2026-W99-en"
     out.mkdir(parents=True)
