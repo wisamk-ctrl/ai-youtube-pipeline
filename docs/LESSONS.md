@@ -161,3 +161,6 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   the word "AI" and was built from a watched product name, so an outage of Outlook and Teams matched
   nothing. `ingestion.google_news_sites` now has two outage searches without "AI" (`raw: true`), and the
   planner is told such a story belongs in the episode when it reaches the region.
+- **News was read once a week.** Until 2026-11-17 the only collection was Saturday 10:00 Gulf, looking back
+  seven days. `.github/workflows/news-watch.yml` now reads every six hours, keeps what it finds in
+  `data/news_watch.json` for the weekly collection, and posts big stories to the "News watch" issue.

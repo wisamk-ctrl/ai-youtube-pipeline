@@ -1,0 +1,38 @@
+name: news-watch
+# Reads the news every six hours (scripts/news_watch.py): keeps what it finds for the week's episode and
+# posts the big stories to the "News watch" issue. No Claude calls; founder 2026-11-17.
+on:
+  schedule:
+    - cron: "37 */6 * * *"     # 00:37, 06:37, 12:37, 18:37 UTC = 04:37, 10:37, 16:37, 22:37 Gulf
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: news-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -q -r requirements.lock
+      - run: python scripts/news_watch.py
+      - name: Keep what the watch found
+        if: always()
+        run: |
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git add data/news_watch.json 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -q -m "news watch: $(date -u +'%F %H:%M')"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done

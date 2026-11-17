@@ -356,3 +356,9 @@ inbox:                        # the daily comment inbox (pipeline/publish/inbox.
     - "Thank you, glad it was useful!"
     - "Thanks for watching, much appreciated."
     - "Appreciate it, thank you!"
+
+news_watch:                   # .github/workflows/news-watch.yml, every six hours (founder 2026-11-17)
+  lookback_days: 2            # each run reads the last two days
+  keep_days: 10               # how long an item stays in data/news_watch.json
+  min_publishers: 4           # a story this many outlets carry is posted to the "News watch" issue
+  article_fetches: 25         # article pages read per run

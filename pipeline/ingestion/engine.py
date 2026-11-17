@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -30,6 +30,12 @@ def run_ingestion(cfg: dict[str, Any], week: str = "", out_dir: Path | None = No
     except RuntimeError as exc:
         # Missing X token or exhausted quota: the episode can still be built from RSS.
         log.error("X ingestion skipped: %s", exc)
+
+    # What the six-hourly news watch kept this week: a story can leave the search results by Saturday.
+    from pipeline.ingestion.news_watch import kept_items
+    have = {i.id for i in items}
+    since = datetime.now(timezone.utc) - timedelta(days=cfg["ingestion"]["lookback_days"])
+    items += [i for i in kept_items(since) if i.id not in have]
 
     # Every item, whatever its source, is tagged with the watchlist names it mentions,
     # which sets its track (models / agents / chips) and region for the quotas and the plan.
