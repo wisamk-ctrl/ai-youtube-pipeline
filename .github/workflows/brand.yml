@@ -1,0 +1,23 @@
+name: brand
+# Put the agreed artwork (assets/brand/) on the channels an app is allowed to change.
+# YouTube: the banner. Profile pictures and the other platforms' artwork are manual (no API).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  youtube-banner:
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests
+      - run: python scripts/brand_youtube.py
