@@ -102,6 +102,10 @@ ingestion:
     # Egypt and North Africa, Turkey, Pakistan (founder decision 2026-11-15: his network there).
     # These are general outlets, so each search is narrowed to AI; a story still has to earn its
     # place (prompts.py: major news only, never a weekly quota).
+    # Outages and security failures of the platforms the region runs on (founder 2026-11-17, after W46-en
+    # missed the Microsoft 365 outage). `raw: true` searches without the word "AI".
+    - { name: Cloud outages,        query: 'outage (Microsoft OR Azure OR AWS OR "Google Cloud" OR Cloudflare OR OpenAI OR Anthropic OR Oracle)', raw: true, max_items: 6 }
+    - { name: Cloud outages Gulf,   query: 'outage (UAE OR Saudi OR Gulf OR "Middle East") (cloud OR Microsoft OR AWS OR Google)', region: gulf, raw: true, max_items: 6 }
     - { name: Ahram Online,       query: 'site:english.ahram.org.eg "artificial intelligence"', region: egypt, max_items: 4 }
     - { name: Daily News Egypt,   query: 'site:dailynewsegypt.com "artificial intelligence"',   region: egypt, max_items: 4 }
     - { name: Morocco World News, query: 'site:moroccoworldnews.com "artificial intelligence"', region: north_africa, max_items: 4 }

@@ -59,7 +59,9 @@ segment the matching `track`. A beat with nothing worth saying may be skipped, n
 Your job this week: pick the stories that matter most to those audiences and shape them into that
 episode. Prefer stories with concrete business consequences (launches, pricing, enterprise
 adoption, regulation, infrastructure, funding) and anything with a regional angle. Drop pure hype,
-opinion threads without news, and duplicates of the same event. Merge items that cover the same
+opinion threads without news, and duplicates of the same event. A large outage or security failure of a
+cloud or AI platform that businesses in the region depend on is a story for this show even when it is not
+about a model: it belongs in the episode whenever it reached the region. Merge items that cover the same
 story into one segment.
 
 Story mix:

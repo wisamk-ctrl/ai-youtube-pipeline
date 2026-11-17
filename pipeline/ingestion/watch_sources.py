@@ -35,9 +35,11 @@ def _since(cfg: dict[str, Any]) -> datetime:
 
 
 # ── Google News ───────────────────────────────────────────────────────────────
-def google_news_url(query: str, days: int, lang: str = "en", country: str = "US") -> str:
+def google_news_url(query: str, days: int, lang: str = "en", country: str = "US", raw: bool = False) -> str:
     # `when:Nd` keeps the window server-side; AI narrows "Arm"/"Apple" to the right stories.
-    q = f"{query} AI when:{days}d"
+    # `raw` leaves the word AI out: an outage of the cloud the region runs on is our story even when no
+    # headline says "AI" (W46-en missed the Microsoft 365 outage of 12 November for exactly that reason).
+    q = f"{query} when:{days}d" if raw else f"{query} AI when:{days}d"
     return f"https://news.google.com/rss/search?q={quote_plus(q)}&hl={lang}&gl={country}&ceid={country}:{lang}"
 
 
@@ -82,7 +84,8 @@ def fetch_site_queries(cfg: dict[str, Any]) -> list[NewsItem]:
     ing = cfg["ingestion"]
     out: list[NewsItem] = []
     for site in ing.get("google_news_sites") or []:
-        url = google_news_url(site["query"], ing["lookback_days"], site.get("lang", "en"), site.get("country", "US"))
+        url = google_news_url(site["query"], ing["lookback_days"], site.get("lang", "en"), site.get("country", "US"),
+                              raw=bool(site.get("raw", False)))
         try:
             items = fetch_feed(f"Google News · {site['name']}", url, float(site.get("weight", 1.0)), _since(cfg),
                                ing["request_timeout_s"])

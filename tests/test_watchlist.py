@@ -84,3 +84,8 @@ def test_google_news_feed_parses_publisher_and_tags():
     assert items[0].title == "Mistral unveils Large 4" and items[0].source == "CNBC"
     assert items[0].track == "models" and items[0].region == "eu" and items[0].entities == ["Mistral"]
     assert "when%3A7d" in watch_sources.google_news_url(mistral.news_query, 7)
+
+
+def test_a_raw_search_leaves_the_word_ai_out():
+    url = watch_sources.google_news_url("outage Microsoft", 7, raw=True)
+    assert "outage+Microsoft+when%3A7d" in url and "AI" not in url

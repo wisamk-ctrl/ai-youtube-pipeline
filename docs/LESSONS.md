@@ -157,3 +157,7 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   and the levelling filter lifted the voice after it. `pipeline/post/shorts.py` now lays our music under
   each Short and levels the voice with one fixed gain. A frame check does not catch sound faults: trace
   the loudness of every Short before sending it.
+- **W46-en missed the Microsoft 365 outage of 12 November**, which hit the Gulf. Every news search added
+  the word "AI" and was built from a watched product name, so an outage of Outlook and Teams matched
+  nothing. `ingestion.google_news_sites` now has two outage searches without "AI" (`raw: true`), and the
+  planner is told such a story belongs in the episode when it reaches the region.
