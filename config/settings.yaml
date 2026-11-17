@@ -243,13 +243,13 @@ visuals:
   face_share_max: 0.25
   max_face_seconds: 12
   max_visual_seconds: 9       # a longer visual is cut into parts, each a new clip of the same subject (W46-en)
-  max_card_seconds: 8         # a source, number or title card may hold this long (W46-en: at 5 the rest went to filler footage)
+  max_card_seconds: 11        # a source, number or title card may hold this long (W46-en: at 5 the rest went to filler footage)
   stock:
     providers: [pixabay, pexels]   # first with a key wins: PIXABAY_API_KEY, PEXELS_API_KEY
     # Clips rejected by eye in a review; never picked again. stock_used.json in each week's output names
     # the clip on every shot. W46-en: two clocks, a bar chart with figures on it, a street with a shop sign,
     # code with flickering grey blocks that reads as a fault (founder).
-    blocklist: [pixabay_197931, pixabay_306, pixabay_847, pixabay_5364, pixabay_27706, pixabay_6056, pixabay_6026, pixabay_746, pixabay_2176, pixabay_12126]
+    blocklist: [pixabay_37946, pixabay_32767, pixabay_197931, pixabay_306, pixabay_847, pixabay_5364, pixabay_27706, pixabay_6056, pixabay_6026, pixabay_746, pixabay_2176, pixabay_12126]
   dissolve_frames: 0          # off until the W45 length loss (2026-11-07) is traced; 12 = the designed dissolve
   face_mode: minimal          # founder 2026-11-07 (lip sync): face only at the open and the sign-off
   face_keep_seconds: 8

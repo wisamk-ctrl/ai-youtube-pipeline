@@ -241,7 +241,7 @@ So how does it work?
 
 [Pause]
 
-[Visual: stock smartphone screen with secure checkout animation]
+[Visual: stock smartphone with a shield of light, secure checkout]
 You enter your card details once, and you ask the agent to find the item for you.
 
 And you approve every purchase yourself, with a security verification step.
@@ -253,7 +253,7 @@ And most importantly, according to OpenAI, the agent never sees your card detail
 
 The payment network gives it a payment token just for that transaction.
 
-[Visual: stock binary code rain, blue]
+[Visual: stock glass payment cards linked by gold light]
 The token has a card number, a security code and an expiry date, all limited to that one purchase.
 
 [On-Screen Text: No cut of transactions — for now]
@@ -279,7 +279,7 @@ And this isn't their first attempt at commerce.
 
 Last fall they launched a feature called Instant Checkout, and quickly dropped it.
 
-[Visual: stock AI agent animation, glowing connections]
+[Visual: stock glowing sphere of connections, AI model]
 So the agent has gone from talking to paying.
 
 [Visual: title Why does it matter to us?]
@@ -348,6 +348,7 @@ NVIDIA and Korea's Ministry of Science and ICT have expanded their sovereign AI 
 [Visual: stock silicon wafer under gold light, robotic arm]
 According to NVIDIA, the collaboration opens the door for Korean chip companies to try joining NVLink Fusion, NVIDIA's technology for linking other companies' chips with its own.
 
+[Visual: stock mobile network towers over a city at night, gold signal waves]
 NVIDIA also announced work with SK Telecom, Korea's largest mobile operator, and with Rebellions, a Korean AI chip startup, on sovereign infrastructure for Korean models.
 
 [Visual: stock chips linked by beams of gold light]
