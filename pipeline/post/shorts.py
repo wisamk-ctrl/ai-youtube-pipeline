@@ -301,8 +301,8 @@ def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: in
         g.append(f"[{bed[0]}:a]atrim=0:{total:.3f},asetpts=PTS-STARTPTS,aformat=sample_rates=48000:channel_layouts=stereo,"
                  f"volume={bed[1]:.2f}dB,afade=t=in:d=0.4,afade=t=out:st={max(0.0, total - 1.5):.3f}:d=1.5[bd]")
         mix.append("[bd]")
-    g.append(f"{''.join(mix)}amix=inputs={len(mix)}:duration=first:normalize=0,alimiter=limit=0.7[a]" if len(mix) > 1
-             else "[sp]alimiter=limit=0.7[a]")
+    g.append(f"{''.join(mix)}amix=inputs={len(mix)}:duration=first:normalize=0,alimiter=limit=0.7:level=0[a]" if len(mix) > 1
+             else "[sp]alimiter=limit=0.7:level=0[a]")
     return ";".join(g)
 
 
