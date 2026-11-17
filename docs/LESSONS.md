@@ -189,3 +189,8 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   kept). The run before it had taken 116 minutes: 4K master about 36, labels twice when the first pass loses frames,
   slower runners in the evening. Limit raised to 210. A run shown as cancelled that nobody cancelled: check
   `timeout-minutes` first.
+- **Same evening: the next run lost its runner at about two hours** ("The hosted runner lost communication with the
+  server", again no log). The 4K master was the heaviest step (preset medium, 36 min). Now: the big working folders
+  are deleted before it, the encoder uses `post.upload_preset` (default veryfast, short look-ahead, 4 threads; about a
+  third of the time), and free disk is logged before and after. Read a failed run's annotations
+  (`check-runs/<job id>/annotations`) when its log is missing: they said which of the two it was.

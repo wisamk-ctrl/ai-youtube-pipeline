@@ -301,9 +301,20 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         # 4K upload its better codec and bitrate; the detail is still what the 1080p sources hold.
         import subprocess
         big = out / f"final_{up}p.mp4"
+        # W46-en: two edits in a row died at about two hours, the second with "the hosted runner lost
+        # communication" (starved of memory, CPU or disk). This is the heaviest step, so the working folders go
+        # first and the encoder runs on a lighter preset with a short look-ahead (the upload is re-encoded by
+        # YouTube anyway; crf 18 keeps the quality, the file is a little larger).
+        import shutil
+        for tmp in ("segments", "visuals", "repair"):      # audio/ and endcard/ are still read below
+            shutil.rmtree(out / tmp, ignore_errors=True)
+        log.info("Before the %dp master: %.1f GB free on disk", up, shutil.disk_usage(out).free / 1e9)
+        preset = str(cfg.get("post", {}).get("upload_preset", "veryfast"))
         subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(result["final"]),
-                        "-vf", f"scale=-2:{up}:flags=lanczos", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+                        "-vf", f"scale=-2:{up}:flags=lanczos", "-c:v", "libx264", "-preset", preset, "-crf", "18",
+                        "-x264-params", "rc-lookahead=20", "-threads", "4",
                         "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart", str(big)], check=True)
+        log.info("After the %dp master: %.1f GB free on disk", up, shutil.disk_usage(out).free / 1e9)
         _check_length(f"{up}p upload master", big, _dur(result["final"]))
     sting_span = (sting[0], audio.duration_of(sting[1])) if sting else None
     if sting:   # the captions as they sit in the final cut (for a caption-track upload)
