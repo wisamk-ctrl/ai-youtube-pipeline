@@ -169,3 +169,13 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   runs stopped by hand, the finished episode lost with them). Not reproduced locally, cause not proven. Now each Short
   is built from its own uniform clip, every Shorts encode stops after 10 minutes and is logged, and a failed Short is
   skipped (`pipeline/post/shorts.py`). If a run still stalls there, the log names the Short and the command.
+
+- **2026-11-17, W46-en: four stretches of empty violet screen (up to 15 s).** A stock shot with no acceptable clip gets
+  our own network animation, but it only drew the first time in a run: the page is reused and the script's top-level
+  `const` would not run again. Fixed with its own scope (`TECH_MOTION_HTML`). The more search terms we ban, the more
+  shots land on this fallback, so it has to work every time.
+- **Same review: stock clips that tags cannot catch** (clocks for "code on screen", a bar chart with figures for "server
+  racks"). Each run now writes `stock_used.json` (shot, time, search, clip id) and `visuals.stock.blocklist` in
+  settings bans a clip by id. After every preview: name the bad clips from that file and add them.
+- **Check that preview files are fresh before measuring them.** I measured Shorts from the previous run (fetched before
+  the text preview finished) and read their silences as a new fault.
