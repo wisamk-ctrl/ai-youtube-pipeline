@@ -13,6 +13,7 @@ syndicated copies of one story are collapsed to the best-tier publisher's copy.
 
 from __future__ import annotations
 
+import time
 import logging
 import os
 from datetime import datetime, timedelta, timezone
@@ -62,7 +63,10 @@ def fetch_google_news(watch: Watchlist, cfg: dict[str, Any], entities: Iterable[
     ing = cfg["ingestion"]
     days = ing["lookback_days"]
     out: list[NewsItem] = []
+    pause = float(ing["watchlist"].get("pause_seconds", 0))   # Google News answers 429 to a burst of searches
     for e in entities or watch.entities:
+        if pause:
+            time.sleep(pause)
         url = google_news_url(e.news_query, days)
         try:
             items = fetch_feed(f"Google News · {e.name}", url, 0.9, _since(cfg), ing["request_timeout_s"])

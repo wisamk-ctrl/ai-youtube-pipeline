@@ -16,3 +16,18 @@ definitions, not news claims, and are not in the source map: inference; open mod
 models; NVLink Fusion (NVIDIA's chip-interconnect programme for other vendors' chips); Dynamo (NVIDIA's model-serving
 software); SK Telecom (Korea's largest mobile operator); Rebellions (Korean AI chip startup); Claude Code and Codex
 (coding agents).
+
+The "Microsoft 365 Outage" section was added by hand on 2026-11-17 (founder's request), after the source map was
+made, so the map does not list it. Its claims and the collected article each was checked against
+(data/news_watch.json, article text read on 2026-11-17):
+- Outage began 12 Nov; preliminary report places it 12 Nov 16:20 UTC to 13 Nov 16:10 UTC, "just under 24 hours":
+  Ars Technica, "Three small failures combined to take down Microsoft 365" (item 948b78f962).
+- Outlook email, calendars, meeting invitations disrupted: Fox Business (item 0b7fecde7f). Teams: Khaleej Times
+  headline "Microsoft outage hits UAE businesses, residents as Outlook, Teams face disruption" (search result,
+  headline only: the article text was not read).
+- Three factors (defect in the gateway from a July change; Teams traffic shifted onto the system that carries
+  Exchange; reduced server capacity): Ars Technica and Fox Business, both quoting Microsoft.
+- Slow recovery because returning servers were overwhelmed again; Charles Lamanna's apology: ABC News
+  (item a9daf0fb16), quoting his post.
+- "not related to cyber or AI/agents": Ars Technica, quoting Microsoft's report.
+- "My view" lines are the founder's opinion, given by him on 2026-11-17, labelled on screen as his view.

@@ -56,6 +56,7 @@ def collect(cfg: dict[str, Any]) -> tuple[list[NewsItem], set[str]]:
     c = copy.deepcopy(cfg)
     c["ingestion"]["lookback_days"] = int(nw.get("lookback_days", 2))
     c["ingestion"].setdefault("watchlist", {}).setdefault("fetch_articles", {})["max_items"] = int(nw.get("article_fetches", 25))
+    c["ingestion"]["watchlist"]["pause_seconds"] = float(nw.get("pause_seconds", 1.5))
     sites = c["ingestion"].get("google_news_sites") or []
     urgent_cfg = copy.deepcopy(c)
     urgent_cfg["ingestion"]["google_news_sites"] = [s for s in sites if s.get("raw")]

@@ -298,6 +298,41 @@ So the question for banks and retailers in the region is: how will they handle a
 
 [Pause 2s]
 
+[Section: The Microsoft 365 Outage]
+
+[Face]
+Before we go on, a story that hit offices across our region last week: the Microsoft 365 outage.
+
+[Visual: title Microsoft 365 goes down]
+On November 12, Outlook email, calendars and Teams meetings stopped working for businesses around the world.
+
+[Visual: number 24 hours | How long the outage lasted, per Microsoft's preliminary report]
+Microsoft's preliminary incident report puts the outage at just under 24 hours, according to Ars Technica.
+
+[Visual: stock data center corridor, blue light]
+In the UAE, Khaleej Times reported disruption for businesses and residents.
+
+[Visual: title What went wrong?]
+So what went wrong? Microsoft says three things came together.
+
+[Visual: stock layered technology stack animation, chips and data centers]
+A software defect that had been sitting in its network gateway since July. A shift that put Teams traffic onto the same system that carries email. And part of that system's server capacity already offline for a separate reason.
+
+[Visual: stock data center server racks, blue light, animation]
+Recovery was slow because servers coming back online were immediately overwhelmed again, a Microsoft executive, Charles Lamanna, told customers, as reported by ABC News.
+
+Microsoft says it was not a cyberattack and had nothing to do with AI agents. And it apologized.
+
+[On-Screen Text: Wissam's view]
+
+[Visual: stock neural network animation, blue and gold nodes]
+My view: this is not acceptable from a company of Microsoft's size. A defect that sat unnoticed for months should not be able to take email and meetings down across the world for a day.
+
+[Visual: title Why does it matter to us?]
+For large organizations in our region, the lesson is redundancy: more than one cloud, and a mix of international and local providers, so that one company's bad day is not yours.
+
+[Pause 2s]
+
 [Section: NVIDIA and Korea]
 
 [Face]
