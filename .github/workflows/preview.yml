@@ -75,6 +75,10 @@ jobs:
             for v in "$d"/*.mp4; do   # where does the picture stop? frames per 30 s of every stage
               echo "== $(basename "$v")"; ffprobe -v error -select_streams v:0 -show_entries packet=pts_time -of csv=p=0 "$v" | awk '{n[int($1/30)]++} END{for(i=0;i<20;i++) printf "%d ", n[i]; print ""}'
             done > "out/${{ inputs.week }}-files/frames.txt" 2>&1 || true
+            for v in "$d"/shorts/short_*.mp4; do   # the week's Shorts, small enough to push
+              [ -f "$v" ] && ffmpeg -hide_banner -loglevel error -y -i "$v" -vf scale=540:-2 -c:v libx264 -crf 27 -preset fast -c:a aac -b:a 96k "out/${{ inputs.week }}-files/$(basename "$v")" || true
+            done
+            [ -f "$d/shorts/shorts.json" ] && cp "$d/shorts/shorts.json" "out/${{ inputs.week }}-files/" || true
             ls -la "out/${{ inputs.week }}-files"
             exit 0
           fi
