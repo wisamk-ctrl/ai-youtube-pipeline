@@ -95,6 +95,17 @@ def face_still(video: Path, cfg: dict[str, Any], at: float = 2.0) -> bytes | Non
     return r.stdout if r.returncode == 0 and r.stdout else None
 
 
+def portrait_still() -> bytes | None:
+    """The approved portrait, cropped square on the face. Preferred over a frame of the talking head, which
+    caught the presenter mid-word with half-closed eyes (W46-en thumbnail)."""
+    if not PRESENTER.exists():
+        return None
+    vf = "crop=ih*0.80:ih*0.80:(iw-ih*0.80)/2:0,scale=480:480"
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", str(PRESENTER), "-frames:v", "1",
+                        "-vf", vf, "-q:v", "2", "-f", "image2pipe", "-vcodec", "mjpeg", "-"], capture_output=True)
+    return r.stdout if r.returncode == 0 and r.stdout else None
+
+
 def render_thumbnail(out_dir: Path, cfg: dict[str, Any], plan: dict[str, Any] | None = None,
                      talking_head: Path | None = None) -> Path | None:
     """output/<week>/thumbnail.png from the plan's thumbnail_text_ar (never made up when missing)."""
@@ -109,7 +120,9 @@ def render_thumbnail(out_dir: Path, cfg: dict[str, Any], plan: dict[str, Any] | 
     if not text:
         log.warning("No %s in plan.json; thumbnail not made", key)
         return None
-    face = face_still(talking_head, cfg) if (t.get("face", True) and talking_head) else None
+    face = None
+    if t.get("face", True):
+        face = portrait_still() or (face_still(talking_head, cfg) if talking_head else None)
     from pipeline.post.visual_assets import Renderer
     dest = out_dir / "thumbnail.png"
     with Renderer(THUMB_W, THUMB_H) as r:

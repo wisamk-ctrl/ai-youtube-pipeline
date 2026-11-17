@@ -250,7 +250,7 @@ And you approve every purchase yourself, with a security verification step.
 
 [Pause]
 
-[Visual: stock secure transaction flow animation, encrypted data]
+[Visual: stock card in a glass vault, gold tokens leaving]
 And most importantly, according to OpenAI, the agent never sees your card details.
 
 The payment network gives it a payment token just for that transaction.
@@ -276,7 +276,7 @@ The rollout is limited: only Pro subscribers in the US who are over
 [Visual: number 18 years | Minimum user age]
 18.
 
-[Visual: stock code on screen, checkout software]
+[Visual: stock smartphone with a shield of light, secure checkout]
 And this isn't their first attempt at commerce.
 
 Last fall they launched a feature called Instant Checkout, and quickly dropped it.
