@@ -361,6 +361,7 @@ OFF_TOPIC = {
     # green-screen and social-media "subscribe / share" overlays (a chroma-key ninja reached W45's Shorts)
     # W46-en: a German flag, a spaceship cockpit, cartoon clouds, a barcode, a walking stick figure
     "flag", "flags", "germany", "spaceship", "cockpit", "spacecraft", "clouds", "sky", "barcode", "stickman", "figure",
+    "skyline", "cityscape", "manhattan", "newyork", "icons", "icon", "apps", "logo", "logos", "social",
     "candle", "candles", "spa", "bedroom", "interior", "relax", "relaxation", "cozy",
     "greenscreen", "green", "chroma", "chromakey", "keying", "subscribe", "share", "like", "button", "youtube",
     "youtuber", "instagram", "tiktok", "notification", "bell", "ninja", "cartoon",

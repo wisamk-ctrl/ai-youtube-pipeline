@@ -121,7 +121,7 @@ def _time_sentences(sents: list[_Sentence], caps: list[tuple[float, float, str]]
 
 
 def pick_spans(script: str, srt: Path | None, count: int = 3, min_s: float = 30.0, max_s: float = 58.0,
-               target_s: float = 45.0) -> list[Span]:
+               target_s: float = 45.0, skip_intro: frozenset[str] = frozenset()) -> list[Span]:
     """Up to `count` one-story spans, each starting at its section's first sentence and ending at a
     sentence end, min_s ≤ length ≤ max_s (closest to target_s). In episode order."""
     caps = _caption_starts(srt)
@@ -148,6 +148,10 @@ def pick_spans(script: str, srt: Path | None, count: int = 3, min_s: float = 30.
         nxt = next((s.start for _, ss in timed[n + 1:] for s in ss if s.start is not None), caps[-1][1])
         bounds = [t for t in starts[1:] if t is not None] + [nxt]
         a = starts[0]
+        # A Short with its own opening line starts on the story's second sentence: the first is the
+        # episode's hand-over ("From the US to Saudi Arabia…"), which reads as a clip of something longer.
+        if title.strip().lower() in skip_intro and len(bounds) > 2:
+            a, bounds = bounds[0], bounds[1:]
         ok = [b for b in bounds if min_s <= b - a <= max_s and b <= nxt + 1e-3]
         if not ok:
             continue
@@ -289,7 +293,7 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
                 sp.title = near[-1].title
     else:
         spans = pick_spans(script, srt, int(s.get("count", 3)), float(s.get("min_seconds", 30)),
-                           float(s.get("max_seconds", 58)))
+                           float(s.get("max_seconds", 58)), skip_intro=frozenset(hooks_for(out_dir)))
     if not spans:
         log.info("Shorts: no span of 30–60 s on one story found")
         return []

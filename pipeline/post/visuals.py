@@ -146,12 +146,14 @@ def plan(script: str, duration: float, srt: Path | None = None, wpm: int = 130,
 
 # The house look for shots that were face: a wider rotation than the director's eight, so a
 # minimal-face episode does not loop the same few clips.
-HOUSE_EXTRA = ["futuristic user interface hologram animation", "glowing fiber optic cables, macro",
-               "binary code rain, blue", "robot arm in a modern lab", "data visualization dashboard, dark theme",
+# W46-en: "data visualization dashboard" (figures on screen), "smart city night lights" (a foreign skyline
+# under a Saudi story) and "cloud computing icons" (other companies' logos) were removed from this pool.
+HOUSE_EXTRA = ["glowing fiber optic cables, macro",
+               "binary code rain, blue", "robot arm in a modern lab",
                "quantum computer close-up, golden light", "network cables plugged into a switch",
                "programmer typing at night, screen glow", "satellite orbiting earth at night",
-               "smart city night lights, timelapse", "microchip production line", "abstract AI brain made of light",
-               "cloud computing icons, animation", "cybersecurity padlock hologram", "motherboard close-up, slow pan",
+               "microchip production line", "abstract AI brain made of light",
+               "cybersecurity padlock hologram", "motherboard close-up, slow pan",
                "server room corridor, slow walk"]
 
 

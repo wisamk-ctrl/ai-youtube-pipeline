@@ -23,7 +23,7 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from pipeline.post.visual_assets import DISPLAY, FOIL, FOIL_TEXT, GOLD, INK, MONO, NAVY, PAPER, RED, SAND, TEXT, _fonts
+from pipeline.post.visual_assets import DISPLAY, FOIL, FOIL_TEXT, GOLD, INK, MONO, NAVY, PAPER, RED, SAND, STONE, TEXT, _fonts
 from pipeline.script_format import caption_text, extract_cues, spoken_text, spoken_words
 
 log = logging.getLogger(__name__)
@@ -160,24 +160,55 @@ def opening_backdrop(out_dir: Path, cfg: dict[str, Any], clip_w: int, w: int, h:
 
 
 # ── End card ────────────────────────────────────────────────────────────────
-def end_card_html(show: str, w: int = 1920, h: int = 1080) -> str:
-    """Show name and «اشترك» in the right column; the left ~55 % stays empty for YouTube's
-    end-screen elements (a video tile and the subscribe button are placed there in Studio)."""
+PRESENTER = Path(__file__).resolve().parents[2] / "assets" / "brand" / "presenter" / "look_c_navy_blazer.png"
+
+
+def end_card_html(show: str, w: int = 1920, h: int = 1080, portrait: bool = True) -> str:
+    """The host's portrait in a gold ring at the left (founder 2026-11-17: the card felt empty), the show
+    name and «اشترك» in the right column. The middle stays free for YouTube's end-screen video tile, which
+    is placed in Studio. The ring's moving marks are a separate layer (`end_ring_html`)."""
+    import base64
     from pipeline.language import ui
+    d, cx = h * 0.60, w * 0.21
+    face = ""
+    if portrait and PRESENTER.exists():
+        uri = "data:image/png;base64," + base64.b64encode(PRESENTER.read_bytes()).decode()
+        face = (f'<div class="face" style="background-image:url({uri})"></div>'
+                f'<div class="name">{html.escape(ui("host"))}</div>')
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}
 body{{background:{INK};color:{PAPER};font-family:{TEXT}}}
-.grid{{display:none}}
-.col{{position:absolute;right:{w * 0.06:.0f}px;top:0;bottom:0;width:{w * 0.36:.0f}px;display:flex;flex-direction:column;
-justify-content:center;align-items:flex-start;gap:{h * 0.045:.0f}px;text-align:right}}
+.face{{position:absolute;left:{cx - d / 2:.0f}px;top:{h * 0.46 - d / 2:.0f}px;width:{d:.0f}px;height:{d:.0f}px;border-radius:50%;
+background-size:{d * 2.45:.0f}px auto;background-position:50% 12%;box-shadow:0 0 0 {h * 0.008:.0f}px {RED}}}
+.name{{position:absolute;left:{cx - d / 2:.0f}px;width:{d:.0f}px;top:{h * 0.46 + d / 2 + h * 0.075:.0f}px;text-align:center;
+font:500 {h * 0.026:.0f}px {MONO};letter-spacing:.12em;text-transform:uppercase;color:{STONE}}}
+.col{{position:absolute;right:{w * 0.05:.0f}px;top:0;bottom:0;width:{w * 0.27:.0f}px;display:flex;flex-direction:column;
+justify-content:center;align-items:flex-start;gap:{h * 0.045:.0f}px}}
 .show{{font:800 {h * 0.085:.0f}px/1.05 {DISPLAY};letter-spacing:-.035em}}
 .show{{{FOIL_TEXT}}}
 .bar{{width:{w * 0.08:.0f}px;height:{h * 0.012:.0f}px;background:{RED}}}
 .sub{{font:700 {h * 0.045:.0f}px {TEXT};color:{INK};background:{RED};padding:.3em 1em .36em}}
 .note{{font:500 {h * 0.024:.0f}px {MONO};letter-spacing:.1em;text-transform:uppercase;opacity:.75}}
-</style></head><body><div class="grid"></div><div class="col" dir="{ui("dir")}">
+</style></head><body>{face}<div class="col" dir="{ui("dir")}">
 <div class="show">{html.escape(show)}</div><div class="bar"></div><div class="sub">{ui("subscribe")}</div>
 <div class="note">{ui("weekly")}</div></div></body></html>"""
+
+
+def end_ring_html(size: int) -> str:
+    """A transparent square with the opening sting's ring of gold marks; it turns slowly round the portrait."""
+    import math
+    c, marks = size / 2, []
+    for k in range(48):
+        ang = 2 * math.pi * k / 48
+        r0, r1 = size * 0.455, size * (0.495 if k % 4 == 0 else 0.472)
+        marks.append(f'<line x1="{c + r0 * math.cos(ang):.1f}" y1="{c + r0 * math.sin(ang):.1f}" '
+                     f'x2="{c + r1 * math.cos(ang):.1f}" y2="{c + r1 * math.sin(ang):.1f}" '
+                     f'stroke="{RED}" stroke-width="{size * (0.006 if k % 4 == 0 else 0.003):.1f}" '
+                     f'stroke-linecap="round" opacity="{0.95 if k % 4 == 0 else 0.55}"/>')
+    arc = (f'<circle cx="{c}" cy="{c}" r="{size * 0.435:.1f}" fill="none" stroke="{RED}" stroke-width="{size * 0.004:.1f}" '
+           f'stroke-dasharray="{size * 0.5:.0f} {size * 0.18:.0f}" opacity=".8"/>')
+    return (f'<!doctype html><html><body style="margin:0;background:transparent">'
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}">{arc}{"".join(marks)}</svg></body></html>')
 
 
 def end_card(cfg: dict[str, Any], out_dir: Path) -> Path | None:
@@ -194,6 +225,13 @@ def end_card(cfg: dict[str, Any], out_dir: Path) -> Path | None:
     from pipeline.post.visual_assets import Renderer
     with Renderer(w, h) as r:
         png = r.still(end_card_html(_show_name(cfg), w, h), work / "end_card.png")
+    ring_px = int(h * 0.60 / 0.87 / 2) * 2                 # the marks sit just outside the portrait
+    ring = None
+    if PRESENTER.exists():
+        with Renderer(ring_px, ring_px) as r:
+            ring = work / "end_ring.png"
+            r.page.set_content(end_ring_html(ring_px), wait_until="load")
+            r.page.screenshot(path=str(ring), omit_background=True)
     music = str(cfg.get("post", {}).get("audio", {}).get("music", "generated"))
     if music == "none":
         audio_in = ["-f", "lavfi", "-t", f"{secs:.3f}", "-i", "anullsrc=r=48000:cl=stereo"]
@@ -206,8 +244,15 @@ def end_card(cfg: dict[str, Any], out_dir: Path) -> Path | None:
         afilter = (f"[1:a]atrim=0:{secs:.3f},asetpts=PTS-STARTPTS,aformat=sample_rates=48000:channel_layouts=stereo,"
                    f"volume={gain:.2f}dB,afade=t=in:d=1.5,afade=t=out:st={max(0.0, secs - 3):.3f}:d=3[a]")
     dest = work / "end_card.mp4"
-    _ff("-loop", "1", "-framerate", str(fps), "-t", f"{secs:.3f}", "-i", str(png), *audio_in,
-        "-filter_complex", f"[0:v]scale={w}:{h},format=yuv420p,setsar=1,fade=t=in:d=0.5[v];{afilter}",
+    picture = f"[0:v]scale={w}:{h},format=yuv420p,setsar=1,fade=t=in:d=0.5[v]"
+    ring_in: list[str] = []
+    if ring:                                                # inputs: 0 card, 1 music, 2 ring
+        ring_in = ["-loop", "1", "-framerate", str(fps), "-t", f"{secs:.3f}", "-i", str(ring)]
+        x, y = round(w * 0.21 - ring_px / 2), round(h * 0.46 - ring_px / 2)
+        picture = (f"[2:v]format=rgba,rotate=0.12*t:c=none:ow=iw:oh=ih[ring];[0:v]scale={w}:{h},setsar=1[bg];"
+                   f"[bg][ring]overlay={x}:{y}:shortest=1,format=yuv420p,fade=t=in:d=0.5[v]")
+    _ff("-loop", "1", "-framerate", str(fps), "-t", f"{secs:.3f}", "-i", str(png), *audio_in, *ring_in,
+        "-filter_complex", f"{picture};{afilter}",
         "-map", "[v]", "-map", "[a]", "-t", f"{secs:.3f}", "-c:v", "libx264", "-crf", "18", "-preset", "medium",
         "-pix_fmt", "yuv420p", "-r", str(fps), "-c:a", "aac", "-b:a", "192k", "-ar", "48000", str(dest))
     return dest
