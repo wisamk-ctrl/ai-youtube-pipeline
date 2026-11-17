@@ -217,3 +217,8 @@ TikTok cannot be read by an app and are listed to check by hand. Likes are never
   hands-visible body with the original look C face pasted back unchanged (the AI edit had altered the face; the first
   file under this name was rejected). Use from W47. The face must never be regenerated: body edits only, face copied
   from look C. Still to do: a speaking test with this still, hand gestures now and then, natural clip endings.
+
+- **Channel artwork (founder, 2026-11-17):** emblem logo `assets/brand/logo_800.png`; banners with the navy-blazer
+  portrait in the emblem ring (`youtube_banner_2560x1440.png`, `linkedin_banner_2256x382.png`), built by
+  `scripts/brand_banners.py <out dir> <portrait>`. The hoodie banner and the plain set are under `assets/brand/previous/`.
+  YouTube banner is set by the `brand` workflow; profile pictures and the other channels are manual (no API).
