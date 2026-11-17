@@ -24,9 +24,9 @@
         "status": "queued"
       },
       "tiktok": {
-        "status": "failed",
-        "attempts": 2,
-        "error": "TikTok: HTTP 403: Please review our integration guidelines at https://developers.tiktok.com/doc/content-sharing-guidelines/"
+        "status": "skipped",
+        "attempts": 3,
+        "error": "TikTok: HTTP 403 /v2/post/publish/video/init/ [unaudited_client_can_only_post_to_private_accounts]: Please review our integration guidelines at https://developers.tiktok.com/doc/content-sharing-guidelines/"
       }
     }
   },
