@@ -33,7 +33,7 @@ UI = {
     "ar": {"show": "أسبوع الذكاء الاصطناعي", "source": "المصدر", "subscribe": "اشترك",
            "weekly": "حلقة جديدة كل أسبوع", "full": "الحلقة الكاملة على القناة", "host": "مع وسام قشق", "disclosure": "توأم رقمي لوسام — بموافقة وسام", "dir": "rtl"},
     "en": {"show": "AI This Week", "source": "Source", "subscribe": "Subscribe",
-           "weekly": "A new episode every week", "full": "Full episode on the channel", "host": "with Wissam Kishek", "disclosure": "Wissam's AI digital twin — with his consent",
+           "weekly": "A new episode every week", "full": "The full story is in this week's episode", "host": "with Wissam Kishek", "disclosure": "Wissam's AI digital twin — with his consent",
            "dir": "ltr"},
 }
 _current = "ar"

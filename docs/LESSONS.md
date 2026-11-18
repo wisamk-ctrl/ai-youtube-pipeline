@@ -194,3 +194,8 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   are deleted before it, the encoder uses `post.upload_preset` (default veryfast, short look-ahead, 4 threads; about a
   third of the time), and free disk is logged before and after. Read a failed run's annotations
   (`check-runs/<job id>/annotations`) when its log is missing: they said which of the two it was.
+
+- **2026-11-18, founder on the W46-en Shorts:** every Short now ends with a spoken pointer ("For the full story, watch
+  this week's episode on AI This Week", `assets/brand/shorts_outro_en.wav`, his cloned voice) over a longer end card
+  that says the same. And a Short's picture starts on its story's own first frame even when the voice starts earlier
+  in the pause: the earlier cut showed a flash of the previous shot (a green tunnel before Short 3's source card).

@@ -40,6 +40,7 @@ log = logging.getLogger(__name__)
 
 W, H = 1080, 1920
 CARD_SECONDS = 2.0
+OUTRO = Path(__file__).resolve().parents[2] / "assets" / "brand" / "shorts_outro_en.wav"   # "For the full story…"
 SENTENCE_END = (".", "؟", "?", "!", "…")
 SKIP_TITLES = ("سريع", "سريعة", "quick", "خلاصة", "ختام", "الختام")   # quick-fire rounds, outros
 
@@ -260,7 +261,8 @@ def _timed(*args: str) -> bool:
 
 
 def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: int = 30, hook: float = 0.0,
-                 bed: tuple[int, float] | None = None, voice_gain: float | None = None) -> str:
+                 bed: tuple[int, float] | None = None, voice_gain: float | None = None,
+                 card: float = CARD_SECONDS, outro: tuple[int, float] | None = None) -> str:
     """[0]=edit span, [1]=title PNG, [2]=end card PNG, with a hook also [3]=hook PNG and [4]=chime → [v], [a]."""
     mid_h = round(W * 9 / 16 / 2) * 2                        # 608: the 16:9 picture at full width
     g = [f"[0:v]fps={fps},setsar=1,split=2[a][b]",
@@ -277,18 +279,18 @@ def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: in
         g.append(f"[m2]subtitles='{path}':original_size={W}x{H}:force_style='{style}'[m3]")
         last = "m3"
     lead = f"start_mode=clone:start_duration={hook}:" if hook else ""
-    g.append(f"[{last}]tpad={lead}stop_mode=clone:stop_duration={CARD_SECONDS}[m4]")
+    g.append(f"[{last}]tpad={lead}stop_mode=clone:stop_duration={card}[m4]")
     end = f"[m4][2:v]overlay=0:0:shortest=1:enable='gte(t,{hook + span_s:.3f})'"
     # The voice is levelled on its own, then the rest is laid under it at fixed levels: levelling the mix
     # made the voice dip after the chime. `bed` = (input index, gain in dB) of our generated music, which
     # carries the script's pauses (W46-en: a Short went silent for 2 s twice; the edit it is cut from has
     # no music yet).
-    total = hook + span_s + CARD_SECONDS
+    total = hook + span_s + card
     # One fixed gain from the span's measured loudness: a levelling filter that follows the signal lifted
     # the voice after each pause.
     level = f"volume={voice_gain:.2f}dB" if voice_gain is not None else "loudnorm=I=-14:TP=-1.5:LRA=7"
     g.append(f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,afade=t=out:st={max(0.0, span_s - 0.25):.3f}:d=0.25,"
-             f"{level},apad=pad_dur={CARD_SECONDS}" + (f",adelay={int(hook * 1000)}:all=1" if hook else "") + "[sp]")
+             f"{level},apad=pad_dur={card}" + (f",adelay={int(hook * 1000)}:all=1" if hook else "") + "[sp]")
     mix = ["[sp]"]
     if hook:
         g.append(f"{end}[m5]")
@@ -297,6 +299,10 @@ def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: in
         mix.append("[ch]")
     else:
         g.append(f"{end},format=yuv420p[v]")
+    if outro is not None:   # the spoken pointer to the episode, over the end card (founder 2026-11-18)
+        g.append(f"[{outro[0]}:a]aformat=sample_rates=48000:channel_layouts=stereo,volume={outro[1]:.2f}dB,"
+                 f"adelay={int((hook + span_s + 0.3) * 1000)}:all=1[ou]")
+        mix.append("[ou]")
     if bed:
         g.append(f"[{bed[0]}:a]atrim=0:{total:.3f},asetpts=PTS-STARTPTS,aformat=sample_rates=48000:channel_layouts=stereo,"
                  f"volume={bed[1]:.2f}dB,afade=t=in:d=0.4,afade=t=out:st={max(0.0, total - 1.5):.3f}:d=1.5[bd]")
@@ -342,6 +348,13 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             from pipeline.post import audio as audio_mod
             bed_wav = audio_mod.music_loop(dest_dir / "bed.wav")
             bed_gain = float(s.get("music_lufs", -30)) - audio_mod.measure(bed_wav)["input_i"]
+        # The spoken pointer to the full episode (founder 2026-11-18), English weeks only for now.
+        outro_s, outro_gain = 0.0, 0.0
+        if OUTRO.exists() and str(cfg.get("language", "")) == "en":
+            from pipeline.post import audio as audio_mod
+            outro_s = audio_mod.duration_of(OUTRO)
+            outro_gain = min(12.0, -14.0 - audio_mod.measure(OUTRO)["input_i"])
+        card = max(CARD_SECONDS, outro_s + 0.9)
         chime = dest_dir / "hook_chime.wav"
         if hooks:
             from pipeline.post.audio import accent
@@ -355,6 +368,7 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             r.page.screenshot(path=str(title_png), omit_background=True)
             # Open in the pause before the first word, not at the caption's start time: the caption ran
             # ~0.1 s late and "Anthropic" came out as "thropic" (W46-en, Short 2, founder).
+            caption_start = sp.start
             try:
                 from pipeline.post import audio as audio_mod
                 cut = audio_mod.silence_cut(video, sp.start, before=0.8, after=0.05)
@@ -368,10 +382,16 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             # The span is first cut to one uniform clip: the edit is joined from segments whose picture
             # properties differ, and the Shorts step twice sat for over half an hour on it (W46-en, runs
             # cancelled by hand). Every encode here is also time-limited, so a stall costs one Short.
-            clip =dest_dir / f"span_{k:02d}.mkv"
+            clip = dest_dir / f"span_{k:02d}.mkv"
+            # The voice starts in the pause before the first word, but the picture starts on the story's own
+            # first frame, held for that moment: the earlier start showed the tail of the previous shot (W46-en
+            # Short 3: a flash of a green tunnel before the source card, founder).
+            pre = max(0.0, caption_start - sp.start)
+            hold = (f"trim=start={pre:.3f},setpts=PTS-STARTPTS,tpad=start_mode=clone:start_duration={pre:.3f},"
+                    if pre > 0.02 else "")
             log.info("Short %d: %s, %.1f–%.1f s", k, sp.title, sp.start, sp.end)
             if not _timed("-ss", f"{sp.start:.3f}", "-t", f"{span_s:.3f}", "-i", str(video),
-                   "-vf", f"scale={SRC_W}:{SRC_H},setsar=1,fps={fps},format=yuv420p", "-af", "aresample=48000",
+                   "-vf", f"{hold}scale={SRC_W}:{SRC_H},setsar=1,fps={fps},format=yuv420p", "-af", "aresample=48000",
                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "14", "-c:a", "pcm_s16le", str(clip)):
                 continue
             try:
@@ -386,9 +406,11 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             done = _timed("-i", str(clip),
                     "-loop", "1", "-i", str(title_png), "-loop", "1", "-i", str(end_png), *extra,
                     *(["-stream_loop", "-1", "-i", str(bed_wav)] if bed_wav else []),
+                    *(["-i", str(OUTRO)] if outro_s else []),
                     "-filter_complex", filter_graph(span_s, mid_y, sub, _font(), fps, lead,
-                                                    (5 if extra else 3, bed_gain) if bed_wav else None, voice_gain),
-                    "-map", "[v]", "-map", "[a]", "-t", f"{lead + span_s + CARD_SECONDS:.3f}",
+                                                    (5 if extra else 3, bed_gain) if bed_wav else None, voice_gain,
+                                                    card, ((5 if extra else 3) + (1 if bed_wav else 0), outro_gain) if outro_s else None),
+                    "-map", "[v]", "-map", "[a]", "-t", f"{lead + span_s + card:.3f}",
                     "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", str(fps),
                     "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", str(dest))
             for p in (title_png, sub, hook_png, clip):
