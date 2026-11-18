@@ -269,7 +269,9 @@ def run(cfg: dict[str, Any], state: dict[str, Any], client, now: datetime | None
     if not b.get("enabled", True):
         return None
     done = load_done(done_path)
-    today = [v for v in done["stories"].values() if str(v.get("at", "")).startswith(f"{now:%Y-%m-%d}") and v.get("week")]
+    # Distinct Shorts drafted automatically today (one Short can cover many headlines; hand-made ones don't count).
+    today = {v["week"] for v in done["stories"].values()
+             if str(v.get("at", "")).startswith(f"{now:%Y-%m-%d}") and v.get("week") and not v.get("by_hand")}
     if len(today) >= int(b.get("max_per_day", 3)):
         log.info("Breaking: %d Shorts drafted today, the daily limit", len(today))
         return None

@@ -101,3 +101,14 @@ def test_a_draft_that_fails_the_second_check_twice_is_dropped(tmp_path, monkeypa
     (tmp_path / "lib.yaml").write_text(yaml.safe_dump({"clips": {k: "https://v.mp4" for k in LIB}}))
     assert breaking.run({"scripting": {}}, st, client, NOW, tmp_path / "done.json", tmp_path) is None
     assert any(v.get("skipped") for v in json.loads((tmp_path / "done.json").read_text())["stories"].values())
+
+
+def test_the_daily_limit_counts_distinct_shorts_not_headlines(tmp_path, monkeypatch):
+    done = {"stories": {f"h{n}": {"at": "2026-11-18T07:40", "week": "2026-11-18-brk-a-en", "by_hand": True} for n in range(28)}}
+    (tmp_path / "done.json").write_text(json.dumps(done))
+    st = state()
+    items = breaking._articles(breaking.candidates(st, NOW, set())[0])
+    client = FakeClient([good_draft([i.id for i in items]), breaking.Verdict(unsupported=[])])
+    monkeypatch.setattr(breaking, "LIBRARY", tmp_path / "lib.yaml")
+    (tmp_path / "lib.yaml").write_text(yaml.safe_dump({"clips": {k: "https://v.mp4" for k in LIB}}))
+    assert breaking.run({"scripting": {}}, st, client, NOW, tmp_path / "done.json", tmp_path)
