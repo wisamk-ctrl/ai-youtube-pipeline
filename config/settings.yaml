@@ -339,7 +339,7 @@ social:                       # Shorts / Reels / TikTok on the platforms' own AP
   platforms: [youtube, instagram, tiktok, linkedin]   # a platform without its secrets is skipped
   channel_url: https://www.youtube.com/@AIThisWeekME
   linkedin_version: "202610"  # LinkedIn API version (YYYYMM); each is supported about a year, then bump it (202510 retired by 2026-11-18)
-  linkedin_hashtags_en: ["#AI", "#EnterpriseAI", "#GCC", "#DigitalTransformation"]
+  linkedin_hashtags_en: ["#AI", "#ArtificialIntelligence", "#GenerativeAI", "#Technology", "#Innovation", "#FutureOfWork", "#Leadership", "#DigitalTransformation", "#TechNews", "#GCC"]   # broad reach (founder 2026-11-18)
   days: [0, 2, 4]             # Monday, Wednesday, Friday after the episode
   hour_utc: 15                # 19:00 Gulf
   require_approval: true      # a week's clips wait for `social` approve <week> (the founder's OK)
@@ -347,7 +347,7 @@ social:                       # Shorts / Reels / TikTok on the platforms' own AP
   tiktok_privacy: SELF_ONLY   # until TikTok audits the app (it rejects public posts from an unaudited app); then PUBLIC_TO_EVERYONE
   instagram_api_version: v23.0
   max_attempts: 3             # per platform, then it is marked skipped
-  hashtags_en: ["#AI", "#AINews", "#ArtificialIntelligence", "#TechNews"]
+  hashtags_en: ["#AI", "#AINews", "#ArtificialIntelligence", "#TechNews", "#GenerativeAI", "#Technology", "#Innovation", "#FutureOfWork", "#ChatGPT", "#MiddleEast"]   # broad reach (founder 2026-11-18)
 
 inbox:                        # the daily comment inbox (pipeline/publish/inbox.py, workflow `inbox`)
   model: claude-opus-5-5      # sorts the day's comments and drafts replies, one call a day
