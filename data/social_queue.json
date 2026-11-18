@@ -90,13 +90,13 @@
     "file": "2026-W46-en-short-01.mp4",
     "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-W46-en/2026-W46-en-short-01.mp4",
     "title": "Jensen Huang Leaves NVIDIA",
-    "due": "2026-11-18T15:00:00Z",
-    "approved": false,
+    "due": "2026-11-18T04:00:00Z",
+    "approved": true,
     "captions": {
-      "youtube": "Jensen Huang Leaves NVIDIA\n\nFull episode: https://www.youtube.com/@AIThisWeekME\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews",
+      "youtube": "Jensen Huang Leaves NVIDIA\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews",
       "instagram": "Jensen Huang Leaves NVIDIA\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
       "tiktok": "Jensen Huang Leaves NVIDIA\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
-      "linkedin": "Jensen Huang Leaves NVIDIA\n\nFull episode: https://www.youtube.com/@AIThisWeekME\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #EnterpriseAI #GCC #DigitalTransformation"
+      "linkedin": "Jensen Huang Leaves NVIDIA\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #EnterpriseAI #GCC #DigitalTransformation"
     },
     "posts": {
       "youtube": {
@@ -107,7 +107,25 @@
       },
       "tiktok": {
         "status": "queued"
-      },
+      }
+    }
+  },
+  {
+    "id": "2026-W46-en#1-li",
+    "week": "2026-W46-en",
+    "lang": "en",
+    "file": "2026-W46-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-W46-en/2026-W46-en-short-01.mp4",
+    "title": "Jensen Huang Leaves NVIDIA",
+    "due": "2026-11-18T15:00:00Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Jensen Huang Leaves NVIDIA\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews",
+      "instagram": "Jensen Huang Leaves NVIDIA\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
+      "tiktok": "Jensen Huang Leaves NVIDIA\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
+      "linkedin": "Jensen Huang Leaves NVIDIA\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #EnterpriseAI #GCC #DigitalTransformation"
+    },
+    "posts": {
       "linkedin": {
         "status": "queued"
       }
@@ -120,13 +138,13 @@
     "file": "2026-W46-en-short-02.mp4",
     "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-W46-en/2026-W46-en-short-02.mp4",
     "title": "Anthropic's IPO Under Pressure",
-    "due": "2026-11-20T15:00:00Z",
-    "approved": false,
+    "due": "2026-11-18T04:00:00Z",
+    "approved": true,
     "captions": {
-      "youtube": "Anthropic's IPO Under Pressure\n\nFull episode: https://www.youtube.com/@AIThisWeekME\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews",
+      "youtube": "Anthropic's IPO Under Pressure\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews",
       "instagram": "Anthropic's IPO Under Pressure\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
       "tiktok": "Anthropic's IPO Under Pressure\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
-      "linkedin": "Anthropic's IPO Under Pressure\n\nFull episode: https://www.youtube.com/@AIThisWeekME\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #EnterpriseAI #GCC #DigitalTransformation"
+      "linkedin": "Anthropic's IPO Under Pressure\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #EnterpriseAI #GCC #DigitalTransformation"
     },
     "posts": {
       "youtube": {
@@ -137,7 +155,25 @@
       },
       "tiktok": {
         "status": "queued"
-      },
+      }
+    }
+  },
+  {
+    "id": "2026-W46-en#2-li",
+    "week": "2026-W46-en",
+    "lang": "en",
+    "file": "2026-W46-en-short-02.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-W46-en/2026-W46-en-short-02.mp4",
+    "title": "Anthropic's IPO Under Pressure",
+    "due": "2026-11-20T15:00:00Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Anthropic's IPO Under Pressure\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews",
+      "instagram": "Anthropic's IPO Under Pressure\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
+      "tiktok": "Anthropic's IPO Under Pressure\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
+      "linkedin": "Anthropic's IPO Under Pressure\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #EnterpriseAI #GCC #DigitalTransformation"
+    },
+    "posts": {
       "linkedin": {
         "status": "queued"
       }
@@ -150,13 +186,13 @@
     "file": "2026-W46-en-short-03.mp4",
     "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-W46-en/2026-W46-en-short-03.mp4",
     "title": "Saudi Arabia's Bunyan Platform",
-    "due": "2026-11-23T15:00:00Z",
-    "approved": false,
+    "due": "2026-11-18T04:00:00Z",
+    "approved": true,
     "captions": {
-      "youtube": "Saudi Arabia's Bunyan Platform\n\nFull episode: https://www.youtube.com/@AIThisWeekME\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews",
+      "youtube": "Saudi Arabia's Bunyan Platform\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews",
       "instagram": "Saudi Arabia's Bunyan Platform\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
       "tiktok": "Saudi Arabia's Bunyan Platform\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
-      "linkedin": "Saudi Arabia's Bunyan Platform\n\nFull episode: https://www.youtube.com/@AIThisWeekME\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #EnterpriseAI #GCC #DigitalTransformation"
+      "linkedin": "Saudi Arabia's Bunyan Platform\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #EnterpriseAI #GCC #DigitalTransformation"
     },
     "posts": {
       "youtube": {
@@ -167,7 +203,25 @@
       },
       "tiktok": {
         "status": "queued"
-      },
+      }
+    }
+  },
+  {
+    "id": "2026-W46-en#3-li",
+    "week": "2026-W46-en",
+    "lang": "en",
+    "file": "2026-W46-en-short-03.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-W46-en/2026-W46-en-short-03.mp4",
+    "title": "Saudi Arabia's Bunyan Platform",
+    "due": "2026-11-23T15:00:00Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Saudi Arabia's Bunyan Platform\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews",
+      "instagram": "Saudi Arabia's Bunyan Platform\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
+      "tiktok": "Saudi Arabia's Bunyan Platform\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews",
+      "linkedin": "Saudi Arabia's Bunyan Platform\n\nFull episode: https://youtu.be/epsMiJaq0E0\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #EnterpriseAI #GCC #DigitalTransformation"
+    },
+    "posts": {
       "linkedin": {
         "status": "queued"
       }
