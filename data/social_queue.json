@@ -166,7 +166,7 @@
       },
       "tiktok": {
         "status": "failed",
-        "attempts": 1,
+        "attempts": 2,
         "error": "TikTok: HTTP 400 /v2/post/publish/video/init/ [invalid_params]: The chunk size is invalid"
       }
     }
