@@ -264,5 +264,35 @@
         "at": "2026-11-18T07:22:28Z"
       }
     }
+  },
+  {
+    "id": "2026-11-18-brk-outages-en#1",
+    "week": "2026-11-18-brk-outages-en",
+    "lang": "en",
+    "file": "2026-11-18-brk-outages-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-18-brk-outages-en/2026-11-18-brk-outages-en-short-01.mp4",
+    "title": "Six US Outages in Six Days",
+    "due": "2026-11-18T15:00:00Z",
+    "approved": false,
+    "captions": {
+      "youtube": "Six US Outages in Six Days\n\nFull episode: https://www.youtube.com/@AIThisWeekME\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Six US Outages in Six Days\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Six US Outages in Six Days\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "Six US Outages in Six Days\n\nFull episode: https://www.youtube.com/@AIThisWeekME\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "queued"
+      },
+      "instagram": {
+        "status": "queued"
+      },
+      "tiktok": {
+        "status": "queued"
+      },
+      "linkedin": {
+        "status": "queued"
+      }
+    }
   }
 ]
