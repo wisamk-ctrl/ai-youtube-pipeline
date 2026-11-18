@@ -320,6 +320,7 @@ jobs:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN }}   # publish: the episode as a native LinkedIn video
           VIDEO_URL: ${{ inputs.video_url }}     # via env, never spliced into the shell line
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }} # stock footage; without a key, stock shots become branded backdrops
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}

@@ -216,6 +216,10 @@ def run_publish(out_dir: Path, cfg: dict[str, Any], yt=None) -> str:
         from pipeline.google_auth import client  # lazy
         yt = client("youtube")
     publish_at = next_publish_time(cfg)
+    if str(plan.get("release", "")).lower() == "now":   # reviewed/<week>/meta.yaml: the founder's go-ahead to publish now
+        cfg["publish"]["privacy"] = "public"
+        publish_at = datetime.now(timezone.utc)
+        log.info("Release now: the episode goes public on upload")
     # The raw render has no sting, so its captions are the unshifted ones.
     raw_srt = out_dir / "subtitles.srt"
     captions = caption_file(out_dir) if video.name.startswith("final_") else (raw_srt if raw_srt.exists() else None)

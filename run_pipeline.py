@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import logging
 import sys
 from datetime import date
@@ -471,7 +472,21 @@ def phase_publish(cfg: dict, out: Path) -> None:
     from pipeline.publish.youtube_upload import run_publish
 
     video_id = run_publish(out, cfg)
-    log.info("Phase 5 done → https://youtu.be/%s (private, scheduled)", video_id)
+    log.info("Phase 5 done → https://youtu.be/%s", video_id)
+    plan = json.loads((out / "plan.json").read_text(encoding="utf-8"))
+    text = str(plan.get("linkedin_post_en", "")).replace("{url}", f"https://youtu.be/{video_id}").strip()
+    if text and os.environ.get("LINKEDIN_TOKEN"):
+        # The episode as a native LinkedIn video (founder 2026-11-18: "release the main video to all channels").
+        # LinkedIn takes up to 500 MB, so a lighter 1080p copy is made.
+        import subprocess
+        from pipeline.publish.social import LinkedIn
+        src, light = out / "final_subtitled.mp4", out / "linkedin_episode.mp4"
+        subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(src), "-c:v", "libx264",
+                        "-preset", "veryfast", "-crf", "23", "-maxrate", "5M", "-bufsize", "10M", "-pix_fmt", "yuv420p",
+                        "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(light)], check=True)
+        res = LinkedIn(os.environ["LINKEDIN_TOKEN"], str(cfg.get("social", {}).get("linkedin_version", "202510"))
+                       ).post_video(light, text, plan.get("episode_title_en", "AI This Week"), wait_s=1500)
+        log.info("LinkedIn: episode posted %s", res.get("url") or res.get("post"))
 
 
 def main() -> None:
