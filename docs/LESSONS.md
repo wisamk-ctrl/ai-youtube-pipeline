@@ -220,3 +220,5 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   article, figures found in the cited text, a second model judges each line, no advice), writes
   `reviewed/<date>-brk-<slug>-en/`, renders it, and posts the script and the video link on the "Breaking Shorts" issue.
   Nothing posts until the founder replies `post <week>` there (workflow `breaking-post`, owner only).
+
+- **2026-11-18 — first automatic breaking Short failed in Whisper.** `HF_HUB_OFFLINE=1` on a Whisper cache hit refused to download a model size the cache did not hold. Fix: `transcribe_words` loads with `local_files_only=True` and downloads only on a miss; the env switch is gone (`pipeline/post/subtitles.py`, `weekly.yml`).

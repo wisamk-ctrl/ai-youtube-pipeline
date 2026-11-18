@@ -130,7 +130,11 @@ def transcribe_words(video: Path, model_size: str | None = None, cache: Path | N
 
     from faster_whisper import WhisperModel  # imported lazily: heavy, optional
 
-    model = WhisperModel(model_size, device="auto", compute_type="int8")
+    try:   # a cached model loads without asking the hub (a revalidation once took 35 minutes)
+        model = WhisperModel(model_size, device="auto", compute_type="int8", local_files_only=True)
+    except Exception as exc:   # not in the cache (e.g. another model size): download it
+        log.info("Whisper %s not cached (%s): downloading", model_size, type(exc).__name__)
+        model = WhisperModel(model_size, device="auto", compute_type="int8")
     segments, info = model.transcribe(str(video), language=language, word_timestamps=True, vad_filter=vad)
     log.info("Whisper %s: language=%s p=%.2f", model_size, info.language, info.language_probability)
     words = [Word(w.start, w.end, w.word) for seg in segments for w in (seg.words or [])]

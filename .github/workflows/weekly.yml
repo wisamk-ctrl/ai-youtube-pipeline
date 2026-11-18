@@ -322,9 +322,8 @@ jobs:
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
           LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN }}   # publish: the episode as a native LinkedIn video
-          # With the model restored from the cache, never ask the Hugging Face hub: on 2026-11-18 a revalidation
-          # of the cached model took 35 minutes before Whisper started (a 4-minute breaking Short ran 39).
-          HF_HUB_OFFLINE: ${{ steps.whisper.outputs.cache-hit == 'true' && '1' || '0' }}
+          # Whisper loads a cached model without asking the hub (pipeline/post/subtitles.py) and downloads only on a miss:
+          # HF_HUB_OFFLINE=1 on a cache hit failed a breaking Short on 2026-11-18 when the needed size was not in the cache.
           VIDEO_URL: ${{ inputs.video_url }}     # via env, never spliced into the shell line
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }} # stock footage; without a key, stock shots become branded backdrops
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
