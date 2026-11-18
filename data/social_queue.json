@@ -100,13 +100,21 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "url": "https://youtube.com/shorts/ObuwVd5P-2o",
+        "at": "2026-11-18T04:33:52Z"
       },
       "instagram": {
         "status": "queued"
       },
       "tiktok": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "publish_id": "v_pub_file~v2-1.7709364739297576961",
+        "privacy": "SELF_ONLY",
+        "platform_status": "PUBLISH_COMPLETE",
+        "at": "2026-11-18T04:33:52Z"
       }
     }
   },
@@ -148,13 +156,18 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "url": "https://youtube.com/shorts/tUCLt4NWJMw",
+        "at": "2026-11-18T04:33:52Z"
       },
       "instagram": {
         "status": "queued"
       },
       "tiktok": {
-        "status": "queued"
+        "status": "failed",
+        "attempts": 1,
+        "error": "TikTok: HTTP 400 /v2/post/publish/video/init/ [invalid_params]: The chunk size is invalid"
       }
     }
   },
@@ -196,13 +209,21 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "url": "https://youtube.com/shorts/k0c2e_L24SQ",
+        "at": "2026-11-18T04:33:52Z"
       },
       "instagram": {
         "status": "queued"
       },
       "tiktok": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "publish_id": "v_pub_file~v2-1.7709364935611942933",
+        "privacy": "SELF_ONLY",
+        "platform_status": "PUBLISH_COMPLETE",
+        "at": "2026-11-18T04:33:52Z"
       }
     }
   },
