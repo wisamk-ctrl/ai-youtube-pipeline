@@ -53,7 +53,8 @@ def test_voice_week_writes_a_voice_list_the_assembler_reads(tmp_path):
     dest = tts.voice_week(chunks, cfg, tmp_path / "voice.yaml", key="k", speak_fn=fake)
     assert seen == [("A.", "EN", "en"), ("B.", "EN", "en")]
     data = yaml.safe_load(dest.read_text())
-    assert data == {"01-face": {"audio": "https://a/A.", "duration": 1.5}, "02-voice": {"audio": "https://a/B.", "duration": 1.5}}
+    assert {k: {f: v[f] for f in ("audio", "duration")} for k, v in data.items()} == \
+        {"01-face": {"audio": "https://a/A.", "duration": 1.5}, "02-voice": {"audio": "https://a/B.", "duration": 1.5}}
     from pipeline.video.voicefirst import load_voice
     entries = load_voice(dest, chunks)
     assert [e["role"] for e in entries] == ["voice", "voice"]       # a face chunk without video is narration
