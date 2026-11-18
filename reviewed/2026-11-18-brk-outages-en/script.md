@@ -12,7 +12,7 @@ Then JPMorgan Chase payments were delayed, United Airlines had a systemwide outa
 [Visual: stock network traffic jamming at a gateway ring]
 So was it an attack? Secretary of State Marco Rubio says there is zero evidence of a malign actor.
 
-[Visual: source ed0418047a]
+[Visual: title No sign of an attack, officials say]
 The Director of National Intelligence says security upgrades are taking longer than planned and hitting unexpected problems.
 
 [Visual: stock three data centers linked by bridges of light]

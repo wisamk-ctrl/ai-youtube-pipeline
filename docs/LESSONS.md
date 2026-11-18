@@ -202,3 +202,5 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 - **2026-11-18, W46-en publish:** YouTube went out, then the LinkedIn step failed because the publish phase had no
   ffmpeg installed. Publish now installs it, and a week whose meta has `youtube_video_id` skips the YouTube upload so a
   re-run only posts to the other channels (never upload the same episode twice).
+- **2026-11-18, first breaking Short:** a source card with a long headline is cropped mid-word in the vertical frame
+  ("…caused by a malign a"). In breaking Shorts use a short title card instead of a long-headline source card.
