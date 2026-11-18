@@ -126,7 +126,8 @@ class ScriptEngine:
         self.style_guide = (ROOT / "config" / "style_guide.md").read_text(encoding="utf-8")
         lessons = ROOT / "config" / "lessons_editorial.md"   # past episodes' faults, seen by every pass
         playbook = ROOT / "config" / "monetisation_playbook.md"   # founder 2026-11-17: applies to every episode
-        for extra in (lessons, playbook):
+        views = ROOT / "config" / "founder_views.md"   # founder-approved views, labelled "Wissam's view"
+        for extra in (lessons, playbook, views):
             if extra.exists():
                 self.style_guide += "\n\n" + extra.read_text(encoding="utf-8")
         self.rubric = (ROOT / "config" / "critic_rubric.md").read_text(encoding="utf-8")
