@@ -479,7 +479,9 @@ def phase_publish(cfg: dict, out: Path) -> None:
         video_id = run_publish(out, cfg)
         log.info("Phase 5 done → https://youtu.be/%s", video_id)
     text = str(plan.get("linkedin_post_en", "")).replace("{url}", f"https://youtu.be/{video_id}").strip()
-    if text and os.environ.get("LINKEDIN_TOKEN"):
+    if plan.get("linkedin_post_url"):   # already posted (reviewed meta): never post the episode twice
+        log.info("Already on LinkedIn: %s", plan["linkedin_post_url"])
+    elif text and os.environ.get("LINKEDIN_TOKEN"):
         # The episode as a native LinkedIn video (founder 2026-11-18: "release the main video to all channels").
         # LinkedIn takes up to 500 MB, so a lighter 1080p copy is made.
         import subprocess
