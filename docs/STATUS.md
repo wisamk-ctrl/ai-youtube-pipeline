@@ -222,3 +222,9 @@ TikTok cannot be read by an app and are listed to check by hand. Likes are never
   portrait in the emblem ring (`youtube_banner_2560x1440.png`, `linkedin_banner_2256x382.png`), built by
   `scripts/brand_banners.py <out dir> <portrait>`. The hoodie banner and the plain set are under `assets/brand/previous/`.
   YouTube banner is set by the `brand` workflow; profile pictures and the other channels are manual (no API).
+
+- **W46-en is edited and checked, waiting for the founder's go-ahead to publish (2026-11-18).** Final run 44199645547:
+  10:39, 4K master, three Shorts, thumbnail with the approved portrait. Title A and description from
+  `reviewed/2026-W46-en/meta.yaml`. 15 of our own clips (`visuals.yaml`), 12 stock clips blocked by id. The Jensen Huang
+  passage was corrected against Al Jazeera and TechCrunch (`sources_ok.txt`). After upload: set each Short's "related
+  video" link to the episode in YouTube Studio (needs Advanced features; no API).
