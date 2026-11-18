@@ -179,7 +179,7 @@ def test_linkedin_uploads_in_parts_waits_for_processing_then_posts(tmp_path):
 
 
 def test_linkedin_caption_links_the_channel_and_caps_tags_at_ten(tmp_path):
-    cfg = {"publish": {"hashtags_en": ["#A", "#B", "#C", "#D", "#E", "#F"]},
+    cfg = {"publish": {"hashtags_en": [f"#T{i}" for i in range(12)]},
            "social": {"channel_url": "https://www.youtube.com/@AIThisWeekME",
                       "platforms": ["linkedin", "tiktok"], "require_approval": True}}
     q = []
