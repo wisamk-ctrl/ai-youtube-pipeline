@@ -282,16 +282,28 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "url": "https://youtube.com/shorts/qTjcBCcUSeM",
+        "at": "2026-11-18T08:06:55Z"
       },
       "instagram": {
         "status": "queued"
       },
       "tiktok": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "publish_id": "v_pub_file~v2-1.7709419716816783381",
+        "privacy": "SELF_ONLY",
+        "platform_status": "PUBLISH_COMPLETE",
+        "at": "2026-11-18T08:06:55Z"
       },
       "linkedin": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "post": "urn:li:ugcPost:7528730599017254912",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7528730599017254912",
+        "at": "2026-11-18T08:06:55Z"
       }
     }
   }
