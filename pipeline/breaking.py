@@ -279,6 +279,8 @@ def run(cfg: dict[str, Any], state: dict[str, Any], client, now: datetime | None
     for group in candidates(state, now, set(done["stories"]), float(b.get("hours", 8)))[: int(b.get("tries", 2))]:
         key = _norm(group[0]["title"])[:80]
         items = _articles(group)
+        from scripts.notify import whatsapp   # founder 2026-11-18: a heads-up while the script is being written
+        whatsapp(f"AI This Week: breaking story spotted, writing the Short now.\n{group[0]['title'][:200]}")
         d = make(items, cfg, client, list(library))
         done["stories"][key] = {"at": now.isoformat(timespec="minutes"), "title": group[0]["title"]}
         if d:

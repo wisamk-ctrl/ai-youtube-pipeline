@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
+      WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}     # WhatsApp alerts (scripts/notify.py); unset = off
+      CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
       GITHUB_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4

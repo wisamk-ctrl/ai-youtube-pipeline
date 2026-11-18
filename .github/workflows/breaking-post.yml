@@ -32,6 +32,8 @@ jobs:
       TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
       LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN }}
       SECRETS_PAT: ${{ secrets.SECRETS_PAT }}
+      WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}
+      CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
     steps:
       - uses: actions/checkout@v4
       - name: Which Short?

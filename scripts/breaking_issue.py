@@ -39,6 +39,12 @@ def main(kind: str, week: str, extra: str = "") -> None:
     else:
         body = f"**Posted: `{week}`**\n\n{extra}"
     comment(body)
+    from scripts.notify import whatsapp
+    issue = f"https://github.com/{repo}/issues?q=is%3Aopen+%22Breaking+Shorts%22+in%3Atitle"
+    whatsapp({"drafted": f"AI This Week: breaking Short script ready, video rendering (~10 min).\n{week}\nScript and sources: {issue}",
+              "ready": f"AI This Week: breaking Short ready to check.\n▶️ https://github.com/{repo}/raw/previews/{week}-files/short_01.mp4\n"
+                       f"To publish, reply on the Breaking Shorts issue: post {week}\n{issue}"}.get(
+        kind, f"AI This Week: posted {week}.\n{extra}"))
 
 
 if __name__ == "__main__":

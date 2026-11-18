@@ -343,6 +343,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           WEEK: ${{ inputs.week }}
+          WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}
+          CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
         run: |
           gh workflow run preview.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" -f what=text
           python scripts/breaking_issue.py ready "$WEEK"
