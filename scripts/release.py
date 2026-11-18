@@ -48,6 +48,9 @@ def chapters_ready(video_id: str) -> tuple[bool, str]:
     import requests
     from scripts.youtube_video_check import UA, chapters
     html = requests.get(f"https://www.youtube.com/watch?v={video_id}", headers=UA, timeout=60).text
+    if '"playabilityStatus":{"status":"LOGIN_REQUIRED"' in html:
+        # YouTube's bot wall hides the frame previews from this runner: no verdict, so the time limit decides.
+        return False, "YouTube sign-in wall on this runner: cannot judge, waiting for the time limit"
     ch = chapters(html)
     if not ch:
         # No chapters on the page (none in the description, or not shown yet): fall back to the frame preview.

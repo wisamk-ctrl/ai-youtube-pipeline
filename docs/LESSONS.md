@@ -222,3 +222,5 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   Nothing posts until the founder replies `post <week>` there (workflow `breaking-post`, owner only).
 
 - **2026-11-18 — first automatic breaking Short failed in Whisper.** `HF_HUB_OFFLINE=1` on a Whisper cache hit refused to download a model size the cache did not hold. Fix: `transcribe_words` loads with `local_files_only=True` and downloads only on a miss; the env switch is gone (`pipeline/post/subtitles.py`, `weekly.yml`).
+
+- **2026-11-18 — the chapter-picture check was blind.** From GitHub runners YouTube serves the W46 watch page behind "Sign in to confirm you're not a bot" (`LOGIN_REQUIRED`), which strips the frame previews, so every chapter showed the thumbnail there whatever viewers saw (a control video from the same runners was served normally; the API reports W46 processed, public, not age-restricted). The check now says UNKNOWN behind the wall instead of FAIL, and the release gate falls back to its time limit. Storyboard image URLs need a signature (403), so they cannot be probed directly. A human look in a browser is the only verdict when the wall is up.

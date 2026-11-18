@@ -76,6 +76,12 @@ def main(video_id: str) -> int:
     why = re.search(r'"playabilityStatus":\{[^{}]*?"reason":"([^"]+)"', html)
     print("Watch page as seen from here:", m.group(1) if m else "no player data", "|", len(html), "bytes",
           "|", why.group(1) if why else "")
+    if m and m.group(1) == "LOGIN_REQUIRED":
+        # YouTube's bot wall hides the frame previews, so every chapter shows the main thumbnail here
+        # whatever viewers see: no verdict is possible from this machine (2026-11-18, W46).
+        print("::warning::UNKNOWN: YouTube showed this runner its sign-in wall, so the chapter pictures "
+              "cannot be judged from here. Open the video in a browser and hover the chapters.")
+        return 0
     print("Storyboard (frame previews) on the page:", "yes" if "playerStoryboardSpecRenderer" in html else "no")
     ch = chapters(html)
     if not ch:
