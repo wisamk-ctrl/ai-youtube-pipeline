@@ -199,3 +199,6 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   this week's episode on AI This Week", `assets/brand/shorts_outro_en.wav`, his cloned voice) over a longer end card
   that says the same. And a Short's picture starts on its story's own first frame even when the voice starts earlier
   in the pause: the earlier cut showed a flash of the previous shot (a green tunnel before Short 3's source card).
+- **2026-11-18, W46-en publish:** YouTube went out, then the LinkedIn step failed because the publish phase had no
+  ffmpeg installed. Publish now installs it, and a week whose meta has `youtube_video_id` skips the YouTube upload so a
+  re-run only posts to the other channels (never upload the same episode twice).

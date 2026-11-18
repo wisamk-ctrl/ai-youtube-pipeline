@@ -10,6 +10,8 @@ description_en: >-
   NVIDIA's Korea collaboration, and a developer tools roundup.
 # Founder 2026-11-18: release today, as soon as ready, to all channels.
 release: "now"
+# Public on YouTube since 2026-11-18 04:16 UTC: a re-run of publish posts only to the other channels.
+youtube_video_id: "epsMiJaq0E0"
 linkedin_post_en: |-
   New episode of AI This Week: NVIDIA loses its CEO, Microsoft 365 goes down for almost a day, and Anthropic's IPO meets a voter backlash over data centers. Plus Saudi Arabia's Bunyan platform, OpenAI's ChatGPT Wallet and NVIDIA's deal with Korea, each with what it means for our region.
 

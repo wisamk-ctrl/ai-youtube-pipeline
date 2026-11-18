@@ -471,9 +471,13 @@ def phase_translate(cfg: dict, out: Path) -> None:
 def phase_publish(cfg: dict, out: Path) -> None:
     from pipeline.publish.youtube_upload import run_publish
 
-    video_id = run_publish(out, cfg)
-    log.info("Phase 5 done → https://youtu.be/%s", video_id)
     plan = json.loads((out / "plan.json").read_text(encoding="utf-8"))
+    video_id = str(plan.get("youtube_video_id") or "")
+    if video_id:   # already on YouTube (reviewed meta): only the other channels are left to post
+        log.info("Already on YouTube: https://youtu.be/%s, not uploading again", video_id)
+    else:
+        video_id = run_publish(out, cfg)
+        log.info("Phase 5 done → https://youtu.be/%s", video_id)
     text = str(plan.get("linkedin_post_en", "")).replace("{url}", f"https://youtu.be/{video_id}").strip()
     if text and os.environ.get("LINKEDIN_TOKEN"):
         # The episode as a native LinkedIn video (founder 2026-11-18: "release the main video to all channels").

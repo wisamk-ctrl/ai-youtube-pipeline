@@ -275,7 +275,7 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('requirements.lock') }}
       - name: Install ffmpeg + Arabic font (post phase)
-        if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble' || inputs.phase == 'voicecheck' || inputs.phase == 'shorts'
+        if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble' || inputs.phase == 'voicecheck' || inputs.phase == 'shorts' || inputs.phase == 'publish'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-core
       - name: Install Chromium for the cue cards (post phase)
         if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble' || inputs.phase == 'shorts'
