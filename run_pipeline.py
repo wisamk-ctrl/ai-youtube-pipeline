@@ -488,7 +488,7 @@ def phase_publish(cfg: dict, out: Path) -> None:
         subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(src), "-c:v", "libx264",
                         "-preset", "veryfast", "-crf", "23", "-maxrate", "5M", "-bufsize", "10M", "-pix_fmt", "yuv420p",
                         "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(light)], check=True)
-        res = LinkedIn(os.environ["LINKEDIN_TOKEN"], str(cfg.get("social", {}).get("linkedin_version", "202510"))
+        res = LinkedIn(os.environ["LINKEDIN_TOKEN"], str(cfg.get("social", {}).get("linkedin_version", "202610"))
                        ).post_video(light, text, plan.get("episode_title_en", "AI This Week"), wait_s=1500)
         log.info("LinkedIn: episode posted %s", res.get("url") or res.get("post"))
 

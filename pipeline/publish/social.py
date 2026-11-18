@@ -241,7 +241,7 @@ class LinkedIn:
     """A member post with a video ("Share on LinkedIn", scope w_member_social): Videos API upload
     (initialize → parts → finalize), then the Posts API. The founder's own profile: no app review."""
 
-    def __init__(self, token: str, version: str = "202510", http=requests, sleep=time.sleep):
+    def __init__(self, token: str, version: str = "202610", http=requests, sleep=time.sleep):
         self.token, self.version, self.http, self.sleep = token, version, http, sleep
 
     def _h(self, extra: dict[str, str] | None = None) -> dict[str, str]:
@@ -386,7 +386,7 @@ def tiktok_poster(cfg: dict[str, Any]):
 
 
 def linkedin_poster(cfg: dict[str, Any]):
-    li = LinkedIn(os.environ["LINKEDIN_TOKEN"], str(cfg.get("social", {}).get("linkedin_version", "202510")))
+    li = LinkedIn(os.environ["LINKEDIN_TOKEN"], str(cfg.get("social", {}).get("linkedin_version", "202610")))
 
     def post(e: dict[str, Any], local: Path) -> dict[str, Any]:
         return li.post_video(local, e["captions"]["linkedin"], e.get("title") or e["file"])
