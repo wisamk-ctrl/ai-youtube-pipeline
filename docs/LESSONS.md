@@ -204,3 +204,6 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   re-run only posts to the other channels (never upload the same episode twice).
 - **2026-11-18, first breaking Short:** a source card with a long headline is cropped mid-word in the vertical frame
   ("…caused by a malign a"). In breaking Shorts use a short title card instead of a long-headline source card.
+- **2026-11-18: the voice step runs on its own.** When a week has no `reviewed/<week>/voice.yaml`, assemble voices
+  every chunk through HeyGen's API (`pipeline/video/tts.py`, POST /v3/models/audio/tts, the cloned English voice) and
+  writes `output/<week>/voice.yaml`. Face chunks become narration (no presenter video is made automatically).

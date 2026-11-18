@@ -1,0 +1,9 @@
+Breaking Short, 2026-11-18. Every claim from the collected article texts in items.json:
+- "six major outages in six days": Politico headline (9d0cca79b0); Gulf News lists them (feed5f9799).
+- Microsoft 365 down 12 Nov; FAA nationwide ground stop for departing flights about four hours, the next day;
+  JPMorgan Chase transaction delays and United Airlines systemwide outage, 16 Nov; CNN reported NSA Net down,
+  17 Nov: Gulf News (feed5f9799).
+- Rubio, "zero evidence ... malign actor": ed0418047a (Hearst / Gulf Coast News).
+- DNI Jay Clayton: "organizations making security upgrades that are taking longer than planned and encountering
+  unexpected hiccups": ed0418047a.
+- Closing line: the founder's view from W46 (redundancy), labelled as a lesson, no figures.

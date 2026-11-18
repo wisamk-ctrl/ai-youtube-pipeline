@@ -444,9 +444,15 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
     _sources_gate(out, "assemble")
     _numbers_gate(cfg, out)
     voice = ROOT / "reviewed" / out.name / "voice.yaml"
-    if not voice.exists():
-        sys.exit(f"{voice} not found — make the speech and face videos from voice_pack.md first.")
     chunks = json.loads((out / "voice_pack.json").read_text(encoding="utf-8"))["chunks"]
+    if not voice.exists() and (out / "voice.yaml").exists():
+        voice = out / "voice.yaml"          # voiced automatically on an earlier run of this week
+    if not voice.exists():
+        if not os.environ.get("HEYGEN_API_KEY"):
+            sys.exit(f"{voice} not found — make the speech and face videos from voice_pack.md first.")
+        from pipeline.video.tts import voice_week   # no one in the loop: voice it through the HeyGen API
+        voice = voice_week(chunks, cfg, out / "voice.yaml")
+        log.info("Voice step done automatically → %s", voice)
     try:
         entries = voicefirst.load_voice(voice, chunks)
     except ValueError as exc:
