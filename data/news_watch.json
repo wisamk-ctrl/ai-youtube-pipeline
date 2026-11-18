@@ -22991,6 +22991,342 @@
    "id": "60470f65cd",
    "first_seen": "2026-11-18T08:42+00:00",
    "flagged": false
+  },
+  "381c0114d0": {
+   "source": "وكالة الأنباء السعودية",
+   "source_type": "rss",
+   "title": "IFIA Joins SAIF as International Strategic Partner",
+   "summary": "IFIA Joins SAIF as International Strategic Partner وكالة الأنباء السعودية",
+   "url": "https://www.spa.gov.sa/en/N2728196",
+   "published": "2026-11-16T21:11:33+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "381c0114d0",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "f06ba4a0a3": {
+   "source": "Daily Sabah",
+   "source_type": "rss",
+   "title": "California sues OpenAI over AI models' hacking incidents | Daily Sabah",
+   "summary": "California sues OpenAI over AI models' hacking incidents | Daily Sabah Daily Sabah",
+   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPX1ExT0dBaC0xLTlRbnR1RG11TXgwMkdNaV9RSHdHdTVQTDRWOWpmclVrck9FZUJ4YmdSblNNbXdkbkotenl0SmhLeG5yNW1RakN5dlRrR2RnRllseTUtbXAxR2JET3pRNm11ekRDNXhDT3FzSVJ3UnpoQW9XeVlqano5NkFrU2ZzeEU2RVAtQUstTVlVcUFNQlM0bzVtR2RlcUHSAaIBQVVfeXFMT19RMU9HQWgtMS05UW50dURtdU14MDJHTWlfUUh3R3U1UEw0VjlqZnJVa3JPRWVCeGJnUm5TTW13ZG5KLXp5dEpoS3hucjVtUWpDeXZUa0dkZ0ZZbHk1LW1wMUdiRE96UTZtdXpEQzV4Q09xc0lSd1J6aEFvV3lZamp6OTZBa1Nmc3hFNkVQLUFLLU1ZVXFBTUJTNG81bUdkZXFB?oc=5",
+   "published": "2026-11-16T21:51:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "OpenAI"
+   ],
+   "id": "f06ba4a0a3",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": true
+  },
+  "2aea2b28e6": {
+   "source": "ProPakistani",
+   "source_type": "rss",
+   "title": "Microsoft Announces 6 Big AI Upgrades at Ignite 2026",
+   "summary": "Microsoft Announces 6 Big AI Upgrades at Ignite 2026 ProPakistani",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNbmdmc2o1SHVOZHNEaG01Wjhpa1pDM2FHYlE4UlV3S2VJbWt2ZGdfMlp4ZEN3bWxCQS1kMjhXUmU1dElkbjFGdGRDU1hzSGpveGpXQU9vRHlmNmllMHB0Y0k5dURoZjBwLUp1WXI5dE00T0RpTVY0LWtTUHZDSG03bHMtbjdveFhjQnZiU1Y0Y1Y0QdIBlwFBVV95cUxNbThadGtyZnpCRTJhQUZtS0g2VWprVlVMX1hMY2ZuMHllQUt6SWg4VEh6RmFnQ2lXUFRFRmJySDFKRGpsb1VpZHo3dlF4Z2JPYklTVER1LWNRUFhaYWcyblptYVhLX0ZQeVZ1WllsZnBUbGwwMVU0dUVUUTk2akxjaUlKdXdUaDhLSVZtLWgzRFR0YnhhM1dF?oc=5",
+   "published": "2026-11-18T07:24:59+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "pakistan",
+   "entities": [],
+   "id": "2aea2b28e6",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "78d4b01947": {
+   "source": "NewsNation",
+   "source_type": "rss",
+   "title": "California sues OpenAI over AI models’ cyberattacks on other companies",
+   "summary": "California sues OpenAI over AI models’ cyberattacks on other companies NewsNation",
+   "url": "https://www.newsnationnow.com/business/tech/ai/california-sues-openai-hugging-face/",
+   "published": "2026-11-18T05:50:12+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "OpenAI"
+   ],
+   "id": "78d4b01947",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "42cab5ea23": {
+   "source": "CNBC",
+   "source_type": "rss",
+   "title": "OpenAI bugging case defendant Alfozan set for trial in January",
+   "summary": "A federal judge on Tuesday set Jan. 20 for the start of the trial for Saudi national Abdulrahman Alfozan , who is accused of planting a recording device in an OpenAI conference room when he worked for the artificial intelligence company as an engineering lead. If the trial starts on that date in U.S. District Court in San Francisco, it would be after an unusually short lag since Alfozan's arrest in October. Federal criminal cases, as a rule, do not go to trial so quickly. But Alfozan's attorney, David Rizk, sought the speedy trial after complaining at a court hearing that prosecutors have been slow in turning over evidence in the case. Rizk also said prosecutors have not given him any evidence that Alfozan engaged in espionage, after they argued successfully last month that he should be detained without bail , and after saying his alleged bugging \"could pose a danger to the national security of the United States.\" Among other things, prosecutors had noted that Alfozan is a venture partner at Saudi venture firm Raed Ventures alongside a member of the Saudi royal family, Prince Khalid bin Bader Al Saud . Alfozan, who has pleaded not guilty in the case, is charged with one count of intercepting oral communications. He faces a maximum of five years in prison if he is convicted. Prosecutors have said Alfozan was arrested after staff at OpenAI found a recording device wrapped in toilet paper and installed in the back of a television in the conference room at its San Francisco headquarters in September. A surveillance camera captured Alfozan looking at the gadget in the room. Assistant U.S. Attorney Nick Parker told Judge Vince Chhabria on Tuesday that government investigators have been locked out of Alfozan's phone, but they have also collected one other phone, a tablet, and two laptops. Prosecutors also obtained 160 hours of recordings from meetings in a conference room. The recording device itself is encrypted, but if data was backed up to another device, investigators would have been able to obtain it, Parker said. Chhabria told prosecutors that they must turn over all reports the FBI has created to Alfozan's attorney by Nov. 24, and that they must also move quickly to give the defense other evidence for use at trial. \"We need to make sure that you get whatever discovery you're entitled to promptly,\" Chhabria told Rizk. OpenAI, which fired Alfozan after his arrest, has said it lacked proof of him taking source code or customer data. Chhabria also told Parker…",
+   "url": "https://www.cnbc.com/2026/11/17/openai-spy-alfozan-trial-saudi.html",
+   "published": "2026-11-18T01:29:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "OpenAI"
+   ],
+   "id": "42cab5ea23",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "ca83b294f0": {
+   "source": "Forbes",
+   "source_type": "rss",
+   "title": "Anthropic IPO: A Brother-Sister Duo Behind A Trillion-Dollar AI Giant",
+   "summary": "Anthropic IPO: A Brother-Sister Duo Behind A Trillion-Dollar AI Giant Forbes",
+   "url": "https://www.forbes.com/sites/shaheenajanjuhajivrajeurope/2026/11/18/anthropic-ipo-the-brother-sister-team-behind-a-trillion-dollar-ai-giant/",
+   "published": "2026-11-18T08:17:11+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "ca83b294f0",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "26f83d24e2": {
+   "source": "MLQ.ai",
+   "source_type": "rss",
+   "title": "Perplexity launches Multiagent for Computer and Orchestrator, an API for models from OpenAI, Anthropic, Google and xAI",
+   "summary": "Perplexity launches Multiagent for Computer and Orchestrator, an API for models from OpenAI, Anthropic, Google and xAI MLQ.ai",
+   "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNSDR6OTgxQkREdzk5OWVkT3FzaWJqbDlzV3hwdDY2azVFbVZ1UVBIaGNfU042TGU2a0dDSzdlUl9yOU1CM2tkcUJOQVl0dVZtbHNxWnlmNGdKRUpyc2Y4RkUtLVpheXJXMGdoNjA1SGNPaDZHcnRYQk13eW9CVlFQaWZtaEdFOFNnQWo2eTVpR0tjdkZ3UkIzcWNBU3RBQlA4OGh0MGNfTUZQbHpwVXM4cFNSdVIwUVVMWGtERUYyekt3Nkk1TU4xNC1FT2pZZVA2N1E?oc=5",
+   "published": "2026-11-18T06:31:04+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "OpenAI",
+    "Perplexity Comet",
+    "xAI"
+   ],
+   "id": "26f83d24e2",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "4d2c13b5f5": {
+   "source": "Pasquale Pillitteri",
+   "source_type": "rss",
+   "title": "Google confirms Gemini will keep chats for two months, even with history off",
+   "summary": "Google confirms Gemini will keep chats for two months, even with history off Pasquale Pillitteri",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPdG1rdTd4OWRnamVvcTI2WjFUY2F3M1ZRS2RuUExZRlNlLVQySDBuekFvUWlwZjQzVGFxcjVDMjdvZzZtZk4yTTBQWjF5dDFfOUU5cVV4d2lZMG1JSldtQ0Izbi1mUUhyM05qRXFmdGdoUmVYTXNhekFSZW11djFoZHJFd2RsNDlfbmpCd0pVLV9TNVlocE9fVHFLejZkdw?oc=5",
+   "published": "2026-11-18T09:13:14+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Google DeepMind"
+   ],
+   "id": "4d2c13b5f5",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "01b0cf28a2": {
+   "source": "KuCoin",
+   "source_type": "rss",
+   "title": "Tencent Hunyuan launches the Hy4Flash series with 224B parameters and 1M token context.",
+   "summary": "Tencent Hunyuan launches the Hy4Flash series with 224B parameters and 1M token context. KuCoin",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQZ0ZEbHJVNWtDT1JaNDBKcWxoSG4tVEstbV8tbnNsQm9lUVpad0x1a1VDYlAwLWpDY1NWNUxLbkNVSW1pS0M4allwbTRvcnVPWl9XN0E0b0lzOGtXNkFrbkE4RzhsTEk0Q3ljVkhiaWpJMm5hN1lpNWI5RWZSVzM2ZVNOaFRmMnNSblphVnFWb2FtVUdMa3JiQXpVWUd0emRTOE8zM0djdnR3ajdBWWM1RnJzNkxTblk?oc=5",
+   "published": "2026-11-18T09:07:55+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Tencent Hunyuan"
+   ],
+   "id": "01b0cf28a2",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "17aa0dfdb2": {
+   "source": "Foreign Policy",
+   "source_type": "rss",
+   "title": "The AI Safety Debate Has a Human Rights Blind Spot",
+   "summary": "The AI Safety Debate Has a Human Rights Blind Spot Foreign Policy",
+   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQRE5FaThuU1M5RjVXVUM4a3lrakxEQXhpTk8wZmxpRlU2dlN2Mk1uX1o0bC14TEFlcUZubDlzdUhyb2RVMkkwQ3IybzNLMnBzZ1k4MXJYQ3hsdXFVdm9hSGV1M0tsVEdUUVhlMHIzNDk1bEhBOU03U1lCb0s4RGtBbmlZcExLTXhwVXctc2FQTDhTcFdjdnctVA?oc=5",
+   "published": "2026-11-18T05:53:08+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "Humain"
+   ],
+   "id": "17aa0dfdb2",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "bf19ec6c00": {
+   "source": "New York Post",
+   "source_type": "rss",
+   "title": "Cambridge Dictionary chooses ‘human’ as word of the year in response to AI fears",
+   "summary": "Cambridge Dictionary chooses ‘human’ as word of the year in response to AI fears New York Post",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNTXhwSDNPWFFueEdCWGljMTlidkRHWnJPc3AtWlp0VGRXajhCMWFhNmpSUEl6cDVoc0VLMno4cXRrYS1IQ2dfeWdTWGdySTVTQVQyMTFaRnZ4bWlSSkJ3MWZFaXFPb25rSzdjLU1fRUlGLXNDc3hRLXd5SlJ6ZDg3cHBZTjUzbkNXeFNNX1JDell0SWJTVHJhRDQySkVUVTA?oc=5",
+   "published": "2026-11-18T07:27:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "Humain"
+   ],
+   "id": "bf19ec6c00",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "c852b731db": {
+   "source": "BBC",
+   "source_type": "rss",
+   "title": "'Human' is the Cambridge Dictionary's Word of the Year",
+   "summary": "'Human' is the Cambridge Dictionary's Word of the Year BBC",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBmRDFZaWQ2blhxeFF4TUdFakNuMFVXTmNRSjliT3ZwVjB5djZncDlCZlNDNXE3RFdhWlZKVDVMQXZ1U0Q1Mjl3QW1YNXNGX0REUUt6OW95VDFNOUE?oc=5",
+   "published": "2026-11-18T05:39:39+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "Humain"
+   ],
+   "id": "c852b731db",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "4917e11f45": {
+   "source": "MarkTechPost",
+   "source_type": "rss",
+   "title": "Anthropic Adds Code Mode to Claude Code: Claude Now Chains Tool Calls in JavaScript",
+   "summary": "Anthropic Adds Code Mode to Claude Code: Claude Now Chains Tool Calls in JavaScript MarkTechPost",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPU1Jhd1ZQUE1lQWhlRkZFcDB5d18zeUpyS0o3ZWFlRnVwOXhFcG5IXzVITlZwcXN6ZTFDc1hIYmd2Wldwd01mYTdOR2preXpFUnBEdlJfQi1IMElxNGVaNUEwQUtxcER5NEQwcWR2Sk1zS1NETl9nc2MyNVI4bHhPTHdrUk9LM2YtUzRHZXJ2M2FuZy13LUlVS3Nn0gGaAUFVX3lxTE9TUmF3VlBQTWVBaGVGRkVwMHl3XzN5SnJLSjdlYWVGdXA5eEVwbkhfNUhOVnBxc3plMUNzWEhiZ3ZaV3B3TWZhN05Hamt5ekVScER2Ul9CLUgwSXE0ZVo1QTBBS3FwRHk0RDBxZHZKTXNLU0ROX2dzYzI1UjhseE9Md2tST0szZi1TNEdlcnYzYW5nLXctSVVLc2c?oc=5",
+   "published": "2026-11-18T06:53:28+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "Claude Code"
+   ],
+   "id": "4917e11f45",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "20edcc3e0e": {
+   "source": "Morningstar",
+   "source_type": "rss",
+   "title": "Nvidia Earnings: Business as Usual as Forecasts Suggest That All Is Well and Shares Are Cheap",
+   "summary": "Nvidia Earnings: Business as Usual as Forecasts Suggest That All Is Well and Shares Are Cheap Morningstar",
+   "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOa1BrckYzWHl6aFRKYk9WNHVfY0R4a1NoTVBDdHNOckVBWl9SZ04wQldmTUF0T3ZUV2NiYUpPWXN6UVFzbXNlTkl0eTYwVVo4aXpOS1VRWkhjNXVselNQSG9FRGtJOWhxc3N1dENkZ2NYQWd3V3Z0VHpWSTZVWHVidFpWSHgxejRzR3V1bVdnb3ZLM0h2allOVUpuU3o1OG1kMmRjeV9hcS1DREVsN3A4MnF4LTA1ckxWX1ZZM196bzkwV3JD?oc=5",
+   "published": "2026-11-18T09:13:59+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "20edcc3e0e",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "02c7892489": {
+   "source": "Yahoo Finance",
+   "source_type": "rss",
+   "title": "ARM's 50% Licensing Revenue Surge Signals Strong AI-Driven Demand",
+   "summary": "ARM's 50% Licensing Revenue Surge Signals Strong AI-Driven Demand Yahoo Finance",
+   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOWVktbW9vTFE0X1E2MEhKaU5JOGlJVkIwNWN0aGVxdFdEQ1dGWWJLd1R2XzBTLU1UMWZPX05JQ04wX244eFJxRllXamp6S1labHJrc0JrMWYtRndkTFdXczlzQlBLbUVfdUhIMlRuNUJJSnQxdjdhanNFbm9qSnpBWFRERG9tMDljOXIzUkRqTXRFeFNORE1ibDQyYw?oc=5",
+   "published": "2026-11-16T16:30:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Arm"
+   ],
+   "id": "02c7892489",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
+  },
+  "a79f4c7e82": {
+   "source": "Yahoo Finance",
+   "source_type": "rss",
+   "title": "What It Will Take for Cerebras Stock to Stage a Real Revival After Q3 Earnings Rally",
+   "summary": "What It Will Take for Cerebras Stock to Stage a Real Revival After Q3 Earnings Rally Yahoo Finance",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQRDZpVllCUjhTc2JLcDFSUTlaQUo1c19IZGIybkIyX2JSWmE0MUh6R1E4WXM4bmxoVkdZd1JxdjA1QzNXUzQ4c2ppUlpkUi1nQ0tQcXJkOUg1ekVVR2ZvYmNVVWVqV1o5WU9yODNBdjhOY1VhT01DdFpaZ0c0a09wSTZYUmpoRVd3Tm9aN0RsaEl1OXItWFpnTEtxTDMzMTQ?oc=5",
+   "published": "2026-11-17T21:22:34+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Cerebras"
+   ],
+   "id": "a79f4c7e82",
+   "first_seen": "2026-11-18T09:24+00:00",
+   "flagged": false
   }
  },
  "runs": [
@@ -23035,6 +23371,12 @@
    "found": 479,
    "new": 53,
    "flagged": 1
+  },
+  {
+   "at": "2026-11-18T09:24+00:00",
+   "found": 473,
+   "new": 16,
+   "flagged": 0
   }
  ]
 }
