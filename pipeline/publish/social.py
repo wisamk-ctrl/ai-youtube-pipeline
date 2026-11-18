@@ -167,6 +167,7 @@ class Instagram:
 # ── TikTok ───────────────────────────────────────────────────────────────────
 class TikTok:
     CHUNK = 10 * 1024 * 1024
+    SINGLE = 64 * 1024 * 1024
 
     def __init__(self, token: str, http=requests, sleep=time.sleep):
         self.token, self.http, self.sleep = token, http, sleep
@@ -191,8 +192,11 @@ class TikTok:
 
     def post_video(self, path: Path, text: str, wanted: str = "PUBLIC_TO_EVERYONE", wait_s: int = 600) -> dict[str, Any]:
         size = path.stat().st_size
-        chunk = size if size <= self.CHUNK else self.CHUNK
-        count = max(1, size // chunk)               # TikTok: the last chunk takes the remainder
+        # TikTok: a file up to 64 MB may go as one chunk, which must then be the whole file; above that, 10 MB
+        # chunks with the remainder in the last. W46-en: a 15 MB Short sent as one "10 MB" chunk was refused
+        # ("The chunk size is invalid").
+        chunk = size if size <= self.SINGLE else self.CHUNK
+        count = max(1, size // chunk)
         level = self.privacy(wanted)
         init = self._post("/v2/post/publish/video/init/", {
             "post_info": {"title": text[:2200], "privacy_level": level, "is_aigc": True,

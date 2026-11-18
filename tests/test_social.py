@@ -107,6 +107,7 @@ def test_instagram_container_error_is_raised():
 
 def test_tiktok_uploads_in_chunks_and_falls_back_to_private_when_unaudited(tmp_path, monkeypatch):
     monkeypatch.setattr(social.TikTok, "CHUNK", 10)
+    monkeypatch.setattr(social.TikTok, "SINGLE", 20)
     f = tmp_path / "v.mp4"
     f.write_bytes(b"x" * 25)
     http = FakeHttp({
@@ -186,3 +187,20 @@ def test_linkedin_caption_links_the_channel_and_keeps_few_tags(tmp_path):
     li, tt = q[0]["captions"]["linkedin"], q[0]["captions"]["tiktok"]
     assert "Full episode: https://www.youtube.com/@AIThisWeekME" in li and "link in bio" in tt
     assert li.count("#") == 4 and "linkedin" in q[0]["posts"]
+
+
+def test_tiktok_sends_a_file_under_the_single_chunk_limit_whole(tmp_path, monkeypatch):
+    """W46-en: a 15 MB Short sent as one chunk declared 10 MB was refused ("The chunk size is invalid")."""
+    monkeypatch.setattr(social.TikTok, "CHUNK", 10)
+    monkeypatch.setattr(social.TikTok, "SINGLE", 64)
+    f = tmp_path / "v.mp4"
+    f.write_bytes(b"x" * 15)
+    http = FakeHttp({
+        ("POST", "creator_info"): {"data": {"privacy_level_options": ["SELF_ONLY"]}, "error": {"code": "ok"}},
+        ("POST", "video/init"): {"data": {"publish_id": "P", "upload_url": "https://up/1"}, "error": {"code": "ok"}},
+        ("PUT", "https://up/1"): ({}, 201),
+        ("POST", "status/fetch"): {"data": {"status": "PUBLISH_COMPLETE"}, "error": {"code": "ok"}}})
+    social.TikTok("tok", http=http, sleep=lambda s: None).post_video(f, "caption")
+    init = next(kw for m, u, kw in http.calls if "video/init" in u)["json"]
+    assert init["source_info"] == {"source": "FILE_UPLOAD", "video_size": 15, "chunk_size": 15, "total_chunk_count": 1}
+    assert [kw["headers"]["Content-Range"] for m, u, kw in http.calls if m == "PUT"] == ["bytes 0-14/15"]
