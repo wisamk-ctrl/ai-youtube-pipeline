@@ -3,7 +3,7 @@ name: news-watch
 # posts the big stories to the "News watch" issue. No Claude calls; founder 2026-11-17.
 on:
   schedule:
-    - cron: "37 */6 * * *"     # 00:37, 06:37, 12:37, 18:37 UTC = 04:37, 10:37, 16:37, 22:37 Gulf
+    - cron: "37 */2 * * *"     # every two hours: breaking-news Shorts go out within a couple of hours (founder 2026-11-18)
   workflow_dispatch:
 
 permissions:

@@ -47,3 +47,12 @@ CLAUDE.md (facts traced to a source, no invented figures, no investment advice, 
 ## Numbers to watch (weekly, from YouTube Studio)
 Share of viewers reaching the first mid-roll, average view duration, returning viewers, and watch hours
 per month (670 a month is 8,000 a year, the threshold from 1 February 2027).
+
+## Breaking-news Shorts (founder 2026-11-18)
+- Viewers called the week-old Shorts "old news". Shorts now go out the day the news breaks; the Sunday episode
+  carries the fuller story and the regional lens.
+- Flow: the news watch (every two hours) flags a story → a 40–50 s Short is made from the collected articles
+  (every claim traced, `reviewed/<date>-brk-<slug>-en/`, with `breaking.yaml`) → sent to the founder → posted to
+  YouTube, TikTok and LinkedIn within a couple of hours of his OK.
+- It ends with "More on this in Sunday's episode of AI This Week. Follow so you don't miss it."
+- The weekly episode's own Shorts are no longer posted days later.
