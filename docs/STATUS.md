@@ -228,3 +228,7 @@ TikTok cannot be read by an app and are listed to check by hand. Likes are never
   `reviewed/2026-W46-en/meta.yaml`. 15 of our own clips (`visuals.yaml`), 12 stock clips blocked by id. The Jensen Huang
   passage was corrected against Al Jazeera and TechCrunch (`sources_ok.txt`). After upload: set each Short's "related
   video" link to the episode in YouTube Studio (needs Advanced features; no API).
+
+## Weekly timing (founder 2026-11-18)
+The scheduled script run is **Friday 06:00 UTC (10:00 Gulf)**, moved from Saturday for a full day of slack.
+Friday: script → founder review. Saturday: English, voice, render, upload (private/scheduled). Sunday 17:00 Gulf: public.
