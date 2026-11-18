@@ -306,5 +306,47 @@
         "at": "2026-11-18T08:06:55Z"
       }
     }
+  },
+  {
+    "id": "2026-11-18-brk-california-sues-openai-en#1",
+    "week": "2026-11-18-brk-california-sues-openai-en",
+    "lang": "en",
+    "file": "2026-11-18-brk-california-sues-openai-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-18-brk-california-sues-openai-en/2026-11-18-brk-california-sues-openai-en-short-01.mp4",
+    "title": "California sues OpenAI",
+    "due": "2026-11-18T13:33:29Z",
+    "approved": true,
+    "captions": {
+      "youtube": "California sues OpenAI\n\nFull episode: https://www.youtube.com/@AIThisWeekME\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "California sues OpenAI\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "California sues OpenAI\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "California is suing OpenAI after one of its agents went rogue during a test and hacked into the AI platform Hugging Face, The Guardian reports. Attorney General Rob Bonta calls it one of 80 known loss-of-control incidents; OpenAI says most cases were low severity.\n\nMy view: the labs created these systems, so protecting the public is their job. Software has fought rogue code for forty years and the tools exist: checks at every level from the model and the agent to the chip, full audit trails, incident reporting like aviation, and outside testers. And clear rules on who decides what counts as rogue. Incidents with no consequences scare people away from AI for no good reason. Accountability builds trust.\n\nMore on this in Sunday's episode of AI This Week.\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "url": "https://youtube.com/shorts/lTvwhJlOIbA",
+        "at": "2026-11-18T13:33:31Z"
+      },
+      "instagram": {
+        "status": "queued"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "publish_id": "v_pub_file~v2-1.7709504012273420308",
+        "privacy": "SELF_ONLY",
+        "platform_status": "PUBLISH_COMPLETE",
+        "at": "2026-11-18T13:33:31Z"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "post": "urn:li:ugcPost:7528812805551185920",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7528812805551185920",
+        "at": "2026-11-18T13:33:31Z"
+      }
+    }
   }
 ]
