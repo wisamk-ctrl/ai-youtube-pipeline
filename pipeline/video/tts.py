@@ -42,6 +42,24 @@ def speak(text: str, voice_id: str, language: str, key: str, model: str = "heyge
     raise RuntimeError("HeyGen speech: no answer")
 
 
+def text_sha(text: str) -> str:
+    import hashlib
+    return hashlib.sha256(" ".join(text.split()).encode("utf-8")).hexdigest()[:16]
+
+
+def is_current(path: Path, chunks: list[dict[str, Any]]) -> bool:
+    """An automatic voice.yaml still matches the chunks: same ids, each voiced from the same text. A restored
+    run whose script changed afterwards must be voiced again (2026-11-18: the California Short kept its old voice)."""
+    import yaml
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return False
+    return (isinstance(data, dict) and set(data) == {c["id"] for c in chunks}
+            and all(isinstance(data[c["id"]], dict) and data[c["id"]].get("text_sha") == text_sha(c["text"])
+                    for c in chunks))
+
+
 def voice_week(chunks: list[dict[str, Any]], cfg: dict[str, Any], dest: Path, key: str | None = None,
                speak_fn: Callable[..., tuple[str, float]] = speak) -> Path:
     """Voice every chunk of the pack and write voice.yaml (chunk id → audio link). A face chunk is voiced
@@ -60,7 +78,7 @@ def voice_week(chunks: list[dict[str, Any]], cfg: dict[str, Any], dest: Path, ke
     for c in chunks:
         url, secs = speak_fn(c["text"], voice, "en" if en else "ar", key, model)
         log.info("Voiced %s: %.1f s", c["id"], secs)
-        out[c["id"]] = {"audio": url, "duration": round(secs, 3)}
+        out[c["id"]] = {"audio": url, "duration": round(secs, 3), "text_sha": text_sha(c["text"])}
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text("# Voiced automatically through the HeyGen API (pipeline/video/tts.py).\n"
                     + yaml.safe_dump(out, sort_keys=False, allow_unicode=True), encoding="utf-8")

@@ -439,14 +439,23 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
     """Voice-first route, step 3: speech chunks + face videos (reviewed/<week>/voice.yaml) →
     talking_head.mp4, then post-production."""
     from pipeline.video import voicefirst
-    if not (out / "voice_pack.json").exists():
+    import hashlib
+    src = hashlib.sha256((out / "script.md").read_bytes()).hexdigest() if (out / "script.md").exists() else ""
+    stamp = out / "voice_pack.src"   # the script the pack was cut from: a changed script gets a new pack
+    if not (out / "voice_pack.json").exists() or (stamp.exists() and stamp.read_text().strip() != src) \
+            or (not stamp.exists() and (out / "voice.yaml").exists()):
         phase_voicepack(cfg, out)
+        stamp.write_text(hashlib.sha256((out / "script.md").read_bytes()).hexdigest() + "\n")
     _sources_gate(out, "assemble")
     _numbers_gate(cfg, out)
     voice = ROOT / "reviewed" / out.name / "voice.yaml"
     chunks = json.loads((out / "voice_pack.json").read_text(encoding="utf-8"))["chunks"]
     if not voice.exists() and (out / "voice.yaml").exists():
-        voice = out / "voice.yaml"          # voiced automatically on an earlier run of this week
+        from pipeline.video.tts import is_current
+        if is_current(out / "voice.yaml", chunks):
+            voice = out / "voice.yaml"      # voiced automatically on an earlier run, same text
+        else:
+            log.info("The script changed since the last automatic voice: voicing it again")
     if not voice.exists():
         if not os.environ.get("HEYGEN_API_KEY"):
             sys.exit(f"{voice} not found — make the speech and face videos from voice_pack.md first.")

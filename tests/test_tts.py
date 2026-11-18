@@ -57,3 +57,18 @@ def test_voice_week_writes_a_voice_list_the_assembler_reads(tmp_path):
     from pipeline.video.voicefirst import load_voice
     entries = load_voice(dest, chunks)
     assert [e["role"] for e in entries] == ["voice", "voice"]       # a face chunk without video is narration
+
+
+def test_a_changed_script_is_voiced_again(tmp_path):
+    from pipeline.video.tts import is_current, voice_week
+    cfg = {"language": "en", "video": {"heygen": {"voice_id_en": "EN"}}}
+    chunks = [{"id": "01-voice", "role": "voice", "text": "Old line."}]
+    dest = voice_week(chunks, cfg, tmp_path / "voice.yaml", key="k",
+                      speak_fn=lambda *a, **k: ("https://x/a.wav", 1.0))
+    assert is_current(dest, chunks)
+    assert is_current(dest, [{"id": "01-voice", "role": "voice", "text": "Old   line."}])   # spacing only
+    assert not is_current(dest, [{"id": "01-voice", "role": "voice", "text": "New line with a view."}])
+    assert not is_current(dest, chunks + [{"id": "02-voice", "role": "voice", "text": "More."}])
+    old = tmp_path / "old.yaml"
+    old.write_text("01-voice: {audio: 'https://x/a.wav', duration: 1.0}\n")   # before the text stamp
+    assert not is_current(old, chunks)
