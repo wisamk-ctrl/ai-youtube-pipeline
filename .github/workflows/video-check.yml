@@ -1,0 +1,27 @@
+name: video-check
+# After an upload: processing state, and whether each chapter shows its own picture (scripts/youtube_video_check.py).
+on:
+  workflow_dispatch:
+    inputs:
+      video_id:
+        description: "YouTube video id, e.g. epsMiJaq0E0"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests
+      - env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          VIDEO_ID: ${{ inputs.video_id }}
+        run: python scripts/youtube_video_check.py "$VIDEO_ID"
