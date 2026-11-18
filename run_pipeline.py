@@ -294,14 +294,15 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         skip = [(s.start, s.end) for n, s in enumerate(shots) if n in clips and s.kind in ("number", "title", "source")]
         accents = [s.start for n, s in enumerate(shots) if n in clips and s.kind in ("number", "title") and s.start > 1.0]
         _check_length("edited cut", base, edit.duration(video))
-    if cfg.get("post", {}).get("overlays", {}).get("enabled", True):
+    brk = _breaking(out)
+    # A breaking Short is cut from the edit before the labels (it has its own title band), so it skips them.
+    if cfg.get("post", {}).get("overlays", {}).get("enabled", True) and not brk:
         from pipeline.post.overlays import run_overlays
         from pipeline.video.voicefirst import face_spans as _faces
         base = run_overlays(base, script, cfg, out, result["srt"], face=_faces(out), skip_spans=skip)
         _check_length("with cue cards", base, _dur(video))
     # Final audio (music bed, whooshes, loudness) and the sting, then the one high-quality encode.
     from pipeline.post import audio
-    brk = _breaking(out)
     sting = None if brk else audio.sting_plan(cfg, script, result["srt"], base, ROOT)
     mix = audio.master(base, out / "final_audio.wav", cfg, out / "audio",
                        insert=sting, cuts=audio.section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]),
