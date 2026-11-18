@@ -24,6 +24,10 @@ def main(week: str) -> str:
         if has_shots(cur) and not has_shots(rev) and spoken_text(cur).split() == spoken_text(rev).split():
             return "kept the directed copy of the reviewed script"
     shutil.copy(reviewed, current)
+    for name in ("items.json", "plan.json"):   # a breaking-news Short has no script run: its sources come from here
+        src = reviewed.parent / name
+        if src.exists() and not (current.parent / name).exists():
+            shutil.copy(src, current.parent / name)
     return "using reviewed script"
 
 

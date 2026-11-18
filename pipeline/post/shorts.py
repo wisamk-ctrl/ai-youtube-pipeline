@@ -178,14 +178,14 @@ padding:.12em .45em .22em;border-radius:.35em;text-shadow:0 4px 18px rgba(0,0,0,
 <div class="t"><div class="p" dir="{ui("dir")}">{html.escape(title)}</div><div class="bar"></div></div></body></html>"""
 
 
-def end_html(show: str) -> str:
+def end_html(show: str, text: str | None = None) -> str:
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{W}px;height:{H}px;overflow:hidden}}
 body{{background:{NAVY};color:{SAND};
 display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px;font-family:{TEXT}}}
 .a{{font:800 104px/1.05 {DISPLAY};letter-spacing:-.035em;text-align:center;max-width:900px}}
 .b{{font:700 46px {TEXT};color:{NAVY};background:{GOLD};padding:.3em 1em .36em}}
-</style></head><body dir="{ui("dir")}"><div class="a">{ui("full")}</div><div class="b">{html.escape(show)}</div></body></html>"""
+</style></head><body dir="{ui("dir")}"><div class="a">{html.escape(text) if text else ui("full")}</div><div class="b">{html.escape(show)}</div></body></html>"""
 
 
 HOOK_SECONDS = 2.5
@@ -313,12 +313,18 @@ def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: in
 
 
 def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[float, float]] | None,
-          cfg: dict[str, Any], out_dir: Path, sting: tuple[float, float] | None = None) -> list[dict[str, Any]]:
-    """Make the week's Shorts from the edited cut (picture + voice, before captions and sting)."""
+          cfg: dict[str, Any], out_dir: Path, sting: tuple[float, float] | None = None,
+          breaking: dict[str, Any] | None = None) -> list[dict[str, Any]]:
+    """Make the week's Shorts from the edited cut (picture + voice, before captions and sting).
+
+    `breaking` (a news Short made the day the story breaks, founder 2026-11-18): {"title", "end_text",
+    "outro"}: one Short over the whole cut, its own end card line and spoken outro ("more on Sunday")."""
     s = cfg.get("post", {}).get("shorts", {})
     if not s.get("enabled", True) and not spans_arg:
         return []
-    if spans_arg:
+    if breaking:
+        spans = [Span(str(breaking["title"]), a, b) for a, b in spans_arg or []]
+    elif spans_arg:
         spans = [Span(f"قصة {k}", a, b) for k, (a, b) in enumerate(spans_arg, 1)]
         named = pick_spans(script, srt, count=99, min_s=0, max_s=1e9)
         for sp in spans:   # a chosen span takes the title of the section it starts in, if known
@@ -341,7 +347,7 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
     mid_h = round(W * 9 / 16 / 2) * 2
     with Renderer(W, H) as r:
         end_png = dest_dir / "end_card.png"
-        r.still(end_html(_show_name(cfg)), end_png)
+        r.still(end_html(_show_name(cfg), (breaking or {}).get("end_text")), end_png)
         hooks = hooks_for(out_dir)
         bed_wav, bed_gain = None, 0.0
         if str(cfg.get("post", {}).get("audio", {}).get("music", "generated")) == "generated":
@@ -350,10 +356,11 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             bed_gain = float(s.get("music_lufs", -30)) - audio_mod.measure(bed_wav)["input_i"]
         # The spoken pointer to the full episode (founder 2026-11-18), English weeks only for now.
         outro_s, outro_gain = 0.0, 0.0
-        if OUTRO.exists() and str(cfg.get("language", "")) == "en":
+        outro_file = Path((breaking or {}).get("outro") or OUTRO)
+        if outro_file.exists() and str(cfg.get("language", "")) == "en":
             from pipeline.post import audio as audio_mod
-            outro_s = audio_mod.duration_of(OUTRO)
-            outro_gain = min(12.0, -14.0 - audio_mod.measure(OUTRO)["input_i"])
+            outro_s = audio_mod.duration_of(outro_file)
+            outro_gain = min(12.0, -14.0 - audio_mod.measure(outro_file)["input_i"])
         card = max(CARD_SECONDS, outro_s + 0.9)
         chime = dest_dir / "hook_chime.wav"
         if hooks:
@@ -406,7 +413,7 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             done = _timed("-i", str(clip),
                     "-loop", "1", "-i", str(title_png), "-loop", "1", "-i", str(end_png), *extra,
                     *(["-stream_loop", "-1", "-i", str(bed_wav)] if bed_wav else []),
-                    *(["-i", str(OUTRO)] if outro_s else []),
+                    *(["-i", str(outro_file)] if outro_s else []),
                     "-filter_complex", filter_graph(span_s, mid_y, sub, _font(), fps, lead,
                                                     (5 if extra else 3, bed_gain) if bed_wav else None, voice_gain,
                                                     card, ((5 if extra else 3) + (1 if bed_wav else 0), outro_gain) if outro_s else None),

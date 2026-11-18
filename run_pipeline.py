@@ -249,6 +249,20 @@ def _check_length(stage: str, path: Path, expected: float, tolerance: float = 1.
                  f"({path.name}). Not publishing a truncated episode.")
 
 
+def _breaking(out: Path) -> dict | None:
+    """reviewed/<id>/breaking.yaml marks a breaking-news Short (founder 2026-11-18: a Short goes out within a
+    couple of hours of the news; the weekly episode carries the fuller story on Sunday). Its keys: title,
+    end_text, outro (a wav under assets/)."""
+    f = ROOT / "reviewed" / out.name / "breaking.yaml"
+    if not f.exists():
+        return None
+    import yaml
+    data = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
+    if data.get("outro"):
+        data["outro"] = str(ROOT / data["outro"])
+    return data
+
+
 def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     from pipeline.post.subtitles import run_post
     from pipeline.script_format import spoken_text
@@ -287,17 +301,18 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         _check_length("with cue cards", base, _dur(video))
     # Final audio (music bed, whooshes, loudness) and the sting, then the one high-quality encode.
     from pipeline.post import audio
-    sting = audio.sting_plan(cfg, script, result["srt"], base, ROOT)
+    brk = _breaking(out)
+    sting = None if brk else audio.sting_plan(cfg, script, result["srt"], base, ROOT)
     mix = audio.master(base, out / "final_audio.wav", cfg, out / "audio",
                        insert=sting, cuts=audio.section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]),
                        accents=accents)
     from pipeline.post import packaging, shorts as shorts_mod
-    tail = packaging.end_card(cfg, out)          # 15 s branded end card (post.end_card), no captions over it
+    tail = None if brk else packaging.end_card(cfg, out)   # 15 s branded end card (post.end_card), no captions over it
     result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4", audio=mix, insert=sting, tail=tail)
     extra = (audio.duration_of(sting[1]) if sting else 0) + (audio.duration_of(tail) if tail else 0)
     _check_length("final (programme + sting + end card)", result["final"], _dur(video) + extra)
     up = int(cfg.get("post", {}).get("upload_height", 0) or 0)
-    if up > int(cfg.get("visuals", {}).get("height", 1080)):
+    if up > int(cfg.get("visuals", {}).get("height", 1080)) and not brk:
         # The file for YouTube: the finished cut scaled up (founder 2026-11-13: at least 4K). YouTube gives a
         # 4K upload its better codec and bitrate; the detail is still what the 1080p sources hold.
         import subprocess
@@ -324,14 +339,18 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     packaging.write_timeline(out, script, result["srt"], cfg, sting_span,
                              audio.duration_of(tail) if tail else None, audio.duration_of(result["final"]))
     try:
-        packaging.render_thumbnail(out, cfg, talking_head=out / "talking_head.mp4")
+        if not brk:
+            packaging.render_thumbnail(out, cfg, talking_head=out / "talking_head.mp4")
     except Exception as e:  # noqa: BLE001 — a thumbnail must not sink the episode
         log.warning("Thumbnail failed: %s", e)
     try:
+        if brk:   # the whole cut is the Short
+            shorts = [(0.0, round(edit_len - 0.05, 2))] if (edit_len := _dur(out / "edited.mp4" if (out / "edited.mp4").exists() else base)) else []
         # From the edit before the lower-thirds: a Short has its own title band, and the episode's topic chips
         # and question cards from the neighbouring story leaked into its first second (W45 clip 3).
         clean_cut = out / "edited.mp4" if (out / "edited.mp4").exists() else base
-        result["shorts"] = shorts_mod.build(clean_cut, script, result["srt"], shorts, cfg, out, sting=sting_span)
+        result["shorts"] = shorts_mod.build(clean_cut, script, result["srt"], shorts, cfg, out, sting=sting_span,
+                                            breaking=brk)
     except Exception as e:  # noqa: BLE001
         log.warning("Shorts failed: %s", e)
     import shutil  # intermediates are as large as the video itself; keep the artifact lean
