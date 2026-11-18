@@ -1,0 +1,22 @@
+[
+  {
+    "source": "BBC",
+    "source_type": "rss",
+    "title": "Hacks, AI or just overdue updates - why have there been so many outages?",
+    "summary": "Outages and IT failings are commonplace - but not on this scale. In the past week, there has been a massive Microsoft outage , an apparent tech glitch which grounded all US flights for hours , and issues for the National Security Agency (NSA). That's not to mention outages affecting the biggest US banks , as well as a major flaw found in a popular programming language . These are all separate incidents - but the fact they have all come so close to each other has got people wondering if they might be linked. There is no evidence to suggest this - but they do tell us a lot about how the modern tech world works, and where the vulnerabilities lie. As is often the case, many outages were a result of an update or installation going wrong somewhere in a system. A network upgrade at Microsoft caused servers to become overloaded and shut down. It was also upgrades to a creaky old network which grounded thousands of planes in the US over the weekend. Problems with the NSA's internal communication system and, separately, Apple's iCloud and Apple Pay were also blamed on things going wrong during system updates. Disruption to payments in US banks has been put down to a \"software bug\" from JP Morgan Chase. The bank says it is not a cyber-security incident. But some recent problems are in fact related to cyber-security vulnerabilities. AI was used to discover flaws in Java, the third-most popular programming language in the world. And researcher Scott Helme also discovered malicious code in Optimizely, a platform which is used by some of the world's largest companies. Hackers were able to steal about $7,000 (£5,300) in cryptocurrency before they were discovered and kicked out. Let's address the cyber incidents first - and the role of new AI models. \"I would be very surprised if all of these cyber-attacks and the attackers behind them were not using AI to accelerate themselves,\" Helme told BBC Radio 4's Today programme. Since the summer, AI companies such as Anthropic and OpenAI have decided it's too risky to give the general public access to the most advanced models before allowing certain companies and institutions to use them. In these cases, security professionals can use the same tech to find flaws themselves and alert others before criminals get to them. This happened in the recent Java incident , as well as the PHP one - where there was a scramble to patch the flaws before they could be exploited. These are not new - the world stood still in recent years as…",
+    "url": "https://www.bbc.com/news/articles/c6z0kly2lll7o",
+    "published": "2026-11-18T13:16:53+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic",
+      "OpenAI"
+    ],
+    "id": "21b7787bfd"
+  }
+]

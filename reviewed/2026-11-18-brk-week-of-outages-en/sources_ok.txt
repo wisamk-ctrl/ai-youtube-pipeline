@@ -1,0 +1,9 @@
+Drafted automatically 2026-11-18 14:46 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) The BBC reports an unusual run of major outages in the past week.  ← BBC (21b7787bfd)
+- (2) A massive Microsoft outage, all US flights grounded for hours, and NSA problems.  ← BBC (21b7787bfd)
+- (3) No evidence links them, the BBC says. Many followed updates gone wrong.  ← BBC (21b7787bfd)
+- (4) JP Morgan Chase blamed a software bug for US bank payment problems, saying it was not a cyber-security incident.  ← BBC (21b7787bfd)
+- (5) AI also helped uncover flaws in Java, the third-most popular programming language.  ← BBC (21b7787bfd)
+- (6) Hackers using malicious code in Optimizely stole about $7,000 in cryptocurrency before being kicked out.  ← BBC (21b7787bfd)
+- (7) Anthropic and OpenAI now give select companies early access to top models, so defenders find flaws first.  ← BBC (21b7787bfd)
+- (8) In the Gulf, watch how critical systems test their updates, and who gets early access to defensive AI.  ← regional line, no facts
