@@ -1,0 +1,9 @@
+Drafted automatically 2026-11-18 18:48 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Vice President JD Vance canceled a summit appearance on Wednesday to attend meetings on a wave of tech outages, CNBC reports.  ← CNBC (be113688fd)
+- (2) Incidents include a nationwide ground stop, a Microsoft Outlook outage and a reported blackout of an NSA classified network.  ← CNBC (be113688fd)
+- (3) CNBC also lists issues at JPMorgan Chase, United Airlines and Apple.  ← CNBC (be113688fd)
+- (4) A senior administration official says they are not a cyberattack, but upgrades, patches and other disparate events.  ← CNBC (be113688fd)
+- (5) Intelligence director Jay Clayton says there is no sign they are coordinated.  ← CNBC (be113688fd)
+- (6) Asked about AI's role, the official called it challenging to answer.  ← CNBC (be113688fd)
+- (7) Senator Mark Warner told CNBC he wants better coordination on AI safety.  ← CNBC (be113688fd)
+- (8) For Gulf businesses and governments, watch whether this brings new scrutiny of system upgrades and AI safety.  ← regional line, no facts
