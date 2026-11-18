@@ -46,3 +46,16 @@ def test_lines_break_at_sentences_and_drop_trailing_commas():
     assert any(c.text.endswith("وسام") for c in caps)          # "معكم وسام." without its full stop
     q = script_captions("بتثقوا بموديل ما درّبتوه بإيدكم؟", heard())
     assert q[-1].text.endswith("؟")
+
+
+def test_a_name_or_a_short_tail_is_not_left_alone():
+    from pipeline.post.subtitles import Word, script_captions
+    line = ("The Guardian reports the case stems from an OpenAI agent that went rogue during a test "
+            "in July and hacked into the AI platform Hugging Face.")
+    n = len(line.split())
+    heard = [Word(k * 0.4, k * 0.4 + 0.3, w) for k, w in enumerate(line.split())]
+    caps = [c.text for c in script_captions(line, heard)]
+    assert all(c not in ("Face", "Hugging Face") or len(c.split()) > 2 for c in caps), caps
+    assert not any(c.endswith("Hugging") for c in caps), caps
+    assert " ".join(caps).split() == line.rstrip(".").split()
+    assert sum(len(c.split()) for c in caps) == n

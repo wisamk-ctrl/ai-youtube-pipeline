@@ -224,6 +224,24 @@ def align(script_words: list[str], heard: list[Word]) -> list[float]:
     return times
 
 
+def _keep_with_next(words: list[str], i: int, ends: tuple[str, ...], max_chars: int) -> bool:
+    """Do not break a caption after words[i] when that would split a name ("Hugging | Face", "Rob | Bonta")
+    or leave one or two words alone before the sentence ends ("…platform Hugging | Face.", 2026-11-18);
+    the line may then run up to a third over max_chars."""
+    if i + 1 >= len(words):
+        return False
+    j = i + 1
+    while j < len(words) and not words[j - 1].endswith(ends):
+        j += 1
+    tail = words[i + 1:j]              # the rest of this sentence
+    if len(tail) <= 2 and len(" ".join(tail)) <= max_chars // 3:
+        return True
+    a, b = words[i], words[i + 1]
+    def name(w: str) -> bool:
+        return bool(w[:1].isupper() and w[:1].isascii() and w.isascii())
+    return name(a) and name(b) and not a.endswith((",", ";", ":") + ends)
+
+
 def script_captions(spoken_script: str, heard: list[Word], max_chars: int = 42) -> list[Segment]:
     """Braced names («أوبن إيه آي{OpenAI}») are timed on the Arabic the voice said and shown
     as «أوبن إيه آي (OpenAI)»."""
@@ -233,11 +251,15 @@ def script_captions(spoken_script: str, heard: list[Word], max_chars: int = 42) 
     times = align([unbraced(t) for t in tokens], heard)
     words = [caption_text(t).strip() for t in tokens]
     end = heard[-1].end if heard else times[-1] + 2
+    ends = (".", "؟", "?", "!", "…")
     lines: list[tuple[int, int]] = []
     start = 0
     for i in range(len(words)):
         text = " ".join(words[start:i + 1])
-        if len(text) >= max_chars or words[i].endswith((".", "؟", "?", "!", "…")) or i == len(words) - 1:
+        if words[i].endswith(ends) or i == len(words) - 1:
+            lines.append((start, i + 1))
+            start = i + 1
+        elif len(text) >= max_chars and not _keep_with_next(words, i, ends, max_chars):
             lines.append((start, i + 1))
             start = i + 1
     out = []
