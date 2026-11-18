@@ -135,7 +135,11 @@
     },
     "posts": {
       "linkedin": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "post": "urn:li:ugcPost:7528719363093184514",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7528719363093184514",
+        "at": "2026-11-18T07:22:28Z"
       }
     }
   },
@@ -191,7 +195,11 @@
     },
     "posts": {
       "linkedin": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "post": "urn:li:ugcPost:7528719425684926464",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7528719425684926464",
+        "at": "2026-11-18T07:22:28Z"
       }
     }
   },
@@ -247,7 +255,11 @@
     },
     "posts": {
       "linkedin": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "post": "urn:li:ugcPost:7528719492995084288",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7528719492995084288",
+        "at": "2026-11-18T07:22:28Z"
       }
     }
   }
