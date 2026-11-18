@@ -178,7 +178,7 @@ def test_linkedin_uploads_in_parts_waits_for_processing_then_posts(tmp_path):
     assert post["author"] == "urn:li:person:abc" and post["content"]["media"]["id"] == "urn:li:video:V"
 
 
-def test_linkedin_caption_links_the_channel_and_keeps_few_tags(tmp_path):
+def test_linkedin_caption_links_the_channel_and_caps_tags_at_ten(tmp_path):
     cfg = {"publish": {"hashtags_en": ["#A", "#B", "#C", "#D", "#E", "#F"]},
            "social": {"channel_url": "https://www.youtube.com/@AIThisWeekME",
                       "platforms": ["linkedin", "tiktok"], "require_approval": True}}
@@ -186,7 +186,7 @@ def test_linkedin_caption_links_the_channel_and_keeps_few_tags(tmp_path):
     social.plan_week(week(tmp_path, 1), cfg, q, lambda f: f, datetime(2026, 11, 15, tzinfo=timezone.utc))
     li, tt = q[0]["captions"]["linkedin"], q[0]["captions"]["tiktok"]
     assert "Full episode: https://www.youtube.com/@AIThisWeekME" in li and "link in bio" in tt
-    assert li.count("#") == 4 and "linkedin" in q[0]["posts"]
+    assert li.count("#") == 10 and "linkedin" in q[0]["posts"]   # broad tags, capped (founder 2026-11-18)
 
 
 def test_tiktok_sends_a_file_under_the_single_chunk_limit_whole(tmp_path, monkeypatch):
