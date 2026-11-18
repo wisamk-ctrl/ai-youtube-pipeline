@@ -207,3 +207,8 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 - **2026-11-18: the voice step runs on its own.** When a week has no `reviewed/<week>/voice.yaml`, assemble voices
   every chunk through HeyGen's API (`pipeline/video/tts.py`, POST /v3/models/audio/tts, the cloned English voice) and
   writes `output/<week>/voice.yaml`. Face chunks become narration (no presenter video is made automatically).
+- **2026-11-18, W46-en chapters:** every chapter in YouTube's chapter list showed the video thumbnail. The check
+  (`scripts/youtube_video_check.py`, workflow `video-check`) found processing finished but no frame previews yet; chapter
+  pictures come from those, and no API sets them. Fix for good: `publish.chapter_gate`. The episode is uploaded
+  unlisted, and `release` (every 20 min) makes it public at the release time only once each chapter has its own
+  picture (or after `chapter_wait_hours`, and says so). Upload well before the release time so YouTube has finished.

@@ -335,6 +335,14 @@ jobs:
           path: output/
           overwrite: true
           retention-days: 90     # the maximum for a public repo
+      - name: Save the release queue (publish)
+        if: always() && inputs.phase == 'publish'
+        run: |
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git add data/releases.json 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git commit -q -m "release: ${{ inputs.week }} waits for its chapter pictures"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
       - name: Keep the partial work (failed run)
         # A failed render/post must not lose what it made (an imported video, heard.json, clips).
         # Its own name: the "find the week's artifact" steps ask the API for the exact name

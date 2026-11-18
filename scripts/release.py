@@ -1,0 +1,102 @@
+"""Make a gated episode public once YouTube has finished with it (founder 2026-11-18).
+
+W46-en went public straight after upload, before YouTube had made its frame previews, and every chapter in
+the chapter list showed the video's thumbnail. YouTube makes those chapter pictures itself and no API sets
+them, so the only cure is time: upload unlisted, wait until each chapter shows its own picture, then publish.
+
+data/releases.json holds the waiting episodes: {week, video_id, release_at, status}. Every run (workflow
+`release`, every 20 minutes) checks each waiting one:
+  - chapters ready and release time reached → made public;
+  - release time reached but chapters not ready → keeps waiting, up to `publish.chapter_wait_hours`
+    (default 6) past the release time, then made public anyway and noted, so the news is never held for long.
+Usage: python scripts/release.py          (check all)
+       python scripts/release.py add <week> <video id> <release time ISO>"""
+from __future__ import annotations
+
+import json
+import logging
+import os
+import sys
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+QUEUE = ROOT / "data" / "releases.json"
+log = logging.getLogger("release")
+
+
+def load() -> list[dict]:
+    return json.loads(QUEUE.read_text(encoding="utf-8")) if QUEUE.exists() else []
+
+
+def save(q: list[dict]) -> None:
+    QUEUE.parent.mkdir(parents=True, exist_ok=True)
+    QUEUE.write_text(json.dumps(q, indent=2), encoding="utf-8")
+
+
+def add(week: str, video_id: str, release_at: datetime) -> None:
+    q = [e for e in load() if e["video_id"] != video_id]
+    q.append({"week": week, "video_id": video_id, "release_at": release_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
+              "status": "waiting"})
+    save(q)
+
+
+def chapters_ready(video_id: str) -> tuple[bool, str]:
+    """True when YouTube shows each chapter with its own picture (a video without chapters counts as ready)."""
+    import hashlib
+    import requests
+    from scripts.youtube_video_check import UA, chapters
+    html = requests.get(f"https://www.youtube.com/watch?v={video_id}", headers=UA, timeout=60).text
+    ch = chapters(html)
+    if not ch:
+        # No chapters on the page (none in the description, or not shown yet): fall back to the frame preview.
+        story = "playerStoryboardSpecRenderer" in html
+        return story, "frame previews " + ("present" if story else "not made yet")
+    pics = {hashlib.md5(requests.get(c["picture"], headers=UA, timeout=60).content).hexdigest() for c in ch if c["picture"]}
+    return len(pics) == len(ch), f"{len(pics)} pictures for {len(ch)} chapters"
+
+
+def youtube():
+    from pipeline.google_auth import client
+    return client("youtube")
+
+
+def run(now: datetime | None = None, ready=chapters_ready, make_public=None, wait_hours: float | None = None) -> list[str]:
+    from pipeline.config import load_settings
+    now = now or datetime.now(timezone.utc)
+    if wait_hours is None:
+        wait_hours = float(load_settings().get("publish", {}).get("chapter_wait_hours", 6))
+    if make_public is None:
+        def make_public(vid: str) -> None:
+            yt = youtube()
+            cur = yt.videos().list(part="status", id=vid).execute()["items"][0]["status"]
+            cur["privacyStatus"] = "public"
+            cur.pop("publishAt", None)
+            yt.videos().update(part="status", body={"id": vid, "status": cur}).execute()
+    q, lines = load(), []
+    for e in q:
+        if e.get("status") != "waiting":
+            continue
+        at = datetime.strptime(e["release_at"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+        ok, why = ready(e["video_id"])
+        late = now >= at + timedelta(hours=wait_hours)
+        if now >= at and (ok or late):
+            make_public(e["video_id"])
+            e.update(status="public", at=now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                     note="chapters ready" if ok else f"made public after {wait_hours:g} h without chapter pictures ({why})")
+            lines.append(f"✅ {e['week']} public: https://youtu.be/{e['video_id']} ({e['note']})")
+        else:
+            e["last_check"] = f"{now:%Y-%m-%dT%H:%MZ}: {why}"
+            lines.append(f"⏳ {e['week']} waiting: {why}; release {e['release_at']}")
+    save(q)
+    return lines
+
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    if len(sys.argv) >= 5 and sys.argv[1] == "add":
+        add(sys.argv[2], sys.argv[3], datetime.fromisoformat(sys.argv[4].replace("Z", "+00:00")))
+    else:
+        for line in run():
+            print(line)

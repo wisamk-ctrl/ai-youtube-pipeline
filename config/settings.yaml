@@ -323,6 +323,8 @@ publish:
     Africa, at companies including Microsoft, Oracle and TIBCO. He now advises AI and software
     companies entering the region and builds AI products of his own.
   privacy: private            # uploaded private and scheduled: YouTube makes it public at publish time (founder 2026-11-14)
+  chapter_gate: true          # stay private until each chapter shows its own picture, then public at the release time (founder 2026-11-18; scripts/release.py)
+  chapter_wait_hours: 6       # past the release time, publish anyway after this long and say so
   publish_weekday: 6          # 0=Mon … 6=Sun
   publish_hour_utc: 13        # 13:00 UTC = 17:00 Gulf on Sunday (founder 2026-11-17, playbook: Gulf evening, US East morning)
   tags: [الذكاء الاصطناعي, أخبار التقنية, AI, ChatGPT, OpenAI, Claude, Gemini, شركات, الإمارات, السعودية]

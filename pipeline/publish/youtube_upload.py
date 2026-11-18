@@ -65,6 +65,10 @@ def _media(path: Path, mimetype: str | None = None, resumable: bool = False):
 
 def _status(cfg: dict[str, Any], publish_at: datetime) -> dict[str, Any]:
     privacy = cfg["publish"].get("privacy", "unlisted")
+    if privacy == "private_gated":   # unlisted, no publish time: scripts/release.py makes it public
+        # Unlisted, not private: the release check reads the watch page as a visitor, and a private video's page
+        # shows nothing. Unlisted is reachable only by its link and is not shown to subscribers.
+        return {"privacyStatus": "unlisted", "selfDeclaredMadeForKids": False, "containsSyntheticMedia": True}
     out = {"privacyStatus": privacy, "selfDeclaredMadeForKids": False, "containsSyntheticMedia": True}
     if privacy == "private":     # YouTube takes a publish time only on a private video (it goes public then)
         out["publishAt"] = publish_at.strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -220,6 +224,12 @@ def run_publish(out_dir: Path, cfg: dict[str, Any], yt=None) -> str:
         cfg["publish"]["privacy"] = "public"
         publish_at = datetime.now(timezone.utc)
         log.info("Release now: the episode goes public on upload")
+    gated = bool(cfg["publish"].get("chapter_gate", False))
+    if gated:
+        # Founder 2026-11-18: W46-en went public before YouTube had made its chapter pictures, and every chapter
+        # showed the thumbnail. Now the episode stays unlisted until scripts/release.py sees each chapter with
+        # its own picture (or the wait runs out), then makes it public at the release time.
+        cfg["publish"]["privacy"] = "private_gated"
     # The raw render has no sting, so its captions are the unshifted ones.
     raw_srt = out_dir / "subtitles.srt"
     captions = caption_file(out_dir) if video.name.startswith("final_") else (raw_srt if raw_srt.exists() else None)
@@ -228,4 +238,7 @@ def run_publish(out_dir: Path, cfg: dict[str, Any], yt=None) -> str:
     shorts = upload_shorts(out_dir, video_id, cfg, publish_at, yt)
     (out_dir / "youtube.json").write_text(json.dumps({"video_id": video_id, "url": f"https://youtu.be/{video_id}",
                                                       "shorts": shorts}, ensure_ascii=False), encoding="utf-8")
+    if gated:
+        from scripts.release import add
+        add(out_dir.name, video_id, publish_at)
     return video_id
