@@ -54,7 +54,7 @@ on:
 permissions:
   contents: write            # the script job commits data/radar_state.json (the radar's memory)
   issues: write
-  actions: read              # the render job reads another run's artifact
+  actions: write             # the render job reads another run's artifact; a breaking Short starts its preview
 
 env:
   PYTHON_VERSION: "3.12"
@@ -339,6 +339,14 @@ jobs:
           path: output/
           overwrite: true
           retention-days: 90     # the maximum for a public repo
+      - name: Breaking Short ready → preview and tell the founder
+        if: success() && inputs.phase == 'assemble' && hashFiles(format('reviewed/{0}/breaking.yaml', inputs.week)) != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WEEK: ${{ inputs.week }}
+        run: |
+          gh workflow run preview.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" -f what=text
+          python scripts/breaking_issue.py ready "$WEEK"
       - name: Save the release queue (publish)
         if: always() && inputs.phase == 'publish'
         run: |

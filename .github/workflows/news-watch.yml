@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write             # starts the render of a drafted breaking Short
 
 concurrency:
   group: news-watch
@@ -35,4 +36,28 @@ jobs:
           git add data/news_watch.json 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -q -m "news watch: $(date -u +'%F %H:%M')"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+      - name: Draft a breaking Short from the strongest new story (founder 2026-11-18)
+        id: brk
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/breaking.py | tee breaking.log; grep '^BREAKING=' breaking.log | tail -1 >> "$GITHUB_OUTPUT"
+      - name: Save the draft and start its render
+        if: steps.brk.outputs.BREAKING != ''
+        env:
+          WEEK: ${{ steps.brk.outputs.BREAKING }}
+        run: |
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git add "reviewed/$WEEK" data/breaking.json
+          git commit -q -m "breaking: $WEEK drafted"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+          gh workflow run weekly.yml --repo "$GITHUB_REPOSITORY" --ref main -f phase=assemble -f week="$WEEK"
+          python scripts/breaking_issue.py drafted "$WEEK"
+      - name: Remember the stories already tried
+        if: steps.brk.outputs.BREAKING == ''
+        run: |
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git add data/breaking.json 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git commit -q -m "breaking: stories tried $(date -u +'%F %H:%M')"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done

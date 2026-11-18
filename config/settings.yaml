@@ -368,3 +368,9 @@ news_watch:                   # .github/workflows/news-watch.yml, every six hour
   keep_days: 10               # how long an item stays in data/news_watch.json
   min_publishers: 4           # a story this many outlets carry is posted to the "News watch" issue
   article_fetches: 25         # article pages read per run
+
+breaking:                     # breaking-news Shorts drafted from the news watch (pipeline/breaking.py; founder 2026-11-18)
+  enabled: true
+  hours: 8                    # stories flagged in the last 8 hours
+  max_per_day: 3              # drafts a day; nothing posts without the founder's `post <week>` on the issue
+  tries: 2                    # stories tried per run when a draft fails its checks

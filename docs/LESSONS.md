@@ -215,3 +215,8 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 - **2026-11-18, automatic voice test:** the voice took 10 seconds; the run took 39 minutes because Whisper spent 35
   minutes revalidating its cached model with the Hugging Face hub. The render job now sets `HF_HUB_OFFLINE=1` when the
   model came from the cache.
+- **2026-11-18: breaking Shorts are drafted on their own.** After each news watch, `scripts/breaking.py` drafts a Short
+  from the strongest new flagged story (Claude, from the collected article text only), checks it (every line cites an
+  article, figures found in the cited text, a second model judges each line, no advice), writes
+  `reviewed/<date>-brk-<slug>-en/`, renders it, and posts the script and the video link on the "Breaking Shorts" issue.
+  Nothing posts until the founder replies `post <week>` there (workflow `breaking-post`, owner only).
