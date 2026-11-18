@@ -67,11 +67,15 @@ def main(video_id: str) -> int:
         p = v.get("processingDetails") or {}
         print("Processing:", p.get("processingStatus"), "| thumbnails:", p.get("thumbnailsAvailability"),
               "| privacy:", (v.get("status") or {}).get("privacyStatus"), "| definition:",
-              (v.get("contentDetails") or {}).get("definition"))
+              (v.get("contentDetails") or {}).get("definition"), "| rating:",
+              ((v.get("contentDetails") or {}).get("contentRating") or {}).get("ytRating", "none"),
+              "| made for kids:", (v.get("status") or {}).get("madeForKids"))
     html = requests.get(f"https://www.youtube.com/watch?v={video_id}", headers=UA, timeout=60).text
     import re
     m = re.search(r'"playabilityStatus":\{"status":"([A-Z_]+)"', html)
-    print("Watch page as seen from here:", m.group(1) if m else "no player data", "|", len(html), "bytes")
+    why = re.search(r'"playabilityStatus":\{[^{}]*?"reason":"([^"]+)"', html)
+    print("Watch page as seen from here:", m.group(1) if m else "no player data", "|", len(html), "bytes",
+          "|", why.group(1) if why else "")
     print("Storyboard (frame previews) on the page:", "yes" if "playerStoryboardSpecRenderer" in html else "no")
     ch = chapters(html)
     if not ch:
