@@ -528,6 +528,23 @@ def phase_publish(cfg: dict, out: Path) -> None:
         res = LinkedIn(os.environ["LINKEDIN_TOKEN"], str(cfg.get("social", {}).get("linkedin_version", "202610"))
                        ).post_video(light, text, plan.get("episode_title_en", "AI This Week"), wait_s=1500)
         log.info("LinkedIn: episode posted %s", res.get("url") or res.get("post"))
+    if plan.get("facebook_post_id"):   # already posted (reviewed meta)
+        log.info("Already on Facebook: %s", plan["facebook_post_id"])
+    elif text and os.environ.get("FACEBOOK_PAGE_TOKEN") and os.environ.get("FACEBOOK_PAGE_ID"):
+        # The episode as a native Facebook Page video, from the same lighter copy LinkedIn gets.
+        import subprocess
+        from pipeline.publish.social import facebook_page
+        light = out / "linkedin_episode.mp4"
+        if not light.exists():
+            subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(out / "final_subtitled.mp4"),
+                            "-c:v", "libx264", "-preset", "veryfast", "-crf", "23", "-maxrate", "5M", "-bufsize", "10M",
+                            "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(light)],
+                           check=True)
+        try:
+            fid = facebook_page().post_video(light, plan.get("episode_title_en", "AI This Week"), text)
+            log.info("Facebook: episode posted (video %s)", fid)
+        except Exception as exc:  # noqa: BLE001 — Facebook must not undo a published episode
+            log.warning("Facebook: episode not posted: %s", exc)
 
 
 def main() -> None:

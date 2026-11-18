@@ -3,6 +3,9 @@ Short-form posting on the platforms' own APIs, no third-party service (founder 2
 
     YouTube Shorts   YouTube Data API (pipeline/google_auth.py)           posts public/unlisted at once
     Instagram Reels  Instagram API with Instagram Login (graph.instagram.com): container → publish
+    Facebook Page    Graph API (graph.facebook.com): Reels for Pages (video_reels, hosted file_url) for
+                     clips, /videos for the full episode; a Page token from a long-lived user token
+                     does not expire
     TikTok           Content Posting API (open.tiktokapis.com), FILE_UPLOAD; an app TikTok has not
                      audited may only post SELF_ONLY (private), which the founder flips to public
 
@@ -34,7 +37,7 @@ import requests
 
 log = logging.getLogger(__name__)
 
-PLATFORMS = ("youtube", "instagram", "tiktok", "linkedin")
+PLATFORMS = ("youtube", "instagram", "facebook", "tiktok", "linkedin")
 LI = "https://api.linkedin.com"
 IG = "https://graph.instagram.com"
 TT = "https://open.tiktokapis.com"
@@ -86,7 +89,7 @@ def caption(short: dict[str, Any], cfg: dict[str, Any], lang: str, platform: str
     if platform == "youtube":
         tags = ["#Shorts", *tags]
     more = s.get(f"more_{lang}", "Full episode on YouTube: link in bio" if lang == "en" else "الحلقة الكاملة على يوتيوب")
-    if platform in ("linkedin", "youtube") and s.get("channel_url"):   # these show links: give the real one
+    if platform in ("linkedin", "youtube", "facebook") and s.get("channel_url"):   # these show links: give the real one
         more = (f"Full episode: {s['channel_url']}" if lang == "en" else f"الحلقة الكاملة: {s['channel_url']}")
     if platform == "linkedin":   # broad, high-reach tags (founder 2026-11-18)
         tags = list(s.get(f"linkedin_hashtags_{lang}", tags))[:10]
@@ -305,6 +308,51 @@ def _ok(r, who: str) -> dict[str, Any]:
     return data
 
 
+# ── Facebook Page ────────────────────────────────────────────────────────────
+class FacebookPage:
+    """A Facebook Page, posted to with its Page access token (scripts/connect.py makes and stores it)."""
+    GRAPH = "https://graph.facebook.com"
+
+    def __init__(self, page_id: str, token: str, version: str = "v23.0", http=requests, sleep=time.sleep):
+        self.page, self.token, self.v, self.http, self.sleep = page_id, token, version, http, sleep
+
+    def _post(self, path: str, **data) -> dict[str, Any]:
+        r = self.http.post(f"{self.GRAPH}/{self.v}/{path}", data={**data, "access_token": self.token}, timeout=120)
+        return _ok(r, "Facebook")
+
+    def post_reel(self, video_url: str, text: str, wait_s: int = 600) -> str:
+        """A Page Reel from a public video URL: start an upload, hand Facebook the URL, then publish."""
+        vid = str(self._post(f"{self.page}/video_reels", upload_phase="start")["video_id"])
+        r = self.http.post(f"https://rupload.facebook.com/video-upload/{self.v}/{vid}", timeout=300,
+                           headers={"Authorization": f"OAuth {self.token}", "file_url": video_url})
+        _ok(r, "Facebook upload")
+        waited = 0
+        while True:   # Facebook fetches the file itself; publish once it has it
+            st = self.http.get(f"{self.GRAPH}/{self.v}/{vid}", timeout=60,
+                               params={"fields": "status", "access_token": self.token})
+            phase = ((_ok(st, "Facebook status").get("status") or {}).get("uploading_phase") or {}).get("status")
+            if phase in ("complete", None) or waited >= wait_s:
+                break
+            if phase == "error":
+                raise RuntimeError(f"Facebook reel {vid}: upload failed")
+            self.sleep(10)
+            waited += 10
+        self._post(f"{self.page}/video_reels", upload_phase="finish", video_id=vid, video_state="PUBLISHED",
+                   description=text)
+        return vid
+
+    def post_video(self, path: Path, title: str, text: str) -> str:
+        """The full episode as a native Page video (one request; Facebook takes files up to 1 GB this way)."""
+        with open(path, "rb") as f:
+            r = self.http.post(f"https://graph-video.facebook.com/{self.v}/{self.page}/videos", timeout=3600,
+                               data={"title": title, "description": text, "access_token": self.token},
+                               files={"source": (path.name, f, "video/mp4")})
+        return str(_ok(r, "Facebook video")["id"])
+
+    def post_link(self, text: str, link: str) -> str:
+        return str(self._post(f"{self.page}/feed", message=text, link=link)["id"])
+
+
 # ── Posting ──────────────────────────────────────────────────────────────────
 def post_due(queue: list[dict[str, Any]], cfg: dict[str, Any], fetch: Callable[[dict[str, Any]], Path],
              posters: dict[str, Callable[[dict[str, Any], Path], dict[str, Any]]],
@@ -372,6 +420,21 @@ def instagram_poster(cfg: dict[str, Any]):
     return post
 
 
+def facebook_page() -> "FacebookPage":
+    return FacebookPage(os.environ["FACEBOOK_PAGE_ID"], os.environ["FACEBOOK_PAGE_TOKEN"])
+
+
+def facebook_poster(cfg: dict[str, Any]):
+    fb = FacebookPage(os.environ["FACEBOOK_PAGE_ID"], os.environ["FACEBOOK_PAGE_TOKEN"],
+                      cfg.get("social", {}).get("facebook_api_version", "v23.0"))
+
+    def post(e: dict[str, Any], _local: Path) -> dict[str, Any]:
+        text = e["captions"].get("facebook") or e["captions"].get("instagram") or e.get("title", "")
+        vid = fb.post_reel(e["url"], text)
+        return {"video_id": vid, "url": f"https://www.facebook.com/reel/{vid}"}
+    return post
+
+
 def tiktok_poster(cfg: dict[str, Any]):
     data = TikTok.refresh(os.environ["TIKTOK_CLIENT_KEY"], os.environ["TIKTOK_CLIENT_SECRET"],
                           os.environ["TIKTOK_REFRESH_TOKEN"])
@@ -397,9 +460,10 @@ def posters(cfg: dict[str, Any]) -> dict[str, Callable]:
     """The platforms whose secrets are present (a platform not yet connected is simply not posted to)."""
     need = {"youtube": ("GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "YOUTUBE_REFRESH_TOKEN"),
             "instagram": ("INSTAGRAM_TOKEN",),
+            "facebook": ("FACEBOOK_PAGE_ID", "FACEBOOK_PAGE_TOKEN"),
             "tiktok": ("TIKTOK_CLIENT_KEY", "TIKTOK_CLIENT_SECRET", "TIKTOK_REFRESH_TOKEN"),
             "linkedin": ("LINKEDIN_TOKEN",)}
-    make = {"youtube": youtube_poster, "instagram": instagram_poster, "tiktok": tiktok_poster,
+    make = {"youtube": youtube_poster, "instagram": instagram_poster, "facebook": facebook_poster, "tiktok": tiktok_poster,
             "linkedin": linkedin_poster}
     out = {}
     for p in cfg.get("social", {}).get("platforms", PLATFORMS):

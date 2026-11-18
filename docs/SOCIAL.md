@@ -93,3 +93,23 @@ The sign-in link ends on a GitHub page, and GitHub can drop the code from the ad
 
 Then Actions → **connect** → platform **check**: it replies on the Connect accounts issue with the
 account each saved sign-in reaches.
+
+## Facebook Page, Instagram and WhatsApp (founder 2026-11-18)
+
+**What posts where, automatically**
+- Shorts (weekly and breaking): YouTube Shorts, Instagram Reels, **Facebook Page Reels**, TikTok, LinkedIn.
+- Episode: YouTube, then native video on LinkedIn and **on the Facebook Page** (`phase_publish`).
+- WhatsApp: no official API posts to a personal status or a Channel. The hourly "Status kit" issue
+  hands the founder the clip and caption; the last tap is his.
+
+**One-time setup (founder, about 30 minutes)**
+1. Instagram: Settings → Account type → switch to **Professional** (Creator or Business).
+2. Facebook: create the Page "AI This Week", then in Instagram link the account to that Page.
+3. developers.facebook.com → Create app → type **Business**. Add two products:
+   - **Facebook Login for Business**: valid OAuth redirect URI `https://github.com/wisamk-ctrl/ai-youtube-pipeline`.
+   - **Instagram** → "API setup with Instagram login": same redirect URI; add the Instagram account as a tester and accept the invite in Instagram.
+   Keep the app in Development mode: as its admin you can post to your own Page and account without App Review.
+4. GitHub → Settings → Secrets → Actions: `META_APP_ID`, `META_APP_SECRET` (App settings → Basic),
+   `INSTAGRAM_APP_ID`, `INSTAGRAM_APP_SECRET` (Instagram → API setup).
+5. Run the `connect` workflow with `links`, open each link from the "Connect accounts" issue, then run
+   `connect` with `facebook` / `instagram` and the address the browser landed on. `check` confirms both.

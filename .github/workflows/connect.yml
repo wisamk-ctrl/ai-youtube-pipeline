@@ -8,7 +8,7 @@ on:
     inputs:
       platform:
         type: choice
-        options: [links, check, youtube, instagram, tiktok, linkedin]
+        options: [links, check, youtube, instagram, facebook, tiktok, linkedin]
         default: links
       code:
         description: "The whole address the sign-in ended on (or just its code). Single-use, expires in minutes."
@@ -26,6 +26,8 @@ jobs:
       GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       INSTAGRAM_APP_ID: ${{ secrets.INSTAGRAM_APP_ID }}
       INSTAGRAM_APP_SECRET: ${{ secrets.INSTAGRAM_APP_SECRET }}
+      META_APP_ID: ${{ secrets.META_APP_ID }}               # Facebook Page (Meta app)
+      META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
       TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
       TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
       LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
@@ -54,6 +56,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN }}
           INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
         run: |

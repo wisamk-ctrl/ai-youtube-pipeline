@@ -5,7 +5,7 @@
 
 `exchange` turns the one-time code into the long-lived token and stores it as a repository secret
 (needs SECRETS_PAT), then reads the account back so you can see it is the right one.
-Platforms: youtube, instagram, tiktok. The code is single-use and expires within minutes, so it is
+Platforms: youtube, instagram, facebook, tiktok, linkedin. The code is single-use and expires within minutes, so it is
 harmless once exchanged even though a workflow input shows it.
 """
 
@@ -25,6 +25,8 @@ GOOGLE_REDIRECT = "http://localhost"   # the browser shows "can't connect"; the 
 IG_SCOPES = "instagram_business_basic,instagram_business_content_publish,instagram_business_manage_comments"
 TT_SCOPES = "user.info.basic,video.publish,video.upload"
 LI_SCOPES = "openid profile w_member_social"
+FB_SCOPES = "pages_show_list,pages_manage_posts,pages_read_engagement,publish_video"
+FB = "https://graph.facebook.com/v23.0"
 
 
 def redirect() -> str:
@@ -45,6 +47,10 @@ def links() -> str:
         out.append("- **Instagram**: https://www.instagram.com/oauth/authorize?" + urlencode({
             "client_id": e["INSTAGRAM_APP_ID"], "redirect_uri": redirect(), "response_type": "code",
             "scope": IG_SCOPES, "force_reauth": "true"}, quote_via=quote))
+    if e.get("META_APP_ID"):
+        out.append("- **Facebook Page** (tick the AI This Week Page when asked): https://www.facebook.com/v23.0/dialog/oauth?" + urlencode({
+            "client_id": e["META_APP_ID"], "redirect_uri": redirect(), "response_type": "code",
+            "scope": FB_SCOPES, "state": "connect"}, quote_via=quote))
     if e.get("TIKTOK_CLIENT_KEY"):
         out.append("- **TikTok**: https://www.tiktok.com/v2/auth/authorize/?" + urlencode({
             "client_key": e["TIKTOK_CLIENT_KEY"], "redirect_uri": redirect(), "response_type": "code",
@@ -54,7 +60,7 @@ def links() -> str:
                    "https://www.linkedin.com/oauth/v2/authorization?" + urlencode({
             "response_type": "code", "client_id": e["LINKEDIN_CLIENT_ID"], "redirect_uri": redirect(),
             "scope": LI_SCOPES, "state": "connect"}, quote_via=quote))
-    missing = [p for p, k in (("YouTube", "GOOGLE_CLIENT_ID"), ("Instagram", "INSTAGRAM_APP_ID"),
+    missing = [p for p, k in (("YouTube", "GOOGLE_CLIENT_ID"), ("Instagram", "INSTAGRAM_APP_ID"), ("Facebook", "META_APP_ID"),
                               ("TikTok", "TIKTOK_CLIENT_KEY"), ("LinkedIn", "LINKEDIN_CLIENT_ID")) if not e.get(k)]
     if missing:
         out += ["", f"Not set up yet (app keys missing): {', '.join(missing)}."]
@@ -95,6 +101,13 @@ def check() -> str:
                    f"- Instagram: the saved token was refused (HTTP {r.status_code}). Make a new one.")
     else:
         out.append("- Instagram: not connected (no `INSTAGRAM_TOKEN` secret)")
+    if e.get("FACEBOOK_PAGE_TOKEN") and e.get("FACEBOOK_PAGE_ID"):
+        r = requests.get(f"{FB}/{e['FACEBOOK_PAGE_ID']}", timeout=60,
+                         params={"fields": "name", "access_token": e["FACEBOOK_PAGE_TOKEN"]})
+        out.append(f"- Facebook: connected to the Page **{r.json().get('name')}**" if r.status_code == 200 else
+                   f"- Facebook: the saved Page token was refused (HTTP {r.status_code}). Connect again.")
+    else:
+        out.append("- Facebook: not connected (no `FACEBOOK_PAGE_TOKEN` secret)")
     out.append("- YouTube: sign-in saved" if e.get("YOUTUBE_REFRESH_TOKEN") else "- YouTube: not connected")
     out.append("- TikTok: sign-in saved" if e.get("TIKTOK_REFRESH_TOKEN") else "- TikTok: not connected")
     return "\n".join(out) + "\n"
@@ -129,6 +142,22 @@ def exchange(platform: str, raw: str) -> None:
             "fields": "user_id,username,account_type", "access_token": long["access_token"]}).json()
         print(f"Instagram account: @{me.get('username')} ({me.get('account_type')})")
         ok = store_secret("INSTAGRAM_TOKEN", long["access_token"])
+    elif platform == "facebook":
+        short = _json(requests.get(f"{FB}/oauth/access_token", timeout=60, params={
+            "client_id": e["META_APP_ID"], "client_secret": e["META_APP_SECRET"], "redirect_uri": redirect(),
+            "code": code}), "Facebook")
+        long = _json(requests.get(f"{FB}/oauth/access_token", timeout=60, params={
+            "grant_type": "fb_exchange_token", "client_id": e["META_APP_ID"], "client_secret": e["META_APP_SECRET"],
+            "fb_exchange_token": short["access_token"]}), "Facebook long-lived")
+        pages = _json(requests.get(f"{FB}/me/accounts", timeout=60, params={
+            "fields": "id,name,access_token", "access_token": long["access_token"]}), "Facebook pages").get("data", [])
+        want = (e.get("FACEBOOK_PAGE_NAME") or "AI This Week").lower()
+        page = next((pg for pg in pages if want in pg.get("name", "").lower()), pages[0] if len(pages) == 1 else None)
+        if not page:   # a Page token made from a long-lived user token does not expire
+            sys.exit(f"No Page named like '{want}' among: {', '.join(pg.get('name', '') for pg in pages) or 'none'}. "
+                     "Sign in again and tick the AI This Week Page.")
+        print(f"Facebook Page: {page['name']}")
+        ok = store_secret("FACEBOOK_PAGE_ID", page["id"]) and store_secret("FACEBOOK_PAGE_TOKEN", page["access_token"])
     elif platform == "tiktok":
         d = _json(requests.post("https://open.tiktokapis.com/v2/oauth/token/", timeout=60,
                                 headers={"Content-Type": "application/x-www-form-urlencoded"}, data={
@@ -149,7 +178,7 @@ def exchange(platform: str, raw: str) -> None:
         print(f"LinkedIn profile: {me.get('name')}  token valid until {until}")
         ok = store_secret("LINKEDIN_TOKEN", d["access_token"]) and store_secret("LINKEDIN_TOKEN_UNTIL", until)
     else:
-        sys.exit("platform: youtube | instagram | tiktok | linkedin")
+        sys.exit("platform: youtube | instagram | facebook | tiktok | linkedin")
     if not ok:
         sys.exit("token obtained but not stored: add the SECRETS_PAT secret (see docs/SOCIAL.md)")
     print("Connected and stored.")

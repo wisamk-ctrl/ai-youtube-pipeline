@@ -338,7 +338,7 @@ publish:
     enabled: false            # upload the week's Shorts (each linked to the episode); founder turns this on
 
 social:                       # Shorts / Reels / TikTok on the platforms' own APIs (pipeline/publish/social.py)
-  platforms: [youtube, instagram, tiktok, linkedin]   # a platform without its secrets is skipped
+  platforms: [youtube, instagram, facebook, tiktok, linkedin]   # a platform without its secrets is skipped
   channel_url: https://www.youtube.com/@AIThisWeekME
   linkedin_version: "202610"  # LinkedIn API version (YYYYMM); each is supported about a year, then bump it (202510 retired by 2026-11-18)
   linkedin_hashtags_en: ["#AI", "#ArtificialIntelligence", "#GenerativeAI", "#Technology", "#Innovation", "#FutureOfWork", "#Leadership", "#DigitalTransformation", "#TechNews", "#GCC"]   # broad reach (founder 2026-11-18)
@@ -348,6 +348,7 @@ social:                       # Shorts / Reels / TikTok on the platforms' own AP
   youtube_privacy: public
   tiktok_privacy: SELF_ONLY   # until TikTok audits the app (it rejects public posts from an unaudited app); then PUBLIC_TO_EVERYONE
   instagram_api_version: v23.0
+  facebook_api_version: v23.0
   max_attempts: 3             # per platform, then it is marked skipped
   hashtags_en: ["#AI", "#AINews", "#ArtificialIntelligence", "#TechNews", "#GenerativeAI", "#Technology", "#Innovation", "#FutureOfWork", "#ChatGPT", "#MiddleEast"]   # broad reach (founder 2026-11-18)
 
