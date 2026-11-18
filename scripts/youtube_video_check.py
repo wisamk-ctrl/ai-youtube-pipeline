@@ -69,6 +69,9 @@ def main(video_id: str) -> int:
               "| privacy:", (v.get("status") or {}).get("privacyStatus"), "| definition:",
               (v.get("contentDetails") or {}).get("definition"))
     html = requests.get(f"https://www.youtube.com/watch?v={video_id}", headers=UA, timeout=60).text
+    import re
+    m = re.search(r'"playabilityStatus":\{"status":"([A-Z_]+)"', html)
+    print("Watch page as seen from here:", m.group(1) if m else "no player data", "|", len(html), "bytes")
     print("Storyboard (frame previews) on the page:", "yes" if "playerStoryboardSpecRenderer" in html else "no")
     ch = chapters(html)
     if not ch:
