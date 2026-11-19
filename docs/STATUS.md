@@ -254,5 +254,7 @@ Open founder items, best done in the browser:
 5. ~~TikTok~~ (2026-11-19): @aithisweek switched from a private to a public account (it was private, which is why
    "Everyone" was never offered); 6 Shorts set to Public (Jensen Huang was still in TikTok's content review).
    The duplicate ADNOC/G42 post from 17 Nov 9:19 pm stays private. Bio set (80-char limit): "AI news for the Middle
-   East, every Sunday 17:00 Gulf time. Not financial advice." Display name is still "aithisweek". Watch whether the next
+   East, every Sunday 17:00 Gulf time. Not financial advice." Display name change to "AI This Week" submitted and
+   accepted ("Profile has been updated"), but the profile still showed "aithisweek" and the name is locked until
+   26 Nov: most likely in TikTok review; check it shows. Watch whether the next
    automatic post lands public now, or still private because the TikTok app is unaudited.
