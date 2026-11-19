@@ -253,5 +253,6 @@ Open founder items, best done in the browser:
    enters it). Then: Business app, both products, redirect URI, secrets, `connect` (docs/SOCIAL.md, last section).
 5. ~~TikTok~~ (2026-11-19): @aithisweek switched from a private to a public account (it was private, which is why
    "Everyone" was never offered); 6 Shorts set to Public (Jensen Huang was still in TikTok's content review).
-   The duplicate ADNOC/G42 post from 17 Nov 9:19 pm stays private. Profile has no bio yet. Watch whether the next
+   The duplicate ADNOC/G42 post from 17 Nov 9:19 pm stays private. Bio set (80-char limit): "AI news for the Middle
+   East, every Sunday 17:00 Gulf time. Not financial advice." Display name is still "aithisweek". Watch whether the next
    automatic post lands public now, or still private because the TikTok app is unaudited.
