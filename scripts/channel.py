@@ -117,6 +117,39 @@ def watch_publish() -> None:
               "Review issue: it uploads and goes public at 17:00 Gulf (or as soon as the chapter pictures are ready).")
 
 
+def retention_points(ratios: list[tuple[float, float]], length_s: float) -> str:
+    """One line from YouTube's audience-retention curve [(share of the video, share still watching)]: when half
+    and three quarters of the audience have gone, and the steepest fall in the first two minutes."""
+    def mmss(x: float) -> str:
+        t = int(round(x * length_s))
+        return f"{t // 60}:{t % 60:02d}"
+    if not ratios:
+        return ""
+    half = next((x for x, r in ratios if r < 0.5), None)
+    quarter = next((x for x, r in ratios if r < 0.25), None)
+    early = [(ratios[k][0], ratios[k - 1][1] - ratios[k][1]) for k in range(1, len(ratios))
+             if ratios[k][0] * length_s <= 120]
+    drop = max(early, key=lambda d: d[1]) if early else None
+    parts = [f"half the viewers gone by {mmss(half)}" if half is not None else "over half watch to the end",
+             f"three quarters by {mmss(quarter)}" if quarter is not None else ""]
+    if drop and drop[1] >= 0.05:
+        parts.append(f"steepest early drop at {mmss(drop[0])} (−{drop[1] * 100:.0f} points)")
+    return ", ".join(p for p in parts if p)
+
+
+def retention(tok: str, video_id: str, length_s: float) -> str:
+    try:
+        a = requests.get("https://youtubeanalytics.googleapis.com/v2/reports", timeout=30,
+                         headers={"Authorization": f"Bearer {tok}"},
+                         params={"ids": "channel==MINE", "startDate": "2026-01-01", "endDate": NOW.strftime("%Y-%m-%d"),
+                                 "dimensions": "elapsedVideoTimeRatio", "metrics": "audienceWatchRatio",
+                                 "filters": f"video=={video_id}"})
+        rows = a.json().get("rows") or [] if a.status_code == 200 else []
+        return retention_points([(float(x), float(r)) for x, r in rows], length_s)
+    except (requests.RequestException, ValueError):
+        return ""
+
+
 def platform_lines(days: int = 7) -> list[str]:
     """Where the week's Shorts went (data/social_queue.json), with Instagram and Facebook numbers once connected.
     LinkedIn and TikTok numbers need API permissions the apps do not have; their posts are listed with links."""
@@ -211,6 +244,13 @@ def report() -> None:
     if best:
         lines += ["", f"Best Short this week: **{best[0][1]}** (+{best[0][3]} views). Its topic and opening line are "
                   "worth repeating."]
+    eps = [v for v in vids if v["status"].get("privacyStatus") != "private"
+           and seconds(v["contentDetails"].get("duration")) > 180][:2]
+    ret = [(v["snippet"]["title"][:50], retention(tok, v["id"], seconds(v["contentDetails"].get("duration")))) for v in eps]
+    if any(r for _, r in ret):
+        lines += ["", "### Where viewers leave", "", *[f"- **{t}**: {r}" for t, r in ret if r],
+                  "", "_Match these times to the script's sections: a drop early in the episode usually means the "
+                  "opening runs too long before the first story._"]
     lines += ["", *platform_lines()]
     body = "\n".join(lines) + "\n"
     print(body)
