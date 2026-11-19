@@ -513,6 +513,18 @@ def phase_publish(cfg: dict, out: Path) -> None:
     else:
         video_id = run_publish(out, cfg)
         log.info("Phase 5 done → https://youtu.be/%s", video_id)
+    if plan.get("youtube_video_id") or not cfg["publish"].get("chapter_gate", False):
+        phase_announce(cfg, out, video_id)
+    else:   # scripts/release.py announces it on LinkedIn and Facebook once YouTube makes it public
+        log.info("LinkedIn and Facebook wait for the release (phase announce)")
+
+
+def phase_announce(cfg: dict, out: Path, video_id: str = "") -> None:
+    """The episode as a native video on LinkedIn and the Facebook Page, once it is public on YouTube."""
+    plan = json.loads((out / "plan.json").read_text(encoding="utf-8"))
+    video_id = video_id or os.environ.get("VIDEO_URL", "").strip() or str(plan.get("youtube_video_id") or "")
+    if not video_id:
+        sys.exit("phase announce: no YouTube video id (pass it as video_url)")
     text = str(plan.get("linkedin_post_en", "")).replace("{url}", f"https://youtu.be/{video_id}").strip()
     if plan.get("linkedin_post_url"):   # already posted (reviewed meta): never post the episode twice
         log.info("Already on LinkedIn: %s", plan["linkedin_post_url"])
@@ -549,7 +561,7 @@ def phase_publish(cfg: dict, out: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "direct", "video", "import", "post", "publish",
+    ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "direct", "video", "import", "post", "publish", "announce",
                                      "voicepack", "voicecheck", "assemble", "shorts", "translate", "all"])
     ap.add_argument("--fixture", help="Copy fixtures/<name>/items.json into the week folder instead of ingesting (offline testing)")
     ap.add_argument("--shorts", help='Comma-separated start-end seconds for vertical cuts, e.g. "12-55,180-240"')
@@ -612,6 +624,8 @@ def main() -> None:
         phase_translate(cfg, out)
     if args.phase == "publish":
         phase_publish(cfg, out)
+    if args.phase == "announce":
+        phase_announce(cfg, out, args.video_url or "")
     usage.write(out, cfg.get("pricing"))
 
 

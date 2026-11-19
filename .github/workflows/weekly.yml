@@ -24,7 +24,7 @@ on:
         description: "script (ingest+script) | ingest (sources only, no Claude) | polish (apply the last critique, re-score) | score (critic only, on reviewed/<week>/script.md if present) | video | post | publish | voicepack (voice-first speech chunks) | shorts (rebuild only the vertical clips from the finished edit) | voicecheck (own voice: the cleaned read alone, minutes, before any video) | assemble (voice-first: reviewed/<week>/voice.yaml → edit) | translate (English version of the Arabic <week> → <week>-en; then run the other phases with week <week>-en)"
         default: script
         type: choice
-        options: [script, ingest, polish, score, direct, video, import, post, publish, voicepack, voicecheck, assemble, shorts, translate]
+        options: [script, ingest, polish, score, direct, video, import, post, publish, announce, voicepack, voicecheck, assemble, shorts, translate]
       week:
         description: "Week folder, e.g. 2026-W41 (default: current ISO week)"
         default: ""
@@ -44,8 +44,12 @@ on:
         description: "video only: avatar | talking_photo (overrides settings.yaml)"
         default: ""
       video_url:
-        description: "import only: the video you rendered in HeyGen's web app (its ID or share link), or a Drive/Dropbox/direct MP4 link"
+        description: "import: the video you rendered in HeyGen's web app (its ID or share link), or a Drive/Dropbox/direct MP4 link. announce: the YouTube video id"
         default: ""
+      chain:
+        description: "Run the next step by itself when this one succeeds (approved week: translate → assemble → preview for the founder)"
+        type: boolean
+        default: false
       force:
         description: "script only: run even though the week's newest artifact already holds a rendered talking_head.mp4 (the new artifact would shadow it)"
         type: boolean
@@ -276,7 +280,7 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('requirements.lock') }}
       - name: Install ffmpeg + Arabic font (post phase)
-        if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble' || inputs.phase == 'voicecheck' || inputs.phase == 'shorts' || inputs.phase == 'publish'
+        if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble' || inputs.phase == 'voicecheck' || inputs.phase == 'shorts' || inputs.phase == 'publish' || inputs.phase == 'announce'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-core
       - name: Install Chromium for the cue cards (post phase)
         if: inputs.phase == 'post' || inputs.phase == 'import' || inputs.phase == 'assemble' || inputs.phase == 'shorts'
@@ -340,6 +344,22 @@ jobs:
           path: output/
           overwrite: true
           retention-days: 90     # the maximum for a public repo
+      - name: Chain — translated → render the English week
+        if: success() && inputs.chain && inputs.phase == 'translate'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run weekly.yml --repo "$GITHUB_REPOSITORY" --ref main -f phase=assemble -f week="${{ inputs.week }}-en" -f chain=true
+      - name: Chain — rendered → preview and ask the founder to publish
+        if: success() && inputs.chain && inputs.phase == 'assemble' && hashFiles(format('reviewed/{0}/breaking.yaml', inputs.week)) == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WEEK: ${{ inputs.week }}
+          WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}
+          CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
+        run: |
+          gh workflow run preview.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" -f what=video
+          gh workflow run preview.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" -f what=text   # the Shorts
+          python scripts/review_issue.py ready "$WEEK"
       - name: Breaking Short ready → preview and tell the founder
         if: success() && inputs.phase == 'assemble' && hashFiles(format('reviewed/{0}/breaking.yaml', inputs.week)) != ''
         env:

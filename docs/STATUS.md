@@ -232,3 +232,6 @@ TikTok cannot be read by an app and are listed to check by hand. Likes are never
 ## Weekly timing (founder 2026-11-18)
 The scheduled script run is **Friday 06:00 UTC (10:00 Gulf)**, moved from Saturday for a full day of slack.
 Friday: script → founder review. Saturday: English, voice, render, upload (private/scheduled). Sunday 17:00 Gulf: public.
+The chain (2026-11-19): reply `approve` on the week's Review issue → English version → voice, render, Shorts →
+previews + a "ready" comment (and WhatsApp alert when set) → reply `publish` → unlisted upload, public at the
+Sunday slot via the release gate → LinkedIn and Facebook episode posts (phase `announce`) once it is public.

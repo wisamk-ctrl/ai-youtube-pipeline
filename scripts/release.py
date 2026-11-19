@@ -60,6 +60,18 @@ def chapters_ready(video_id: str) -> tuple[bool, str]:
     return len(pics) == len(ch), f"{len(pics)} pictures for {len(ch)} chapters"
 
 
+def announce(week: str, video_id: str) -> None:
+    """Now that it is public: post the episode on LinkedIn and the Facebook Page (weekly.yml phase announce)."""
+    import os
+    import subprocess
+    if not os.environ.get("GITHUB_REPOSITORY"):
+        return
+    r = subprocess.run(["gh", "workflow", "run", "weekly.yml", "--repo", os.environ["GITHUB_REPOSITORY"], "--ref", "main",
+                        "-f", "phase=announce", "-f", f"week={week}", "-f", f"video_url={video_id}"],
+                       capture_output=True, text=True)
+    log.info("announce %s: %s", week, "started" if r.returncode == 0 else r.stderr.strip()[:200])
+
+
 def youtube():
     from pipeline.google_auth import client
     return client("youtube")
@@ -89,6 +101,7 @@ def run(now: datetime | None = None, ready=chapters_ready, make_public=None, wai
             e.update(status="public", at=now.strftime("%Y-%m-%dT%H:%M:%SZ"),
                      note="chapters ready" if ok else f"made public after {wait_hours:g} h without chapter pictures ({why})")
             lines.append(f"✅ {e['week']} public: https://youtu.be/{e['video_id']} ({e['note']})")
+            announce(e["week"], e["video_id"])
         else:
             e["last_check"] = f"{now:%Y-%m-%dT%H:%MZ}: {why}"
             lines.append(f"⏳ {e['week']} waiting: {why}; release {e['release_at']}")
