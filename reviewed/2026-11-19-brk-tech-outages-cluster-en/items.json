@@ -1,0 +1,19 @@
+[
+  {
+    "source": "Scientific American",
+    "source_type": "rss",
+    "title": "Why so many critical tech outages are happening all at once",
+    "summary": "Why so many critical tech outages are happening all at once Microsoft, Apple, airlines and even the U.S. National Security Agency have suffered major technology failures in recent days. What the hell is going on? By Chris Stokel-Walker edited by Claire Cameron Conspiracy theorists are having a field day. In the space of a week, Microsoft’s cloud software was unavailable for almost 24 hours, a malfunctioning telecommunications network brought U.S. air traffic to a standstill, a problem at JPMorgan Chase disrupted its services, and United Airlines struggled to get planes off the ground. Apple’s online services have ground to a halt, and the U.S. National Security Agency is dealing with an outage affecting its classified communications network. So many major outages in such a short space of time inevitably raises questions. Is there something connecting these disparate incidents? Or are we simply noticing when things go wrong more often? In the immediate aftermath of some of these outages, fingers pointed at potential cyberattacks or artificial intelligence systems running amok. The available evidence supports neither: Microsoft says its problems weren’t caused by malicious activity or AI agents, and the Federal Aviation Administration has found no indication of a cyberattack. Apple’s outage followed an internal update, while the NSA said its problems arose during scheduled maintenance. If you're enjoying this article, consider supporting our award-winning journalism by subscribing . By purchasing a subscription you are helping to ensure the future of impactful stories about the discoveries and ideas shaping our world today. There’s a paucity of proof that tech is becoming less reliable overall. Analysis by the Uptime Institute , a digital infrastructure tracker, found data center outage rates per site had fallen in 2026 for a fifth consecutive year. It’s tempting to read into the scale of the recent incidents and their frequency—but be wary, cautions Laura Nolan, a software reliability engineer at Trace Cognitive Engineering. If there are 52 major outages in a year, she explains, that doesn’t mean there’ll be one every week. There might be several in a matter of days, followed by weeks without any. “It doesn’t necessarily mean that it’s a shared causal factor,” she says. Part of the problem is the complexity of the systems we’ve constructed—updating them invites errors. “When making changes in such systems, the results are often unpredictable,” says Nancy…",
+    "url": "https://www.scientificamerican.com/article/why-so-many-critical-tech-outages-are-happening-all-at-once/",
+    "published": "2026-11-18T17:00:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "b7e3e37632"
+  }
+]

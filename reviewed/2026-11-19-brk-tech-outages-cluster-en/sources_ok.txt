@@ -1,0 +1,9 @@
+Drafted automatically 2026-11-19 00:57 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) In one week, Microsoft, Apple, JPMorgan Chase, United Airlines and the NSA all suffered major tech failures, Scientific American reports.  ← Scientific American (b7e3e37632)
+- (2) Microsoft's cloud software was unavailable for almost 24 hours.  ← Scientific American (b7e3e37632)
+- (3) A malfunctioning telecom network halted U.S. air traffic.  ← Scientific American (b7e3e37632)
+- (4) Some blamed cyberattacks or AI running amok. The magazine says the evidence supports neither.  ← Scientific American (b7e3e37632)
+- (5) Microsoft says AI agents weren't the cause. Apple's outage followed an internal update, and the NSA cites scheduled maintenance.  ← Scientific American (b7e3e37632)
+- (6) The Uptime Institute found data center outage rates per site fell in 2026 for a fifth year running.  ← Scientific American (b7e3e37632)
+- (7) Reliability engineer Laura Nolan says outages can cluster in a few days without a shared cause.  ← Scientific American (b7e3e37632)
+- (8) For Gulf businesses and governments, the thing to watch is how cloud providers test and manage updates to ever more complex systems.  ← regional line, no facts
