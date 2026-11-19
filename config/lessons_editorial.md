@@ -40,3 +40,9 @@ Each lesson comes from a real fault heard or caught in a past episode. Treat a r
   what's coming before it. The welcome and "this week on AI This Week" come after the first story, in one
   sentence. Never open with the show's name, the date or "in this episode". The Monday report's "Where viewers
   leave" section checks whether this works; revise this lesson from those numbers.
+
+- **Arabic voice: English stays English (founder voice test, 2026-11-19).** The Arabic voice read Arabised
+  names and spelled-out numbers badly. Write company, product and tech names in Latin letters as people say
+  them in Amman offices (OpenAI, ADNOC, G42, NVIDIA, AI agents, CPU, CTO, data sovereignty), and figures as
+  digits (5 سنين، 2.6 مليار دولار). Names the voice still gets wrong go in config/pronunciation.yaml as a
+  spoken spelling (ADNOC → Adnok, HUMAIN → Humane, G42 → G forty-two); captions keep the real name.

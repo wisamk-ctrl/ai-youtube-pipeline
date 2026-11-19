@@ -5,5 +5,6 @@
 # already made (post/repair.py), so list only names the voice really gets wrong.
 Claude Code: كلود كود
 Claude: كلود
-G42: جي فورتي تو
-HUMAIN: هيوماين
+G42: G forty-two          # founder 2026-11-19: English names stay English in the Arabic voice
+HUMAIN: Humane
+ADNOC: Adnok
