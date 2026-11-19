@@ -2,7 +2,7 @@ name: channel
 # Never miss a week, and learn what works (scripts/channel.py).
 on:
   schedule:
-    - cron: "41 11 * * 6"     # Saturday 15:41 Gulf: did this week's script run succeed?
+    - cron: "41 11 * * 5"     # Friday 15:41 Gulf: did this week's script run succeed? (script run moved to Friday)
     - cron: "17 4 * * 0"      # Sunday 08:17 Gulf: is an episode going out today?
     - cron: "29 5 * * 1"      # Monday 09:29 Gulf: the weekly numbers
     - cron: "47 * * * *"      # hourly: an episode or Short just went public → the WhatsApp kit (Channel + status)
@@ -26,6 +26,8 @@ jobs:
       GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
       GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+      FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
       LINKEDIN_TOKEN_UNTIL: ${{ secrets.LINKEDIN_TOKEN_UNTIL }}
     steps:
       - uses: actions/checkout@v4

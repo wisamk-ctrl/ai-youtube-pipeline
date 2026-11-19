@@ -75,13 +75,13 @@ def alarm(title: str, body: str) -> None:
 
 
 def watch_script() -> None:
-    """Saturday afternoon: this morning's scheduled run (the week's script) must have succeeded."""
+    """Friday afternoon: this morning's scheduled run (the week's script) must have succeeded."""
     repo = os.environ["GITHUB_REPOSITORY"]
     runs = json.loads(gh("run", "list", "--repo", repo, "--workflow", "weekly.yml", "--event", "schedule",
                          "--limit", "3", "--json", "conclusion,createdAt,url"))
     today = [r for r in runs if r["createdAt"][:10] == NOW.strftime("%Y-%m-%d")]
     if not today:
-        alarm("This week's script did not run", "The Saturday run of `weekly` never started. Run it by hand: "
+        alarm("This week's script did not run", "The Friday run of `weekly` never started. Run it by hand: "
               "Actions → weekly → Run workflow → phase `script`.")
     elif today[0]["conclusion"] != "success":
         alarm("This week's script failed", f"Run: {today[0]['url']} — the failure issue has the reason. "
@@ -100,7 +100,7 @@ def watch_publish() -> None:
     vids = videos(token(), 15)
     soon = []
     for v in vids:
-        if seconds(v["contentDetails"].get("duration")) <= 60:
+        if seconds(v["contentDetails"].get("duration")) <= 180:
             continue
         st = v["status"]
         when = st.get("publishAt") if st.get("privacyStatus") == "private" else v["snippet"].get("publishedAt")
@@ -113,8 +113,56 @@ def watch_publish() -> None:
         print("episode ok:", soon)
     else:
         alarm("No episode is scheduled for today",
-              "Nothing on the channel goes public this morning. If the week's edit is ready, approve it: "
-              "Actions → social → approve → the week; the episode uploads, scheduled for 11:00 Gulf.")
+              "Nothing on the channel goes public today. If the week's edit is ready, reply `publish` on the week's "
+              "Review issue: it uploads and goes public at 17:00 Gulf (or as soon as the chapter pictures are ready).")
+
+
+def platform_lines(days: int = 7) -> list[str]:
+    """Where the week's Shorts went (data/social_queue.json), with Instagram and Facebook numbers once connected.
+    LinkedIn and TikTok numbers need API permissions the apps do not have; their posts are listed with links."""
+    qf = ROOT / "data" / "social_queue.json"
+    queue = json.loads(qf.read_text(encoding="utf-8")) if qf.exists() else []
+    since = (NOW - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    done: dict[str, int] = {}
+    failed: dict[str, int] = {}
+    stats = []
+    for e in queue:
+        for plat, r in (e.get("posts") or {}).items():
+            if str(r.get("at", "")) < since:
+                continue
+            if r.get("status") == "posted":
+                done[plat] = done.get(plat, 0) + 1
+                n = platform_numbers(plat, r)
+                if n:
+                    stats.append(f"| {plat} | {str(e.get('title', ''))[:50]} | {n} |")
+            elif r.get("status") in ("failed", "skipped"):
+                failed[plat] = failed.get(plat, 0) + 1
+    if not done and not failed:
+        return ["_No Shorts posted to other platforms this week._"]
+    out = ["### Posted this week", "",
+           " · ".join(f"{p}: {done.get(p, 0)}" + (f" ({failed[p]} failed)" if failed.get(p) else "")
+                      for p in sorted(set(done) | set(failed)))]
+    if stats:
+        out += ["", "| Platform | Short | Numbers |", "|---|---|---|", *stats]
+    return out
+
+
+def platform_numbers(platform: str, r: dict) -> str:
+    try:
+        if platform == "instagram" and r.get("media_id") and os.environ.get("INSTAGRAM_TOKEN"):
+            d = requests.get(f"https://graph.instagram.com/v23.0/{r['media_id']}/insights", timeout=30, params={
+                "metric": "views,likes,comments,shares", "access_token": os.environ["INSTAGRAM_TOKEN"]}).json()
+            vals = {m["name"]: m["values"][0]["value"] for m in d.get("data", [])}
+            return ", ".join(f"{v} {k}" for k, v in vals.items())
+        if platform == "facebook" and r.get("video_id") and os.environ.get("FACEBOOK_PAGE_TOKEN"):
+            d = requests.get(f"https://graph.facebook.com/v23.0/{r['video_id']}", timeout=30, params={
+                "fields": "views,likes.summary(true),comments.summary(true)",
+                "access_token": os.environ["FACEBOOK_PAGE_TOKEN"]}).json()
+            return (f"{d.get('views', '?')} views, {d.get('likes', {}).get('summary', {}).get('total_count', '?')} likes, "
+                    f"{d.get('comments', {}).get('summary', {}).get('total_count', '?')} comments")
+    except (requests.RequestException, ValueError, KeyError, IndexError, TypeError):
+        return ""
+    return ""
 
 
 def report() -> None:
@@ -130,7 +178,7 @@ def report() -> None:
         if v["status"].get("privacyStatus") == "private":
             continue
         before = last.get(v["id"], {}).get("viewCount", 0)
-        kind = "Short" if seconds(v["contentDetails"].get("duration")) <= 60 else "Episode"
+        kind = "Short" if seconds(v["contentDetails"].get("duration")) <= 180 else "Episode"
         rows.append((kind, v["snippet"]["title"][:60], s["viewCount"], s["viewCount"] - before, s["likeCount"],
                      s["commentCount"], v["id"]))
     rows.sort(key=lambda r: (r[0] != "Episode", -r[3]))
@@ -156,6 +204,7 @@ def report() -> None:
     if best:
         lines += ["", f"Best Short this week: **{best[0][1]}** (+{best[0][3]} views). Its topic and opening line are "
                   "worth repeating."]
+    lines += ["", *platform_lines()]
     body = "\n".join(lines) + "\n"
     print(body)
     STATS.parent.mkdir(parents=True, exist_ok=True)
