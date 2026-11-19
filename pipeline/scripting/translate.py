@@ -179,6 +179,9 @@ class EnglishMeta(BaseModel):
     title: str = Field(description="YouTube title in English, at most 70 characters, informative, no clickbait")
     description: str = Field(description="Two or three plain sentences for the YouTube description, informational only")
     thumbnail_text: str = Field(description="2-4 English words for the thumbnail")
+    thumbnail_text_b: str = Field(default="", description=(
+        "2-4 different English words for a second thumbnail tested against the first (YouTube Test & Compare): "
+        "another angle on the same lead story, or the episode's second story; nothing the script does not say"))
     title_options: list[str] = Field(min_length=3, max_length=3, description=(
         "Three different titles for YouTube's Test & Compare, the first one the same as `title`. Each 50 to 60 "
         "characters, says the story and why it matters, a different angle each, no clickbait, nothing the script "
@@ -208,8 +211,9 @@ def english_meta(plan: dict[str, Any], script_en: str, cfg: dict[str, Any],
     the model only for what is missing."""
     have: dict[str, Any] = {k: next((str(plan[f]) for f in fields if plan.get(f)), "") for k, fields in _EN_FIELDS.items()}
     have["title_options"], have["short_hooks"] = plan.get("title_options_en") or [], plan.get("short_hooks") or []
+    b = str(plan.get("thumbnail_text_b_en") or "")
     if all(have.values()):
-        return have
+        return {**have, "thumbnail_text_b": b}
     model = cfg["scripting"].get("aux_model") or cfg["scripting"]["model"]
     resp = client.messages.parse(
         model=model, max_tokens=4000,
@@ -226,6 +230,7 @@ def english_meta(plan: dict[str, Any], script_en: str, cfg: dict[str, Any],
         raise TranslationError(f"English title/description stopped early: {resp.stop_reason}")
     made = resp.parsed_output.model_dump()
     out = {k: have[k] or made[k] for k in have}
+    out["thumbnail_text_b"] = b or str(made.get("thumbnail_text_b") or "")
     if out["title_options"][0] != out["title"]:            # the title in use is always the first option
         out["title_options"] = [out["title"], *[t for t in out["title_options"] if t != out["title"]]][:3]
     return out
@@ -303,6 +308,7 @@ def run(src: Path, dst: Path, cfg: dict[str, Any], client: anthropic.Anthropic |
     meta = english_meta(plan, script_en, cfg, client)
     plan_en = {**plan, "language": "en", "translated_from": src.name, "episode_title_en": meta["title"],
                "description_en": meta["description"], "thumbnail_text_en": meta["thumbnail_text"],
+               "thumbnail_text_b_en": meta["thumbnail_text_b"],
                "title_options_en": meta["title_options"], "short_hooks": meta["short_hooks"]}
     (dst / "titles.md").write_text("# Title options for Test & Compare\n\n" + "\n".join(
         f"{n}. {t}" for n, t in enumerate(meta["title_options"], 1)) + "\n", encoding="utf-8")

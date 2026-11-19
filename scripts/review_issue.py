@@ -36,7 +36,9 @@ def main(kind: str, week: str, extra: str = "") -> None:
     if kind == "ready":
         body = (f"**Episode ready to check: `{week}`**\n\n"
                 f"▶️ Episode: {raw}/{week}.mp4\n"
-                f"📱 Shorts: {raw}/{week}-files/short_01.mp4 (02, 03 next to it)\n\n"
+                f"📱 Shorts: {raw}/{week}-files/short_01.mp4 (02, 03 next to it)\n"
+                f"🖼️ Thumbnails: A {raw}/{week}-files/thumbnail.png · B {raw}/{week}-files/thumbnail_b.png "
+                "(A is uploaded; add B in YouTube Studio → the video → Test & Compare)\n\n"
                 "The previews take a few minutes to appear. When you are happy, reply here with:\n\n"
                 "```\npublish\n```\n\nIt uploads unlisted and goes public at the Sunday slot (17:00 Gulf); "
                 "LinkedIn and Facebook follow when it is public. No reply, no upload." + (f"\n\n{extra}" if extra else ""))

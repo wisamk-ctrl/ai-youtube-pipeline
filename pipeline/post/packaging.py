@@ -130,6 +130,15 @@ def render_thumbnail(out_dir: Path, cfg: dict[str, Any], plan: dict[str, Any] | 
         if dest.stat().st_size > YOUTUBE_THUMB_MAX:   # a photo can push a PNG past YouTube's limit
             r.page.screenshot(path=str(out_dir / "thumbnail.jpg"), type="jpeg", quality=90)
     log.info("Thumbnail → %s (%s)", dest, "with presenter still" if face else "text only")
+    try:   # the B side for YouTube's Test & Compare: other words, and the opposite face choice
+        text_b = str(plan.get(f"{key.replace('thumbnail_text', 'thumbnail_text_b')}") or "").strip() or text
+        face_b = None if face else (portrait_still() or (face_still(talking_head, cfg) if talking_head else None))
+        if text_b != text or face_b != face:
+            with Renderer(THUMB_W, THUMB_H) as r:
+                r.still(thumbnail_html(text_b, _show_name(cfg), face_b), out_dir / "thumbnail_b.png")
+            log.info("Thumbnail B → thumbnail_b.png (%s, %s)", text_b, "with presenter still" if face_b else "text only")
+    except Exception as exc:  # noqa: BLE001 — the B side is optional
+        log.warning("Thumbnail B not made: %s", exc)
     return dest
 
 
