@@ -246,6 +246,9 @@ Open founder items, best done in the browser:
 3. Partnerships Gmail: `aithisweek.partnerships@gmail.com` created with forwarding to the founder (2026-11-19) and set in
    `publish.partnerships_email`. Line added to all 8 existing videos (run 44547065294, re-check 0 left). Media kit: `docs/media_kit.html`
    (private artifact https://claude.ai/artifact/DvpDDA8RBojD9JdU8ohkmR; founder approved 2026-11-19; numbers on request).
-4. Meta: Facebook Page + Instagram Professional + developer app → secrets META_APP_ID/SECRET, INSTAGRAM_APP_ID/SECRET
-   → `connect` links → facebook / instagram (docs/SOCIAL.md, last section).
+4. Meta (2026-11-19): Facebook Page "AI This Week" (profile.php?id=61596963440255; logo, cover, bio, YouTube link,
+   partnerships email) and Instagram @aithisweekme (Creator) are made and linked. Blocked: the Meta for Developers
+   sign-up needs phone verification and SMS codes to the founder's UAE number never arrive; Accounts Center now refuses
+   the number ("try a different phone number"), likely a rate limit. Retry after a day, or verify with a card (founder
+   enters it). Then: Business app, both products, redirect URI, secrets, `connect` (docs/SOCIAL.md, last section).
 5. TikTok: set posted videos public (the app is unaudited, so posts land private).
