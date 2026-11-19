@@ -243,7 +243,8 @@ Monday report with watch time and where viewers leave; daily comment inbox (now 
 Open founder items, best done in the browser:
 1. YouTube Studio → Comments → Held for review: approve real comments.
 2. WhatsApp Channel "AI This Week": create, send the link → `social.whatsapp_channel_url` in config/settings.yaml.
-3. Partnerships Gmail with forwarding → media kit (artifact) and description line.
+3. Partnerships Gmail: `aithisweek.partnerships@gmail.com` created with forwarding to the founder (2026-11-19) and set in
+   `publish.partnerships_email`. Still to do: run `youtube-partnerships` (preview, then apply) for existing videos; media kit.
 4. Meta: Facebook Page + Instagram Professional + developer app → secrets META_APP_ID/SECRET, INSTAGRAM_APP_ID/SECRET
    → `connect` links → facebook / instagram (docs/SOCIAL.md, last section).
 5. TikTok: set posted videos public (the app is unaudited, so posts land private).
