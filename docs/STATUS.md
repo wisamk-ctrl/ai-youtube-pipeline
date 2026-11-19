@@ -241,7 +241,7 @@ Working and automatic: news watch → breaking Shorts (approve with `post <week>
 weekly script Fridays 10:00 Gulf → `approve` → render → `publish` → Sunday 17:00 Gulf → LinkedIn/Facebook at release;
 Monday report with watch time and where viewers leave; daily comment inbox (now incl. held-for-review comments).
 Open founder items, best done in the browser:
-1. YouTube Studio → Comments → Held for review: approve real comments.
+1. ~~YouTube Studio → Comments → Held for review~~: checked 2026-11-19, none held. The daily inbox now reads held comments.
 2. WhatsApp Channel "AI This Week": create, send the link → `social.whatsapp_channel_url` in config/settings.yaml.
 3. Partnerships Gmail: `aithisweek.partnerships@gmail.com` created with forwarding to the founder (2026-11-19) and set in
    `publish.partnerships_email`. Line added to all 8 existing videos (run 44547065294, re-check 0 left). Media kit: `docs/media_kit.html`
