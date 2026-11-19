@@ -406,7 +406,8 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
                 voice_gain = min(12.0, -14.0 - audio_mod.measure(clip)["input_i"])
             except Exception:  # noqa: BLE001 — an unmeasurable span falls back to the levelling filter
                 voice_gain = None
-            lead, extra, hook_png = (HOOK_SECONDS if hook_text else 0.0), [], dest_dir / f"hook_{k:02d}.png"
+            hook_s = float(cfg.get("post", {}).get("shorts", {}).get("hook_seconds", HOOK_SECONDS))
+            lead, extra, hook_png = (hook_s if hook_text else 0.0), [], dest_dir / f"hook_{k:02d}.png"
             if hook_text:
                 r.still(hook_html(hook_text, _show_name(cfg)), hook_png)
                 extra = ["-loop", "1", "-i", str(hook_png), "-i", str(chime)]

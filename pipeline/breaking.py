@@ -45,7 +45,8 @@ class Draft(BaseModel):
     newsworthy: bool = Field(description="false if the story is not about AI, tech platforms or digital infrastructure, "
                                          "or the articles do not hold enough facts for a Short")
     slug: str = Field(description="2-4 lowercase words joined by hyphens")
-    title: str = Field(description="Title band, at most 32 characters")
+    title: str = Field(description="Title band, at most 32 characters: who did what, with the person's or company's "
+                       "name first (2026-11-19: 'Jensen Huang Leaves NVIDIA' drew 7x the views of the others)")
     hook: str = Field(description="Opening card, at most 8 words, a fact or a fair question, no clickbait")
     lines: list[Line]
     linkedin: str = Field(description="LinkedIn post: hook line, 2-3 factual sentences, one sentence on what it means "

@@ -302,6 +302,7 @@ post:
     enabled: true
     face: true                # a small still of the presenter at the left
   shorts:                     # native 9:16 Shorts (post/shorts.py); --shorts "a-b,c-d" overrides the picker
+    hook_seconds: 1.5         # the opening card before the voice starts (was 2.5 s; 2026-11-19: speech sooner keeps scrollers)
     enabled: true
     count: 3
     min_seconds: 30
