@@ -125,6 +125,62 @@ def test_tiktok_uploads_in_chunks_and_falls_back_to_private_when_unaudited(tmp_p
     assert ranges == ["bytes 0-9/25", "bytes 10-24/25"]                          # the last chunk takes the rest
 
 
+def test_post_due_never_reposts_when_the_platform_may_already_have_the_video(tmp_path):
+    """2026-11-17: TikTok took the upload, the run then errored, and the retry posted the Short a second time."""
+    q = []
+    social.plan_week(week(tmp_path, 1), CFG, q, lambda f: f, datetime(2026, 11, 15, tzinfo=timezone.utc))
+    q[0]["approved"] = True
+    calls = []
+
+    def maybe(e, f):
+        calls.append(e["id"])
+        raise social.Unconfirmed("TikTok publish P: still PROCESSING_UPLOAD", ref="P")
+    now = datetime(2026, 11, 30, tzinfo=timezone.utc)
+    lines = social.post_due(q, CFG, lambda e: Path("x.mp4"), {"tiktok": maybe}, now)
+    r = q[0]["posts"]["tiktok"]
+    assert r["status"] == "unconfirmed" and r["ref"] == "P" and lines[0].startswith("⚠️")
+    social.post_due(q, CFG, lambda e: Path("x.mp4"), {"tiktok": maybe}, now)
+    assert calls == ["2026-W45-en#1"]                                             # never sent a second time
+
+
+def test_tiktok_status_timeout_after_upload_is_unconfirmed_not_failed(tmp_path):
+    f = tmp_path / "v.mp4"
+    f.write_bytes(b"x" * 5)
+    http = FakeHttp({
+        ("POST", "creator_info"): {"data": {"privacy_level_options": ["PUBLIC_TO_EVERYONE"]}, "error": {"code": "ok"}},
+        ("POST", "video/init"): {"data": {"publish_id": "P", "upload_url": "https://up/1"}, "error": {"code": "ok"}},
+        ("PUT", "https://up/1"): ({}, 201),
+        ("POST", "status/fetch"): {"data": {"status": "PROCESSING_UPLOAD"}, "error": {"code": "ok"}}})
+    with pytest.raises(social.Unconfirmed) as exc:
+        social.TikTok("tok", http=http, sleep=lambda s: None).post_video(f, "caption", wait_s=0)
+    assert exc.value.ref == "P"
+
+
+def test_tiktok_failed_upload_before_tiktok_has_it_stays_retryable(tmp_path):
+    f = tmp_path / "v.mp4"
+    f.write_bytes(b"x" * 5)
+    http = FakeHttp({
+        ("POST", "creator_info"): {"data": {"privacy_level_options": ["PUBLIC_TO_EVERYONE"]}, "error": {"code": "ok"}},
+        ("POST", "video/init"): {"data": {"publish_id": "P", "upload_url": "https://up/1"}, "error": {"code": "ok"}},
+        ("PUT", "https://up/1"): ({}, 500)})
+    with pytest.raises(RuntimeError) as exc:
+        social.TikTok("tok", http=http, sleep=lambda s: None).post_video(f, "caption")
+    assert not isinstance(exc.value, social.Unconfirmed)
+
+
+def test_merge_posts_keeps_this_runs_results_over_a_concurrent_queue_change():
+    """2026-11-17: the queue save hit a git conflict and the 'posted' record was lost, so the next run reposted."""
+    remote = [{"id": "A", "approved": True, "posts": {"tiktok": {"status": "queued"}, "youtube": {"status": "posted"}}},
+              {"id": "B", "approved": False, "posts": {"tiktok": {"status": "queued"}}}]
+    ours = [{"id": "A", "approved": False, "posts": {"tiktok": {"status": "posted", "attempts": 1, "at": "t"},
+                                                     "youtube": {"status": "posted"}}}]
+    merged = social.merge_posts(remote, ours)
+    assert merged[0]["posts"]["tiktok"] == {"status": "posted", "attempts": 1, "at": "t"}   # our result kept
+    assert merged[0]["approved"] is True and [e["id"] for e in merged] == ["A", "B"]      # their changes kept
+    remote[0]["posts"]["tiktok"] = {"status": "posted", "attempts": 2, "at": "later"}
+    assert social.merge_posts(remote, ours)[0]["posts"]["tiktok"]["at"] == "later"       # never go back in time
+
+
 def test_tiktok_api_error_is_raised():
     http = FakeHttp({("POST", "creator_info"): {"data": {}, "error": {"code": "access_token_invalid", "message": "x"}}})
     with pytest.raises(RuntimeError, match="access_token_invalid"):

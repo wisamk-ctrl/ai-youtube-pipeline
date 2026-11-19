@@ -53,7 +53,7 @@ jobs:
           q = pathlib.Path("data/social_queue.json")
           now = d.datetime.now(d.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
           due = [e for e in (json.loads(q.read_text()) if q.exists() else [])
-                 if e.get("approved") and e["due"] <= now and any(r.get("status") not in ("posted", "skipped") for r in e["posts"].values())]
+                 if e.get("approved") and e["due"] <= now and any(r.get("status") not in ("posted", "skipped", "unconfirmed") for r in e["posts"].values())]
           print(f"run={'true' if due else 'false'}")
           PY
           else echo "run=true" >> "$GITHUB_OUTPUT"; fi
@@ -102,8 +102,4 @@ jobs:
       - name: Save the queue
         if: always() && steps.due.outputs.run == 'true'
         run: |
-          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
-          git add data/social_queue.json 2>/dev/null || exit 0
-          git diff --cached --quiet && exit 0
-          git commit -q -m "social: queue update ($(date -u +%FT%H:%MZ))"
-          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+          bash scripts/save_queue.sh "social: queue update ($(date -u +%FT%H:%MZ))"

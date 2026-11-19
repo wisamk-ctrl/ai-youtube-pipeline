@@ -78,11 +78,7 @@ jobs:
       - name: Save the queue
         if: always()
         run: |
-          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
-          git add data/social_queue.json 2>/dev/null || exit 0
-          git diff --cached --quiet && exit 0
-          git commit -q -m "social: breaking ${{ steps.w.outputs.week }} posted"
-          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+          bash scripts/save_queue.sh "social: breaking ${{ steps.w.outputs.week }} posted"
       - name: Report on the issue
         if: always() && steps.w.outputs.week != ''
         env:

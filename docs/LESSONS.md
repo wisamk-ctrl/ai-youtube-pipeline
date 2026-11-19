@@ -238,3 +238,12 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 - **2026-11-19 — automatic Short check.** `scripts/short_check.py` (length, loudness, peak, dead air, frozen picture, lone caption words, long captions) runs on every breaking and weekly Short; its verdict is in the "ready" comment.
 - **2026-11-19 — thumbnail B.** Every episode now also makes `thumbnail_b.png` (other words from `thumbnail_text_b_en`, and the opposite face choice) for YouTube's Test & Compare; the API cannot start a test, so the founder adds B in Studio. Links are in the "ready" comment.
 - **2026-11-19 — first Shorts numbers.** "Jensen Huang Leaves NVIDIA" drew 49 views, the others 0–11 (breaking Shorts 0 on YouTube so far). Small sample, so two cheap changes only: the voice now starts after a 1.5 s opening card instead of 2.5 s (`post.shorts.hook_seconds`), and breaking titles lead with the person or company and the action. Revisit with Monday's numbers.
+
+- **2026-11-19, duplicate TikTok post traced (ADNOC/G42 Short, posted 17 Nov 17:19 and 17:25 UTC):** two causes.
+  (1) TikTok had accepted the upload when the run errored (`dict.update() got multiple values for keyword argument
+  'status'`); `post_due` counted any error as "not posted", so the next run sent it again. (2) The queue save hit a
+  git conflict on `data/social_queue.json` and the push loop gave up silently, losing the "posted" record. Fixes:
+  an error after the platform has the file is `Unconfirmed` → status `unconfirmed`, never retried automatically,
+  reported with ⚠️ (TikTok status-check timeouts and lost status calls included); the result is recorded before
+  anything else; `scripts/save_queue.sh` merges this run's results onto main on a conflict (`social.py merge`) and
+  fails the step if it still cannot push. Tests in `tests/test_social.py`.

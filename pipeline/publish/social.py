@@ -69,6 +69,32 @@ def save_queue(path: Path, queue: list[dict[str, Any]]) -> None:
     path.write_text(json.dumps(queue, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+class Unconfirmed(RuntimeError):
+    """The platform already has the video but did not confirm it went live. Never retried automatically:
+    2026-11-17 a retry after such an error posted the same Short to TikTok twice."""
+
+    def __init__(self, message: str, ref: str = ""):
+        super().__init__(message)
+        self.ref = ref
+
+
+def merge_posts(remote: list[dict[str, Any]], ours: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """The queue as committed by someone else (`remote`) with this run's posting results laid over it.
+
+    A platform record from `ours` wins only when it has more attempts, so a newer result is never undone;
+    everything else (new entries, approvals) comes from `remote`."""
+    mine = {e["id"]: e for e in ours}
+    for e in remote:
+        o = mine.get(e["id"])
+        if not o:
+            continue
+        for p, r in o.get("posts", {}).items():
+            theirs = e["posts"].get(p, {})
+            if int(r.get("attempts", 0)) > int(theirs.get("attempts", 0)):
+                e["posts"][p] = r
+    return remote
+
+
 def due_times(first: datetime, count: int, days: list[int], hour_utc: int) -> list[datetime]:
     """`count` slots on the given weekdays (0 = Monday) at hour_utc, the first after `first`."""
     out, d = [], first.replace(minute=0, second=0, microsecond=0)
@@ -221,14 +247,20 @@ class TikTok:
                     "Content-Range": f"bytes {start}-{end}/{size}"})
                 if r.status_code not in (200, 201, 206):
                     raise RuntimeError(f"TikTok upload chunk {i + 1}/{count}: HTTP {r.status_code} {r.text[:200]}")
-        waited = 0
+        # From here TikTok has the whole file: anything short of a clear FAILED may still go live.
+        pid, waited, status = init["publish_id"], 0, None
         while True:
-            st = self._post("/v2/post/publish/status/fetch/", {"publish_id": init["publish_id"]})
+            try:
+                st = self._post("/v2/post/publish/status/fetch/", {"publish_id": pid})
+            except Exception as exc:  # noqa: BLE001 — a lost status check is not a failed post
+                raise Unconfirmed(f"TikTok publish {pid}: status check failed ({exc})", ref=pid) from exc
             status = st.get("status")
             if status in ("PUBLISH_COMPLETE", "SEND_TO_USER_INBOX"):
-                return {"publish_id": init["publish_id"], "privacy": level, "status": status}
-            if status == "FAILED" or waited >= wait_s:
-                raise RuntimeError(f"TikTok publish {init['publish_id']}: {status} {st.get('fail_reason', '')}")
+                return {"publish_id": pid, "privacy": level, "status": status}
+            if status == "FAILED":
+                raise RuntimeError(f"TikTok publish {pid}: FAILED {st.get('fail_reason', '')}")
+            if waited >= wait_s:
+                raise Unconfirmed(f"TikTok publish {pid}: still {status} after {waited} s", ref=pid)
             self.sleep(10)
             waited += 10
 
@@ -369,24 +401,34 @@ def post_due(queue: list[dict[str, Any]], cfg: dict[str, Any], fetch: Callable[[
             continue
         if not e.get("approved") or datetime.strptime(e["due"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc) > now:
             continue
-        todo = [p for p, r in e["posts"].items() if r.get("status") not in ("posted", "skipped") and p in posters]
+        # "unconfirmed": the platform may already show it, so only a person decides whether to send it again.
+        todo = [p for p, r in e["posts"].items()
+                if r.get("status") not in ("posted", "skipped", "unconfirmed") and p in posters]
         if not todo:
             continue
         local = fetch(e)
         for p in todo:
             r = e["posts"][p]
             r["attempts"] = int(r.get("attempts", 0)) + 1
+            stamp = now.strftime("%Y-%m-%dT%H:%M:%SZ")
             try:
                 res = posters[p](e, local)
-                r.update({("platform_status" if k == "status" else k): v for k, v in res.items()})  # TikTok returns its own status
-                r.update(status="posted", at=now.strftime("%Y-%m-%dT%H:%M:%SZ"))
-                r.pop("error", None)
-                lines.append(f"✅ {e['id']} {p}: {res}")
+            except Unconfirmed as exc:
+                r.update(status="unconfirmed", ref=exc.ref, error=str(exc)[:500], at=stamp)
+                lines.append(f"⚠️ {e['id']} {p}: may already be live, not sent again; check it by hand ({exc})")
+                continue
             except Exception as exc:  # noqa: BLE001 — one platform failing must not stop the others
                 r.update(status="failed", error=str(exc)[:500])
                 if r["attempts"] >= int(cfg.get("social", {}).get("max_attempts", 3)):
                     r["status"] = "skipped"
                 lines.append(f"❌ {e['id']} {p}: {exc}")
+                continue
+            # The post is out: record it first, so nothing below can turn it back into a retry.
+            r.update(status="posted", at=stamp)
+            r.pop("error", None)
+            r.update({("platform_status" if k == "status" else k): v for k, v in dict(res or {}).items()
+                      if k not in ("at", "attempts")})                    # TikTok returns its own status
+            lines.append(f"✅ {e['id']} {p}: {res}")
     return lines
 
 

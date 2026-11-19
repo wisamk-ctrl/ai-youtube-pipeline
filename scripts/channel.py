@@ -168,7 +168,7 @@ def platform_lines(days: int = 7) -> list[str]:
                 n = platform_numbers(plat, r)
                 if n:
                     stats.append(f"| {plat} | {str(e.get('title', ''))[:50]} | {n} |")
-            elif r.get("status") in ("failed", "skipped"):
+            elif r.get("status") in ("failed", "skipped", "unconfirmed"):
                 failed[plat] = failed.get(plat, 0) + 1
     if not done and not failed:
         return ["_No Shorts posted to other platforms this week._"]

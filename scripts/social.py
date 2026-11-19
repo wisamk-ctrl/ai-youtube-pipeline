@@ -41,7 +41,8 @@ def plan(week: str, replan: bool = False) -> None:
     cfg = apply_language(load_settings(), week)
     queue = social.load_queue(QUEUE)
     if replan:   # rebuilt clips: drop the week's entries that have not gone out anywhere yet
-        keep = [e for e in queue if e["week"] != week or any(r.get("status") == "posted" for r in e["posts"].values())]
+        keep = [e for e in queue if e["week"] != week
+                or any(r.get("status") in ("posted", "unconfirmed") for r in e["posts"].values())]
         print(f"replan: dropped {len(queue) - len(keep)} unposted entries of {week}")
         queue[:] = keep
     tag = f"social-{week}"
@@ -85,7 +86,14 @@ def post(only: str | None) -> int:
     summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary and lines:
         Path(summary).write_text("## Social posts\n\n" + "\n".join(f"- {x}" for x in lines) + "\n", encoding="utf-8")
-    return 1 if any(x.startswith("❌") for x in lines) else 0
+    return 1 if any(x.startswith(("❌", "⚠️")) for x in lines) else 0
+
+
+def merge(ours: str) -> None:
+    """Lay this run's posting results (a saved copy of the queue) over the queue now on disk."""
+    mine = json.loads(Path(ours).read_text(encoding="utf-8"))
+    social.save_queue(QUEUE, social.merge_posts(social.load_queue(QUEUE), mine))
+    print(f"merged posting results from {ours}")
 
 
 def approve(week: str) -> None:
@@ -107,12 +115,15 @@ def status() -> None:
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("action", choices=["plan", "replan", "post", "approve", "status"])
+    ap.add_argument("action", choices=["plan", "replan", "post", "approve", "status", "merge"])
     ap.add_argument("week", nargs="?")
     ap.add_argument("--id")
     a = ap.parse_args()
-    if a.action in ("plan", "replan", "approve") and not a.week:
-        sys.exit("week required")
+    if a.action in ("plan", "replan", "approve", "merge") and not a.week:
+        sys.exit("week required" if a.action != "merge" else "path to this run's queue copy required")
+    if a.action == "merge":
+        merge(a.week)
+        sys.exit(0)
     if a.action in ("plan", "replan"):
         plan(a.week, a.action == "replan")
     elif a.action == "post":
