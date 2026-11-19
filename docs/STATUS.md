@@ -251,4 +251,7 @@ Open founder items, best done in the browser:
    sign-up needs phone verification and SMS codes to the founder's UAE number never arrive; Accounts Center now refuses
    the number ("try a different phone number"), likely a rate limit. Retry after a day, or verify with a card (founder
    enters it). Then: Business app, both products, redirect URI, secrets, `connect` (docs/SOCIAL.md, last section).
-5. TikTok: set posted videos public (the app is unaudited, so posts land private).
+5. ~~TikTok~~ (2026-11-19): @aithisweek switched from a private to a public account (it was private, which is why
+   "Everyone" was never offered); 6 Shorts set to Public (Jensen Huang was still in TikTok's content review).
+   The duplicate ADNOC/G42 post from 17 Nov 9:19 pm stays private. Profile has no bio yet. Watch whether the next
+   automatic post lands public now, or still private because the TikTok app is unaudited.
