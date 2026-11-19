@@ -78,9 +78,19 @@ class YouTube:
         """Top-level comments on the channel's videos, newest first, that the channel has not answered."""
         me = self._get("channels", part="id", mine="true")["items"][0]["id"]
         out, token, titles = [], None, {}
-        for _ in range(pages):
-            d = self._get("commentThreads", part="snippet,replies", allThreadsRelatedToChannelId=me, order="time",
-                          maxResults=100, textFormat="plainText", **({"pageToken": token} if token else {}))
+        # Published comments, then the ones YouTube holds for the channel's review (a new channel's often are, and
+        # the default list leaves them out: 2026-11-19, two comments on a Short never reached the inbox).
+        for status in ("published", "heldForReview"):
+          token = None
+          for _ in range(pages):
+            try:
+                d = self._get("commentThreads", part="snippet,replies", allThreadsRelatedToChannelId=me, order="time",
+                              maxResults=100, textFormat="plainText", moderationStatus=status,
+                              **({"pageToken": token} if token else {}))
+            except RuntimeError:
+                if status == "published":
+                    raise
+                break
             for t in d.get("items", []):
                 top = t["snippet"]["topLevelComment"]
                 s = top["snippet"]
@@ -92,10 +102,13 @@ class YouTube:
                 out.append({"platform": "youtube", "id": top["id"], "post": vid, "author": s.get("authorDisplayName", ""),
                             "text": s.get("textOriginal") or s.get("textDisplay", ""), "at": s.get("publishedAt", ""),
                             "likes": int(s.get("likeCount", 0)), "answered": answered,
+                            "held": status == "heldForReview",
                             "url": f"https://www.youtube.com/watch?v={vid}&lc={top['id']}"})
             token = d.get("nextPageToken")
             if not token:
                 break
+        seen: set[str] = set()
+        out = [c for c in out if not (c["id"] in seen or seen.add(c["id"]))]   # one copy per comment
         ids = sorted({c["post"] for c in out if c["post"]})
         for k in range(0, len(ids), 50):
             for v in self._get("videos", part="snippet", id=",".join(ids[k:k + 50])).get("items", []):
@@ -315,7 +328,9 @@ def digest(new: list[dict[str, Any]], waiting: list[dict[str, Any]], hand: list[
         out += ["## Needs your reply", ""]
         for c in sorted(need, key=lambda c: (not c.get("important"), c["n"])):
             out += [f"**{c['n']}. {c['kind']}** on {c['platform'].capitalize()}"
-                    + (f" · {c['on']}" if c.get("on") else "") + f" · [open]({c['url']})",
+                    + (f" · {c['on']}" if c.get("on") else "") + f" · [open]({c['url']})"
+                    + (" · ⚠️ held for review: approve it in YouTube Studio → Comments → Held for review first"
+                       if c.get("held") else ""),
                     quote(f"{c['author']}: {c['text']}"), "", f"Draft: {c['draft']}", ""]
     unsorted = [c for c in new if c.get("status") == "unsorted"]
     if unsorted:
@@ -327,6 +342,10 @@ def digest(new: list[dict[str, Any]], waiting: list[dict[str, Any]], hand: list[
         out += ["## Positive comments to like", "No platform lets an app like a comment, so these are one tap each:", ""]
         out += [f"- [{c['platform'].capitalize()}: {c['author']}]({c['url']}) · "
                 + quote(c["text"], 120)[2:] + (" · thanked" if c in thanked else "") for c in likes] + [""]
+    held = [c for c in new if c.get("held")]
+    if held:
+        out += [f"⚠️ {len(held)} comment(s) are held for review on YouTube: viewers cannot see them until you approve "
+                "them in YouTube Studio → Comments → Held for review.", ""]
     if hand:
         out += ["## Check by hand", "LinkedIn and TikTok do not let an app read comments:", "", *hand, ""]
     if lessons:
