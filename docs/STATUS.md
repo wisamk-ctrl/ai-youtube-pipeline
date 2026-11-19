@@ -242,7 +242,7 @@ weekly script Fridays 10:00 Gulf → `approve` → render → `publish` → Sund
 Monday report with watch time and where viewers leave; daily comment inbox (now incl. held-for-review comments).
 Open founder items, best done in the browser:
 1. ~~YouTube Studio → Comments → Held for review~~: checked 2026-11-19, none held. The daily inbox now reads held comments.
-2. WhatsApp Channel "AI This Week": create, send the link → `social.whatsapp_channel_url` in config/settings.yaml.
+2. ~~WhatsApp Channel "AI This Week"~~: created 2026-11-19, link set in `social.whatsapp_channel_url`.
 3. Partnerships Gmail: `aithisweek.partnerships@gmail.com` created with forwarding to the founder (2026-11-19) and set in
    `publish.partnerships_email`. Line added to all 8 existing videos (run 44547065294, re-check 0 left). Media kit: `docs/media_kit.html`
    (private artifact https://claude.ai/artifact/DvpDDA8RBojD9JdU8ohkmR; founder approved 2026-11-19; numbers on request).
