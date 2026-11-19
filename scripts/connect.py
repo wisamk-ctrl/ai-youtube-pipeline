@@ -67,6 +67,17 @@ def links() -> str:
     return "\n".join(out) + "\n"
 
 
+def expected_channel() -> str:
+    """The show's channel handle from settings (social.channel_url), lower case, without the @."""
+    try:
+        import yaml
+        url = (yaml.safe_load((Path(__file__).resolve().parents[1] / "config" / "settings.yaml").read_text(encoding="utf-8"))
+               .get("social", {}).get("channel_url", ""))
+    except Exception:  # noqa: BLE001
+        return ""
+    return url.rstrip("/").rsplit("/", 1)[-1].lstrip("@").lower() if "@" in url else ""
+
+
 def code_of(text: str) -> str:
     text = text.strip()
     if "code=" in text:
@@ -108,7 +119,22 @@ def check() -> str:
                    f"- Facebook: the saved Page token was refused (HTTP {r.status_code}). Connect again.")
     else:
         out.append("- Facebook: not connected (no `FACEBOOK_PAGE_TOKEN` secret)")
-    out.append("- YouTube: sign-in saved" if e.get("YOUTUBE_REFRESH_TOKEN") else "- YouTube: not connected")
+    if e.get("YOUTUBE_REFRESH_TOKEN") and e.get("GOOGLE_CLIENT_ID"):
+        t = requests.post("https://oauth2.googleapis.com/token", timeout=60, data={
+            "client_id": e["GOOGLE_CLIENT_ID"], "client_secret": e.get("GOOGLE_CLIENT_SECRET", ""),
+            "refresh_token": e["YOUTUBE_REFRESH_TOKEN"], "grant_type": "refresh_token"}).json()
+        ch = requests.get("https://www.googleapis.com/youtube/v3/channels", timeout=60, params={"part": "snippet", "mine": "true"},
+                          headers={"Authorization": f"Bearer {t.get('access_token', '')}"}).json().get("items", [])
+        if ch:
+            sn = ch[0]["snippet"]
+            ok = sn.get("customUrl", "").lower().lstrip("@") == expected_channel() or not expected_channel()
+            out.append(f"- YouTube: connected to **{sn['title']}** ({sn.get('customUrl', '')})"
+                       + ("" if ok else " ⚠️ NOT the show's channel: connect again and pick AI This Week")
+                       + (" · analytics allowed" if "yt-analytics" in str(t.get("scope", "")) else " · no analytics permission"))
+        else:
+            out.append("- YouTube: the saved sign-in was refused. Connect again.")
+    else:
+        out.append("- YouTube: sign-in saved" if e.get("YOUTUBE_REFRESH_TOKEN") else "- YouTube: not connected")
     out.append("- TikTok: sign-in saved" if e.get("TIKTOK_REFRESH_TOKEN") else "- TikTok: not connected")
     return "\n".join(out) + "\n"
 
@@ -130,6 +156,11 @@ def exchange(platform: str, raw: str) -> None:
         if not me:
             sys.exit("This Google identity has no YouTube channel: sign in again and pick the AI This Week channel")
         print(f"YouTube channel: {me[0]['snippet']['title']} ({me[0]['snippet'].get('customUrl', '')})")
+        want = expected_channel()
+        got = str(me[0]["snippet"].get("customUrl", "")).lower().lstrip("@")
+        if want and got != want:   # 2026-11-19: the personal channel was picked and replaced the show's sign-in
+            sys.exit(f"That is not the show's channel (@{want}). Nothing was saved. Open the link again and, "
+                     "when Google asks which account or channel, pick AI This Week.")
         ok = store_secret("YOUTUBE_REFRESH_TOKEN", d["refresh_token"])
     elif platform == "instagram":
         short = _json(requests.post("https://api.instagram.com/oauth/access_token", timeout=60, data={
