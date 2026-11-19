@@ -5,7 +5,7 @@ on:
     - cron: "41 11 * * 6"     # Saturday 15:41 Gulf: did this week's script run succeed?
     - cron: "17 4 * * 0"      # Sunday 08:17 Gulf: is an episode going out today?
     - cron: "29 5 * * 1"      # Monday 09:29 Gulf: the weekly numbers
-    - cron: "47 * * * *"      # hourly: an episode just went public → the WhatsApp status kit
+    - cron: "47 * * * *"      # hourly: an episode or Short just went public → the WhatsApp kit (Channel + status)
   workflow_dispatch:
     inputs:
       check:

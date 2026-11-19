@@ -165,36 +165,56 @@ def report() -> None:
            f"Weekly numbers {NOW:%Y-%m-%d}", "--body", body)
 
 
+def kit_body(title: str, link: str, clip: str, short: bool, channel_url: str = "") -> str:
+    """The WhatsApp kit: the same video and link for the founder's status and for the AI This Week
+    WhatsApp Channel (founder 2026-11-19). WhatsApp has no API that posts to a status or a Channel."""
+    clean = title.replace("#Shorts", "").strip()
+    head = f"⚡ {clean}" if short else f"🆕 New episode of AI This Week: {clean}"
+    channel_text = [head, "", f"▶️ {link}"] + ([f"More from the show: {channel_url}"] if short and channel_url else [])
+    return "\n".join([
+        f"**{clean}** is live: {link}", "",
+        "### 1. Save the video", "",
+        f"Open this on your phone and save it: {clip}" if clip else "No vertical clip this time: share the YouTube link instead.", "",
+        "### 2. WhatsApp Channel (AI This Week)", "",
+        "WhatsApp → Updates → your channel → 📎 → pick the video → paste this caption → send:", "",
+        "```", *channel_text, "```", "",
+        "### 3. Your status", "",
+        "WhatsApp → Updates → My status → pick the same video → paste:", "",
+        "```", head, link, "```", "",
+        "The 10-second way for either: open the YouTube link → Share → WhatsApp."])
+
+
 def status_kit() -> None:
-    """Hourly: when an episode has just gone public, open a "Status kit" issue (GitHub e-mails it) with a
-    vertical teaser to save and a caption with the link, ready for the founder's WhatsApp status. WhatsApp
-    has no official way for software to post a personal status, so the last tap stays his."""
+    """Hourly: when an episode or a Short has just gone public, open a "WhatsApp kit" issue (GitHub e-mails it)
+    with the vertical video to save and captions for the WhatsApp Channel and the founder's status."""
     seen_file = ROOT / "data" / "status_kits.json"
     seen = json.loads(seen_file.read_text(encoding="utf-8")) if seen_file.exists() else []
     queue_file = ROOT / "data" / "social_queue.json"
     queue = json.loads(queue_file.read_text(encoding="utf-8")) if queue_file.exists() else []
+    try:
+        from pipeline.config import load_settings
+        channel_url = str(load_settings().get("social", {}).get("channel_url", ""))
+    except Exception:  # noqa: BLE001
+        channel_url = ""
     for v in videos(token(), 10):
         if v["id"] in seen or v["status"].get("privacyStatus") != "public":
-            continue
-        if seconds(v["contentDetails"].get("duration")) <= 60:
             continue
         t = datetime.fromisoformat(v["snippet"]["publishedAt"].replace("Z", "+00:00"))
         if NOW - t > timedelta(hours=24):
             seen.append(v["id"])           # older than a day: never announce it late
             continue
+        short = seconds(v["contentDetails"].get("duration")) <= 180 or "#shorts" in v["snippet"]["title"].lower()
         title, link = v["snippet"]["title"], f"https://youtu.be/{v['id']}"
-        clip = next((e["url"] for e in reversed(queue) if e["id"].endswith("#1")), "")
-        body = "\n".join([
-            f"**{title}** is live: {link}", "",
-            "### For your WhatsApp status", "",
-            f"1. Open this on your phone and save the video: {clip}" if clip else "1. Share the YouTube link below.",
-            "2. WhatsApp → Updates → My status → pick the video (WhatsApp lets you trim it if it is too long).",
-            "3. Paste this caption:", "", "```", f"New episode of AI This Week is out: {title}", link, "```", "",
-            "Or the 10-second way: open the YouTube link → Share → WhatsApp → My status."])
-        gh("issue", "create", "--repo", os.environ["GITHUB_REPOSITORY"], "--title", f"Status kit: {title[:60]}",
-           "--body", body)
+        if short:   # the Short's own file, from the queue entry that posted it
+            clip = next((e["url"] for e in reversed(queue)
+                         if v["id"] in str(((e.get("posts") or {}).get("youtube") or {}).get("url", ""))), "")
+        else:
+            clip = next((e["url"] for e in reversed(queue) if e["id"].endswith("#1")), "")
+        body = kit_body(title, link, clip, short, channel_url)
+        gh("issue", "create", "--repo", os.environ["GITHUB_REPOSITORY"],
+           "--title", f"WhatsApp kit: {title.replace('#Shorts', '').strip()[:60]}", "--body", body)
         seen.append(v["id"])
-        print("status kit:", title)
+        print("whatsapp kit:", title)
     seen_file.write_text(json.dumps(seen[-50:]), encoding="utf-8")
 
 

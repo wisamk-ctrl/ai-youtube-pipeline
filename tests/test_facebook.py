@@ -46,3 +46,19 @@ def test_episode_upload(tmp_path):
 def test_facebook_caption_carries_the_channel_link():
     cfg = {"social": {"channel_url": "https://youtube.com/@x"}, "publish": {"hashtags_en": ["#AI"]}}
     assert "https://youtube.com/@x" in caption({"title": "T"}, cfg, "en", "facebook")
+
+
+def test_whatsapp_channel_link_in_captions_once_set():
+    cfg = {"social": {"channel_url": "https://youtube.com/@x", "whatsapp_channel_url": "https://whatsapp.com/channel/ABC"},
+           "publish": {"hashtags_en": ["#AI"]}}
+    assert "https://whatsapp.com/channel/ABC" in caption({"title": "T"}, cfg, "en", "youtube")
+    assert "whatsapp.com" not in caption({"title": "T"}, cfg, "en", "tiktok")
+
+
+def test_whatsapp_kit_has_channel_and_status_parts():
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from channel import kit_body
+    b = kit_body("California sues OpenAI #Shorts", "https://youtu.be/x", "https://r/clip.mp4", True, "https://yt/@c")
+    assert "WhatsApp Channel" in b and "My status" in b and "⚡ California sues OpenAI" in b and "#Shorts" not in b
+    assert "https://r/clip.mp4" in b

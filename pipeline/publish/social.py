@@ -93,6 +93,8 @@ def caption(short: dict[str, Any], cfg: dict[str, Any], lang: str, platform: str
         more = (f"Full episode: {s['channel_url']}" if lang == "en" else f"الحلقة الكاملة: {s['channel_url']}")
     if platform == "linkedin":   # broad, high-reach tags (founder 2026-11-18)
         tags = list(s.get(f"linkedin_hashtags_{lang}", tags))[:10]
+    if platform in ("linkedin", "youtube", "facebook") and s.get("whatsapp_channel_url"):
+        more += ("\nFollow on WhatsApp: " if lang == "en" else "\nتابعونا على واتساب: ") + s["whatsapp_channel_url"]
     note = desc.DISCLOSURE_EN if lang == "en" else desc.DISCLOSURE_AR
     return "\n\n".join(x for x in (desc.clean(short.get("title", "")), more, note, " ".join(tags)) if x)
 
