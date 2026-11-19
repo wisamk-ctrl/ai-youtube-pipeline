@@ -193,8 +193,14 @@ def report() -> None:
             v_, m_, d_, s_ = a.json()["rows"][0]
             watch = (f"Last 7 days: **{v_} views, {m_ / 60:.1f} hours watched, average view {d_} s, "
                      f"+{s_} subscribers**.\n\n")
+        elif a.status_code == 200:
+            watch = "_Watch time: no analytics rows yet for the last 7 days (YouTube's numbers lag two to three days)._\n\n"
         else:
-            watch = "_Watch time not available: re-connect YouTube (connect → links) to grant analytics._\n\n"
+            try:
+                why = a.json().get("error", {}).get("message", "")[:200]
+            except ValueError:
+                why = a.text[:200]
+            watch = f"_Watch time not available (HTTP {a.status_code}: {why})._\n\n"
     except requests.RequestException:
         pass
     lines = [f"Channel: **{ch.get('subscriberCount', '?')} subscribers**, {ch.get('viewCount', '?')} views in total.", "",
