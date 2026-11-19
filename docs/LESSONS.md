@@ -212,6 +212,11 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   pictures come from those, and no API sets them. Fix for good: `publish.chapter_gate`. The episode is uploaded
   unlisted, and `release` (every 20 min) makes it public at the release time only once each chapter has its own
   picture (or after `chapter_wait_hours`, and says so). Upload well before the release time so YouTube has finished.
+- **2026-11-19, W46-en chapters re-checked in a signed-in browser:** about 1.5 days after upload, all 10 chapters
+  still use `hqdefault.jpg` (the video thumbnail), and the GitHub runner check now meets YouTube's sign-in wall
+  (UNKNOWN). Time alone has not produced chapter pictures for this upload, so the gate may often hit
+  `chapter_wait_hours` and publish anyway. Watch W47: if its chapters also never get pictures, the gate's premise is
+  wrong and the wait only delays the episode.
 - **2026-11-18, automatic voice test:** the voice took 10 seconds; the run took 39 minutes because Whisper spent 35
   minutes revalidating its cached model with the Hugging Face hub. The render job now sets `HF_HUB_OFFLINE=1` when the
   model came from the cache.
