@@ -215,6 +215,8 @@ def build_description(plan: dict[str, Any], sources: list[dict[str, Any]], cfg: 
     if cl:
         tail += [cl, ""]
     p = cfg.get("publish", {})
+    if p.get("partnerships_email"):   # founder 2026-11-19: sponsors find the address on every video
+        tail += [(f"Partnerships: {p['partnerships_email']}" if en else f"للشراكات والرعاية: {p['partnerships_email']}"), ""]
     tags = p.get("hashtags_en", ["#AI"]) if en else p.get("hashtags", [])
     tail += [DISCLOSURE_EN if en else DISCLOSURE_AR, "", " ".join(tags)]
     return clean(_fit(head, src, tail))

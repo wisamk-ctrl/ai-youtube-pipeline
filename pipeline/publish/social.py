@@ -95,6 +95,8 @@ def caption(short: dict[str, Any], cfg: dict[str, Any], lang: str, platform: str
         tags = list(s.get(f"linkedin_hashtags_{lang}", tags))[:10]
     if platform in ("linkedin", "youtube", "facebook") and s.get("whatsapp_channel_url"):
         more += ("\nFollow on WhatsApp: " if lang == "en" else "\nتابعونا على واتساب: ") + s["whatsapp_channel_url"]
+    if platform == "youtube" and cfg.get("publish", {}).get("partnerships_email"):
+        more += f"\nPartnerships: {cfg['publish']['partnerships_email']}"
     note = desc.DISCLOSURE_EN if lang == "en" else desc.DISCLOSURE_AR
     return "\n\n".join(x for x in (desc.clean(short.get("title", "")), more, note, " ".join(tags)) if x)
 
