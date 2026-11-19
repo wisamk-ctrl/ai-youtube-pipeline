@@ -33,3 +33,10 @@ Each lesson comes from a real fault heard or caught in a past episode. Treat a r
   right there: «Daytona, a company that runs code sandboxes for AI agents». One short clause, not a lecture; names
   everyone knows (OpenAI, Google, NVIDIA) need none. If a story needs more than three such names, drop the least
   important ones instead of explaining them all.
+
+- **The first minute decides the episode (YouTube retention, W45-en, 2026-11-19).** Half the viewers had left by
+  0:55 and the steepest drop came at 0:11, inside the opening. So: the first words are the lead story and why it
+  matters to someone here, said in the first 20 seconds; no greeting, no channel introduction and no list of
+  what's coming before it. The welcome and "this week on AI This Week" come after the first story, in one
+  sentence. Never open with the show's name, the date or "in this episode". The Monday report's "Where viewers
+  leave" section checks whether this works; revise this lesson from those numbers.
