@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-19 04:48 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Foreign Policy reports a wave of tech outages across the U.S. government and private sector.  ← Foreign Policy (3b04d90a6b)
+- (2) A global Microsoft outage that began last Thursday disrupted services that businesses, schools and governments rely on.  ← Foreign Policy (3b04d90a6b)
+- (3) On Friday, the FAA issued a rare nationwide ground stop, causing widespread flight cancellations and delays.  ← Foreign Policy (3b04d90a6b)
+- (4) Chase Bank, Bank of America and Apple services also faced brief disruptions, and some internal NSA systems went down.  ← Foreign Policy (3b04d90a6b)
+- (5) Foreign Policy says there is currently no evidence of cyberattacks, or that the incidents were linked.  ← Foreign Policy (3b04d90a6b)
+- (6) Microsoft's Charles Lamanna cited a latent bug, a surge in load and reduced server capacity.  ← Foreign Policy (3b04d90a6b)
+- (7) For the Gulf, the question to watch is how much critical services depend on a few shared platforms.  ← regional line, no facts
