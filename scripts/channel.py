@@ -206,7 +206,8 @@ def report() -> None:
     lines = [f"Channel: **{ch.get('subscriberCount', '?')} subscribers**, {ch.get('viewCount', '?')} views in total.", "",
              watch + "| | Video | Views | This week | Likes | Comments |", "|---|---|---:|---:|---:|---:|"]
     lines += [f"| {k} | [{t}](https://youtu.be/{i}) | {v} | +{d} | {l} | {c} |" for k, t, v, d, l, c, i in rows]
-    best = [r for r in rows if r[0] == "Short"][:1]
+    shorts = [r for r in rows if r[0] == "Short"]
+    best = sorted(shorts, key=lambda r: (-r[3], -r[2]))[:1] if any(r[3] for r in shorts) else []
     if best:
         lines += ["", f"Best Short this week: **{best[0][1]}** (+{best[0][3]} views). Its topic and opening line are "
                   "worth repeating."]
@@ -214,6 +215,9 @@ def report() -> None:
     body = "\n".join(lines) + "\n"
     print(body)
     STATS.parent.mkdir(parents=True, exist_ok=True)
+    if os.environ.get("GITHUB_EVENT_NAME", "schedule") != "schedule":
+        print("(manual run: the weekly baseline is left as it was)")
+        return
     STATS.write_text(json.dumps({"at": NOW.strftime("%Y-%m-%dT%H:%MZ"), "videos": now_stats}, indent=1), encoding="utf-8")
     if os.environ.get("GITHUB_REPOSITORY"):
         gh("issue", "create", "--repo", os.environ["GITHUB_REPOSITORY"], "--title",
