@@ -258,3 +258,14 @@ Open founder items, best done in the browser:
    accepted ("Profile has been updated"), but the profile still showed "aithisweek" and the name is locked until
    26 Nov: most likely in TikTok review; check it shows. Watch whether the next
    automatic post lands public now, or still private because the TikTok app is unaudited.
+
+## Languages on YouTube (checked in Studio 2026-11-19)
+- **Auto-dubbing is not available on this channel yet:** no setting under Settings → Upload defaults → Advanced, and
+  no automatic dub appears on any video's Languages page (press reports say it reached all creators in Feb 2026;
+  not so for this channel today). Re-check monthly.
+- **Our own audio tracks ARE available:** Languages → Add language → Arabic → Audio → "Select File" (Studio only;
+  YouTube's note: the track cannot be trimmed there and "should roughly align to the length of your video"). This is
+  the route for an Arabic track in the founder's cloned voice on the English episode (one video, one view count).
+- Per-language title, description, thumbnail and manual subtitles can be added in the same panel. English
+  episodes currently carry no Arabic title/description (`pipeline/publish/youtube_upload.py`: localizations are
+  only sent when the episode language is not English).
