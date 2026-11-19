@@ -269,3 +269,14 @@ Open founder items, best done in the browser:
 - Per-language title, description, thumbnail and manual subtitles can be added in the same panel. English
   episodes currently carry no Arabic title/description (`pipeline/publish/youtube_upload.py`: localizations are
   only sent when the episode language is not English).
+
+## Connected tools worth using (reviewed 2026-11-19, none adopted yet)
+- **HeyGen video translation** (connector `create_video_translation`): verified on the current plan: Arabic (Jordan)
+  and other Arabic dialects, Turkish, Urdu (Pakistan). Voice clone + lip-sync, or `translateAudioOnly` = just a dubbed
+  track to add in Studio → Languages → Arabic → Audio. Cost unverified (help-centre figure ~4–10 credits/min).
+  Next step when wanted: a 1-minute Arabic (Jordan) test on the NVIDIA episode (`startTime`/`endTime`).
+- **Higgsfield TikTok publish** (`tiktok_prepare_publish`): public or draft posts from a verified source; needs a
+  Higgsfield-hosted file and the founder's approval in a form each time, so manual only.
+- **Bigdata.com monitors** (named-company news events), **Crustdata** (sponsor prospecting in MENA AI/cloud),
+  **TinyFish monitors** (regulator/ministry page watchers), **Higgsfield virality predictor** (Short pre-check).
+- Plugins offered: TubeAlfred (channel/SEO audits, comment leads), Arcmira (sponsor research on similar shows).
