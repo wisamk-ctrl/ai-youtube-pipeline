@@ -235,3 +235,15 @@ Friday: script → founder review. Saturday: English, voice, render, upload (pri
 The chain (2026-11-19): reply `approve` on the week's Review issue → English version → voice, render, Shorts →
 previews + a "ready" comment (and WhatsApp alert when set) → reply `publish` → unlisted upload, public at the
 Sunday slot via the release gate → LinkedIn and Facebook episode posts (phase `announce`) once it is public.
+
+## Handoff — 2026-11-19 (for a session on the founder's computer with the Chrome extension)
+Working and automatic: news watch → breaking Shorts (approve with `post <week>` on the Breaking Shorts issue);
+weekly script Fridays 10:00 Gulf → `approve` → render → `publish` → Sunday 17:00 Gulf → LinkedIn/Facebook at release;
+Monday report with watch time and where viewers leave; daily comment inbox (now incl. held-for-review comments).
+Open founder items, best done in the browser:
+1. YouTube Studio → Comments → Held for review: approve real comments.
+2. WhatsApp Channel "AI This Week": create, send the link → `social.whatsapp_channel_url` in config/settings.yaml.
+3. Partnerships Gmail with forwarding → media kit (artifact) and description line.
+4. Meta: Facebook Page + Instagram Professional + developer app → secrets META_APP_ID/SECRET, INSTAGRAM_APP_ID/SECRET
+   → `connect` links → facebook / instagram (docs/SOCIAL.md, last section).
+5. TikTok: set posted videos public (the app is unaudited, so posts land private).
