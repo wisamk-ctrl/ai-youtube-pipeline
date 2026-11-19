@@ -59,19 +59,49 @@ def _finish_google_news(items: list[NewsItem], cfg: dict[str, Any]) -> list[News
     return items
 
 
+class _Throttle:
+    """Google News answers 429 to a burst of searches from one runner (2026-11-18: 9 of 9 site searches refused).
+    Space the searches, back off once on a 429, and stop asking for the rest of the run after a second 429
+    instead of collecting a page of failures."""
+
+    def __init__(self, pause: float, backoff: float = 20.0, sleep=time.sleep):
+        self.pause, self.backoff, self.sleep, self.blocked, self.skipped = pause, backoff, sleep, False, 0
+
+    def get(self, fetch, *args):
+        if self.blocked:
+            self.skipped += 1
+            return None
+        if self.pause:
+            self.sleep(self.pause)
+        try:
+            return fetch(*args)
+        except Exception as exc:  # noqa: BLE001
+            if "429" not in str(exc):
+                raise
+        self.sleep(self.backoff)
+        try:
+            return fetch(*args)
+        except Exception as exc:  # noqa: BLE001
+            if "429" not in str(exc):
+                raise
+            self.blocked = True
+            log.warning("Google News is refusing this runner (429 twice): the remaining searches wait for the next run")
+            return None
+
+
 def fetch_google_news(watch: Watchlist, cfg: dict[str, Any], entities: Iterable[Entity] | None = None) -> list[NewsItem]:
     ing = cfg["ingestion"]
     days = ing["lookback_days"]
     out: list[NewsItem] = []
-    pause = float(ing["watchlist"].get("pause_seconds", 0))   # Google News answers 429 to a burst of searches
+    gate = _Throttle(float(ing["watchlist"].get("pause_seconds", 0)))   # Google News answers 429 to a burst of searches
     for e in entities or watch.entities:
-        if pause:
-            time.sleep(pause)
         url = google_news_url(e.news_query, days)
         try:
-            items = fetch_feed(f"Google News · {e.name}", url, 0.9, _since(cfg), ing["request_timeout_s"])
+            items = gate.get(fetch_feed, f"Google News · {e.name}", url, 0.9, _since(cfg), ing["request_timeout_s"])
         except Exception as exc:  # noqa: BLE001
             log.warning("Google News for %s failed: %s", e.name, exc)
+            continue
+        if items is None:
             continue
         for i in items[: ing["watchlist"].get("max_per_entity", 8)]:
             _split_publisher(i)
@@ -87,14 +117,17 @@ def fetch_site_queries(cfg: dict[str, Any]) -> list[NewsItem]:
     tagger sets track and names afterwards."""
     ing = cfg["ingestion"]
     out: list[NewsItem] = []
+    gate = _Throttle(max(2.0, float(ing.get("watchlist", {}).get("pause_seconds", 0))))
     for site in ing.get("google_news_sites") or []:
         url = google_news_url(site["query"], ing["lookback_days"], site.get("lang", "en"), site.get("country", "US"),
                               raw=bool(site.get("raw", False)))
         try:
-            items = fetch_feed(f"Google News · {site['name']}", url, float(site.get("weight", 1.0)), _since(cfg),
-                               ing["request_timeout_s"])
+            items = gate.get(fetch_feed, f"Google News · {site['name']}", url, float(site.get("weight", 1.0)), _since(cfg),
+                             ing["request_timeout_s"])
         except Exception as exc:  # noqa: BLE001
             log.warning("Google News site search %s failed: %s", site.get("name"), exc)
+            continue
+        if items is None:
             continue
         for i in items[: int(site.get("max_items", 6))]:
             _split_publisher(i)

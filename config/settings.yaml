@@ -18,11 +18,10 @@ ingestion:
       url: ""                   # paste your kill-the-newsletter Atom URL here
       weight: 1.2
     - name: Import AI
-      url: https://importai.substack.com/feed
+      url: https://jack-clark.net/feed/   # the author's own feed: Substack's answers 403 to GitHub runners (2026-11-19)
       weight: 1.1
-    - name: The Batch (DeepLearning.AI)
-      url: https://www.deeplearning.ai/the-batch/feed/
-      weight: 1.1
+    # The Batch (DeepLearning.AI): every deeplearning.ai URL answers 403 to GitHub runners (2026-11-19), so it is
+    # read as a Google News site search below.
 
   # YouTube channels. From a home/office IP the Atom feeds work with no key; from a datacenter
   # (GitHub runners) YouTube answers 404, so set YOUTUBE_API_KEY (Data API v3, 1 quota unit per
@@ -92,6 +91,7 @@ ingestion:
   # guessed. Publisher tiers for the credit come from config/publishers.yaml.
   google_news_sites:
     - { name: The National,  query: "site:thenationalnews.com", region: gulf }
+    - { name: The Batch,     query: "site:deeplearning.ai the-batch" }
     - { name: Arab News,     query: "site:arabnews.com",        region: gulf }
     - { name: WAM,           query: "site:wam.ae",              region: gulf }
     - { name: SPA,           query: "site:spa.gov.sa",          region: gulf }

@@ -35,7 +35,7 @@ def main(kind: str, week: str, extra: str = "") -> None:
     elif kind == "ready":
         url = f"https://github.com/{repo}/raw/previews/{week}-files/short_01.mp4"
         body = (f"**Ready to check: `{week}`**\n\n▶️ {url}\n\nTo publish to YouTube, TikTok and LinkedIn, reply here with:\n\n"
-                f"```\npost {week}\n```\n\nNo reply, no post.")
+                f"```\npost {week}\n```\n\nNo reply, no post." + (f"\n\n{extra}" if extra else ""))
     else:
         body = f"**Posted: `{week}`**\n\n{extra}"
     comment(body)

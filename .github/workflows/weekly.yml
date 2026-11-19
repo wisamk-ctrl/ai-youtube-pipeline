@@ -359,7 +359,8 @@ jobs:
         run: |
           gh workflow run preview.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" -f what=video
           gh workflow run preview.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" -f what=text   # the Shorts
-          python scripts/review_issue.py ready "$WEEK"
+          QC=$(for f in output/"$WEEK"/shorts/short_*.mp4; do [ -f "$f" ] && echo "**$(basename "$f")**: $(python scripts/short_check.py "$f")"; done || true)
+          python scripts/review_issue.py ready "$WEEK" "$QC"
       - name: Breaking Short ready → preview and tell the founder
         if: success() && inputs.phase == 'assemble' && hashFiles(format('reviewed/{0}/breaking.yaml', inputs.week)) != ''
         env:
@@ -369,7 +370,8 @@ jobs:
           CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
         run: |
           gh workflow run preview.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" -f what=text
-          python scripts/breaking_issue.py ready "$WEEK"
+          QC=$(python scripts/short_check.py "output/$WEEK/shorts/short_01.mp4" || true)
+          python scripts/breaking_issue.py ready "$WEEK" "$QC"
       - name: Save the release queue (publish)
         if: always() && inputs.phase == 'publish'
         run: |

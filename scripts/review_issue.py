@@ -39,7 +39,7 @@ def main(kind: str, week: str, extra: str = "") -> None:
                 f"📱 Shorts: {raw}/{week}-files/short_01.mp4 (02, 03 next to it)\n\n"
                 "The previews take a few minutes to appear. When you are happy, reply here with:\n\n"
                 "```\npublish\n```\n\nIt uploads unlisted and goes public at the Sunday slot (17:00 Gulf); "
-                "LinkedIn and Facebook follow when it is public. No reply, no upload.")
+                "LinkedIn and Facebook follow when it is public. No reply, no upload." + (f"\n\n{extra}" if extra else ""))
         from scripts.notify import whatsapp
         whatsapp(f"AI This Week: the episode {week} is rendered. Check it and reply publish on the review issue.\n{raw}/{week}.mp4")
     else:
