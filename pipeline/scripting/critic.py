@@ -118,7 +118,7 @@ def critique(script: str, style_guide: str, model: str, client: anthropic.Anthro
     """One sample. Scores are recomputed from the defect list so the number always has evidence.
     `system` / `schema` let the English version (scripting/translate.py) reuse it with its own brief."""
     resp = client.messages.parse(
-        model=model, max_tokens=8000,
+        model=model, max_tokens=16000,   # 8000 ran out on W47 (2026-11-20): a long defect list on a 1,360-word script
         system=(system or SYSTEM).format(style_guide=style_guide, rubric=rubric or "(no rubric supplied: score 10 minus one per concrete listener problem you can quote)"),
         messages=[{"role": "user", "content": f"Score this script.\n\n<script>\n{script}\n</script>"}],
         output_format=schema,
