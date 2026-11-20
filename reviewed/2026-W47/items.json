@@ -1354,5 +1354,65 @@
    "OpenAI"
   ],
   "id": "7d4307f50c"
+ },
+ {
+  "source": "The National",
+  "source_type": "rss",
+  "title": "Anthropic IPO is largest in history, overtaking SpaceX",
+  "summary": "Anthropic's debut on Nasdaq on Thursday marked a significant moment for the company and a major achievement for the artificial intelligence sector. Shares in Anthropic were priced at $83 each, placing value for the company at about $1.5 trillion. The company had about 980 million shares as trading began. Its stock price jumped to about $100 in the afternoon, and at the closing bell it was priced at $97, having gained 17 per cent on the day. An additional private sector investment of $26 billion in Anthropic means that in total the company sold $107 billion in shares, breaking SpaceX’s IPO where that company raised $86 billion. Anthropic’s chief executive and co-founder Dario Amodei struck an optimistic yet cautious tone during a speech just before markets opened. \"Our customers, the world's most ambitious companies, nonprofits, and individual people, are already applying the intelligence we've built to stimulate economic growth,\" he said, before pivoting and acknowledging growing concerns about the potential for AI to create labour disruptions and lead to a spike in cybersecurity problems, among other worries. \"We discuss these risks not because we think they are inevitable and we are building anyway, but because we think they are avoidable, avoiding them depends on the choices made by the people building AI,” he said. Malik Ahmed Khan, a senior equity analyst at Morningstar, reflected on Anthropic's blockbuster debut. \"At $83 per share, Anthropic is coming to market above its initial pricing range, but still below our $92 fair value estimate,” he said, while also pointing out that companies such as Anthropic are by no means bulletproof. “Investors should not mistake a discount to fair value for an absence of risk,” Mr Khan added. “Anthropic will need to sustain rapid growth while managing the enormous cost of developing and running its models, and there is still considerable uncertainty around how the competitive landscape and economics of generative AI will evolve.” Varun Datta, an AI-centric venture capitalist and founder of Truth Ventures, said that although there's definitely enthusiasm amid Anthropic's IPO, the company's lofty valuation leaves little room for disappointment. \"Personally I'll be looking closely at customer retention and how much enterprise clients are spending year on year,\" he said. \"This will give a clearer picture of the business behind the IPO.\" Mr Datta said it's also important not to overlook that Anthropic's IPO might create…",
+  "url": "https://www.thenationalnews.com/future/technology/2026/11/19/anthropic-stock-ipo-ticker-symbol/",
+  "published": "2026-11-19T22:02:04+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.0,
+  "score": 0.0,
+  "score_breakdown": {},
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "Anthropic"
+  ],
+  "id": "2ff183a19d"
+ },
+ {
+  "source": "CNBC",
+  "source_type": "rss",
+  "title": "Anthropic was supposed to save the AI trade. What went wrong?",
+  "summary": "Anthropic's historic IPO — the largest in U.S. history — delivered a big win for the company and its investors. But it failed at another task: reviving animal spirits in the AI trade. The Nasdaq Composite closed down 2.25% amid a broader market pullback with the S&P 500 declining 2% to 7,175. It wasn't supposed to play out this way. Investors had been looking forward to the Anthropic IPO as a \"clearing event\" — reviving the tech sector after months of choppy trading, the Nvidia espionage scandal, and growing concerns that AI chip sales to Asia are likely to slump as Washington cracks down on potential violations of export controls. Some of those worries resurfaced Thursday as a short seller, Hunterbrook Media, alleged in a report that firmware sold by chipmaker AMD had turned up in U.S.-blacklisted companies. AMD stock closed down more than 7%. The chipmaker told CNBC it complies with U.S. law. Adding to the worries, the House Foreign Affairs Committee released documents showing that a subagency of the Commerce Department approved the sale of more than 879,000 AI chips to Chinese companies. That also raised the prospect of an Asia sales slowdown under stricter export controls. Many investors and analysts continue to express confidence in the AI trade, noting that Anthropic's successful market debut — the stock closed up 17% from its IPO price and raised more than $81 billion — bodes well for capital spending across tech. But investors acknowledged that this is a high-tension moment and said it's time to be more strategic about the trade. Dan Niles, founder of Niles Investment Management, described himself as a \"circumspect bull,\" making the comparison to market conditions in 2022 when the big indices tanked in the back half of the year. \"You could have still made money that year. You just needed to have the right combination of longs and shorts,\" he said. Part of the challenge, Niles said, has been a price war between the two cutting-edge frontier labs, Anthropic and OpenAI. That has posed a threat to the overall revenue and profit potential of AI and the capex going into it. Fierce competition on price is producing collective losses between the two top companies, he notes. \"The combined revenue growth for OpenAI plus Anthropic went from growing 75% sequentially in Q2 to 48% in Q3,\" he told CNBC. \"The combined losses went from $7.9 billion to about $8.4 billion from Q2 to Q3.\" While uncertainty is high now, some resolution may be on the horizon if a…",
+  "url": "https://www.cnbc.com/2026/11/19/anthropic-ipo-ai-stocks-selloff.html",
+  "published": "2026-11-19T22:41:43+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 0.0,
+  "score_breakdown": {},
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "AMD",
+   "Anthropic",
+   "NVIDIA",
+   "OpenAI"
+  ],
+  "id": "31a405b15c"
+ },
+ {
+  "source": "Tekedia",
+  "source_type": "rss",
+  "title": "Alibaba Releases Qwen4-Max, a 2.4 Trillion-Parameter AI Model With Improved Efficiency",
+  "summary": "Alibaba Releases Qwen4-Max, a 2.4 Trillion-Parameter AI Model With Improved Efficiency Tekedia",
+  "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQWFAxUmt5aXN1SFA0OVNabm1RQ2ZXSFhVNEswb1RjMFlqLXMxWjB1YjJHWHRqem4xb2xvV2VSenVFRHJEU0JBWnA3V285QVZ4NWpld0M2TEk3MEFFc2NwVFRUWmVBUXVIcERQWXlNZ09vWXVoRXZ4aDZTREhMc1FxUnM0T05MbEEzQlNsM29XN3NleG5wQTdxaTUtbEZtMXVBWjJHbmZrT0hwNmZNTHBj?oc=5",
+  "published": "2026-11-18T09:51:47+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 0.0,
+  "score_breakdown": {},
+  "track": "models",
+  "region": "cn",
+  "entities": [
+   "Alibaba Qwen"
+  ],
+  "id": "959357e929"
  }
 ]
