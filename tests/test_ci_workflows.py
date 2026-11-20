@@ -148,3 +148,12 @@ def test_clip_never_leaves_details_or_fence_open():
     assert len(re.findall(r"^```", r, re.M)) % 2 == 0
     assert r.count("<details") == r.count("</details>")
     assert r.rstrip().endswith("artifact._")
+
+
+def test_scripts_that_import_the_scripts_package_put_the_repo_on_the_path():
+    """2026-11-20: `python scripts/breaking_issue.py` failed on `from scripts.notify import whatsapp` (the repo root
+    was not on sys.path), failing two breaking-Short runs after the founder had already been told."""
+    for f in (ROOT / "scripts").glob("*.py"):
+        text = f.read_text(encoding="utf-8")
+        if "from scripts." in text:
+            assert "sys.path.insert(0, str(" in text, f"{f.name} imports scripts.* without the repo root on sys.path"
