@@ -37,7 +37,7 @@ jobs:
       WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}
       CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
       - name: Which Short?
         id: w
         env:
@@ -46,7 +46,7 @@ jobs:
           w=$(printf '%s' "$BODY" | head -n1 | sed -E 's/^post[[:space:]]+//; s/[^A-Za-z0-9._-].*$//')
           if [ ! -f "reviewed/$w/breaking.yaml" ]; then echo "No breaking Short named '$w'"; exit 1; fi
           echo "week=$w" >> "$GITHUB_OUTPUT"
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
         with:
           python-version: "3.12"
           cache: pip
@@ -54,14 +54,14 @@ jobs:
       - run: pip install -q -r requirements.lock
       - name: Find the Short's artifact
         id: art
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b  # v7
         with:
           script: |
             const name = `week-${{ steps.w.outputs.week }}`;
             const { data } = await github.rest.actions.listArtifactsForRepo({ owner: context.repo.owner, repo: context.repo.repo, name, per_page: 20 });
             const live = data.artifacts.filter(a => !a.expired).sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
             if (!live.length) core.setFailed(`No artifact ${name}: has the render finished?`); else core.setOutput('run_id', String(live[0].workflow_run.id));
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4
         with:
           name: week-${{ steps.w.outputs.week }}
           path: output/

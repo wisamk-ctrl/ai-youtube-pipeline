@@ -157,3 +157,13 @@ def test_scripts_that_import_the_scripts_package_put_the_repo_on_the_path():
         text = f.read_text(encoding="utf-8")
         if "from scripts." in text or "from pipeline" in text:
             assert "sys.path.insert(0, str(" in text, f"{f.name} imports a repo package without the repo root on sys.path"
+
+
+def test_every_action_is_pinned_to_a_commit():
+    """Founder 2026-11-20 (account security): a moved tag on a third-party action would run new code with our
+    secrets. Each `uses:` names a 40-character commit, with the tag kept as a comment."""
+    for f in WF.glob("*.yml"):
+        for ref in re.findall(r"uses:\s*([^\s#]+)", f.read_text(encoding="utf-8")):
+            if ref.startswith("./"):
+                continue
+            assert re.fullmatch(r"[\w.-]+/[\w./-]+@[0-9a-f]{40}", ref), f"{f.name}: {ref} is not pinned to a commit"
