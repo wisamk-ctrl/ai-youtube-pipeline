@@ -1,0 +1,4 @@
+Cleared by the founder on 2026-11-20 after checking the W47-en source map (run 44752259659):
+93 of 95 claims sourced or partly sourced. The two "unsourced" lines are not factual claims:
+- (124) "That means running the chips through the cloud, without having them on your own premises." An explanation of remote access, no new fact.
+- (141) "The software industry has spent decades dealing with runaway programs, and the tools exist." Wissam's own view in the California segment.
