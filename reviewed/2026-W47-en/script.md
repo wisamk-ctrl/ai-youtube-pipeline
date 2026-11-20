@@ -341,7 +341,7 @@ Forbes now puts his stake at about
 [Visual: number $1.9 billion | Forbes estimate of Sajwani's stake]
 $1.9 billion.
 
-[Visual: stock abstract financial chart lines, animation]
+[Visual: stock Gulf city skyline at dusk, aerial, slow push-in]
 Remember, these are paper gains, and the funds' full holdings aren't disclosed.
 
 [Visual: stock abstract network nodes connecting, animation]

@@ -341,7 +341,7 @@
 [Visual: number 1.9 مليار دولار | تقدير فوربس لحصة سجواني]
 مليار وتسعمية مليون دولار.
 
-[Visual: stock abstract financial chart lines, animation]
+[Visual: stock Gulf city skyline at dusk, aerial, slow push-in]
 بس انتبهوا، هاي أرباح على الورق، والحصص الكاملة للصناديق مش معلنة.
 
 [Visual: stock abstract network nodes connecting, animation]
