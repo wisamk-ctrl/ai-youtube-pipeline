@@ -52,9 +52,25 @@ shot-list check enforces its numbers. Change it here only.
 - **Stock search terms** are English, concrete and visual, and lean to animation:
   "neural network animation", "digital data flow", "circuit board macro", "code on screen".
 
+## Digital, then real (founder 2026-11-20)
+- **Alternate digital and real.** Digital: tech animation, generated clips, cards. Real: a photo of the person or
+  company the story is about. No more than two digital shots in a row without a real one where the story names a
+  person or company, and never the same stock search twice in one episode (the shot list flags both).
+- **Real photos** (`[Visual: photo <subject>]`): the person, building or product the narration names at that
+  moment, e.g. `Dario Amodei`, `Satya Nadella`, `NVIDIA headquarters`. Taken only from Wikimedia Commons under a
+  licence that allows reuse with credit (CC0, public domain, CC BY, CC BY-SA); the author and licence go into the
+  description. No such photo → the subject's name as a title card. Never news-agency or press-kit photos (their
+  rights are unknown), never a lookalike from stock.
+- **Generated clips** (`[Visual: generated <scene>]`): concept scenes we generate (HeyGen video, Higgsfield models)
+  in the house look, e.g. `glowing server hall at night, slow dolly`. Never a real person's face, a logo, a real
+  event or readable text. The Review issue lists them to make; until a clip is listed in
+  reviewed/<week>/visuals.yaml the shot uses stock footage for the same words.
+
 ## Never
 - Clips from other companies' keynotes, other YouTube channels, films or TV: copyright risk.
-- Stock shots that pretend to show a specific real person, product or event.
+- Stock shots that pretend to show a specific real person, product or event (a real person is a licensed
+  `photo` shot, or not shown).
+- A generated image or clip of a real person: a likeness we made is a deepfake, whatever the intent.
 - Stock that shows figures: charts, graphs, dashboards, tickers, trading screens. Their numbers are
   nobody's, and the viewer cannot tell them from ours. A figure on screen is always our own number
   card, traced to a source (founder rule 2026-11-15; `NO_FIGURES` in the stock filter enforces it).
@@ -67,6 +83,8 @@ shot-list check enforces its numbers. Change it here only.
 - `[Visual: number <figure> | <Arabic label>]` — e.g. `[Visual: number 80% | من الأسئلة بتنحلّ بدون مهندس]`.
 - `[Visual: title <short Arabic phrase>]` — e.g. `[Visual: title نافذة السياق]`.
 - `[Visual: stock <English search terms>]` — e.g. `[Visual: stock server racks in a data centre, blue light]`.
+- `[Visual: photo <subject>]` — e.g. `[Visual: photo Dario Amodei]` (licensed Wikimedia Commons photo).
+- `[Visual: generated <English scene>]` — e.g. `[Visual: generated glowing server hall at night, slow dolly]`.
 - `[Corner: <same forms as Visual>]` — that visual with the presenter in the corner circle (full-screen while the circle is off).
 Each marker sits on its own line directly before the sentence where the shot starts. A shot
 lasts until the next shot marker.

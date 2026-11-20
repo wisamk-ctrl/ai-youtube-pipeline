@@ -287,6 +287,18 @@ def stock_clip(src: Path, seconds: float, dest: Path, w: int, h: int, fps: int) 
     return dest
 
 
+def photo_clip(img: Path, seconds: float, dest: Path, w: int, h: int, fps: int, push: float = 0.06) -> Path:
+    """A real photo on screen: fitted whole over a blurred, darkened copy of itself (a portrait is never
+    stretched or cropped to a face), with a slow push-in."""
+    n = max(1, round(seconds * fps))
+    vf = (f"split[a][b];[a]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},boxblur=30:2,"
+          f"eq=brightness=-0.25[bg];[b]scale={w}:{h}:force_original_aspect_ratio=decrease[fg];"
+          f"[bg][fg]overlay=(W-w)/2:(H-h)/2,scale={w * 2}:{h * 2},"
+          f"zoompan=z='1+{push}*on/{n}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={n}:s={w}x{h}:fps={fps},setsar=1")
+    _ff("-loop", "1", "-i", str(img), "-filter_complex", vf, "-frames:v", str(n), *_enc(fps), str(dest))
+    return dest
+
+
 # ── Stock footage (Pixabay, or Pexels) ───────────────────────────────────────
 # Both providers are normalised to one shape: {"id", "duration", "width", "url",
 # "user": {"name", "url"}, "video_files": [{"file_type", "width", "height", "link"}]}, with ids
@@ -593,7 +605,21 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                     clips[n] = cached(("number", fig.strip(), label.strip(), round(secs * fps)), lambda: card_clip(
                         fdir, renderer.count_up(fig.strip(), label.strip(), fdir, min(int(fps * 1.2), round(secs * fps)), fps),
                         secs, dest, w, h, fps))
-                elif s.kind == "stock":
+                elif s.kind == "photo":
+                    from pipeline.post.photos import fetch_photo
+                    got = fetch_photo(s.payload, work / "photos")
+                    if got:
+                        clips[n] = photo_clip(got[0], secs, dest, w, h, fps)
+                        if got[1] not in credits:
+                            credits.append(got[1])
+                        s.notes.append(f"photo: {got[1]['title']} ({got[1]['license']})")
+                    else:     # no reusable photo: the subject's name as a title card, never a lookalike
+                        s.notes.append("no reusable photo on Wikimedia Commons; title card instead")
+                        page = title_html(s.payload[:80], w, h)
+                        fdir = work / f"shot_{n:03d}_frames"
+                        clips[n] = cached(("card", page, round(secs * fps)), lambda: card_clip(
+                            fdir, renderer.animate(page, fdir, round(secs * fps), fps), secs, dest, w, h, fps))
+                elif s.kind in ("stock", "generated"):
                     got = own_clip(s.payload, own, work / "own")
                     if got:
                         s.notes.append("our own generated clip")

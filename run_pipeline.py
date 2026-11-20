@@ -136,8 +136,15 @@ def _shotlist(cfg: dict, out: Path, script: str, duration: float, srt: Path | No
                          face_keep=float(v.get("face_keep_seconds", 8)), hide=hides,
                          face_only=face_only)
     report = visuals.lint(shots, v)
+    from pipeline.post import photos              # variety + generated clips (founder 2026-11-20)
+    from pipeline.post.visual_assets import own_clips
+    from pipeline.script_format import extract_shots
+    marks = extract_shots(script)
+    report["warnings"] = list(report.get("warnings", [])) + photos.variety_notes(marks)
     titles = {i.id: f"{i.source}: {i.title[:90]}" for i in _items(out)}
-    (out / "shotlist.md").write_text(visuals.shotlist_md(shots, report, estimated=srt is None, titles=titles), encoding="utf-8")
+    md = visuals.shotlist_md(shots, report, estimated=srt is None, titles=titles)
+    pack = photos.generation_pack(marks, own_clips(out))
+    (out / "shotlist.md").write_text(md + (f"\n\n## Generated clips to make\n\n{pack}\n" if pack else ""), encoding="utf-8")
     (out / "shotlist.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     log.info("Shot list: face %.0f%%, %d shots, %d warnings", report["face_share"] * 100, report["shots"], len(report["warnings"]))
     return shots

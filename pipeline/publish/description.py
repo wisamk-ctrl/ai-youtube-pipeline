@@ -162,8 +162,11 @@ def pick_sources(out_dir: Path, plan: dict[str, Any], items: list[dict[str, Any]
 def credits_line(credits: list[dict[str, Any]], lang: str = "ar") -> str:
     by: dict[str, list[str]] = {}
     for c in credits:
-        prov = str(c.get("provider") or "stock").capitalize()
+        prov = str(c.get("provider") or "stock")
+        prov = prov if prov != prov.lower() else prov.capitalize()
         name = clean(str(c.get("author") or ""))
+        if name and c.get("license"):      # a licensed photo names its licence (CC BY / BY-SA require it)
+            name = f"{name}, {clean(str(c['license']))}"
         names = by.setdefault(prov, [])
         if name and name not in names:
             names.append(name)

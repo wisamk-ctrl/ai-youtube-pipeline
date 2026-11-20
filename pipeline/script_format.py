@@ -430,7 +430,7 @@ def chunk_text(text: str, max_chars: int) -> list[str]:
 
 
 # ── Shot markers (config/visual_standard.md) ─────────────────────────────────
-SHOT_KINDS = ("source", "number", "title", "stock")
+SHOT_KINDS = ("source", "number", "title", "stock", "photo", "generated")   # photo/generated: 2026-11-20
 
 
 @dataclass

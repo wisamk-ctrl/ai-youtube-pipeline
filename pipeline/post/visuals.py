@@ -303,7 +303,7 @@ def lint(shots: list[Shot], std: dict[str, Any] | None = None) -> dict[str, Any]
             warnings.append(f"{s.seconds:.0f}s {s.kind} shot at {s.start:.0f}s (max {max_visual}s; the clip will loop or hold)")
         if s.kind in ("source", "number", "title") and s.seconds > std.get("max_card_seconds", 5) + 1.5:
             warnings.append(f"{s.seconds:.0f}s {s.kind} card at {s.start:.0f}s (max {std.get('max_card_seconds', 5)}s still)")
-    kinds = {k: sum(1 for s in shots if s.kind == k) for k in ("source", "number", "title", "stock")}
+    kinds = {k: sum(1 for s in shots if s.kind == k) for k in ("source", "number", "title", "stock", "photo", "generated")}
     return {"face_share": round(share, 3), "shots": len(shots), "kinds": kinds,
             "corner": sum(1 for s in shots if s.mode == "corner"), "warnings": warnings}
 
