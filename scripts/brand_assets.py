@@ -4,7 +4,7 @@ the 1546x423 area every device shows) and the LinkedIn page banner 2256x382.
     python scripts/brand_assets.py assets/brand
 """
 import sys
-sys.path.insert(0, '.')
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parents[1]))
 from pathlib import Path
 
 from pipeline.post.visual_assets import DISPLAY, FOIL, FOIL_TEXT, INK, MONO, PAPER, STONE, TEXT, Renderer, _fonts

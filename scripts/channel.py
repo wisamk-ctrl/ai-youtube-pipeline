@@ -20,6 +20,7 @@ from pathlib import Path
 import requests
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))   # the dashboard writer is in pipeline/publish
 STATS = ROOT / "data" / "channel_stats.json"
 API = "https://www.googleapis.com/youtube/v3"
 NOW = datetime.now(timezone.utc)
@@ -137,7 +138,7 @@ def retention_points(ratios: list[tuple[float, float]], length_s: float) -> str:
     return ", ".join(p for p in parts if p)
 
 
-def retention(tok: str, video_id: str, length_s: float) -> str:
+def retention_curve(tok: str, video_id: str) -> list[tuple[float, float]]:
     try:
         a = requests.get("https://youtubeanalytics.googleapis.com/v2/reports", timeout=30,
                          headers={"Authorization": f"Bearer {tok}"},
@@ -145,9 +146,28 @@ def retention(tok: str, video_id: str, length_s: float) -> str:
                                  "dimensions": "elapsedVideoTimeRatio", "metrics": "audienceWatchRatio",
                                  "filters": f"video=={video_id}"})
         rows = a.json().get("rows") or [] if a.status_code == 200 else []
-        return retention_points([(float(x), float(r)) for x, r in rows], length_s)
+        return [(float(x), float(r)) for x, r in rows]
     except (requests.RequestException, ValueError):
-        return ""
+        return []
+
+
+def retention(tok: str, video_id: str, length_s: float) -> str:
+    return retention_points(retention_curve(tok, video_id), length_s)
+
+
+def latest_runs() -> list[dict[str, str]]:
+    """Each pipeline job's latest real run (comment-triggered runs that skipped are ignored), for the dashboard."""
+    out = []
+    for job in ("weekly", "news-watch", "social", "release", "channel", "inbox", "breaking-post", "approve"):
+        try:
+            runs = json.loads(gh("run", "list", "--repo", os.environ["GITHUB_REPOSITORY"], "--workflow", f"{job}.yml",
+                                 "-L", "20", "--json", "conclusion,createdAt"))
+        except (subprocess.SubprocessError, KeyError, ValueError, OSError):
+            continue
+        real = [r for r in runs if r.get("conclusion") not in ("skipped", "", None)]
+        out.append({"job": job, "last_run_utc": real[0]["createdAt"][:16].replace("T", " ") if real else "",
+                    "result": real[0]["conclusion"] if real else "none yet"})
+    return out
 
 
 def platform_lines(days: int = 7) -> list[str]:
@@ -215,7 +235,7 @@ def report() -> None:
         rows.append((kind, v["snippet"]["title"][:60], s["viewCount"], s["viewCount"] - before, s["likeCount"],
                      s["commentCount"], v["id"]))
     rows.sort(key=lambda r: (r[0] != "Episode", -r[3]))
-    watch = ""
+    watch, week = "", None
     try:   # watch time needs the yt-analytics scope (re-connect YouTube to grant it)
         a = requests.get("https://youtubeanalytics.googleapis.com/v2/reports", timeout=30,
                          headers={"Authorization": f"Bearer {tok}"},
@@ -224,6 +244,7 @@ def report() -> None:
                                  "metrics": "views,estimatedMinutesWatched,averageViewDuration,subscribersGained"})
         if a.status_code == 200 and a.json().get("rows"):
             v_, m_, d_, s_ = a.json()["rows"][0]
+            week = (v_, m_, d_, s_)
             watch = (f"Last 7 days: **{v_} views, {m_ / 60:.1f} hours watched, average view {d_} s, "
                      f"+{s_} subscribers**.\n\n")
         elif a.status_code == 200:
@@ -246,7 +267,9 @@ def report() -> None:
                   "worth repeating."]
     eps = [v for v in vids if v["status"].get("privacyStatus") != "private"
            and seconds(v["contentDetails"].get("duration")) > 180][:2]
-    ret = [(v["snippet"]["title"][:50], retention(tok, v["id"], seconds(v["contentDetails"].get("duration")))) for v in eps]
+    curves = [(v["snippet"]["title"][:50], retention_curve(tok, v["id"]), seconds(v["contentDetails"].get("duration")))
+              for v in eps]
+    ret = [(t, retention_points(c, n)) for t, c, n in curves]
     if any(r for _, r in ret):
         lines += ["", "### Where viewers leave", "", *[f"- **{t}**: {r}" for t, r in ret if r],
                   "", "_Match these times to the script's sections: a drop early in the episode usually means the "
@@ -254,6 +277,16 @@ def report() -> None:
     lines += ["", *platform_lines()]
     body = "\n".join(lines) + "\n"
     print(body)
+    try:   # the dashboard's files (pipeline/publish/dashboard.py); written on manual runs too
+        from pipeline.publish import dashboard
+        qf = ROOT / "data" / "social_queue.json"
+        dashboard.write_files(ROOT / "data" / "dashboard", as_of=NOW.strftime("%Y-%m-%d"), channel=ch, analytics=week,
+                              videos=rows, retention=[(t, dashboard.retention_numbers(c, n)) for t, c, n in curves],
+                              queue=json.loads(qf.read_text(encoding="utf-8")) if qf.exists() else [],
+                              runs=latest_runs())
+        print("dashboard files written to data/dashboard/")
+    except Exception as e:  # noqa: BLE001 — the report itself must still go out
+        print(f"dashboard files not written: {e}")
     STATS.parent.mkdir(parents=True, exist_ok=True)
     if os.environ.get("GITHUB_EVENT_NAME", "schedule") != "schedule":
         print("(manual run: the weekly baseline is left as it was)")

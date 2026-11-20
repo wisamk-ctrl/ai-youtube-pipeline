@@ -1,5 +1,6 @@
 import sys, base64, math, random
-sys.path.insert(0, '/home/user/ai-youtube-pipeline')
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from pathlib import Path
 import playwright.sync_api as ps
 _l = ps.BrowserType.launch
