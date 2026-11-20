@@ -312,6 +312,38 @@ that's five times the largest investment he's ever made in an IPO.
 [Visual: stock GPU chip close-up under light]
 Chip companies, including NVIDIA, are investors too, along with Google and Microsoft.
 
+[Visual: source 379ad26c69]
+And here's an angle that matters for our region. According to AGBI, Gulf funds made big paper gains from this listing.
+
+[Visual: source 1968648881]
+Qatar's QIA and the UAE's MGX came in during the February round, when the company was worth
+
+[Pause]
+
+[Visual: number $380 billion | Anthropic's value in the February round]
+$380 billion.
+
+[Visual: number $8 billion | Gulf investment in Anthropic]
+And Global SWF estimates Gulf investors put in about $8 billion.
+
+[Visual: source f0f0f41e49]
+It's not only the funds. According to Forbes Middle East, Hussain Sajwani, the founder of DAMAC, bought shares in 2024 for
+
+[Pause]
+
+[Visual: number $50 million | Sajwani's 2024 purchase]
+$50 million.
+
+Forbes now puts his stake at about
+
+[Pause]
+
+[Visual: number $1.9 billion | Forbes estimate of Sajwani's stake]
+$1.9 billion.
+
+[Visual: stock abstract financial chart lines, animation]
+Remember, these are paper gains, and the funds' full holdings aren't disclosed.
+
 [Visual: stock abstract network nodes connecting, animation]
 So, what does this mean for a company here that uses Claude?
 

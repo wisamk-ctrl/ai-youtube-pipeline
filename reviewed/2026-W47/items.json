@@ -1467,5 +1467,62 @@
   "region": "turkey",
   "entities": [],
   "id": "8392654ffa"
+ },
+ {
+  "source": "AGBI",
+  "source_type": "web",
+  "title": "Anthropic IPO delivers huge paper gains to Gulf investors",
+  "summary": "Qatar Investment Authority, Abu Dhabi's MGX and IHC's Alpha Wave Global are believed to have made significant paper gains from Anthropic's IPO after investing billions since 2024; their current holdings are not disclosed. Global SWF estimates Gulf investors put about $8 billion into Anthropic.",
+  "url": "https://www.agbi.com/ai/2026/11/anthropic-ipo-delivers-huge-paper-gains-to-gulf-investors/",
+  "published": "2026-11-20T00:00:00+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.0,
+  "score": 0,
+  "score_breakdown": {},
+  "track": "models",
+  "region": "gulf",
+  "entities": [
+   "Anthropic"
+  ],
+  "id": "379ad26c69"
+ },
+ {
+  "source": "FWDstart",
+  "source_type": "web",
+  "title": "Anthropic raises $30B Series G at $380B valuation, with Abu Dhabi's MGX co-leading and Qatar's QIA participating",
+  "summary": "In February 2026 Anthropic raised $30 billion at a $380 billion valuation; Abu Dhabi's MGX co-led the round and Qatar's QIA participated.",
+  "url": "https://www.fwdstart.me/p/anthropic-raises-30b-series-g-at-380b-valuation-with-abu-dhabi-s-mgx-co-leading-and-qatar-s-qia-part",
+  "published": "2026-11-20T00:00:00+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.0,
+  "score": 0,
+  "score_breakdown": {},
+  "track": "models",
+  "region": "gulf",
+  "entities": [
+   "Anthropic"
+  ],
+  "id": "1968648881"
+ },
+ {
+  "source": "Forbes Middle East",
+  "source_type": "web",
+  "title": "Meet The Biggest Billionaire Winners Of Anthropic's IPO",
+  "summary": "DAMAC founder Hussain Sajwani bought Anthropic shares in 2024 for $50 million from the FTX bankruptcy estate. Forbes estimates his stake at about 0.1% of Anthropic, worth about $1.9 billion after the IPO.",
+  "url": "https://forbesmiddleeast.com/billionaires/world-billionaires/meet-the-biggest-billionaire-winners-of-anthropics-ipo",
+  "published": "2026-11-20T00:00:00+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.0,
+  "score": 0,
+  "score_breakdown": {},
+  "track": "models",
+  "region": "gulf",
+  "entities": [
+   "Anthropic"
+  ],
+  "id": "f0f0f41e49"
  }
 ]
