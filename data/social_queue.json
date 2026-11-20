@@ -348,5 +348,48 @@
         "at": "2026-11-18T13:33:31Z"
       }
     }
+  },
+  {
+    "id": "2026-11-20-brk-anthropic-ipo-debut-en#1",
+    "week": "2026-11-20-brk-anthropic-ipo-debut-en",
+    "lang": "en",
+    "file": "2026-11-20-brk-anthropic-ipo-debut-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-20-brk-anthropic-ipo-debut-en/2026-11-20-brk-anthropic-ipo-debut-en-short-01.mp4",
+    "title": "Anthropic Goes Public at $83",
+    "due": "2026-11-20T05:23:56Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Anthropic Goes Public at $83\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Anthropic Goes Public at $83\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Anthropic Goes Public at $83\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Anthropic Goes Public at $83\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "Anthropic, the maker of Claude, is now a public company. Yahoo Finance reports it sold 980 million shares at $83 each, above its marketed range, valuing it at about $1.5 trillion on a fully diluted basis. The BBC says shares closed 17% higher on the first day at $97.17, even as the wider tech sector fell 2.4%. Third-quarter revenue reached $16.96 billion, while the company still runs at an operating loss and has committed to spending about $895 billion. For the Gulf, the thing to watch is whether this new capital turns into data center and compute partnerships in the region.\n\nMore on this in Sunday's episode of AI This Week.\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-20T05:23:58Z",
+        "url": "https://youtube.com/shorts/ihIQxeRtcu4"
+      },
+      "instagram": {
+        "status": "queued"
+      },
+      "facebook": {
+        "status": "queued"
+      },
+      "tiktok": {
+        "status": "failed",
+        "attempts": 1,
+        "error": "TikTok: HTTP 403 /v2/post/publish/video/init/ [unaudited_client_can_only_post_to_private_accounts]: Please review our integration guidelines at https://developers.tiktok.com/doc/content-sharing-guidelines/"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-20T05:23:58Z",
+        "post": "urn:li:ugcPost:7529414292249395201",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7529414292249395201"
+      }
+    }
   }
 ]
