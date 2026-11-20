@@ -116,3 +116,17 @@ def test_write_files_adds_the_new_files(tmp_path):
     assert read(tmp_path / "traffic.csv")[0] == {"source": "YouTube search", "views": "10", "watch_hours": "0.3"}
     assert read(tmp_path / "needs_you.csv")[0]["kind"] == "Fix"
     assert read(tmp_path / "history.csv")[0]["week"] == "2026-W48"
+
+
+def test_needs_you_skips_old_reviews_and_stale_breaking_drafts():
+    """2026-11-20 first real run: 8 finished Review issues (W41–W46) and 8 superseded breaking drafts were listed."""
+    issues = [{"title": "Review: old (2026-W45)", "url": "u", "createdAt": "2026-11-07T06:00:00Z"},
+              {"title": "Review: this week (2026-W47)", "url": "u", "createdAt": "2026-11-20T06:30:00Z"}]
+    comments = [{"body": "**Ready to check: `2026-11-18-brk-old-en`**", "createdAt": "2026-11-18T09:00:00Z"},
+                {"body": "**Ready to check: `2026-11-20-brk-new-en`**", "createdAt": "2026-11-20T01:00:00Z"}]
+    rows = db.needs_you(issues, comments, linkedin_until="", today="2026-11-20", breaking_url="b",
+                        now="2026-11-20T08:00:00Z")
+    items = [r["item"] for r in rows]
+    assert "Review: this week (2026-W47)" in items and "Review: old (2026-W45)" not in items
+    assert any("brk-new" in i for i in items) and not any("brk-old" in i for i in items)
+    assert db.TRAFFIC["YT_CHANNEL"] == "Channel pages"

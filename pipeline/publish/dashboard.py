@@ -28,7 +28,7 @@ WHAT = {"weekly": "Script run and renders", "news-watch": "Spots breaking storie
 
 TRAFFIC = {"YT_SEARCH": "YouTube search", "RELATED_VIDEO": "Suggested videos", "SHORTS": "Shorts feed",
            "BROWSE": "Browse / home", "EXT_URL": "External links", "NO_LINK_OTHER": "Direct or unknown",
-           "SUBSCRIBER": "Subscriptions", "PLAYLIST": "Playlists", "CHANNEL": "Channel pages", "NOTIFICATION": "Notifications",
+           "SUBSCRIBER": "Subscriptions", "PLAYLIST": "Playlists", "CHANNEL": "Channel pages", "YT_CHANNEL": "Channel pages", "NOTIFICATION": "Notifications",
            "END_SCREEN": "End screens", "YT_OTHER_PAGE": "Other YouTube pages", "HASHTAGS": "Hashtags"}
 HISTORY_COLS = ["week", "as_of", "subscribers", "total_views", "views_7d", "watch_hours_7d", "watch_hours_365d",
                 "avg_view_seconds"]
@@ -70,19 +70,26 @@ def curve_rows(episode: str, curve: list[tuple[float, float]], length_s: float) 
 
 
 def needs_you(issues: list[dict[str, Any]], breaking_comments: list[dict[str, Any]], *, linkedin_until: str,
-              today: str, breaking_url: str) -> list[dict[str, str]]:
-    """What waits on the founder: open Review and failure issues, breaking Shorts ready but not posted, a LinkedIn
-    token close to expiry, and blocked accounts."""
+              today: str, breaking_url: str, now: str | None = None) -> list[dict[str, str]]:
+    """What waits on the founder: a Review issue from the last 7 days, open failure issues, breaking Shorts ready in
+    the last 36 hours but not posted (older drafts are stale news), a LinkedIn token close to expiry, and blocked
+    accounts. Open Review issues from earlier weeks are finished work, not waiting."""
+    from datetime import datetime, timedelta
+    ts = lambda s: datetime.fromisoformat(str(s).replace("Z", "+00:00"))   # noqa: E731
+    at = ts(now) if now else ts(f"{today}T23:59:59+00:00")
     rows = []
     for i in issues:
         t = i.get("title", "")
         kind = "Approve" if t.startswith("Review:") else "Fix" if t.startswith(("Run failed", "Show at risk")) else ""
+        if kind == "Approve" and at - ts(i.get("createdAt") or "1970-01-01T00:00:00Z") > timedelta(days=7):
+            continue
         if kind:
             rows.append({"kind": kind, "item": t, "since": str(i.get("createdAt", ""))[:10], "link": i.get("url", "")})
     ready: dict[str, str] = {}
     for c in breaking_comments:
         body = c.get("body", "")
-        if m := re.search(r"Ready to check: `([^`]+)`", body):
+        if (m := re.search(r"Ready to check: `([^`]+)`", body)) and \
+                at - ts(c.get("createdAt") or "1970-01-01T00:00:00Z") <= timedelta(hours=36):
             ready[m.group(1)] = str(c.get("createdAt", ""))[:10]
         if m := re.search(r"Posted: `([^`]+)`", body):
             ready.pop(m.group(1), None)

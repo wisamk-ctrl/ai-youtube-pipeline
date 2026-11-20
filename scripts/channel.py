@@ -322,7 +322,8 @@ def report() -> None:
             traffic=[tuple(r) for r in analytics_rows(tok, 28, dimensions="insightTrafficSourceType",
                                                       metrics="views,estimatedMinutesWatched", sort="-views")],
             needs=dashboard.needs_you(issues, comments, linkedin_until=os.environ.get("LINKEDIN_TOKEN_UNTIL", ""),
-                                      today=NOW.strftime("%Y-%m-%d"), breaking_url=brk_url))
+                                      today=NOW.strftime("%Y-%m-%d"), breaking_url=brk_url,
+                                      now=NOW.strftime("%Y-%m-%dT%H:%M:%SZ")))
         print("dashboard files written to data/dashboard/")
     except Exception as e:  # noqa: BLE001 — the report itself must still go out
         print(f"dashboard files not written: {e}")
