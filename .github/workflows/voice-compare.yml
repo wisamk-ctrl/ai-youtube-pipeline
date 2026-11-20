@@ -22,6 +22,8 @@ jobs:
           HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          SECRETS_PAT: ${{ secrets.SECRETS_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: python scripts/voice_compare.py "${{ inputs.text }}" out/lab/compare
       - name: Push to the previews branch
         run: |

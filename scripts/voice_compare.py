@@ -49,7 +49,14 @@ def el_voice(key: str) -> str:
                           files={"files": (sample.name, f, "audio/mpeg")})
     r.raise_for_status()
     vid = r.json()["voice_id"]
-    print(f"ElevenLabs: made voice {vid} from the founder's W45 read. Save it as the ELEVENLABS_VOICE_ID secret.")
+    try:   # keep it for later runs and the pipeline (needs SECRETS_PAT, like the other platforms)
+        sys.path.insert(0, str(ROOT))
+        from pipeline.publish.social import store_secret
+        saved = store_secret("ELEVENLABS_VOICE_ID", vid)
+    except Exception:  # noqa: BLE001
+        saved = False
+    print(f"ElevenLabs: made voice {vid} from the founder's W45 read"
+          + ("; saved as the ELEVENLABS_VOICE_ID secret" if saved else ". Save it as the ELEVENLABS_VOICE_ID secret."))
     return vid
 
 
