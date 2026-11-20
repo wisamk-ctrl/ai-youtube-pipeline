@@ -146,3 +146,22 @@ def test_consensus_resamples_on_disagreement_and_takes_median():
     final, samples, stable = critic_mod.consensus("s", "g", "rubric", {"samples": 2, "max_disagreement": 1}, "m", C())
     assert [s["hook"] for s in samples] == [9, 6, 8] and stable is False and final.hook == 8
     assert final.verdict == "v" and final.minimum == 8
+
+
+def test_critic_leaves_room_for_thinking():
+    """2026-11-20: the W47 critic stopped at max_tokens=8000 — Opus 5.5 always thinks, and thinking counts against
+    the limit — so the script job failed after review pass 1. 16000 matches source_map and stays under the SDK's
+    non-streaming ceiling."""
+    from pipeline.scripting import critic
+    sent = {}
+
+    class C:
+        class messages:
+            @staticmethod
+            def parse(**kw):
+                sent.update(kw)
+                return NS(stop_reason="end_turn", usage=None,
+                          parsed_output=critic.Critique(**{a: 9 for a in critic.AXES}, defects=[], worst_three=[critic.Fix(where="w", problem="p", fix="f")], verdict="v"))
+
+    critic.critique("[Section: x]\nنص", "guide", "m", C())
+    assert sent["max_tokens"] >= 16000
