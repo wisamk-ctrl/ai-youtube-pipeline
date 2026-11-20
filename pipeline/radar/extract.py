@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import logging
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Literal
 
@@ -32,7 +33,7 @@ from pipeline.models import NewsItem
 
 log = logging.getLogger(__name__)
 
-DEFAULTS: dict[str, Any] = {"provider": "anthropic", "model": "claude-haiku-5-5", "batch": 20,
+DEFAULTS: dict[str, Any] = {"provider": "anthropic", "model": "claude-haiku-5-5", "batch": 20, "workers": 8,
                             "ollama_url": "http://localhost:11434", "ollama_model": "qwen2.5", "ollama_batch": 8}
 
 
@@ -123,19 +124,25 @@ def extract(items: list[NewsItem], cache_path: Path | None = None, client: anthr
         provider = opts["provider"]
         batch = opts["ollama_batch"] if provider == "ollama" else opts["batch"]   # local models: smaller context per call
         log.info("Extraction via %s (%s), %d items to tag", provider, opts["ollama_model" if provider == "ollama" else "model"], len(todo))
-        for n in range(0, len(todo), batch):
-            chunk = todo[n:n + batch]
-            out = _ollama_batch(chunk, opts) if provider == "ollama" else _anthropic_batch(chunk, opts, client)
-            if out is None:
-                continue
-            known = {i.id for i in chunk}
-            for tags in out.items:
-                if tags.item_id in known:          # never trust an id the model made up
-                    result[tags.item_id] = tags
-            log.info("Extracted %d/%d items (batch %d)", len(result), len(items), n // batch + 1)
+        chunks = [todo[n:n + batch] for n in range(0, len(todo), batch)]
+        run = (lambda c: _ollama_batch(c, opts)) if provider == "ollama" else (lambda c: _anthropic_batch(c, opts, client))
+        # Batches go out several at a time (2026-11-20: 134 batches one after another took 43 min and cut off the
+        # W47 script job). A local Ollama model serves one request at a time, so it stays sequential.
+        workers = 1 if provider == "ollama" else max(1, int(opts["workers"]))
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            for n, (chunk, out) in enumerate(zip(chunks, pool.map(run, chunks)), 1):
+                if out is None:
+                    continue
+                known = {i.id for i in chunk}
+                for tags in out.items:
+                    if tags.item_id in known:          # never trust an id the model made up
+                        result[tags.item_id] = tags
+                if n % 10 == 0 or n == len(chunks):
+                    log.info("Extracted %d/%d items (batch %d/%d)", len(result), len(items), n, len(chunks))
 
     if cache_path:
         cache_path.parent.mkdir(parents=True, exist_ok=True)
-        cache.update({k: v.model_dump() for k, v in result.items()})
-        cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
+        # Only this run's items are kept: the file is committed to data/ and must not grow week after week.
+        cache_path.write_text(json.dumps({k: v.model_dump() for k, v in result.items()}, ensure_ascii=False, indent=1),
+                              encoding="utf-8")
     return result

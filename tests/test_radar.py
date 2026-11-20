@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -111,3 +112,48 @@ def test_ollama_bad_json_is_skipped_not_fatal(monkeypatch):
 
     monkeypatch.setattr(ex.requests, "post", lambda url, json, timeout: Resp())
     assert ex.extract([a], opts={"provider": "ollama"}) == {}
+
+
+def test_anthropic_batches_run_in_parallel(monkeypatch):
+    """2026-11-20: 2,679 items tagged one batch at a time took 43 min and the W47 script job hit its 60-min limit."""
+    import threading
+    import time
+    from pipeline.radar import extract as ex
+
+    items = [item("cnbc.com", f"Story {n}") for n in range(80)]
+    live, peak, lock = [0], [0], threading.Lock()
+
+    def fake_batch(chunk, opts, client):
+        with lock:
+            live[0] += 1; peak[0] = max(peak[0], live[0])
+        time.sleep(0.05)
+        with lock:
+            live[0] -= 1
+        return ex.Batch(items=[ex.ItemTags(item_id=i.id, event="other", region="us", mentions=[]) for i in chunk])
+
+    monkeypatch.setattr(ex, "_anthropic_batch", fake_batch)
+    tags = ex.extract(items, opts={"batch": 10, "workers": 4})
+    assert len(tags) == 80 and peak[0] > 1
+
+
+def test_tag_cache_kept_in_data_and_pruned_to_this_run(tmp_path, monkeypatch):
+    """The cache lived in output/<week>/, which a fresh CI checkout never has, so every run re-tagged everything."""
+    from pipeline.radar import extract as ex
+
+    monkeypatch.setattr(radar, "TAGS_PATH", tmp_path / "radar_tags.json")
+    a, b = item("cnbc.com", "A story"), item("cnbc.com", "B story")
+    calls = []
+
+    def fake_batch(chunk, opts, client):
+        calls.append(len(chunk))
+        return ex.Batch(items=[ex.ItemTags(item_id=i.id, event="other", region="us", mentions=[]) for i in chunk])
+
+    monkeypatch.setattr(ex, "_anthropic_batch", fake_batch)
+    monkeypatch.setattr(radar, "STATE_PATH", tmp_path / "radar_state.json")
+    from pipeline.radar import signals
+    monkeypatch.setattr(signals, "collect_signals", lambda cfg: [])
+    radar.run_radar([a], W, CFG, "w")
+    radar.run_radar([a, b], W, CFG, "w")
+    assert calls == [1, 1]                                    # a was not sent twice
+    radar.run_radar([b], W, CFG, "w")
+    assert set(json.loads((tmp_path / "radar_tags.json").read_text())) == {b.id}

@@ -75,7 +75,7 @@ jobs:
   script:
     if: github.event_name == 'schedule' || inputs.phase == 'script' || inputs.phase == 'ingest'
     runs-on: ubuntu-latest
-    timeout-minutes: 60          # write + up to 3 review passes + critic rounds + source map, each a long Opus call
+    timeout-minutes: 90          # 2026-11-20: 60 cut off W47 after a 56-min ingest; write + up to 3 review passes + critic rounds + source map, each a long Opus call
     outputs:
       error: ${{ steps.fail.outputs.error }}
     steps:
@@ -128,7 +128,7 @@ jobs:
         continue-on-error: true
         run: |
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
-          git add data/radar_state.json data/coverage.json data/youtube_channels.json 2>/dev/null; git add data/radar_state.json data/coverage.json
+          git add data/radar_state.json data/coverage.json data/youtube_channels.json data/radar_tags.json 2>/dev/null; git add data/radar_state.json data/coverage.json
           git diff --cached --quiet && exit 0
           git commit -q -m "chore: radar state, coverage, youtube channel cache $(date -u +%F)"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q && exit 0; sleep $((i * 5)); done
