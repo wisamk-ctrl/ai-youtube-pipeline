@@ -70,7 +70,8 @@ def curve_rows(episode: str, curve: list[tuple[float, float]], length_s: float) 
 
 
 def needs_you(issues: list[dict[str, Any]], breaking_comments: list[dict[str, Any]], *, linkedin_until: str,
-              today: str, breaking_url: str, now: str | None = None) -> list[dict[str, str]]:
+              today: str, breaking_url: str, now: str | None = None,
+              published_weeks: set[str] | None = None) -> list[dict[str, str]]:
     """What waits on the founder: a Review issue from the last 7 days, open failure issues, breaking Shorts ready in
     the last 36 hours but not posted (older drafts are stale news), a LinkedIn token close to expiry, and blocked
     accounts. Open Review issues from earlier weeks are finished work, not waiting."""
@@ -83,6 +84,9 @@ def needs_you(issues: list[dict[str, Any]], breaking_comments: list[dict[str, An
         kind = "Approve" if t.startswith("Review:") else "Fix" if t.startswith(("Run failed", "Show at risk")) else ""
         if kind == "Approve" and at - ts(i.get("createdAt") or "1970-01-01T00:00:00Z") > timedelta(days=7):
             continue
+        wk = re.search(r"\((\d{4}-W\d{2})[^)]*\)\s*$", t)
+        if kind == "Approve" and wk and any(p.startswith(wk.group(1)) for p in (published_weeks or ())):
+            continue   # that week already reached the posting record: its review is finished
         if kind:
             rows.append({"kind": kind, "item": t, "since": str(i.get("createdAt", ""))[:10], "link": i.get("url", "")})
     ready: dict[str, str] = {}

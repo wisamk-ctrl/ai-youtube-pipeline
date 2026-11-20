@@ -130,3 +130,13 @@ def test_needs_you_skips_old_reviews_and_stale_breaking_drafts():
     assert "Review: this week (2026-W47)" in items and "Review: old (2026-W45)" not in items
     assert any("brk-new" in i for i in items) and not any("brk-old" in i for i in items)
     assert db.TRAFFIC["YT_CHANNEL"] == "Channel pages"
+
+
+def test_a_review_whose_week_already_went_out_is_not_waiting():
+    """2026-11-20: the W46 Review issue was still open although W46-en had been published."""
+    issues = [{"title": "Review: done (2026-W46)", "url": "u", "createdAt": "2026-11-14T06:00:00Z"},
+              {"title": "Review: new (2026-W47)", "url": "u", "createdAt": "2026-11-20T06:30:00Z"}]
+    rows = db.needs_you(issues, [], linkedin_until="", today="2026-11-20", breaking_url="b",
+                        now="2026-11-20T08:00:00Z", published_weeks={"2026-W46-en", "2026-W45-en"})
+    items = [r["item"] for r in rows]
+    assert "Review: new (2026-W47)" in items and "Review: done (2026-W46)" not in items
