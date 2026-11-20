@@ -1,6 +1,6 @@
 """The show's weekly health: never miss a week, and learn what works.
 
-    python scripts/channel.py watch-script     Saturday: did this week's script run succeed?
+    python scripts/channel.py watch-script     Friday: did this week's script run succeed?
     python scripts/channel.py watch-publish    Sunday, before 11:00 Gulf: is an episode going out today?
     python scripts/channel.py report           Monday: views / likes / comments per video and per Short,
                                                the change since last week, watch time when the token allows

@@ -24,6 +24,16 @@ def test_every_workflow_parses():
         assert isinstance(yaml.safe_load(f.read_text(encoding="utf-8")), dict), f
 
 
+def test_every_channel_schedule_picks_a_check():
+    """2026-11-20: Friday's cron was 41 11 * * 5 but the step still matched the old Saturday slot (* * 6), so the
+    Friday script-watch would have run with no check name."""
+    text = (WF / "channel.yml").read_text(encoding="utf-8")
+    crons = re.findall(r"cron:\s*['\"]([^'\"]+)['\"]", text)
+    assert crons
+    for c in crons:
+        assert f'"{c}") c=' in text, f"schedule {c} has no matching case in the Run step"
+
+
 def test_weekly_runs_one_at_a_time_per_week_and_never_cancels():
     c = _wf("weekly.yml")["concurrency"]
     assert "inputs.week" in c["group"] and "scheduled" in c["group"]

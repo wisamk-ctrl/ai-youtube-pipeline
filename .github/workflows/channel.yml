@@ -38,7 +38,7 @@ jobs:
       - name: Run the check
         run: |
           case "${{ github.event.schedule }}" in
-            "41 11 * * 6") c=watch-script ;;
+            "41 11 * * 5") c=watch-script ;;
             "17 4 * * 0") c=watch-publish ;;
             "29 5 * * 1") c=report ;;
             "47 * * * *") c=status-kit ;;
