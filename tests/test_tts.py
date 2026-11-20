@@ -41,6 +41,16 @@ def test_speak_raises_on_a_client_error():
         raise AssertionError("no error")
 
 
+def test_speak_falls_back_to_ellipses_when_the_voice_cannot_take_break_tags():
+    """2026-11-20: W47-en's render failed with HTTP 400 'break tags are not supported for instant voice clones' —
+    the first whole episode voiced through the API (W46-en was voiced by hand through the connector)."""
+    err = R(400, text='{"error":{"code":"invalid_parameter","message":"break tags are not supported for instant voice clones"}}')
+    http = Http([err, R(200, {"data": {"audio_url": "https://a/2.wav", "duration": 5.0}})])
+    url, _ = tts.speak('One. <break time="0.8s"/> Two.', "v", "en", "k", http=http, sleep=lambda s: None)
+    assert url == "https://a/2.wav"
+    assert "<break" not in http.calls[1][1]["json"]["text"] and "..." in http.calls[1][1]["json"]["text"]
+
+
 def test_voice_week_writes_a_voice_list_the_assembler_reads(tmp_path):
     cfg = {"language": "en", "video": {"heygen": {"voice_id_en": "EN"}}}
     chunks = [{"id": "01-face", "role": "face", "text": "A."}, {"id": "02-voice", "role": "voice", "text": "B."}]

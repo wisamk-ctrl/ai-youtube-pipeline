@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import logging
 import os
+import re
 import time
 from pathlib import Path
 from typing import Any, Callable
@@ -32,6 +33,11 @@ def speak(text: str, voice_id: str, language: str, key: str, model: str = "heyge
             if not data.get("audio_url"):
                 raise RuntimeError(f"HeyGen speech: no audio_url in the answer: {str(r.text)[:300]}")
             return str(data["audio_url"]), float(data.get("duration") or 0.0)
+        if r.status_code == 400 and "break tags are not supported" in str(r.text) and "<break" in body["text"]:
+            # Instant voice clones refuse SSML breaks (W47-en, 2026-11-20): say the pauses as "..." instead.
+            log.warning("HeyGen speech: this voice takes no break tags; sending the pauses as '...'")
+            body["text"] = re.sub(r'\s*<break time="[\d.]+s"/>\s*', " ... ", body["text"])
+            continue
         if r.status_code in (429, 500, 502, 503, 504) and n < tries:
             delay = float(r.headers.get("Retry-After") or wait)
             log.warning("HeyGen speech: HTTP %s, retrying in %.0f s (%d/%d)", r.status_code, delay, n, tries)
