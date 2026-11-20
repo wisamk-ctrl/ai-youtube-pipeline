@@ -36600,7 +36600,7 @@
    ],
    "id": "e7cf10de92",
    "first_seen": "2026-11-19T08:41+00:00",
-   "flagged": false
+   "flagged": true
   },
   "a528d70a8a": {
    "source": "Yahoo News UK",
@@ -40394,7 +40394,7 @@
    ],
    "id": "41af249698",
    "first_seen": "2026-11-19T14:42+00:00",
-   "flagged": false
+   "flagged": true
   },
   "fffd61b54f": {
    "source": "TechCrunch",
@@ -43043,7 +43043,7 @@
    ],
    "id": "63beb2071a",
    "first_seen": "2026-11-19T18:41+00:00",
-   "flagged": false
+   "flagged": true
   },
   "a3f8fc674b": {
    "source": "www.journaldunet.com",
@@ -43254,7 +43254,7 @@
    ],
    "id": "d74cd3c2f8",
    "first_seen": "2026-11-19T18:41+00:00",
-   "flagged": false
+   "flagged": true
   },
   "acb784aeca": {
    "source": "PhoneArena",
@@ -45612,7 +45612,7 @@
    ],
    "id": "61e348d0a6",
    "first_seen": "2026-11-19T22:41+00:00",
-   "flagged": false
+   "flagged": true
   },
   "b58dc9c848": {
    "source": "DD News",
@@ -46878,7 +46878,7 @@
    ],
    "id": "9535bb06fc",
    "first_seen": "2026-11-20T00:50+00:00",
-   "flagged": false
+   "flagged": true
   },
   "43073b818b": {
    "source": "remio",
@@ -47640,6 +47640,759 @@
    "id": "698fca9814",
    "first_seen": "2026-11-20T00:50+00:00",
    "flagged": false
+  },
+  "450d6dc15f": {
+   "source": "BankInfoSecurity",
+   "source_type": "rss",
+   "title": "Microsoft Outage Tests Healthcare Cyber Resilience",
+   "summary": "Business Continuity Management / Disaster Recovery , Critical Infrastructure Security , Email Security & Protection A global Microsoft 365 cloud services outage that disrupted organizations across multiple sectors underscored the need for hospitals and other medical facilities to strengthen operational resilience, manage third-party technology dependencies and prepare for disruptions - even when cyberattacks aren't to blame, experts said. See Also: When Prevention Failed: Real Recovery Stories from the Trenches Microsoft has said the disruption was not caused by malicious actors. But the outage served as another reminder that healthcare organizations must be prepared to maintain critical operations when essential cloud-based communications and other services become unavailable. The Microsoft 365 global outage that began Thursday primarily affected U.S. healthcare organizations through administrative, communications and authentication bottlenecks rather than disruptions to core electronic health record systems or bedside clinical platforms, said David Utzke, CEO and CTO at security firm MyKey Technologies (see: Microsoft Cloud Service Outage Triggers Global Disruption ). Because the failure centered on Exchange Online - Microsoft's cloud-based business email service - and Microsoft 365 features tracked under incidents EX1550543 and MO1550821 - hospitals and clinics generally remained operational for patient care while struggling with behind-the-scenes coordination, Utzke said. Unlike the July 2024 CrowdStrike outage , which crashed Windows endpoints worldwide, this week's Microsoft disruption primarily affected email, calendar synchronization and cloud productivity tools, he said. \"The initial sense of the impact in the U.S. involves administrative strain over clinical shutdowns. U.S. hospitals and public agencies largely kept emergency and inpatient care running while scrambling to implement manual communication workarounds,\" Utzke said. Errol Weiss, chief security officer at the Health Information Sharing and Analysis Center, said reports from healthcare CISOs and Health-ISAC members similarly suggest that the most visible impact involved disruptions to email and staff coordination. \"Several organizations were developing contingency plans depending on how long the outage lasted,\" he said. For many, services were returning by early Friday morning, with email delivery resuming. \"Some advised users to allow time for Outlook to synchronize and to expect…",
+   "url": "https://www.bankinfosecurity.com/microsoft-outage-tests-healthcare-cyber-resilience-a-33389",
+   "published": "2026-11-19T23:51:36+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "",
+   "entities": [],
+   "id": "450d6dc15f",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": true
+  },
+  "0311f195ee": {
+   "source": "BBC",
+   "source_type": "rss",
+   "title": "How did Anthropic's stock market debut unfold?",
+   "summary": "How did Anthropic's stock market debut unfold? BBC",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFAxRG9pMVFfT2NvcUhXYkhlYTdGYnQtQV91Q0xEZHE0dHBQVnpnNlAwckxEQWJiMzR4WXZxMGM2S3dlNXE0THN1a1FYeEZ5R196U3RuSjVLaFE?oc=5",
+   "published": "2026-11-19T23:52:25+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "0311f195ee",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": true
+  },
+  "45683f085c": {
+   "source": "Gulf Coast News and Weather",
+   "source_type": "rss",
+   "title": "Another tech outage? Here's what to do",
+   "summary": "From banking delays to a communications meltdown behind last week's nationwide ground stop, experts say don't panic. Here's what else to do in the event of a tech outage. From banking delays to a communications meltdown behind last week's nationwide ground stop, experts say don't panic. Here's what else to do in the event of a tech outage. From banking blackouts to inaccessible emails, tech outages over the past couple of weeks have disrupted millions of lives nationwide. And, in an increasingly interconnected world, experts say AI integration could drive more outages. Now, they're stressing the importance of preparing before the next disruption hits. \"We're in an upgrade period right now. AI is changing things rapidly and we're trying to keep up,\" Chris Steinhauer from the National Cybersecurity Alliance said. \"It's kind of like storm preparedness or disaster preparedness where you need to have extra water, extra food.\" To stay ready, experts have several recommendations, including: Writing down passwords is also a good idea, according to experts, who say the bigger threat today is online. \"Digital crimes don't rely on paper anymore for the most part,\" James Lee, president of the Identity Theft Resource Center , said. \"You don't have to worry if you write down all your passwords. You can keep that in something folded up in your wallet or in your purse or your desk.\" When an outage occurs, experts suggest verifying its legitimacy to avoid unnecessary actions like resetting passwords, which could lock you out of your account. Keeping a record of transactions is also good practice, according to Lee. \"Go ahead and take a screenshot of what you did, so if you need it, when everything's back to normal, you can go to your customer service representative and say, 'Hey, I had this problem. I just want to confirm,'\" Lee said. After an outage, experts also advise reviewing what worked and what didn’t to improve your preparedness for the next disruption. Scams are another concern during outages, as they tend to spike when people are anxious. Steinhauer warns against trusting incoming messages or calls without verification. A general rule: trust no one and verify everything. And, if still unsure, look up the company’s official website, app, or phone number before contacting the company. Watch more on what to do in the event of an outage:",
+   "url": "https://www.gulfcoastnewsnow.com/article/tech-outage-what-to-do/74482106",
+   "published": "2026-11-20T01:45:46+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "45683f085c",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": true
+  },
+  "fa95c16ecf": {
+   "source": "Gulf Breeze News",
+   "source_type": "rss",
+   "title": "Disaster may come and the boy scouts are prepared",
+   "summary": "This week, we learned how fragile our modern world can be. Planes were grounded all across the United States due to a software error, a hardware deficiency or a contract to an unqualified supplier, depending on who you ask. We also experienced an email outage due to problems at Microsoft. Then, several banks reported that their systems were inoperable. We’ve […]",
+   "url": "https://news.gulfbreezenews.com/articles/disaster-may-come-and-the-boy-scouts-are-prepared/",
+   "published": "2026-11-19T15:56:50+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "fa95c16ecf",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": true
+  },
+  "119fff1b4f": {
+   "source": "Tech Times",
+   "source_type": "rss",
+   "title": "NSA Faces Outage Affecting Key Intel Hub Supporting Middle East Intelligence, Operations Amidst Iran War",
+   "summary": "A sweeping technical failure inside one of the United States' most sensitive intelligence agencies, the National Security Agency (NSA) , has disrupted classified communications at a critical moment. The timing could not be more consequential, with American forces and intelligence assets actively engaged in a conflict in the Middle East. The NSA's highly classified internal communications network, known as NSANet, went down on November 17 , disrupting the agency's ability to access and share sensitive intelligence information internally. CNN first reported the outage , citing six people familiar with the problem at the agency, which is headquartered at Fort Meade, Maryland. The NSA responded by staggering personnel arrival times as it investigated the scope and cause of the disruption, with large swaths of the agency's workforce asked to remain at home while essential staff reported to the facility. The outage, which sources described as affecting internal communications and analysis capabilities, persisted for two days before the broader follow-on reporting about its impact on the Georgia hub emerged on November 18. \"The National Security Agency experienced temporary degradation during scheduled routine maintenance,\" the statement read. \"While some internal systems were affected, mission-critical capabilities remain fully operational, and our ability to defend national security continues. NSA's infrastructure is designed with multiple layers of redundancy to maintain operations during planned maintenance or unexpected events.\" The statement did not confirm or deny CNN's reporting about classified network disruptions, and the NSA did not elaborate further. Read Also: Major US, Europe Websites Go Dark to Protect Against PHP Vulnerabilities the NSA Found A subsequent CNN report on November 18 revealed that the outage had also disrupted operations at a critical NSA cryptologic center in Georgia, a facility responsible for signals intelligence and cybersecurity operations focused specifically on the Middle East. That facility plays a direct role in supporting the intelligence picture that informs US military and national security decision-making in the region. The disruption to the Georgia hub affected classified communications between the United States intelligence community and assets, partners, and operations focused on the Middle East theater. The precise operational impact remained unclear given the classified nature of the work involved, but the…",
+   "url": "https://www.techtimes.com/articles/331042/20261119/nsa-faces-outage-affecting-key-intel-hub-supporting-middle-east-intelligence-operations-amidst.htm",
+   "published": "2026-11-19T07:00:07+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Intel"
+   ],
+   "id": "119fff1b4f",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": true
+  },
+  "7042e20627": {
+   "source": "Arab News",
+   "source_type": "rss",
+   "title": "Trump says US will ‘see what happens’ in conflict with Iran after January 1",
+   "summary": "Trump says US will ‘see what happens’ in conflict with Iran after January 1 Arab News",
+   "url": "https://www.arabnews.com/middle-east/trump-says-us-will-see-what-happens-in-conflict-with-iran-after-january-1-3012926",
+   "published": "2026-11-19T12:15:30+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "7042e20627",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "0cdf3ba19b": {
+   "source": "www.wam.ae",
+   "source_type": "rss",
+   "title": "FNC Secretary-General highlights AI applications at World e-Parliament Conference in Brussels",
+   "summary": "FNC Secretary-General highlights AI applications at World e-Parliament Conference in Brussels www.wam.ae",
+   "url": "https://www.wam.ae/en/article/c3c1p5x-fnc-secretary-general-highlights-applications",
+   "published": "2026-11-19T08:51:14+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "0cdf3ba19b",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "f951735db4": {
+   "source": "Anadolu Ajansı",
+   "source_type": "rss",
+   "title": "Australia seeks joint efforts to harness AI opportunities",
+   "summary": "Australia seeks joint efforts to harness AI opportunities Anadolu Ajansı",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQZnhlR09Hc1l1RFZDRUo5aW1YSEFMVnRJMXA3Q2VXbldhZGlWMTBlY0ZYVWhabjU1VkRRZ2RNejVLTWR6VGZqUXh0MXpkbnFOejMwek85ODNPWUlCZ041RnV1cUVaeW9LVjJaZUFFZHpjb002MERCMHM1VktMNFNScWRaTzZwamNaczY4UmlLVTcxR3I1ZE5YTWJnQkVqdXky?oc=5",
+   "published": "2026-11-18T08:14:57+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "turkey",
+   "entities": [],
+   "id": "f951735db4",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "70a93c75d8": {
+   "source": "Inc.com",
+   "source_type": "rss",
+   "title": "Anthropic’s $81.3 Billion IPO Just Put OpenAI on Notice. Its Advantage May Be Short-Lived",
+   "summary": "Anthropic’s $81.3 Billion IPO Just Put OpenAI on Notice. Its Advantage May Be Short-Lived Inc.com",
+   "url": "https://www.inc.com/chloe-aiello/anthropics-81-3-billion-ipo-just-put-openai-on-notice-its-advantage-may-be-short-lived/91439864",
+   "published": "2026-11-19T20:59:17+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "OpenAI"
+   ],
+   "id": "70a93c75d8",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "c9ab6ef14f": {
+   "source": "Facebook",
+   "source_type": "rss",
+   "title": "The seven people who left OpenAI to create Anthropic in 2021 now each hold stakes worth tens of billions of dollars after the company made its stock market debut. https://nyti.ms/3UNr8b8",
+   "summary": "The seven people who left OpenAI to create Anthropic in 2021 now each hold stakes worth tens of billions of dollars after the company made its stock market debut. https://nyti.ms/3UNr8b8 Facebook",
+   "url": "https://www.facebook.com/nytimes/photos/the-seven-people-who-left-openai-to-create-anthropic-in-2021-now-each-hold-stake/1554979906484467/",
+   "published": "2026-11-20T01:57:03+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "OpenAI"
+   ],
+   "id": "c9ab6ef14f",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "1ca51602b7": {
+   "source": "Reuters",
+   "source_type": "rss",
+   "title": "Instant view: Anthropic hits $2 trillion market value in debut; major indexes fall",
+   "summary": "Instant view: Anthropic hits $2 trillion market value in debut; major indexes fall Reuters",
+   "url": "https://www.reuters.com/legal/transactional/view-anthropic-set-soar-debut-will-ai-peers-follow-2026-11-19/",
+   "published": "2026-11-19T21:39:50+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "1ca51602b7",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "31a405b15c": {
+   "source": "CNBC",
+   "source_type": "rss",
+   "title": "Anthropic was supposed to save the AI trade. What went wrong?",
+   "summary": "Anthropic's historic IPO — the largest in U.S. history — delivered a big win for the company and its investors. But it failed at another task: reviving animal spirits in the AI trade. The Nasdaq Composite closed down 2.25% amid a broader market pullback with the S&P 500 declining 2% to 7,175. It wasn't supposed to play out this way. Investors had been looking forward to the Anthropic IPO as a \"clearing event\" — reviving the tech sector after months of choppy trading, the Nvidia espionage scandal, and growing concerns that AI chip sales to Asia are likely to slump as Washington cracks down on potential violations of export controls. Some of those worries resurfaced Thursday as a short seller, Hunterbrook Media, alleged in a report that firmware sold by chipmaker AMD had turned up in U.S.-blacklisted companies. AMD stock closed down more than 7%. The chipmaker told CNBC it complies with U.S. law. Adding to the worries, the House Foreign Affairs Committee released documents showing that a subagency of the Commerce Department approved the sale of more than 879,000 AI chips to Chinese companies. That also raised the prospect of an Asia sales slowdown under stricter export controls. Many investors and analysts continue to express confidence in the AI trade, noting that Anthropic's successful market debut — the stock closed up 17% from its IPO price and raised more than $81 billion — bodes well for capital spending across tech. But investors acknowledged that this is a high-tension moment and said it's time to be more strategic about the trade. Dan Niles, founder of Niles Investment Management, described himself as a \"circumspect bull,\" making the comparison to market conditions in 2022 when the big indices tanked in the back half of the year. \"You could have still made money that year. You just needed to have the right combination of longs and shorts,\" he said. Part of the challenge, Niles said, has been a price war between the two cutting-edge frontier labs, Anthropic and OpenAI. That has posed a threat to the overall revenue and profit potential of AI and the capex going into it. Fierce competition on price is producing collective losses between the two top companies, he notes. \"The combined revenue growth for OpenAI plus Anthropic went from growing 75% sequentially in Q2 to 48% in Q3,\" he told CNBC. \"The combined losses went from $7.9 billion to about $8.4 billion from Q2 to Q3.\" While uncertainty is high now, some resolution may be on the horizon if a…",
+   "url": "https://www.cnbc.com/2026/11/19/anthropic-ipo-ai-stocks-selloff.html",
+   "published": "2026-11-19T22:41:43+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "AMD",
+    "Anthropic",
+    "NVIDIA",
+    "OpenAI"
+   ],
+   "id": "31a405b15c",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "1ac09ef513": {
+   "source": "WSJ",
+   "source_type": "rss",
+   "title": "Anthropic’s Mega IPO Lives Up to Wall Street Hype but Fails to Revive AI Trade",
+   "summary": "Anthropic’s Mega IPO Lives Up to Wall Street Hype but Fails to Revive AI Trade WSJ",
+   "url": "https://www.wsj.com/finance/stocks/anthropic-ipo-ai-markets-89e2476f",
+   "published": "2026-11-20T00:00:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "1ac09ef513",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "e0f1079859": {
+   "source": "Al Jazeera",
+   "source_type": "rss",
+   "title": "Meta rethinks 2030 climate goals as AI data centres drive emissions up",
+   "summary": "Meta rethinks 2030 climate goals as AI data centres drive emissions up Al Jazeera",
+   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPVHNXVFdSam5xTEJfN1phTmdqbHhfX2ZkX1pvWDRSTk5GY2JrSHZyM014NkJKMkNKc3NYQkg0RUktaVdYYWhsWmZYRWF2dGJndDFUaFBCZGY0RXhUdHZsNGlCaWFycVhxSkZYYlJ1UUFRbzhSTzhWenFzc3AzaUVYbGRxWTFsRURLdVNWRUs5MzdDM2I5a3h6WHVWSmgzbzFwUE1GaHlCYkpjWEFFQnEzOGRB0gG3AUFVX3lxTE41QzQxRUpscnVkNXk3VTlYVk1fZE92QlY0MWlJVWdKWElEQlBwVlJTVm9zbm9KUkZ3b2ZfbTRhWEVKcVVxbFp5OXRDVTNqRjhXN29tOVRkaUFrT2RzOFM4U0RfTFVoQmVNcjZUWDFXNzBsSnBFNHEyeFRETTctNFh4N1JQZGFHZVFOTXdsQXB6aXVaSVI4ZkVxQ1JpU1pMc1RjVnBYODhsRnFSRjVjbTBSeGZOTjJ2dw?oc=5",
+   "published": "2026-11-20T01:36:38+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Meta AI"
+   ],
+   "id": "e0f1079859",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "594b6beda3": {
+   "source": "Bergen Record",
+   "source_type": "rss",
+   "title": "Muslim Girl Founder Amani Al-Khatahtbeh Sues xAI Over Deepfakes",
+   "summary": "Muslim Girl Founder Amani Al-Khatahtbeh Sues xAI Over Deepfakes Bergen Record",
+   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOdm1yRHFHNHdKVnl2a3lpZ0FxMlJicFE0QXpkcUlmdUstVWxTV29oZ00ydlI1VVFRcEpNQTIwUjA3YjNtQ0FhNTYySlhQOWwzemFQQkx2NTc5X0JlYk44bWRiemJrbVg5VjZ4OEJiOVNla2ZtOGdJUzdjZ1ZlZHpUWnRKbFozWnZlMUs4OG9UVEVQNU9aZ1ZOaEFISWVGOXVWcnpYTUt5ZmhMRWZvejA2WF9QZkFwa1I2ZU15VUkyd3pOTjBEZXc?oc=5",
+   "published": "2026-11-20T01:08:13+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "xAI"
+   ],
+   "id": "594b6beda3",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "9845fa06d4": {
+   "source": "KuCoin",
+   "source_type": "rss",
+   "title": "Mistral AI Opens APAC HQ in Singapore, Aims to Hire 200 by 2027",
+   "summary": "Mistral AI Opens APAC HQ in Singapore, Aims to Hire 200 by 2027 KuCoin",
+   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPWGdPcjNKQ1ROREw3MW9rZ3RDalRLRE9uSk5BNU9NSmtBM2FIZkFRbTE2MHNST0dCNUlSWWpHNzJyNnJkVGwtTUhvMkxYMjZqMi1BWGxsUlNUZDAzZmo5SE5lUExrTFhPTWh5czdmNWhxR21Ec09zX1FQLWw2bG05UFhBOUJDbWdHejMzS1NuOWVaWnpXeVFoczFRRzk?oc=5",
+   "published": "2026-11-20T02:38:39+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "eu",
+   "entities": [
+    "Mistral"
+   ],
+   "id": "9845fa06d4",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "a3f167a048": {
+   "source": "jawlah.co",
+   "source_type": "rss",
+   "title": "Deutsche Telekom fund invests $110 million in Mistral AI to boost European AI",
+   "summary": "Deutsche Telekom fund invests $110 million in Mistral AI to boost European AI jawlah.co",
+   "url": "https://news.google.com/rss/articles/CBMiP0FVX3lxTE81ekdydklnWkNaRUFyYkt5VFNaeGNmNS1SaENjcHpxUFY4aXpSNjdURUVfN3BsWXdPa2dQZ0x5RQ?oc=5",
+   "published": "2026-11-19T13:54:46+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "eu",
+   "entities": [
+    "Mistral"
+   ],
+   "id": "a3f167a048",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": true
+  },
+  "65e56d2a15": {
+   "source": "Yahoo Finance",
+   "source_type": "rss",
+   "title": "Moonshot AI Cancels $150 Million Nvidia B300 GPU Rental Deal in Indonesia",
+   "summary": "Moonshot AI Cancels $150 Million Nvidia B300 GPU Rental Deal in Indonesia Yahoo Finance",
+   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPV3NEZjgwYjlud1g1RWNNUzRrdkY3UGhjLUQ0TzhCRlVTcEJNT2NpQ0NIcWh1WW9sMUc2RFdfcHJyTkRCVWR3WmE5dFJqVEFyQTZXbklzeUh6T3pJVFZhWFAzcGM3bTVOWkNjYnJIQV9SZ1NqS1RaRHRLZkhCbFlRd2FQZmNRMGRac2lHVnBIaUhhREFIRjNQLVlncw?oc=5",
+   "published": "2026-11-19T18:14:24+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Moonshot AI",
+    "NVIDIA"
+   ],
+   "id": "65e56d2a15",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "2e473befb1": {
+   "source": "The Decoder",
+   "source_type": "rss",
+   "title": "Chinese tech firms face a double hit as chip shipments stop and overseas cloud access disappears",
+   "summary": "Chinese tech firms face a double hit as chip shipments stop and overseas cloud access disappears The Decoder",
+   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNMXFaQ2dKVW01RV9rOGxvcmk1d3ZYN3l4OUFNSGd6VVRrNEhabzc5dTQxWnRRYS0yczE4M05vTjFkX09hcmhhNENMTHlyQXpoOUVOQ19CYTFUME10VU1pejRQSHdreTlleTdhTFUtRmR0MTdnaFJtVmhzWXd3RHlYSkJiSjJtWE9xeU0ydm5OSmRIMno1Z3Q4a2JGYWQ3aVdlOGRWMUhwUC10M0V3TEt6aUNzVkM4N1BkZk9qWVNn?oc=5",
+   "published": "2026-11-19T17:03:33+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Moonshot AI"
+   ],
+   "id": "2e473befb1",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "caea5fc733": {
+   "source": "Superpower Daily",
+   "source_type": "rss",
+   "title": "Ultra-Fast Inference & Open-Weight Models",
+   "summary": "Ultra-Fast Inference & Open-Weight Models Superpower Daily",
+   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPNUlvdnhFSWZvNVFkQTl3WGlsZE9PU1VWR0hHc3NYUEk1VlNHX2NncFIteDFhd2c0MDVfNHh0Z2tDd1JpVUxuU2Q1QzRHS0NucGw5NWwtX1ZUa0ZJWHFTZXBiLXJvMlUxWGZxYVVKd2V1QXBlSDZ5OFJuZVZhUXRob3lXQ3piaXhtVTZWU2pubmpvU29wVWR3RVRNenl1NVBLb2tpbHd3SVNzQkpJdmtoVg?oc=5",
+   "published": "2026-11-19T02:00:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "MiniMax"
+   ],
+   "id": "caea5fc733",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "0fd47c8d73": {
+   "source": "Mayo Clinic Press",
+   "source_type": "rss",
+   "title": "Mayo Clinic Press author Q&A: Can AI make health care more human?",
+   "summary": "Mayo Clinic Press author Q&A: Can AI make health care more human? Mayo Clinic Press",
+   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOYTVKTFJtb2xBUVJYc2dPVzVRWGc5ZXlBajVFVmQ4dDNpTjJBWXhOajZwY3labnYwQjZUQVpXLW5lYzcwaC1ybnBHeWlqZEV3Nnpad1pkV0ZwaHFWUDFiWWhlemtfWjhaT3ZoRFhMWm9RXzJOZnVyajdLUk41ajhOeUIwRW9veHNodDA2UVVkWWp4LThXVDlUOWdLdldNbHVtLUdGMzRuVWt6Zw?oc=5",
+   "published": "2026-11-19T18:48:14+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "Humain"
+   ],
+   "id": "0fd47c8d73",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "b8baba06b8": {
+   "source": "Detroit Free Press",
+   "source_type": "rss",
+   "title": "mEinstein Develops Human Context Contracts to Define Authorization Between AI Agents and Individuals",
+   "summary": "mEinstein Develops Human Context Contracts to Define Authorization Between AI Agents and Individuals Detroit Free Press",
+   "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQcVRSbVQxWEdzRnpqZ0cyekJfb0ZvNmk0SzJiN253N1YxaGplLVpKc3A0LWxWeTFmb1ZRalRyb1F2TmJPMXZDNjNtazZOZjJqWUdmNVFna2RyR2w5elBlbHUwZzBpVnVYOC1IVFF0OS1WT2dLc0k0bE5hT29kZjhTbDhvSjJlQWl6dWo4Nnp1M3l3blUzeklDVkhyRHViNG5XY3g3SU9LNEFFelZkX25oVzloMUw5ZnBla2lMS0NoT3JzV3lzbFNQT0MwWElNZTZyT1ZWRDVEUG9QR1ZkUG56UXpBbG8?oc=5",
+   "published": "2026-11-20T01:43:02+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "Humain",
+    "Model Context Protocol"
+   ],
+   "id": "b8baba06b8",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "bc48bfbc6a": {
+   "source": "KPTV",
+   "source_type": "rss",
+   "title": "Anthropic CEO vows to ensure AI systems 'remain under human control' as company launches IPO",
+   "summary": "Anthropic CEO vows to ensure AI systems 'remain under human control' as company launches IPO KPTV",
+   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNczdUbTZxSGNma3JidXB4djZMNUJvb1M5YUdyVk1JT2dDQTFnXzBCdVVXZFJ1aEg2NTZTbnBzZTBsbmVzeG12SVA3SnpGQlZidmYteW1UT2JVWUF6cUk3cnBXMi0xMWw1YW9IbFRsaW9XTENpM3ZHYXhDZk9FWW94Zk5kdDd3UGpndmtGZlpOalItMFhNczUzQzNmOThzanJNMzNBNF80WlpRTlVpZVFDX2dyOTlMay12bXR4YWM4elo?oc=5",
+   "published": "2026-11-19T17:48:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "bc48bfbc6a",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": true
+  },
+  "012b3ac43d": {
+   "source": "Menafn",
+   "source_type": "rss",
+   "title": "ADEX Highlights AI's Role In Advancing Sustainable Development At 'AI For Development' Forum",
+   "summary": "ADEX Highlights AI's Role In Advancing Sustainable Development At 'AI For Development' Forum Menafn",
+   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQSWRmcWtfajFFT3JTajRuVlVMRUMwXzJsN1VyaWg2MUpwWXZrVkVRQmJ5OTl4VVRUbUpCSEdQc3VIb2ZXamM0XzJuRlI1R01nR044elVrdTQxbWt2RkJNSmp5MDgzMHFfX1Z1X1pqdHgwUGI3b2o3LVFnWHVYYmY0aXlyQ3ByLVZxNE02UE5jVDBZanUyclZpeEVhMEtaRDJVaDJkd2ZkTG4xYmZidjdlbEhBSk5kNzVtdTF3?oc=5",
+   "published": "2026-11-19T16:45:27+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "MBZUAI"
+   ],
+   "id": "012b3ac43d",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "7eacc66228": {
+   "source": "remio",
+   "source_type": "rss",
+   "title": "langchain-openai==1.8.3 Fixes Codex Caching",
+   "summary": "langchain-openai==1.8.3 Fixes Codex Caching remio",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1CRmk1YktqU1ZSRTZaMU95ZHRIRkdOZnFQSlR4MWVZeFIyQXJPX2k5TVRkdEd6SVdTZEVXOUNLeXEzVVZvQVo4ZlhSU2ZWZEhmRFZmR01TYk5RMXVwMXdLdGVCTUgxQnlIbWxGcDl5em84ajBjY3FZ?oc=5",
+   "published": "2026-11-19T22:36:29+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "LangChain",
+    "OpenAI"
+   ],
+   "id": "7eacc66228",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "c7473f90eb": {
+   "source": "Amazon Web Services (AWS)",
+   "source_type": "rss",
+   "title": "AI coding agents on Amazon EC2 Mac: How Cognition scales Devin for macOS",
+   "summary": "AI coding agents on Amazon EC2 Mac: How Cognition scales Devin for macOS Amazon Web Services (AWS)",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxON3F5M1ZsUVpHZHN3ZDA5TVNBby1ha0JFTFZ6S2xJV1JydWlDcVBuZ2o1cFdib2Zzd1hCY0tUWlVDM2d0YURGeWJBdmVjUnIxVW9CR3owYS1XTERNWXQ5aE1yVEZwUk05Y3JpT3NTV3VoUlhfLW9qLWJGS2hWSW1fYUsxdWF5MkI4Si15Ni1oUXVXb1MzaXB3U3M5c2xxNWk0VGhYRVJrMFlHbXVjN0lfQmljeTk?oc=5",
+   "published": "2026-11-20T01:10:14+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "Devin"
+   ],
+   "id": "c7473f90eb",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "59a6528ed7": {
+   "source": "PhillyVoice",
+   "source_type": "rss",
+   "title": "Salesforce World Tour will bring free AI workshops to NYC, with a livestream for Philly viewers",
+   "summary": "Salesforce World Tour will bring free AI workshops to NYC, with a livestream for Philly viewers PhillyVoice",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOZkROVV9YOFc1anl1YXdHT00yeXJlNlh2MGltOGFVOGZ5N0dnQmNsTERwenZ6Sl9QTnVmd3Ewc1NkOFpmczR6ZVFKN19YUWxKdEp2aVhZazBGMEJJX0tyXy1xbGVMXzAxQnJmRVZSU2Ruc1h1Ny1YSzU3ODF2U0pJcWRKVlZfU2ZYYmw5MkxacEZ2OHZFanc?oc=5",
+   "published": "2026-11-19T15:00:46+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "enterprise",
+   "entities": [
+    "Salesforce Agentforce"
+   ],
+   "id": "59a6528ed7",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "65e43843c6": {
+   "source": "UC Today",
+   "source_type": "rss",
+   "title": "ServiceNow Knowledge 2027",
+   "summary": "ServiceNow Knowledge 2027 UC Today",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE90amVER1ZxMXBqYkd1Z1BDOXpKR1JYRkVBYlVDZVNuSkZJTHhTdkNXV2g0MTV6MjFjLXVDNERaZVBLYUFOVlZhVExLOW1kQ1Q4ZFRBWFlqNE1UWUdRLVJxdFl3?oc=5",
+   "published": "2026-11-19T23:56:41+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "enterprise",
+   "entities": [
+    "ServiceNow AI"
+   ],
+   "id": "65e43843c6",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "24af561e77": {
+   "source": "The New York Times",
+   "source_type": "rss",
+   "title": "Nvidia Asked to Sell Chips to Companies Tied to Chinese Military and Megaspeed",
+   "summary": "Nvidia Asked to Sell Chips to Companies Tied to Chinese Military and Megaspeed The New York Times",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPUVRIQ2VxbEYxSjhPenZGVUItLXdSQzJhMzdMQjVSaDB2aXlsMUdhVk44aTRRZzY1bllnTGJRdmVXLVZsaG5KZW5EclNCUjNHT0FiRDEtZ2Nqb05BaG9Nc2hvR0xneFpWUzNJNk5CQ3IyU1ZMTGMwMWNWM3RsNGlLenpaS1Z4ZUkwYk5yVl9ialFDRzk1?oc=5",
+   "published": "2026-11-20T01:13:37+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "24af561e77",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "8693b6a632": {
+   "source": "investingLive",
+   "source_type": "rss",
+   "title": "US approved nearly 900,000 Nvidia and AMD AI chips for China. Raises more questions than answers.",
+   "summary": "US approved nearly 900,000 Nvidia and AMD AI chips for China. Raises more questions than answers. investingLive",
+   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPRDlYQ1M4U2NVMEl4VTRnSGJZY1Nhck12YzZ2aHZ3ZUtlUV8zay11QU1VRktvNGpwT094aHFaVFFRdll5b2hrYVR3MkwtSkJlUjZmdDBBcWVJNHhNb2dQRWFGdnRUWjhDZ1hFX2JEMzh6bncwa3lOT3ppdWlYYTUtaE04VS1kR0k1bkFpUlFqaHljcmVzMUF2TXNDNndVQTRuYzJabXV2U2RxRDNXdUNaOVlRMEJJdGFZakVFY1RoUTdmNnlVdHc?oc=5",
+   "published": "2026-11-20T01:50:39+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "AMD",
+    "NVIDIA"
+   ],
+   "id": "8693b6a632",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "653719fd0b": {
+   "source": "Android Authority",
+   "source_type": "rss",
+   "title": "Google brings computer use to Mac, letting Gemini handle chores without hijacking your screen",
+   "summary": "Google brings computer use to Mac, letting Gemini handle chores without hijacking your screen Android Authority",
+   "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1OQldpSDZhenQ4czZYY1dkb2QtZkRtNVFzRUk0ajlER2FDa0l2c3dGWGV5LTBEaTBIX2x3ZW5yeVg5VFVaX2V0ZEJtcHE3bGhEU2h2Uk52Wk9pTUpmU3E5VHFtcGR0QzhObFp5NTVfMmxyWjQ?oc=5",
+   "published": "2026-11-19T20:04:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Google DeepMind"
+   ],
+   "id": "653719fd0b",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "c033e263e7": {
+   "source": "explainx.ai",
+   "source_type": "rss",
+   "title": "Apple Depth Pro 2: 4 Open Depth Models, 24M to 872M",
+   "summary": "Apple Depth Pro 2: 4 Open Depth Models, 24M to 872M explainx.ai",
+   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPS21KSFRmNDg1NmstSTZVNUFMWmZqSE9DQ0JSTzdDNjJzcTNISnJMT1EzMVZ3MFRDX2NCM0xBSEtya0k2Q2s0NHg4UDN4VWNyX05rdzFBRDNJOHNGRDZFUUpfbGhNMEFRdzI4ZDA2M2NQMjcwU3hyVl9IQXA3Y0owYUlnbm92RkphbnFqRkJvOVlaYUFqTVg3dllTZi1wa3BJTEwtcjQ1ZktFQTZqX2c?oc=5",
+   "published": "2026-11-20T00:00:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Apple silicon"
+   ],
+   "id": "c033e263e7",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "38e0028786": {
+   "source": "Yahoo Finance",
+   "source_type": "rss",
+   "title": "What Should Qualcomm (QCOM) Investors Watch After 500 California Layoffs And New AI Moves?",
+   "summary": "What Should Qualcomm (QCOM) Investors Watch After 500 California Layoffs And New AI Moves? Yahoo Finance",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPUnBxNG5ZS0g2QlBWcldacnhOb0lXanZIaXROM2pMdG1UaWx5LXlJT2EtV2Y1QmR5OTlXMVJmc05wNkhWWHZwSEdrUXVlRmIzWDlfdmZFdE03OVJPZjBPbFlWZ2hMV3BWdUV5YVRXODFnYTkzS0Vub0huZUpHV1RWYkEyNVJtT1JtelVidjRYa3dMOG1YeUttVDI4NEI4QQ?oc=5",
+   "published": "2026-11-20T02:16:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Qualcomm"
+   ],
+   "id": "38e0028786",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "001b23aa21": {
+   "source": "The Times of India",
+   "source_type": "rss",
+   "title": "Qualcomm lays off hundreds in California; as CEO Cristiano Amon says: We must have the right people in th",
+   "summary": "Qualcomm lays off hundreds in California; as CEO Cristiano Amon says: We must have the right people in th The Times of India",
+   "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxOTG9jUXF1OGVVSHFTNHJsckNKY2YtYlktQnJqeWpCbzlCcFFVZGthMkU2VmNwY3lJNmRBdEw3MVBpOURSZ0RRUFIzbDRxNUJwWUgzQ3FfdVRvQ3gxQnV3RUQzakQtSGhqNEhrZHB6ajZNU2RqczBPZWZEV3ltVjU2a1d0SkluTHR5Ui0ySXhWeVM5WndITXE3WHVZand2SHFmLXRWamVMSjZzb0hJX2F2WWphUmFtU2FRS2NHTGRDOF85MU52UmdHemVTTzlmeDY3V0VBOHFPMjYwU2IycTdzMEN5anhQN0duRTc1aEdPbUVLdFlvRTNMR2dSVWswSXpUbmYwN3d3M3g4NHpSX3kwczZzXzVDdTV6c3NzS2xqRdIBpAJBVV95cUxPMTZsU200WTB1UVFaeXVvRnI1UFI5bzBFc3BjMXNvaXQtTzEwTUgtUm1JZHhYbDRndGxwSmdPSHdJd0dHMGtQUzMyTmVTZ1hPRFYweWkweE44Q0tYSlVoeF9vUkMwd1lhclBFTEFmbTlqZDFNSkVwZFV3bjN0SnRzMHdCbDZYbWctUFM2MGtzM21BNk5Tcnc2bHlVV1FzMEZCbHBZODNjSnlXY0tEbmhnNFhrTVYyYXZZR1k5TUxoSGlwTnd4OXpfdThNQ3d2SFlMZXBZdEY0MzVzc3VWeUVrVm4tZW14Y1hFa1ZBcjJOaHNJWDNYNGduYnE1d3NWNkwyUkV0Y0ZUcEFtaGNoUlpZanhoMHVnVm85MXBseGNIZFpHdWRP?oc=5",
+   "published": "2026-11-20T01:54:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Qualcomm"
+   ],
+   "id": "001b23aa21",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "3c947fd181": {
+   "source": "shattered.io",
+   "source_type": "rss",
+   "title": "TPU vs GPU in 2026: 288 GB, 432 GB, 0 Official Prices",
+   "summary": "TPU vs GPU in 2026: 288 GB, 432 GB, 0 Official Prices shattered.io",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPWklOWGF0ZVlvX1RHLVR5SEZSclpSMzlIc0V0LXpKZjNuUUpieEJCNHFZQ20yU2tPUUc3UEFOS1MyZVdmVTRPemNDSHQxVlBJSnVUM096ajF5OC1jbkN6NGtFMW53SkFLMXJ4VENndDB2ejRPZDVKYnR3LXdmblVkQnVPYzl1QQ?oc=5",
+   "published": "2026-11-18T20:04:08+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "hyperscalers",
+   "entities": [
+    "Google TPU"
+   ],
+   "id": "3c947fd181",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
+  },
+  "a1e9c1f6f4": {
+   "source": "Mezha.net",
+   "source_type": "rss",
+   "title": "Fireworks AI co-founder says most companies can skip pricey frontier models",
+   "summary": "Fireworks AI co-founder says most companies can skip pricey frontier models Mezha.net",
+   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNekVFcjhxM1dYbTltblRRdzJIb2tuODd6UVRhRExCd0kzdW90R3NlVWFZSnVyeHFmb3NGaWtrT1NQUlAxcjRmS2ZiRS0tRHduOXVmcUgtQl80ekxrby12aFdDQU56bVlaWElqQjc3eGktcDB4c0NQT053WjF0YTFtbU90eGpTXzNYN3c?oc=5",
+   "published": "2026-11-20T00:42:13+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Fireworks AI"
+   ],
+   "id": "a1e9c1f6f4",
+   "first_seen": "2026-11-20T02:42+00:00",
+   "flagged": false
   }
  },
  "runs": [
@@ -47816,6 +48569,12 @@
    "found": 503,
    "new": 64,
    "flagged": 3
+  },
+  {
+   "at": "2026-11-20T02:42+00:00",
+   "found": 502,
+   "new": 36,
+   "flagged": 4
   }
  ]
 }
