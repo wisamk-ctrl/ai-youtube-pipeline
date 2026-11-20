@@ -32,8 +32,8 @@ def main(week: str) -> str:
     if rev_items.exists() and cur_items.exists():   # a story added by hand brings its source (W47 California, 2026-11-20)
         import json
         have = json.loads(cur_items.read_text(encoding="utf-8"))
-        ids = {i.get("id") for i in have}
-        extra = [i for i in json.loads(rev_items.read_text(encoding="utf-8")) if i.get("id") not in ids]
+        urls = {i.get("url") for i in have}   # saved items carry no "id": it is computed from the url
+        extra = [i for i in json.loads(rev_items.read_text(encoding="utf-8")) if i.get("url") not in urls]
         if extra:
             cur_items.write_text(json.dumps(have + extra, ensure_ascii=False, indent=1), encoding="utf-8")
     return "using reviewed script"

@@ -354,3 +354,23 @@ def test_a_green_screen_stock_clip_is_rejected(tmp_path):
                         str(tmp_path / f"{name}.mp4")], check=True)
     assert keyed(tmp_path / "green.mp4")
     assert not keyed(tmp_path / "navy.mp4") and not keyed(tmp_path / "blue_glow.mp4")
+
+
+def test_reviewed_items_are_merged_by_url(tmp_path, monkeypatch):
+    """2026-11-20: saved items carry no "id" key (it is computed from the url), so the merge compared None with None
+    and added nothing: W47-en's render was refused for 10 'unsourced' lines whose sources sat in reviewed/."""
+    import importlib.util
+    import json
+    spec = importlib.util.spec_from_file_location("apply_reviewed", Path(__file__).parents[1] / "scripts" / "apply_reviewed.py")
+    apply_reviewed = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(apply_reviewed)
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "reviewed/W").mkdir(parents=True)
+    (tmp_path / "output/W").mkdir(parents=True)
+    a = {"title": "A", "url": "https://a"}
+    b = {"title": "B", "url": "https://b"}
+    (tmp_path / "reviewed/W/script.md").write_text("نص\n", encoding="utf-8")
+    (tmp_path / "reviewed/W/items.json").write_text(json.dumps([a, b]), encoding="utf-8")
+    (tmp_path / "output/W/items.json").write_text(json.dumps([a]), encoding="utf-8")
+    apply_reviewed.main("W")
+    assert [i["url"] for i in json.loads((tmp_path / "output/W/items.json").read_text())] == ["https://a", "https://b"]
