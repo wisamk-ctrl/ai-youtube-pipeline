@@ -47,7 +47,8 @@ def el_voice(key: str) -> str:
         r = requests.post(f"{EL}/voices/add", timeout=300, headers={"xi-api-key": key},
                           data={"name": "Wissam (AI This Week)", "description": "The founder's own voice, from his W45 read"},
                           files={"files": (sample.name, f, "audio/mpeg")})
-    r.raise_for_status()
+    if r.status_code >= 400:   # ElevenLabs says why (wrong key, or a key without "Voices: write")
+        raise requests.RequestException(f"HTTP {r.status_code}: {r.text[:300]}")
     vid = r.json()["voice_id"]
     try:   # keep it for later runs and the pipeline (needs SECRETS_PAT, like the other platforms)
         sys.path.insert(0, str(ROOT))
@@ -64,11 +65,14 @@ def elevenlabs(text: str, out: Path) -> list[str]:
     key = os.environ.get("ELEVENLABS_API_KEY")
     if not key:
         return ["ElevenLabs: no ELEVENLABS_API_KEY secret, skipped"]
+    me = requests.get(f"{EL}/user/subscription", timeout=60, headers={"xi-api-key": key})
+    lines = [f"ElevenLabs key check: HTTP {me.status_code}"
+             + (f", plan {me.json().get('tier')}, can clone: {me.json().get('can_use_instant_voice_cloning')}"
+                if me.status_code == 200 else f" {me.text[:200]}")]
     try:
         vid = el_voice(key)
     except requests.RequestException as exc:
-        return [f"ElevenLabs: voice not made: {exc}"]
-    lines = []
+        return [*lines, f"ElevenLabs: voice not made: {exc}"]
     for model in ("eleven_multilingual_v2", "eleven_v3"):
         r = requests.post(f"{EL}/text-to-speech/{vid}", timeout=300,
                           headers={"xi-api-key": key, "Accept": "audio/mpeg"},
