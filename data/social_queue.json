@@ -379,9 +379,10 @@
         "status": "queued"
       },
       "tiktok": {
-        "status": "failed",
+        "status": "posted",
         "attempts": 2,
-        "error": "TikTok: HTTP 403 /v2/post/publish/video/init/ [unaudited_client_can_only_post_to_private_accounts]: Please review our integration guidelines at https://developers.tiktok.com/doc/content-sharing-guidelines/"
+        "at": "2026-11-20T05:33:41Z",
+        "note": "uploaded by hand in TikTok Studio (the unaudited app cannot post to a public account)"
       },
       "linkedin": {
         "status": "posted",
