@@ -970,19 +970,6 @@
    }
   ]
  },
- "c3577c2180": {
-  "item_id": "c3577c2180",
-  "event": "funding",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Anthropic",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   }
-  ]
- },
  "7377e6f77e": {
   "item_id": "7377e6f77e",
   "event": "funding",
@@ -1746,43 +1733,6 @@
    }
   ]
  },
- "672259c39c": {
-  "item_id": "672259c39c",
-  "event": "partnership",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "ServiceNow",
-    "kind": "org",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "Microsoft",
-    "kind": "org",
-    "track": "agents",
-    "role": "mentioned"
-   },
-   {
-    "name": "Microsoft 365",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Copilot Studio",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "Sajeev Nair",
-    "kind": "person",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
  "0fbbf8b06f": {
   "item_id": "0fbbf8b06f",
   "event": "other",
@@ -1944,25 +1894,6 @@
    }
   ]
  },
- "8d064b019d": {
-  "item_id": "8d064b019d",
-  "event": "other",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Meta",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   },
-   {
-    "name": "Google",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
  "1e8c68a6cc": {
   "item_id": "1e8c68a6cc",
   "event": "other",
@@ -2026,19 +1957,6 @@
    }
   ]
  },
- "532fee24c1": {
-  "item_id": "532fee24c1",
-  "event": "other",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "xAI",
-    "kind": "org",
-    "track": "models",
-    "role": "subject"
-   }
-  ]
- },
  "0b6565a919": {
   "item_id": "0b6565a919",
   "event": "other",
@@ -2077,43 +1995,6 @@
    }
   ]
  },
- "c229a4af9e": {
-  "item_id": "c229a4af9e",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "xAI",
-    "kind": "org",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "Grok Build",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "Grok 4.7",
-    "kind": "model",
-    "track": "models",
-    "role": "subject"
-   },
-   {
-    "name": "Grok Bot 1.0",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "SpaceX Super Intelligence",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
  "445e863da9": {
   "item_id": "445e863da9",
   "event": "other",
@@ -2134,25 +2015,6 @@
    {
     "name": "JShelter",
     "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
- "3d1edd03b3": {
-  "item_id": "3d1edd03b3",
-  "event": "regulation",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "xAI",
-    "kind": "org",
-    "track": "models",
-    "role": "subject"
-   },
-   {
-    "name": "Ninth Circuit Court of Appeals",
-    "kind": "org",
     "track": "other",
     "role": "mentioned"
    }
@@ -2762,19 +2624,6 @@
    }
   ]
  },
- "fffe6cba23": {
-  "item_id": "fffe6cba23",
-  "event": "opinion",
-  "region": "eu",
-  "mentions": [
-   {
-    "name": "European Union",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   }
-  ]
- },
  "86c6bf642c": {
   "item_id": "86c6bf642c",
   "event": "acquisition",
@@ -2790,25 +2639,6 @@
     "name": "Aleph Alpha",
     "kind": "org",
     "track": "models",
-    "role": "subject"
-   }
-  ]
- },
- "d1a28f1603": {
-  "item_id": "d1a28f1603",
-  "event": "launch",
-  "region": "eu",
-  "mentions": [
-   {
-    "name": "RHISE AI",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   },
-   {
-    "name": "Lucie",
-    "kind": "product",
-    "track": "agents",
     "role": "subject"
    }
   ]
@@ -3556,25 +3386,6 @@
   "region": "unknown",
   "mentions": []
  },
- "7d8255dc09": {
-  "item_id": "7d8255dc09",
-  "event": "funding",
-  "region": "cn",
-  "mentions": [
-   {
-    "name": "Moonshot AI",
-    "kind": "org",
-    "track": "models",
-    "role": "subject"
-   },
-   {
-    "name": "Kimi K3",
-    "kind": "model",
-    "track": "models",
-    "role": "mentioned"
-   }
-  ]
- },
  "65e56d2a15": {
   "item_id": "65e56d2a15",
   "event": "partnership",
@@ -3784,25 +3595,6 @@
    }
   ]
  },
- "889fbbbb2f": {
-  "item_id": "889fbbbb2f",
-  "event": "other",
-  "region": "cn",
-  "mentions": [
-   {
-    "name": "Zhang Yiming",
-    "kind": "person",
-    "track": "other",
-    "role": "subject"
-   },
-   {
-    "name": "ByteDance",
-    "kind": "org",
-    "track": "models",
-    "role": "mentioned"
-   }
-  ]
- },
  "6aaafb1f9f": {
   "item_id": "6aaafb1f9f",
   "event": "launch",
@@ -3819,19 +3611,6 @@
     "kind": "org",
     "track": "models",
     "role": "mentioned"
-   }
-  ]
- },
- "90d428e25c": {
-  "item_id": "90d428e25c",
-  "event": "funding",
-  "region": "cn",
-  "mentions": [
-   {
-    "name": "ByteDance",
-    "kind": "org",
-    "track": "models",
-    "role": "subject"
    }
   ]
  },
@@ -3886,19 +3665,6 @@
    }
   ]
  },
- "7ca9116079": {
-  "item_id": "7ca9116079",
-  "event": "other",
-  "region": "cn",
-  "mentions": [
-   {
-    "name": "DeepSeek",
-    "kind": "org",
-    "track": "models",
-    "role": "subject"
-   }
-  ]
- },
  "f9ed9265d8": {
   "item_id": "f9ed9265d8",
   "event": "regulation",
@@ -3912,25 +3678,6 @@
    },
    {
     "name": "ERNIE 5.5",
-    "kind": "model",
-    "track": "models",
-    "role": "subject"
-   }
-  ]
- },
- "8a00dfe4f4": {
-  "item_id": "8a00dfe4f4",
-  "event": "launch",
-  "region": "cn",
-  "mentions": [
-   {
-    "name": "Baidu",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   },
-   {
-    "name": "ERNIE 5.5 Flash Preview",
     "kind": "model",
     "track": "models",
     "role": "subject"
@@ -4437,31 +4184,6 @@
    }
   ]
  },
- "4a46b0ef24": {
-  "item_id": "4a46b0ef24",
-  "event": "partnership",
-  "region": "gulf",
-  "mentions": [
-   {
-    "name": "ADNOC",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   },
-   {
-    "name": "OpenAI",
-    "kind": "org",
-    "track": "models",
-    "role": "mentioned"
-   },
-   {
-    "name": "G42",
-    "kind": "org",
-    "track": "models",
-    "role": "mentioned"
-   }
-  ]
- },
  "70cc7be296": {
   "item_id": "70cc7be296",
   "event": "other",
@@ -4890,37 +4612,6 @@
    }
   ]
  },
- "3c6301f07c": {
-  "item_id": "3c6301f07c",
-  "event": "launch",
-  "region": "unknown",
-  "mentions": [
-   {
-    "name": "CALL-E",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "ChatGPT",
-    "kind": "product",
-    "track": "models",
-    "role": "mentioned"
-   },
-   {
-    "name": "Muse",
-    "kind": "product",
-    "track": "agents",
-    "role": "mentioned"
-   },
-   {
-    "name": "OpenClaw",
-    "kind": "product",
-    "track": "agents",
-    "role": "mentioned"
-   }
-  ]
- },
  "1f8d324dfd": {
   "item_id": "1f8d324dfd",
   "event": "opinion",
@@ -5180,19 +4871,6 @@
   "event": "other",
   "region": "unknown",
   "mentions": []
- },
- "4e31270f1c": {
-  "item_id": "4e31270f1c",
-  "event": "other",
-  "region": "unknown",
-  "mentions": [
-   {
-    "name": "Unicon 2026",
-    "kind": "product",
-    "track": "other",
-    "role": "subject"
-   }
-  ]
  },
  "8f5f9661ac": {
   "item_id": "8f5f9661ac",
@@ -5626,37 +5304,6 @@
     "name": "Cursor",
     "kind": "org",
     "track": "agents",
-    "role": "mentioned"
-   }
-  ]
- },
- "4e0aeb7b13": {
-  "item_id": "4e0aeb7b13",
-  "event": "other",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Anthropic",
-    "kind": "org",
-    "track": "models",
-    "role": "subject"
-   },
-   {
-    "name": "Claude.ai",
-    "kind": "product",
-    "track": "models",
-    "role": "mentioned"
-   },
-   {
-    "name": "Claude Code",
-    "kind": "product",
-    "track": "agents",
-    "role": "mentioned"
-   },
-   {
-    "name": "Microsoft",
-    "kind": "org",
-    "track": "other",
     "role": "mentioned"
    }
   ]
@@ -7158,25 +6805,6 @@
    }
   ]
  },
- "43b9b6bfc4": {
-  "item_id": "43b9b6bfc4",
-  "event": "other",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Nvidia",
-    "kind": "org",
-    "track": "chips",
-    "role": "subject"
-   },
-   {
-    "name": "Trump",
-    "kind": "person",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
  "ac9eb90f45": {
   "item_id": "ac9eb90f45",
   "event": "acquisition",
@@ -7323,31 +6951,6 @@
    }
   ]
  },
- "6435659290": {
-  "item_id": "6435659290",
-  "event": "launch",
-  "region": "unknown",
-  "mentions": [
-   {
-    "name": "Apple Harbor",
-    "kind": "product",
-    "track": "other",
-    "role": "subject"
-   },
-   {
-    "name": "Mac",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Apple",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
  "b8d3cea481": {
   "item_id": "b8d3cea481",
   "event": "research",
@@ -7380,25 +6983,6 @@
    {
     "name": "Apple",
     "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
- "1d90895113": {
-  "item_id": "1d90895113",
-  "event": "opinion",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Apple",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   },
-   {
-    "name": "MacBook Pro",
-    "kind": "product",
     "track": "other",
     "role": "mentioned"
    }
@@ -7557,19 +7141,6 @@
    }
   ]
  },
- "c40d0fdb3d": {
-  "item_id": "c40d0fdb3d",
-  "event": "launch",
-  "region": "unknown",
-  "mentions": [
-   {
-    "name": "MINIX N304-AI",
-    "kind": "product",
-    "track": "other",
-    "role": "subject"
-   }
-  ]
- },
  "a70969a907": {
   "item_id": "a70969a907",
   "event": "other",
@@ -7712,19 +7283,6 @@
     "kind": "org",
     "track": "other",
     "role": "mentioned"
-   }
-  ]
- },
- "56e4955dc9": {
-  "item_id": "56e4955dc9",
-  "event": "opinion",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Qualcomm",
-    "kind": "org",
-    "track": "chips",
-    "role": "subject"
    }
   ]
  },
@@ -8803,19 +8361,6 @@
    }
   ]
  },
- "4c52040237": {
-  "item_id": "4c52040237",
-  "event": "other",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Cerebras",
-    "kind": "org",
-    "track": "chips",
-    "role": "subject"
-   }
-  ]
- },
  "1830ce3869": {
   "item_id": "1830ce3869",
   "event": "other",
@@ -9191,19 +8736,6 @@
    }
   ]
  },
- "8d8482ef10": {
-  "item_id": "8d8482ef10",
-  "event": "other",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Fireworks AI",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   }
-  ]
- },
  "9325f8efc5": {
   "item_id": "9325f8efc5",
   "event": "partnership",
@@ -9306,31 +8838,6 @@
    {
     "name": "Microsoft Foundry",
     "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
- "bbc9163156": {
-  "item_id": "bbc9163156",
-  "event": "other",
-  "region": "unknown",
-  "mentions": [
-   {
-    "name": "Amazon Web Services",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Hugging Face",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "OpenRouter",
-    "kind": "org",
     "track": "other",
     "role": "mentioned"
    }
@@ -9778,19 +9285,6 @@
   "event": "other",
   "region": "other",
   "mentions": []
- },
- "57d5024226": {
-  "item_id": "57d5024226",
-  "event": "other",
-  "region": "other",
-  "mentions": [
-   {
-    "name": "United Nations",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   }
-  ]
  },
  "23b9f5fc7b": {
   "item_id": "23b9f5fc7b",
@@ -10310,31 +9804,6 @@
    }
   ]
  },
- "4e13967239": {
-  "item_id": "4e13967239",
-  "event": "other",
-  "region": "other",
-  "mentions": [
-   {
-    "name": "Firass Darabah",
-    "kind": "person",
-    "track": "other",
-    "role": "subject"
-   },
-   {
-    "name": "WIPO",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Petra",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
  "cd86ad8d8f": {
   "item_id": "cd86ad8d8f",
   "event": "other",
@@ -10459,43 +9928,6 @@
    }
   ]
  },
- "8d6a355275": {
-  "item_id": "8d6a355275",
-  "event": "other",
-  "region": "other",
-  "mentions": [
-   {
-    "name": "Aqaba Digital Hub",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   },
-   {
-    "name": "Zeina Toukan",
-    "kind": "person",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Dubravka Suica",
-    "kind": "person",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Odile Renaud-Basso",
-    "kind": "person",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "European Bank for Reconstruction and Development",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
  "c358af721d": {
   "item_id": "c358af721d",
   "event": "opinion",
@@ -10531,25 +9963,6 @@
     "kind": "org",
     "track": "other",
     "role": "mentioned"
-   }
-  ]
- },
- "3099ffeb8e": {
-  "item_id": "3099ffeb8e",
-  "event": "research",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Microsoft",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
-   },
-   {
-    "name": "Microsoft 365",
-    "kind": "product",
-    "track": "other",
-    "role": "subject"
    }
   ]
  },
@@ -10606,19 +10019,6 @@
     "kind": "product",
     "track": "agents",
     "role": "mentioned"
-   }
-  ]
- },
- "51226eccca": {
-  "item_id": "51226eccca",
-  "event": "other",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Microsoft",
-    "kind": "org",
-    "track": "other",
-    "role": "subject"
    }
   ]
  },
@@ -11032,12 +10432,6 @@
     "role": "mentioned"
    }
   ]
- },
- "d02e001012": {
-  "item_id": "d02e001012",
-  "event": "other",
-  "region": "other",
-  "mentions": []
  },
  "4dcf1a8f79": {
   "item_id": "4dcf1a8f79",
@@ -13285,510 +12679,6 @@
     "name": "NVIDIA Cosmos 3",
     "kind": "model",
     "track": "models",
-    "role": "mentioned"
-   }
-  ]
- },
- "94ab2cf563": {
-  "item_id": "94ab2cf563",
-  "event": "launch",
-  "region": "unknown",
-  "mentions": [
-   {
-    "name": "OpenClaw",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   }
-  ]
- },
- "bf756c60a7": {
-  "item_id": "bf756c60a7",
-  "event": "launch",
-  "region": "unknown",
-  "mentions": [
-   {
-    "name": "OpenClaw",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "OpenClaw 2026.11.5",
-    "kind": "product",
-    "track": "agents",
-    "role": "mentioned"
-   }
-  ]
- },
- "ae2166d824": {
-  "item_id": "ae2166d824",
-  "event": "launch",
-  "region": "unknown",
-  "mentions": [
-   {
-    "name": "OpenClaw",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   }
-  ]
- },
- "5fff8256cb": {
-  "item_id": "5fff8256cb",
-  "event": "launch",
-  "region": "unknown",
-  "mentions": [
-   {
-    "name": "OpenClaw",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   }
-  ]
- },
- "c904fb0b26": {
-  "item_id": "c904fb0b26",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "LangGraph",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "LangChain",
-    "kind": "org",
-    "track": "agents",
-    "role": "mentioned"
-   }
-  ]
- },
- "70495a773c": {
-  "item_id": "70495a773c",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "LangGraph",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "LangChain",
-    "kind": "org",
-    "track": "agents",
-    "role": "mentioned"
-   }
-  ]
- },
- "7859ef8ea9": {
-  "item_id": "7859ef8ea9",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "LangGraph Prebuilt",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "LangGraph",
-    "kind": "product",
-    "track": "agents",
-    "role": "mentioned"
-   },
-   {
-    "name": "LangChain",
-    "kind": "org",
-    "track": "agents",
-    "role": "mentioned"
-   }
-  ]
- },
- "859ffa3f2f": {
-  "item_id": "859ffa3f2f",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "LangGraph",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "LangChain",
-    "kind": "org",
-    "track": "agents",
-    "role": "mentioned"
-   }
-  ]
- },
- "4e9d926789": {
-  "item_id": "4e9d926789",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "LangGraph Prebuilt",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "LangGraph",
-    "kind": "product",
-    "track": "agents",
-    "role": "mentioned"
-   },
-   {
-    "name": "LangChain",
-    "kind": "org",
-    "track": "agents",
-    "role": "mentioned"
-   }
-  ]
- },
- "b32f8879c3": {
-  "item_id": "b32f8879c3",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "CrewAI",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   }
-  ]
- },
- "f6a078cb4c": {
-  "item_id": "f6a078cb4c",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "CrewAI",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "Claude 5",
-    "kind": "model",
-    "track": "models",
-    "role": "mentioned"
-   }
-  ]
- },
- "fb6239cb8b": {
-  "item_id": "fb6239cb8b",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "CrewAI",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "ChromaDB",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Qdrant",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "LanceDB",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Tavily",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Serply",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Weaviate",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
- "5da1f47524": {
-  "item_id": "5da1f47524",
-  "event": "launch",
-  "region": "eu",
-  "mentions": [
-   {
-    "name": "n8n",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   }
-  ]
- },
- "3e351c290c": {
-  "item_id": "3e351c290c",
-  "event": "launch",
-  "region": "eu",
-  "mentions": [
-   {
-    "name": "n8n",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   }
-  ]
- },
- "445fd5a3fc": {
-  "item_id": "445fd5a3fc",
-  "event": "launch",
-  "region": "eu",
-  "mentions": [
-   {
-    "name": "n8n",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   }
-  ]
- },
- "9166064c2f": {
-  "item_id": "9166064c2f",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Claude Code",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "Claude Desktop",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "VS Code",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
- "249cf944c1": {
-  "item_id": "249cf944c1",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Claude Code",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "Claude Opus 4.6",
-    "kind": "model",
-    "track": "models",
-    "role": "mentioned"
-   },
-   {
-    "name": "Claude Sonnet 4.6",
-    "kind": "model",
-    "track": "models",
-    "role": "mentioned"
-   },
-   {
-    "name": "Amazon Bedrock",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Microsoft Foundry",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
- "1560056f3e": {
-  "item_id": "1560056f3e",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Claude Code",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "GitHub",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
- "328f5dc06a": {
-  "item_id": "328f5dc06a",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Claude Code",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "OpenTelemetry",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
- "3578b3def0": {
-  "item_id": "3578b3def0",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Claude Code",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "VS Code",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "Jupyter",
-    "kind": "product",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
- "3186386788": {
-  "item_id": "3186386788",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "OpenAI",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "OpenAI Codex",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "GPT-6.2 Sol",
-    "kind": "model",
-    "track": "models",
-    "role": "mentioned"
-   },
-   {
-    "name": "GPT-6.2 Astra",
-    "kind": "model",
-    "track": "models",
-    "role": "mentioned"
-   }
-  ]
- },
- "2d11cd195d": {
-  "item_id": "2d11cd195d",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "OpenAI",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "OpenAI Codex",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   }
-  ]
- },
- "81e62872c8": {
-  "item_id": "81e62872c8",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Gemini Agent",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "Google",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   }
-  ]
- },
- "2812f94502": {
-  "item_id": "2812f94502",
-  "event": "launch",
-  "region": "us",
-  "mentions": [
-   {
-    "name": "Gemini Agent",
-    "kind": "product",
-    "track": "agents",
-    "role": "subject"
-   },
-   {
-    "name": "Google",
-    "kind": "org",
-    "track": "other",
-    "role": "mentioned"
-   },
-   {
-    "name": "PowerShell",
-    "kind": "product",
-    "track": "other",
     "role": "mentioned"
    }
   ]
@@ -51006,6 +49896,1458 @@
     "kind": "person",
     "track": "other",
     "role": "subject"
+   }
+  ]
+ },
+ "33eb33cf6f": {
+  "item_id": "33eb33cf6f",
+  "event": "benchmark",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Microsoft",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Copilot",
+    "kind": "product",
+    "track": "agents",
+    "role": "subject"
+   },
+   {
+    "name": "Anthropic",
+    "kind": "org",
+    "track": "models",
+    "role": "mentioned"
+   },
+   {
+    "name": "Claude",
+    "kind": "model",
+    "track": "models",
+    "role": "mentioned"
+   },
+   {
+    "name": "OpenAI",
+    "kind": "org",
+    "track": "models",
+    "role": "mentioned"
+   },
+   {
+    "name": "ChatGPT",
+    "kind": "product",
+    "track": "models",
+    "role": "mentioned"
+   },
+   {
+    "name": "Judson Althoff",
+    "kind": "person",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Nvidia",
+    "kind": "org",
+    "track": "chips",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "61bc0f62b3": {
+  "item_id": "61bc0f62b3",
+  "event": "partnership",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Meta",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Rhode Island Small Business Development Center",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "University of Rhode Island",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Muse",
+    "kind": "product",
+    "track": "agents",
+    "role": "mentioned"
+   },
+   {
+    "name": "Matthew Lenz",
+    "kind": "person",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "4982f6467e": {
+  "item_id": "4982f6467e",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Meta",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Meta AI Business Assistant",
+    "kind": "product",
+    "track": "agents",
+    "role": "subject"
+   },
+   {
+    "name": "Susan Li",
+    "kind": "person",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Google",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Google Search",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Instagram",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "CNBC",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Indian Express",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "d5890408f6": {
+  "item_id": "d5890408f6",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Meta",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   }
+  ]
+ },
+ "2ce2699463": {
+  "item_id": "2ce2699463",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "SpaceXAI",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Elon Musk",
+    "kind": "person",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Mississippi Department of Environmental Quality",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "eab418db04": {
+  "item_id": "eab418db04",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Grok",
+    "kind": "product",
+    "track": "models",
+    "role": "subject"
+   },
+   {
+    "name": "Elon Musk",
+    "kind": "person",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "fc9e3949e7": {
+  "item_id": "fc9e3949e7",
+  "event": "other",
+  "region": "unknown",
+  "mentions": []
+ },
+ "a22b36f494": {
+  "item_id": "a22b36f494",
+  "event": "regulation",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "xAI",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Ninth Circuit",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "cf0df96644": {
+  "item_id": "cf0df96644",
+  "event": "research",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Amazon Web Services",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   },
+   {
+    "name": "Amazon Nova Pro",
+    "kind": "model",
+    "track": "models",
+    "role": "mentioned"
+   },
+   {
+    "name": "Qwen3-4B",
+    "kind": "model",
+    "track": "models",
+    "role": "mentioned"
+   },
+   {
+    "name": "SageMaker",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "1c23cf51db": {
+  "item_id": "1c23cf51db",
+  "event": "other",
+  "region": "eu",
+  "mentions": [
+   {
+    "name": "Mistral AI",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   }
+  ]
+ },
+ "d45638b21b": {
+  "item_id": "d45638b21b",
+  "event": "other",
+  "region": "cn",
+  "mentions": [
+   {
+    "name": "MiniMax",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   }
+  ]
+ },
+ "6927817532": {
+  "item_id": "6927817532",
+  "event": "regulation",
+  "region": "cn",
+  "mentions": []
+ },
+ "e6b58ab2d8": {
+  "item_id": "e6b58ab2d8",
+  "event": "partnership",
+  "region": "gulf",
+  "mentions": []
+ },
+ "6b595db830": {
+  "item_id": "6b595db830",
+  "event": "other",
+  "region": "eu",
+  "mentions": []
+ },
+ "baa959ce7f": {
+  "item_id": "baa959ce7f",
+  "event": "launch",
+  "region": "unknown",
+  "mentions": [
+   {
+    "name": "CALL-E",
+    "kind": "product",
+    "track": "agents",
+    "role": "subject"
+   },
+   {
+    "name": "ChatGPT",
+    "kind": "product",
+    "track": "models",
+    "role": "mentioned"
+   },
+   {
+    "name": "Muse",
+    "kind": "product",
+    "track": "agents",
+    "role": "mentioned"
+   },
+   {
+    "name": "OpenClaw",
+    "kind": "product",
+    "track": "agents",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "a7c70355c8": {
+  "item_id": "a7c70355c8",
+  "event": "opinion",
+  "region": "unknown",
+  "mentions": [
+   {
+    "name": "Claude",
+    "kind": "model",
+    "track": "models",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "fdc5879044": {
+  "item_id": "fdc5879044",
+  "event": "benchmark",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Apple",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Nvidia",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Mac Studio",
+    "kind": "product",
+    "track": "chips",
+    "role": "subject"
+   }
+  ]
+ },
+ "73050fa52a": {
+  "item_id": "73050fa52a",
+  "event": "launch",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Apple",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Mac",
+    "kind": "product",
+    "track": "other",
+    "role": "subject"
+   }
+  ]
+ },
+ "dda96e6058": {
+  "item_id": "dda96e6058",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Nvidia",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Arm",
+    "kind": "org",
+    "track": "chips",
+    "role": "mentioned"
+   },
+   {
+    "name": "Rene Haas",
+    "kind": "person",
+    "track": "chips",
+    "role": "mentioned"
+   },
+   {
+    "name": "Jensen Huang",
+    "kind": "person",
+    "track": "chips",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "014b78a60b": {
+  "item_id": "014b78a60b",
+  "event": "benchmark",
+  "region": "other",
+  "mentions": [
+   {
+    "name": "Arm",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "AMD",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Arm AGI CPU",
+    "kind": "chip",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "AMD EPYC",
+    "kind": "chip",
+    "track": "chips",
+    "role": "subject"
+   }
+  ]
+ },
+ "b92f13c39c": {
+  "item_id": "b92f13c39c",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Google",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "TPU",
+    "kind": "chip",
+    "track": "chips",
+    "role": "subject"
+   }
+  ]
+ },
+ "031f016d72": {
+  "item_id": "031f016d72",
+  "event": "research",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Meta",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "MTIA",
+    "kind": "chip",
+    "track": "chips",
+    "role": "subject"
+   }
+  ]
+ },
+ "9c06efb44b": {
+  "item_id": "9c06efb44b",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Cerebras",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Microsoft",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Nvidia",
+    "kind": "org",
+    "track": "chips",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "f4792733c8": {
+  "item_id": "f4792733c8",
+  "event": "partnership",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "SambaNova",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "TACC",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "SambaStack",
+    "kind": "product",
+    "track": "chips",
+    "role": "subject"
+   }
+  ]
+ },
+ "43ed24ee67": {
+  "item_id": "43ed24ee67",
+  "event": "other",
+  "region": "other",
+  "mentions": [
+   {
+    "name": "United Nations",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   }
+  ]
+ },
+ "e3f80aa13f": {
+  "item_id": "e3f80aa13f",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "National Security Agency",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "NSANet",
+    "kind": "product",
+    "track": "other",
+    "role": "subject"
+   }
+  ]
+ },
+ "391a135435": {
+  "item_id": "391a135435",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Microsoft",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Microsoft 365",
+    "kind": "product",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Outlook",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Microsoft Teams",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "SharePoint",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Microsoft Copilot",
+    "kind": "product",
+    "track": "agents",
+    "role": "mentioned"
+   },
+   {
+    "name": "Exchange Online",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "UT San Antonio",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "9942849c99": {
+  "item_id": "9942849c99",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Microsoft",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Outlook",
+    "kind": "product",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Microsoft Teams",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Microsoft Copilot",
+    "kind": "product",
+    "track": "agents",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "11024d82ca": {
+  "item_id": "11024d82ca",
+  "event": "other",
+  "region": "other",
+  "mentions": []
+ },
+ "d6a72d84e8": {
+  "item_id": "d6a72d84e8",
+  "event": "regulation",
+  "region": "cn",
+  "mentions": []
+ },
+ "f4dbc5cc18": {
+  "item_id": "f4dbc5cc18",
+  "event": "other",
+  "region": "other",
+  "mentions": []
+ },
+ "e6aae8a947": {
+  "item_id": "e6aae8a947",
+  "event": "partnership",
+  "region": "other",
+  "mentions": [
+   {
+    "name": "Higher Education Commission",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Coursera",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "d169863fc3": {
+  "item_id": "d169863fc3",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Microsoft",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Microsoft 365",
+    "kind": "product",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Microsoft Teams",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Outlook",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Orange County Social Service Agency",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "c7894a1d69": {
+  "item_id": "c7894a1d69",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Anthropic",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   }
+  ]
+ },
+ "40079238b1": {
+  "item_id": "40079238b1",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Microsoft",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Satya Nadella",
+    "kind": "person",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "New York Times",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "TechCrunch",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Andrew Ross Sorkin",
+    "kind": "person",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "iPhone 18 Pro",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "T-Mobile",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "45fcb9a169": {
+  "item_id": "45fcb9a169",
+  "event": "other",
+  "region": "other",
+  "mentions": [
+   {
+    "name": "Saudi Arabia",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Houthis",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "3237309af1": {
+  "item_id": "3237309af1",
+  "event": "other",
+  "region": "gulf",
+  "mentions": [
+   {
+    "name": "Dubai Future Week",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "UAE",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "413f4b6132": {
+  "item_id": "413f4b6132",
+  "event": "other",
+  "region": "gulf",
+  "mentions": [
+   {
+    "name": "Dubai Chamber of Digital Economy",
+    "kind": "org",
+    "track": "agents",
+    "role": "subject"
+   }
+  ]
+ },
+ "2e5dfa7430": {
+  "item_id": "2e5dfa7430",
+  "event": "other",
+  "region": "gulf",
+  "mentions": [
+   {
+    "name": "Dubai Government",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Dubai Future Week",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "5f916d824b": {
+  "item_id": "5f916d824b",
+  "event": "research",
+  "region": "eu",
+  "mentions": [
+   {
+    "name": "International Energy Agency",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   }
+  ]
+ },
+ "2ac0cc2b61": {
+  "item_id": "2ac0cc2b61",
+  "event": "partnership",
+  "region": "other",
+  "mentions": [
+   {
+    "name": "ASEAN",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Pakistan",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   }
+  ]
+ },
+ "46489b7716": {
+  "item_id": "46489b7716",
+  "event": "other",
+  "region": "other",
+  "mentions": [
+   {
+    "name": "Israel Army",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   }
+  ]
+ },
+ "89d398c381": {
+  "item_id": "89d398c381",
+  "event": "other",
+  "region": "unknown",
+  "mentions": []
+ },
+ "6a473a96df": {
+  "item_id": "6a473a96df",
+  "event": "funding",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Anthropic",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   }
+  ]
+ },
+ "7566cf61db": {
+  "item_id": "7566cf61db",
+  "event": "funding",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Anthropic",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   }
+  ]
+ },
+ "05b6eefa1a": {
+  "item_id": "05b6eefa1a",
+  "event": "funding",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Anthropic",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   }
+  ]
+ },
+ "e6fa692406": {
+  "item_id": "e6fa692406",
+  "event": "launch",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Microsoft",
+    "kind": "org",
+    "track": "agents",
+    "role": "subject"
+   },
+   {
+    "name": "Microsoft Copilot",
+    "kind": "product",
+    "track": "agents",
+    "role": "subject"
+   }
+  ]
+ },
+ "bcd681eb31": {
+  "item_id": "bcd681eb31",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Meta",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   },
+   {
+    "name": "Meta AI",
+    "kind": "product",
+    "track": "models",
+    "role": "subject"
+   },
+   {
+    "name": "Muse",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "ead4ed498d": {
+  "item_id": "ead4ed498d",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "xAI",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   },
+   {
+    "name": "Musk",
+    "kind": "person",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Terafab",
+    "kind": "chip",
+    "track": "chips",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "d84acaf7f4": {
+  "item_id": "d84acaf7f4",
+  "event": "other",
+  "region": "unknown",
+  "mentions": []
+ },
+ "e8970519ee": {
+  "item_id": "e8970519ee",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Apple",
+    "kind": "org",
+    "track": "agents",
+    "role": "subject"
+   }
+  ]
+ },
+ "53d55def90": {
+  "item_id": "53d55def90",
+  "event": "regulation",
+  "region": "cn",
+  "mentions": [
+   {
+    "name": "Moonshot AI",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   },
+   {
+    "name": "Nvidia",
+    "kind": "org",
+    "track": "chips",
+    "role": "mentioned"
+   },
+   {
+    "name": "B300",
+    "kind": "chip",
+    "track": "chips",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "7876082935": {
+  "item_id": "7876082935",
+  "event": "funding",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Anthropic",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   }
+  ]
+ },
+ "9dcac4a621": {
+  "item_id": "9dcac4a621",
+  "event": "launch",
+  "region": "cn",
+  "mentions": [
+   {
+    "name": "Tencent",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   },
+   {
+    "name": "Hy4",
+    "kind": "model",
+    "track": "models",
+    "role": "subject"
+   }
+  ]
+ },
+ "cc15c5a069": {
+  "item_id": "cc15c5a069",
+  "event": "other",
+  "region": "cn",
+  "mentions": [
+   {
+    "name": "MiniMax",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   }
+  ]
+ },
+ "2462b01f41": {
+  "item_id": "2462b01f41",
+  "event": "regulation",
+  "region": "cn",
+  "mentions": []
+ },
+ "d0aeeeaa22": {
+  "item_id": "d0aeeeaa22",
+  "event": "opinion",
+  "region": "unknown",
+  "mentions": []
+ },
+ "e367447ff9": {
+  "item_id": "e367447ff9",
+  "event": "launch",
+  "region": "unknown",
+  "mentions": [
+   {
+    "name": "mEinstein",
+    "kind": "org",
+    "track": "agents",
+    "role": "subject"
+   }
+  ]
+ },
+ "491eb86e05": {
+  "item_id": "491eb86e05",
+  "event": "other",
+  "region": "unknown",
+  "mentions": [
+   {
+    "name": "PlayDucky",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   }
+  ]
+ },
+ "87c3c91d56": {
+  "item_id": "87c3c91d56",
+  "event": "launch",
+  "region": "unknown",
+  "mentions": [
+   {
+    "name": "CROO",
+    "kind": "org",
+    "track": "agents",
+    "role": "subject"
+   },
+   {
+    "name": "CROO Skill",
+    "kind": "product",
+    "track": "agents",
+    "role": "subject"
+   },
+   {
+    "name": "Claude Code",
+    "kind": "product",
+    "track": "agents",
+    "role": "mentioned"
+   },
+   {
+    "name": "Codex",
+    "kind": "product",
+    "track": "agents",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "2a35b5fcde": {
+  "item_id": "2a35b5fcde",
+  "event": "launch",
+  "region": "unknown",
+  "mentions": [
+   {
+    "name": "CROO",
+    "kind": "org",
+    "track": "agents",
+    "role": "subject"
+   },
+   {
+    "name": "Claude Code",
+    "kind": "product",
+    "track": "agents",
+    "role": "mentioned"
+   },
+   {
+    "name": "Codex",
+    "kind": "product",
+    "track": "agents",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "ee1b8de7cb": {
+  "item_id": "ee1b8de7cb",
+  "event": "research",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "OpenAI",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   },
+   {
+    "name": "Codex",
+    "kind": "product",
+    "track": "agents",
+    "role": "subject"
+   },
+   {
+    "name": "ChatGPT",
+    "kind": "product",
+    "track": "models",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "628e1d4c63": {
+  "item_id": "628e1d4c63",
+  "event": "launch",
+  "region": "unknown",
+  "mentions": [
+   {
+    "name": "Devin",
+    "kind": "product",
+    "track": "agents",
+    "role": "subject"
+   },
+   {
+    "name": "nginx",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Java",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "5daf2cb311": {
+  "item_id": "5daf2cb311",
+  "event": "launch",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Google",
+    "kind": "org",
+    "track": "models",
+    "role": "subject"
+   },
+   {
+    "name": "Gemini App",
+    "kind": "product",
+    "track": "agents",
+    "role": "subject"
+   },
+   {
+    "name": "Apple",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "558a54153a": {
+  "item_id": "558a54153a",
+  "event": "launch",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Abaco Systems",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Intel",
+    "kind": "org",
+    "track": "chips",
+    "role": "mentioned"
+   },
+   {
+    "name": "Intel Core Ultra Series 3",
+    "kind": "chip",
+    "track": "chips",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "6c7d2d2904": {
+  "item_id": "6c7d2d2904",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Google TPU",
+    "kind": "chip",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Google",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Nvidia",
+    "kind": "org",
+    "track": "chips",
+    "role": "mentioned"
+   },
+   {
+    "name": "MediaTek",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   }
+  ]
+ },
+ "64751adc15": {
+  "item_id": "64751adc15",
+  "event": "other",
+  "region": "other",
+  "mentions": [
+   {
+    "name": "Isu Petasys",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Nvidia",
+    "kind": "org",
+    "track": "chips",
+    "role": "mentioned"
+   }
+  ]
+ },
+ "ac29b66d14": {
+  "item_id": "ac29b66d14",
+  "event": "launch",
+  "region": "other",
+  "mentions": [
+   {
+    "name": "EY",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "EY.ai Academy",
+    "kind": "product",
+    "track": "other",
+    "role": "subject"
+   }
+  ]
+ },
+ "87e0926a12": {
+  "item_id": "87e0926a12",
+  "event": "other",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Kulicke and Soffa",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "POET Technologies",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Applied Materials",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Marvell Technology",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   },
+   {
+    "name": "Cerebras Systems",
+    "kind": "org",
+    "track": "chips",
+    "role": "subject"
+   }
+  ]
+ },
+ "5bfbd25cfa": {
+  "item_id": "5bfbd25cfa",
+  "event": "launch",
+  "region": "other",
+  "mentions": [
+   {
+    "name": "Hymans",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   }
+  ]
+ },
+ "c7dc751b3a": {
+  "item_id": "c7dc751b3a",
+  "event": "partnership",
+  "region": "us",
+  "mentions": [
+   {
+    "name": "Mirantis",
+    "kind": "org",
+    "track": "other",
+    "role": "subject"
+   },
+   {
+    "name": "Lenovo",
+    "kind": "org",
+    "track": "other",
+    "role": "mentioned"
+   },
+   {
+    "name": "Lenovo AI Innovators",
+    "kind": "product",
+    "track": "other",
+    "role": "mentioned"
    }
   ]
  }

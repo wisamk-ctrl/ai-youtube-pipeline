@@ -241,6 +241,19 @@
    }
   }
  },
+ "abacosystems": {
+  "first_seen": "2026-11-20",
+  "name": "Abaco Systems",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
+   }
+  }
+ },
  "abbove": {
   "first_seen": "2026-11-20",
   "name": "Abbove",
@@ -321,7 +334,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 1.1,
+    "score": 0.9,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -2311,9 +2324,9 @@
     "track": "other"
    },
    "2026-W47": {
-    "score": 3.0,
+    "score": 4.0,
     "signals": 0,
-    "sources": 3,
+    "sources": 4,
     "track": "agents"
    }
   }
@@ -2578,7 +2591,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 1.02,
+    "score": 1.14,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -3265,6 +3278,19 @@
     "signals": 0,
     "sources": 1,
     "track": "chips"
+   }
+  }
+ },
+ "asean": {
+  "first_seen": "2026-11-20",
+  "name": "ASEAN",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -4231,7 +4257,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 0.71,
+    "score": 0.72,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -4714,7 +4740,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 0.88,
+    "score": 0.91,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -4880,7 +4906,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 1.82,
+    "score": 1.9,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -5070,7 +5096,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 1.42,
+    "score": 1.3,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -5819,7 +5845,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 2.18,
+    "score": 2.14,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -6392,7 +6418,7 @@
     "track": "other"
    },
    "2026-W47": {
-    "score": 1.22,
+    "score": 1.42,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -6840,7 +6866,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 1.34,
+    "score": 1.22,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -7456,6 +7482,32 @@
    }
   }
  },
+ "croo": {
+  "first_seen": "2026-11-20",
+  "name": "CROO",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 2.0,
+    "signals": 0,
+    "sources": 2,
+    "track": "agents"
+   }
+  }
+ },
+ "crooskill": {
+  "first_seen": "2026-11-20",
+  "name": "CROO Skill",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
  "crosslayertopkclt": {
   "first_seen": "2026-11-07",
   "name": "Cross-Layer-TopK-CLT",
@@ -8039,8 +8091,8 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 2.28,
-    "signals": 2,
+    "score": 1.78,
+    "signals": 1,
     "sources": 0,
     "track": "models"
    }
@@ -9155,7 +9207,7 @@
     "track": "agents"
    },
    "2026-W47": {
-    "score": 1.52,
+    "score": 1.53,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -9423,9 +9475,48 @@
    }
   }
  },
+ "dubaichamberofdigitaleconomy": {
+  "first_seen": "2026-11-20",
+  "name": "Dubai Chamber of Digital Economy",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "agents"
+   }
+  }
+ },
  "dubaicommercity": {
   "first_seen": "2026-11-20",
   "name": "Dubai CommerCity",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "dubaifutureweek": {
+  "first_seen": "2026-11-20",
+  "name": "Dubai Future Week",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "dubaigovernment": {
+  "first_seen": "2026-11-20",
+  "name": "Dubai Government",
   "status": "candidate",
   "weeks": {
    "2026-W47": {
@@ -9507,7 +9598,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 0.7,
+    "score": 0.71,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -9786,7 +9877,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 1.58,
+    "score": 1.54,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -9805,7 +9896,7 @@
     "track": "agents"
    },
    "2026-W47": {
-    "score": 0.67,
+    "score": 0.68,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -10649,7 +10740,7 @@
     "track": "agents"
    },
    "2026-W47": {
-    "score": 2.4,
+    "score": 2.41,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -10674,6 +10765,19 @@
     "track": "other"
    },
    "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "eyaiacademy": {
+  "first_seen": "2026-11-20",
+  "name": "EY.ai Academy",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -14073,8 +14177,8 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 2.34,
-    "signals": 1,
+    "score": 2.84,
+    "signals": 2,
     "sources": 0,
     "track": "models"
    }
@@ -14783,7 +14887,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 0.97,
+    "score": 1.04,
     "signals": 1,
     "sources": 0,
     "track": "other"
@@ -14935,7 +15039,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 1.98,
+    "score": 2.02,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -14960,7 +15064,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 1.5,
+    "score": 1.46,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -15133,6 +15237,19 @@
     "score": 1.54,
     "signals": 1,
     "sources": 0,
+    "track": "other"
+   }
+  }
+ },
+ "hymans": {
+  "first_seen": "2026-11-20",
+  "name": "Hymans",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
     "track": "other"
    }
   }
@@ -16153,7 +16270,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 0.77,
+    "score": 0.78,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -16186,6 +16303,19 @@
    }
   }
  },
+ "internationalenergyagency": {
+  "first_seen": "2026-11-20",
+  "name": "International Energy Agency",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "internationalmonetaryfund": {
   "first_seen": "2026-11-20",
   "name": "International Monetary Fund",
@@ -16205,7 +16335,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 1.06,
+    "score": 1.02,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -16602,6 +16732,19 @@
    }
   }
  },
+ "israelarmy": {
+  "first_seen": "2026-11-20",
+  "name": "Israel Army",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
  "israeldefenseforces": {
   "first_seen": "2026-11-20",
   "name": "Israel Defense Forces",
@@ -16698,6 +16841,19 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   }
+  }
+ },
+ "isupetasys": {
+  "first_seen": "2026-11-20",
+  "name": "Isu Petasys",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -17874,7 +18030,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 0.62,
+    "score": 0.58,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -18708,7 +18864,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 2.22,
+    "score": 2.18,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -18999,7 +19155,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 1.1,
+    "score": 1.11,
     "signals": 1,
     "sources": 0,
     "track": "other"
@@ -19416,6 +19572,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
    }
   }
  },
@@ -19595,6 +19757,12 @@
     "signals": 0,
     "sources": 1,
     "track": "other"
+   },
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "chips"
    }
   }
  },
@@ -20071,7 +20239,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 1.7,
+    "score": 2.26,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -20194,7 +20362,7 @@
     "track": "agents"
    },
    "2026-W47": {
-    "score": 2.43,
+    "score": 2.5,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -20245,9 +20413,9 @@
     "track": "chips"
    },
    "2026-W47": {
-    "score": 2.0,
+    "score": 3.0,
     "signals": 0,
-    "sources": 2,
+    "sources": 3,
     "track": "chips"
    }
   }
@@ -20316,7 +20484,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 2.06,
+    "score": 1.98,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -20603,9 +20771,9 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 7.0,
+    "score": 8.0,
     "signals": 0,
-    "sources": 7,
+    "sources": 8,
     "track": "other"
    }
   }
@@ -21287,7 +21455,7 @@
     "track": "agents"
    },
    "2026-W47": {
-    "score": 2.4,
+    "score": 2.41,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -22011,7 +22179,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 1.94,
+    "score": 1.86,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -22875,7 +23043,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 0.94,
+    "score": 0.78,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -22911,6 +23079,19 @@
  "nsa": {
   "first_seen": "2026-11-20",
   "name": "NSA",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "nsanet": {
+  "first_seen": "2026-11-20",
+  "name": "NSANet",
   "status": "candidate",
   "weeks": {
    "2026-W47": {
@@ -24770,9 +24951,9 @@
     "track": "other"
    },
    "2026-W47": {
-    "score": 3.0,
+    "score": 4.0,
     "signals": 0,
-    "sources": 3,
+    "sources": 4,
     "track": "other"
    }
   }
@@ -24783,7 +24964,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 0.66,
+    "score": 0.86,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -24872,6 +25053,12 @@
   "status": "candidate",
   "weeks": {
    "2026-W43": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   },
+   "2026-W47": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -25000,7 +25187,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 0.65,
+    "score": 0.66,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -25328,7 +25515,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 0.96,
+    "score": 1.0,
     "signals": 1,
     "sources": 0,
     "track": "other"
@@ -25512,7 +25699,7 @@
     "track": "agents"
    },
    "2026-W47": {
-    "score": 0.76,
+    "score": 0.77,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -25678,6 +25865,19 @@
     "track": "other"
    },
    "2026-W42-feedtest4": {
+    "score": 1.0,
+    "signals": 0,
+    "sources": 1,
+    "track": "other"
+   }
+  }
+ },
+ "playducky": {
+  "first_seen": "2026-11-20",
+  "name": "PlayDucky",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
     "score": 1.0,
     "signals": 0,
     "sources": 1,
@@ -26302,7 +26502,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 0.98,
+    "score": 0.94,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -26747,7 +26947,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 1.46,
+    "score": 1.5,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -27279,7 +27479,7 @@
   "status": "candidate",
   "weeks": {
    "2026-W47": {
-    "score": 1.86,
+    "score": 1.94,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -28410,7 +28610,7 @@
     "track": "agents"
    },
    "2026-W47": {
-    "score": 1.37,
+    "score": 1.38,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -29104,7 +29304,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 2.14,
+    "score": 2.1,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -30496,6 +30696,19 @@
    }
   }
  },
+ "softwaremansion": {
+  "first_seen": "2026-11-20",
+  "name": "software-mansion",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 0.54,
+    "signals": 1,
+    "sources": 0,
+    "track": "models"
+   }
+  }
+ },
  "solana": {
   "first_seen": "2026-11-20",
   "name": "Solana",
@@ -30866,7 +31079,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 1.14,
+    "score": 1.06,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -32435,7 +32648,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 3.02,
+    "score": 2.74,
     "signals": 1,
     "sources": 1,
     "track": "models"
@@ -33822,7 +34035,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 3.9,
+    "score": 3.82,
     "signals": 1,
     "sources": 2,
     "track": "models"
@@ -34753,6 +34966,19 @@
    }
   }
  },
+ "vortexhostfeel": {
+  "first_seen": "2026-11-20",
+  "name": "VortexHostFeel",
+  "status": "candidate",
+  "weeks": {
+   "2026-W47": {
+    "score": 0.69,
+    "signals": 1,
+    "sources": 0,
+    "track": "agents"
+   }
+  }
+ },
  "voxtral3": {
   "first_seen": "2026-10-24",
   "name": "Voxtral 3",
@@ -34973,7 +35199,7 @@
     "track": "agents"
    },
    "2026-W47": {
-    "score": 0.75,
+    "score": 0.76,
     "signals": 1,
     "sources": 0,
     "track": "agents"
@@ -36010,7 +36236,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 0.82,
+    "score": 0.74,
     "signals": 1,
     "sources": 0,
     "track": "models"
@@ -36496,7 +36722,7 @@
     "track": "models"
    },
    "2026-W47": {
-    "score": 1.74,
+    "score": 1.7,
     "signals": 1,
     "sources": 0,
     "track": "models"
