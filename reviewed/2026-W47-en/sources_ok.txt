@@ -1,4 +1,6 @@
-Cleared by the founder on 2026-11-20 after checking the W47-en source map (run 44752259659):
-93 of 95 claims sourced or partly sourced. The two "unsourced" lines are not factual claims:
-- (124) "That means running the chips through the cloud, without having them on your own premises." An explanation of remote access, no new fact.
-- (141) "The software industry has spent decades dealing with runaway programs, and the tools exist." Wissam's own view in the California segment.
+Cleared by the founder on 2026-11-20 ("Yes, clear them") after checking the W47-en source map (run 44794221428).
+The four "unsourced" lines are the founder's own words, not news claims:
+- (7) "I've spent 25 years in enterprise software, across the Middle East, Türkiye and Africa." The host's bio (approved for W46).
+- (26) "Microsoft is one of the earliest companies in AI with Copilot…" Wissam's view, labelled on screen (approved 2026-11-20).
+- (27) "And as I understand it, advanced models usually reach cybersecurity firms first." Wissam's view, same passage.
+- (149) "The software industry has spent decades dealing with runaway programs, and the tools exist." Wissam's California view.
