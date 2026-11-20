@@ -555,7 +555,6 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
     own = own_clips(out_dir)
     clips: dict[int, Path] = {}
     credits: list[dict] = []
-    stock_src: dict[str, tuple[Path, dict] | None] = {}
     cards_needed = any(s.mode != "face" for s in shots)   # stock needs it too, for the backdrop fallback
     # Cards are a pure function of their page and length: a re-run with the same card (a voice fix
     # moves only the shots near it) copies last run's clip instead of animating it again (~13 s each).
@@ -626,9 +625,9 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                         clips[n] = stock_clip(got, secs, dest, w, h, fps)
                         continue
                     if search:   # fetched per shot: a repeated query gets the next unused clip, not the same one
-                        got = fetch_stock(s.payload, work / "stock", used, search[1], w, secs) or stock_src.get(s.payload)
-                        if got:
-                            stock_src[s.payload] = got
+                        # Never the same clip twice in one episode (W47-en: four clips shown four times each, founder
+                        # 2026-11-20): when a search has no unused clip left, the shot gets a generated tech animation.
+                        got = fetch_stock(s.payload, work / "stock", used, search[1], w, secs)
                     if got:
                         clips[n] = stock_clip(got[0], secs, dest, w, h, fps)
                         stock_used.append({"shot": n, "start": round(s.start, 1), "end": round(s.end, 1),
