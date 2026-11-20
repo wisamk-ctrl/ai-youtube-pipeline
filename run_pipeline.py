@@ -83,6 +83,8 @@ def _write_script_result(cfg: dict, out: Path, result, plan_too: bool) -> None:
     (out / "script.md").write_text(result.script + "\n", encoding="utf-8")
     (out / "critique.json").write_text(json.dumps(result.critique_rounds, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "source_map.md").write_text(result.source_map_md, encoding="utf-8")
+    from pipeline.scripting import legal
+    log.info("Legal: %s", legal.write(out, _items(out)))
     from pipeline.video.manual import write_paste_pack
     write_paste_pack(result.script, cfg, out)   # for the manual HeyGen web-app route
     from pipeline.video.voicefirst import write_voice_pack
@@ -168,11 +170,15 @@ def phase_polish(cfg: dict, out: Path) -> None:
 
 def _sources_gate(out: Path, phase: str, warn_only: bool = False) -> None:
     """No render or import while the week's source map shows unsourced claims (review Tier 1 #8)."""
+    from pipeline.scripting import legal
     from pipeline.scripting.source_map import gate
     ok, msg = gate(out)
     if ok:
         (log.warning if "not audited" in msg else log.info)("Sources: %s", msg)
-        return
+        ok, msg = legal.gate(out)          # legal flags (founder 2026-11-20) gate the same phases
+        if ok:
+            (log.warning if "not checked" in msg else log.info)("Legal: %s", msg)
+            return
     if warn_only:
         log.warning("Sources (dry run, not blocking): %s", msg)
         return

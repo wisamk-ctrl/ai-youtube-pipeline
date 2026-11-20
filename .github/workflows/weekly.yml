@@ -184,13 +184,17 @@ jobs:
             const unsourced = (smap.match(/\*\*(\d+) unsourced claims\*\*/) || [])[1];
             const usage = fs.existsSync(`${dir}/usage.json`) ? JSON.parse(fs.readFileSync(`${dir}/usage.json`, 'utf8')) : null;
             const usageLine = usage ? `**Usage** ${Object.entries(usage.models).map(([m, v]) => `${m}: ${v.calls} calls, ${v.input.toLocaleString()} in / ${v.output.toLocaleString()} out`).join(' · ')}${usage.cost_usd != null ? ` · ≈ $${usage.cost_usd}` : ' · fill `pricing` in settings.yaml for a cost'}` : '';
+            const legal = fs.existsSync(`${dir}/legal.md`) ? fs.readFileSync(`${dir}/legal.md`, 'utf8') : '';
+            const legalMajor = (legal.match(/\*\*(\d+) major legal flag/) || [])[1];
+            const legalFlags = legal.split('\n').filter(l => l.startsWith('- (')).slice(0, 15).join('\n');
+            const legalLine = !legal ? '' : (legalFlags ? `⚖️ **Legal flags** (${legalMajor || 0} major block the render until reviewed/<week>/legal_ok.txt answers them by number; not legal advice):\n${legalFlags}` : '⚖️ No legal flags.');
             const sourceLine = smap ? (unsourced === '0' ? '✅ Every claim traced to a source.' : `⚠️ **${unsourced} unsourced claim(s)** — fix before recording:\n${(smap.split('## ⚠️ Unsourced claims')[1] || '').split('\n| #')[0].trim().split('\n').filter(l => l.startsWith('- ')).join('\n')}`) : '';
             await github.rest.issues.create({
               owner: context.repo.owner, repo: context.repo.repo,
               title: `Review: ${plan.episode_title_ar} (${dir.replace('output/','').replace('/','')})`,
               labels: ['script-review'],
               body: clip(`Artifact run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
-                    `${quality}\n\n${sourceLine}\n\n${usageLine}\n\n` +
+                    `${quality}\n\n${sourceLine}\n\n${legalLine}\n\n${usageLine}\n\n` +
                     `When approved: render in HeyGen's web app from the paste pack below, then run **weekly-roundup** with phase=\`import\`, this week, and the video's link in \`video_url\`. (With API credits, phase=\`video\` renders it automatically instead.)\n\n` +
                     (shotlist ? `${shotlist}\n` : '') +
                     (paste ? `<details><summary>HeyGen paste pack (copy scene by scene)</summary>\n\n${paste}\n</details>\n\n` : '') +

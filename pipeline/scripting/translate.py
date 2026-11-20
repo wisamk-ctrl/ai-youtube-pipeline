@@ -334,6 +334,8 @@ def run(src: Path, dst: Path, cfg: dict[str, Any], client: anthropic.Anthropic |
     model = cfg["scripting"].get("aux_model", cfg["scripting"]["model"])
     sents, smap = smap_mod.build(script_en, sources, model, client, lang="en")
     (dst / "source_map.md").write_text(smap_mod.render_md(sents, smap, sources), encoding="utf-8")
+    from pipeline.scripting import legal
+    log.info("Legal (English): %s", legal.write(dst, items))
     stats = smap_mod.stats(smap)
     if stats["unsourced"]:
         log.warning("%d unsourced claim(s) in the English script — see %s", stats["unsourced"], dst / "source_map.md")

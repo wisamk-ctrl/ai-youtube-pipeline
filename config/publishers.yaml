@@ -22,6 +22,13 @@ publishers:
   # ── Wires and national news agencies ──
   - {name: Reuters, ar: [رويترز], tier: A, domains: [reuters.com]}
   - {name: Associated Press, ar: [أسوشيتد برس, اسوشيتد برس, الأسوشيتد برس], aliases: [AP, AP News], tier: A, domains: [apnews.com]}
+  # Added 2026-11-20 (legal flags): these papers carried W47's lead stories but fell to tier C, "unknown".
+  - {name: The Guardian, ar: [الغارديان, ذا غارديان, الجارديان], aliases: [Guardian], tier: A, domains: [theguardian.com]}
+  - {name: The New York Times, ar: [نيويورك تايمز], aliases: [New York Times, NYT], tier: A, domains: [nytimes.com]}
+  - {name: BBC, ar: [بي بي سي], aliases: [BBC News], tier: A, domains: [bbc.com, bbc.co.uk]}
+  - {name: Al Jazeera, ar: [الجزيرة], aliases: [Al Jazeera English], tier: A, domains: [aljazeera.com, aljazeera.net]}
+  - {name: NPR, ar: [إن بي آر], tier: A, domains: [npr.org]}
+  - {name: CNN, ar: [سي إن إن], tier: A, domains: [cnn.com]}
   - {name: Bloomberg, ar: [بلومبرغ, بلومبيرغ, بلومبرج], aliases: [Bloomberg News, Bloomberg.com], tier: A, domains: [bloomberg.com]}
   - {name: AFP, ar: [فرانس برس, وكالة الصحافة الفرنسية], aliases: [Agence France-Presse], tier: A, domains: [afp.com]}
   - {name: WAM, ar: [وام, وكالة أنباء الإمارات], aliases: [Emirates News Agency], tier: A, domains: [wam.ae]}
