@@ -25,6 +25,7 @@ from pydantic import BaseModel, Field
 
 from pipeline import usage
 from pipeline.models import NewsItem
+from pipeline.story_match import is_repeat  # noqa: F401  (re-exported: breaking.is_repeat)
 
 log = logging.getLogger(__name__)
 ROOT = Path(__file__).resolve().parents[1]
@@ -93,8 +94,17 @@ def _norm(t: str) -> str:
     return re.sub(r"[^a-z0-9 ]+", " ", t.lower()).strip()
 
 
-def candidates(state: dict[str, Any], now: datetime, done: set[str], hours: float = 8) -> list[list[dict[str, Any]]]:
-    """Stories flagged in the last `hours`, each as its articles (with text), strongest first."""
+def recent_titles(done: dict[str, Any], now: datetime, days: float = 4) -> list[str]:
+    """Headlines of stories drafted into a Short in the last `days` (a failed draft does not block a retry)."""
+    since = (now - timedelta(days=days)).isoformat(timespec="minutes")
+    return [v["title"] for v in done.get("stories", {}).values()
+            if v.get("title") and v.get("week") and not v.get("skipped") and str(v.get("at", ""))[:16] >= since[:16]]
+
+
+def candidates(state: dict[str, Any], now: datetime, done: set[str], hours: float = 8,
+               recent: list[str] | None = None) -> list[list[dict[str, Any]]]:
+    """Stories flagged in the last `hours`, each as its articles (with text), strongest first. A story drafted in
+    the last few days under other headlines (`recent`) is left out."""
     since = (now - timedelta(hours=hours)).isoformat(timespec="minutes")
     pool = [d for d in _items(state) if (d.get("first_seen") or "") >= since]
     flagged = [d for d in pool if d.get("flagged")]
@@ -105,7 +115,7 @@ def candidates(state: dict[str, Any], now: datetime, done: set[str], hours: floa
     out = []
     for g in groups:
         key = _norm(g[0]["title"])[:80]
-        if key in done:
+        if key in done or (recent and is_repeat([d["title"] for d in g], recent)):
             continue
         rich = [d for d in g if len(d.get("summary") or "") >= MIN_TEXT]
         if rich:
@@ -277,7 +287,8 @@ def run(cfg: dict[str, Any], state: dict[str, Any], client, now: datetime | None
         log.info("Breaking: %d Shorts drafted today, the daily limit", len(today))
         return None
     library = (yaml.safe_load(LIBRARY.read_text(encoding="utf-8")) or {}).get("clips", {})
-    for group in candidates(state, now, set(done["stories"]), float(b.get("hours", 8)))[: int(b.get("tries", 2))]:
+    recent = recent_titles(done, now, float(b.get("repeat_days", 4)))
+    for group in candidates(state, now, set(done["stories"]), float(b.get("hours", 8)), recent)[: int(b.get("tries", 2))]:
         key = _norm(group[0]["title"])[:80]
         items = _articles(group)
         from scripts.notify import whatsapp   # founder 2026-11-18: a heads-up while the script is being written

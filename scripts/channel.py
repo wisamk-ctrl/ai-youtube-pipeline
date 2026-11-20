@@ -177,6 +177,16 @@ def open_needs() -> tuple[list[dict], list[dict], str]:
     return issues, comments, brk["url"] if brk else ""
 
 
+def breaking_titles() -> dict[str, list[str]]:
+    """Each breaking Short's headlines (data/breaking.json), to tell a repeat of a posted story."""
+    f = ROOT / "data" / "breaking.json"
+    out: dict[str, list[str]] = {}
+    for v in (json.loads(f.read_text(encoding="utf-8")).get("stories", {}) if f.exists() else {}).values():
+        if v.get("week") and v.get("title"):
+            out.setdefault(v["week"], []).append(v["title"])
+    return out
+
+
 def latest_runs() -> list[dict[str, str]]:
     """Each pipeline job's latest real run (comment-triggered runs that skipped are ignored), for the dashboard."""
     out = []
@@ -303,6 +313,8 @@ def report() -> None:
         from pipeline.publish import dashboard
         qf = ROOT / "data" / "social_queue.json"
         year = analytics_rows(tok, 365, metrics="estimatedMinutesWatched")
+        posted_weeks = {e["week"] for e in (json.loads(qf.read_text(encoding="utf-8")) if qf.exists() else [])
+                        if any(r.get("status") == "posted" for r in (e.get("posts") or {}).values())}
         try:
             issues, comments, brk_url = open_needs()
         except (subprocess.SubprocessError, KeyError, ValueError, OSError):
@@ -324,8 +336,8 @@ def report() -> None:
             needs=dashboard.needs_you(issues, comments, linkedin_until=os.environ.get("LINKEDIN_TOKEN_UNTIL", ""),
                                       today=NOW.strftime("%Y-%m-%d"), breaking_url=brk_url,
                                       now=NOW.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                                      published_weeks={e["week"] for e in (json.loads(qf.read_text(encoding="utf-8"))
-                                                                           if qf.exists() else [])}))
+                                      published_weeks=posted_weeks, breaking_titles=breaking_titles(),
+                                      posted_weeks=posted_weeks))
         print("dashboard files written to data/dashboard/")
     except Exception as e:  # noqa: BLE001 — the report itself must still go out
         print(f"dashboard files not written: {e}")

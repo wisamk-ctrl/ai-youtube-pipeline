@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from types import SimpleNamespace
 
 import yaml
@@ -112,3 +112,27 @@ def test_the_daily_limit_counts_distinct_shorts_not_headlines(tmp_path, monkeypa
     monkeypatch.setattr(breaking, "LIBRARY", tmp_path / "lib.yaml")
     (tmp_path / "lib.yaml").write_text(yaml.safe_dump({"clips": {k: "https://v.mp4" for k in LIB}}))
     assert breaking.run({"scripting": {}}, st, client, NOW, tmp_path / "done.json", tmp_path)
+
+
+# ── Repeats (founder 2026-11-20: five more outage drafts after the outage Short had been posted) ──
+POSTED_18_NOV = ["Microsoft reveals hidden bug behind global Outlook and Microsoft 365 outage",
+                 "A string of tech outages disrupted flights, banking, and major apps. Here's what officials have said",
+                 "6 major outages in 6 days: From Outlook to the NSA, what we know so far"]
+
+
+def test_a_new_headline_on_a_story_drafted_in_the_last_days_is_a_repeat():
+    assert breaking.is_repeat(["Why so many critical tech outages are happening all at once"], POSTED_18_NOV)
+    assert breaking.is_repeat(["Microsoft hit with Canadian class actions over massive outage"], POSTED_18_NOV)
+    assert not breaking.is_repeat(["Why Anthropic Stock Is Up (and Down) Today"], POSTED_18_NOV)
+    assert not breaking.is_repeat(["Microsoft launches a new Copilot model for Excel"], POSTED_18_NOV)   # one shared word
+
+
+def test_recent_titles_cover_drafted_stories_inside_the_window():
+    old_at = (NOW - timedelta(days=2)).isoformat(timespec="minutes")
+    stories = {breaking._norm(t)[:80]: {"at": old_at, "title": t, "week": "2026-11-18-brk-outages-en"} for t in POSTED_18_NOV}
+    recent = breaking.recent_titles({"stories": stories}, NOW, days=4)
+    assert set(recent) == set(POSTED_18_NOV)
+    assert breaking.recent_titles({"stories": stories}, NOW + timedelta(days=1), days=4) != []    # 3 days old
+    assert breaking.recent_titles({"stories": stories}, NOW + timedelta(days=3), days=4) == []    # 5 days old
+    skipped = {k: dict(v, skipped=True, week=None) for k, v in stories.items()}
+    assert breaking.recent_titles({"stories": skipped}, NOW, days=4) == []     # a failed draft does not block a retry

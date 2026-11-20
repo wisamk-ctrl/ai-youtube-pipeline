@@ -71,7 +71,8 @@ def curve_rows(episode: str, curve: list[tuple[float, float]], length_s: float) 
 
 def needs_you(issues: list[dict[str, Any]], breaking_comments: list[dict[str, Any]], *, linkedin_until: str,
               today: str, breaking_url: str, now: str | None = None,
-              published_weeks: set[str] | None = None) -> list[dict[str, str]]:
+              published_weeks: set[str] | None = None, breaking_titles: dict[str, list[str]] | None = None,
+              posted_weeks: set[str] | None = None) -> list[dict[str, str]]:
     """What waits on the founder: a Review issue from the last 7 days, open failure issues, breaking Shorts ready in
     the last 36 hours but not posted (older drafts are stale news), a LinkedIn token close to expiry, and blocked
     accounts. Open Review issues from earlier weeks are finished work, not waiting."""
@@ -97,8 +98,13 @@ def needs_you(issues: list[dict[str, Any]], breaking_comments: list[dict[str, An
             ready[m.group(1)] = str(c.get("createdAt", ""))[:10]
         if m := re.search(r"Posted: `([^`]+)`", body):
             ready.pop(m.group(1), None)
-    rows += [{"kind": "Approve", "item": f"Breaking Short {w}: reply post", "since": d, "link": breaking_url}
-             for w, d in sorted(ready.items(), key=lambda x: x[1], reverse=True)]
+    from pipeline.story_match import is_repeat
+    titles = breaking_titles or {}
+    posted = [h for w in (posted_weeks or ()) if "-brk-" in w for h in titles.get(w, [])]
+    rows += [{"kind": "Your call", "item": f"Breaking Short {w}: post it or let it expire", "since": d,
+              "link": breaking_url}
+             for w, d in sorted(ready.items(), key=lambda x: x[1], reverse=True)
+             if not (posted and is_repeat(titles.get(w, []), posted))]   # a story already posted is not waiting
     if linkedin_until:
         try:
             left = (date.fromisoformat(linkedin_until[:10]) - date.fromisoformat(today)).days

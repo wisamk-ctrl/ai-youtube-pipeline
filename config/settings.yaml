@@ -378,3 +378,4 @@ breaking:                     # breaking-news Shorts drafted from the news watch
   hours: 8                    # stories flagged in the last 8 hours
   max_per_day: 3              # drafts a day; nothing posts without the founder's `post <week>` on the issue
   tries: 2                    # stories tried per run when a draft fails its checks
+  repeat_days: 4              # a story drafted in the last 4 days is not drafted again under a new headline (founder 2026-11-20)

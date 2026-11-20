@@ -88,7 +88,7 @@ def test_needs_you_lists_what_waits_on_the_founder():
     kinds = [(r["kind"], r["item"]) for r in rows]
     assert ("Approve", "Review: episode (2026-W47)") in kinds
     assert ("Fix", "Run failed: render job (x)") in kinds
-    assert ("Approve", "Breaking Short 2026-11-20-brk-a-en: reply post") in kinds
+    assert ("Your call", "Breaking Short 2026-11-20-brk-a-en: post it or let it expire") in kinds
     assert not any("brk-b" in i for _, i in kinds) and not any("Weekly numbers" in i for _, i in kinds)
     assert ("Renew", "LinkedIn token expires in 11 days") in kinds
     assert any(k == "Unblock" and "Instagram" in i for k, i in kinds)
@@ -140,3 +140,17 @@ def test_a_review_whose_week_already_went_out_is_not_waiting():
                         now="2026-11-20T08:00:00Z", published_weeks={"2026-W46-en", "2026-W45-en"})
     items = [r["item"] for r in rows]
     assert "Review: new (2026-W47)" in items and "Review: done (2026-W46)" not in items
+
+
+
+def test_a_breaking_draft_that_repeats_a_posted_story_is_hidden():
+    """2026-11-20: the outage had been posted on 18 Nov, yet five later outage drafts were listed as waiting."""
+    comments = [{"body": "**Ready to check: `2026-11-20-brk-ms-outage-en`**", "createdAt": "2026-11-20T04:00:00Z"},
+                {"body": "**Ready to check: `2026-11-20-brk-anthropic-ipo-en`**", "createdAt": "2026-11-20T03:00:00Z"}]
+    titles = {"2026-11-20-brk-ms-outage-en": ["Microsoft outage brings enterprise resilience gaps to light"],
+              "2026-11-20-brk-anthropic-ipo-en": ["Why Anthropic Stock Is Up (and Down) Today"],
+              "2026-11-18-brk-outages-en": ["Microsoft reveals hidden bug behind global Microsoft 365 outage"]}
+    rows = db.needs_you([], comments, linkedin_until="", today="2026-11-20", breaking_url="b", now="2026-11-20T08:00:00Z",
+                        breaking_titles=titles, posted_weeks={"2026-11-18-brk-outages-en"})
+    items = [r["item"] for r in rows]
+    assert not any("ms-outage" in i for i in items) and any("anthropic-ipo" in i for i in items)
