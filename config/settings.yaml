@@ -350,6 +350,7 @@ social:                       # Shorts / Reels / TikTok on the platforms' own AP
   require_approval: true      # a week's clips wait for `social` approve <week> (the founder's OK)
   youtube_privacy: public
   tiktok_privacy: SELF_ONLY   # until TikTok audits the app (it rejects public posts from an unaudited app); then PUBLIC_TO_EVERYONE
+  tiktok_mode: inbox          # Shorts go to the founder's TikTok drafts; he pastes the caption and posts (founder 2026-11-20). "direct" needs an audited app
   instagram_api_version: v23.0
   facebook_api_version: v23.0
   max_attempts: 3             # per platform, then it is marked skipped

@@ -223,19 +223,26 @@ class TikTok:
                 return p
         return "SELF_ONLY"
 
-    def post_video(self, path: Path, text: str, wanted: str = "PUBLIC_TO_EVERYONE", wait_s: int = 600) -> dict[str, Any]:
+    def post_video(self, path: Path, text: str, wanted: str = "PUBLIC_TO_EVERYONE", wait_s: int = 600,
+                   mode: str = "direct") -> dict[str, Any]:
+        """mode "direct" posts it; mode "inbox" sends it to the creator's TikTok drafts (founder 2026-11-20: an
+        unaudited app may post only to private accounts), where he pastes the caption and taps Post."""
         size = path.stat().st_size
         # TikTok: a file up to 64 MB may go as one chunk, which must then be the whole file; above that, 10 MB
         # chunks with the remainder in the last. W46-en: a 15 MB Short sent as one "10 MB" chunk was refused
         # ("The chunk size is invalid").
         chunk = size if size <= self.SINGLE else self.CHUNK
         count = max(1, size // chunk)
-        level = self.privacy(wanted)
-        init = self._post("/v2/post/publish/video/init/", {
-            "post_info": {"title": text[:2200], "privacy_level": level, "is_aigc": True,
-                          "disable_comment": False, "disable_duet": False, "disable_stitch": False},
-            "source_info": {"source": "FILE_UPLOAD", "video_size": size, "chunk_size": chunk,
-                            "total_chunk_count": count}})
+        source = {"source": "FILE_UPLOAD", "video_size": size, "chunk_size": chunk, "total_chunk_count": count}
+        if mode == "inbox":
+            level = "draft"
+            init = self._post("/v2/post/publish/inbox/video/init/", {"source_info": source})
+        else:
+            level = self.privacy(wanted)
+            init = self._post("/v2/post/publish/video/init/", {
+                "post_info": {"title": text[:2200], "privacy_level": level, "is_aigc": True,
+                              "disable_comment": False, "disable_duet": False, "disable_stitch": False},
+                "source_info": source})
         with open(path, "rb") as f:
             for i in range(count):
                 start = i * chunk
@@ -256,7 +263,12 @@ class TikTok:
                 raise Unconfirmed(f"TikTok publish {pid}: status check failed ({exc})", ref=pid) from exc
             status = st.get("status")
             if status in ("PUBLISH_COMPLETE", "SEND_TO_USER_INBOX"):
-                return {"publish_id": pid, "privacy": level, "status": status}
+                out = {"publish_id": pid, "privacy": level, "status": status}
+                if mode == "inbox":
+                    out.update(url="in your TikTok drafts",
+                               note="Open TikTok, tap the inbox notification, turn on the AI-generated label, paste "
+                                    "this caption and post:\n" + text)
+                return out
             if status == "FAILED":
                 raise RuntimeError(f"TikTok publish {pid}: FAILED {st.get('fail_reason', '')}")
             if waited >= wait_s:
@@ -488,9 +500,10 @@ def tiktok_poster(cfg: dict[str, Any]):
         store_secret("TIKTOK_REFRESH_TOKEN", data["refresh_token"])
     tt = TikTok(data["access_token"])
     wanted = cfg.get("social", {}).get("tiktok_privacy", "PUBLIC_TO_EVERYONE")
+    mode = cfg.get("social", {}).get("tiktok_mode", "inbox")
 
     def post(e: dict[str, Any], local: Path) -> dict[str, Any]:
-        return tt.post_video(local, e["captions"]["tiktok"], wanted)
+        return tt.post_video(local, e["captions"]["tiktok"], wanted, mode=mode)
     return post
 
 

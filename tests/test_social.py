@@ -260,3 +260,20 @@ def test_tiktok_sends_a_file_under_the_single_chunk_limit_whole(tmp_path, monkey
     init = next(kw for m, u, kw in http.calls if "video/init" in u)["json"]
     assert init["source_info"] == {"source": "FILE_UPLOAD", "video_size": 15, "chunk_size": 15, "total_chunk_count": 1}
     assert [kw["headers"]["Content-Range"] for m, u, kw in http.calls if m == "PUT"] == ["bytes 0-14/15"]
+
+
+def test_tiktok_drafts_mode_sends_the_short_to_the_inbox_with_the_caption_to_paste(tmp_path):
+    """2026-11-20: an unaudited app may post only to private accounts, and @aithisweek is public. Drafts land in the
+    founder's TikTok inbox; he pastes the caption and taps Post in the app."""
+    f = tmp_path / "v.mp4"
+    f.write_bytes(b"x" * 5)
+    http = FakeHttp({
+        ("POST", "inbox/video/init"): {"data": {"publish_id": "P", "upload_url": "https://up/1"}, "error": {"code": "ok"}},
+        ("PUT", "https://up/1"): ({}, 201),
+        ("POST", "status/fetch"): {"data": {"status": "SEND_TO_USER_INBOX"}, "error": {"code": "ok"}}})
+    res = social.TikTok("tok", http=http, sleep=lambda s: None).post_video(f, "Title\n\n#AI", mode="inbox")
+    assert res["status"] == "SEND_TO_USER_INBOX" and res["privacy"] == "draft"
+    assert "Title" in res["note"] and "#AI" in res["note"]
+    init = next(kw for m, u, kw in http.calls if "inbox/video/init" in u)["json"]
+    assert set(init) == {"source_info"}                       # drafts take no post settings
+    assert not any("creator_info" in u for _, u, _ in http.calls)

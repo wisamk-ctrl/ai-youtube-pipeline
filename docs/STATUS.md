@@ -292,3 +292,13 @@ Open founder items, best done in the browser:
 - Refresh: local scheduled task `ai-this-week-dashboard-refresh` (Mondays ~10:17 Gulf, Auto mode, runs only while the
   Claude app is open; if closed it runs on next launch) uploads the eleven files and repoints the datasets. TikTok Shorts
   (`tiktok_videos`) is a 20 Nov copy the task does not refresh: the TikTok app cannot read view counts.
+
+## TikTok posting (2026-11-20)
+An unaudited TikTok app may post only to private accounts, and @aithisweek is public. TikTok's app review would
+likely be refused (it wants apps for many creators, with a full posting screen: no default privacy, unticked
+interaction switches, consent line, preview), so `social.tiktok_mode: inbox` sends each Short to the founder's
+TikTok drafts instead (`TikTok.post_video(mode="inbox")`). The Breaking Shorts issue shows the caption to paste;
+in the TikTok app: tap the inbox notification, turn on the AI-generated label, paste, Post. Limit: 5 pending drafts
+a day. Not yet confirmed on a real Short that drafts work for an unaudited app on a public account; if the next
+one fails, upload by hand in TikTok Studio (done for the Anthropic IPO Short, 20 Nov).
+

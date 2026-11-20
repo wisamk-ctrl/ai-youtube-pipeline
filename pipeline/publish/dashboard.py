@@ -12,7 +12,7 @@ from typing import Any, Iterable
 # What the app cannot read about each account, kept by hand (update when an account's state changes).
 ACCOUNTS = [
     ("YouTube", "youtube", "@AIThisWeekME", "working", "Episodes and Shorts post automatically"),
-    ("TikTok", "tiktok", "@aithisweek", "manual", "Public account: the app may post only to private accounts until TikTok reviews it, so upload Shorts by hand"),
+    ("TikTok", "tiktok", "@aithisweek", "manual", "Shorts arrive in your TikTok drafts: paste the caption from the issue and tap Post"),
     ("LinkedIn", "linkedin", "Wissam Kishek (profile)", "working", "Follower count not available to the app"),
     ("Instagram", "instagram", "@aithisweekme", "blocked", "Needs the Meta developer app (phone check)"),
     ("Facebook", "facebook", "AI This Week (Page)", "blocked", "Needs the Meta developer app (phone check)"),

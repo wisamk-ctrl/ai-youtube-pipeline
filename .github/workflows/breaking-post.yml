@@ -84,5 +84,5 @@ jobs:
         env:
           WEEK: ${{ steps.w.outputs.week }}
         run: |
-          r=$(python3 -c "import json;[print(f'- {p}: {r.get(\"status\")} {r.get(\"url\",\"\")} {r.get(\"error\",\"\")[:200]}') for e in json.load(open('data/social_queue.json')) if e['week']=='$WEEK' for p,r in e['posts'].items()]")
+          r=$(python3 -c "import json;[print(f'- {p}: {r.get(\"status\")} {r.get(\"url\",\"\")} {r.get(\"error\",\"\")[:200]}' + (chr(10) + chr(10) + r['note'] + chr(10) if r.get('note') else '')) for e in json.load(open('data/social_queue.json')) if e['week']=='$WEEK' for p,r in e['posts'].items()]")
           python scripts/breaking_issue.py posted "$WEEK" "$r"
