@@ -84,7 +84,9 @@ def elevenlabs(text: str, out: Path) -> list[str]:
 
 
 if __name__ == "__main__":
-    text = Path(sys.argv[1]).read_text(encoding="utf-8").strip()
+    sys.path.insert(0, str(ROOT))
+    from pipeline.script_format import speakable   # the same name fixes the pipeline's voice uses
+    text = speakable(Path(sys.argv[1]).read_text(encoding="utf-8").strip())
     out = Path(sys.argv[2])
     out.mkdir(parents=True, exist_ok=True)
     report = [heygen(text, out / "heygen.mp3"), *elevenlabs(text, out)]
