@@ -90,7 +90,8 @@ def video_body(plan: dict[str, Any], description: str, cfg: dict[str, Any], publ
         },
         "status": _status(cfg, publish_at),
     }
-    if locs and lang != "en":   # an English episode's default language already is English
+    locs = {k: v for k, v in (locs or {}).items() if k != lang}   # never the video's own language
+    if locs:
         body["localizations"] = locs
     return body
 
@@ -139,7 +140,7 @@ def upload(video: Path, plan: dict[str, Any], sources: list[dict[str, Any]], cfg
         yt = client("youtube")
     publish_at = publish_at or next_publish_time(cfg)
     text = description if description is not None else desc.build_description(plan, sources, cfg, lang=language)
-    locs = desc.localizations(plan, sources, cfg) if cfg["publish"].get("localizations", True) else {}
+    locs = desc.localizations(plan, sources, cfg, lang=language) if cfg["publish"].get("localizations", True) else {}
     body = video_body(plan, text, cfg, publish_at, locs, language)
     video_id = _insert(yt, body, video)
     log.info("Uploaded https://youtu.be/%s — %s%s", video_id, body["status"]["privacyStatus"],

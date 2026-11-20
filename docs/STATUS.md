@@ -254,9 +254,8 @@ Open founder items, best done in the browser:
 5. ~~TikTok~~ (2026-11-19): @aithisweek switched from a private to a public account (it was private, which is why
    "Everyone" was never offered); 6 Shorts set to Public (Jensen Huang was still in TikTok's content review).
    The duplicate ADNOC/G42 post from 17 Nov 9:19 pm stays private. Bio set (80-char limit): "AI news for the Middle
-   East, every Sunday 17:00 Gulf time. Not financial advice." Display name change to "AI This Week" submitted and
-   accepted ("Profile has been updated"), but the profile still showed "aithisweek" and the name is locked until
-   26 Nov: most likely in TikTok review; check it shows. Watch whether the next
+   East, every Sunday 17:00 Gulf time. Not financial advice." Display name "AI This Week" live (checked 2026-11-20);
+   all 6 Shorts public incl. Jensen Huang (review cleared). Watch whether the next
    automatic post lands public now, or still private because the TikTok app is unaudited.
 
 ## Languages on YouTube (checked in Studio 2026-11-19)
@@ -267,8 +266,8 @@ Open founder items, best done in the browser:
   YouTube's note: the track cannot be trimmed there and "should roughly align to the length of your video"). This is
   the route for an Arabic track in the founder's cloned voice on the English episode (one video, one view count).
 - Per-language title, description, thumbnail and manual subtitles can be added in the same panel. English
-  episodes currently carry no Arabic title/description (`pipeline/publish/youtube_upload.py`: localizations are
-  only sent when the episode language is not English).
+  episodes now carry an Arabic title/description too (2026-11-20, `description._arabic_localization`): the Arabic
+  plan's own title, hook and headlines, the sources and the Arabic disclaimer. Off switch: `publish.localizations: false`.
 
 ## Connected tools worth using (reviewed 2026-11-19, none adopted yet)
 - **HeyGen video translation** (connector `create_video_translation`): verified on the current plan: Arabic (Jordan)

@@ -259,7 +259,22 @@ def test_english_week_uploads_with_english_title_and_language():
     plan = {"episode_title_ar": "عنوان", "episode_title_en": "AI Week: the deal", "language": "en"}
     body = yu.video_body(plan, "d", cfg, datetime(2026, 11, 8, tzinfo=timezone.utc), {"en": {"title": "x"}})
     assert body["snippet"]["title"] == "AI Week: the deal" and body["snippet"]["defaultLanguage"] == "en"
-    assert "localizations" not in body
+    assert "localizations" not in body             # a localization in the video's own language is never sent
+
+
+def test_english_week_gets_an_arabic_title_and_description():
+    """2026-11-20: Arabic viewers saw English episodes titled only in English."""
+    from datetime import datetime, timezone
+    from pipeline.publish import youtube_upload as yu
+    plan = {"episode_title_ar": "إنفيديا تخسر رئيسها", "episode_title_en": "NVIDIA Loses Its CEO", "language": "en",
+            "cold_open_hook_ar": "أسبوع ما بنساه", "segments": [{"headline_ar": "جنسن هوانغ يغادر", "headline_en": "x"}]}
+    loc = desc.localizations(plan, [{"title": "R", "url": "https://r.com"}], CFG, lang="en")
+    assert set(loc) == {"ar"} and loc["ar"]["title"] == "إنفيديا تخسر رئيسها"
+    d = loc["ar"]["description"]
+    assert "أسبوع ما بنساه" in d and "جنسن هوانغ يغادر" in d and "https://r.com" in d and desc.DISCLOSURE_AR in d
+    assert desc.localizations({"episode_title_en": "T", "language": "en"}, [], CFG, lang="en") == {}   # no Arabic
+    body = yu.video_body(plan, "d", CFG, datetime(2026, 11, 22, tzinfo=timezone.utc), loc, "en")
+    assert body["localizations"] == loc and body["snippet"]["defaultLanguage"] == "en"
 
 
 def test_guide_cards_put_topics_and_pivot_questions_on_screen(tmp_path):

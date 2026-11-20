@@ -222,8 +222,12 @@ def build_description(plan: dict[str, Any], sources: list[dict[str, Any]], cfg: 
     return clean(_fit(head, src, tail))
 
 
-def localizations(plan: dict[str, Any], sources: list[dict[str, Any]], cfg: dict[str, Any]) -> dict[str, Any]:
-    """{"en": {"title", "description"}} from the plan's English fields; {} when it has none."""
+def localizations(plan: dict[str, Any], sources: list[dict[str, Any]], cfg: dict[str, Any],
+                  lang: str = "ar") -> dict[str, Any]:
+    """The title and description in the episode's other language: {"en": …} for an Arabic episode from the plan's
+    English fields, {"ar": …} for an English episode from its Arabic ones (founder 2026-11-20); {} when absent."""
+    if lang == "en":
+        return _arabic_localization(plan, sources)
     hook = clean(plan.get("cold_open_hook_en", ""))
     heads = [clean(s.get("headline_en", "")) for s in plan.get("segments", []) if s.get("headline_en")]
     title = clean(plan.get("episode_title_en", ""))
@@ -239,3 +243,19 @@ def localizations(plan: dict[str, Any], sources: list[dict[str, Any]], cfg: dict
         lines += ["Sources:", *[f"- {clean(s.get('title', ''))}: {s['url']}" for s in sources], ""]
     lines += [DISCLOSURE_EN]
     return {"en": {"title": title[:TITLE_LIMIT], "description": clean("\n".join(lines))[:DESC_LIMIT]}}
+
+
+def _arabic_localization(plan: dict[str, Any], sources: list[dict[str, Any]]) -> dict[str, Any]:
+    """{"ar": {"title", "description"}} for an English episode from the plan's own Arabic fields (an -en week keeps
+    the Arabic plan's fields, pipeline/scripting/translate.py); {} without an Arabic title."""
+    title = clean(plan.get("episode_title_ar", ""))
+    if not title:
+        return {}
+    hook, heads = hook_ar(plan, None), headlines_ar(plan, [])
+    lines = [hook, ""] if hook else []
+    if heads:
+        lines += ["في هذه الحلقة:", *[f"• {h}" for h in heads], ""]
+    if sources:
+        lines += ["المصادر:", *[f"- {clean(s.get('title', ''))}: {s['url']}" for s in sources], ""]
+    lines += [DISCLOSURE_AR]
+    return {"ar": {"title": title[:TITLE_LIMIT], "description": clean("\n".join(lines))[:DESC_LIMIT]}}
