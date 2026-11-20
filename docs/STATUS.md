@@ -88,6 +88,19 @@ A week folder ending in `-en` is English everywhere (`pipeline/language.py`): th
 - Next: founder renders the 5 scenes in HeyGen → run weekly-roundup with phase `import`, week
   `2026-W43-jo`, `video_url` = the HeyGen video ID or link → run the `preview` workflow.
 
+## Built 2026-11-20 (founder: legal risk, account security, real photos)
+- **Legal flags** (`pipeline/scripting/legal.py`): every source map gets a `legal.md`: allegations against
+  someone on one weak outlet, buy/sell/invest imperatives, rulers/religion/state next to a negative claim, quotes
+  without direct support. Shown on the Review issue; a render refuses while a major flag is unanswered in
+  `reviewed/<week>/legal_ok.txt`. Flags, not legal advice. Breaking Shorts are not checked yet (no source map).
+- **Security** (`docs/SECURITY.md`): `main` protected from force-push/deletion, every Action pinned to a commit,
+  a daily channel-integrity check at 06:23 Gulf (`scripts/integrity.py`; baseline: 9 videos, @aithisweekme).
+  The founder checklist in SECURITY.md (passkeys/Advanced Protection, managers, GitHub 2FA) is still open.
+- **Visuals**: `[Visual: photo <subject>]` (licensed Wikimedia Commons photos, credited) and
+  `[Visual: generated <scene>]` (own clips via reviewed/<week>/visuals.yaml; Higgsfield has 0 credits, so the
+  founder makes them from the list in the Review issue). The shot list flags repeated stock and long digital runs.
+  First used from W48.
+
 ## Open items for the founder
 1. **Re-record avatar footage in landscape 16:9, mid-chest up** (the current avatar is portrait,
    so face shots show a narrow strip). Guide: `docs/recording_script.md`. Then update
