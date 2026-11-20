@@ -286,6 +286,9 @@ Open founder items, best done in the browser:
 - Numbers: `scripts/channel.py report` writes `data/dashboard/*.csv` via `pipeline/publish/dashboard.py` (tested in
   `tests/test_dashboard.py`); the channel workflow commits them, on manual runs too. Account states and notes that no
   API gives are in `dashboard.ACCOUNTS`: edit there when an account changes (e.g. Instagram/Facebook unblocked).
+- Sections (2026-11-20): needs you, YouTube cards, monetisation tracker (12-month watch hours vs 8,000, projected
+  date from the last four weeks), week-by-week history, views by video (with Short origin), retention curve with
+  chapters, audience by country and traffic source, channels, TikTok, pipeline health.
 - Refresh: local scheduled task `ai-this-week-dashboard-refresh` (Mondays ~10:17 Gulf, Auto mode, runs only while the
-  Claude app is open; if closed it runs on next launch) uploads the five files and repoints the datasets. TikTok Shorts
+  Claude app is open; if closed it runs on next launch) uploads the eleven files and repoints the datasets. TikTok Shorts
   (`tiktok_videos`) is a 20 Nov copy the task does not refresh: the TikTok app cannot read view counts.
