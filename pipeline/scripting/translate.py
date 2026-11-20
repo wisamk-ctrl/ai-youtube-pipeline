@@ -285,6 +285,15 @@ def _selected(plan: dict[str, Any], items: list[NewsItem]) -> list[NewsItem]:
     return [i for i in items if i.id in used] or items
 
 
+def _sources(plan: dict[str, Any], items: list[NewsItem], script: str) -> list[NewsItem]:
+    """The plan's items plus any item the script shows a source card for: a story added by hand is not in the plan
+    (W47-en, 2026-11-20: 8 lines refused as unsourced although each had its source card)."""
+    import re
+    cited = set(re.findall(r"\[(?:Visual|Corner): source (\w+)\]", script))
+    chosen = _selected(plan, items)
+    return chosen + [i for i in items if i.id in cited and i not in chosen]
+
+
 def run(src: Path, dst: Path, cfg: dict[str, Any], client: anthropic.Anthropic | None = None) -> dict[str, Any]:
     """Translate output/<week> into output/<week>-en. Returns a short summary for the log."""
     from pipeline.scripting import source_map as smap_mod
@@ -301,7 +310,7 @@ def run(src: Path, dst: Path, cfg: dict[str, Any], client: anthropic.Anthropic |
     client = client or anthropic.Anthropic(max_retries=4)
 
     dst.mkdir(parents=True, exist_ok=True)
-    script_en = translate_script(script_ar, _selected(plan, items), cfg, client)
+    script_en = translate_script(script_ar, _sources(plan, items, script_ar), cfg, client)
     (dst / "script.md").write_text(script_en + "\n", encoding="utf-8")
     shutil.copy(src / "items.json", dst / "items.json")
 
@@ -321,7 +330,7 @@ def run(src: Path, dst: Path, cfg: dict[str, Any], client: anthropic.Anthropic |
         rounds = [{"language": "en", "error": str(exc)}]
     (dst / "critique.json").write_text(json.dumps(rounds, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    sources = _selected(plan, items)
+    sources = _sources(plan, items, script_ar)
     model = cfg["scripting"].get("aux_model", cfg["scripting"]["model"])
     sents, smap = smap_mod.build(script_en, sources, model, client, lang="en")
     (dst / "source_map.md").write_text(smap_mod.render_md(sents, smap, sources), encoding="utf-8")

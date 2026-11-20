@@ -319,3 +319,20 @@ def test_an_english_week_shows_no_arabic_on_screen():
     finally:
         language.apply_language({}, "2026-W45")
     assert language.ui("subscribe") == "اشترك"
+
+
+def test_source_map_also_checks_items_the_script_shows_a_source_card_for():
+    """2026-11-20: W47-en was refused for 8 'unsourced' lines (HUMAIN, the $83 IPO price, California): those stories
+    were added by hand with a source card each, but the English source map only searched the plan's items."""
+    from datetime import datetime, timezone
+    from pipeline.models import NewsItem
+    from pipeline.scripting import translate as tr
+
+    def mk(u):
+        return NewsItem(source="s", source_type="rss", title=u, summary="", url=f"https://{u}",
+                        published=datetime.now(timezone.utc))
+    planned, added, other = mk("planned"), mk("added"), mk("other")
+    plan = {"segments": [{"item_ids": [planned.id]}]}
+    script = f"[Visual: source {added.id}]\nسطر"
+    got = tr._sources(plan, [planned, added, other], script)
+    assert planned in got and added in got and other not in got
