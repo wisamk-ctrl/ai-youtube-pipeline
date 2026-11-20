@@ -1,0 +1,274 @@
+<title>AI This Week Pipeline Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one column of three flow diagrams (episode, breaking Shorts, feedback), then the connections register. Brand violet for automation, gold only for the steps that wait on the founder. */
+:root {
+  --bg: #F7F5FC;
+  --panel: #FFFFFF;
+  --fg: #1E0A47;
+  --muted: #5B4F78;
+  --line: #D9D2EC;
+  --violet: #2C0F66;
+  --node: #EEE9FA;
+  --gold: #B8901F;
+  --gold-bg: #FBF3DC;
+  --ok: #1F7A4D;
+  --warn: #9A6200;
+  --off: #6B6580;
+  --display: "Sora", "Inter", system-ui, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #140832; --panel: #1E0A47; --fg: #F4F0FF; --muted: #B9A9DD; --line: #3A2768; --violet: #C9B8FF;
+  --node: #2A1460; --gold: #D9B13B; --gold-bg: #3A2C08; --ok: #5FD39A; --warn: #F0B54A; --off: #A49BBF; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #140832; --panel: #1E0A47; --fg: #F4F0FF; --muted: #B9A9DD; --line: #3A2768; --violet: #C9B8FF;
+  --node: #2A1460; --gold: #D9B13B; --gold-bg: #3A2C08; --ok: #5FD39A; --warn: #F0B54A; --off: #A49BBF; color-scheme: dark }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 400 15px/1.55 var(--body); }
+main { max-width: 1120px; margin: 0 auto; padding-block: 32px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 36px; }
+h1 { font: 800 clamp(26px, 4vw, 36px)/1.15 var(--display); margin: 0; text-wrap: balance; }
+h2 { font: 600 20px/1.3 var(--display); margin: 0; }
+p { margin: 0; max-width: 70ch; }
+.label { font: 500 11px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.lead { color: var(--muted); }
+.key { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
+.key span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 14px; height: 14px; border-radius: 3px; display: inline-block; border: 1.5px solid; }
+.sw.auto { background: var(--node); border-color: var(--violet); }
+.sw.you { background: var(--gold-bg); border-color: var(--gold); }
+.sw.ext { background: var(--panel); border-color: var(--line); border-style: dashed; }
+section { display: grid; gap: 12px; }
+figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; }
+.scroll { overflow-x: auto; }
+svg { display: block; width: 100%; height: auto; min-width: 760px; color: var(--fg); font-family: var(--body); }
+figcaption { color: var(--muted); font-size: 14px; }
+svg .n { fill: var(--node); stroke: var(--violet); stroke-width: 1.5; }
+svg .y { fill: var(--gold-bg); stroke: var(--gold); stroke-width: 1.8; }
+svg .x { fill: var(--panel); stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 5 4; }
+svg .t { font-size: 13px; font-weight: 600; fill: currentColor; }
+svg .s { font-size: 11px; fill: var(--muted); }
+svg .m { font-family: var(--mono); font-size: 10.5px; fill: var(--muted); }
+svg .e { stroke: currentColor; stroke-width: 1.4; fill: none; }
+svg .ey { stroke: var(--gold); stroke-width: 1.6; fill: none; }
+svg .warnt { font-size: 11px; fill: var(--warn); font-weight: 600; }
+.table-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 640px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 11px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 600; white-space: nowrap; }
+.pill { font: 500 11px/1 var(--mono); padding: 4px 8px; border-radius: 99px; border: 1px solid; white-space: nowrap; display: inline-block; }
+.pill.ok { color: var(--ok); border-color: var(--ok); }
+.pill.warn { color: var(--warn); border-color: var(--warn); }
+.pill.off { color: var(--off); border-color: var(--off); }
+.foot { color: var(--muted); font-size: 13px; }
+</style>
+
+<main>
+  <header style="display:grid;gap:10px">
+    <p class="label">ai-youtube-pipeline · as of 20 Nov 2026</p>
+    <h1>How AI This Week gets made and published</h1>
+    <p class="lead">Everything runs on GitHub Actions in the public repo. GitHub issues are the control panel: a job opens or comments on an issue, and your reply (<code>approve</code>, <code>publish</code>, <code>post</code>) starts the next job. All times are UTC unless marked Gulf.</p>
+    <div class="key"><span><i class="sw auto"></i>Runs on its own</span><span><i class="sw you"></i>Waits for your reply</span><span><i class="sw ext"></i>Outside service or platform</span></div>
+  </header>
+
+  <section>
+    <p class="label">1 · Weekly episode</p>
+    <h2>From Friday's script to Sunday's release</h2>
+    <figure>
+      <div class="scroll">
+      <svg viewBox="0 0 1080 300" role="img" aria-label="Weekly episode flow: news sources feed the Friday script run, you approve it on the Review issue, the render makes the English version, voice and video, you reply publish, it uploads unlisted to YouTube, the release gate makes it public on Sunday at 17:00 Gulf, then LinkedIn and Facebook posts go out.">
+        <defs>
+          <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+          <marker id="a1y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B8901F"/></marker>
+        </defs>
+        <!-- row 1 -->
+        <rect class="x" x="10" y="30" width="150" height="70" rx="8"/>
+        <text class="t" x="85" y="58" text-anchor="middle">News sources</text>
+        <text class="s" x="85" y="76" text-anchor="middle">RSS · Google News</text>
+        <text class="s" x="85" y="90" text-anchor="middle">YouTube channels</text>
+
+        <rect class="n" x="210" y="30" width="170" height="70" rx="8"/>
+        <text class="t" x="295" y="54" text-anchor="middle">weekly · script</text>
+        <text class="s" x="295" y="72" text-anchor="middle">ingest → Claude writes</text>
+        <text class="s" x="295" y="86" text-anchor="middle">→ critic → source map</text>
+
+        <rect class="y" x="430" y="30" width="170" height="70" rx="8"/>
+        <text class="t" x="515" y="54" text-anchor="middle">Review issue</text>
+        <text class="s" x="515" y="72" text-anchor="middle">you read script +</text>
+        <text class="s" x="515" y="86" text-anchor="middle">sources, reply approve</text>
+
+        <rect class="n" x="650" y="30" width="190" height="70" rx="8"/>
+        <text class="t" x="745" y="54" text-anchor="middle">approve → render</text>
+        <text class="s" x="745" y="72" text-anchor="middle">English · voice · edit</text>
+        <text class="s" x="745" y="86" text-anchor="middle">captions · Shorts</text>
+
+        <rect class="y" x="890" y="30" width="180" height="70" rx="8"/>
+        <text class="t" x="980" y="54" text-anchor="middle">"ready" comment</text>
+        <text class="s" x="980" y="72" text-anchor="middle">watch previews,</text>
+        <text class="s" x="980" y="86" text-anchor="middle">reply publish</text>
+
+        <line class="e" x1="160" y1="65" x2="206" y2="65" marker-end="url(#a1)"/>
+        <text class="m" x="183" y="120" text-anchor="middle">Fri 06:00</text>
+        <line class="ey" x1="380" y1="65" x2="426" y2="65" marker-end="url(#a1y)"/>
+        <text class="m" x="403" y="120" text-anchor="middle">opens</text>
+        <line class="ey" x1="600" y1="65" x2="646" y2="65" marker-end="url(#a1y)"/>
+        <text class="m" x="623" y="120" text-anchor="middle">approve</text>
+        <line class="e" x1="840" y1="65" x2="886" y2="65" marker-end="url(#a1)"/>
+        <text class="m" x="863" y="120" text-anchor="middle">previews</text>
+
+        <!-- services under render -->
+        <rect class="x" x="650" y="140" width="190" height="44" rx="8"/>
+        <text class="s" x="745" y="160" text-anchor="middle">HeyGen voice · Whisper</text>
+        <text class="s" x="745" y="175" text-anchor="middle">Pixabay · own clips</text>
+        <line class="e" x1="745" y1="140" x2="745" y2="104" marker-end="url(#a1)"/>
+
+        <!-- row 2 -->
+        <path class="ey" d="M980,100 L980,230 L846,230" marker-end="url(#a1y)"/>
+        <text class="m" x="990" y="170">publish</text>
+
+        <rect class="x" x="650" y="200" width="190" height="66" rx="8"/>
+        <text class="t" x="745" y="224" text-anchor="middle">YouTube</text>
+        <text class="s" x="745" y="242" text-anchor="middle">uploaded unlisted,</text>
+        <text class="s" x="745" y="256" text-anchor="middle">Arabic title + captions</text>
+
+        <rect class="n" x="400" y="200" width="200" height="66" rx="8"/>
+        <text class="t" x="500" y="224" text-anchor="middle">release gate</text>
+        <text class="s" x="500" y="242" text-anchor="middle">every 20 min: public at</text>
+        <text class="s" x="500" y="256" text-anchor="middle">Sun 17:00 Gulf</text>
+        <line class="e" x1="650" y1="233" x2="604" y2="233" marker-end="url(#a1)"/>
+        <text class="m" x="627" y="286" text-anchor="middle">checks chapters</text>
+
+        <rect class="n" x="150" y="200" width="200" height="66" rx="8"/>
+        <text class="t" x="250" y="224" text-anchor="middle">announce</text>
+        <text class="s" x="250" y="242" text-anchor="middle">LinkedIn post ✓</text>
+        <text class="warnt" x="250" y="257" text-anchor="middle">Facebook: needs Meta app</text>
+        <line class="e" x1="400" y1="233" x2="354" y2="233" marker-end="url(#a1)"/>
+        <text class="m" x="377" y="286" text-anchor="middle">once public</text>
+      </svg>
+      </div>
+      <figcaption>Two of the eight steps wait for you: <strong>approve</strong> on the Review issue and <strong>publish</strong> after the previews. Everything between them runs by itself. The release gate holds the episode unlisted until Sunday 17:00 Gulf, and waits up to 6 more hours if YouTube's chapter pictures aren't ready.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <p class="label">2 · Shorts</p>
+    <h2>Breaking news, same day</h2>
+    <figure>
+      <div class="scroll">
+      <svg viewBox="0 0 1080 230" role="img" aria-label="Breaking Shorts flow: the news watch runs every two hours, flags a story, drafts a Short whose every line is checked against its cited article, you reply post on the Breaking Shorts issue, and the Short goes to YouTube Shorts, TikTok and LinkedIn, with Instagram and Facebook waiting on the Meta app. The posting record is saved safely to the queue.">
+        <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        <marker id="a2y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B8901F"/></marker></defs>
+        <rect class="n" x="10" y="30" width="170" height="70" rx="8"/>
+        <text class="t" x="95" y="56" text-anchor="middle">news watch</text>
+        <text class="s" x="95" y="74" text-anchor="middle">every 2 h, flags a</text>
+        <text class="s" x="95" y="88" text-anchor="middle">big story</text>
+
+        <rect class="n" x="230" y="30" width="190" height="70" rx="8"/>
+        <text class="t" x="325" y="56" text-anchor="middle">draft the Short</text>
+        <text class="s" x="325" y="74" text-anchor="middle">Claude writes 40–50 s,</text>
+        <text class="s" x="325" y="88" text-anchor="middle">each line source-checked</text>
+
+        <rect class="y" x="470" y="30" width="180" height="70" rx="8"/>
+        <text class="t" x="560" y="56" text-anchor="middle">Breaking Shorts</text>
+        <text class="s" x="560" y="74" text-anchor="middle">issue: you watch it,</text>
+        <text class="s" x="560" y="88" text-anchor="middle">reply post &lt;week&gt;</text>
+
+        <rect class="n" x="700" y="30" width="170" height="70" rx="8"/>
+        <text class="t" x="785" y="56" text-anchor="middle">breaking-post</text>
+        <text class="s" x="785" y="74" text-anchor="middle">uploads, then saves</text>
+        <text class="s" x="785" y="88" text-anchor="middle">the queue safely</text>
+
+        <line class="e" x1="180" y1="65" x2="226" y2="65" marker-end="url(#a2)"/>
+        <line class="ey" x1="420" y1="65" x2="466" y2="65" marker-end="url(#a2y)"/>
+        <line class="ey" x1="650" y1="65" x2="696" y2="65" marker-end="url(#a2y)"/>
+        <text class="m" x="673" y="120" text-anchor="middle">post</text>
+
+        <rect class="x" x="920" y="14" width="150" height="34" rx="6"/><text class="s" x="995" y="35" text-anchor="middle">YouTube Shorts ✓</text>
+        <rect class="x" x="920" y="56" width="150" height="34" rx="6"/><text class="s" x="995" y="77" text-anchor="middle">TikTok ✓ (private*)</text>
+        <rect class="x" x="920" y="98" width="150" height="34" rx="6"/><text class="s" x="995" y="119" text-anchor="middle">LinkedIn ✓</text>
+        <rect class="x" x="920" y="140" width="150" height="34" rx="6"/><text class="warnt" x="995" y="161" text-anchor="middle">Instagram · Facebook</text>
+        <path class="e" d="M870,65 L895,65 L895,31 L916,31" marker-end="url(#a2)"/>
+        <line class="e" x1="895" y1="73" x2="916" y2="73" marker-end="url(#a2)"/>
+        <path class="e" d="M895,65 L895,115 L916,115" marker-end="url(#a2)"/>
+        <path class="e" d="M895,115 L895,157 L916,157" marker-end="url(#a2)" stroke-dasharray="4 4"/>
+
+        <rect class="n" x="230" y="150" width="190" height="56" rx="8"/>
+        <text class="t" x="325" y="173" text-anchor="middle">social · hourly</text>
+        <text class="s" x="325" y="191" text-anchor="middle">episode Shorts on schedule</text>
+        <path class="e" d="M420,178 L895,178 L895,157" stroke-dasharray="2 4"/>
+      </svg>
+      </div>
+      <figcaption>A Short only goes out after you reply <strong>post</strong>. *TikTok has accepted posts only as private so far, because the posting app hasn't passed TikTok's review; the next Short will show whether a public account changes that. Instagram and Facebook start posting once the Meta developer app exists.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <p class="label">3 · Feedback</p>
+    <h2>What comes back to you</h2>
+    <figure>
+      <div class="scroll">
+      <svg viewBox="0 0 1080 170" role="img" aria-label="Feedback loops: YouTube and the other platforms feed the daily comment inbox, the Monday weekly numbers report and the hourly WhatsApp kit, each of which lands as a GitHub issue for you.">
+        <defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+        <rect class="x" x="10" y="50" width="170" height="70" rx="8"/>
+        <text class="t" x="95" y="78" text-anchor="middle">YouTube API</text>
+        <text class="s" x="95" y="96" text-anchor="middle">views · retention ·</text>
+        <text class="s" x="95" y="110" text-anchor="middle">comments</text>
+
+        <rect class="n" x="280" y="10" width="220" height="44" rx="8"/><text class="t" x="390" y="30" text-anchor="middle">inbox · daily 05:13</text><text class="s" x="390" y="46" text-anchor="middle">new + held comments</text>
+        <rect class="n" x="280" y="63" width="220" height="44" rx="8"/><text class="t" x="390" y="83" text-anchor="middle">channel · Mon 05:29</text><text class="s" x="390" y="99" text-anchor="middle">weekly numbers + drop-offs</text>
+        <rect class="n" x="280" y="116" width="220" height="44" rx="8"/><text class="t" x="390" y="136" text-anchor="middle">channel · hourly</text><text class="s" x="390" y="152" text-anchor="middle">WhatsApp kit when public</text>
+
+        <path class="e" d="M180,85 L230,85 L230,32 L276,32" marker-end="url(#a3)"/>
+        <line class="e" x1="230" y1="85" x2="276" y2="85" marker-end="url(#a3)"/>
+        <path class="e" d="M230,85 L230,138 L276,138" marker-end="url(#a3)"/>
+
+        <rect class="y" x="600" y="50" width="200" height="70" rx="8"/>
+        <text class="t" x="700" y="78" text-anchor="middle">GitHub issues</text>
+        <text class="s" x="700" y="96" text-anchor="middle">approve replies, read</text>
+        <text class="s" x="700" y="110" text-anchor="middle">numbers, post to WhatsApp</text>
+        <line class="e" x1="500" y1="32" x2="596" y2="72" marker-end="url(#a3)"/>
+        <line class="e" x1="500" y1="85" x2="596" y2="85" marker-end="url(#a3)"/>
+        <line class="e" x1="500" y1="138" x2="596" y2="98" marker-end="url(#a3)"/>
+
+        <rect class="x" x="880" y="50" width="190" height="70" rx="8"/>
+        <text class="t" x="975" y="78" text-anchor="middle">WhatsApp Channel</text>
+        <text class="s" x="975" y="96" text-anchor="middle">you post the clip</text>
+        <text class="s" x="975" y="110" text-anchor="middle">(no API for Channels)</text>
+        <line class="ey" x1="800" y1="85" x2="876" y2="85" marker-end="url(#a3)"/>
+      </svg>
+      </div>
+      <figcaption>Three jobs report back as GitHub issues: comments every morning, numbers every Monday, and a ready-to-post WhatsApp kit whenever something goes public. LinkedIn and TikTok comments can't be read by an app, so the inbox lists them for you to check by hand.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <p class="label">4 · Connections</p>
+    <h2>Every outside service, and its state today</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Service</th><th>Used for</th><th>Connected by</th><th>State</th></tr></thead>
+        <tbody>
+          <tr><td>GitHub Actions</td><td>Runs every job; issues are the approval screens; releases host Short files; <code>previews</code> branch holds watch copies</td><td>the repo itself</td><td><span class="pill ok">working</span></td></tr>
+          <tr><td>Anthropic (Claude)</td><td>Script, critic, translation, breaking-Short drafts and line checks</td><td>ANTHROPIC_API_KEY</td><td><span class="pill ok">working</span></td></tr>
+          <tr><td>YouTube</td><td>Upload, captions, Arabic title, analytics, comments, banner</td><td>Google OAuth + refresh token</td><td><span class="pill ok">working</span></td></tr>
+          <tr><td>HeyGen</td><td>Your cloned voice; presenter face clips; translation (not used yet)</td><td>HEYGEN_API_KEY</td><td><span class="pill ok">working</span></td></tr>
+          <tr><td>Whisper</td><td>Timing captions to the exact script</td><td>runs on GitHub</td><td><span class="pill ok">working</span></td></tr>
+          <tr><td>Pixabay</td><td>Stock tech animation</td><td>PIXABAY_API_KEY</td><td><span class="pill ok">working</span></td></tr>
+          <tr><td>LinkedIn</td><td>Shorts and episode posts on your profile</td><td>LINKEDIN_TOKEN (renew every 60 days)</td><td><span class="pill ok">working</span></td></tr>
+          <tr><td>TikTok @aithisweek</td><td>Shorts</td><td>TikTok app + refresh token</td><td><span class="pill warn">posts land private</span></td></tr>
+          <tr><td>Facebook Page "AI This Week"</td><td>Episode posts, Reels</td><td>needs Meta developer app</td><td><span class="pill warn">blocked: phone check</span></td></tr>
+          <tr><td>Instagram @aithisweekme</td><td>Reels, comment replies</td><td>needs Meta developer app</td><td><span class="pill warn">blocked: phone check</span></td></tr>
+          <tr><td>WhatsApp Channel</td><td>Clips and episode links</td><td>no API; hourly kit for you</td><td><span class="pill off">manual by design</span></td></tr>
+          <tr><td>Partnerships Gmail</td><td>Sponsor contact; forwards to your inbox</td><td>Gmail forwarding</td><td><span class="pill ok">working</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot">Source of truth: <code>docs/STATUS.md</code> and <code>.github/workflows/</code> in the repo. Health check run 19 Nov 2026: tests pass, every scheduled job's last run succeeded.</p>
+  </section>
+</main>
