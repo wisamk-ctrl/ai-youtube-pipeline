@@ -146,6 +146,7 @@ class ScriptEngine:
                     target_minutes=self.cfg["target_minutes"],
                     week_label=week_label,
                     items_block=_items_block(items),
+                    covered_block="\n".join(f"- {t}" for t in getattr(self, "covered", [])) or "(none)",
                 ),
             }],
             output_format=EditorialPlan,

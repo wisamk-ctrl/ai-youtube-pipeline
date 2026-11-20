@@ -364,3 +364,14 @@ def face_spans(out_dir: Path) -> list[tuple[float, float]] | None:
     if not (src.exists() and spans.exists()) or not src.read_text(encoding="utf-8").startswith("voice-first"):
         return None
     return [(float(s["start"]), float(s["end"])) for s in json.loads(spans.read_text(encoding="utf-8"))]
+
+
+def missing_faces(data: dict, chunks: list[dict]) -> list[str]:
+    """Face chunks with no presenter video in the voice list (founder 2026-11-20: W47-en went out with no face
+    because automatic voicing makes speech only)."""
+    out = []
+    for c in chunks:
+        e = data.get(c["id"])
+        if c["role"] == "face" and not (isinstance(e, dict) and str(e.get("video") or "").startswith("http")):
+            out.append(c["id"])
+    return out

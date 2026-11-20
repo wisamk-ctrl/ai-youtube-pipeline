@@ -53,7 +53,9 @@ def run_ingestion(cfg: dict[str, Any], week: str = "", out_dir: Path | None = No
     # Hype channels flagged lead_only have done their job (radar leads); they never reach the script.
     from pipeline.ingestion.youtube_ingest import is_lead_only
     items = [i for i in items if not is_lead_only(i, cfg)]
-    ranked = rank_and_filter(items, cfg, flagged=flagged)
+    from pipeline.ingestion import covered as cov
+    done = cov.recent(cov.STATE, week or datetime.now(timezone.utc).strftime("%G-W%V"))
+    ranked = rank_and_filter(items, cfg, flagged=flagged, covered=done)
     if not ranked:
         raise RuntimeError("Ingestion produced no items above the relevance threshold — check feeds/keys.")
     if out_dir:

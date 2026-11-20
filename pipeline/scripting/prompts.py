@@ -87,6 +87,15 @@ EDITOR_USER = """\
 Choose between {stories_min} and {stories_max} stories for this week's ~{target_minutes}-minute episode
 (week of {week_label}). Order them for retention: strongest story first, then vary pace and topic.
 
+Represent the region: when the source items have AI news from Africa or from Türkiye, include at least one of
+each, as a story or in the radar slot.
+Do not repeat a story from an earlier episode (listed below) unless something substantially new happened; if you
+take one, the segment must lead with what is new.
+
+<already_covered>
+{covered_block}
+</already_covered>
+
 <source_items>
 {items_block}
 </source_items>"""

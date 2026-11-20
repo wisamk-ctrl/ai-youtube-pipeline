@@ -183,6 +183,7 @@ The own-voice edit now follows the approved script (`pipeline/video/guided.py`),
   Wednesday's revision (the Nvidia earnings line), so narration is regenerated once.
 - **Wider region:** Egypt and North Africa, Turkey, Pakistan are now ingested (AI-narrowed searches in
   `ingestion.google_news_sites`) and the editor mentions them only when the news is major. No quota.
+  **Superseded 2026-11-20 (founder):** Africa and Türkiye each get a seat when they have AI news (`scoring.min_per_region`).
 
 ## HeyGen on the Pro plan: measured costs and decisions (2026-11-16)
 - Account reads plan `pro`. Measured: paid voice `heygen-voice-1` 1 credit for 58 s; one Nano Banana 2

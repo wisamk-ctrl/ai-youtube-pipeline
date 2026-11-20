@@ -167,7 +167,25 @@ class _Stories:
         return len({item.source} | {self.by_id[k].source for k, n in shared.items() if n >= 2})
 
 
-def rank_and_filter(items: list[NewsItem], cfg: dict[str, Any], flagged: set[str] | None = None) -> list[NewsItem]:
+# Regions the founder wants represented (2026-11-20: "we're trying to represent MEA and Turkey; I see no news on
+# Africa or Turkey in this episode"). An item belongs to a region by its source's region or a place in its title.
+REGIONS = {
+    "africa": ({"egypt", "north_africa", "africa", "east_africa", "west_africa", "south_africa"},
+               re.compile(r"\b(africa\w*|egypt\w*|morocc\w*|nigeria\w*|kenya\w*|ghana\w*|rwanda\w*|ethiopia\w*|"
+                          r"tunisia\w*|algeria\w*|senegal\w*|cairo|lagos|nairobi|casablanca)\b", re.I)),
+    "turkey": ({"turkey"}, re.compile(r"\b(t[uü]rkiye|turkey|turkish|istanbul|ankara|izmir)\b", re.I)),
+}
+
+
+def region_of(item: NewsItem) -> str:
+    for name, (regions, words) in REGIONS.items():
+        if item.region in regions or words.search(item.title):
+            return name
+    return ""
+
+
+def rank_and_filter(items: list[NewsItem], cfg: dict[str, Any], flagged: set[str] | None = None,
+                    covered: list[str] | None = None) -> list[NewsItem]:
     """Score everything, add the story-size bonus, drop noise, de-duplicate (keeping the best-scored copy), cap
     seats per source and per story, reserve seats for the stories the news watch flagged, cap the list."""
     s = cfg["scoring"]
@@ -175,11 +193,17 @@ def rank_and_filter(items: list[NewsItem], cfg: dict[str, Any], flagged: set[str
     titled = [i for i in items if i.title.strip()]
     stories = _Stories(titled)
     bonus_w = float(s.get("coverage_bonus", 0))
+    covered_words = [w for w in (_key_words(t) for t in (covered or [])) if len(w) >= 2]
     for i in titled:
         score_item(i, now)
         outlets = min(stories.outlets(i), 64) if bonus_w else 1
         i.score_breakdown["coverage"] = round(bonus_w * math.log2(outlets), 3)
         i.score = round(i.score + i.score_breakdown["coverage"], 3)
+        # A story an earlier episode covered is marked down; the editor sees the list and may still take it
+        # for something substantially new (founder 2026-11-20).
+        if covered_words and any(len(stories.words.get(i.id, set()) & cw) >= 2 for cw in covered_words):
+            i.score_breakdown["repeat"] = round(-0.6 * i.score, 3)
+            i.score = round(i.score + i.score_breakdown["repeat"], 3)
     scored = sorted(titled, key=lambda i: i.score, reverse=True)
 
     per_source, per_story = s.get("max_per_source"), s.get("max_per_story")
@@ -202,6 +226,8 @@ def rank_and_filter(items: list[NewsItem], cfg: dict[str, Any], flagged: set[str
             break
         if item.id in (flagged or set()) and not any(stories.same(item, r) for r in reserved):
             reserved.append(item)
+    for region, n in (s.get("min_per_region") or {}).items():
+        reserved += [i for i in kept if region_of(i) == region and i not in reserved][:int(n)]
     kept = _apply_track_quotas(kept, s.get("min_per_track", {}), s["max_items"], reserved)
     log.info("Scoring: %d in → %d kept (min_score=%.1f, %d flagged seats)", len(items), len(kept), s["min_score"],
              len(reserved))

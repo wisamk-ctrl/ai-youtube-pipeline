@@ -479,3 +479,32 @@ def strip_shots(script: str) -> str:
     keep = [line for line in script.splitlines()
             if not ((m := MARKER_RE.fullmatch(line.strip())) and parse_shot(m.group("body")))]
     return "\n".join(keep)
+
+
+# ── Host introduction (founder 2026-11-20: "introduce me on every video") ────
+_WELCOME_RE = re.compile(r"^\[Section: (?:Welcome|الترحيب)\]\s*$", re.M)
+_FIRST_NAME = {"ar": re.compile(r"معكم وسام(?! كيشك)[.،]?"), "en": re.compile(r"I'm Wissam(?! Kishek)\.?")}
+
+
+def ensure_host_intro(script: str, line: str, lang: str = "ar") -> str:
+    """The Welcome section introduces the host with the approved line (full name and bio). A bare first name is
+    replaced by it; a Welcome without any name gets it after its first spoken line. Already there: unchanged."""
+    if not line or line in script:
+        return script
+    m = _WELCOME_RE.search(script)
+    if not m:
+        return script
+    end = script.find("\n[Section:", m.end())
+    end = len(script) if end < 0 else end
+    section = script[m.end():end]
+    pat = _FIRST_NAME.get(lang)
+    if pat and pat.search(section):
+        section = pat.sub(line, section, count=1)
+    else:
+        lines = section.split("\n")
+        for k, ln in enumerate(lines):
+            if ln.strip() and not ln.strip().startswith("["):
+                lines[k] = f"{ln.rstrip()} {line}"
+                break
+        section = "\n".join(lines)
+    return script[:m.end()] + section + script[end:]

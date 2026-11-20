@@ -66,8 +66,13 @@ def phase_script(cfg: dict, out: Path) -> None:
         sys.exit(f"{items_path} not found — run the ingest phase first.")
     items = [NewsItem.from_dict(d) for d in json.loads(items_path.read_text(encoding="utf-8"))]
 
-    result = ScriptEngine(cfg).run(items, week_label=out.name)
+    from pipeline.ingestion import covered as cov
+    engine = ScriptEngine(cfg)
+    engine.covered = cov.recent(cov.STATE, out.name)
+    result = engine.run(items, week_label=out.name)
     _write_script_result(cfg, out, result, plan_too=True)
+    used = {i for s in result.plan.segments for i in s.item_ids}
+    cov.record(cov.STATE, out.name, [i.title for i in items if i.id in used])
     if cfg.get("visuals", {}).get("enabled"):
         script = _directed(cfg, out, result.script)
         from pipeline.video.voicefirst import write_voice_pack
@@ -80,6 +85,8 @@ def _write_script_result(cfg: dict, out: Path, result, plan_too: bool) -> None:
     if plan_too:
         (out / "plan.json").write_text(
             json.dumps(result.plan.model_dump(), ensure_ascii=False, indent=2), encoding="utf-8")
+    from pipeline.script_format import ensure_host_intro
+    result.script = ensure_host_intro(result.script, cfg.get("publish", {}).get("host_intro_ar", ""), lang="ar")
     (out / "script.md").write_text(result.script + "\n", encoding="utf-8")
     (out / "critique.json").write_text(json.dumps(result.critique_rounds, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "source_map.md").write_text(result.source_map_md, encoding="utf-8")
@@ -475,6 +482,13 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
         from pipeline.video.tts import voice_week   # no one in the loop: voice it through the HeyGen API
         voice = voice_week(chunks, cfg, out / "voice.yaml")
         log.info("Voice step done automatically → %s", voice)
+    if cfg.get("visuals", {}).get("require_face"):
+        import yaml
+        faceless = voicefirst.missing_faces(yaml.safe_load(voice.read_text(encoding="utf-8")) or {}, chunks)
+        if faceless:
+            sys.exit(f"phase assemble: no presenter video for {', '.join(faceless)} (founder 2026-11-20: the face is "
+                     f"shown in every episode). Make the face clips from voice_pack.md and add them to {voice}, "
+                     f"or set visuals.require_face: false for this run.")
     try:
         entries = voicefirst.load_voice(voice, chunks)
     except ValueError as exc:

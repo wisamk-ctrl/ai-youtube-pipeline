@@ -311,6 +311,8 @@ def run(src: Path, dst: Path, cfg: dict[str, Any], client: anthropic.Anthropic |
 
     dst.mkdir(parents=True, exist_ok=True)
     script_en = translate_script(script_ar, _sources(plan, items, script_ar), cfg, client)
+    from pipeline.script_format import ensure_host_intro
+    script_en = ensure_host_intro(script_en, cfg.get("publish", {}).get("host_intro_en", ""), lang="en")
     (dst / "script.md").write_text(script_en + "\n", encoding="utf-8")
     shutil.copy(src / "items.json", dst / "items.json")
 
