@@ -1414,5 +1414,58 @@
    "Alibaba Qwen"
   ],
   "id": "959357e929"
+ },
+ {
+  "source": "TechCabal",
+  "source_type": "rss",
+  "title": "👨🏿‍🚀TechCabal Daily – Cassava seeks $1 billion for AI",
+  "summary": "👨🏿‍🚀TechCabal Daily – Cassava seeks $1 billion for AI TechCabal",
+  "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPeHdSbVNEMTRXazZrN0xtZUotVE5nZGM2dDNrbXE5Q2NZOEdJb3dDXzBlaDlkWEtFaDQzaXpNU1lweGEzZTQ3RFFYd2ZTcFpjREJlU0I0bFl0Yng5amItQ19Ma2lYTkRBc0JiR190QVk3TVNQemdTMXVIa2ZBWG9tM2x0V2szRUk?oc=5",
+  "published": "2026-11-18T06:09:46+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.0,
+  "score": 0.0,
+  "score_breakdown": {},
+  "track": "",
+  "region": "north_africa",
+  "entities": [],
+  "id": "8d234720c6"
+ },
+ {
+  "source": "MLQ.ai",
+  "source_type": "rss",
+  "title": "Cassava Technologies seeks up to $1 billion for Nvidia chips for African AI data centers, Bloomberg reports",
+  "summary": "Cassava Technologies seeks up to $1 billion for Nvidia chips for African AI data centers, Bloomberg reports MLQ.ai",
+  "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQV094LUFLSjNlbXViTzdvZ0RuUlBsdnZYUkxONlJpX25ONFJtdlRZLXNDcTBIVVR1Tl9JWlhrR1JQQ1RFd3g4MzFuTDYzRkN5ZHBONGp2dE01cGNCSHp4SkNzcnlBam9uTTBEUVFNTm43aG1uVmkxb3lRYk5CNHcxQUxxTGtHd1VfaTdrU3M3aWt2cG5ETm04TEZXRkU1ak1nZUpjVk5Ibm8ydmhjd1N3MHk1MjZsTUpBdVk3RUhUN0xGZ053?oc=5",
+  "published": "2026-11-18T15:07:46+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 0.0,
+  "score_breakdown": {},
+  "track": "chips",
+  "region": "makers",
+  "entities": [
+   "NVIDIA"
+  ],
+  "id": "80eab81129"
+ },
+ {
+  "source": "Hürriyet Daily News",
+  "source_type": "rss",
+  "title": "Türkiye considers labeling requirements for AI-generated content",
+  "summary": "Türkiye considers labeling requirements for AI-generated content Hürriyet Daily News",
+  "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNbWI4NTVlRWh0WUItVDMyeU94Yi1pWlZLcWVyOUEzaTA2UlVpb0ZLY1BtZVBtMmpNdXp3UWV1YUJOZFI5RTlQRS1ZYTRIaEhhWkJ2RXVkWVBhTFFja290elhwYWVTdU5ieU9wM3hSTUNRd3Jxd2xGaFFLRXc0M3Mtamd3RzVHaW9wNF9Ud2o5RGZWTC1nR2lpYkJYNnl0OFFRTEI2RzNfS3U?oc=5",
+  "published": "2026-11-18T02:45:13+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.0,
+  "score": 0.0,
+  "score_breakdown": {},
+  "track": "",
+  "region": "turkey",
+  "entities": [],
+  "id": "8392654ffa"
  }
 ]
