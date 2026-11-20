@@ -9,15 +9,16 @@
   "author": "",
   "engagement": 0,
   "source_weight": 1.69,
-  "score": 27.961,
+  "score": 41.473,
   "score_breakdown": {
    "watchlist": 1.5,
    "enterprise": 2.0,
    "regional": 8.0,
    "engagement": 0.0,
-   "recency": 1.227,
+   "recency": 1.2,
    "noise": -0.0,
-   "publisher_tier": 1.3
+   "publisher_tier": 1.3,
+   "coverage": 13.571
   },
   "track": "models",
   "region": "gulf",
@@ -25,6 +26,238 @@
    "SDAIA"
   ],
   "id": "76c8f380a1"
+ },
+ {
+  "source": "NVIDIA",
+  "source_type": "rss",
+  "title": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
+  "summary": "NVIDIA and Microsoft are extending their full-stack collaboration to help organizations build, customize and deploy intelligent applications — from next-generation infrastructure on Azure to industrial systems and Windows PCs. At Microsoft Ignite , the companies are expanding access to Azure virtual machines powered by NVIDIA Vera Rubin NVL72 systems, as well as adding customer availability to NVIDIA open models and customization capabilities through Microsoft Foundry, and new options for running AI at the edge, where businesses generate and use their data. Microsoft is also using NVIDIA technologies to accelerate its own models and services, including NVIDIA Dynamo inference software for post-training and NVIDIA RTX PRO 6000 Blackwell GPUs for Bing search models. NVIDIA Vera Rubin NVL72 Running in Azure NVIDIA Vera Rubin NVL72 systems are running in Azure data centers , providing infrastructure designed for demanding reasoning, agentic applications, and large-scale model training and inference. Microsoft and NVIDIA are also collaborating to extend confidential computing to bare-metal and rack-scale AI infrastructure. The work will help protect sensitive models and data while they are being processed, supporting organizations that need to work with proprietary or regulated information. NVIDIA Confidential Computing and attestation help customers verify the computing environment before releasing sensitive models, data or keys. As AI workloads span more interconnected accelerators, the companies are working to extend those protections across the AI factory infrastructure. To help data centers get more performance from available power, NVIDIA and Microsoft are also collaborating on power efficiency using NVIDIA MaxLPS . Azure’s Vera Rubin preview builds on NVIDIA and Microsoft’s codesign and performance optimization, underscored in the latest NVIDIA Blackwell-based MLPerf results. In MLPerf Training v6.1 , Azure scaled to 10,240 NVIDIA GPUs with GB200 NVL72 systems on the DeepSeek-V3 model, the largest scale in the round. In MLPerf Inference v6.1 , Azure’s NVIDIA GB300 NVL72 systems led cloud submissions on DeepSeek-R1 interactive throughput by over 10%, per Signal65. Helping Enterprises Customize and Deploy Open Models Enterprise AI agents need to reason through complex tasks, find relevant company information and understand business documents. NVIDIA and Microsoft are expanding the models and services available through Microsoft Foundry to help developers…",
+  "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
+  "published": "2026-11-19T20:00:15+00:00",
+  "author": "Dave Salvator",
+  "engagement": 0,
+  "source_weight": 1.2,
+  "score": 28.969,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 7.3,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.323,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 13.177
+  },
+  "track": "chips",
+  "region": "makers",
+  "entities": [
+   "DeepSeek",
+   "NVIDIA"
+  ],
+  "id": "fe6303fbf7"
+ },
+ {
+  "source": "CNBC",
+  "source_type": "rss",
+  "title": "Anthropic IPO: For hundreds of billions of dollars flowing into AI startups, a big debut is a must",
+  "summary": "Artificial intelligence has propelled big gains in venture capital funds this year, and a flood of money — over $350 billion — into AI startups. Venture funds were up close to 18% through the first half of 2026, with 86% of U.S.-based VC investor money going into AI companies. With Anthropic set to make its public market debut this week at a reported valuation of $1.4 trillion — though sources told CNBC on Tuesday the pricing may be upped — the market's reception to the deal and early trading in its shares may set the tone for the next leg in the private market AI boom. It has been a period of increased volatility for tech stocks and the public market AI trade. In addition to concerns about balance sheet strength and valuation, midterm elections showed widespread public opposition to data centers , and the CEO scandal rocking Nvidia, the \"central bank\" of AI financing , has compounded risks in the sector. But on the private side of tech investing, firms are closely watching how investors react to Anthropic's IPO. \"I think that will end up guiding further intentions for the VC space,\" said Mike McLelland, managing director of investments within private markets at Cleveland, Ohio-based Clearstead. \"Once you have a couple of good exits, it gives people a little more confidence in the realization story.\" Read more: Everything you need to know about the Anthropic IPO Anthropic is getting some deep-pocketed support for the deal. Altimeter Capital is aiming to invest $5 billion , according to its founder and CEO Brad Gerstner, who noted that was five times as much as he has ever invested in an IPO. \"I think this is a cornerstone compounder for a long time,\" Gerstner told CNBC's \"Halftime Report\" on Monday. \"It's where the trade is going.\" Chip giants Advanced Micro Devices, Broadcom, Nvidia, Taiwan Semiconductor Manufacturing Company and Micron are all investing, as are Google and Microsoft. The direction of the IPO market is important given that companies have been staying private longer than they did in the past and strategic exits have been relatively muted, McLelland said. A notable exception is Google's $32 billion acquisition of cloud security firm Wiz. That 2025 deal was Google's largest ever, overtaking its $12.5 billion purchase of Motorola in 2012. VC gains have been concentrated in a small number of large funds that hold the biggest AI-linked companies. MSCI reports that the 10 largest holdings make up 22% of the value of its venture index. That…",
+  "url": "https://www.cnbc.com/2026/11/17/anthropic-ipo-ai-venture-capital.html",
+  "published": "2026-11-17T13:15:01+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 28.764,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 7.1,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.838,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 17.721
+  },
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "Anthropic",
+   "Broadcom",
+   "NVIDIA"
+  ],
+  "id": "5bfd396c6d"
+ },
+ {
+  "source": "WIRED",
+  "source_type": "rss",
+  "title": "Anthropic’s Record-Breaking IPO Highlights the AI Giant’s Worst Enemy—Itself",
+  "summary": "After closing the largest initial public offering in history on Wednesday, Anthropic has about $200 billion in the bank, more than every tech giant besides Alphabet. But the AI lab has also committed to paying vendors more than $900 billion over the next 19 years, mostly to develop data centers powering Claude and its other AI models. Some financial analysts say that gap doesn’t look concerning when you factor in that the company’s most recent quarterly sales were $17 billion, up more than 1,100 percent from the year before. Whether investors agree will become apparent on midday Thursday when Anthropic shares begin trading on the Nasdaq stock exchange under the ticker symbol ANT. The case for pessimism over the long term rests on issues that may slow Anthropic’s progress in developing new tools. This month, US voters largely rejected data centers when given the chance, and protests against new projects show no signs of slowing. Delays in the launch or expansion of new facilities could leave Anthropic struggling to train more powerful AI models. “The jury’s still out on whether artificial intelligence is going to benefit everyone, or just a few people,” says Elaine Matheny, one of 70 members of Mason County United, a grassroots organization fighting an under-construction data center intended for Anthropic in West Virginia. “Do we really need to cover up all our farmland so Claude can do all our thinking for us?” Then there are the concerns about the safety and security of Anthropic’s models. At a livestreamed investor meeting last week, Anthropic CEO Dario Amodei said developing safeguards was the limiting factor in deploying its AI models. “We don’t want these agents to run wild,” he said. It’s possible the company could prioritize safety to a point that stunts growth. The San Francisco-based developer is organized as a public benefit corporation, a legal designation that allows it to prioritize societal impacts alongside shareholder interests. Amodei has said the company held back a new model earlier this year, jeopardizing sales to protect the public from potentially harmful technology. He also has said the company tries to screen for hires “oriented toward the public benefit” to ingrain the safety culture among its 5,300 employees, which is “painful in the short run” as the company passes over otherwise qualified candidates. Anthropic’s market debut is the largest for a so-called PBC, and the first for a company solely focused on generative AI…",
+  "url": "https://www.wired.com/story/anthropics-record-breaking-ipo-highlights-the-ai-giants-worst-enemy-itself/",
+  "published": "2026-11-19T12:00:00+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 28.369,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 9.6,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.238,
+   "noise": -0.0,
+   "publisher_tier": 1.0,
+   "coverage": 17.265
+  },
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "Anthropic"
+  ],
+  "id": "cafd31ea08"
+ },
+ {
+  "source": "NVIDIA",
+  "source_type": "rss",
+  "title": "NVIDIA Announces Rubin HPC — A New GPU to Accelerate Agents for Science, Engineering and Analytics",
+  "summary": "Announced today at SC26, NVIDIA Rubin HPC is a new GPU in the NVIDIA Vera Rubin platform designed to accelerate simulation and data processing for science, engineering and analytics workflows. As agents help scientists and engineers explore more candidate materials, molecules and designs, they rely on simulations to test those ideas and guide their next steps. Rubin HPC will accelerate those simulations, shortening the path from exploration to scientific discovery and industrial design. The Rubin HPC GPU features a record number of CUDA cores — more than 50,000 on a single GPU — as well as a sparse data acceleration capability that keeps those cores fed with data, and accelerates GPU-to-GPU connectivity with seventh-generation NVIDIA NVLink interconnect technology. Read All NVIDIA Announcements From SC26 Scientists and engineers rely on simulation to understand complex systems before committing to experiments or physical prototypes. Working with agents, these teams can explore more candidate materials, molecules and designs. This increases demand for the GPU-accelerated simulations needed to evaluate those ideas and guide next steps. “For agents tackling science and engineering, faster simulation means faster discovery,” said Ian Buck , vice president of hyperscale and high-performance computing at NVIDIA. “Rubin HPC accelerates the simulations agents use to test ideas and guide their next steps, helping scientists and engineers explore more possibilities and bring breakthroughs closer.” Turning Faster Computation Into Faster Discovery Across climate models, engineering simulations, genomic analysis and financial risk, scientific computing workloads take a similar shape: an application reaches into an immense dataset, gathers a handful of scattered values, calculates a result and repeats this on an enormous scale. To help address the challenge, Rubin HPC will offer a balanced design, scaling data movement and compute together rather than increasing compute alone. That balance is what optimizes Rubin HPC for scientific computing. It keeps the GPU’s record number of CUDA cores supplied with data, so they spend their time computing rather than waiting. This accelerates recurring patterns of every simulation workload — from sparse matrix operations to stencil computations to sorting and reductions. These patterns are prevalent across data analytics, science and engineering workloads, which is why a purpose-built GPU delivering the broadest acceleration can…",
+  "url": "https://blogs.nvidia.com/blog/rubin-hpc/",
+  "published": "2026-11-16T16:00:01+00:00",
+  "author": "Dan Ernst",
+  "engagement": 0,
+  "source_weight": 1.2,
+  "score": 27.325,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 7.8,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.702,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 11.721
+  },
+  "track": "chips",
+  "region": "makers",
+  "entities": [
+   "NVIDIA",
+   "Together AI"
+  ],
+  "id": "13aacf9f27"
+ },
+ {
+  "source": "ZDNET",
+  "source_type": "rss",
+  "title": "Microsoft unveiled Copilot Workspaces at Ignite 2026, plus more AI workplace updates",
+  "summary": "AI-powered workspaces are tech companies’ latest focus, as the industry still struggles to perfect adoption. Microsoft has just put its offering into the ring. During the keynote for the company’s Ignite conference on Tuesday, CEO Satya Nadella announced Copilot Workspaces, a collaborative, “multiplayer” surface for Copilot’s agentic capabilities. Also: Microsoft says its new AI coding model rivals Claude Opus 5.5 at 5% of the cost The product, available in Frontier for now, is similar to OpenAI’s ChatGPT Space and several new Anthropic features, including Whiteboard and Sheets , which essentially merge the work tools you’re used to using with an agentic framework. “As the evolution of Copilot Notebooks, it’s where people and agents build on each other’s work,” Microsoft said. “An agent drafts a section of a document, and you review. You leave a comment, and an agent picks it up.” Microsoft also announced Autopilot , a sort of counterpoint agent to Copilot that “can watch Teams channels, follow up on emails, run recurring work, and manage a project — without waiting for a prompt,” as Microsoft described. In a demo video during the keynote, the agent appeared to function similarly to OpenAI’s Dots , but for work — employees can tag their Autopilot “like a colleague,” Microsoft said, and assign it tasks. Also: 4 ways Anthropic’s new Claude Sheets beat using a Google Sheets connector Microsoft said the agent will be able to autonomously handle “meetings and follow-ups on its own,” though that claim may be best verified by teams themselves. Speaking of trust, however, Microsoft noted that “Autopilot runs on the identity, security, and compliance foundation IT already uses,” and that “each Autopilot has its own Microsoft Entra Agent ID and a named manager,” meaning IT can block it as needed. “Its sign-ins and actions are logged under its own name, so security teams have a clear audit trail. Powered by Work IQ, it understands how your organization works within existing permissions,” Microsoft said. The company added that employees will soon “be able to bring their personal Autopilot into Workspaces” as well. The feature is also available in Frontier. Nadella also announced a few other productivity features, including a “command center” called Today that spans email, calendar, meetings, tasks, and threads in Teams. Currently in private preview in Outlook and the Copilot app, it includes a personalized briefing and a feed of priorities that updates throughout the…",
+  "url": "https://www.zdnet.com/innovation/microsoft-copilot-workspaces-ignite-2026/",
+  "published": "2026-11-17T23:14:05+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 27.106,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 9.4,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.911,
+   "noise": -0.0,
+   "publisher_tier": 1.0,
+   "coverage": 16.476
+  },
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "Anthropic",
+   "Microsoft Copilot",
+   "OpenAI"
+  ],
+  "id": "2299a81540"
+ },
+ {
+  "source": "Amazon Nova",
+  "source_type": "rss",
+  "title": "How Airbnb uses cost per task to operate coding agents on Amazon Bedrock",
+  "summary": "Amazon Bedrock provides access to foundation models from multiple providers through a common API, with AWS managing the model infrastructure. It integrates with AWS access controls and monitoring, and processes prompts, code, and model responses within AWS. As coding agents move into production, changes in models and usage can affect latency, capacity, and cost. Amazon Bedrock runtime metrics in Amazon CloudWatch help teams investigate latency increases, throttling, and changes in token consumption. Evaluations, or evals, complement these operational metrics by assessing the quality of an agent’s work on a fixed set of representative tasks. In this post, we show how Airbnb evaluates models for coding agents and monitors their use on Amazon Bedrock. We explain how cost per task guides model selection and how production data helps us revisit those choices as usage changes. We also describe the runtime signals used to investigate latency, throttling, and spend. At Airbnb, thousands of engineers and engineering-adjacent people use AirChat, our internal tool for running coding agents, every week. The agents send their model requests through our large language model (LLM) gateway, which runs on Amazon Bedrock. Bedrock processes Airbnb’s code, prompts, and model responses within AWS. Eight new models came out in about five weeks. By mid-October, about two thirds of the requests our engineers sent through coding agents went to those new models. Each release can change output tokens, cost, latency and capacity at once, and the benchmark charts published with a launch don’t show how a model handles our engineers’ work. So we run two systems side by side. Before a rollout, we run evals on our own tasks to measure each model’s score and cost per task. Cost per task is the list-price cost of all the tokens an agent uses to finish one task. After a rollout, observability shows us what changed in production. When production usage doesn’t match the eval results, we find out why. Solution overview You can diagnose most production problems with a few signals in the AWS/Bedrock namespace in CloudWatch: Latency: InvocationLatency , TimeToFirstToken , OutputTokenCount , and output tokens per second (OTPS), which you derive. Throttling: InvocationThrottles , plus the tokens each request reserves against your quota, which you publish yourself. Bedrock also publishes EstimatedTPMQuotaUsage , which measures your estimated tokens per minute (TPM) quota consumption, including cache…",
+  "url": "https://aws.amazon.com/blogs/machine-learning/how-airbnb-uses-cost-per-task-to-operate-coding-agents-on-amazon-bedrock/",
+  "published": "2026-11-18T21:48:19+00:00",
+  "author": "Alan Yao",
+  "engagement": 0,
+  "source_weight": 1.2,
+  "score": 26.975,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 7.0,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.1,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 12.0
+  },
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "Amazon Nova"
+  ],
+  "id": "32f6f88176"
+ },
+ {
+  "source": "Microsoft Source",
+  "source_type": "rss",
+  "title": "Microsoft and Salesforce Announce Copilotforce, Bringing Trusted Customer Context and Action into Microsoft AI Experiences",
+  "summary": "REDMOND, Wash., and SAN FRANCISCO — Nov. 17, 2026 — Microsoft Corp. (NASDAQ: MSFT) and Salesforce Inc. (NYSE: CRM) today announced Copilotforce, a new partnership that helps employees get more done in the tools they already use by bringing Salesforce customer context, business processes and actions into Microsoft Copilot and other AI-powered productivity experiences. Unveiled at Microsoft Ignite, the partnership introduces new integrations across Microsoft Copilot, Microsoft Teams and Microsoft Fabric, including Salesforce in Copilot, a plugin available in public preview with 38+ prebuilt sales skills. Together, these capabilities help businesses move faster, reduce manual work and get more value from their existing technology investments — while maintaining the security, governance and permissions they already rely on. Bringing Salesforce workflows together with conversations, meetings and documents in Microsoft 365 means less time spent moving between systems and more time on the work that matters. Salesforce in Copilot connects customer context with the work happening across the business so employees can make more informed decisions and take action without constantly switching applications. Microsoft Work IQ, the intelligence layer powering Copilot, provides relevant context from Teams meetings, Outlook emails and documents across SharePoint and OneDrive. Work IQ and Salesforce help sellers understand not only what’s recorded in CRM, but what’s happening across customer conversations and collaboration — and what needs to happen next. Through authenticated Salesforce MCP access, sellers can securely retrieve customer information and take supported business actions within their existing Salesforce permissions. Salesforce continues to govern access and business actions, while Microsoft applies its existing enterprise compliance controls to communications and documents. Data, context and the apps where sellers work come to life in practical workflows across the sales cycle, including: With Copilot as the front door to business process, Salesforce in Copilot allows organizations to bring together Salesforce data, workflows, agents and prebuilt skills from the systems they already rely on through Copilot’s open and interoperable platform. “AI is only as powerful as the data and context that grounds it,” said Judson Althoff, CEO, Microsoft Commercial Business . “Bringing Salesforce customer data and sales skills together with the work context delivered by…",
+  "url": "https://news.microsoft.com/source/2026/11/17/microsoft-and-salesforce-announce-copilotforce-bringing-trusted-customer-context-and-action-into-microsoft-ai-experiences/",
+  "published": "2026-11-17T18:17:36+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 26.637,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 9.7,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.874,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 12.51
+  },
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "Microsoft Copilot",
+   "Model Context Protocol",
+   "Together AI"
+  ],
+  "id": "6776907116"
+ },
+ {
+  "source": "Arab News",
+  "source_type": "rss",
+  "title": "Humain targets Saudi Arabia’s AI skills gap with hands-on training",
+  "summary": "Humain targets Saudi Arabia’s AI skills gap with hands-on training Arab News",
+  "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPeDlMT1d2NWx2MkdWbVMwaFltZjJiZllLa0dJNVJYTlZIYldra2JnVjV0R09WcnhjOUFlOXNpSWpId1hKUFhNVjk2di1Qb0tRY1ZvU08wY0lESU43TnVWXzVNU1loUFZZVkhsNThKQlM4NkxXT0NJeDcxcDN2aUhiRGRsS3JHZ1BxckM3T19HZWc4cVU1Vk5nREgzS0hWRUJFUWxPZ005QVJ6S0JN?oc=5",
+  "published": "2026-11-19T19:20:00+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.521,
+  "score": 25.961,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 0.0,
+   "regional": 8.0,
+   "engagement": 0.0,
+   "recency": 1.316,
+   "noise": -0.0,
+   "publisher_tier": 1.0,
+   "coverage": 9.51
+  },
+  "track": "models",
+  "region": "gulf",
+  "entities": [
+   "Humain"
+  ],
+  "id": "88126122b9"
  },
  {
   "source": "Amazon Nova",
@@ -36,15 +269,16 @@
   "author": "Madhu Samhitha Vangara",
   "engagement": 0,
   "source_weight": 1.2,
-  "score": 21.041,
+  "score": 25.748,
   "score_breakdown": {
    "watchlist": 1.5,
    "enterprise": 10.6,
    "regional": 0.0,
    "engagement": 0.0,
-   "recency": 1.388,
+   "recency": 1.357,
    "noise": -0.0,
-   "publisher_tier": 1.3
+   "publisher_tier": 1.3,
+   "coverage": 4.755
   },
   "track": "models",
   "region": "us",
@@ -53,6 +287,583 @@
    "Model Context Protocol"
   ],
   "id": "4257f147f1"
+ },
+ {
+  "source": "Amazon Nova",
+  "source_type": "rss",
+  "title": "Using NVIDIA Run:ai GPU Fractioning on Amazon EKS",
+  "summary": "GPU sharing is not new: Multi-Instance GPU (MIG), time-slicing, and Multi-Process Service (MPS) address different isolation and utilization needs. NVIDIA Run:ai GPU Fractioning builds on MPS with Kubernetes-integrated scheduling, per-Pod memory contracts, enforcement, and metrics. NVIDIA Run:ai is AI workload orchestration software for Kubernetes. Its GPU Fractioning Operator can help several teams share one or two GPUs on Amazon Elastic Kubernetes Service (Amazon EKS) . Notebooks, model evaluations, and small inference services can leave teams waiting even when GPU memory remains available. In this walkthrough’s baseline, the NVIDIA device plugin exposes the single GPU as one nvidia.com/gpu resource, with GPU sharing disabled. Two Pods each requesting nvidia.com/gpu: 1 cannot run concurrently on that node, even when their combined GPU-memory demand fits. NVIDIA Run:ai GPU Fractioning adds Kubernetes scheduling integration, enforced GPU-memory limits, and per-Pod metrics to software-based sharing. The approach applies to NVIDIA GPUs that meet the GPU Fractioning Operator’s hardware and software requirements, including GPUs without MIG. We use one Amazon Elastic Compute Cloud (Amazon EC2) g5.xlarge instance with an NVIDIA A10G Tensor Core GPU as the validated example. Other configurations require compatibility checks and validation. NVIDIA announced the open source release of NVIDIA Run:ai on October 13, 2026. This example uses two of its four modular components: KAI Scheduler and GPU Fractioning Operator . KAI Resource Management and Workload Map address organizational governance and additional workload types, outside this walkthrough’s scope. In this post, we show how to build a custom Amazon Linux 2023 (AL2023) image and configure GPU-memory sharing on Amazon EKS. In the validated G5/A10G example, you establish a whole-GPU baseline, give each Pod an 8 GiB memory contract, and verify 6 GiB allocations. You then inspect per-Pod metrics, test rejection of a 9 GiB allocation, and clean up the disposable environment. Choose a GPU sharing approach MIG provides hardware partitions on supported GPUs . Device-plugin time-slicing shares a GPU without replica memory or fault isolation. MPS permits concurrent CUDA processes. Fault containment depends on configuration. NVIDIA Run:ai GPU Fractioning adds enforced per-container memory limits and supports time-slicing (default) or sm-sharing compute modes. NVIDIA documents separate workload error domains for its…",
+  "url": "https://aws.amazon.com/blogs/machine-learning/using-nvidia-runai-gpu-fractioning-on-amazon-eks/",
+  "published": "2026-11-19T16:13:51+00:00",
+  "author": "Muru Bhaskaran",
+  "engagement": 0,
+  "source_weight": 1.2,
+  "score": 25.425,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 6.4,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.282,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 11.101
+  },
+  "track": "chips",
+  "region": "makers",
+  "entities": [
+   "NVIDIA",
+   "OpenAI Codex"
+  ],
+  "id": "4e742fb115"
+ },
+ {
+  "source": "Anadolu Ajansı",
+  "source_type": "rss",
+  "title": "US House Foreign Affairs chairman releases Nvidia, AMD AI chip export records to China",
+  "summary": "US House Foreign Affairs chairman releases Nvidia, AMD AI chip export records to China Anadolu Ajansı",
+  "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNUEZUYmFNMEpNZGFUd1JmZXNaMVdFSG02SXc2UU5vY09zSFZjaWhqUERMcUlZZ0kzVkwwdVNscG1jR29rOTVsYUdtNjAzWFRuakwyNm8wdVE2QXJoUUYxYWZCeTdnME1nZnVCSUE5aHY5M1hqLW1Iano2ZmNERGRXSEdMN0tQaE5vOHBXeGZQdFRNeGVOcTNtNG9TeDhiRm5lY1Z4ZjIyU0poTDQ4MmdRNGZIaHRtU2pCOThZaHRXcmU?oc=5",
+  "published": "2026-11-19T21:45:00+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 24.602,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 5.4,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.342,
+   "noise": -0.0,
+   "publisher_tier": 1.0,
+   "coverage": 17.184
+  },
+  "track": "chips",
+  "region": "makers",
+  "entities": [
+   "AMD",
+   "NVIDIA"
+  ],
+  "id": "80665bf639"
+ },
+ {
+  "source": "Microsoft",
+  "source_type": "rss",
+  "title": "Copilot at Microsoft Ignite: Expanding what’s possible with intelligence built for work",
+  "summary": "This morning, at Microsoft Ignite 2026, we shared how our vision for Copilot is becoming real for customers. Home , where Chat and Cowork come together, and Office in Copilot are now generally available. Code will become generally available in the coming weeks, while Copilot Managed Runtime for securely hosting and managing apps is now generally available. And Autopilot is beginning to roll out to Frontier customers today. Plus, new plugins and skills built for sales, service, finance, and legal teams are available, as is an expanded Agent 365 platform so you can get even smarter about your intelligence spend. We’re building Copilot to use raw intelligence to do real work for real people. No single lab is the best at everything, and you shouldn’t have to pick just one. Copilot brings together leading models from across the industry. And with Auto routing, your employees don’t need to worry about picking the right model for every job. Under the hood, Auto dynamically selects the right models and effort for the task, balancing quality, speed, and cost. It saves more power for the moments that need it and spends less when the task doesn’t. Employees can also manually select models from OpenAI or Anthropic, with model access governed by organizational policies. And Work IQ sets Copilot apart. Knowledge work is fundamentally fragmented and messy. It happens over emails, Teams meetings and chats, Word memos, PowerPoint slide comments, and more. Microsoft 365 holds more than 19.5 exabytes of data, with 90 billion emails, 15 billion Teams messages, and 10 billion new files added every week. Giving a model access to that information isn’t enough. The challenge is identifying and reasoning over what matters for the task at hand. Work IQ solves this problem . It understands what you’re looking for and identifies what you can ignore. The result is accurate, efficient answers that traditional APIs can’t match. A job is never just one kind of work. You ask questions. You hand things off. You build things. You follow through until they’re done. For years, each of those lived in a different tool. And you were the glue holding it all together. So, we built one place for all of it. Now generally available, Home is your new starting point in Copilot, where Chat and Cowork come together. As work travels between meetings, chats, documents, emails, apps, and agents, Home keeps you grounded and moving forward. You can review recent activity, get suggestions on what Copilot can…",
+  "url": "https://www.microsoft.com/en-us/copilot/blog/2026/11/17/copilot-at-microsoft-ignite-expanding-whats-possible-with-intelligence-built-for-work/",
+  "published": "2026-11-17T18:05:00+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 24.328,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 4.1,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.873,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 16.755
+  },
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "Anthropic",
+   "Microsoft Copilot",
+   "OpenAI",
+   "Together AI"
+  ],
+  "id": "1d2f58adb9"
+ },
+ {
+  "source": "The National",
+  "source_type": "rss",
+  "title": "UAE highlights $1tn in US investments during Abu Dhabi Investment Forum",
+  "summary": "The UAE on Thursday promoted its more than $1 trillion of investments in the US and its broader framework, as businesses and investors gathered in New York for the Abu Dhabi Investment Forum to expand business ties between the two countries. The Abu Dhabi Investment Forum, organised by the Abu Dhabi Investment Office , was part of broader engagements in New York this week to advance partnerships with US investors and explore commercial opportunities. “What brings us together is more than just investments. It is the strength of the relationship between the United States and the United Arab Emirates, a connection that has been built over many decades through institutions, shared objectives and, more importantly, people,” said Badr Al Olama, the director of Adio. US-UAE Business Council to hold infrastructure trade mission to Emirates Mr Al Olama said more than half of the 26 financial institutions that have announced plans to establish a presence in the Abu Dhabi Global Market are US companies. Health care and AI were seen as the two major sectors at Thursday's forum, which also touched on advanced manufacturing, travel and food innovation. Abu Dhabi investment firm MGX in July linked up with BlackRock on a $40 billion digital infrastructure investment. MGX also plans to invest up to 80 per cent of its total portfolio in US projects. The company said at the time that it had raised $49 billion from investors across North America, Asia, Europe and the Gulf for its AI Fund. And this month, Adnoc and AI firm G42 signed a multiyear partnership with OpenAI that would increase the company's presence in the Emirates. “We see the next chapter of Abu Dhabi-US investment extending beyond the companies we already know,” Mr Al Olama said. Among the delegates at the forum in Manhattan were representatives from a Brooklyn-based biotech venture company looking to find co-investors to launch in Abu Dhabi. Another delegate from the Colorado-Abu Dhabi Trade and Investment Council was also hoping to deepen ties between the US state and the emirate. Bilateral trade between the US and UAE totalled an estimated $55.4 billion in 2025, a 16 per cent increase from 2024, according to data from the Office of the US Trade Representative. US goods exported to the UAE totalled $31.4 billion, while it imported $7.7 billion in goods. US services trade with the UAE totalled about $16.3 billion last year. The UAE's Ministry of Investment reported in July that the Emirates had attracted $48.3…",
+  "url": "https://www.thenationalnews.com/business/2026/11/19/abu-dhabi-investment-forum-new-york/",
+  "published": "2026-11-20T02:45:39+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.3,
+  "score": 24.07,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 2.3,
+   "regional": 6.0,
+   "engagement": 0.0,
+   "recency": 1.4,
+   "noise": -0.0,
+   "publisher_tier": 1.0,
+   "coverage": 9.51
+  },
+  "track": "models",
+  "region": "gulf",
+  "entities": [
+   "G42",
+   "OpenAI",
+   "Together AI"
+  ],
+  "id": "0663bb6e20"
+ },
+ {
+  "source": "The Information",
+  "source_type": "rss",
+  "title": "China’s Moonshot AI Scraps $150 Million Deal to Access Nvidia Chips in Indonesia",
+  "summary": "China’s Moonshot AI Scraps $150 Million Deal to Access Nvidia Chips in Indonesia The Information",
+  "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOdE5MUDNQNXlvMGk2ZmF5ellRVVpSekxPd0NmZnI2cWJkbGJVdTFUZkl6Z1o3d1NjeDVoQUtUUHhDQjhfNjQ3RUM3R3lmXzZYRkVydTBjeE1MVzFjQXpVX3FNTG1Qb3p3UV9veTlCMEVISnpxcXFERUlERnNrNWJWcTRZNXRoZmVQbjM4YkItQlZxQzNDMDJtWGYxaHRjeFZEWnZvOHJmSFgxQ19XWC0zNjhR?oc=5",
+  "published": "2026-11-19T10:00:00+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 23.334,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 3.4,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.217,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 16.177
+  },
+  "track": "models",
+  "region": "cn",
+  "entities": [
+   "Moonshot AI",
+   "NVIDIA"
+  ],
+  "id": "a4e0be4664"
+ },
+ {
+  "source": "NVIDIA",
+  "source_type": "rss",
+  "title": "NVIDIA Sweeps MLPerf Training and Endpoints as Vera Rubin Debuts With Leading Performance",
+  "summary": "In its MLPerf benchmarks debut, with results released today, the NVIDIA Vera Rubin platform delivers leading performance across training, post-training and agentic inference. NVIDIA swept every MLPerf Training v6.1 benchmark and, in its first MLPerf Endpoints submission, delivered more than 10x generational gains in throughput per watt for agentic AI — measuring how much agentic work a system delivers with each watt of power. These results are just the beginning. Vera Rubin performance will keep climbing through continuous optimization of NVIDIA’s CUDA-powered software stack , so the infrastructure that customers invest in today delivers more value over time. NVIDIA Sweeps MLPerf Training v6.1 AI agents are now everywhere, writing code, running business workflows, answering customer questions and, as this week’s SC26 conference highlights , advancing scientific research. Faster training means smarter agents can reach users sooner, drug discovery models can keep pace with new lab data and fraud-detection models can adapt to new threats faster. MLPerf Training measures how fast a system can train a range of AI models to a target level of accuracy. The NVIDIA platform was the only one with results on every benchmark this round, spanning large language models, image generation, recommender systems and reinforcement learning post-training. In its debut, Vera Rubin NVL72 delivered up to 2x more performance per GPU than the highly optimized NVIDIA GB300 NVL72 system — early results that show the pace of generation-over-generation innovation. MLPerfTraining v6.1 results retrieved from www.mlcommons.org on Nov 16, 2026, from the following entries: 6.1-0116 , 6.1-0030, 6.1-0135, 6.1-0020, 6.1-0049, 6.1-0123, 6.1-0138, 6.1-0073, 6.1-0124, 6.1-0129 and 6.1-0038. The MLPerf name and logo are trademarks of MLCommons Association in the United States and other countries. All rights reserved. Unauthorized use is strictly prohibited. See www.mlcommons.org for more information. NVIDIA also demonstrated performance at scale. On the DeepSeek-V3 benchmark, Vera Rubin NVL72 scaled from 256 to 1,024 GPUs with about 97% efficiency: quadrupling the GPUs cut time to train from 16 minutes to about four. NVIDIA also ran the benchmark on 10,240 GPUs with GB300 systems, representing the largest scale in this round. Microsoft Azure matched that scale with 10,240 NVIDIA GPUs with GB200 systems. Results at this scale matter because adding GPUs only speeds up training if they can work…",
+  "url": "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/",
+  "published": "2026-11-16T16:00:25+00:00",
+  "author": "Shruti Koparkar",
+  "engagement": 0,
+  "source_weight": 1.2,
+  "score": 23.23,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 6.3,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.702,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 9.966
+  },
+  "track": "chips",
+  "region": "makers",
+  "entities": [
+   "DeepSeek",
+   "NVIDIA"
+  ],
+  "id": "3197bf9150"
+ },
+ {
+  "source": "Anadolu Ajansı",
+  "source_type": "rss",
+  "title": "Microsoft CEO warns AI could trigger more outages as cybersecurity risks grow",
+  "summary": "Microsoft CEO Satya Nadella on Wednesday warned that artificial intelligence could cause more technology outages as companies rush to address cybersecurity threats and deploy software fixes. Speaking at The New York Times DealBook Summit in New York, Nadella said AI tools were rapidly identifying software vulnerabilities, increasing pressure on companies to address security flaws before attackers could exploit them. He warned that deploying security patches almost immediately, with less time for testing, could introduce new bugs and destabilize technology systems. Nadella said AI could enable \"essentially a nation-state level persistent attacker going after you all the time, so that means we have a lot of fragility.\" His remarks came less than a week after a global disruption to Microsoft's Outlook email service. Nadella said the Nov. 13 outage, which disrupted Microsoft 365 services for millions of users worldwide, resulted from a \"perfect storm\" of events that triggered a previously undetected bug. Nadella also addressed Microsoft's decision to offer voluntary exit packages to approximately 60,000 employees as the company transitions toward AI-driven operations. The program was designed \"to make sure that at least everyone felt like they had agency in making choices,\" he told summit host Andrew Ross Sorkin. Nadella said software engineering would continue to thrive despite advances in AI, although the technology was transforming how teams were organized and how developers worked. He cited a team of just 11 developers working on Microsoft's Cowork AI agent as an example of changes in software development. However, he acknowledged that restructuring a company founded more than five decades ago would take time and that some employees might choose to leave. Nadella also described the circumstances surrounding Nvidia founder Jensen Huang's reported resignation as tragic, saying decisions about his future rested with the company's board. He expressed confidence in Nvidia's leadership, particularly interim CEO Colette Kress, who previously worked at Microsoft. \"I've known her for a long time. She's a tremendous person,\" Nadella said, adding that he remained in contact with the same Nvidia executives as before Huang's reported departure. \"Founders are singular, but they are not gods,\" he added, arguing that founders should take pride in building companies capable of succeeding after their departure. Huang resigned from Nvidia on Nov. 12 after 33 years at the…",
+  "url": "https://www.aa.com.tr/en/world/microsoft-ceo-warns-ai-could-trigger-more-outages-as-cybersecurity-risks-grow/4130517",
+  "published": "2026-11-19T10:50:58+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.0,
+  "score": 23.181,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 3.7,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.226,
+   "noise": -0.0,
+   "publisher_tier": 1.0,
+   "coverage": 16.755
+  },
+  "track": "chips",
+  "region": "makers",
+  "entities": [
+   "NVIDIA"
+  ],
+  "id": "0378197660"
+ },
+ {
+  "source": "Gulf News",
+  "source_type": "rss",
+  "title": "Abu Dhabi's MBZUAI launches $250,000 global art call ahead of Frieze Abu Dhabi",
+  "summary": "Abu Dhabi's MBZUAI launches $250,000 global art call ahead of Frieze Abu Dhabi Gulf News",
+  "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPLWlyOFFFeEFHcnNab0VYc3Rxa2pjSHIyR0lXcmpoWkNPOVF2N0JYdVZyZGV0ZEp4c1QwUjdxS3Jxb2ZvQVFCZGpNVjJZeXdYc19UYUdoNTh0TEJYd0FzcDB2RXg5OVhPbFI2V3h4X1RBVGtLNzRNTTR5MV9oTmJaUnI5QU84eUJCWUlTVmF0enBZVER3TzkzeXhTUDFsZkVqdDBBM1hreTNyTVoyMXNKeXdFaURIMnZvcmtRdkNCMNIB0gFBVV95cUxNcXVxekNTdXMwVjBEQWdSSGdCSXlDOVNvWFZFLWZKc2RmZldybTZXVTkwWFFSdTVIX3VrLWFoZ0Y0VlEzbGtUZnJWZFBYeUF6MTNSS2dGSWRldk1GenRpeGhiS2VTOXg5a3oyeUp3Rjd6NFlZRkU4aDctLU5yUk5sb2Z5TWdPZ1YzSDJGM0tfZUZHMmJPTE50b1NyNHNPcU02d1BZQTJlOXJTcFQ5Y3lsTXdVSlZMZFdqQkVmQUFkR2JERkVPcHIyT1R4QXlBUWN6dHc?oc=5",
+  "published": "2026-11-18T14:19:15+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.17,
+  "score": 23.086,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 2.0,
+   "regional": 8.0,
+   "engagement": 0.0,
+   "recency": 1.033,
+   "noise": -0.0,
+   "publisher_tier": 1.0,
+   "coverage": 8.422
+  },
+  "track": "models",
+  "region": "gulf",
+  "entities": [
+   "MBZUAI"
+  ],
+  "id": "ae8c049a35"
+ },
+ {
+  "source": "Tech Policy Press",
+  "source_type": "rss",
+  "title": "Microsoft Outage Raises Questions Over UK Control of Critical Digital Infrastructure",
+  "summary": "Evie Breese is a UK Reporting Fellow at Tech Policy Press and openDemocracy. The full effects of the global Microsoft outage, which lasted a few days , are now coming into sharp focus. Alongside much of the world, millions of users across UK institutions, including schools, hospitals, police forces , and government agencies , lost access to Microsoft 365, Outlook, Teams, and the generative AI assistant Copilot, disrupting essential and non-essential services. Almost all NHS Trusts suffered email outages, leaving some medical staff resorting to paper records to deliver healthcare in hospitals and GP surgeries. Some medical appointments and operations, including caesareans, had to be canceled . Police forces were unable to receive online crime reports, urging members to report urgent and non-urgent information by phone instead. In the justice system, cases set to be heard at magistrates', Crown, and civil courts were canceled or delayed, including the Manchester-based trial of nine men accused of raping a woman who was drugged by her husband. Even the machinery of government itself ground to a halt, given that as many as 99% of civil servants use Microsoft for communications, including the Ministry of Defence and the Department for Work and Pensions. “Eleanor in the UK could not send urgent cancer referrals. Hugo could not pay his staff, who live paycheque to paycheque. Mohamed, a pharmacist, could not dispense prescriptions,” Victoria Collins, Liberal Democrat Spokesperson, described to Parliament three days later. In the House of Commons on Nov.16, Ian Murray, Minister for Creative Industries, Media, and Online Safety, delivered a speech reassuring parliamentarians that “emergency departments remained open” and there were “no major critical service impacts, and public sector resilience plans were in place.” He admitted the “incident could have been more serious if it had lasted longer.” “No single provider should have such a major impact across the NHS, police and other frontline services,” said the Liberal Democrats Cabinet Office spokesperson Lisa Smart in a statement on 13 November. “The Government must urgently set out a plan to secure our digital sovereignty and stop relying on a few big US tech firms,” she added. The UK currently does not have a defined digital sovereignty strategy, although the government has invested in domestic technology to reduce dependence on foreign suppliers. “We have put £500 million in the sovereign AI fund , £1 billion…",
+  "url": "https://www.techpolicy.press/microsoft-outage-raises-questions-over-uk-control-of-critical-digital-infrastructure/",
+  "published": "2026-11-19T14:07:25+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.0,
+  "score": 22.928,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 5.8,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.26,
+   "noise": -0.0,
+   "publisher_tier": 0.6,
+   "coverage": 17.792
+  },
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "Microsoft Copilot"
+  ],
+  "id": "b2d7c154ec"
+ },
+ {
+  "source": "CNBC",
+  "source_type": "rss",
+  "title": "Demis Hassabis’ AI company raises $5 billion, months after he left as Google DeepMind CEO",
+  "summary": "Isomorphic Labs, an artificial intelligence drug discovery startup founded by former Google DeepMind chief Demis Hassabis, has raised a $5 billion Series C, the company said on Tuesday. Isomorphic's round comes three-and-a-half months after Hassabis stepped back as CEO of DeepMind, Google's AI lab, which he co-founded before the Big Tech giant acquired it in 2014. The round was co-led by Greenoaks and Sequoia Capital, alongside Andreessen Horowitz, with investment from Alphabet , Google's parent. The fresh funds will help fund the design and development of new medicines using AI. Drug discovery startups have seen record funding poured into them by investors in 2026 as companies look to capitalize on advances in AI. OpenAI and Anthropic have also been investing in tools to develop new medicines using the technology. Hassabis has been CEO of Isomorphic Labs since the startup spun out of DeepMind in 2021. \"When we founded Isomorphic, our conviction was that biology could be understood and modelled at the most fundamental molecular level and radically accelerated through AI,\" said Hassabis. \"This round enables us to accelerate our progress: building foundational biology models, deepening our systemic disease understanding, and driving our first therapeutic programs towards clinical trials to deliver tangible impact for patients,\" he added. Isomorphic is building a proprietary drug design engine and therapeutic candidate pipeline designed with AI, which it says will help it deliver the next generation of medicines. Anthropic announced it was launching an AI drug discovery program in June and OpenAI partnered with Novo Nordisk in April. Drug discovery startups have raised $23.2 billion in 2026, according to deal-counting platform Dealroom, a record figure. Isomorphic last raised in May, with a $2.1 billion Series B.",
+  "url": "https://www.cnbc.com/2026/11/17/isomorphic-labs-series-c-ai-drug-discovery-.html",
+  "published": "2026-11-17T13:58:07+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 22.845,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 4.6,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.843,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 14.721
+  },
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "Anthropic",
+   "Google DeepMind",
+   "OpenAI"
+  ],
+  "id": "347b6a04b1"
+ },
+ {
+  "source": "CNBC",
+  "source_type": "rss",
+  "title": "OpenAI launches ChatGPT Wallet, allowing its 'dots' AI agents to make purchases for users",
+  "summary": "OpenAI on Friday announced ChatGPT Wallet, a new payment feature that enables its \"dots\" artificial intelligence agents to make purchases on behalf of users. The company built ChatGPT Wallet in partnership with American Express , Mastercard and Visa , and it allows cardholders to maintain their existing credit card rewards and protections. Eligible users enter their card information once, prompt their dot to find items to buy and approve each purchase with a security check. OpenAI said its dots agents will never actually access a user's card details. Instead, their payment networks will provide the dot with a \"payment token,\" which contains a scoped card number, security code and expiration date that is specific to a given transaction. \"Our goal here is to really focus on merchants and our network partners and start building out a really great foundation that's safe and easy to use,\" Chaya Nayak, who leads product for monetization and payments at OpenAI, told CNBC in an interview. ChatGPT Wallet comes as a growing number of consumers are exploring how to use personal AI agents to manage their calendars, book travel and complete other day-to-day tasks. OpenAI introduced the dots agents during its annual developer conference in late September, shortly after Meta's Muse offering topped the App Store charts . Purchases made through ChatGPT Wallet could eventually kick-start a new revenue stream for OpenAI, but the company said it is not taking a cut of transactions to start. With the initial launch, OpenAI is working to build relationships with merchants and position itself as a serious platform for shoppers, especially as vendors are beginning to experiment with personal agents. OpenAI has pushed deeper into AI-enabled commerce over the last year, but some of its early attempts failed to take off. The company introduced an \" Instant Checkout \" feature last fall, which it quickly pivoted away from. By March, it had rolled out a revamped shopping experience that aimed to make it easier for users to find and compare products. Nayak said ChatGPT Wallet builds on OpenAI's previous efforts, particularly around product discovery. \"We think that this is the next step, where if someone found something they're really excited to buy, then we want to be able to get them through to that endpoint,\" she said. ChatGPT Wallet is initially available to OpenAI's Pro subscribers in the U.S. who are over 18 years old. The limited rollout is intentional, and the \"right approach…",
+  "url": "https://www.cnbc.com/2026/11/13/openai-chatgpt-wallet-dot-purchases.html",
+  "published": "2026-11-13T15:00:01+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 22.581,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 7.4,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.382,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 11.721
+  },
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "OpenAI"
+  ],
+  "id": "88d77a52ad"
+ },
+ {
+  "source": "MarkTechPost",
+  "source_type": "rss",
+  "title": "Google DeepMind Releases Gemini 4 Neon: 1M Context, #1 on AA Coding Agent Index",
+  "summary": "Google DeepMind just released Gemini 4 Neon . Gemini 4 Neon is a reasoning model that sits between Gemini 4 Carbon and Gemini 4 Hydrogen. It targets coding agents, knowledge work and science workflows. The developer pitch is near-frontier scores at a lower cost per task. Pricing is $3 per 1M input tokens and $15 per 1M output tokens. Neon is the middle model in the Gemini 4 family. Carbon handles the hardest long-horizon projects. Hydrogen handles fast everyday execution. Neon balances depth and efficiency between the two. As per the model card , Neon is adapted from Gemini 4 Carbon. Google does not disclose parameter count or architecture. Inputs cover text, images, audio and video. The knowledge cutoff is March 2026. Neon exposes multiple thinking levels. High is the default. xhigh is reserved for the hardest engineering, analytical and science workloads. For long agent runs, Neon supports context compaction and makes fewer redundant file reads. In Google Antigravity , Neon can act as an orchestrator. It directs parallel Gemini 4 Hydrogen subagents on smaller subtasks. Google compares Neon against Claude Opus 5.5 and GPT-6.2 Sol. All scores below are reported by Google, not independently reproduced. Neon does not win every row. Opus 5.5 leads Terminal-bench 4.1 (65.8% vs 65.2%) and FrontierCode 2.0 (47.3% vs 46.2%). GPT-6.2 Sol leads Chartography (75.1% vs 73.5%). On the Vals Index , Neon scores 70.9% and ranks #2. On the Agent Arena index it also ranks #2, with a score of 1336. Neon lists at $3 input, $0.15 cached input and $15 output per 1M tokens. Google says Neon at high thinking costs 32% less per task than Carbon. It also claims 50% to 80% lower cost per task vs rivals on Vals Index and Agent Arena. At xhigh, Google cites 36%+ lower cost than rivals at their highest settings. Those are per-task claims, not per-token prices. GPT-6.2 Sol lists at $2/$10. Claude Opus 5.5 lists at $4/$20. Gemini 4 Carbon is $2/$10 until November 30, then $4/$20. Neon runs on the Gemini 4 safety and security stack . Google reports a 0.09% misaligned action rate on its agentic safety suite. It passes 99.2% of the agent honesty evaluation. It shows a 0.0% attack success rate on Gray Swan’s prompt injection benchmark at the highest thinking level. Its 2.45% shortcut rate on a coding cheating test is the lowest of any Gemini 4 model. *Scores from Google’s launch comparison table , self-reported. AA scores for Opus 5.5 and GPT-6.2 Sol match Artificial Analysis . Check out…",
+  "url": "https://www.marktechpost.com/2026/11/18/google-gemini-4-neon-release/",
+  "published": "2026-11-19T06:52:26+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 22.468,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 10.2,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.186,
+   "noise": -0.0,
+   "publisher_tier": 0.6,
+   "coverage": 15.51
+  },
+  "track": "models",
+  "region": "us",
+  "entities": [
+   "Anthropic",
+   "Google DeepMind",
+   "OpenAI"
+  ],
+  "id": "cae0e37570"
+ },
+ {
+  "source": "01net",
+  "source_type": "rss",
+  "title": "Trust3 AI Integrates Agent DOS with Microsoft Agent 365 to Deliver Real-Time Agent Security Across the Enterprise",
+  "summary": "Trust3 AI Integrates Agent DOS with Microsoft Agent 365 to Deliver Real-Time Agent Security Across the Enterprise 01net",
+  "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOanhtTHlzczZhc19kSk5IYlVvMklyUjBBb05nRGRaT3ZSaUVLOHRnQzhzX19sT3VlVXl6UEI0UENVZzNqNE5zS3JLVnNkWktjVmZkbll5TzhaVURJMzl3RmhxUmRSMEZCX1hNdUFHb1FVbE5saEJnZ05hVHBqanczRlRVMkNjNzU2eHRYMXVjakVnS2dxLUhGbmp1Z1RKcG8yMlg2dXQxbGx3SjJGbG80YlBpVDRmQ2lYY0lObHB6S2dVS0o1cHFSdEdIbWtjQ0wy?oc=5",
+  "published": "2026-11-17T19:25:00+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 21.172,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 8.8,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.883,
+   "noise": -0.0,
+   "publisher_tier": 0.6,
+   "coverage": 15.133
+  },
+  "track": "agents",
+  "region": "enterprise",
+  "entities": [
+   "Copilot Studio"
+  ],
+  "id": "a1263b03e9"
+ },
+ {
+  "source": "GBHackers News",
+  "source_type": "rss",
+  "title": "Cursor Security Breach Exposes API Credentials and Source Code Following Fireworks AI Supply Chain Attack",
+  "summary": "Cursor Security Breach Exposes API Credentials and Source Code Following Fireworks AI Supply Chain Attack GBHackers News",
+  "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9QLVNZOS1yWUNVckxodUJjQ21iUV81cGN6Y1Y1NloxWTRpS0ZsQmg1dU5YUGlDeUUxWUlma2Ezb0VnamxUZ0hqRHZkTUZvYlNxcERtT0tiQThBZERGWVMtUmlTR3k1d2pwbE4tYnhGOHpYd0wxSWhUNNIBfkFVX3lxTFAxOGUtYnR5TVdnV1pQLUc2X1BjRlNiRDJTNEZEWVI4MXhkQmFHbUdFMmx4c2RaanY3Yk5sWU1Wb09fLUkzQmpielRtUVdxYjV6OWRnbzdWVXZwbDFNYjJzSmFTVTN5Tk14Um5NYmxiNWtmbDVZRDYzcERoY2J0UQ?oc=5",
+  "published": "2026-11-16T07:08:16+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 18.854,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 3.4,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.652,
+   "noise": -0.0,
+   "publisher_tier": 0.6,
+   "coverage": 15.856
+  },
+  "track": "agents",
+  "region": "products",
+  "entities": [
+   "Cursor",
+   "Fireworks AI"
+  ],
+  "id": "f4746e5aa1"
+ },
+ {
+  "source": "Bloomberg.com",
+  "source_type": "rss",
+  "title": "US Moves to Curb Remote Access to Nvidia’s Advanced AI Chips",
+  "summary": "US Moves to Curb Remote Access to Nvidia’s Advanced AI Chips Bloomberg.com",
+  "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQU3diZGZDaW14MTdtajJNSTFnMXF3MWtpODZRZDN3UVVRZXBwQllnQXFRRUFYbTAzQmJkLW1qTDAzZDhyYW54UjdBVjFrZVRzV3JiTVRTdmlybkVtRnZVSWlMTnFvYVp3dkFGeWhUVFdrUE1Na3E0WTVuekRuSm5jN1A2aDBnb1NjYXRhYmJfdjlBQWY1X093Q1hHTDM4ZzNhdlYwNVRn?oc=5",
+  "published": "2026-11-16T23:27:28+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 18.607,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 3.4,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.747,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 12.0
+  },
+  "track": "chips",
+  "region": "makers",
+  "entities": [
+   "NVIDIA"
+  ],
+  "id": "97fed349b5"
+ },
+ {
+  "source": "KuCoin",
+  "source_type": "rss",
+  "title": "Alibaba Launches Qwen 4 Max, Tops Chinese AI Agent Rankings",
+  "summary": "Alibaba released Qwen 4 Max on Monday, its most powerful AI model to date and the first flagship model built on the new Qwen 4 architecture. On Arena's agent leaderboard, it is also the highest-ranked Chinese model, positioning Alibaba ahead of Tencent, Moonshot, and DeepSeek in this evaluation. This new model has 2.4 trillion parameters and can process text, images, and video, supporting contexts of up to 1 million tokens. Parameters can be understood as the various “knobs” the model adjusts when processing information, while tokens are the smallest units of information the model can handle. With this configuration, it is sufficient to accommodate lengthy codebases or large stacks of documents. Alibaba employs a mixture-of-experts design, meaning that most parameters remain inactive when processing any given word. Qwen 4 Max activates 71 billion parameters at a time, while Qwen 3.8 Max activates 95 billion, enabling this ultra-large model to consume less computational power per token. It can write code and also has a keen eye for design. On Agent Arena, Qwen 4 Max ranks 14th among single models and helped Alibaba secure fifth place in the overall lab ranking. This leaderboard evaluates models based on real agent conversations, assessing task completion, user satisfaction, and the model’s responsiveness to corrective feedback, then scores them by their net percentage improvement relative to the average competitor. Qwen 4 Max achieved an initial score of 7.46% across 14,727 sessions, the highest among Chinese participating models. For general users, its visual capabilities may be even more noteworthy. Code Arena’s web development rankings compare AI models’ website-building abilities through one-on-one user voting and a point-based scoring system. Qwen 4 Max debuted at sixth place globally with 1,750 points, an increase of 74 points over its predecessor, and ranked eighth in both brand design and reference-image-based design categories. This brings it close to the level of the best American models, capable of transforming requirements, screenshots, or rough ideas into a truly attractive and usable interface. Alibaba's demonstration went further, showing that the model can construct gaming environments and translate factory layouts into 3D models, though these are selected examples by the company rather than independent tests. Its visual capabilities are used to understand images and videos and generate code or other text outputs, and are not equivalent to…",
+  "url": "https://www.kucoin.com/news/flash/alibaba-launches-qwen-4-max-leads-chinese-ai-agent-rankings",
+  "published": "2026-11-17T03:40:11+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 18.439,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 6.4,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 0.774,
+   "noise": -0.0,
+   "publisher_tier": 0.6,
+   "coverage": 13.755
+  },
+  "track": "models",
+  "region": "cn",
+  "entities": [
+   "Alibaba Qwen",
+   "DeepSeek",
+   "Tencent Hunyuan"
+  ],
+  "id": "c11e2e526f"
+ },
+ {
+  "source": "WSJ",
+  "source_type": "rss",
+  "title": "Exclusive | AI Startup LangChain More Than Doubles Its Valuation to $3 Billion",
+  "summary": "Exclusive | AI Startup LangChain More Than Doubles Its Valuation to $3 Billion WSJ",
+  "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQTTExQ3Y3Q3JBV2Z1WGtJbmpzZWdJbTV1UjlDZ21BenEzUWhOTW1pc2doRlhDRktWZFNDT1lhWjROcE9UZUQzQmQxRFBYZW9kYTBockNoUEtzWFhVbDBTb2pZNXFpSnAtU2tMRVdySzA5Y2d4bmY1WFhvQV9Fd3dTbHVmTFhNNXVxcEN2UXFrenhpUy1jdVJ0UHVUUTRpS2djV3lZZ185MXB3QQ?oc=5",
+  "published": "2026-11-20T08:28:02+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 18.074,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 2.0,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.468,
+   "noise": -0.0,
+   "publisher_tier": 1.3,
+   "coverage": 12.262
+  },
+  "track": "agents",
+  "region": "frameworks",
+  "entities": [
+   "LangChain"
+  ],
+  "id": "73502aa1d0"
+ },
+ {
+  "source": "Zawya",
+  "source_type": "rss",
+  "title": "Space42 and Exodigo partner to bring AI-powered subsurface mapping to the UAE",
+  "summary": "ABU DHABI, UAE: Space42 (ADX: SPACE42), the UAE-based AI-powered SpaceTech company with global reach, and Exodigo, an engineering firm pioneering the use of advanced sensing and artificial intelligence in infrastructure development, announced a strategic partnership to transform how underground infrastructure is mapped, understood, and managed across the United Arab Emirates. The partnership follows an initial project for a major oil and gas operator, where Exodigo located and mapped a buried fuel line at depths of up to 14 meters without excavation. The field survey took three days with results delivered within two weeks. Hasan Al Hosani, CEO of Smart Solutions at Space42, said: “Our partnership with Exodigo to advance subsurface mapping insights delivers against our strategy in geospatial intelligence AI-powered platform and services. Through machine learning models combined with our digital twin technology, we aim to give regulators and enterprise players a complete picture of their urban environment, supporting smarter planning and more resilient infrastructure, while creating efficiencies for ground survey teams.” Confirming what lies beneath a site has traditionally meant trial pits, exploratory drilling, and weeks of disruption. Exodigo surveys the same ground in days of non-intrusive scanning and delivers a verified 3D model of buried utilities with up to 90% accuracy, where conventional methods typically require excavation to reach comparable confidence. That rises to up to 99% when a small number of targeted test holes are added. The preliminary digging and drilling processes that a project requires, falls by up to 90%, as those holes are sited from Exodigo’s own scan data rather than from guesswork. Under the partnership, Exodigo's sensing and artificial intelligence technology will be delivered in-country through Space42. Together, the companies intend to give UAE infrastructure owners a single continuous view of their assets from orbit to bedrock, with satellite observation above, street-level reality capture at the surface, and a verified model of everything beneath it. Conventional subsurface surveying follows the line. A technician starts from a record, connects to a known cable, traces where it runs, and confirms what the drawing already said. Anything that is not on the record stays invisible, including an abandoned service, an unmapped line, and a pipe that deviated during construction. The interpretation also happens on site, in the…",
+  "url": "https://www.zawya.com/en/press-release/companies-news/space42-and-exodigo-partner-to-bring-ai-powered-subsurface-mapping-to-the-uae-2337715",
+  "published": "2026-11-18T09:31:00+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.0,
+  "score": 16.459,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 3.0,
+   "regional": 4.0,
+   "engagement": 0.0,
+   "recency": 0.993,
+   "noise": -0.0,
+   "publisher_tier": 1.0,
+   "coverage": 6.966
+  },
+  "track": "agents",
+  "region": "products",
+  "entities": [
+   "OpenAI Codex",
+   "Together AI"
+  ],
+  "id": "c43a95b420"
+ },
+ {
+  "source": "Amazon Web Services (AWS)",
+  "source_type": "rss",
+  "title": "AI coding agents on Amazon EC2 Mac: How Cognition scales Devin for macOS",
+  "summary": "AI coding agents on Amazon EC2 Mac: How Cognition scales Devin for macOS Amazon Web Services (AWS)",
+  "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxON3F5M1ZsUVpHZHN3ZDA5TVNBby1ha0JFTFZ6S2xJV1JydWlDcVBuZ2o1cFdib2Zzd1hCY0tUWlVDM2d0YURGeWJBdmVjUnIxVW9CR3owYS1XTERNWXQ5aE1yVEZwUk05Y3JpT3NTV3VoUlhfLW9qLWJGS2hWSW1fYUsxdWF5MkI4Si15Ni1oUXVXb1MzaXB3U3M5c2xxNWk0VGhYRVJrMFlHbXVjN0lfQmljeTk?oc=5",
+  "published": "2026-11-20T01:10:14+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 0.9,
+  "score": 16.028,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 3.2,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.381,
+   "noise": -0.0,
+   "publisher_tier": 0.6,
+   "coverage": 12.744
+  },
+  "track": "agents",
+  "region": "products",
+  "entities": [
+   "Devin"
+  ],
+  "id": "c7473f90eb"
+ },
+ {
+  "source": "Radar",
+  "source_type": "rss",
+  "title": "Radar: Unsloth — new name in models (2 sources, 1 signals)",
+  "summary": "Unsloth is not on the watchlist but was the subject of 2 independent reports this week (benchmark, partnership) and shows hard signals:\n- #18 trending, 7,383,193 downloads: https://huggingface.co/unsloth/Qwen3.8-27B-GGUF\nSeen in 10 week(s). Source items: ef0e6397b3, 29d6e55fcb.\nThis radar note is not a citable source: cite the source items above, and select them together with this note.",
+  "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF",
+  "published": "2026-11-19T14:08:15+00:00",
+  "author": "",
+  "engagement": 0,
+  "source_weight": 1.0,
+  "score": 3.86,
+  "score_breakdown": {
+   "watchlist": 1.5,
+   "enterprise": 1.1,
+   "regional": 0.0,
+   "engagement": 0.0,
+   "recency": 1.26,
+   "noise": -0.0,
+   "publisher_tier": 1.0,
+   "coverage": 0.0
+  },
+  "track": "radar",
+  "region": "cn",
+  "entities": [
+   "Unsloth"
+  ],
+  "id": "24ab2f6838"
  },
  {
   "source": "Amazon Nova",
@@ -82,61 +893,6 @@
   "id": "28154b6180"
  },
  {
-  "source": "Arab News",
-  "source_type": "rss",
-  "title": "Humain targets Saudi Arabia’s AI skills gap with hands-on training",
-  "summary": "Humain targets Saudi Arabia’s AI skills gap with hands-on training Arab News",
-  "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPeDlMT1d2NWx2MkdWbVMwaFltZjJiZllLa0dJNVJYTlZIYldra2JnVjV0R09WcnhjOUFlOXNpSWpId1hKUFhNVjk2di1Qb0tRY1ZvU08wY0lESU43TnVWXzVNU1loUFZZVkhsNThKQlM4NkxXT0NJeDcxcDN2aUhiRGRsS3JHZ1BxckM3T19HZWc4cVU1Vk5nREgzS0hWRUJFUWxPZ005QVJ6S0JN?oc=5",
-  "published": "2026-11-19T19:20:00+00:00",
-  "author": "",
-  "engagement": 0,
-  "source_weight": 1.521,
-  "score": 16.496,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 0.0,
-   "regional": 8.0,
-   "engagement": 0.0,
-   "recency": 1.346,
-   "noise": -0.0,
-   "publisher_tier": 1.0
-  },
-  "track": "models",
-  "region": "gulf",
-  "entities": [
-   "Humain"
-  ],
-  "id": "88126122b9"
- },
- {
-  "source": "NVIDIA",
-  "source_type": "rss",
-  "title": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
-  "summary": "NVIDIA and Microsoft are extending their full-stack collaboration to help organizations build, customize and deploy intelligent applications — from next-generation infrastructure on Azure to industrial systems and Windows PCs. At Microsoft Ignite , the companies are expanding access to Azure virtual machines powered by NVIDIA Vera Rubin NVL72 systems, as well as adding customer availability to NVIDIA open models and customization capabilities through Microsoft Foundry, and new options for running AI at the edge, where businesses generate and use their data. Microsoft is also using NVIDIA technologies to accelerate its own models and services, including NVIDIA Dynamo inference software for post-training and NVIDIA RTX PRO 6000 Blackwell GPUs for Bing search models. NVIDIA Vera Rubin NVL72 Running in Azure NVIDIA Vera Rubin NVL72 systems are running in Azure data centers , providing infrastructure designed for demanding reasoning, agentic applications, and large-scale model training and inference. Microsoft and NVIDIA are also collaborating to extend confidential computing to bare-metal and rack-scale AI infrastructure. The work will help protect sensitive models and data while they are being processed, supporting organizations that need to work with proprietary or regulated information. NVIDIA Confidential Computing and attestation help customers verify the computing environment before releasing sensitive models, data or keys. As AI workloads span more interconnected accelerators, the companies are working to extend those protections across the AI factory infrastructure. To help data centers get more performance from available power, NVIDIA and Microsoft are also collaborating on power efficiency using NVIDIA MaxLPS . Azure’s Vera Rubin preview builds on NVIDIA and Microsoft’s codesign and performance optimization, underscored in the latest NVIDIA Blackwell-based MLPerf results. In MLPerf Training v6.1 , Azure scaled to 10,240 NVIDIA GPUs with GB200 NVL72 systems on the DeepSeek-V3 model, the largest scale in the round. In MLPerf Inference v6.1 , Azure’s NVIDIA GB300 NVL72 systems led cloud submissions on DeepSeek-R1 interactive throughput by over 10%, per Signal65. Helping Enterprises Customize and Deploy Open Models Enterprise AI agents need to reason through complex tasks, find relevant company information and understand business documents. NVIDIA and Microsoft are expanding the models and services available through Microsoft Foundry to help developers…",
-  "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
-  "published": "2026-11-19T20:00:15+00:00",
-  "author": "Dave Salvator",
-  "engagement": 0,
-  "source_weight": 1.2,
-  "score": 15.839,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 7.3,
-   "regional": 0.0,
-   "engagement": 0.0,
-   "recency": 1.353,
-   "noise": -0.0,
-   "publisher_tier": 1.3
-  },
-  "track": "chips",
-  "region": "makers",
-  "entities": [
-   "DeepSeek",
-   "NVIDIA"
-  ],
-  "id": "fe6303fbf7"
- },
- {
   "source": "Amazon Nova",
   "source_type": "rss",
   "title": "Amazon SageMaker Inference: 2026 launches in review, part 2",
@@ -163,34 +919,6 @@
    "NVIDIA"
   ],
   "id": "c7ff6fba9c"
- },
- {
-  "source": "NVIDIA",
-  "source_type": "rss",
-  "title": "NVIDIA Announces Rubin HPC — A New GPU to Accelerate Agents for Science, Engineering and Analytics",
-  "summary": "Announced today at SC26, NVIDIA Rubin HPC is a new GPU in the NVIDIA Vera Rubin platform designed to accelerate simulation and data processing for science, engineering and analytics workflows. As agents help scientists and engineers explore more candidate materials, molecules and designs, they rely on simulations to test those ideas and guide their next steps. Rubin HPC will accelerate those simulations, shortening the path from exploration to scientific discovery and industrial design. The Rubin HPC GPU features a record number of CUDA cores — more than 50,000 on a single GPU — as well as a sparse data acceleration capability that keeps those cores fed with data, and accelerates GPU-to-GPU connectivity with seventh-generation NVIDIA NVLink interconnect technology. Read All NVIDIA Announcements From SC26 Scientists and engineers rely on simulation to understand complex systems before committing to experiments or physical prototypes. Working with agents, these teams can explore more candidate materials, molecules and designs. This increases demand for the GPU-accelerated simulations needed to evaluate those ideas and guide next steps. “For agents tackling science and engineering, faster simulation means faster discovery,” said Ian Buck , vice president of hyperscale and high-performance computing at NVIDIA. “Rubin HPC accelerates the simulations agents use to test ideas and guide their next steps, helping scientists and engineers explore more possibilities and bring breakthroughs closer.” Turning Faster Computation Into Faster Discovery Across climate models, engineering simulations, genomic analysis and financial risk, scientific computing workloads take a similar shape: an application reaches into an immense dataset, gathers a handful of scattered values, calculates a result and repeats this on an enormous scale. To help address the challenge, Rubin HPC will offer a balanced design, scaling data movement and compute together rather than increasing compute alone. That balance is what optimizes Rubin HPC for scientific computing. It keeps the GPU’s record number of CUDA cores supplied with data, so they spend their time computing rather than waiting. This accelerates recurring patterns of every simulation workload — from sparse matrix operations to stencil computations to sorting and reductions. These patterns are prevalent across data analytics, science and engineering workloads, which is why a purpose-built GPU delivering the broadest acceleration can…",
-  "url": "https://blogs.nvidia.com/blog/rubin-hpc/",
-  "published": "2026-11-16T16:00:01+00:00",
-  "author": "Dan Ernst",
-  "engagement": 0,
-  "source_weight": 1.2,
-  "score": 15.628,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 7.8,
-   "regional": 0.0,
-   "engagement": 0.0,
-   "recency": 0.718,
-   "noise": -0.0,
-   "publisher_tier": 1.3
-  },
-  "track": "chips",
-  "region": "makers",
-  "entities": [
-   "NVIDIA",
-   "Together AI"
-  ],
-  "id": "13aacf9f27"
  },
  {
   "source": "Amazon Nova",
@@ -272,33 +1000,6 @@
    "Humain"
   ],
   "id": "b3d586da8b"
- },
- {
-  "source": "Amazon Nova",
-  "source_type": "rss",
-  "title": "How Airbnb uses cost per task to operate coding agents on Amazon Bedrock",
-  "summary": "Amazon Bedrock provides access to foundation models from multiple providers through a common API, with AWS managing the model infrastructure. It integrates with AWS access controls and monitoring, and processes prompts, code, and model responses within AWS. As coding agents move into production, changes in models and usage can affect latency, capacity, and cost. Amazon Bedrock runtime metrics in Amazon CloudWatch help teams investigate latency increases, throttling, and changes in token consumption. Evaluations, or evals, complement these operational metrics by assessing the quality of an agent’s work on a fixed set of representative tasks. In this post, we show how Airbnb evaluates models for coding agents and monitors their use on Amazon Bedrock. We explain how cost per task guides model selection and how production data helps us revisit those choices as usage changes. We also describe the runtime signals used to investigate latency, throttling, and spend. At Airbnb, thousands of engineers and engineering-adjacent people use AirChat, our internal tool for running coding agents, every week. The agents send their model requests through our large language model (LLM) gateway, which runs on Amazon Bedrock. Bedrock processes Airbnb’s code, prompts, and model responses within AWS. Eight new models came out in about five weeks. By mid-October, about two thirds of the requests our engineers sent through coding agents went to those new models. Each release can change output tokens, cost, latency and capacity at once, and the benchmark charts published with a launch don’t show how a model handles our engineers’ work. So we run two systems side by side. Before a rollout, we run evals on our own tasks to measure each model’s score and cost per task. Cost per task is the list-price cost of all the tokens an agent uses to finish one task. After a rollout, observability shows us what changed in production. When production usage doesn’t match the eval results, we find out why. Solution overview You can diagnose most production problems with a few signals in the AWS/Bedrock namespace in CloudWatch: Latency: InvocationLatency , TimeToFirstToken , OutputTokenCount , and output tokens per second (OTPS), which you derive. Throttling: InvocationThrottles , plus the tokens each request reserves against your quota, which you publish yourself. Bedrock also publishes EstimatedTPMQuotaUsage , which measures your estimated tokens per minute (TPM) quota consumption, including cache…",
-  "url": "https://aws.amazon.com/blogs/machine-learning/how-airbnb-uses-cost-per-task-to-operate-coding-agents-on-amazon-bedrock/",
-  "published": "2026-11-18T21:48:19+00:00",
-  "author": "Alan Yao",
-  "engagement": 0,
-  "source_weight": 1.2,
-  "score": 15.014,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 7.0,
-   "regional": 0.0,
-   "engagement": 0.0,
-   "recency": 1.125,
-   "noise": -0.0,
-   "publisher_tier": 1.3
-  },
-  "track": "models",
-  "region": "us",
-  "entities": [
-   "Amazon Nova"
-  ],
-  "id": "32f6f88176"
  },
  {
   "source": "Zawya",
@@ -385,90 +1086,6 @@
   "id": "0752c95e43"
  },
  {
-  "source": "Gulf News",
-  "source_type": "rss",
-  "title": "Abu Dhabi's MBZUAI launches $250,000 global art call ahead of Frieze Abu Dhabi",
-  "summary": "Abu Dhabi's MBZUAI launches $250,000 global art call ahead of Frieze Abu Dhabi Gulf News",
-  "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPLWlyOFFFeEFHcnNab0VYc3Rxa2pjSHIyR0lXcmpoWkNPOVF2N0JYdVZyZGV0ZEp4c1QwUjdxS3Jxb2ZvQVFCZGpNVjJZeXdYc19UYUdoNTh0TEJYd0FzcDB2RXg5OVhPbFI2V3h4X1RBVGtLNzRNTTR5MV9oTmJaUnI5QU84eUJCWUlTVmF0enBZVER3TzkzeXhTUDFsZkVqdDBBM1hreTNyTVoyMXNKeXdFaURIMnZvcmtRdkNCMNIB0gFBVV95cUxNcXVxekNTdXMwVjBEQWdSSGdCSXlDOVNvWFZFLWZKc2RmZldybTZXVTkwWFFSdTVIX3VrLWFoZ0Y0VlEzbGtUZnJWZFBYeUF6MTNSS2dGSWRldk1GenRpeGhiS2VTOXg5a3oyeUp3Rjd6NFlZRkU4aDctLU5yUk5sb2Z5TWdPZ1YzSDJGM0tfZUZHMmJPTE50b1NyNHNPcU02d1BZQTJlOXJTcFQ5Y3lsTXdVSlZMZFdqQkVmQUFkR2JERkVPcHIyT1R4QXlBUWN6dHc?oc=5",
-  "published": "2026-11-18T14:19:15+00:00",
-  "author": "",
-  "engagement": 0,
-  "source_weight": 1.17,
-  "score": 14.691,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 2.0,
-   "regional": 8.0,
-   "engagement": 0.0,
-   "recency": 1.057,
-   "noise": -0.0,
-   "publisher_tier": 1.0
-  },
-  "track": "models",
-  "region": "gulf",
-  "entities": [
-   "MBZUAI"
-  ],
-  "id": "ae8c049a35"
- },
- {
-  "source": "The National",
-  "source_type": "rss",
-  "title": "UAE highlights $1tn in US investments during Abu Dhabi Investment Forum",
-  "summary": "The UAE on Thursday promoted its more than $1 trillion of investments in the US and its broader framework, as businesses and investors gathered in New York for the Abu Dhabi Investment Forum to expand business ties between the two countries. The Abu Dhabi Investment Forum, organised by the Abu Dhabi Investment Office , was part of broader engagements in New York this week to advance partnerships with US investors and explore commercial opportunities. “What brings us together is more than just investments. It is the strength of the relationship between the United States and the United Arab Emirates, a connection that has been built over many decades through institutions, shared objectives and, more importantly, people,” said Badr Al Olama, the director of Adio. US-UAE Business Council to hold infrastructure trade mission to Emirates Mr Al Olama said more than half of the 26 financial institutions that have announced plans to establish a presence in the Abu Dhabi Global Market are US companies. Health care and AI were seen as the two major sectors at Thursday's forum, which also touched on advanced manufacturing, travel and food innovation. Abu Dhabi investment firm MGX in July linked up with BlackRock on a $40 billion digital infrastructure investment. MGX also plans to invest up to 80 per cent of its total portfolio in US projects. The company said at the time that it had raised $49 billion from investors across North America, Asia, Europe and the Gulf for its AI Fund. And this month, Adnoc and AI firm G42 signed a multiyear partnership with OpenAI that would increase the company's presence in the Emirates. “We see the next chapter of Abu Dhabi-US investment extending beyond the companies we already know,” Mr Al Olama said. Among the delegates at the forum in Manhattan were representatives from a Brooklyn-based biotech venture company looking to find co-investors to launch in Abu Dhabi. Another delegate from the Colorado-Abu Dhabi Trade and Investment Council was also hoping to deepen ties between the US state and the emirate. Bilateral trade between the US and UAE totalled an estimated $55.4 billion in 2025, a 16 per cent increase from 2024, according to data from the Office of the US Trade Representative. US goods exported to the UAE totalled $31.4 billion, while it imported $7.7 billion in goods. US services trade with the UAE totalled about $16.3 billion last year. The UAE's Ministry of Investment reported in July that the Emirates had attracted $48.3…",
-  "url": "https://www.thenationalnews.com/business/2026/11/19/abu-dhabi-investment-forum-new-york/",
-  "published": "2026-11-20T02:45:39+00:00",
-  "author": "",
-  "engagement": 0,
-  "source_weight": 1.3,
-  "score": 14.601,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 2.3,
-   "regional": 6.0,
-   "engagement": 0.0,
-   "recency": 1.432,
-   "noise": -0.0,
-   "publisher_tier": 1.0
-  },
-  "track": "models",
-  "region": "gulf",
-  "entities": [
-   "G42",
-   "OpenAI",
-   "Together AI"
-  ],
-  "id": "0663bb6e20"
- },
- {
-  "source": "Amazon Nova",
-  "source_type": "rss",
-  "title": "Using NVIDIA Run:ai GPU Fractioning on Amazon EKS",
-  "summary": "GPU sharing is not new: Multi-Instance GPU (MIG), time-slicing, and Multi-Process Service (MPS) address different isolation and utilization needs. NVIDIA Run:ai GPU Fractioning builds on MPS with Kubernetes-integrated scheduling, per-Pod memory contracts, enforcement, and metrics. NVIDIA Run:ai is AI workload orchestration software for Kubernetes. Its GPU Fractioning Operator can help several teams share one or two GPUs on Amazon Elastic Kubernetes Service (Amazon EKS) . Notebooks, model evaluations, and small inference services can leave teams waiting even when GPU memory remains available. In this walkthrough’s baseline, the NVIDIA device plugin exposes the single GPU as one nvidia.com/gpu resource, with GPU sharing disabled. Two Pods each requesting nvidia.com/gpu: 1 cannot run concurrently on that node, even when their combined GPU-memory demand fits. NVIDIA Run:ai GPU Fractioning adds Kubernetes scheduling integration, enforced GPU-memory limits, and per-Pod metrics to software-based sharing. The approach applies to NVIDIA GPUs that meet the GPU Fractioning Operator’s hardware and software requirements, including GPUs without MIG. We use one Amazon Elastic Compute Cloud (Amazon EC2) g5.xlarge instance with an NVIDIA A10G Tensor Core GPU as the validated example. Other configurations require compatibility checks and validation. NVIDIA announced the open source release of NVIDIA Run:ai on October 13, 2026. This example uses two of its four modular components: KAI Scheduler and GPU Fractioning Operator . KAI Resource Management and Workload Map address organizational governance and additional workload types, outside this walkthrough’s scope. In this post, we show how to build a custom Amazon Linux 2023 (AL2023) image and configure GPU-memory sharing on Amazon EKS. In the validated G5/A10G example, you establish a whole-GPU baseline, give each Pod an 8 GiB memory contract, and verify 6 GiB allocations. You then inspect per-Pod metrics, test rejection of a 9 GiB allocation, and clean up the disposable environment. Choose a GPU sharing approach MIG provides hardware partitions on supported GPUs . Device-plugin time-slicing shares a GPU without replica memory or fault isolation. MPS permits concurrent CUDA processes. Fault containment depends on configuration. NVIDIA Run:ai GPU Fractioning adds enforced per-container memory limits and supports time-slicing (default) or sm-sharing compute modes. NVIDIA documents separate workload error domains for its…",
-  "url": "https://aws.amazon.com/blogs/machine-learning/using-nvidia-runai-gpu-fractioning-on-amazon-eks/",
-  "published": "2026-11-19T16:13:51+00:00",
-  "author": "Muru Bhaskaran",
-  "engagement": 0,
-  "source_weight": 1.2,
-  "score": 14.37,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 6.4,
-   "regional": 0.0,
-   "engagement": 0.0,
-   "recency": 1.311,
-   "noise": -0.0,
-   "publisher_tier": 1.3
-  },
-  "track": "chips",
-  "region": "makers",
-  "entities": [
-   "NVIDIA",
-   "OpenAI Codex"
-  ],
-  "id": "4e742fb115"
- },
- {
   "source": "GitHub · openai/codex",
   "source_type": "rss",
   "title": "OpenAI Codex releases 0.171.0",
@@ -496,35 +1113,6 @@
    "OpenAI Codex"
   ],
   "id": "3186386788"
- },
- {
-  "source": "Microsoft Source",
-  "source_type": "rss",
-  "title": "Microsoft and Salesforce Announce Copilotforce, Bringing Trusted Customer Context and Action into Microsoft AI Experiences",
-  "summary": "REDMOND, Wash., and SAN FRANCISCO — Nov. 17, 2026 — Microsoft Corp. (NASDAQ: MSFT) and Salesforce Inc. (NYSE: CRM) today announced Copilotforce, a new partnership that helps employees get more done in the tools they already use by bringing Salesforce customer context, business processes and actions into Microsoft Copilot and other AI-powered productivity experiences. Unveiled at Microsoft Ignite, the partnership introduces new integrations across Microsoft Copilot, Microsoft Teams and Microsoft Fabric, including Salesforce in Copilot, a plugin available in public preview with 38+ prebuilt sales skills. Together, these capabilities help businesses move faster, reduce manual work and get more value from their existing technology investments — while maintaining the security, governance and permissions they already rely on. Bringing Salesforce workflows together with conversations, meetings and documents in Microsoft 365 means less time spent moving between systems and more time on the work that matters. Salesforce in Copilot connects customer context with the work happening across the business so employees can make more informed decisions and take action without constantly switching applications. Microsoft Work IQ, the intelligence layer powering Copilot, provides relevant context from Teams meetings, Outlook emails and documents across SharePoint and OneDrive. Work IQ and Salesforce help sellers understand not only what’s recorded in CRM, but what’s happening across customer conversations and collaboration — and what needs to happen next. Through authenticated Salesforce MCP access, sellers can securely retrieve customer information and take supported business actions within their existing Salesforce permissions. Salesforce continues to govern access and business actions, while Microsoft applies its existing enterprise compliance controls to communications and documents. Data, context and the apps where sellers work come to life in practical workflows across the sales cycle, including: With Copilot as the front door to business process, Salesforce in Copilot allows organizations to bring together Salesforce data, workflows, agents and prebuilt skills from the systems they already rely on through Copilot’s open and interoperable platform. “AI is only as powerful as the data and context that grounds it,” said Judson Althoff, CEO, Microsoft Commercial Business . “Bringing Salesforce customer data and sales skills together with the work context delivered by…",
-  "url": "https://news.microsoft.com/source/2026/11/17/microsoft-and-salesforce-announce-copilotforce-bringing-trusted-customer-context-and-action-into-microsoft-ai-experiences/",
-  "published": "2026-11-17T18:17:36+00:00",
-  "author": "",
-  "engagement": 0,
-  "source_weight": 0.9,
-  "score": 14.15,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 9.7,
-   "regional": 0.0,
-   "engagement": 0.0,
-   "recency": 0.894,
-   "noise": -0.0,
-   "publisher_tier": 1.3
-  },
-  "track": "models",
-  "region": "us",
-  "entities": [
-   "Microsoft Copilot",
-   "Model Context Protocol",
-   "Together AI"
-  ],
-  "id": "6776907116"
  },
  {
   "source": "GitHub · anthropics/claude-code",
@@ -638,34 +1226,6 @@
   "id": "23e0c35a17"
  },
  {
-  "source": "NVIDIA",
-  "source_type": "rss",
-  "title": "NVIDIA Sweeps MLPerf Training and Endpoints as Vera Rubin Debuts With Leading Performance",
-  "summary": "In its MLPerf benchmarks debut, with results released today, the NVIDIA Vera Rubin platform delivers leading performance across training, post-training and agentic inference. NVIDIA swept every MLPerf Training v6.1 benchmark and, in its first MLPerf Endpoints submission, delivered more than 10x generational gains in throughput per watt for agentic AI — measuring how much agentic work a system delivers with each watt of power. These results are just the beginning. Vera Rubin performance will keep climbing through continuous optimization of NVIDIA’s CUDA-powered software stack , so the infrastructure that customers invest in today delivers more value over time. NVIDIA Sweeps MLPerf Training v6.1 AI agents are now everywhere, writing code, running business workflows, answering customer questions and, as this week’s SC26 conference highlights , advancing scientific research. Faster training means smarter agents can reach users sooner, drug discovery models can keep pace with new lab data and fraud-detection models can adapt to new threats faster. MLPerf Training measures how fast a system can train a range of AI models to a target level of accuracy. The NVIDIA platform was the only one with results on every benchmark this round, spanning large language models, image generation, recommender systems and reinforcement learning post-training. In its debut, Vera Rubin NVL72 delivered up to 2x more performance per GPU than the highly optimized NVIDIA GB300 NVL72 system — early results that show the pace of generation-over-generation innovation. MLPerfTraining v6.1 results retrieved from www.mlcommons.org on Nov 16, 2026, from the following entries: 6.1-0116 , 6.1-0030, 6.1-0135, 6.1-0020, 6.1-0049, 6.1-0123, 6.1-0138, 6.1-0073, 6.1-0124, 6.1-0129 and 6.1-0038. The MLPerf name and logo are trademarks of MLCommons Association in the United States and other countries. All rights reserved. Unauthorized use is strictly prohibited. See www.mlcommons.org for more information. NVIDIA also demonstrated performance at scale. On the DeepSeek-V3 benchmark, Vera Rubin NVL72 scaled from 256 to 1,024 GPUs with about 97% efficiency: quadrupling the GPUs cut time to train from 16 minutes to about four. NVIDIA also ran the benchmark on 10,240 GPUs with GB300 systems, representing the largest scale in this round. Microsoft Azure matched that scale with 10,240 NVIDIA GPUs with GB200 systems. Results at this scale matter because adding GPUs only speeds up training if they can work…",
-  "url": "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/",
-  "published": "2026-11-16T16:00:25+00:00",
-  "author": "Shruti Koparkar",
-  "engagement": 0,
-  "source_weight": 1.2,
-  "score": 13.289,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 6.3,
-   "regional": 0.0,
-   "engagement": 0.0,
-   "recency": 0.718,
-   "noise": -0.0,
-   "publisher_tier": 1.3
-  },
-  "track": "chips",
-  "region": "makers",
-  "entities": [
-   "DeepSeek",
-   "NVIDIA"
-  ],
-  "id": "3197bf9150"
- },
- {
   "source": "GitHub · crewAIInc/crewAI",
   "source_type": "rss",
   "title": "CrewAI releases 1.15.44",
@@ -692,34 +1252,6 @@
    "CrewAI"
   ],
   "id": "b32f8879c3"
- },
- {
-  "source": "Zawya",
-  "source_type": "rss",
-  "title": "Space42 and Exodigo partner to bring AI-powered subsurface mapping to the UAE",
-  "summary": "ABU DHABI, UAE: Space42 (ADX: SPACE42), the UAE-based AI-powered SpaceTech company with global reach, and Exodigo, an engineering firm pioneering the use of advanced sensing and artificial intelligence in infrastructure development, announced a strategic partnership to transform how underground infrastructure is mapped, understood, and managed across the United Arab Emirates. The partnership follows an initial project for a major oil and gas operator, where Exodigo located and mapped a buried fuel line at depths of up to 14 meters without excavation. The field survey took three days with results delivered within two weeks. Hasan Al Hosani, CEO of Smart Solutions at Space42, said: “Our partnership with Exodigo to advance subsurface mapping insights delivers against our strategy in geospatial intelligence AI-powered platform and services. Through machine learning models combined with our digital twin technology, we aim to give regulators and enterprise players a complete picture of their urban environment, supporting smarter planning and more resilient infrastructure, while creating efficiencies for ground survey teams.” Confirming what lies beneath a site has traditionally meant trial pits, exploratory drilling, and weeks of disruption. Exodigo surveys the same ground in days of non-intrusive scanning and delivers a verified 3D model of buried utilities with up to 90% accuracy, where conventional methods typically require excavation to reach comparable confidence. That rises to up to 99% when a small number of targeted test holes are added. The preliminary digging and drilling processes that a project requires, falls by up to 90%, as those holes are sited from Exodigo’s own scan data rather than from guesswork. Under the partnership, Exodigo's sensing and artificial intelligence technology will be delivered in-country through Space42. Together, the companies intend to give UAE infrastructure owners a single continuous view of their assets from orbit to bedrock, with satellite observation above, street-level reality capture at the surface, and a verified model of everything beneath it. Conventional subsurface surveying follows the line. A technician starts from a record, connects to a known cable, traces where it runs, and confirms what the drawing already said. Anything that is not on the record stays invisible, including an abandoned service, an unmapped line, and a pipe that deviated during construction. The interpretation also happens on site, in the…",
-  "url": "https://www.zawya.com/en/press-release/companies-news/space42-and-exodigo-partner-to-bring-ai-powered-subsurface-mapping-to-the-uae-2337715",
-  "published": "2026-11-18T09:31:00+00:00",
-  "author": "",
-  "engagement": 0,
-  "source_weight": 1.0,
-  "score": 9.515,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 3.0,
-   "regional": 4.0,
-   "engagement": 0.0,
-   "recency": 1.015,
-   "noise": -0.0,
-   "publisher_tier": 1.0
-  },
-  "track": "agents",
-  "region": "products",
-  "entities": [
-   "OpenAI Codex",
-   "Together AI"
-  ],
-  "id": "c43a95b420"
  },
  {
   "source": "Wamda",
@@ -802,33 +1334,6 @@
    "LangChain"
   ],
   "id": "70495a773c"
- },
- {
-  "source": "Radar",
-  "source_type": "rss",
-  "title": "Radar: Unsloth — new name in models (2 sources, 1 signals)",
-  "summary": "Unsloth is not on the watchlist but was the subject of 2 independent reports this week (benchmark, partnership) and shows hard signals:\n- #16 trending, 7,138,192 downloads: https://huggingface.co/unsloth/Qwen3.8-27B-GGUF\nSeen in 10 week(s). Source items: ef0e6397b3, 29d6e55fcb.\nThis radar note is not a citable source: cite the source items above, and select them together with this note.",
-  "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF",
-  "published": "2026-11-19T14:08:15+00:00",
-  "author": "",
-  "engagement": 0,
-  "source_weight": 1.0,
-  "score": 3.889,
-  "score_breakdown": {
-   "watchlist": 1.5,
-   "enterprise": 1.1,
-   "regional": 0.0,
-   "engagement": 0.0,
-   "recency": 1.289,
-   "noise": -0.0,
-   "publisher_tier": 1.0
-  },
-  "track": "radar",
-  "region": "cn",
-  "entities": [
-   "Unsloth"
-  ],
-  "id": "24ab2f6838"
  },
  {
   "source": "The Guardian",

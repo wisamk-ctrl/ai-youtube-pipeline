@@ -1,434 +1,528 @@
 [Section: الافتتاحية]
 
 [Face]
-
-[On-Screen Text: 667 مليون دولار، هيوماين]
-
-ستمية وسبعة وستين مليون دولار.
+قبل أكتر من أسبوع، الإيميل والاجتماعات والمساعد الذكي عند مايكروسوفت{Microsoft} وقفوا فجأة.
 
 [Pause]
 
-[Visual: source b3d586da8b]
-هاد المبلغ اللي جمعته هيوماين{Humain} عشان تبني بنية الذكاء الاصطناعي بالسعودية، حسب موقع داتا سنتر داينامكس{Data Center Dynamics}.
-
-[Visual: stock glowing data streams in a dark server room, blue light]
-بس سؤالي إلك: المصاري لحالها بتكفي، إذا ما في ناس تعرف تشغّل هاد كله؟
+[Visual: stock digital globe network map with lights going dark, animation]
+ملايين الناس حوالين العالم انقطعوا. ببريطانيا، في مستشفيات رجعت للورق، ومحاكم أجّلت قضايا.
 
 [Pause]
+
+[Visual: stock server racks in a data centre, blue light]
+وإذا شركتك ماشية كلها على مزوّد واحد، شو خطتك لو صار هيك عندك؟
+
+[Pause]
+
+[Section: الترحيب]
 
 [Face]
-أهلا فيكم بـ«أسبوع الذكاء الاصطناعي»، معكم وسام، واليوم بنحكي عن خليج مش بس بيشتري ذكاء اصطناعي، بيبني الأساس تبعه كمان.
+أهلا فيكم بـ«أسبوع الذكاء الاصطناعي»، معكم وسام.
 
 [Pause 2s]
 
-[Section: هيوماين: مصاري ومهارات]
+[Section: يوم وقفت مايكروسوفت]
 
-[Visual: title هيوماين]
-خلّينا نبلّش بهيوماين.
+[Visual: title انقطاع مايكروسوفت]
 
-عنّا هالأسبوع خبرين عنها.
+[On-Screen Text: 13 تشرين التاني 2026]
 
-[Visual: number 667 مليون دولار | جمعتها هيوماين لبنية الذكاء الاصطناعي]
-الأول من داتا سنتر داينامكس، الموقع المتخصص بأخبار الداتا سنتر: الشركة جمعت ستمية وسبعة وستين مليون دولار لتوسيع بنية الذكاء الاصطناعي بالسعودية.
+خلّينا نبلّش بالقصة كاملة.
 
-[Visual: source 88126122b9]
-والتاني من عرب نيوز{Arab News}: هيوماين بتستهدف فجوة المهارات بالذكاء الاصطناعي بالمملكة، بتدريب عملي.
+[Visual: stock glitch effect on computer screens, error animation]
+يوم الجمعة، تلاتعش تشرين التاني، انقطع الإيميل بأوتلوك{Outlook}، والاجتماعات بتيمز{Teams}.
 
-[On-Screen Text: هيوماين: تمويل + تدريب عملي]
+[Visual: stock glowing AI orb animation fading to dark]
+وحتى المساعد الذكي كوبايلت{Copilot} وقف، والانقطاع طوّل كم يوم.
 
-[Visual: stock neural network animation, glowing nodes]
-خلّيني أكون صريح معكم: المصدرين نشروا العناوين بس.
+[Visual: stock digital globe network map, glowing connections]
+حسب تقرير مفصّل لموقع متخصص بسياسات التقنية، بريطانيا دفعت تمن كبير.
 
-فما رح نزيد تفاصيل مش موجودة عنّا.
+[On-Screen Text: المصدر: Tech Policy Press]
 
-طيب، ليش نحطّ الخبرين جنب بعض؟
+[Visual: stock stack of paper documents and folders, close-up]
+تقريبا كل هيئات الخدمة الصحية الوطنية هناك خسرت الإيميل.
 
-[Pause]
+بعض الكوادر الطبية رجعت للسجلات الورقية، وانلغت مواعيد وعمليات، منها ولادات قيصرية.
 
-[Visual: stock server racks in a data centre, blue light]
-لأنه أي داتا سنتر، مهما كان كبير، بدّه ناس تبنيه وتشغّله.
+[Visual: stock computer screen error message glitch animation]
+الشرطة ما قدرت تستقبل بلاغات عالإنترنت، ومحاكم ألغت أو أجّلت قضايا.
 
-وبدّه كمان ناس تبني عليه تطبيقات بتنفع الشغل.
-
-الأجهزة والمباني بتنشرى بالمصاري.
-
-[Visual: stock code on screen, dark room]
-بس المهندس اللي بيعرف يشغّل موديل بكفاءة، هاد ما بيطلع بيوم وليلة.
-
-[Visual: title المصاري والمهارات سوا]
-يعني القصة الحقيقية إنّه المصاري والمهارات بيمشوا مع بعض، وإلا البنية بتظل نص شغلة.
-
-[Visual: stock laptop with code on screen, glowing keyboard, dark room]
-طيب، شو يعني هاد للشركات بالمنطقة؟
+وحسب نفس التقرير،
 
 [Pause]
 
-[Visual: stock digital data flow, abstract blue and gold particles]
-أول إشي: في مزوّد محلي لبنية الذكاء الاصطناعي بيكبر بالسعودية.
+[Visual: number 99% | من موظفي الحكومة البريطانية بيستخدموا مايكروسوفت]
+لحد تسعة وتسعين بالمية من موظفي الحكومة البريطانية بيستخدموا مايكروسوفت للتواصل.
 
-وهاد بيهمّ أي شركة بالسعودية بدها بياناتها تظل جوّا البلد.
+[Visual: stock abstract warning alert animation, red glow on dark background]
+وزير بريطاني قال للبرلمان إنّه الحادثة كانت ممكن تكون أخطر لو طوّلت أكتر.
 
-[Visual: stock circuit board macro, light pulses]
-تاني إشي: إذا التدريب نجح، عدد المختصين المحليين بيزيد مع الوقت.
-
-وهيك بيخفّ اعتماد الشركات على خبرات بتجيبها من برّا.
-
-[Visual: stock digital data flow, abstract blue and gold particles]
-وفي نقطة تالتة بتهمّ مدراء الشركات: الاستمرارية.
-
-لما الفريق يكون محلي، المشروع ما بيوقف كل ما خلص عقد خبير من برّا.
-
-[Visual: stock chip under light, macro]
-والمعرفة بتظل جوّا الشركة، بدل ما تطلع مع آخر استشاري.
-
-[Visual: stock digital globe network map animation]
-وإلنا بالأردن؟ الشركات الأردنية اللي بتشتغل مع السوق السعودي، ومهندسينّا اللي هناك، ممكن يحسّوا بهاد التحوّل، بالشراكات وبالمنافسة على الوظايف.
-
-[Visual: title شو نراقب؟]
-شو نراقب بعدين؟
+طيب، ليش صار هيك؟
 
 [Pause]
 
-[Visual: stock futuristic data tunnel animation]
-شو رح تبني هيوماين بهالمبلغ بالضبط، وقدّيش ناس رح يمرّوا بالتدريب.
+[Visual: stock abstract network nodes connecting, animation]
+ساتيا ناديلا{Satya Nadella}، الرئيس التنفيذي لمايكروسوفت، حكى يوم الأربعا بمؤتمر بنيويورك.
 
-هاي أسئلة لسّا ما في جواب عليها بالمصادر اللي عنّا.
-
-[Pause 2s]
-
-[Section: الإمارات وأمريكا: شراكة بالمليارات]
-
-[Visual: stock digital globe network map animation, glowing connections]
-طيب، والخبر التاني؟ من الرياض بنروح لنيويورك.
-
-[Visual: source 0663bb6e20]
-الخميس الماضي، الإمارات عرضت استثماراتها بأمريكا بمنتدى أبوظبي للاستثمار بنيويورك.
-
-[Pause]
-
-[Visual: number أكثر من تريليون دولار | استثمارات إماراتية في أمريكا]
-وحسب الأرقام اللي عرضتها الإمارات نفسها، هاي الاستثمارات أكتر من تريليون دولار.
-
-[On-Screen Text: أكثر من 1 تريليون دولار استثمارات إماراتية في أمريكا]
-
-[Visual: stock abstract AI brain animation, glowing neurons]
-وحسب ذا ناشيونال{The National}، القطاعين الأبرز بالمنتدى كانوا الرعاية الصحية والذكاء الاصطناعي.
-
-[Visual: stock digital data flow, abstract blue particles]
-بدر العلماء، مدير مكتب أبوظبي للاستثمار، قال إنّه في
-
-[Pause]
-
-[Visual: number 26 | مؤسسة مالية رح تفتح مكاتب بسوق أبوظبي العالمي]
-ستة وعشرين مؤسسة مالية أعلنت إنها رح تفتح مكاتب بسوق أبوظبي العالمي.
-
-[Pause]
-
-[Visual: stock circuit board macro, light pulses]
-وأكتر من نصهم شركات أمريكية.
-
-[Visual: stock futuristic data tunnel animation]
-وعالذكاء الاصطناعي، الجريدة ذكّرت بكم صفقة.
-
-[Visual: stock server racks in a data centre, blue light]
-إم جي إكس{MGX}، شركة استثمار من أبوظبي، دخلت بشهر تموز بشراكة مع بلاك روك{BlackRock}، شركة إدارة الاستثمارات الأمريكية، عشان تستثمر بالبنية الرقمية.
-
-[Pause]
-
-[Visual: number 40 مليار دولار | قيمة شراكة MGX وبلاك روك]
-قيمة هاي الشراكة أربعين مليار دولار.
-
-[On-Screen Text: MGX + BlackRock: 40 مليار دولار]
-
-[Pause]
-
-[Visual: number 80% | من محفظة MGX لمشاريع أمريكية]
-ونفس الشركة بتخطط تحطّ لحد تمانين بالمية من محفظتها بمشاريع أمريكية.
-
-[Visual: source 0663bb6e20]
-والخبر اللي بيقرّب الموضوع إلنا أكتر: هالشهر، أدنوك{ADNOC}، شركة بترول أبوظبي الوطنية، وشركة الذكاء الاصطناعي جي فورتي تو{G42}، وقّعوا شراكة لعدة سنين مع أوبن إيه آي{OpenAI}.
-
-[Visual: stock chip under light, macro]
-والشراكة، حسب ذا ناشيونال، رح توسّع وجود أوبن إيه آي بالإمارات.
-
-[Visual: title القصة الكبيرة]
-طيب، شو القصة الكبيرة هون؟
-
-[Pause]
-
-[Visual: stock digital globe network map animation]
-الإمارات بتقدّم حالها كشريك أساسي لأمريكا بتمويل الذكاء الاصطناعي وبنيته.
-
-[Visual: stock glowing data streams, dark blue background]
-مصاري خليجية بتروح لبنية تحتية هناك.
-
-ومن الناحية التانية، شركات وموديلات أمريكية بتقرّب أكتر من أبوظبي.
+[Visual: source 0378197660]
+حسب وكالة الأناضول{Anadolu}، وصف الانقطاع إنه «عاصفة كاملة» طلّعت خلل برمجي ما حدا اكتشفه قبل.
 
 [Visual: stock neural network animation]
-مين رح يحسّ بهاد الفرق هون؟
+وحذّر إنّه الذكاء الاصطناعي ممكن يجيب انقطاعات أكتر.
 
-[Pause]
+[Visual: stock code on screen, scanning for vulnerabilities]
+السبب إنه أدوات AI صارت تلاقي الثغرات بسرعة كبيرة.
 
-[Visual: stock abstract digital network, gold nodes]
-الشركات الإماراتية أولا: وجود أكبر لأوبن إيه آي ممكن يعني وصول أقرب للموديلات المتقدمة وللشراكات.
+[Visual: stock green code scrolling on dark screen]
+فالشركات بتستعجل تسكّرها بتحديثات، بوقت أقل للاختبار، والتحديث المستعجل ممكن يطلّع أخطاء جديدة.
 
-[Visual: stock digital data flow, abstract blue and gold particles]
-والقطاع المالي بالمنطقة رح يشوف مؤسسات أمريكية أكتر بأبوظبي، يعني شراكات أكتر ومنافسة أكتر.
+[Visual: title مهاجم بمستوى دولة]
+وقال إنه الذكاء الاصطناعي ممكن يصير زي «مهاجم بمستوى دولة، بيلاحقك طول الوقت».
 
-[Visual: stock circuit board macro, light pulses]
-وبالنسبة لمدير شركة بالمنطقة، الفكرة عملية أكتر مما بتبيّن.
+[Visual: title السيادة الرقمية]
+ببريطانيا، الانقطاع فتح نقاش السيادة الرقمية.
 
-بنوك وصناديق أمريكية جوّا أبوظبي معناها إنّه الحكي عن التمويل ممكن يصير هون، بنفس المنطقة الزمنية، مش برحلة لنيويورك.
+[Visual: stock digital globe network map, glowing connections]
+حزب الديمقراطيين الأحرار قال إنّه ما لازم مزوّد واحد يأثّر هالقد عالصحة والشرطة.
 
-[Visual: stock digital globe network map animation, glowing connections]
-وللي بالأردن والشام بيدوّر على شريك أو تمويل، الأرقام بتأشّر إنّه أبوظبي بتصير ممر مهم بين المنطقة وأمريكا.
+[Visual: stock server racks in a data centre, blue light]
+وطالبوا الحكومة بخطة تقلّل الاعتماد على كم شركة أمريكية كبيرة، وبريطانيا لسّا ما عندها استراتيجية واضحة لهاد.
 
-[Visual: title شو نراقب؟]
-شو نراقب؟ تفاصيل الشراكة مع أوبن إيه آي، لأنه المصدر ما حكى شو رح يتغيّر بالضبط عالأرض.
-
-[Pause 2s]
-
-[Section: كوبايلوتفورس: وكلاء المبيعات]
-
-[Visual: title الوكلاء]
-هسّا نروح عالوكلاء.
-
-[Visual: source 6776907116]
-مايكروسوفت{Microsoft} وسيلزفورس{Salesforce} أعلنوا الثلاثا الماضي شراكة اسمها كوبايلوتفورس{Copilotforce}.
-
-[Visual: stock code on screen, dark room]
-سيلزفورس، للي ما بيعرفها، نظام بتستخدمه شركات كتير لإدارة العملاء والمبيعات.
-
-[Visual: stock digital data flow between glowing nodes, animation]
-والفكرة، حسب إعلان الشركتين نفسهم، إنّه بيانات العملاء وإجراءات سيلزفورس بتوصل لكوبايلوت{Copilot}، المساعد الذكي تبع مايكروسوفت.
-
-وبتوصل كمان لتيمز{Teams}، برنامج الاجتماعات والمحادثات.
-
-[Visual: stock abstract user interface animation, glowing windows]
-في إضافة اسمها «سيلزفورس بكوبايلوت»، وهي لسّا بنسخة تجريبية عامة.
-
-[Pause]
-
-[Visual: number +38 | مهارة مبيعات جاهزة]
-وفيها، حسب الشركتين، أكتر من تمانية وتلاتين مهارة مبيعات جاهزة.
-
-[On-Screen Text: +38 مهارة مبيعات جاهزة، نسخة تجريبية عامة]
-
-[Visual: stock neural network animation, glowing nodes]
-طيب، كيف بيصير الربط؟
-
-[Pause]
-
-[Visual: title بروتوكول MCP]
-عن طريق بروتوكول اسمه إم سي بي{MCP}، يعني طريقة موحّدة بتخلّي المساعد الذكي يحكي مع أنظمة تانية بعد ما يتأكّد مين المستخدم.
-
-[Visual: stock digital data flow between glowing nodes, animation]
-والنقطة اللي بتهمّ المهندسين: الصلاحيات بتظل عند سيلزفورس.
-
-يعني موظف المبيعات ما بيقدر يعمل من كوبايلوت إشي ما بيقدر يعمله أصلا بسيلزفورس.
-
-[Visual: stock digital padlock over circuit board, glowing]
-ومايكروسوفت بتطبّق ضوابط الامتثال تبعتها عالمراسلات والمستندات.
-
-[Visual: stock chip under light, macro]
-ليش هاد مهم؟
-
-[Pause]
-
-لأنه مجموعتين برامج بتعتمد عليهم شركات كتير صاروا يحكوا مع بعض عن طريق الوكلاء.
-
-[Visual: stock abstract AI brain animation, glowing neurons]
-مش عن طريق موظف بينسخ ويلصق بين شاشتين.
-
+[Visual: stock abstract network nodes connecting, animation]
 طيب، شو يعني هاد إلنا؟
 
 [Pause]
 
-[Visual: stock server racks in a data centre, blue light]
-إذا شركتك بتستخدم أدوات مايكروسوفت وسيلزفورس مع بعض، فريق المبيعات ممكن يشتغل على بيانات العملاء من غير ما يتنقّل بين البرامج.
+الانقطاع كان عالمي، يعني القصة مش بريطانية بس.
 
-[Visual: stock abstract user interface animation, glowing windows]
-خلّينا نتخيّل يوم موظف مبيعات.
-
-بيطلع من اجتماع على تيمز، وبيطلب من كوبايلوت معلومات العميل من سيلزفورس، وبيعمل الإجراء اللي بدّه إياه من نفس المكان.
-
-[Visual: stock digital data flow, abstract blue and gold particles]
-والوقت اللي كان يروح بالتنقّل بين الأنظمة، حسب الشركتين، بيرجع للشغل نفسه.
+[Visual: stock single glowing cable plugged into a server rack]
+كم جهة عندنا شغلها كله ماشي على الإيميل والاجتماعات من مزوّد واحد؟
 
 [Pause]
 
-[Visual: title مين بيتحكّم بشو؟]
-بس قبل التفعيل، أول سؤال عند مدير التقنية: مين بيتحكّم بشو؟
+[Visual: stock backup server cables with blue lights]
+السؤال لكل مدير: في خطة لو الإيميل وقف يومين؟ وفي اختبار للتحديثات قبل ما تنزل؟
 
-[Visual: stock digital padlock over circuit board, glowing]
-والجواب بيبلّش من صلاحيات سيلزفورس نفسها.
+[Pause]
 
-لأنه أي صلاحية أوسع من اللازم هناك، رح تصير متاحة من كوبايلوت كمان.
-
-[Visual: stock code on screen, dark room]
-وبالقطاعات المنظّمة زي البنوك، هاد سؤال بيوصل لفريق الامتثال، مش بس لفريق التقنية.
-
-[Visual: stock digital globe network map animation]
-وعالمنطقة تحديدا؟ الإعلان ما حكى إشي عن أسواقنا، فبنوقف هون.
-
-[Visual: stock circuit board macro, light pulses]
-وتذكّروا: هاد كله لسّا إعلان من الشركتين، والإضافة لسّا تجريبية.
+[Visual: stock digital globe with network lines, rotating]
+وسؤال السيادة الرقمية اللي انطرح ببريطانيا، بينطرح بنفس الشكل عند أي حكومة بتعتمد على مزوّد أجنبي واحد.
 
 [Pause 2s]
 
-[Section: مسرّعة سنابل: وين رايحة المصاري الأولى]
+[Section: المال الخليجي والذكاء الاصطناعي]
 
-[Visual: title مسرّعة سنابل]
-ونرجع عالسعودية، بس هالمرة عالشركات الناشئة.
+[Visual: stock digital globe with glowing arcs between continents, animation]
+هسّا نروح عالخليج، لأنه المال الخليجي صار جزء من قصة الذكاء الاصطناعي بأمريكا.
 
-[Visual: source bbb6a46050]
-سنابل للاستثمار{Sanabil Investments}، اللي مملوكة بالكامل لصندوق الاستثمارات العامة، أعلنت الدفعة رقم اتناعش من برنامج المسرّعة تبعها.
+[Visual: stock glowing data streams over a digital map]
+يوم الخميس، بمنتدى أبوظبي للاستثمار بنيويورك، الإمارات عرضت استثماراتها بأمريكا.
 
-[Visual: stock abstract digital particles, blue and gold]
-والبرنامج بالشراكة مع فايف هندرد غلوبال{500 Global}، شركة رأس مال جريء.
-
-[Pause]
-
-[Visual: number 888 طلب | تقدّموا لبرنامج المسرّعة]
-تقدّم للبرنامج تمنمية وتمانية وتمانين طلب.
+[Visual: source 0663bb6e20]
+وحسب صحيفة ذا ناشونال{The National}، الرقم
 
 [Pause]
 
-[Visual: number 7 شركات | انختاروا من الطلبات]
-وانختار منهم سبع شركات بس.
+[Visual: number تريليون دولار | أكتر من هالرقم استثمارات الإمارات بأمريكا]
+أكتر من تريليون دولار.
 
-[On-Screen Text: 888 طلب ← 7 شركات ناشئة]
+[Visual: stock neural network animation]
+والقطاعين الأساسيين بالمنتدى كانوا الصحة والذكاء الاصطناعي.
 
-[Visual: stock abstract glowing network nodes converging, animation]
-طيب، بشو بتشتغل هاي الشركات؟
+شو في ورا هالرقم؟
+
+[Pause]
+
+[Visual: stock digital data flow, glowing streams]
+شركة الاستثمار الأبوظبية إم جي إكس{MGX} دخلت بتموز بشراكة مع بلاك روك{BlackRock}.
+
+[On-Screen Text: MGX + BlackRock: 40 مليار دولار | صندوق AI: 49 مليار دولار]
+
+قيمة الشراكة
 
 [Pause]
 
-[Visual: stock digital padlock and shield over circuit board, animation]
-في حماية الأنظمة الصناعية اللي بتشغّل البنية التحتية الحساسة.
+[Visual: number 40 مليار دولار | شراكة للبنية التحتية الرقمية]
+أربعين مليار دولار، للبنية التحتية الرقمية.
 
-[Visual: stock neural network animation, glowing nodes]
-وفي الذكاء الاصطناعي السيادي، والتقنية التنظيمية، يعني أدوات بتساعد الشركات تلتزم بالأنظمة.
-
-[Visual: stock code on screen, dark room]
-وفي إدخال الذكاء الاصطناعي عالنظام القانوني السعودي.
-
-[Visual: stock digital data flow, abstract blue and gold particles]
-وفي شركتين بالإنشاءات، وغيرهم بصحة المرأة والتقنية المالية.
-
-[Visual: stock chip under light, macro]
-عبد الرحمن الجفري، شريك بفايف هندرد غلوبال، قال إنّه بهاي القطاعات الثقة والتنفيذ مهمين قد التقنية نفسها.
-
-[Visual: title شو بتحكيلنا القائمة؟]
-شو بتحكيلنا هاي القائمة؟
+ونفس الشركة قالت وقتها إنها جمعت
 
 [Pause]
+
+[Visual: number 49 مليار دولار | صندوق للذكاء الاصطناعي]
+تسعة وأربعين مليار دولار لصندوقها للذكاء الاصطناعي.
+
+[Pause]
+
+[Visual: number 80% | من المحفظة لمشاريع أمريكية]
+وبتخطط تحط لحد تمانين بالمية من محفظتها بمشاريع أمريكية.
+
+[Visual: stock AI chip glowing under light, circuit board macro]
+وهالشهر، أدنوك{ADNOC} وشركة الذكاء الاصطناعي جي فورتي تو{G42} وقّعوا شراكة لعدة سنين.
+
+[Visual: stock digital data flow between servers]
+الشراكة مع أوبن إيه آي{OpenAI}، وحسب ذا ناشونال رح تزيد وجودها بالإمارات.
+
+[Visual: stock code on screen]
+وبالسعودية، القصة عن الناس أكتر من المال.
+
+[Visual: source 76c8f380a1]
+حسب وكالة الأنباء السعودية، سدايا{SDAIA}، هيئة البيانات والذكاء الاصطناعي، أطلقت مبادرة «عام الذكاء الاصطناعي» بالجامعات.
+
+[Visual: source 88126122b9]
+وحسب تقرير بالصحافة السعودية، شركة هيوماين{HUMAIN} بتستهدف فجوة المهارات بالسعودية، بتدريب عملي.
+
+[On-Screen Text: المصدر: Arab News]
+
+[Visual: source b3d586da8b]
+وبنفس الأسبوع، حسب داتا سنتر داينامكس{Data Center Dynamics}، هيوماين جمعت
+
+[Pause]
+
+[Visual: number 667 مليون دولار | جمعتها هيوماين لبنية الذكاء الاصطناعي]
+ستمية وسبعة وستين مليون دولار لتوسيع بنية الذكاء الاصطناعي بالسعودية.
 
 [Visual: stock server racks in a data centre, blue light]
-إنّه هاي الدفعة، حسب البرنامج نفسه، رايحة أكتر باتجاه البنية التحتية والقطاعات المنظّمة والحساسة.
+يعني المصاري والمهارات عم يمشوا مع بعض: أي داتا سنتر، مهما كان كبير، بدّه ناس تبنيه وتشغّله.
 
-[Visual: stock digital globe network map animation, glowing connections]
-وللشركات بالمنطقة، هاد معناه موردين محليين بيطلعوا للقانون والامتثال والبنية التحتية.
+[Visual: stock neural network animation]
+مين رح يحسّ بهاد هون؟
 
-[On-Screen Text: يوم العرض: 9 كانون الأول 2026]
+[Pause]
 
-[Visual: stock abstract digital particles, blue and gold]
-ويوم العرض، بتسعة كانون الأول، رح يعرّف السوق على هاي الشركات.
+أول إشي، الشركات اللي بتوظّف. برامج المهارات بتأثّر على مين رح يكون جاهز يشتغل بالذكاء الاصطناعي.
+
+[Visual: stock digital globe network map, glowing connections]
+وتاني إشي، وجود أكبر لأوبن إيه آي بالإمارات ممكن يقرّب الموديلات المتقدمة من المنطقة.
+
+[Visual: stock server racks in a data centre, blue light]
+والسؤال اللي بنراقبه: قديش من هالمال رح يبني قدرات هون، مش بس هناك؟
 
 [Pause 2s]
 
-[Section: اتصالات تطلق منصة AIO السيادية]
+[Section: أكبر طرح أسهم بالتاريخ]
 
-[Visual: stock digital globe network map animation]
-وبعالم البنية التحتية، في خبر كبير جاي من الإمارات.
+[Visual: title أكبر طرح أسهم أولي]
+وبالموديلات، أكبر خبر مالي بالأسبوع.
 
-[Visual: source aadaec8117]
-اتصالات{etisalat} أطلقت منصة ذكاء اصطناعي سيادي اسمها إيه آي أو{AIO}.
+[Visual: stock neural network animation]
+أنثروبيك{Anthropic}، الشركة اللي بتعمل موديل كلود{Claude}، سكّرت أكبر طرح أسهم أولي بالتاريخ.
 
-[Visual: title الذكاء الاصطناعي السيادي]
-شو يعني سيادي هون؟
+[Visual: stock digital data flow, glowing streams]
+يعني عرضت أسهمها للمستثمرين لأول مرة، قبل ما تنزل عالبورصة.
+
+[Visual: source cafd31ea08]
+حسب مجلة وايرد{WIRED}، صار معها بالبنك حوالي
 
 [Pause]
 
-[Visual: stock digital padlock over a glowing globe, animation]
-يعني البيانات بتنحفظ وبتتبادل جوّا الإمارات، وما بتطلع برّا البلد.
+[Visual: number 200 مليار دولار | رصيد أنثروبيك بالبنك]
+ميتين مليار دولار.
+
+[Visual: stock chip under light, circuit board macro]
+وهاد أكتر من كل شركات التقنية الكبيرة، إلا ألفابت{Alphabet}، الشركة الأم لجوجل{Google}.
+
+آخر ربع سنة، مبيعاتها كانت
+
+[Pause]
+
+[Visual: number 17 مليار دولار | مبيعات آخر ربع سنة]
+سبعتعش مليار دولار.
+
+[Pause]
+
+[Visual: number 1100% | زيادة عن السنة اللي قبلها]
+وهاي زيادة أكتر من ألف ومية بالمية عن السنة اللي قبلها.
+
+[Visual: stock dark data centre corridor, server racks]
+بس في وجه تاني للقصة.
+
+الشركة ملتزمة تدفع للمورّدين أكتر من
+
+[Pause]
+
+[Visual: number 900 مليار دولار | التزامات للمورّدين]
+تسعمية مليار دولار.
+
+[Visual: stock data centre server racks, blue light]
+وهاد على تسعتعش سنة، وأغلبه لداتا سنترات بتشغّل كلود.
+
+[Visual: stock data centre building exterior, aerial view]
+وحسب وايرد، الناخبين الأمريكان رفضوا الداتا سنترات بأغلب الأماكن لما انسألوا هالشهر، والاحتجاجات مستمرة.
+
+[Visual: stock server racks glowing in blue light]
+حتى في مجموعة أهالي بفرجينيا الغربية بتحارب داتا سنتر لسّا بينبنى لأنثروبيك.
+
+[Visual: stock neural network animation]
+وداريو أمودي{Dario Amodei}، الرئيس التنفيذي، قال إنّه الحمايات هي اللي بتحدد سرعة إطلاق الموديلات.
+
+[Visual: stock abstract shield protecting a neural network, animation]
+وقال كمان إنّه الشركة أخّرت موديل جديد هالسنة لحماية الناس، حتى لو خسرت مبيعات.
+
+[Visual: source 5bfd396c6d]
+قناة سي إن بي سي{CNBC} شايفة الطرح اختبار لكل الفلوس الداخلة على شركات الذكاء الاصطناعي الناشئة.
+
+والرقم هون أكتر من
+
+[Pause]
+
+[Visual: number 350 مليار دولار | الأموال الداخلة على شركات AI الناشئة]
+تلاتمية وخمسين مليار دولار.
+
+[Visual: number 5 مليارات دولار | استثمار مؤسس ألتيميتر]
+مؤسس شركة الاستثمار ألتيميتر{Altimeter} قال إنه ناوي يستثمر خمس مليارات دولار،
+
+[Pause]
+
+يعني خمس أضعاف أكبر استثمار عمله بطرح أولي.
+
+[Visual: stock GPU chip close-up under light]
+وشركات شرائح، منها إنفيديا{NVIDIA}، مستثمرة كمان، ومعهم جوجل ومايكروسوفت.
+
+[Visual: stock abstract network nodes connecting, animation]
+طيب، وشو بيعني هاد لشركة هون بتستخدم كلود؟
+
+[Pause]
+
+[Visual: stock digital data flow, glowing streams]
+شركة بالبورصة بتنشر أرقامها، فالعملاء بيشوفوا وضعها بوضوح أكتر.
+
+[Visual: stock data centre server racks, blue light]
+بس التزامات الداتا سنتر بتحدد قديش في قدرة متوفرة بكرا، وحسب وايرد، أي تأخير بالبناء ممكن يصعّب تدريب موديلات أقوى.
+
+[Pause 2s]
+
+[Section: حرب الأسعار بالموديلات]
+
+[Visual: title حرب الأسعار]
+طيب، والخبر التاني بالموديلات؟ حرب أسعار.
+
+[Pause]
+
+[Visual: stock neural network animation]
+مختبر ديب مايند{DeepMind} بجوجل طلّع موديل جديد.
+
+[Visual: stock glowing neon neural network animation]
+اسمه نيون{Neon}، وهو الموديل الوسطاني بعيلة جيميناي{Gemini} الرابعة.
+
+[On-Screen Text: Gemini 4 Neon]
+
+[Visual: stock code on screen]
+موديل بيفكّر قبل ما يجاوب، ومعمول للوكلاء البرمجيين وشغل المعرفة.
+
+[Visual: stock digital data flow, glowing streams]
+التسعير محسوب على كل مليون وحدة نص.
+
+[Pause]
+
+[Visual: number 3 دولارات | عالنص الداخل لكل مليون وحدة]
+تلات دولارات عالنص الداخل،
+
+[Pause]
+
+[Visual: number 15 دولار | عالنص الطالع لكل مليون وحدة]
+وخمستعش دولار عالنص الطالع.
+
+[Visual: title نافذة السياق]
+ونافذة السياق مليون وحدة، يعني بيقرأ مستندات طويلة كتير مرة وحدة.
+
+[Visual: stock circuit board macro, glowing traces]
+جوجل بتقول إنّه كلفة المهمة على نيون أقل من المنافسين
+
+[Pause]
+
+[Visual: number 50–80% | أقل كلفة للمهمة حسب جوجل]
+بخمسين لتمانين بالمية.
+
+[On-Screen Text: أرقام جوجل نفسها، مش اختبار مستقل]
+
+[Visual: stock magnifying glass scanning over code, animation]
+بس انتبهوا: هاي أرقام جوجل نفسها، ومش من اختبار مستقل.
+
+[Visual: stock neural network animation]
+وحتى بجدولهم، نيون ما ربح بكل اختبار أداء. موديلات أنثروبيك وأوبن إيه آي سبقته بكم واحد.
+
+[Visual: stock digital globe network map, glowing connections]
+ومن الصين، علي بابا{Alibaba} طلّعت أقوى موديل عندها لحد هسّا، اسمه كوين{Qwen}.
+
+[On-Screen Text: Qwen 4 Max]
+
+[Visual: stock neural network animation with a few nodes lighting up]
+الموديل فيه
+
+[Pause]
+
+[Visual: number 2.4 تريليون | معامل بالموديل كله]
+تريليونين وأربعمية مليار معامل.
+
+بس لكل وحدة نص، بيشغّل بس
+
+[Pause]
+
+[Visual: number 71 مليار | معامل شغّال لكل وحدة نص]
+واحد وسبعين مليار.
+
+[Visual: stock digital data flow between glowing nodes]
+تخيّلوا شركة فيها خبرا كتير، بس كل سؤال بيروح لكم خبير منهم. هيك بيوفّر قوة حوسبة.
+
+[Visual: stock code on screen]
+وحسب تقرير على موقع كوكوين{KuCoin}، هو أعلى موديل صيني بترتيب الوكلاء على منصة أرينا{Arena}، اللي بتقيّم الموديلات بمحادثات حقيقية.
+
+[Visual: stock circuit board macro, glowing traces]
+شو الدرس لشركاتنا؟
+
+[Pause]
+
+سعر الوحدة مش هو كل القصة. المقارنة الأدق صارت بقديش بتكلّف المهمة كاملة.
+
+[Visual: stock digital globe with network lines, rotating]
+ووجود خيار صيني قوي بيوسّع الخيارات هون، بس بيفتح أسئلة حوكمة: وين بتروح البيانات، وتحت أي قوانين؟
+
+[Pause 2s]
+
+[Section: وكلاء مايكروسوفت بهويات خاصة]
+
+[Visual: title الوكلاء]
+هسّا نروح عالوكلاء، ونرجع لمايكروسوفت.
+
+[Visual: source 2299a81540]
+بمؤتمرها السنوي إغنايت{Ignite}، ناديلا أعلن عن مساحات عمل مشتركة جوا كوبايلت.
+
+[Visual: stock abstract document editing animation, glowing cursors]
+الناس والوكلاء بيشتغلوا عنفس المستند. الوكيل بيكتب جزء، وإنت بتراجع وبتعلّق، والوكيل بيلقط التعليق.
+
+[Visual: stock neural network animation]
+وكمان أعلنت عن وكيل اسمه أوتوبايلت{Autopilot}.
+
+[Visual: stock digital data flow, glowing streams]
+حسب مايكروسوفت، بيراقب قنوات تيمز، وبيتابع الإيميلات، وبيدير مشروع، بدون ما حدا يطلب منه.
+
+[Visual: stock hierarchy of network nodes, animated diagram]
+وهون التفصيل اللي بيهم فرق التقنية.
+
+كل وكيل إله هوية خاصة فيه بنظام الهويات عند مايكروسوفت، ومدير بشري معروف بالاسم.
+
+[On-Screen Text: Microsoft Entra Agent ID]
+
+[Visual: stock code on screen, log lines scrolling]
+دخوله وكل حركة بيعملها بتنسجّل باسمه، يعني في سجل تدقيق واضح، والفريق التقني بيقدر يوقفه.
+
+[Visual: stock magnifying glass scanning over code, animation]
+بس موقع زد دي نت{ZDNET} نبّه إنه ادعاء إدارة الاجتماعات لحاله أحسن الفرق تتأكد منه بنفسها.
+
+[Visual: stock glowing neural network animation, branching paths]
+كمان، حسب مايكروسوفت، كوبايلت صار يختار الموديل المناسب للمهمة لحاله، والموظف بيقدر يختار بإيده موديلات من أوبن إيه آي أو أنثروبيك.
+
+[Visual: source 6776907116]
+وبشراكة جديدة، بيانات سيلزفورس{Salesforce}، نظام إدارة الزباين المعروف، صارت توصل جوا كوبايلت، بنسخة تجريبية.
+
+[Visual: stock digital connection between two glowing nodes, animation]
+الربط بيصير عبر بروتوكول مفتوح بيوصل الوكلاء بالأنظمة، ضمن صلاحيات المستخدم نفسها.
+
+[On-Screen Text: Copilotforce عبر MCP]
+
+[Visual: stock circuit board macro, glowing traces]
+ليش هاد بيهمّنا هون بالمنطقة؟
+
+[Pause]
+
+لأنه الوكيل صار إله هوية، تقريبا زي الموظف.
+
+[Visual: stock hierarchy of network nodes, animated diagram]
+فالسؤال عند أي جهة شغلها على مايكروسوفت: مين بيعطي الوكيل صلاحياته، ومين بيراجع سجلّه؟
+
+[Pause]
 
 [Visual: stock server racks in a data centre, blue light]
-هاد حسب عبدالله الأحمد، مسؤول العلاقات الحكومية وكبار العملاء باتصالات الإمارات، بتصريح لوكالة أنباء الإمارات.
+وبعد انقطاع تشرين التاني، حط الوكلاء كمان عند نفس المزوّد صار سؤال لحاله.
+
+[Pause 2s]
+
+[Section: الوكلاء صار معهم محافظ]
+
+[Visual: title الوكلاء والدفع]
+طيب، والوكيل لما بدّه يدفع؟
 
 [Pause]
 
-[Visual: number 10 | أعمدة تقنية بنظام واحد]
-والمنصة، حسب الشركة نفسها، بتجمع عشر أعمدة تقنية بنظام واحد.
+[Visual: source 88d77a52ad]
+أوبن إيه آي أطلقت محفظة جوا تشات جي بي تي{ChatGPT}، بالشراكة مع تلات شبكات بطاقات.
 
-[Visual: title من الزبون؟]
-مين الزبون؟
+[On-Screen Text: American Express | Mastercard | Visa]
 
-[Pause]
+[Visual: stock AI agent glowing nodes animation]
+وكلاءها اللي اسمهم دوتس{dots} بيشتروا عنك، بس كل عملية بدها موافقتك.
 
-[Visual: stock abstract digital network, gold nodes]
-الجهات الحكومية والمؤسسات الكبيرة، وكمان الشركات الصغيرة والمتوسطة.
+[Visual: stock digital padlock encryption animation]
+والوكيل، حسب الشركة، ما بيشوف رقم بطاقتك أبدا.
 
-الهدف إنهم يبنوا تطبيقات ذكية من غير استثمارات كبيرة ببنية تحتية خاصة فيهم.
+شبكة الدفع بتعطيه رمز دفع خاص بهاي العملية بس.
 
-[Pause]
+[Visual: stock digital globe with one glowing region, animation]
+حسب سي إن بي سي، الخدمة بالبداية لمشتركي باقة برو{Pro} بأمريكا بس، وأوبن إيه آي مش آخدة عمولة هسّا.
 
-[Visual: number 25 ضعف | توسعة سعة الاتصال الدولي]
-وبنفس الوقت، المجموعة بتخطط تكبّر سعة الاتصال الدولي تبعها خمسة وعشرين ضعف، بأرقامهم هم.
+[Visual: source 4257f147f1]
+وهالأسبوع، من ناحية الشركات، إيه دبليو إس{AWS}، خدمة السحابة من أمازون{Amazon}، تحرّكت كمان.
 
-[On-Screen Text: 500 تيرابت بالثانية]
+[Visual: stock digital data flow between servers]
+صارت تسمح للوكلاء يشتروا برمجيات وبيانات من متجرها، بالدولار، وعلى فاتورة السحابة.
 
-[Visual: stock glowing data streams, dark blue background]
-وبدها كمان، حسب الشركة، تضاعف إيراداتها من خدمات الشركات والحكومة.
+[Visual: stock data packets flowing between server nodes, animation]
+حسب أمازون نفسها، في سقف للصرف، وكل عملية بتنسجّل للتدقيق.
 
-[Visual: stock digital globe network map animation with glowing connections]
-خليفة الشامسي، العضو المنتدب لاتصالات الدولية، حكى لوكالة أنباء الإمارات بمؤتمر صحفي بدبي إنّه المجموعة موجودة بعشرين شركة اتصالات بآسيا وأفريقيا وأوروبا.
+[On-Screen Text: x402]
 
-[Visual: stock neural network animation, glowing nodes]
-وحسب كلامه، هاد بيخلّيها تقدّم حلول ذكاء اصطناعي بأسواق أوروبية ما فيها هيك خدمات هسّا.
-
-[Visual: stock digital padlock over circuit board, glowing]
-والأمن السيبراني، حسب الشامسي، داخل بتصميم المنصة من أول مرحلة، بالتعاون مع جهات الأمن السيبراني بالإمارات.
-
-[Visual: stock circuit board macro, light pulses]
-وفي خطط لخدمات مخصّصة للّوجستيات والتصنيع والضيافة.
-
-[Visual: stock code on screen, dark room]
-والمبادرة، حسب الشامسي، رح يشارك فيها كوادر إماراتية من برامج تدريب شغّالة من سنين.
-
-يعني هون كمان بترجع قصة المهارات اللي بلّشنا فيها.
-
-[Visual: title ليش بيهمّنا؟]
-طيب، ليش هاد الخبر بيهمّنا هون بالمنطقة؟
+[Visual: stock circuit board macro, glowing traces]
+وين المنطقة من هاد؟
 
 [Pause]
 
-[Visual: stock server racks in a data centre, blue light]
-لأنه شركة الاتصالات صارت مش بس بتبيعك إنترنت.
+البنوك ومصدري البطاقات والمتاجر الإلكترونية هون قدامهم سؤال جديد: شو بيصير لما الوكيل هو اللي بيدفع؟
 
-صارت بتقدّملك البنية اللي بتشغّل عليها تطبيقات الذكاء الاصطناعي، والبيانات جوّا البلد.
+[Visual: stock code on screen, log lines scrolling]
+وبأقسام المالية، السؤال الطبيعي رح يكون عن سقوف الصرف وسجلات التدقيق، قبل ما تخلّي وكيل يشتري إشي.
 
-[Visual: stock chip under light, macro]
-للشركة الصغيرة بالإمارات، هاد ممكن يعني تجرّب وكيل ذكي من غير ما تشتري GPU واحد.
+[Pause 2s]
 
-[Visual: stock digital padlock over a glowing globe, animation]
-وللبنك أو الجهة الحكومية، سؤال «وين بياناتي؟» صار جوابه أوضح.
+[Section: واشنطن والشرائح]
 
-[Visual: stock abstract digital particles, blue and gold]
-وعند المدير المالي، الحسبة بتتغيّر.
+[Visual: stock chip under light, circuit board macro]
+وبعالم الشرائح، تلات عناوين بنفس الاتجاه، وبنحكيها بحذر لأنه التفاصيل لسّا قليلة.
 
-بدل مبلغ كبير مرة وحدة على بنية خاصة فيك، بتشتغل على بنية جاهزة عند المزوّد.
+[Visual: source 97fed349b5]
+أول عنوان من بلومبرغ{Bloomberg}: أمريكا بتتحرك لتحدّ من الوصول من بعيد لشرائح إنفيديا المتقدمة.
 
-[Visual: stock futuristic data tunnel animation]
-بس هون بيطلع سؤال تاني: قدّيش سهل تطلع من عند المزوّد، إذا حبّيت تغيّره بعدين؟
+[Visual: stock cloud servers with GPU racks, blue light]
+يعني تشغيل الشرائح عن طريق السحابة، من غير ما تكون عندك.
 
-[Visual: stock digital globe network map animation, glowing connections]
-وبالأردن؟ هاد نموذج بيستاهل نراقبه.
+[Visual: source 80665bf639]
+التاني من الأناضول: رئيس لجنة الشؤون الخارجية بمجلس النواب الأمريكي نشر سجلات تصدير شرائح إنفيديا وإيه إم دي{AMD} للصين.
 
-شركات الاتصالات بكل المنطقة عندها شبكات وزباين، والسؤال إذا رح تمشي بنفس الطريق.
+[Visual: source a4e0be4664]
+والتالت من موقع ذا إنفورميشن{The Information}.
 
-[Visual: title شو نراقب؟]
-شو نراقب بعدين؟ الأسعار، والشركاء الدوليين، وإيمتى الخدمات القطاعية بتصير متاحة فعلا.
+[Visual: stock digital globe network map, glowing connections]
+شركة الذكاء الاصطناعي الصينية مونشوت{Moonshot AI} لغت صفقة
+
+[Pause]
+
+[Visual: number 150 مليون دولار | صفقة ملغاة للوصول لشرائح إنفيديا بإندونيسيا]
+بمية وخمسين مليون دولار، للوصول لشرائح إنفيديا بإندونيسيا.
+
+[Visual: stock digital globe with dotted lines connecting continents, animation]
+الخيط اللي بيجمعهم: الطرق اللي بتلفّ عالقيود، عبر دول تانية أو عبر السحابة، صارت على ما يبدو تحت المجهر.
+
+[Visual: stock data centre server racks, blue light]
+وليش هاد بيعني الخليج تحديدا؟
+
+[Pause]
+
+الداتا سنترات اللي بتبيع قوة حوسبة لزباين من برّا ممكن توصلها قواعد الوصول من بعيد.
+
+[Visual: stock code on screen]
+والإشي اللي يستاهل المتابعة هو شروط الامتثال بعقود تأجير الـGPU.
 
 [Pause 2s]
 
@@ -484,57 +578,55 @@
 [Visual: title رادار الأسبوع]
 رادار الأسبوع، بسرعة.
 
-[Visual: source 76c8f380a1]
-سدايا{SDAIA}، الهيئة السعودية للبيانات والذكاء الاصطناعي، أطلقت مبادرة «عام الذكاء الاصطناعي» بالجامعات السعودية، حسب وكالة الأنباء السعودية.
-
-[Visual: source a591e2d767]
-وقبلها بيومين، الهيئة أكّدت على أهمية الوعي بمخاطر الذكاء الاصطناعي بالجامعات، عشان الاستخدام يكون آمن.
+[Visual: source 347b6a04b1]
+شركة آيزومورفيك لابز{Isomorphic Labs}، اللي بتكتشف أدوية بالذكاء الاصطناعي، جمعت حسب الشركة نفسها
 
 [Pause]
 
-[Visual: source c43a95b420]
-وبالإمارات، سبيس فورتي تو{Space42}، شركة إماراتية لتقنيات الفضاء، دخلت بشراكة مع إكسوديغو{Exodigo}.
+[Visual: number 5 مليارات دولار | جولة تمويل آيزومورفيك لابز]
+خمس مليارات دولار.
 
-[Visual: stock abstract digital scan of underground layers, glowing lines, animation]
-إكسوديغو بتستخدم أجهزة استشعار وذكاء اصطناعي عشان ترسم خريطة اللي تحت الأرض.
+[Visual: stock molecular structure animation, glowing atoms]
+والشركة أسسها ديميس هاسابيس{Demis Hassabis}، اللي ترك رئاسة ديب مايند قبل الجولة
+
+[Pause]
+
+بتلات شهور ونص.
+
+[Visual: source 73502aa1d0]
+لانغ تشين{LangChain}، اللي بتعمل أدوات لبناء الوكلاء، تقييمها صار أكتر من الضعف، ووصل
+
+[Pause]
+
+[Visual: number 3 مليارات دولار | تقييم لانغ تشين]
+لتلات مليارات دولار، حسب وول ستريت جورنال{WSJ}.
+
+[Visual: stock code on screen, security breach animation]
+كيرسر{Cursor}، محرر برمجة بالذكاء الاصطناعي، تعرّض لاختراق كشف مفاتيح API وكود مصدري.
+
+[Visual: stock broken digital padlock animation]
+وحسب موقع أخبار أمنية، السبب هجوم على مزوّد بيشغّل موديلات اسمه فايروركس{Fireworks AI}.
+
+[Visual: source c43a95b420]
+وبالإمارات، سبيس فورتي تو{Space42} وإكسوديغو{Exodigo} عملوا شراكة لرسم خرايط اللي تحت الأرض بالذكاء الاصطناعي.
+
+[Visual: stock underground pipeline 3D mapping animation]
+بمشروع أول لشركة نفط وغاز كبيرة، إكسوديغو حددت خط وقود مدفون على عمق
 
 [Pause]
 
 [Visual: number 14 متر | عمق خط الوقود المدفون]
-حسب الشركتين، بمشروع أولي لشركة نفط وغاز كبيرة، إكسوديغو لقت خط وقود مدفون على عمق لحد أربعتعش متر، من غير حفر.
-
-[Pause]
-
-[Visual: number 3 أيام | مدة المسح الميداني]
-والمسح الميداني أخد تلات أيام بس.
-
-[On-Screen Text: عمق حتى 14 متر، مسح 3 أيام]
-
-[Visual: stock glowing data streams, dark blue background]
-يعني حفر أقل وتعطيل أقل بمشاريع البنية التحتية.
-
-[Pause]
-
-[Visual: source ae8c049a35]
-وأخيرا، جامعة محمد بن زايد للذكاء الاصطناعي{MBZUAI} أطلقت دعوة فنية عالمية.
-
-[Visual: stock abstract digital particles, blue and gold]
-الدعوة جاية قبل معرض فريز أبوظبي{Frieze Abu Dhabi} للفن.
-
-والخبر نشرته غلف نيوز{Gulf News}.
+لحد أربعتعش متر، بدون حفر.
 
 [Pause 2s]
 
 [Section: الخاتمة]
 
-[Visual: stock digital globe network map animation, glowing connections]
-الخلاصة: الخليج هالأسبوع ما اشترى ذكاء اصطناعي بس، بنى منصات، واشتغل عالمهارات، وموّل شركات.
+[Visual: stock server racks in a data centre, blue light]
+الخلاصة: هالأسبوع ذكّرنا إنّه الذكاء الاصطناعي بيقوى قد ما البنية اللي تحته بتتحمّل.
 
 [Face]
-إذا الحلقة فادتك، اعمل هايب{Hype} للفيديو.
-
-واشتركوا بالقناة واكتبولنا رأيكم بالتعليقات: أي خبر بيهمّكم أكتر؟
-
-[Pause]
+إذا الحلقة فادتكم، اعملولها هايب{Hype}، واشتركوا بالقناة واكتبولنا رأيكم.
 
 يعطيكم العافية.
+
