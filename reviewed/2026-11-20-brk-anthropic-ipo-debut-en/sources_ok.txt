@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-20 02:51 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Anthropic, the company behind the Claude AI models, is now a public company.  ← Yahoo Finance (c0154aa295), BBC (408915dd02)
+- (2) Yahoo Finance reports it sold 980 million shares at $83 each, above the $70 to $78 range it had marketed.  ← Yahoo Finance (c0154aa295)
+- (3) That valued Anthropic at about $1.5 trillion on a fully diluted basis.  ← Yahoo Finance (c0154aa295)
+- (4) The BBC says shares closed 17% higher on day one at $97.17, even as the wider tech sector fell 2.4%.  ← BBC (408915dd02)
+- (5) Third-quarter revenue hit $16.96 billion, up 47% from the prior quarter. But the company still runs at an operating loss.  ← Yahoo Finance (c0154aa295)
+- (6) It has committed to spending about $895 billion, with roughly half promised by 2030.  ← Yahoo Finance (c0154aa295)
+- (7) For the Gulf, watch whether this new capital flows into data centers and compute partnerships across the region.  ← regional line, no facts
