@@ -247,3 +247,5 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
   reported with ⚠️ (TikTok status-check timeouts and lost status calls included); the result is recorded before
   anything else; `scripts/save_queue.sh` merges this run's results onto main on a conflict (`social.py merge`) and
   fails the step if it still cannot push. Tests in `tests/test_social.py`.
+- **2026-11-20, TikTok after going public:** the Anthropic breaking Short failed on TikTok with `unaudited_client_can_only_post_to_private_accounts`. An app TikTok has not reviewed may post only to private accounts, so making @aithisweek public (19 Nov) ended automatic TikTok posting. Options: TikTok app review (developers.tiktok.com, Content Posting API audit), or upload by hand in TikTok Studio. YouTube and LinkedIn are unaffected.
+- **2026-11-20, repeated breaking drafts:** the news watch drafted five more Shorts on the outage after it was posted, because a story counted as done only by its exact headline. Fixed with `pipeline/story_match.is_repeat` (two shared key words with a headline drafted in the last `breaking.repeat_days`).
