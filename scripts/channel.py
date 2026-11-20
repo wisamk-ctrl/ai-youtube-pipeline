@@ -155,6 +155,28 @@ def retention(tok: str, video_id: str, length_s: float) -> str:
     return retention_points(retention_curve(tok, video_id), length_s)
 
 
+def analytics_rows(tok: str, days: int, **params) -> list[list]:
+    """YouTube Analytics rows for the last `days` days ([] when the scope or data is missing)."""
+    try:
+        a = requests.get("https://youtubeanalytics.googleapis.com/v2/reports", timeout=30,
+                         headers={"Authorization": f"Bearer {tok}"},
+                         params={"ids": "channel==MINE", "startDate": (NOW - timedelta(days=days)).strftime("%Y-%m-%d"),
+                                 "endDate": NOW.strftime("%Y-%m-%d"), **params})
+        return a.json().get("rows") or [] if a.status_code == 200 else []
+    except (requests.RequestException, ValueError):
+        return []
+
+
+def open_needs() -> tuple[list[dict], list[dict], str]:
+    """Open issues, the Breaking Shorts issue's comments and its link, for the dashboard's "needs you" list."""
+    repo = os.environ["GITHUB_REPOSITORY"]
+    issues = json.loads(gh("issue", "list", "--repo", repo, "--state", "open", "-L", "50",
+                           "--json", "number,title,url,createdAt"))
+    brk = next((i for i in issues if i["title"] == "Breaking Shorts"), None)
+    comments = json.loads(gh("issue", "view", str(brk["number"]), "--repo", repo, "--json", "comments"))["comments"] if brk else []
+    return issues, comments, brk["url"] if brk else ""
+
+
 def latest_runs() -> list[dict[str, str]]:
     """Each pipeline job's latest real run (comment-triggered runs that skipped are ignored), for the dashboard."""
     out = []
@@ -280,10 +302,27 @@ def report() -> None:
     try:   # the dashboard's files (pipeline/publish/dashboard.py); written on manual runs too
         from pipeline.publish import dashboard
         qf = ROOT / "data" / "social_queue.json"
-        dashboard.write_files(ROOT / "data" / "dashboard", as_of=NOW.strftime("%Y-%m-%d"), channel=ch, analytics=week,
-                              videos=rows, retention=[(t, dashboard.retention_numbers(c, n)) for t, c, n in curves],
-                              queue=json.loads(qf.read_text(encoding="utf-8")) if qf.exists() else [],
-                              runs=latest_runs())
+        year = analytics_rows(tok, 365, metrics="estimatedMinutesWatched")
+        try:
+            issues, comments, brk_url = open_needs()
+        except (subprocess.SubprocessError, KeyError, ValueError, OSError):
+            issues, comments, brk_url = [], [], ""
+        dashboard.write_files(
+            ROOT / "data" / "dashboard", as_of=NOW.strftime("%Y-%m-%d"), channel=ch, analytics=week,
+            videos=rows, retention=[(t, dashboard.retention_numbers(c, n)) for t, c, n in curves],
+            queue=json.loads(qf.read_text(encoding="utf-8")) if qf.exists() else [], runs=latest_runs(),
+            titles={v["id"]: v["snippet"]["title"] for v in vids},
+            hours_365=float(year[0][0]) / 60 if year and year[0] else None,
+            curves=curves,
+            chapter_rows=[(v["snippet"]["title"][:50], s, c) for v in eps
+                          for s, c in dashboard.chapters(v["snippet"].get("description", ""))],
+            countries=[tuple(r) for r in analytics_rows(tok, 28, dimensions="country",
+                                                        metrics="views,estimatedMinutesWatched", sort="-views",
+                                                        maxResults=15)],
+            traffic=[tuple(r) for r in analytics_rows(tok, 28, dimensions="insightTrafficSourceType",
+                                                      metrics="views,estimatedMinutesWatched", sort="-views")],
+            needs=dashboard.needs_you(issues, comments, linkedin_until=os.environ.get("LINKEDIN_TOKEN_UNTIL", ""),
+                                      today=NOW.strftime("%Y-%m-%d"), breaking_url=brk_url))
         print("dashboard files written to data/dashboard/")
     except Exception as e:  # noqa: BLE001 — the report itself must still go out
         print(f"dashboard files not written: {e}")
