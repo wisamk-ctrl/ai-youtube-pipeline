@@ -6,11 +6,12 @@ on:
     - cron: "17 4 * * 0"      # Sunday 08:17 Gulf: is an episode going out today?
     - cron: "29 5 * * 1"      # Monday 09:29 Gulf: the weekly numbers
     - cron: "47 * * * *"      # hourly: an episode or Short just went public → the WhatsApp kit (Channel + status)
+    - cron: "23 2 * * *"      # daily 06:23 Gulf: channel integrity (renamed, new handle, unknown uploads; scripts/integrity.py)
   workflow_dispatch:
     inputs:
       check:
         type: choice
-        options: [report, watch-script, watch-publish, status-kit]
+        options: [report, watch-script, watch-publish, status-kit, integrity]
         default: report
 
 permissions:
@@ -26,6 +27,8 @@ jobs:
       GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
       GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}      # integrity alerts by WhatsApp once CallMeBot is set up
+      CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
       INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
       FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
       LINKEDIN_TOKEN_UNTIL: ${{ secrets.LINKEDIN_TOKEN_UNTIL }}
@@ -42,14 +45,16 @@ jobs:
             "17 4 * * 0") c=watch-publish ;;
             "29 5 * * 1") c=report ;;
             "47 * * * *") c=status-kit ;;
+            "23 2 * * *") c=integrity ;;
             *) c="${{ inputs.check }}" ;;
           esac
-          python scripts/channel.py "$c"
+          if [ "$c" = integrity ]; then python scripts/integrity.py; else python scripts/channel.py "$c"; fi
       - name: Keep the numbers
         if: always()
         run: |
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
           git add data/channel_stats.json data/status_kits.json data/dashboard 2>/dev/null || true
+          git add data/integrity.json 2>/dev/null || true      # apart: a missing file would make git add skip them all
           git diff --cached --quiet && exit 0
           git commit -q -m "channel: weekly numbers ($(date -u +%F))"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
