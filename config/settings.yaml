@@ -127,6 +127,11 @@ scoring:
     chips: 4
     radar: 1
   dedupe_similarity: 0.82     # title similarity above which two items are duplicates
+  # Story size (founder 2026-11-20, after W47 left out the Anthropic IPO for 8 AWS blog posts):
+  coverage_bonus: 3.0         # + this × log2(outlets carrying the story); 2 outlets +3, 16 +12, 64 (cap) +18
+  max_per_source: 3           # no single feed takes more than this many seats
+  max_per_story: 2            # two angles on one story at most
+  flagged_seats: 3            # seats reserved for the stories the news watch flagged as big this week
 
 radar:
   # Names NOT on the watchlist. Extraction needs ANTHROPIC_API_KEY (Haiku 5.5, ≈$0.05/week);

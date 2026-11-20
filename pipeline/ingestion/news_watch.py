@@ -121,6 +121,13 @@ def digest(flagged: list[dict[str, Any]], now: datetime) -> str:
     return "\n".join(lines)
 
 
+def flagged_ids(since: datetime, path: Path = STATE) -> set[str]:
+    """Ids of the items in stories the watch flagged as big since `since`: each such story gets a seat in the weekly."""
+    return {k for k, d in load(path).get("items", {}).items()
+            if d.get("flagged") and NewsItem.from_dict({k2: v for k2, v in d.items()
+                                                        if k2 not in ("first_seen", "flagged")}).published >= since}
+
+
 def kept_items(since: datetime, path: Path = STATE) -> list[NewsItem]:
     """What the watch has kept since `since`, for the weekly collection."""
     out = []

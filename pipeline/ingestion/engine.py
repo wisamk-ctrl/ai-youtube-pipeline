@@ -32,10 +32,11 @@ def run_ingestion(cfg: dict[str, Any], week: str = "", out_dir: Path | None = No
         log.error("X ingestion skipped: %s", exc)
 
     # What the six-hourly news watch kept this week: a story can leave the search results by Saturday.
-    from pipeline.ingestion.news_watch import kept_items
+    from pipeline.ingestion.news_watch import flagged_ids, kept_items
     have = {i.id for i in items}
     since = datetime.now(timezone.utc) - timedelta(days=cfg["ingestion"]["lookback_days"])
     items += [i for i in kept_items(since) if i.id not in have]
+    flagged = flagged_ids(since)
 
     # Every item, whatever its source, is tagged with the watchlist names it mentions,
     # which sets its track (models / agents / chips) and region for the quotas and the plan.
@@ -52,7 +53,7 @@ def run_ingestion(cfg: dict[str, Any], week: str = "", out_dir: Path | None = No
     # Hype channels flagged lead_only have done their job (radar leads); they never reach the script.
     from pipeline.ingestion.youtube_ingest import is_lead_only
     items = [i for i in items if not is_lead_only(i, cfg)]
-    ranked = rank_and_filter(items, cfg)
+    ranked = rank_and_filter(items, cfg, flagged=flagged)
     if not ranked:
         raise RuntimeError("Ingestion produced no items above the relevance threshold — check feeds/keys.")
     if out_dir:

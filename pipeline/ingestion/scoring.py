@@ -122,28 +122,94 @@ def _is_duplicate(a: NewsItem, b: NewsItem, threshold: float) -> bool:
     return SequenceMatcher(None, a.normalized_title, b.normalized_title).ratio() >= threshold
 
 
-def rank_and_filter(items: list[NewsItem], cfg: dict[str, Any]) -> list[NewsItem]:
-    """Score everything, drop noise, de-duplicate (keeping the best-scored copy), cap the list."""
+# Story size (2026-11-20): W47's 30 seats went to 8 AWS blog posts, 6 NVIDIA posts and GitHub release notes while
+# the Anthropic IPO, carried by 117 articles, was left out. Headlines that share two key words tell one story;
+# the number of different outlets carrying it is the strongest sign it matters.
+_STORY_STOP = set("""and the for with its how are can now new from after over what why who you our not has was get
+set top all out off via its than that this into about amid says said will just more most first year week today
+news update report agent model chip data tech 2026 2025 launche launch open use using help""".split())
+
+
+def _key_words(title: str) -> set[str]:
+    out = set()
+    for w in re.sub(r"[^a-z0-9 ]+", " ", title.lower()).split():
+        w = w[:-1] if w.endswith("s") and len(w) > 4 else w
+        if len(w) >= 3 and w not in _STORY_STOP:
+            out.add(w)
+    return out
+
+
+class _Stories:
+    """Which items tell the same story: two shared key words, ignoring words in more than `common` of headlines."""
+
+    def __init__(self, items: list[NewsItem], common: float = 0.2):
+        self.words = {i.id: _key_words(i.title) for i in items}
+        df: dict[str, int] = {}
+        for ws in self.words.values():
+            for w in ws:
+                df[w] = df.get(w, 0) + 1
+        too_common = {w for w, n in df.items() if len(items) >= 20 and n / len(items) > common}
+        self.words = {k: ws - too_common for k, ws in self.words.items()}
+        self.by_id = {i.id: i for i in items}
+        self.index: dict[str, list[NewsItem]] = {}
+        for i in items:
+            for w in self.words[i.id]:
+                self.index.setdefault(w, []).append(i)
+
+    def same(self, a: NewsItem, b: NewsItem) -> bool:
+        return len(self.words.get(a.id, set()) & self.words.get(b.id, set())) >= 2
+
+    def outlets(self, item: NewsItem) -> int:
+        shared: dict[str, int] = {}
+        for w in self.words.get(item.id, ()):
+            for other in self.index.get(w, ()):
+                shared[other.id] = shared.get(other.id, 0) + 1
+        return len({item.source} | {self.by_id[k].source for k, n in shared.items() if n >= 2})
+
+
+def rank_and_filter(items: list[NewsItem], cfg: dict[str, Any], flagged: set[str] | None = None) -> list[NewsItem]:
+    """Score everything, add the story-size bonus, drop noise, de-duplicate (keeping the best-scored copy), cap
+    seats per source and per story, reserve seats for the stories the news watch flagged, cap the list."""
     s = cfg["scoring"]
     now = datetime.now(timezone.utc)
+    titled = [i for i in items if i.title.strip()]
+    stories = _Stories(titled)
+    bonus_w = float(s.get("coverage_bonus", 0))
+    for i in titled:
+        score_item(i, now)
+        outlets = min(stories.outlets(i), 64) if bonus_w else 1
+        i.score_breakdown["coverage"] = round(bonus_w * math.log2(outlets), 3)
+        i.score = round(i.score + i.score_breakdown["coverage"], 3)
+    scored = sorted(titled, key=lambda i: i.score, reverse=True)
 
-    scored = sorted((score_item(i, now) for i in items if i.title.strip()), key=lambda i: i.score, reverse=True)
-
+    per_source, per_story = s.get("max_per_source"), s.get("max_per_story")
     kept: list[NewsItem] = []
     for item in scored:
-        if item.score < s["min_score"]:
+        if item.score < s["min_score"] and item.id not in (flagged or set()):
             continue
         # Because the list is sorted, the first copy of a story we keep is the highest-scored one.
         if any(_is_duplicate(item, k, s["dedupe_similarity"]) for k in kept):
             continue
+        if per_source and sum(1 for k in kept if k.source == item.source) >= per_source:
+            continue
+        if per_story and sum(1 for k in kept if stories.same(item, k)) >= per_story:
+            continue
         kept.append(item)
 
-    kept = _apply_track_quotas(kept, s.get("min_per_track", {}), s["max_items"])
-    log.info("Scoring: %d in → %d kept (min_score=%.1f)", len(items), len(kept), s["min_score"])
+    reserved: list[NewsItem] = []
+    for item in kept:
+        if len(reserved) >= int(s.get("flagged_seats", 0)):
+            break
+        if item.id in (flagged or set()) and not any(stories.same(item, r) for r in reserved):
+            reserved.append(item)
+    kept = _apply_track_quotas(kept, s.get("min_per_track", {}), s["max_items"], reserved)
+    log.info("Scoring: %d in → %d kept (min_score=%.1f, %d flagged seats)", len(items), len(kept), s["min_score"],
+             len(reserved))
     return kept
 
 
-def _apply_track_quotas(ranked: list[NewsItem], quotas: dict[str, int], cap: int) -> list[NewsItem]:
+def _apply_track_quotas(ranked: list[NewsItem], quotas: dict[str, int], cap: int,
+                        reserved: list[NewsItem] | None = None) -> list[NewsItem]:
     """Reserve seats per track so every beat of the episode has material, then fill by score.
 
     `ranked` is already sorted and de-duplicated. Each track's best N items are taken
@@ -151,13 +217,13 @@ def _apply_track_quotas(ranked: list[NewsItem], quotas: dict[str, int], cap: int
     scores regardless of track. Score order is restored at the end so the editor
     still sees the strongest story first.
     """
-    chosen: list[NewsItem] = []
+    chosen: list[NewsItem] = list(reserved or [])
     for track, n in quotas.items():
-        chosen += [i for i in ranked if i.track == track][:n]
+        chosen += [i for i in ranked if i.track == track and i not in chosen][:n]
     for item in ranked:
         if len(chosen) >= cap:
             break
         if item not in chosen:
             chosen.append(item)
-    chosen = chosen[:max(cap, sum(quotas.values()))]
+    chosen = chosen[:max(cap, sum(quotas.values()) + len(reserved or []))]
     return sorted(chosen, key=lambda i: i.score, reverse=True)
