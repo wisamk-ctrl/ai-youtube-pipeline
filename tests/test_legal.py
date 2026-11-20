@@ -89,3 +89,10 @@ def test_only_claims_are_checked_for_quotes():
     md = head + "| 5 | أهلا فيكم بـ«أسبوع الذكاء الاصطناعي»، معكم وسام. | greeting | none |  |\n" \
                 "| 6 | Who decides what \"out of control\" means? | question | none |  |\n"
     assert legal.check(md, ITEMS) == []
+
+
+def test_a_short_name_in_quotation_marks_is_a_check_not_a_block():
+    """W47-en: SDAIA's «Year of AI» programme name was blocked as an unsupported quote."""
+    md = smap((53, 'SDAIA launched a "Year of AI" initiative across universities.', "partial", REUTERS))
+    flags = legal.check(md, ITEMS)
+    assert not majors(flags) and [f.rule for f in flags] == ["quote"]

@@ -38,6 +38,7 @@ POWER = re.compile(
 NEGATIVE = re.compile(
     r"\b(fail\w*|criticis\w*|criticiz\w*|corrupt\w*|abus\w*|condemn\w*|reject\w*|blam\w*|repress\w*)\b"
     r"|فشل|فشلت|انتقد|انتقاد|فساد|انتهاك|أدان|رفض|قمع|لام", re.I)
+SPEECH = re.compile(r"\b(said|says|say|called|calls|described|told|warned|quoted)\b|قال|وصف|حكى|صرّح|صرح|حذّر|حذر", re.I)
 QUOTE = re.compile(r"«[^»]{3,}»|“[^”]{3,}”|\"[^\"]{3,}\"")
 _ROW = re.compile(r"^\| (\d+) \| (.*) \| (\w+) \| (\w+) \| (.*) \|\s*$")
 _LINK = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
@@ -80,8 +81,13 @@ def check(source_map_md: str, items: list[NewsItem]) -> list[Flag]:
             else:
                 flags.append(Flag(n, "major", "allegation", sent,
                                   f"claim against someone on {len(outlets)} outlet(s), none tier A with direct support"))
-        if QUOTE.search(sent) and support != "direct":
-            flags.append(Flag(n, "major", "quote", sent, f"quoted words, source support is '{support}'"))
+        quotes = [q.strip('«»“”"') for q in QUOTE.findall(sent)]
+        if quotes and support != "direct":
+            # A name or term in quotation marks (a programme, a product: ≤ 5 words) is a check; real quoted
+            # speech is major (W47-en: SDAIA's "Year of AI" was blocked as a quote).
+            short = all(len(q.split()) <= 5 for q in quotes) and not SPEECH.search(sent)
+            flags.append(Flag(n, "check" if short else "major", "quote", sent,
+                              f"quoted words, source support is '{support}'"))
     return flags
 
 
