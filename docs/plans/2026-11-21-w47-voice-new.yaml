@@ -9,3 +9,15 @@
 17-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=5fb3664a29584e149a5d13688216d856.wav"}
 19-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=788d50a77bf0457083a5052c2c8d2a76.wav"}
 21-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=487b8ba9eee1473c8013089cfa3c9869.wav"}
+# Face clips submitted (create_video_from_image, look D v2, 1080p 16:9) — fetch with get_video(video_id) for the URL:
+# 01-face b504af272a4e559d14a50841d6739502 (audio = old 01-face: id=a56df909d432437cb7dac475a5136a37.wav)
+# 03-face d912a73abc195f72339fad9d9ebf618e
+# 06-face 7fdfe00a532967fc0e48e807e0a39b0f
+# 08-face a2e3e879653e05911c992866dc1e4831
+# 11-face 6eb9bd479b4161c4b0090030e73190e0
+# 13-face 6b32e6941fd26a0dfa2711c3c031bb7c
+# 15-face bce2cde49f4550db8ea4313f8b41d104
+# 17-face a2770ce364818cf5dbefedab98206e23
+# 19-face fea975910d73d8ec2df1a0db8190f7d4
+# 21-face 42b46883efdc41d3ea94bc76df37c6b5
+# 23-face 12669db28400d5b7527129a4eedb64fe (audio = old 11-face: id=cc0ed3838b614417996744a7186f795a.wav)
