@@ -340,11 +340,11 @@ It's not only the funds. According to Forbes Middle East, Hussain Sajwani, the f
 [Visual: number $50 million | Sajwani's 2024 purchase]
 $50 million.
 
-Forbes now puts his stake at about
+Forbes Middle East valued his stake at the listing at about
 
 [Pause]
 
-[Visual: number $1.9 billion | Forbes estimate of Sajwani's stake]
+[Visual: number $1.9 billion | Sajwani's stake at the listing, per Forbes]
 $1.9 billion.
 
 [Visual: photo Abu Dhabi skyline]
