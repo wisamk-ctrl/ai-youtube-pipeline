@@ -29557,7 +29557,7 @@
    ],
    "id": "9e37cbced3",
    "first_seen": "2026-11-18T18:42+00:00",
-   "flagged": false
+   "flagged": true
   },
   "d5174a46cc": {
    "source": "Yahoo Finance",
@@ -41644,7 +41644,7 @@
    ],
    "id": "0a2b78cecf",
    "first_seen": "2026-11-19T16:42+00:00",
-   "flagged": false
+   "flagged": true
   },
   "720017a6d2": {
    "source": "Medical Daily",
@@ -53871,7 +53871,7 @@
    ],
    "id": "7c8b7caaf2",
    "first_seen": "2026-11-20T14:41+00:00",
-   "flagged": false
+   "flagged": true
   },
   "f5e361a2c2": {
    "source": "The New York Times",
@@ -55359,7 +55359,7 @@
    ],
    "id": "f32307613c",
    "first_seen": "2026-11-20T16:42+00:00",
-   "flagged": false
+   "flagged": true
   },
   "9cde150622": {
    "source": "The New York Times",
@@ -65916,6 +65916,870 @@
    "id": "c12857c4f6",
    "first_seen": "2026-11-21T14:42+00:00",
    "flagged": false
+  },
+  "52616db544": {
+   "source": "NPR",
+   "source_type": "rss",
+   "title": "Tech stocks end the week on a down note, despite Anthropic's mega-IPO",
+   "summary": "Tech stocks end the week on a down note, despite Anthropic's mega-IPO NPR",
+   "url": "https://www.npr.org/2026/11/20/nx-s1-6048645/tech-stocks-end-the-week-on-a-down-note-despite-anthropics-mega-ipo",
+   "published": "2026-11-20T21:38:32+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "52616db544",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": true
+  },
+  "a54952bb44": {
+   "source": "Middle East Eye",
+   "source_type": "rss",
+   "title": "After outages hit US banks and aviation, FBI database reported hacked",
+   "summary": "The FBI is investigating a breach of its nationwide criminal information database, reported after a series of major technology disruptions in recent weeks. The intrusion into the National Crime Information Center (NCIC), which federal, state and local law enforcement agencies use to share criminal justice information, was discovered in recent days, CNN reported . The FBI has called it a central law enforcement information system used by agencies across the country. The potential consequences extend beyond the theft of sensitive information. A former FBI official who led investigations into cybercriminal groups said that officers rely on the database to identify fugitives, check outstanding warrants and access information. “My concern isn’t simply whether hackers gained access to sensitive information, although that is an issue, but whether they could compromise the accuracy of the information that officers rely on,” the former official told CNN. FBI director Kash Patel addressed the bureau's cybersecurity efforts on Fox News on Thursday, after officials had learned of the latest intrusion. Patel touted Operation Winter Shield , an initiative launched earlier this year to encourage companies to strengthen their digital defences and protect sensitive information. “Other administrations could have made these updates, but they didn’t,” he said. “We are staying ahead of the curve and making up for lost time.” The FBI launched Operation Winter Shield in February as a cybersecurity campaign aimed at helping private-sector organisations strengthen their information technology and operational technology systems. The FBI incident has unfolded alongside a series of technology disruptions affecting major US institutions. On 13 November, the Federal Aviation Administration (FAA) ordered a nationwide ground stop after a technical problem disrupted its air traffic communications network, grounding flights for several hours . The disruption affected more than 18,000 flights, according to Reuters. The FAA said the problem began when its legacy telecommunications system became unstable after receiving an unusually high volume of data through its network. Days earlier, a global outage affecting Microsoft's services disrupted Outlook, Teams and its Copilot assistant, affecting organisations across several countries. The outage affected businesses, banks, hospitals, courts, airlines and government agencies. Downdetector received reports from users in more than 70 countries…",
+   "url": "https://www.middleeasteye.net/news/after-outages-hit-us-banks-and-aviation-fbi-database-reported-hacked",
+   "published": "2026-11-21T16:23:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Microsoft Copilot"
+   ],
+   "id": "a54952bb44",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": true
+  },
+  "6e42f6cf08": {
+   "source": "www.wam.ae",
+   "source_type": "rss",
+   "title": "Dubai Future Foundation, MBZUAI sign collaboration agreement to advance scientific research, develop AI applications",
+   "summary": "Dubai Future Foundation, MBZUAI sign collaboration agreement to advance scientific research, develop AI applications www.wam.ae",
+   "url": "https://www.wam.ae/en/article/c3d8kxn-dubai-future-foundation-mbzuai-sign-collaboration",
+   "published": "2026-11-21T15:40:56+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.3,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "MBZUAI"
+   ],
+   "id": "6e42f6cf08",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "0a547138fa": {
+   "source": "Zawya",
+   "source_type": "rss",
+   "title": "India's AI-free appeal draws record foreign buying, earnings will decide if it lasts",
+   "summary": "India's AI-free appeal draws record foreign buying, earnings will decide if it lasts Zawya",
+   "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPREZONENQWGtxNzJSUE8ySXlfc3JaR2JZdHlYWnVuNXdyT1ZPb1QzTVpRYmY1ZVhhSExLYUdpTlRNX1J0b2NhMzZwckIyQVRfSmlGYXQxa3k5RE93T2cwYTlXRkVoR1BGMjZOSG5aTHFuNnV5R3loMGxMWGhMcHpfVHNXb2hQOE9nUV91MUxNYmM5amZXN0ZDSVlwWjFBR052OXNOQk85dkFWdUdMTV80ZDhVODNMTmJ1SmVYeFJWaUxxVmhCUG9UbmpwM0IyaTZIc1FxS0hwTWw1UnZiRnVValZWLUlCUQ?oc=5",
+   "published": "2026-11-20T11:06:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "0a547138fa",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "ce32599a6f": {
+   "source": "Zawya",
+   "source_type": "rss",
+   "title": "ECB's Lagarde: cyber threat boosted by AI is my top worry",
+   "summary": "ECB's Lagarde: cyber threat boosted by AI is my top worry Zawya",
+   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOTkFvX0k3Q09BTkNFZXpFZVN6SWVLUTJjSU11X2RUV3VNaDdJaXZhZDBFQmZ6NTdtcV82OE9NZGQwQUZRcGpUNlB2SFZxeXpYdHBLTVpBRFoxYlg1RVlncGNpeWd1S0ZYb2V0NkZOWVl2TTNESzJIcm5ncldHbU9VclVsOEpWVWtLelJ0cFNhNWNZcXN6SVR2Njl4dU1JTkZGMDU0cVhTblZDX3h0aU9FMUhTenA1cXNNbmVjeQ?oc=5",
+   "published": "2026-11-20T12:41:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "ce32599a6f",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "867a3696c3": {
+   "source": "Zawya",
+   "source_type": "rss",
+   "title": "Anthropic's post-debut stumble delivers reality check for AI trade",
+   "summary": "Anthropic's post-debut stumble delivers reality check for AI trade Zawya",
+   "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOU0owY21vZGN4THduZHpWbmNpM0VqWEM2S0FUMVRDczhlTFJOQ0FhMmNveXVPZnV3eUNCZDE3VmJLUDFXLVFsalBqOW16OGs2X0ZaaFRRR3BzOEUtNnZVNENtUy0yZm8tM3FlYndXdG1BS3ZrWU8xTXpmeXhCNjU2N1RMVDhXbEE2LTQ5VnRlOWtsc0NiUXZwbnptcTcxWF9zb0xDZ2NBaXhkTm5wLVduWTBDbDdpZ3JZVHR3ZGZ1czFFNVdvSEh4ZEpfSEE4dw?oc=5",
+   "published": "2026-11-20T12:32:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "867a3696c3",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": true
+  },
+  "1e2e80b202": {
+   "source": "Ahram Online",
+   "source_type": "rss",
+   "title": "Business - Economy",
+   "summary": "Business - Economy Ahram Online",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQLTQwbEY2dm1lMVRnMmpYdXowT1AzSW5MckFMVjg3ZDlrUTktc2JwN3VLN0VHZldCVHpod2w1X0RnZVBiMy1yS29wMDZ0bTlWZ21zR3BnNWR6blp6Sm9hZzQ1TDhCM2Z1T2NacnpoMk1TbU1ZRF9iZEFqWHFnNEhHaUhUaVpzMnIwR09Zb1N6UzVGVGFzZ0hpZnFpa0N3Zw?oc=5",
+   "published": "2026-11-20T11:45:17+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "egypt",
+   "entities": [],
+   "id": "1e2e80b202",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "cccd77559d": {
+   "source": "TechRadar",
+   "source_type": "rss",
+   "title": "AI agents ace 79% of training-run checks but stumble on core software engineering",
+   "summary": "OpenAI says its AI agents are becoming increasingly capable of handling research assignments, including work previously requiring several hours of human effort. The company’s latest internal assessment indicates that autonomous task completion is improving, although performance varies considerably depending on the nature of the assignment. Despite these advances, OpenAI maintains that human researchers continue to provide essential direction, supervision, and judgment throughout its development process. According to OpenAI, the proportion of research tasks completed without human intervention increased substantially between March and October 2026. Agents independently completed 46% of assignments estimated to require two to four hours of human work, compared with just 23% in March. For assignments requiring four to eight hours, their estimated success rate increased from 13% to 35% during the same period. However, these improvements do not translate equally across every research activity, with some technical responsibilities remaining particularly difficult for autonomous systems. OpenAI found that agents achieved a 79% success rate when monitoring training runs, while launching those runs produced considerably lower results. Writing software for inference and serving systems proved more difficult, with autonomous completion reaching just 25%. Performance also varied across research categories, with communication and analytical assignments generally producing better results than software development. Between August and October 2026, agents achieved estimated success rates of 69% for communication tasks and 58% for analytical assignments. Building research infrastructure recorded 43%, indicating that substantial differences remain across the technical responsibilities involved in developing advanced AI. Meanwhile, spending on coding agents has increased significantly among researchers, particularly those making the heaviest use of available systems. OpenAI estimates that median daily expenditure reached $2,400 in October, representing a 62% increase from September's $1,500. At the 90th percentile, daily spending climbed to $23,000, more than doubling September's $11,000 figure. OpenAI's findings also indicate that researchers are spending more time addressing safety concerns associated with increasingly capable AI tools . Documented contributions to Safety and Alignment increased 77% between January and September, representing the largest absolute increase…",
+   "url": "https://www.techradar.com/pro/openai-claims-ai-agents-now-complete-nearly-half-of-two-to-four-hour-research-tasks-on-their-own-but-says-humans-are-still-central-to-ai-development",
+   "published": "2026-11-21T14:15:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "OpenAI"
+   ],
+   "id": "cccd77559d",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "dd40d2e845": {
+   "source": "The Motley Fool",
+   "source_type": "rss",
+   "title": "Not Anthropic. Not SpaceX. This Is the AI Stock to Buy for the Long Term",
+   "summary": "By Lee Samaha – Nov 21, 2026 at 9:22AM EST 10 stocks we like better than Anthropic › The Anthropic ( ANT -8.50% ) initial public offering (IPO) this week reinforced the view that, despite recent turbulence related to developments at Nvidia , investment in artificial intelligence (AI) remains in high-growth mode. That's not in doubt; still, the key question for retail investors is how to find the best-value way to invest in it. Companies like the AI lab and Space Exploration Technologies ( SPCX -7.69% ) , with its AI infrastructure, rocket launch, and connectivity businesses, appear attractive on this basis. Still, I think there's another company that's a better buy on a risk-adjusted basis: On Semiconductor ( ON -7.42% ) . To buy into the investment theme, you need to believe that the use of AI applications will continue to grow, spurring growth for AI enterprises like Anthropic and, in turn, demand for SpaceX's data center infrastructure. While these assumptions about the outlook for end demand seem entirely feasible, the reality is that both companies are engaged in a fiercely competitive, highly capital-intensive arms race. In Anthropic's case, it needs to continually and heavily invest in leasing compute capacity from infrastructure services (including those from SpaceX) to compete for frontier model supremacy with its rivals -- a group that actually includes SpaceX. Anthropic has already made over $900 billion in spending commitments, including $120.5 billion in an agreement with SpaceX. In turn, compute providers like SpaceX and the well-known hyperscalers are having to make massive investments into new data center capacity to meet their contractual obligations. These investments are not risk-free. In SpaceX's case in particular, there are serious questions about how quickly its planned orbital data center satellites will depreciate . SpaceX also faces launch risk every time it attempts to send any cargo into space, and if it merges with Tesla , the company will be part of a much larger and more complex business. All told, if there's any slowdown in demand for AI applications, both Anthropic and SpaceX are likely to suffer disproportionately. The power and sensing chip company is largely a play on the increasing power density, not only in its core automotive and industrial end markets, but also in its fast-growing data center business. The company is best known for power control chips and sensing technology that are used in electric vehicles (EVs),…",
+   "url": "https://www.fool.com/investing/2026/11/21/not-anthropic-not-spacex-this-is-the-ai-stock-to-buy-for-the-long-term/",
+   "published": "2026-11-21T14:22:02+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "NVIDIA"
+   ],
+   "id": "dd40d2e845",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "cc825ef574": {
+   "source": "Bloomberg.com",
+   "source_type": "rss",
+   "title": "Wall Street Asks What Can Save AI Trade After Anthropic Wipeout",
+   "summary": "Wall Street Asks What Can Save AI Trade After Anthropic Wipeout Bloomberg.com",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-21/wall-street-asks-what-can-save-ai-trade-after-anthropic-wipeout",
+   "published": "2026-11-21T13:00:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "cc825ef574",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "617da27c87": {
+   "source": "Built In",
+   "source_type": "rss",
+   "title": "10 Frontier AI Labs to Know",
+   "summary": "Ever wonder how artificial intelligence develops enhanced capabilities? Look no further than frontier AI labs. These startups operate at the cutting edge of the AI industry, driving breakthroughs like foundation models and multi-agent systems , while enforcing safety and alignment standards to ensure the technology supports the common good. As a result, AI has gone from fringe invention to mainstream tool . The global AI market is expected to reach nearly $2 trillion by 2032, according to a 2026 Statista report , with several tech titans primed to go public in the near future — including a few frontier labs on this list. Here are some of the top frontier AI lab companies pushing the limits of artificial intelligence and writing the next chapter of the AI narrative. Related Resources Find Your Next Job on Built In Anthropic is an AI startup best known for its Claude chatbot , including an enterprise version that excels at coding. The company has a reputation for prioritizing AI safety , as demonstrated by its delayed release of its powerful Claude Mythos model. It also has a frontier team dedicated to understanding AI systems and developing best practices. More recently, the team has researched methods to prove that outputs come from a specific AI model. Meta is an AI and virtual reality company committed to designing AI for everyday individual use under its “ personal superintelligence ” vision. Behind the scenes, the company reorganized its AI initiatives under Meta Superintelligence Labs to accelerate its research. The lab has hit the ground running, releasing the compact Muse Spark model and a “ personal AI agent ” called Meta Muse that completes multi-step tasks with little to no supervision. Mistral AI is a French startup known for producing open-weight models , or models with publicly available finalized parameters that don’t include the original training data or code. One of the company’s latest installments is Mistral Large 4 , which features complex reasoning, coding and agentic capabilities. Besides open-weight AI, Mistral researches AI guardrails, simulations and robotics applications. Chinese startup Moonshot AI is perhaps best known for its Kimi K3 model , which specializes in in knowledge work, coding and video and game development. Already sparking speculation that China is catching up in the AI race, Moonshot followed this up with Kimi K3.1 Pro — the first model in its K3.1 series that actually improves on its predecessor’s coding, 3D…",
+   "url": "https://builtin.com/articles/top-frontier-ai-lab-companies",
+   "published": "2026-11-19T20:18:21+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "Meta AI",
+    "Mistral",
+    "Moonshot AI"
+   ],
+   "id": "617da27c87",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "c57973eeb2": {
+   "source": "Yahoo Tech",
+   "source_type": "rss",
+   "title": "Microsoft is making Copilot more useful by helping you manage files and PC problems",
+   "summary": "Microsoft is making Copilot more useful by helping you manage files and PC problems Yahoo Tech",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNQ0ZvRkNtbWxUaWliY3F1cnB6bzhFRHRvLU5zbVB3LVBUTG5IdEtKY3R1Z0lTV0JQanpZN3Q1RHJrWGlMQVVNTUpUdXREWGtGaVNULThYdHRVOFVYazJxeUFBaTFOS0JMM1Z3Z0FqeTJNNVBlMTA1WTBENEo3dUFFXzlnU3NRblJsd09PV1JqNkZpMmZheWJNTnlB?oc=5",
+   "published": "2026-11-21T13:30:06+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Microsoft Copilot"
+   ],
+   "id": "c57973eeb2",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "38779188ea": {
+   "source": "Yahoo Finance",
+   "source_type": "rss",
+   "title": "If the AI Trade Blows Up, Meta’s Saving Grace Is That Its Social Media Business Still “Generates a Ton of Cash”",
+   "summary": "If the AI Trade Blows Up, Meta’s Saving Grace Is That Its Social Media Business Still “Generates a Ton of Cash” Yahoo Finance",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPcUktSkRZYWUwTGJMNmdtQ3VYY2tGZkkyNEJybFZ6V3BGQlhFTmc5cktvOVRVVUFBYTdRUXh5bndlT3AyUFdOQ3lrbnZnV096MHBidk1NeU50Sm9GNkJESEZuLUtTanRuY0RYTFQ5Nmx2NFlxVUFvbzEwdDlQVUY2OVQ4dWNqaTRZRFlhRVdlT25UUUFuSnc?oc=5",
+   "published": "2026-11-21T15:35:34+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Meta AI"
+   ],
+   "id": "38779188ea",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "5e3634d36c": {
+   "source": "AsiaOne.com",
+   "source_type": "rss",
+   "title": "Trump administration weighs forcing US firms to disclose Chinese AI use, World News",
+   "summary": "Trump administration weighs forcing US firms to disclose Chinese AI use, World News AsiaOne.com",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPSXhrWDcyQmlGUGdXOGd3X1psTmdZMjB1eGRSMDJOZ2tXby1ZX1VuUUo3T0hoUG5ySjc2WUFiWjh2TUhiMjZFSjI1NEJJQzR3b3FIRWRtTHVsejZXWEx4akhtUTdCYmY5SEVkblk3NnNMMC02cjV6YVhoNUZKb3FTWmtoSWdRekxJZ1RPNzJpM3Mxb0ZLdTM1a2Z2dko1bWM?oc=5",
+   "published": "2026-11-20T04:32:07+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Alibaba Qwen"
+   ],
+   "id": "5e3634d36c",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": true
+  },
+  "2d71eb4c27": {
+   "source": "Forbes Middle East",
+   "source_type": "rss",
+   "title": "Chinese Tech Stocks Slide As New US Chip Curbs Threaten Cloud Growth",
+   "summary": "Chinese Tech Stocks Slide As New US Chip Curbs Threaten Cloud Growth Forbes Middle East",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOR1dYVVExZjd3VmF4ZXJxZnpVTFdta2hVYzNoR2hWQUMtWVRUOVZfa2xrWXhlZWd6aFZ6NWxJVG1aUmZ5cE80WkszWkk3VUFBLWZ2SzJFVjRSUDZVR1lVYm1rdXlCZXJvZ0ItdVkyNmJkZl94T3FMM01DaG1KWGRvOTJHZnRiNHpiRjB4eU9RZ1VvU0Jab0tZSzBYaUZTd1g3UnE4R3lrdVFWSlJtMGJSeXBIRQ?oc=5",
+   "published": "2026-11-20T12:25:09+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Zhipu AI"
+   ],
+   "id": "2d71eb4c27",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "260898766a": {
+   "source": "Blockchain News",
+   "source_type": "rss",
+   "title": "Unitree Robotics (UNITREE) Stock Price Prediction: Weak short-term structure meets fresh derivatives buildup",
+   "summary": "Unitree Robotics (UNITREE) Stock Price Prediction: Weak short-term structure meets fresh derivatives buildup Blockchain News",
+   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPUTJqSkQtQlZlY3VIRUZOeDVHdW5kZHEyQUtDQy1FTzB4U0ozdTM4SF9ULTBfdU0wdFE4TC1PRlVyRngwUlFrdGRoeG4xVjdHd3FBcnhmSkpjWDBZcG8xS01JcjVpdkE2UDlFZXdKaHc0OUpLeTBYbG5fQktJeFh3dm5VaS16Mm1Zb0YtYm5TLXE5S01DeEQ1YzBMT1hqcDFDOHc?oc=5",
+   "published": "2026-11-20T13:42:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Zhipu AI"
+   ],
+   "id": "260898766a",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "7696a94183": {
+   "source": "AIBase",
+   "source_type": "rss",
+   "title": "Before Opening Up the 70B Weights, Tencent First Gave Hy4 a Safety Checkup",
+   "summary": "Before Opening Up the 70B Weights, Tencent First Gave Hy4 a Safety Checkup AIBase",
+   "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5ETDJDSDBFczF3Q2lFXzZCaXctV2tEZ2VZZWRjYXl4WjF6SmwwWFFIUEx3czBTZkk4V2RtdHZTb1FxVDdRNVBDMnJB?oc=5",
+   "published": "2026-11-20T13:48:48+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Tencent Hunyuan"
+   ],
+   "id": "7696a94183",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "ad83bed4d5": {
+   "source": "explainx.ai",
+   "source_type": "rss",
+   "title": "OpenRouter MiniMax Leak Email: What to Do (Nov 2026)",
+   "summary": "OpenRouter MiniMax Leak Email: What to Do (Nov 2026) explainx.ai",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNXzhsbTl5bkZaOXhNNW8zZVczSTFNWWcwRkRuM0wxdlhYbkoyaU1COURDMkVIWV94UDRhMWZtTlRQWmlFY1UzVUd5WkVXa21Mdkc3U19UOFZrYWJ3MjAyb196d0l1U0dVRkxQdXR5WUtBZnpSdUlqQlNTQ2lvQkVzamZPQWFrV000WEZTQTIwcV9iVU0xMDZZWkpYZHdRclBB?oc=5",
+   "published": "2026-11-21T00:00:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "MiniMax",
+    "OpenRouter"
+   ],
+   "id": "ad83bed4d5",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "58894f42ac": {
+   "source": "Bioengineer.org",
+   "source_type": "rss",
+   "title": "Elderly Health Monitoring AI Rarely Incorporates Human Centered Privacy Features",
+   "summary": "Elderly Health Monitoring AI Rarely Incorporates Human Centered Privacy Features Bioengineer.org",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQZmI5enFqM3lzZUVUMUtZYUYzNlM1bHJuV09wVWJCWGhnMEg1M0RlRWt6Y21PcXNLTE5LM1FadmZETC1US0MyWk9sckY1d3FZdXhKcFFYYmptdGFoU0JKV3ozQ2hxUE0zNFNVZEhmODZjVTgwWDBzaHhxYnV4MDZoam1FellQWnQ4S2hqWGpxSVhZQkxVYkg4ZVVuaFd3WERlQUJWQ0N4Z24?oc=5",
+   "published": "2026-11-21T09:47:11+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "Humain"
+   ],
+   "id": "58894f42ac",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "e48b3df42f": {
+   "source": "www.wam.ae",
+   "source_type": "rss",
+   "title": "Dubai Future Foundation, MBZUAI sign collaboration agreement to advance scientific research, develop AI applications",
+   "summary": "Dubai Future Foundation, MBZUAI sign collaboration agreement to advance scientific research, develop AI applications www.wam.ae",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPMG5ocmV2Uk4tNzB1Qk12aFRpX2RKTnVpclpVaVRrMUVQanZMZlVPdkIzZXlKd2VUMWVfdENieTRlY0ZOLXh1V3YyT3RiMURUUUhDanRjaGM4MUtURUN2NUtkdVFFaDhQdDA2RWVFUmo3SU45X3g3UGt1cWtlVDBqTmxvRTVRTkJCT2toU1cyVE8?oc=5",
+   "published": "2026-11-21T15:40:56+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.17,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "MBZUAI"
+   ],
+   "id": "e48b3df42f",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "55db3d9645": {
+   "source": "Hostinger",
+   "source_type": "rss",
+   "title": "How to deploy a website from your IDE: Four methods",
+   "summary": "How to deploy a website from your IDE: Four methods Hostinger",
+   "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPT20yQlFET2I2WUFXSVRZblRUMHNkTElkTXpENGk2ZE9tOGI1bFN6Vk1wazJnOUYzTXNwZENSV1NaRS1LVmxXWEkyTVhva0hPQmFaTm5kN25VYzVLX01yZFRwZl9uY0gyeEVhSG9aVHREdE5nTmNjUDhYa0ZBUkxSYzdnRQ?oc=5",
+   "published": "2026-11-21T10:48:21+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "OpenClaw",
+    "n8n"
+   ],
+   "id": "55db3d9645",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "c7ea1367d0": {
+   "source": "Wisevoter",
+   "source_type": "rss",
+   "title": "Vercel Launches Board for AI Agent Coordination",
+   "summary": "Vercel Launches Board for AI Agent Coordination Wisevoter",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNb255VkNPbUlnZ1pUbXAyQjVYNTRsTDJpc1lnb09zU0lHNVB3YjExTGJxbmlfMG93RURHVGs2ZU5zNG00a21iNFFyYUQ5bm9qellBNkdPSkt2RF9JQzNGRDl5NTVCSFg3LXZiWlVzUC03Rm9JS0FsclQ0MEJzaE1XSHA0MEFWSlhrZzNv?oc=5",
+   "published": "2026-11-19T18:35:15+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "LangChain"
+   ],
+   "id": "c7ea1367d0",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "f9550aa2a1": {
+   "source": "ad-hoc-news.de",
+   "source_type": "rss",
+   "title": "SAP Slips 2.1% as AI Product Timelines Stretch Into 2027",
+   "summary": "SAP Slips 2.1% as AI Product Timelines Stretch Into 2027 ad-hoc-news.de",
+   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPemc0UEZDMjRSZlBJNmV2WFNsRFBpSTUxNjZfbVZjV0FucTJXcjNYVXlYWEt2Y0N4bjNjbmh1RXg2U3VhVTAwemFUeFJGVlRoa3NmZzA3OHdPQWRPWHhMbFE3SV8xQk5zcjVEUGR2REN3VHJTWVVmclhuc25ncm9QRF9KazRadzJzUWFvWi1weWxrdDl2Z2VOX2RRVGpVSGI0RTY3cldMYVBzaVhIQXQ3YlA2YnN5QmdPUW9Sb2Z0R19yenB2S3c?oc=5",
+   "published": "2026-11-21T10:20:49+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "n8n"
+   ],
+   "id": "f9550aa2a1",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "209546c792": {
+   "source": "GeekWire",
+   "source_type": "rss",
+   "title": "Build a Team of AI Agents in One Workspace: Live Build with GenSpark + Happy Hour",
+   "summary": "Build a Team of AI Agents in One Workspace: Live Build with GenSpark + Happy Hour GeekWire",
+   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWG5XbzlCRG5BMlRZdURPS0syR3pSckRnUEN1VzN3S2tqTXhzMWZSV3NlU01UUVg1MV9RdVRaMkFjb1puOTViOUozbEhyXy1vN2RPR3BLcmdEZ05FX2VnRDN4S3BpeGRDSUdNTGZmVWx2N3A0N1NYNWtYa0pWVG9KN2Q4UXV2OWd0QW5fWllNTTN1aXUybTBTV2dCM240NW1GWGpCN1FhaUQ4SDZXelM5R2E0OVdfX0Q5WldJ?oc=5",
+   "published": "2026-11-21T14:31:09+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "Genspark"
+   ],
+   "id": "209546c792",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "e99dc8459f": {
+   "source": "Microsoft",
+   "source_type": "rss",
+   "title": "Inside Track - Launching the personal agent era: How we're rolling out Autopilot at Microsoft",
+   "summary": "Inside Track - Launching the personal agent era: How we're rolling out Autopilot at Microsoft Microsoft",
+   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNdHRrZWEwQjB2dzlUQW5wT1MtYU1TVUFYNUkyUjN2RXJGMzFaZFBvZDBmMTZDdDFmYk5sdTVFSWZfUHRIMFNNTWpfYmFBMzIwNC1ndGgyNXQyQ2xXUmdXckJlNXQ2dzl0SlMzS3RVbUFkazFNV0V6QWtIaWdnNlZyVWhBenp3cXZRUDlPRFpKUlM5MGIzdXB4Y042X09JdHYzMUc0c2lvVVprQVJmRnd0WkdLQkU5dWxjOFhLZQ?oc=5",
+   "published": "2026-11-19T16:50:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "enterprise",
+   "entities": [
+    "Copilot Studio"
+   ],
+   "id": "e99dc8459f",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "4135d1c888": {
+   "source": "CX Today",
+   "source_type": "rss",
+   "title": "Ignite Day 2: Microsoft Wants to Sit on Top of Your Contact Center",
+   "summary": "Ignite Day 2: Microsoft Wants to Sit on Top of Your Contact Center CX Today",
+   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQUnpPWXByZm94YmhhcXloSjZRT0hWWFVTdmRRRWFYWUd5R2NHeU9HSTFhZDdNMk1oRnpUd1JYY3ItQkpubFRfdGJPZm1JSEd5TVVLb3hYcUstVlltdklvSTNmWWlveGRpcEo0Y1VVaU53QUdXUlBXQUVROUZhb3JUeDk1Wlg?oc=5",
+   "published": "2026-11-19T17:35:02+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "enterprise",
+   "entities": [
+    "Copilot Studio"
+   ],
+   "id": "4135d1c888",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "ad4e9c8a88": {
+   "source": "IT Brief New Zealand",
+   "source_type": "rss",
+   "title": "Esker brings source-to-pay risk checks into Copilot",
+   "summary": "Esker brings source-to-pay risk checks into Copilot IT Brief New Zealand",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQTDBJaUZyRXRTT0FVTWZfUHpwRng1MWFCSjJWclZFZlhrcHkyeUI2bE5QTlREUnBseVJGVlpFaURPREVoZ3EyZlA0UnA3WERQQmZ2V29PckhrMVVGaTRrc0taLU5SR19jU1dWLW5weG1XejdST2s1UEhvckRwMHB2czhNdGtndw?oc=5",
+   "published": "2026-11-19T16:45:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Microsoft Copilot"
+   ],
+   "id": "ad4e9c8a88",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "10c6e511a4": {
+   "source": "Everything-PR",
+   "source_type": "rss",
+   "title": "AI Customer Service Agent Pricing: Only 13 of 25 Products Could Be Budgeted From Public Terms",
+   "summary": "AI Customer Service Agent Pricing: Only 13 of 25 Products Could Be Budgeted From Public Terms Everything-PR",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9TSjNNTU51UzdMdHhidFRuckZUeUJEOHFCOVJCdmdYLVR2b18xSHk0dkZfSjU2M2RMeDNBOWMzb1BZMm1kWm1zZzlNdUlqZVBTQmFPRFhwUUZIbjJpNFJvcnZXeWZKbUE?oc=5",
+   "published": "2026-11-21T05:34:20+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "enterprise",
+   "entities": [
+    "Salesforce Agentforce"
+   ],
+   "id": "10c6e511a4",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "5e70af3ba2": {
+   "source": "Yahoo Tech",
+   "source_type": "rss",
+   "title": "Tech layoffs tracker 2026: All the job losses across Disney, Intel, Amazon, Microsoft, Apple, Meta and others",
+   "summary": "Tech layoffs tracker 2026: All the job losses across Disney, Intel, Amazon, Microsoft, Apple, Meta and others Yahoo Tech",
+   "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOc1VXdUV4VHNsYl9ueVBBN0xDWUo4RG1KYXFGNXlWNTlFOVZ5VUdfNnBUVlkxXzFWNV9tZDhrTzdWTW9FVTl3Y2ppWTJXbFhWSzVHeG5JSm9pRjQxZ3ZnMXpCY3FTYVBKcHhOV0hCZjBiZEU4dl9wRHNBQlFMbHVNWkFsbkQzOHBkQ2FadzF2UnZyUWZJeEtseFhLQ1ZQcVBSUmR2dEpwd0J1Zjd1QThyYzJxN2gxUi0xbFhVamVuYUdFaldBQXRUMFRHRTJDa1JiY0VvUmJEZW5WT2ZHdWVsSzdFOXBld1dOTFNNTWtoZ1lQOVp2T2xmUkNPZy1ibXdy?oc=5",
+   "published": "2026-11-20T18:25:29+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Intel"
+   ],
+   "id": "5e70af3ba2",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "a1a188cf20": {
+   "source": "Jewish News",
+   "source_type": "rss",
+   "title": "The Israeli founders giving AI agents a test drive",
+   "summary": "The Israeli founders giving AI agents a test drive Jewish News",
+   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQdEx1ZzVqOUZwd3hKNHNNWEllelBsSWFMZkVXRkRIdkdzTDVqektjTHAwRDJEemtJU1oxSXJZLUhuQWVoWE8xQTZFcVduQ2xZb1NSMUg0bkZVLW54aGFYajFTM0RLYW5OVTNlNXBnTnVodWlia3YxekJOU0lsTXJiNHVodnhkYmVtOGhxaNIBjAFBVV95cUxQdEx1ZzVqOUZwd3hKNHNNWEllelBsSWFMZkVXRkRIdkdzTDVqektjTHAwRDJEemtJU1oxSXJZLUhuQWVoWE8xQTZFcVduQ2xZb1NSMUg0bkZVLW54aGFYajFTM0RLYW5OVTNlNXBnTnVodWlia3YxekJOU0lsTXJiNHVodnhkYmVtOGhxaA?oc=5",
+   "published": "2026-11-20T06:34:08+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "enterprise",
+   "entities": [
+    "Salesforce Agentforce"
+   ],
+   "id": "a1a188cf20",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "f7f1bc9edf": {
+   "source": "Australia",
+   "source_type": "rss",
+   "title": "AskNicely brings NiceAI feedback tool to Slack & mobile",
+   "summary": "AskNicely brings NiceAI feedback tool to Slack & mobile Australia",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPX0FRbzctYWpxOTMyaVN0a3RPb0cxdGNTT0Ewbl84TEJMQXB0NV9sN2dwMVFKcG52Yk1xMHdEcUZ5Y1ZYRHJtMVc4RDd5THJiV3UyR2ZseDZMaGVpUGF1THlKek95d2NOYWMwQm5wRTRwZzZPeldMbVpIWW1pWXdfQ25oa2hBY1h1dVp5c3pJbzJRdw?oc=5",
+   "published": "2026-11-20T06:09:28+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "enterprise",
+   "entities": [
+    "Salesforce Agentforce"
+   ],
+   "id": "f7f1bc9edf",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "deba49ae5c": {
+   "source": "Nubia Magazine!",
+   "source_type": "rss",
+   "title": "Top 10 Best AI Customer Service Platforms In 2026",
+   "summary": "Top 10 Best AI Customer Service Platforms In 2026 Nubia Magazine!",
+   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9LY1lHTUpLX2VFdWxucXU4cmcyM19Fdzh6VEN1UU94R2oyeXQzd2s4ZkdqRGp1bks5WmxPMEpVblZaclFmUlppSkpkMzV2OU0tRUpJcmVnSFNTb3UzV25ma0VlYzRYWTZDc1VmNHlob0h0dw?oc=5",
+   "published": "2026-11-21T14:36:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "enterprise",
+   "entities": [
+    "Salesforce Agentforce",
+    "ServiceNow AI"
+   ],
+   "id": "deba49ae5c",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "418dfe75a5": {
+   "source": "PBS",
+   "source_type": "rss",
+   "title": "Bessent says no further restrictions are needed for Nvidia chip exports to China",
+   "summary": "Bessent says no further restrictions are needed for Nvidia chip exports to China PBS",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNdGhFLVdNQVNlbl9tSXFrRmI4LS1VQmhxamhUS0F0WjhFMmoydGtBbG5Lc1AzbklUekQ0NDdvWDM0Q2Nfd2dOUTZEdE9MVnZCUVJtc1p3M0R4M2VjVS1zNUdXWWF1R2ZnNmpQU2lJSXNQQlM5WUk3cF92bDB3c3F5N3d6ZEEySktWeVRmSkE4SXR3R3JUaXhObmhjdmgzSEgxNTV6d3N0M2k5UU9uSDBsRXZiNzIxRWJsQmfSAb8BQVVfeXFMUElMcEVVRXcweUZhTloxWGJFdlN0UWx2ZDBBSm5DRzhiejNJZlgtWWV2eUpiQ0diajZlZ3BrbmZEMTJRZnU2eVBJWkwxdGNzTkprSElzTk05VXhKREVDcnYwN0t4aXl2V2VFbHZ4SWNuWEVvUXA5bEE1dm94UWU3aTBQT0phSEEydHdEMWYzSkNvbWtlbHVlajJRblRfUUc3eFBXTFZmd2VYQWh2RjMwZzM3N2ZYQ0l3OWhqS29mQm8?oc=5",
+   "published": "2026-11-21T16:28:20+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "418dfe75a5",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "24bcdd4886": {
+   "source": "The Decoder",
+   "source_type": "rss",
+   "title": "Nvidia researchers argue huge AI context windows are a dead end",
+   "summary": "Nvidia researchers argue huge AI context windows are a dead end The Decoder",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPbXF6TUlfazBwTXdicE5fMkV0RnhLWmZGVlZDOUlULW1zcGgzSjZnQlFWZThqU3J6TU9ycFc0SGJBd01lcHlqaHltTmpscXpsejhEY0JBTldjVkhOcm9MT1dkRzZ2OThpTjljT0RYS0dvaXpJT1BYOWxNdTZNb2dha2xEa1R5YkFzdUQ1U3lhaUk1Zw?oc=5",
+   "published": "2026-11-21T16:23:45+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "24bcdd4886",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "3bd48bcca4": {
+   "source": "The Globe and Mail",
+   "source_type": "rss",
+   "title": "After Plummeting 62% This Year, Could Buying Intel Stock Today Set You Up for Life?",
+   "summary": "After Plummeting 62% This Year, Could Buying Intel Stock Today Set You Up for Life? The Globe and Mail",
+   "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNWGFYY3Awd1I0WDdvUkJwOW1SNTJaR19QaTdXRDBJaEpLdlY5dm9zRVlzVUJ3OVBfYlZLR1hpdEc5TWxKRjlfMDhvNS12YzF1Q0huSmlEUGZNVWNnaGZramxBc3dxa18wb0Q3RTNfSjFyakV1RS1UWUVFaFhOSThHekFfcGRVRzl0dGFna3BCQW55YllMcDItTkkwVGFNN2VyY0dWU0ZBamNIbVlkVk83d2JxN01YNnFnZVZhNFVQd1FWX0R0MFlXOU8wanFhbVVxcm44RGFXeWRxM3BTaDh2NHYxR3FMSGY3cVdxQW02cnZRMHYyVnVGeWctMA?oc=5",
+   "published": "2026-11-21T15:50:45+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Intel"
+   ],
+   "id": "3bd48bcca4",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "dadc79f238": {
+   "source": "Simply Wall St",
+   "source_type": "rss",
+   "title": "Qualcomm Stock Faces Apple Loss As AI Data Center Push Takes Center Stage",
+   "summary": "Qualcomm Stock Faces Apple Loss As AI Data Center Push Takes Center Stage Simply Wall St",
+   "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxONk9zMDlrcnhpSXl4NkNtLU9yOXBGNjFpUnVXVXcwQlgxV09zbjhKV2lvMXNFOUhuWWlSZmJRUkNFWXc3bkRFOGtOSVAxSDJqSTFGRjVPaENCRG1WR2RUWm53X3NpR2JWd2pDYklyUkJLMFJDU1dRZ1ZPWjVZWVRaRmpnY2FzWk5EOXI3WWtJYjE2SmhqWjg5amNoaFFwLUhmcHczejNra3VZM0I2Qk9BeW5yMXpqVzA0Q3FoVWVwMnZKblVVMFZDeWl2eDRfS2Q4Y2hV0gHTAUFVX3lxTE42T3MwOWtyeGlJeXg2Q20tT3I5cEY2MWlSdVdVdzBCWDFXT3NuOEpXaW8xc0U5SG5ZaVJmYlFSQ0VZdzduREU4a05JUDFIMmpJMUZGNU9oQ0JEbVZHZFRabndfc2lHYlZ3akNiSXJSQkswUkNTV1FnVk9aNVlZVFpGamdjYXNaTkQ5cjdZa0liMTZKaGpaODlqY2hoUXAtSGZwdzN6M2trdVkzQjZCT0F5bnIxempXMDRDcWhVZXAydkpuVVUwVkN5aXZ4NF9LZDhjaFU?oc=5",
+   "published": "2026-11-21T14:09:33+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Qualcomm"
+   ],
+   "id": "dadc79f238",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "d7b5423aaf": {
+   "source": "Simply Wall St",
+   "source_type": "rss",
+   "title": "Does Broadcom (AVGO) Have An AI Problem After A Major Customer Cut?",
+   "summary": "Does Broadcom (AVGO) Have An AI Problem After A Major Customer Cut? Simply Wall St",
+   "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxONV9vWEIxR1dEM1ZnVHZkLXMtOHRiS1Z4SUIzVVhyWE5DVlZrS2dQOUh2YmlnSzhNZWZQRjZleTkyeEJJZDlpYkk5dU52b1BaTTBFQnNnZGxQVGlKRkNQdjl6Y2w1b0Q1MEpHWVZxS3JXVDREWWdKeE9nWlR4WV8zVjE0V25BYVJ6Y2ZYNEtBdzJrbC1qc3NsR1hOQUdlNEtUdkZFbDFhU1M4dHR5RHh2UF9GeXRRb2EwU0Z4V1JUSUloOTgtdl8ydEhUZmxVQdIB0wFBVV95cUxPcXBMZjAyN0FSdmFRWkFrY2xVYW9HOG1wNy00QVpzREZvZzVnOS05RjFmdzhaT29ZZ01OV2g3R3FjMEE5OHhPUE5qT1kwN1VKdE83ZTZrYlgwdV80Ukh4THlQazVpQXZYd2tqVFl6Z2o3V0piVG5BM25rS01JWEJpQ0tGcGtISk9sTWszZ2ZFYmVKaUtKSERaZ0VOc2tiMWNlRjRmQ2JhQ1RwT1hIMzBoX3l5Z1p2XzRjZ0RubHE0LWd3bTE3SU1fUFloS1FaVmpqeG5n?oc=5",
+   "published": "2026-11-21T16:09:19+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Broadcom"
+   ],
+   "id": "d7b5423aaf",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "25ad304b53": {
+   "source": "StreetInsider",
+   "source_type": "rss",
+   "title": "Google reportedly cuts Broadcom-designed TPU plans, eyes more MediaTek chips",
+   "summary": "Google reportedly cuts Broadcom-designed TPU plans, eyes more MediaTek chips StreetInsider",
+   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPMUNjR2MyNVZMeW5Ya2tXVDBRMEZLN0o3Zm5QaElaRGwzMmsxUUtpM0ZmUVRMa0FLYzhjbGFxbzhmRjF1bkFtRldXbWlCV2FMa0tNbHg4bGtTYngtWk5LQ2lfYTZrVS1KN2ZDZENsTVVxQldpREFMdWFiY1prQjRpSi00WWx4aW5LdjlNNFoxTEs2LTVMUm5yNkRkSmtWZnp3RHJ2d1ZvZUpmNWtfQVZCc1J4WUlxQXg1YWVXb2thUFBWU1RoWkV3alpvOU1rQVVP?oc=5",
+   "published": "2026-11-20T16:45:06+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Broadcom",
+    "Google TPU"
+   ],
+   "id": "25ad304b53",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "d9af36ba02": {
+   "source": "Security Boulevard",
+   "source_type": "rss",
+   "title": "The Fireworks AI Breach: How One Vendor Key Became a Supply Chain Attack on Cursor",
+   "summary": "The Fireworks AI Breach: How One Vendor Key Became a Supply Chain Attack on Cursor Security Boulevard",
+   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNZkl3VHpHWWtWSVYtdTk5R2t1dGRIcWZqaVNNOHFFQjgzbnlvUDNjX2ZYZ1dESUVIUjAzTlA4YU9DVEt2YndVVjNKSmJLMkEtcHJyWW9RekZDZk1hTmxzWEJYODJaVzk0aTBpSVE5bTRESmdzWGVIcGtlWHFCckhlWWdyVzVhZWNZNms4a3FpOVFLSDNBbEdDWDlpRUVRV1FNWVByTmVUbU5ISGVWVkQ1Mk1UdWxvMW5hSkpuQg?oc=5",
+   "published": "2026-11-19T21:57:37+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "Cursor",
+    "Fireworks AI"
+   ],
+   "id": "d9af36ba02",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "b4c7946356": {
+   "source": "Yahoo Finance",
+   "source_type": "rss",
+   "title": "Is Shopify (SHOP) Facing New Risks From Its AI Partner's Security Issues?",
+   "summary": "Is Shopify (SHOP) Facing New Risks From Its AI Partner's Security Issues? Yahoo Finance",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNbHNZbklpNEpwcEk4Z0lJSk5FbGdxeW1EMFV5S1cyQnJtRHhqREx0ZWJkWVg5N2VLbFRUNnZpYjBtUkwxR0dMQmpKdVJoSGRkSlVtT0Zobl9vd0E3bEVGTFlkbzNwODZfdzlnRWt6ejVSazlyc1BZRE9XSDdEM2FKbG1oX1lfR1J6NXQtM0Q3Vi1idm1GUHpB?oc=5",
+   "published": "2026-11-21T16:08:58+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Fireworks AI"
+   ],
+   "id": "b4c7946356",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
+  },
+  "96946f8c6c": {
+   "source": "TradingView",
+   "source_type": "rss",
+   "title": "Hedge funds show mixed positioning in CoreWeave; Soros and Tepper add, D1 Capital exits",
+   "summary": "Hedge funds show mixed positioning in CoreWeave; Soros and Tepper add, D1 Capital exits TradingView",
+   "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPTVotUjlxRkxTc3BBU0lUYjIxbUdoelJYVVZFa3BSZF8yeXUwV3l6cFVWaW9aYXlPVXViVDdkZTUtcFRIVzVJV1JaS2dmZVlHcjE1ZDh3bHZzVngxR25HXzdXcF8xNFVMOTVuWjN6cWd2ZlBZTjJGT2RIdGRielA2V0J0R2hyZG5TVXFkLXQ3QUdmeEdHalBIdWJXclVOTU9BV3hRa0djdzk4MUpKcmhLdERPNjgzNFdsWndxY0drT01uRlB6ckhHTXFEYWdKYk41WWRVWDBzRHpOYjRINWU5LU5n?oc=5",
+   "published": "2026-11-20T14:40:47+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Baseten"
+   ],
+   "id": "96946f8c6c",
+   "first_seen": "2026-11-21T16:41+00:00",
+   "flagged": false
   }
  },
  "runs": [
@@ -66206,6 +67070,12 @@
    "found": 462,
    "new": 50,
    "flagged": 2
+  },
+  {
+   "at": "2026-11-21T16:41+00:00",
+   "found": 461,
+   "new": 41,
+   "flagged": 3
   }
  ]
 }
