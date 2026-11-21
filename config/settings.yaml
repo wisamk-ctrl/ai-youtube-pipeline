@@ -296,7 +296,12 @@ post:
     enabled: true
     music: generated          # generated (our own synthesised pad, never licensed music) | <path to a wav we own> | none
     music_db: -24             # bed level under speech, dB relative to the voice (ducked by the voice)
-    whoosh: true              # synthesised swish on each [Section] cut
+    whoosh: true              # a sound on each [Section] cut: assets/sfx (ElevenLabs) in rotation, else the synthesised swish
+    sfx_dir: assets/sfx       # made by .github/workflows/sfx.yml (scripts/make_sfx.py), founder 2026-11-21
+    sfx:                      # ElevenLabs sound-generation prompts; a sound already in sfx_dir is kept
+      - {name: cut_1_airy_whoosh, seconds: 1.2, prompt: "soft cinematic air whoosh transition, clean, smooth, no music, no voice"}
+      - {name: cut_2_digital_swoosh, seconds: 1.2, prompt: "subtle modern digital swoosh with a soft low impact at the end, tech news broadcast transition, no music"}
+      - {name: cut_3_reverse_swell, seconds: 1.5, prompt: "gentle reverse swell rising into a soft clean click, premium documentary transition, no music, no voice"}
     music_keys: true          # the bed changes key at each story (generated music only)
     accents: true             # a soft chime when a number or title card lands
     loudness_lufs: -14        # YouTube reference; W45 measured -19.6

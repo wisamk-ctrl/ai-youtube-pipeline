@@ -1,0 +1,25 @@
+name: sfx
+# ElevenLabs sound effects for the section cuts (founder 2026-11-21): scripts/make_sfx.py makes the sounds listed
+# in settings (post.audio.sfx) that are not yet in assets/sfx, and commits them to main.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sfx
+  cancel-in-progress: false
+jobs:
+  make:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: pip install -q requests pyyaml numpy
+      - env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: python scripts/make_sfx.py
+      - name: Commit the sounds
+        run: |
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git add assets/sfx
+          git diff --cached --quiet || (git commit -q -m "assets: ElevenLabs cut sounds" && git pull -q --rebase && git push -q)
