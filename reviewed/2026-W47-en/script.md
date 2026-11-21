@@ -95,13 +95,14 @@ Those models should be running on their own systems and platforms, finding the b
 
 [Pause]
 
-So explaining an outage this wide by saying people are now using AI doesn't convince me.
+[Visual: stock backup power generators and cooling units outside a data centre]
+And there's a second point. A company the size of Microsoft builds in layers of redundancy: backup systems, other regions, the ability to roll an update back.
+So for an outage to last several days is, to me, quite strange.
+Explaining it by saying people are now using AI doesn't convince me.
 
 [Pause]
 
-[Visual: stock courthouse columns and steps, slow push-in]
-And it will be interesting to see how the world deals with this, especially the lawsuits it could bring.
-Who will the courts hold responsible, and how much, if anything, will be paid to the companies and governments that were hit?
+And who carries the cost of an outage like this is still an open question.
 
 [Pause]
 
