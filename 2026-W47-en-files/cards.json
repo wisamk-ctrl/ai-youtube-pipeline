@@ -1,0 +1,191 @@
+[
+  {
+    "kind": "disclosure",
+    "text": "Wissam's AI digital twin — with his consent",
+    "at": 4.0,
+    "seconds": 6.0,
+    "png": "card_00_disclosure.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Welcome",
+    "at": 18.72,
+    "seconds": 8.16,
+    "png": "topic_01.png"
+  },
+  {
+    "kind": "topic",
+    "text": "The Day Microsoft Stopped",
+    "at": 27.68,
+    "seconds": 160.57999999999998,
+    "png": "topic_02.png"
+  },
+  {
+    "kind": "onscreen",
+    "text": "13 November 2026",
+    "at": 29.1,
+    "seconds": 6.0,
+    "png": "card_01_onscreen.png"
+  },
+  {
+    "kind": "onscreen",
+    "text": "Source: Tech Policy Press",
+    "at": 45.82,
+    "seconds": 6.0,
+    "png": "card_02_onscreen.png"
+  },
+  {
+    "kind": "question",
+    "text": "So, why did this happen?",
+    "at": 72.04,
+    "seconds": 3.0,
+    "png": "question_01.png"
+  },
+  {
+    "kind": "question",
+    "text": "So, what does this mean for us?",
+    "at": 164.18,
+    "seconds": 3.8000000000000003,
+    "png": "question_02.png"
+  },
+  {
+    "kind": "question",
+    "text": "How many organizations here run all their work on email and meetings from a single provider?",
+    "at": 169.16,
+    "seconds": 7.4,
+    "png": "question_03.png"
+  },
+  {
+    "kind": "question",
+    "text": "And are updates tested before they roll out?",
+    "at": 178.36,
+    "seconds": 4.2,
+    "png": "question_04.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Gulf Money and AI",
+    "at": 189.06,
+    "seconds": 85.96700000000003,
+    "png": "topic_03.png"
+  },
+  {
+    "kind": "question",
+    "text": "What's behind that number?",
+    "at": 208.28,
+    "seconds": 3.0,
+    "png": "question_05.png"
+  },
+  {
+    "kind": "question",
+    "text": "Who's going to feel this here?",
+    "at": 263.9,
+    "seconds": 3.4,
+    "png": "question_06.png"
+  },
+  {
+    "kind": "topic",
+    "text": "The Biggest IPO in History",
+    "at": 275.83,
+    "seconds": 168.753,
+    "png": "topic_04.png"
+  },
+  {
+    "kind": "question",
+    "text": "So, what does this mean for a company here that uses Claude?",
+    "at": 426.12,
+    "seconds": 5.8,
+    "png": "question_07.png"
+  },
+  {
+    "kind": "topic",
+    "text": "The Model Price War",
+    "at": 445.38,
+    "seconds": 85.2,
+    "png": "topic_05.png"
+  },
+  {
+    "kind": "onscreen",
+    "text": "Gemini 4 Neon",
+    "at": 454.96,
+    "seconds": 6.0,
+    "png": "card_05_onscreen.png"
+  },
+  {
+    "kind": "question",
+    "text": "What's the lesson for our companies?",
+    "at": 513.46,
+    "seconds": 3.4,
+    "png": "question_08.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Microsoft's Agents Get Their Own Identities",
+    "at": 531.38,
+    "seconds": 74.87999999999995,
+    "png": "topic_06.png"
+  },
+  {
+    "kind": "onscreen",
+    "text": "Microsoft Entra Agent ID",
+    "at": 565.64,
+    "seconds": 6.0,
+    "png": "card_08_onscreen.png"
+  },
+  {
+    "kind": "question",
+    "text": "Why does this matter for us here in the region?",
+    "at": 587.48,
+    "seconds": 5.0,
+    "png": "question_09.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Agents Now Have Wallets",
+    "at": 607.06,
+    "seconds": 31.800000000000022,
+    "png": "topic_07.png"
+  },
+  {
+    "kind": "onscreen",
+    "text": "x402",
+    "at": 630.28,
+    "seconds": 6.0,
+    "png": "card_09_onscreen.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Washington and the Chips",
+    "at": 639.66,
+    "seconds": 53.99999999999996,
+    "png": "topic_08.png"
+  },
+  {
+    "kind": "question",
+    "text": "And why does this matter to the Gulf in particular?",
+    "at": 681.46,
+    "seconds": 5.0,
+    "png": "question_11.png"
+  },
+  {
+    "kind": "topic",
+    "text": "California vs. OpenAI: Who's Responsible?",
+    "at": 694.46,
+    "seconds": 92.38000000000007,
+    "png": "topic_09.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Weekly Radar",
+    "at": 787.64,
+    "seconds": 58.18000000000002,
+    "png": "topic_10.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Closing",
+    "at": 846.62,
+    "seconds": 12.863999999999987,
+    "png": "topic_11.png"
+  }
+]

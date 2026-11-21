@@ -1,0 +1,16 @@
+[
+  {
+    "kind": "disclosure",
+    "text": "Wissam's AI digital twin — with his consent",
+    "at": 4.0,
+    "seconds": 6.0,
+    "png": "card_00_disclosure.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Wissam's view",
+    "at": 23.0,
+    "seconds": 42.764666999999996,
+    "png": "topic_01.png"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-19-brk-us-tech-outage-wave-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "Foreign Policy reports a wave of tech outages across the U.S. government and private sector. A global Microsoft outage that began last Thursday disrupted services that businesses, schools and governments rely on. On Friday, the FAA issued a rare nationwide ground stop, causing widespread flight cancellations and delays. Chase Bank, Bank of America and Apple services also faced brief disruptions, and some internal NSA systems went down. Foreign Policy says there is currently no evidence of cyberattacks, or that the incidents were linked. Microsoft's Charles Lamanna cited a latent bug, a surge in load and reduced server capacity. For the Gulf, the question to watch is how much critical services depend on a few shared platforms."
+    }
+  ]
+}

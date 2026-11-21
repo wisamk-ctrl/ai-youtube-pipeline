@@ -1,0 +1,124 @@
+[
+  {
+    "scores": {
+      "hook": 10,
+      "clarity": 9,
+      "pacing": 8,
+      "flow": 10,
+      "arabic": 10,
+      "value": 8
+    },
+    "minimum": 8,
+    "verdict": "Strong hook, clean Ammani and good regional lenses, but give the long agent and wallet stretches some breath and say whose numbers those are before we record.",
+    "defects": [
+      {
+        "axis": "clarity",
+        "severity": "major",
+        "rule": "Unfamiliar company name with no few-word explanation",
+        "quote": "سبيس فورتي تو{Space42} وإكسوديغو{Exodigo} عملوا شراكة"
+      },
+      {
+        "axis": "clarity",
+        "severity": "major",
+        "rule": "Pronoun whose referent could be two things",
+        "quote": "وحسب ذا ناشونال رح تزيد وجودها بالإمارات"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "Segment with no [Pause] across more than 60 words",
+        "quote": "خلّينا نبلّش بالقصة كاملة."
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "Segment with no [Pause] across more than 60 words",
+        "quote": "وبتخطط تحط لحد تمانين بالمية من محفظتها"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "Segment with no [Pause] across more than 60 words",
+        "quote": "هسّا نروح عالوكلاء، ونرجع لمايكروسوفت."
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "Segment with no [Pause] across more than 60 words",
+        "quote": "أوبن إيه آي أطلقت محفظة جوا تشات جي بي تي"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "Two important numbers in one breath, no pause",
+        "quote": "تسعمية مليار دولار. وهاد على تسعتعش سنة"
+      },
+      {
+        "axis": "value",
+        "severity": "major",
+        "rule": "Vendor figure with no spoken caveat in same sentence",
+        "quote": "وبتخطط تحط لحد تمانين بالمية من محفظتها"
+      },
+      {
+        "axis": "value",
+        "severity": "major",
+        "rule": "Vendor figure with no spoken caveat in same sentence",
+        "quote": "آخر ربع سنة، مبيعاتها كانت سبعتعش مليار دولار"
+      },
+      {
+        "axis": "value",
+        "severity": "major",
+        "rule": "Vendor figure with no spoken caveat in same sentence",
+        "quote": "الموديل فيه تريليونين وأربعمية مليار معامل"
+      },
+      {
+        "axis": "value",
+        "severity": "major",
+        "rule": "Vendor figure with no spoken caveat in same sentence",
+        "quote": "حددت خط وقود مدفون على عمق لحد أربعتعش متر"
+      },
+      {
+        "axis": "value",
+        "severity": "major",
+        "rule": "Forecast stated as fact, no attribution or conditional",
+        "quote": "السؤال الطبيعي رح يكون عن سقوف الصرف"
+      }
+    ],
+    "worst_three": [
+      {
+        "where": "كل وكيل إله هوية خاصة",
+        "problem": "The agents segment runs over a hundred words with no breath, so the identity detail that matters to IT teams blurs into one long block.",
+        "fix": "Insert [Pause] after «بدون ما حدا يطلب منه.» and again after «والفريق التقني بيقدر يوقفه.», so the segment breaks into three short blocks of under 60 words each."
+      },
+      {
+        "where": "الموديل فيه تريليونين وأربعمية مليار",
+        "problem": "The listener hears Alibaba's own parameter count as an independent fact.",
+        "fix": "Replace with: «الموديل، حسب علي بابا نفسها، فيه [Pause] تريليونين وأربعمية مليار معامل.» and keep «بس لكل وحدة نص، بيشغّل بس [Pause] واحد وسبعين مليار، بأرقامهم هم.»"
+      },
+      {
+        "where": "سبيس فورتي تو{Space42} وإكسوديغو{Exodigo} عملوا",
+        "problem": "Most viewers don't know either company, so the only regional radar item lands as noise.",
+        "fix": "Replace with: «وبالإمارات، سبيس فورتي تو{Space42}، شركة إماراتية للأقمار الصناعية والذكاء الاصطناعي، عملت شراكة مع إكسوديغو{Exodigo}، شركة بتصوّر اللي تحت الأرض بدون حفر.» and then: «بمشروع أول لشركة نفط وغاز كبيرة، حسب الشركة نفسها، إكسوديغو حددت خط وقود مدفون على عمق [Pause] لحد أربعتعش متر.»"
+      }
+    ],
+    "samples": [
+      {
+        "hook": 10,
+        "clarity": 10,
+        "pacing": 8,
+        "flow": 10,
+        "arabic": 10,
+        "value": 9
+      },
+      {
+        "hook": 10,
+        "clarity": 9,
+        "pacing": 8,
+        "flow": 10,
+        "arabic": 10,
+        "value": 8
+      }
+    ],
+    "stable": true
+  }
+]

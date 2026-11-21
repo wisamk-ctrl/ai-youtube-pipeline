@@ -1,0 +1,4 @@
+HeyGen: heygen.mp3
+ElevenLabs key check: HTTP 200, plan creator, can clone: True
+ElevenLabs eleven_multilingual_v2: elevenlabs_eleven_multilingual_v2.mp3
+ElevenLabs eleven_v3: elevenlabs_eleven_v3.mp3

@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:02,710
+Foreign Policy reports a wave of tech outages
+
+2
+00:00:02,760 --> 00:00:03,770
+across the U.S
+
+3
+00:00:03,820 --> 00:00:05,350
+government and private sector
+
+4
+00:00:05,400 --> 00:00:07,790
+A global Microsoft outage that began last Thursday
+
+5
+00:00:07,840 --> 00:00:10,890
+disrupted services that businesses, schools
+
+6
+00:00:10,940 --> 00:00:12,510
+and governments rely on
+
+7
+00:00:12,560 --> 00:00:15,650
+On Friday, the FAA issued a rare nationwide
+
+8
+00:00:15,700 --> 00:00:19,650
+ground stop, causing widespread flight cancellations and delays
+
+9
+00:00:19,700 --> 00:00:22,310
+Chase Bank, Bank of America and Apple services
+
+10
+00:00:22,360 --> 00:00:25,030
+also faced brief disruptions, and some internal
+
+11
+00:00:25,080 --> 00:00:26,370
+NSA systems went down
+
+12
+00:00:26,420 --> 00:00:29,230
+Foreign Policy says there is currently no evidence
+
+13
+00:00:29,280 --> 00:00:32,850
+of cyberattacks, or that the incidents were linked
+
+14
+00:00:32,900 --> 00:00:34,870
+Microsoft's Charles Lamanna cited a latent
+
+15
+00:00:34,920 --> 00:00:38,510
+bug, a surge in load and reduced server capacity
+
+16
+00:00:38,560 --> 00:00:41,170
+For the Gulf, the question to watch is how
+
+17
+00:00:41,220 --> 00:00:43,930
+much critical services depend on a few shared platforms

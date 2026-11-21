@@ -1,0 +1,60 @@
+[
+  {
+    "source": "Yahoo Finance",
+    "source_type": "rss",
+    "title": "Why Anthropic Stock Is Up (and Down) Today",
+    "summary": "Anthropic, PBC (NASDAQ:ANT) stock is finally trading, opening at $111.50, up more than 34% from its $83 initial public offering (IPO) price. It has since dropped, however, falling roughly 17% from its open price to $93.10 as of 1:20 p.m. ET on Thursday, Nov. 19. The S&P 500 (SNPINDEX:^GSPC) and the Nasdaq Composite (NASDAQINDEX:^IXIC) are both down 1.6%. Missed Nvidia in 2009? This Rare Signal Is Flashing Again. In 2009, a \"Double Down\" signal flashed for a little-known chipmaker called Nvidia. For the first time in years, that same \"Total Conviction\" signal is flashing for a company 1/100th the size of Nvidia. Continue » On Wednesday, the maker of the Claude AI models sold 980 million shares at $83 apiece. That was well above the $70 to $78 range it had marketed. That initially valued Anthropic at about $1.5 trillion on a fully diluted basis -- counting all the shares that could eventually exist. That makes nearly as large as Tesla (NASDAQ:TSLA)and Meta Platforms (NASDAQ:META). Revenue hit $16.96 billion in the third quarter, up an incredible 47% from the prior quarter. But Anthropic is still running at a loss on an operating basis and has already committed to spending about $895 billion -- roughly half of that is promised by 2030. If revenue keeps growing like this, that might not be a problem, but I'm not sure that pace can hold, and at this valuation there isn't much room for a slowdown -- which may already be happening . While 47% sequential growth is certainly incredible, that's actually significantly slower than the previous sequential jump. Before you buy stock in Anthropic, consider this: The Motley Fool Stock Advisor analyst team just identified what they believe are the 10 best stocks for investors to buy now… and Anthropic wasn't one of them. The 10 stocks that made the cut could produce monster returns in the coming years. Consider when Netflix made this list on December 17, 2004... if you invested $1,000 at the time of our recommendation, you'd have $322,605 !* Or when Nvidia made this list on April 15, 2005... if you invested $1,000 at the time of our recommendation, you'd have $927,581 !* Now, it's worth noting Stock Advisor's total average return is 792% — a market-crushing outperformance compared to 202% for the S&P 500. Don't miss the latest top 10 list, available with Stock Advisor , and join an investing community built by individual investors for individual investors. *Stock Advisor returns as of November 19, 2026. Johnny Rice has no…",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/why-anthropic-stock-down-today-184502049.html",
+    "published": "2026-11-19T18:45:02+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic",
+      "NVIDIA"
+    ],
+    "id": "c0154aa295"
+  },
+  {
+    "source": "BBC",
+    "source_type": "rss",
+    "title": "How did Anthropic's stock market debut unfold?",
+    "summary": "Anthropic, the company behind AI chatbot Claude, closed 17% higher on its first day as a publicly traded company. Shares closed at $97.17, giving the company a market valuation of around $1.77 trillion, after briefly surpassing $2 trillion during trading. The debut came as the wider technology sector fell 2.4%, raising questions about investor confidence in the AI boom. The BBC's Samira Hussain breaks down Anthropic's first day on the stock market. The beloved hippopotamus died days after swallowing a knitted hat that accidentally got into her enclosure at the Cincinnati Zoo. The sale comes after an eleventh-hour agreement was reached to resolve a dispute regarding claims the art piece was previously sold under duress during the rise of the Nazis. The vehicles currently operate in 15 US cities, though freeway rides are only offered in a handful, including San Francisco and Los Angeles. Entire neighbourhoods remain under water as disruptions impact schools, roads, hospitals and airports. Cincinnati Zoo staff have been providing a series of supportive measures like fluids and ultrasounds to help Fiona recover. Microsoft, major US banks, Apple and Air Traffic authorities have been hit over recent days by tech glitches. A drilling operation at the Chiquita Canyon Landfill triggered a large release of gas and decomposing waste that neighbours are voicing concerns over. An international health agency revoked the status after determining that the virus had circulated nonstop for more than a year. Gamers can hardly contain their excitement as the release of Grand Theft Auto 6 approaches, ending a 13-year wait and fuelling extraordinary anticipation. The 40-year-old British actor will take over from Daniel Craig in the next 007 film as fans and enthusiasts react to the news. The judge set a trial date for March 2027, though the district attorney did not explicitly say what charges Clancy would face. Rescuers found the pet cat in the ruins of Zariah's apartment four days after she made an emotional plea to the public. Scott Colom tells the BBC that Democrats can build on his historic election win - and appeal to frustrated Republicans - by focusing on policies to help all Americans. SpaceX has performed the historic catch using mechanical arms nicknamed \"chopsticks\". Around 130 people were rescued from a cruise ship after it was struck by a tanker while docked in New Orleans, Louisiana on Friday. Passengers throughout the country were impacted over what the Federal…",
+    "url": "https://www.bbc.com/news/videos/cwg7l01vg081o",
+    "published": "2026-11-19T23:52:25+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic"
+    ],
+    "id": "408915dd02"
+  },
+  {
+    "source": "BBC",
+    "source_type": "rss",
+    "title": "How did Anthropic's stock market debut unfold?",
+    "summary": "How did Anthropic's stock market debut unfold? BBC",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFAxRG9pMVFfT2NvcUhXYkhlYTdGYnQtQV91Q0xEZHE0dHBQVnpnNlAwckxEQWJiMzR4WXZxMGM2S3dlNXE0THN1a1FYeEZ5R196U3RuSjVLaFE?oc=5",
+    "published": "2026-11-19T23:52:25+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic"
+    ],
+    "id": "0311f195ee"
+  }
+]

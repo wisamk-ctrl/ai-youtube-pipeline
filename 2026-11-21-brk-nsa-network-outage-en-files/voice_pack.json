@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-21-brk-nsa-network-outage-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "A computer fault has disrupted a US National Security Agency hub in Georgia, NewsCord's roundup reports. The site supports intelligence and cyber operations focused on the Middle East. The fault hit NSANet, the agency's internal network for classified information, leaving many staff unable to work normally. Officials say the most sensitive systems stayed up, with staff using backup channels. U.S. officials told CNN the outage was linked to security updates, and they ruled out a cyberattack. They tied the issues to systems using PHP, a widely used programming language. Senator Mark Warner told CNN the evidence points to legitimate efforts to secure systems. For the Gulf, watch how quickly critical networks recover when security patches fail."
+    }
+  ]
+}

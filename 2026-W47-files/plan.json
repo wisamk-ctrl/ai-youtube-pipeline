@@ -1,0 +1,128 @@
+{
+  "episode_title_ar": "انقطاع مايكروسوفت العالمي وطرح Anthropic التاريخي في البورصة",
+  "cold_open_hook_en": "On November 13, Outlook, Teams and Copilot went dark for millions of users worldwide. In the UK, doctors went back to paper records and courts cancelled hearings. This week Satya Nadella warned that AI could trigger more outages like this. If your company runs on one cloud, this episode starts with you.",
+  "segments": [
+    {
+      "track": "other",
+      "item_ids": [
+        "b2d7c154ec",
+        "0378197660"
+      ],
+      "headline_en": "The Microsoft 365 outage: what happens when one provider goes down",
+      "angle": "Lead with the November 13 global outage of Microsoft 365, Outlook, Teams and Copilot, which hit millions of users worldwide. Tech Policy Press documents the UK fallout: NHS trusts on paper records, cancelled operations and court cases, and police unable to take online reports. Then Nadella's own explanation: a 'perfect storm' that triggered a previously undetected bug. He also warned that AI-speed vulnerability discovery forces rushed patches, and rushed patches create more fragility. Close on the UK digital sovereignty debate it sparked.",
+      "enterprise_impact": "Gulf and MENA governments, banks and enterprises are heavily standardised on Microsoft 365, and the outage was global. Leaders should review single-vendor dependency, offline continuity plans and patch-testing policies. The UK sovereignty debate mirrors the data-sovereignty push already under way in the region.",
+      "broll_ideas": [
+        "Timeline graphic: Nov 13 outage, then the UK Parliament statement on Nov 16, then Nadella at DealBook on Nov 19",
+        "Split screen of a 'service unavailable' Outlook screen and a paper medical-records icon",
+        "Pull-quote card: 'a nation-state level persistent attacker going after you all the time'"
+      ],
+      "approx_seconds": 110
+    },
+    {
+      "track": "models",
+      "item_ids": [
+        "0663bb6e20",
+        "76c8f380a1",
+        "88126122b9"
+      ],
+      "headline_en": "Gulf: UAE pitches $1tn US portfolio as AI capital flows both ways; Saudi pushes AI skills",
+      "angle": "At the Abu Dhabi Investment Forum in New York, the UAE promoted more than $1 trillion of US investments, with AI and health care named the two major sectors. Supporting points: MGX's $40B digital infrastructure tie-up with BlackRock, its $49B AI Fund raise, and this month's multiyear partnership between Adnoc, G42 and OpenAI. Brief Saudi line on talent: SDAIA launched a Year of AI initiative across universities, and Humain is targeting the skills gap with hands-on training (headline-level only).",
+      "enterprise_impact": "Gulf capital is shaping global AI infrastructure. The Adnoc–G42–OpenAI partnership signals more frontier-lab presence in the Emirates. Saudi talent programmes affect hiring pipelines for regional enterprises.",
+      "broll_ideas": [
+        "Map graphic showing capital arrows from Abu Dhabi to the US, labelled MGX $40B with BlackRock and the $49B AI Fund",
+        "Logo lockup: Adnoc + G42 + OpenAI",
+        "Saudi university campus footage with SDAIA 'Year of AI' text overlay"
+      ],
+      "approx_seconds": 100
+    },
+    {
+      "track": "models",
+      "item_ids": [
+        "cafd31ea08",
+        "5bfd396c6d"
+      ],
+      "headline_en": "Anthropic closes the largest IPO in history",
+      "angle": "Anthropic closed the largest IPO ever and has about $200B in the bank. Its most recent quarterly sales were $17B, up more than 1,100%. Against that sit more than $900B in vendor commitments over 19 years, mostly for data centres, and US voter opposition to new data centres. CNBC frames this as the bellwether for $350B+ of VC money in AI, with Altimeter aiming for $5B and Nvidia, AMD, Broadcom, TSMC, Micron, Google and Microsoft all investing.",
+      "enterprise_impact": "Claude is a core model for many regional enterprises. A public Anthropic means more disclosure and scrutiny, plus a well-funded vendor. Its compute commitments and safety-first stance shape capacity and roadmap risk for customers.",
+      "broll_ideas": [
+        "Nasdaq ticker graphic 'ANT'",
+        "Bar chart: $200B cash vs $900B+ commitments vs $17B quarterly revenue",
+        "Footage of data centre construction and protest signs"
+      ],
+      "approx_seconds": 110
+    },
+    {
+      "track": "models",
+      "item_ids": [
+        "cae0e37570",
+        "c11e2e526f"
+      ],
+      "headline_en": "Price war at the frontier: Gemini 4 Neon and Alibaba's Qwen 4 Max",
+      "angle": "Google's Gemini 4 Neon is a mid-tier reasoning model at $3/$15 per million tokens with a 1M-token context. Google claims 50–80% lower cost per task than rivals, but these are self-reported scores, and Neon does not win every benchmark. Alibaba's Qwen 4 Max has 2.4T parameters but activates only 71B per token, has a 1M-token context, and is the top Chinese model on Arena's agent leaderboard. The theme: cost per task, not price per token, is becoming the metric that matters.",
+      "enterprise_impact": "Model choice for regional enterprises now hinges on cost per completed task. A credible Chinese option widens procurement choices, alongside the governance questions that come with it.",
+      "broll_ideas": [
+        "Pricing table: Neon $3/$15, GPT-6.2 Sol $2/$10, Opus 5.5 $4/$20",
+        "Simple animation of mixture-of-experts: 2.4T total parameters vs 71B active",
+        "On-screen caveat stamp: 'self-reported scores'"
+      ],
+      "approx_seconds": 90
+    },
+    {
+      "track": "agents",
+      "item_ids": [
+        "2299a81540",
+        "1d2f58adb9",
+        "6776907116"
+      ],
+      "headline_en": "Microsoft Ignite: Autopilot agents get their own identity, and Salesforce joins Copilot",
+      "angle": "Based on ZDNET's coverage: Copilot Workspaces is a 'multiplayer' surface where people and agents edit together. Autopilot is an agent that watches Teams channels and follows up on email without being prompted. Each Autopilot gets its own Entra Agent ID, a named manager and an audit trail. Supporting details from Microsoft: Auto model routing across OpenAI and Anthropic models, and Copilotforce, which brings Salesforce data and actions into Copilot via MCP. The ZDNET caveat stays in: verify the autonomy claims yourselves.",
+      "enterprise_impact": "For the region's Microsoft-heavy IT shops, agents are becoming identities to govern like employees. That puts IAM, audit and permissions at the centre of agent rollout, which matters especially after the outage.",
+      "broll_ideas": [
+        "Org-chart graphic showing an Autopilot agent with a 'manager' box above it",
+        "Screen mock-up of an agent comment thread in a shared document",
+        "Copilot + Salesforce logo handshake with an MCP connector line"
+      ],
+      "approx_seconds": 100
+    },
+    {
+      "track": "agents",
+      "item_ids": [
+        "88d77a52ad",
+        "4257f147f1"
+      ],
+      "headline_en": "Agents get wallets: ChatGPT Wallet and AWS agent payments",
+      "angle": "OpenAI launched ChatGPT Wallet with Amex, Mastercard and Visa. Its 'dots' agents buy on a user's behalf using scoped, per-transaction payment tokens, and every purchase needs approval. It is US Pro users only for now, and OpenAI takes no cut yet. On the enterprise side, AWS lets agents pay x402-enabled Marketplace sellers in USD on the AWS bill, with spending caps and audit logs. Consumer and enterprise agentic commerce arrived in the same week.",
+      "enterprise_impact": "Regional banks, card issuers and e-commerce players need a plan for agent-initiated payments. Finance teams need spend limits and audit trails before letting agents buy software or data.",
+      "broll_ideas": [
+        "Flow diagram: agent receives 402 Payment Required, gets a payment token, then the purchase succeeds",
+        "Card-network logos with a 'scoped token' lock icon",
+        "Map overlay: 'US only, for now'"
+      ],
+      "approx_seconds": 80
+    },
+    {
+      "track": "chips",
+      "item_ids": [
+        "97fed349b5",
+        "80665bf639",
+        "a4e0be4664"
+      ],
+      "headline_en": "Washington tightens the screws on AI chip access",
+      "angle": "Three headline-level reports, framed cautiously: the US moves to curb remote access to Nvidia's advanced chips (Bloomberg); the House Foreign Affairs chairman releases Nvidia and AMD export records to China (Anadolu); and China's Moonshot AI scraps a $150M deal for Nvidia chip access in Indonesia (The Information). The thread: offshore and cloud workarounds are under scrutiny. Only headline facts are used.",
+      "enterprise_impact": "Gulf data centres and cloud providers that sell GPU capacity internationally are exposed to remote-access rules. Customers should watch compliance terms in GPU cloud contracts.",
+      "broll_ideas": [
+        "Headline collage from the three outlets",
+        "Map: US to China with a dotted 'remote access' line routed via Indonesia, crossed out",
+        "GPU rack footage with a padlock overlay"
+      ],
+      "approx_seconds": 80
+    }
+  ],
+  "quick_fire_item_ids": [
+    "347b6a04b1",
+    "73502aa1d0",
+    "f4746e5aa1",
+    "c43a95b420"
+  ],
+  "thumbnail_text_ar": "يوم توقف مايكروسوفت"
+}

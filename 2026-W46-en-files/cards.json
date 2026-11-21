@@ -1,0 +1,100 @@
+[
+  {
+    "kind": "disclosure",
+    "text": "Wissam's AI digital twin — with his consent",
+    "at": 4.0,
+    "seconds": 6.0,
+    "png": "card_00_disclosure.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Welcome",
+    "at": 16.16,
+    "seconds": 18.56,
+    "png": "topic_01.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Jensen Huang Leaves NVIDIA",
+    "at": 35.52,
+    "seconds": 69.44000000000001,
+    "png": "topic_02.png"
+  },
+  {
+    "kind": "onscreen",
+    "text": "Wissam's view",
+    "at": 84.86,
+    "seconds": 6.0,
+    "png": "card_02_onscreen.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Anthropic's IPO Under Pressure",
+    "at": 105.76,
+    "seconds": 104.70000000000002,
+    "png": "topic_03.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Saudi Arabia's Bunyan Platform",
+    "at": 211.26,
+    "seconds": 103.26,
+    "png": "topic_04.png"
+  },
+  {
+    "kind": "topic",
+    "text": "The AI Agent Wallet",
+    "at": 315.32,
+    "seconds": 91.02,
+    "png": "topic_05.png"
+  },
+  {
+    "kind": "onscreen",
+    "text": "No cut of transactions — for now",
+    "at": 358.98,
+    "seconds": 6.0,
+    "png": "card_04_onscreen.png"
+  },
+  {
+    "kind": "topic",
+    "text": "The Microsoft 365 Outage",
+    "at": 407.14,
+    "seconds": 78.03999999999998,
+    "png": "topic_06.png"
+  },
+  {
+    "kind": "onscreen",
+    "text": "Wissam's view",
+    "at": 463.68,
+    "seconds": 6.0,
+    "png": "card_05_onscreen.png"
+  },
+  {
+    "kind": "topic",
+    "text": "NVIDIA and Korea",
+    "at": 485.98,
+    "seconds": 85.53999999999998,
+    "png": "topic_07.png"
+  },
+  {
+    "kind": "onscreen",
+    "text": "Source: NVIDIA announcement",
+    "at": 488.0,
+    "seconds": 6.0,
+    "png": "card_06_onscreen.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Quick Roundup",
+    "at": 572.32,
+    "seconds": 31.320000000000004,
+    "png": "topic_08.png"
+  },
+  {
+    "kind": "topic",
+    "text": "Closing",
+    "at": 604.44,
+    "seconds": 14.00966699999999,
+    "png": "topic_09.png"
+  }
+]

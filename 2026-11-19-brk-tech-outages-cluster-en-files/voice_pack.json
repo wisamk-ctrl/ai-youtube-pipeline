@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-19-brk-tech-outages-cluster-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "In one week, Microsoft, Apple, JPMorgan Chase, United Airlines and the NSA all suffered major tech failures, Scientific American reports. Microsoft's cloud software was unavailable for almost 24 hours. A malfunctioning telecom network halted U.S. air traffic. Some blamed cyberattacks or AI running amok. The magazine says the evidence supports neither. Microsoft says AI agents weren't the cause. Apple's outage followed an internal update, and the NSA cites scheduled maintenance. The Uptime Institute found data center outage rates per site fell in 2026 for a fifth year running. Reliability engineer Laura Nolan says outages can cluster in a few days without a shared cause. For Gulf businesses and governments, the thing to watch is how cloud providers test and manage updates to ever more complex systems."
+    }
+  ]
+}

@@ -1,0 +1,1387 @@
+1
+00:00:00,000 --> 00:00:03,070
+A little over a week ago, Microsoft's email
+
+2
+00:00:03,120 --> 00:00:06,530
+meetings and AI assistant suddenly stopped
+
+3
+00:00:06,580 --> 00:00:08,770
+Millions of people around the world were cut off
+
+4
+00:00:08,820 --> 00:00:11,370
+In Britain, hospitals went back to paper, and
+
+5
+00:00:11,420 --> 00:00:13,270
+courts postponed cases
+
+6
+00:00:13,320 --> 00:00:15,950
+So if your whole company runs on a single provider
+
+7
+00:00:16,000 --> 00:00:18,270
+what's your plan if this happens to you?
+
+8
+00:00:18,320 --> 00:00:20,690
+Hi everyone, welcome to AI This Week
+
+9
+00:00:20,740 --> 00:00:21,870
+I'm Wissam Kishek
+
+10
+00:00:21,920 --> 00:00:24,070
+I've spent 25 years in enterprise software
+
+11
+00:00:24,120 --> 00:00:27,230
+across the Middle East, Türkiye and Africa
+
+12
+00:00:27,280 --> 00:00:29,050
+Let's start with the full story
+
+13
+00:00:29,100 --> 00:00:32,170
+On Friday, November 13th, Outlook email went
+
+14
+00:00:32,220 --> 00:00:34,270
+down, and so did Teams meetings
+
+15
+00:00:34,320 --> 00:00:37,670
+Even the AI assistant, Copilot, stopped working
+
+16
+00:00:37,720 --> 00:00:39,970
+and the outage lasted several days
+
+17
+00:00:40,020 --> 00:00:41,910
+According to a detailed report from a site
+
+18
+00:00:41,960 --> 00:00:44,570
+that specializes in tech policy, Britain paid
+
+19
+00:00:44,620 --> 00:00:45,770
+a heavy price
+
+20
+00:00:45,820 --> 00:00:49,230
+Almost every National Health Service body there lost email
+
+21
+00:00:49,280 --> 00:00:51,790
+Some medical staff went back to paper records
+
+22
+00:00:51,840 --> 00:00:53,910
+and appointments and operations were cancelled
+
+23
+00:00:53,960 --> 00:00:55,490
+including C-sections
+
+24
+00:00:55,540 --> 00:00:58,080
+Police couldn't take reports online, and courts
+
+25
+00:00:58,130 --> 00:01:00,190
+cancelled or postponed cases
+
+26
+00:01:00,240 --> 00:01:03,270
+And according to the same report, up to 99%
+
+27
+00:01:03,320 --> 00:01:06,870
+of UK government staff use Microsoft to communicate
+
+28
+00:01:06,920 --> 00:01:09,050
+A British minister told Parliament the incident
+
+29
+00:01:09,100 --> 00:01:11,990
+could have been more serious if it had lasted longer
+
+30
+00:01:12,040 --> 00:01:14,050
+So, why did this happen?
+
+31
+00:01:14,100 --> 00:01:17,130
+Satya Nadella, Microsoft's CEO, spoke on Wednesday
+
+32
+00:01:17,180 --> 00:01:18,870
+at a conference in New York
+
+33
+00:01:18,920 --> 00:01:21,370
+According to Anadolu, he described the outage
+
+34
+00:01:21,420 --> 00:01:24,470
+as a "perfect storm" that exposed a software
+
+35
+00:01:24,520 --> 00:01:26,090
+bug no one had caught before
+
+36
+00:01:26,140 --> 00:01:29,310
+And he warned that AI could bring more outages
+
+37
+00:01:29,360 --> 00:01:33,790
+The reason: AI tools are now finding vulnerabilities very fast
+
+38
+00:01:33,840 --> 00:01:36,370
+So companies rush to close them with updates
+
+39
+00:01:36,420 --> 00:01:38,870
+with less time for testing, and a rushed update
+
+40
+00:01:38,920 --> 00:01:40,510
+can introduce new bugs
+
+41
+00:01:40,560 --> 00:01:43,230
+He also said AI could become like "a nation-state-level
+
+42
+00:01:43,280 --> 00:01:45,570
+attacker that's after you all the time." And
+
+43
+00:01:45,620 --> 00:01:47,830
+here I want to give you my personal view
+
+44
+00:01:47,880 --> 00:01:49,550
+This is opinion, not news
+
+45
+00:01:49,600 --> 00:01:51,830
+I'm not convinced by this explanation
+
+46
+00:01:51,880 --> 00:01:53,870
+Companies like Microsoft were early in the
+
+47
+00:01:53,920 --> 00:01:55,590
+AI game, and they understand it
+
+48
+00:01:55,640 --> 00:01:57,650
+They have access to models that are at least
+
+49
+00:01:57,700 --> 00:01:59,630
+two or three versions ahead of what the rest
+
+50
+00:01:59,680 --> 00:02:00,730
+of us use
+
+51
+00:02:00,780 --> 00:02:02,430
+Those models should be running on their own
+
+52
+00:02:02,480 --> 00:02:05,270
+systems and platforms, finding the bugs, writing
+
+53
+00:02:05,320 --> 00:02:07,910
+the patches and retesting them, much faster
+
+54
+00:02:07,960 --> 00:02:09,990
+than any amateur out there
+
+55
+00:02:10,040 --> 00:02:12,350
+So explaining an outage this wide by saying
+
+56
+00:02:12,400 --> 00:02:14,970
+people are now using AI doesn't convince me
+
+57
+00:02:15,020 --> 00:02:16,690
+And it will be interesting to see how the world
+
+58
+00:02:16,740 --> 00:02:20,010
+deals with this, especially the lawsuits it could bring
+
+59
+00:02:20,060 --> 00:02:22,290
+Who will the courts hold responsible, and how
+
+60
+00:02:22,340 --> 00:02:25,030
+much, if anything, will be paid to the companies
+
+61
+00:02:25,080 --> 00:02:26,670
+and governments that were hit?
+
+62
+00:02:26,720 --> 00:02:29,130
+In Britain, the outage opened up the debate
+
+63
+00:02:29,180 --> 00:02:30,890
+on digital sovereignty
+
+64
+00:02:30,940 --> 00:02:33,390
+The Liberal Democrats said no single provider
+
+65
+00:02:33,440 --> 00:02:36,290
+should have this much impact on health and policing
+
+66
+00:02:36,340 --> 00:02:38,110
+And they called on the government for a plan
+
+67
+00:02:38,160 --> 00:02:41,210
+to reduce reliance on a few big American companies
+
+68
+00:02:41,260 --> 00:02:44,130
+Britain still has no clear strategy for this
+
+69
+00:02:44,180 --> 00:02:46,090
+So, what does this mean for us?
+
+70
+00:02:46,140 --> 00:02:49,110
+The outage was global, so this isn't just a British story
+
+71
+00:02:49,160 --> 00:02:51,270
+How many organizations here run all their work
+
+72
+00:02:51,320 --> 00:02:54,250
+on email and meetings from a single provider?
+
+73
+00:02:54,300 --> 00:02:56,490
+The question for every manager: is there a
+
+74
+00:02:56,540 --> 00:02:58,310
+plan if email goes down for two days?
+
+75
+00:02:58,360 --> 00:03:01,310
+And are updates tested before they roll out?
+
+76
+00:03:01,360 --> 00:03:03,230
+And the digital sovereignty question raised
+
+77
+00:03:03,280 --> 00:03:05,810
+in Britain applies the same way to any government
+
+78
+00:03:05,860 --> 00:03:08,610
+that relies on a single foreign provider
+
+79
+00:03:08,660 --> 00:03:10,950
+Now let's head to the Gulf, because Gulf money
+
+80
+00:03:11,000 --> 00:03:14,030
+has become part of the AI story in America
+
+81
+00:03:14,080 --> 00:03:16,730
+On Thursday, at the Abu Dhabi Investment Forum
+
+82
+00:03:16,780 --> 00:03:19,610
+in New York, the UAE showcased its investments
+
+83
+00:03:19,660 --> 00:03:20,270
+in the US
+
+84
+00:03:20,320 --> 00:03:22,530
+And according to The National, the figure is
+
+85
+00:03:22,580 --> 00:03:24,890
+more than $1 trillion
+
+86
+00:03:24,940 --> 00:03:26,690
+And the two main sectors at the forum were
+
+87
+00:03:26,740 --> 00:03:28,230
+health and AI
+
+88
+00:03:28,280 --> 00:03:29,770
+What's behind that number?
+
+89
+00:03:29,820 --> 00:03:32,390
+Abu Dhabi investment firm MGX entered a partnership
+
+90
+00:03:32,440 --> 00:03:34,150
+with BlackRock in July
+
+91
+00:03:34,200 --> 00:03:37,270
+The partnership is worth $40 billion, for digital
+
+92
+00:03:37,320 --> 00:03:38,150
+infrastructure
+
+93
+00:03:38,200 --> 00:03:40,510
+And at the time, the same firm said it had
+
+94
+00:03:40,560 --> 00:03:43,670
+raised $49 billion for its AI fund
+
+95
+00:03:43,720 --> 00:03:46,350
+And it plans to put up to 80% of its portfolio
+
+96
+00:03:46,400 --> 00:03:48,450
+into US projects
+
+97
+00:03:48,500 --> 00:03:52,230
+In Saudi Arabia, the story is more about people than money
+
+98
+00:03:52,280 --> 00:03:55,370
+According to the Saudi Press Agency, SDAIA
+
+99
+00:03:55,420 --> 00:03:58,410
+the Saudi Data and AI Authority, launched a
+
+100
+00:03:58,460 --> 00:04:01,510
+"Year of AI" initiative across universities
+
+101
+00:04:01,560 --> 00:04:03,540
+And according to a report in the Saudi press
+
+102
+00:04:03,590 --> 00:04:06,490
+HUMAIN is targeting the skills gap in Saudi Arabia
+
+103
+00:04:06,540 --> 00:04:08,290
+with hands-on training
+
+104
+00:04:08,340 --> 00:04:11,080
+And the same week, according to Data Center Dynamics
+
+105
+00:04:11,130 --> 00:04:16,170
+HUMAIN raised $667 million to expand AI infrastructure
+
+106
+00:04:16,220 --> 00:04:17,530
+in Saudi Arabia
+
+107
+00:04:17,580 --> 00:04:20,010
+So money and skills are moving together: any
+
+108
+00:04:20,060 --> 00:04:22,890
+data center, however big, needs people to build
+
+109
+00:04:22,940 --> 00:04:23,850
+it and run it
+
+110
+00:04:23,900 --> 00:04:25,430
+Who's going to feel this here?
+
+111
+00:04:25,480 --> 00:04:26,850
+Companies that are hiring
+
+112
+00:04:26,900 --> 00:04:29,950
+Skills programs shape who'll be ready to work with AI
+
+113
+00:04:30,000 --> 00:04:31,950
+And the question we're watching: how much of
+
+114
+00:04:32,000 --> 00:04:34,450
+this money will build capabilities here, not
+
+115
+00:04:34,500 --> 00:04:35,377
+just over there?
+
+116
+00:04:35,427 --> 00:04:38,410
+On to models, and the biggest financial story
+
+117
+00:04:38,460 --> 00:04:39,870
+of the week
+
+118
+00:04:39,920 --> 00:04:42,470
+Anthropic, the company behind the Claude model
+
+119
+00:04:42,520 --> 00:04:45,690
+went public this week, in the largest IPO in history
+
+120
+00:04:45,740 --> 00:04:47,670
+According to The National, the shares were
+
+121
+00:04:47,720 --> 00:04:50,450
+priced in the IPO at $83
+
+122
+00:04:50,500 --> 00:04:52,270
+And on the first day of trading, according
+
+123
+00:04:52,320 --> 00:04:55,710
+to CNBC, the stock closed up 17%
+
+124
+00:04:55,760 --> 00:04:57,570
+But it didn't last
+
+125
+00:04:57,620 --> 00:05:00,450
+On Friday, according to the BBC, the shares
+
+126
+00:05:00,500 --> 00:05:04,110
+fell back, at one point by more than 12%, to
+
+127
+00:05:04,160 --> 00:05:07,350
+about $85, close to the IPO price
+
+128
+00:05:07,400 --> 00:05:10,750
+They closed the day down 8.5%, giving back
+
+129
+00:05:10,800 --> 00:05:12,830
+half of Thursday's gains
+
+130
+00:05:12,880 --> 00:05:15,650
+According to WIRED, it now has around $200
+
+131
+00:05:15,700 --> 00:05:17,550
+billion in the bank
+
+132
+00:05:17,600 --> 00:05:19,910
+That's more than every big tech company except
+
+133
+00:05:19,960 --> 00:05:22,310
+Alphabet, Google's parent company
+
+134
+00:05:22,360 --> 00:05:25,870
+Last quarter, its sales were $17 billion
+
+135
+00:05:25,920 --> 00:05:28,510
+That's an increase of more than 1,100% over
+
+136
+00:05:28,560 --> 00:05:29,710
+the previous year
+
+137
+00:05:29,760 --> 00:05:31,390
+But there's another side to the story
+
+138
+00:05:31,440 --> 00:05:33,310
+The company has committed to pay suppliers
+
+139
+00:05:33,360 --> 00:05:35,630
+more than $900 billion
+
+140
+00:05:35,680 --> 00:05:38,450
+That's over 19 years, and most of it goes to
+
+141
+00:05:38,500 --> 00:05:40,410
+data centers that run Claude
+
+142
+00:05:40,460 --> 00:05:43,190
+And according to WIRED, American voters rejected
+
+143
+00:05:43,240 --> 00:05:45,810
+data centers in most local votes this month
+
+144
+00:05:45,860 --> 00:05:47,570
+and protests continue
+
+145
+00:05:47,620 --> 00:05:49,410
+There's even a group of residents in West Virginia
+
+146
+00:05:49,460 --> 00:05:52,650
+fighting a data center still being built for Anthropic
+
+147
+00:05:52,700 --> 00:05:55,710
+And Dario Amodei, the CEO, said safeguards
+
+148
+00:05:55,760 --> 00:05:58,090
+are what set the pace of model releases
+
+149
+00:05:58,140 --> 00:06:00,130
+He also said the company delayed a new model
+
+150
+00:06:00,180 --> 00:06:03,430
+this year to protect people, even if it lost sales
+
+151
+00:06:03,480 --> 00:06:06,310
+CNBC sees the IPO as a test for all the money
+
+152
+00:06:06,360 --> 00:06:07,610
+flowing into AI startups
+
+153
+00:06:07,660 --> 00:06:12,230
+And the figure here is more than $350 billion
+
+154
+00:06:12,280 --> 00:06:14,310
+The founder of investment firm Altimeter said
+
+155
+00:06:14,360 --> 00:06:17,850
+he plans to invest $5 billion, that's five
+
+156
+00:06:17,900 --> 00:06:19,870
+times the largest investment he's ever made
+
+157
+00:06:19,920 --> 00:06:21,270
+in an IPO
+
+158
+00:06:21,320 --> 00:06:24,010
+Chip companies, including NVIDIA, are investors
+
+159
+00:06:24,060 --> 00:06:26,430
+too, along with Google and Microsoft
+
+160
+00:06:26,480 --> 00:06:29,030
+And here's an angle that matters for our region
+
+161
+00:06:29,080 --> 00:06:32,110
+According to AGBI, Gulf funds made big paper
+
+162
+00:06:32,160 --> 00:06:33,830
+gains from this listing
+
+163
+00:06:33,880 --> 00:06:37,010
+Qatar's QIA and the UAE's MGX came in during
+
+164
+00:06:37,060 --> 00:06:41,430
+the February round, when the company was worth $380 billion
+
+165
+00:06:41,480 --> 00:06:44,110
+And Global SWF estimates Gulf investors put
+
+166
+00:06:44,160 --> 00:06:45,850
+in about $8 billion
+
+167
+00:06:45,900 --> 00:06:47,450
+It's not only the funds
+
+168
+00:06:47,500 --> 00:06:50,510
+According to Forbes Middle East, Hussain Sajwani
+
+169
+00:06:50,560 --> 00:06:53,410
+the founder of DAMAC, bought shares in 2024
+
+170
+00:06:53,460 --> 00:06:55,730
+for $50 million
+
+171
+00:06:55,780 --> 00:06:57,870
+Forbes Middle East valued his stake at the
+
+172
+00:06:57,920 --> 00:07:01,070
+listing at about $1.9 billion
+
+173
+00:07:01,120 --> 00:07:04,090
+Remember, these are paper gains, and the funds'
+
+174
+00:07:04,140 --> 00:07:06,070
+full holdings aren't disclosed
+
+175
+00:07:06,120 --> 00:07:08,330
+So, what does this mean for a company here
+
+176
+00:07:08,380 --> 00:07:09,570
+that uses Claude?
+
+177
+00:07:09,620 --> 00:07:11,990
+A listed company publishes its numbers, so
+
+178
+00:07:12,040 --> 00:07:14,670
+customers get a clearer view of where it stands
+
+179
+00:07:14,720 --> 00:07:16,670
+But the data center commitments determine how
+
+180
+00:07:16,720 --> 00:07:19,230
+much capacity will be available tomorrow, and
+
+181
+00:07:19,280 --> 00:07:21,670
+according to WIRED, any construction delay
+
+182
+00:07:21,720 --> 00:07:24,930
+could make it harder to train more powerful models
+
+183
+00:07:24,980 --> 00:07:27,690
+So, the second story in models?
+
+184
+00:07:27,740 --> 00:07:28,970
+A price war
+
+185
+00:07:29,020 --> 00:07:31,210
+Google's DeepMind lab released a new model
+
+186
+00:07:31,260 --> 00:07:33,610
+It's called Neon, and it's the mid-tier model
+
+187
+00:07:33,660 --> 00:07:34,910
+in the Gemini 4 family
+
+188
+00:07:34,960 --> 00:07:37,470
+It's a model that thinks before it answers
+
+189
+00:07:37,520 --> 00:07:40,010
+built for coding agents and knowledge work
+
+190
+00:07:40,060 --> 00:07:42,050
+Pricing is per million tokens
+
+191
+00:07:42,100 --> 00:07:45,010
+$3 for input, and $15 for output
+
+192
+00:07:45,060 --> 00:07:47,410
+And the context window is 1 million tokens
+
+193
+00:07:47,460 --> 00:07:50,750
+so it can read very long documents in one go
+
+194
+00:07:50,800 --> 00:07:53,130
+Google says the cost per task on Neon is lower
+
+195
+00:07:53,180 --> 00:07:55,770
+than competitors' by 50 to 80%
+
+196
+00:07:55,820 --> 00:07:58,850
+But note: these are Google's own figures, not
+
+197
+00:07:58,900 --> 00:08:00,590
+from an independent test
+
+198
+00:08:00,640 --> 00:08:02,750
+And even in their own table, Neon didn't win
+
+199
+00:08:02,800 --> 00:08:03,470
+every benchmark
+
+200
+00:08:03,520 --> 00:08:07,210
+Models from Anthropic and OpenAI beat it on a few
+
+201
+00:08:07,260 --> 00:08:10,090
+And from China, Alibaba released its most powerful
+
+202
+00:08:10,140 --> 00:08:11,990
+model yet, called Qwen
+
+203
+00:08:12,040 --> 00:08:15,330
+The model has 2.4 trillion parameters
+
+204
+00:08:15,380 --> 00:08:18,950
+But for each token, it only runs 71 billion
+
+205
+00:08:19,000 --> 00:08:21,250
+Picture a company with lots of experts, but
+
+206
+00:08:21,300 --> 00:08:23,550
+each question goes to just a few of them
+
+207
+00:08:23,600 --> 00:08:25,050
+That's how it saves compute
+
+208
+00:08:25,100 --> 00:08:27,570
+And according to a report on KuCoin, it's the
+
+209
+00:08:27,620 --> 00:08:29,890
+top-ranked Chinese model on the agent leaderboard
+
+210
+00:08:29,940 --> 00:08:33,410
+at Arena, which rates models through real conversations
+
+211
+00:08:33,460 --> 00:08:35,770
+What's the lesson for our companies?
+
+212
+00:08:35,820 --> 00:08:38,290
+The price per token isn't the whole story
+
+213
+00:08:38,340 --> 00:08:40,570
+The more accurate comparison now is how much
+
+214
+00:08:40,620 --> 00:08:42,310
+the whole task costs
+
+215
+00:08:42,360 --> 00:08:44,690
+And a strong Chinese option widens the choices
+
+216
+00:08:44,740 --> 00:08:47,690
+here, but it raises governance questions: where
+
+217
+00:08:47,740 --> 00:08:50,930
+does the data go, and under which laws?
+
+218
+00:08:50,980 --> 00:08:54,370
+Now let's move to agents, and back to Microsoft
+
+219
+00:08:54,420 --> 00:08:57,070
+At its annual Ignite conference, Nadella announced
+
+220
+00:08:57,120 --> 00:08:59,470
+shared workspaces inside Copilot
+
+221
+00:08:59,520 --> 00:09:01,330
+People and agents work on the same document
+
+222
+00:09:01,380 --> 00:09:03,830
+The agent writes a section, you review and
+
+223
+00:09:03,880 --> 00:09:06,630
+comment, and the agent picks up the comment
+
+224
+00:09:06,680 --> 00:09:09,810
+Microsoft also announced an agent called Autopilot
+
+225
+00:09:09,860 --> 00:09:13,050
+According to Microsoft, it monitors Teams channels
+
+226
+00:09:13,100 --> 00:09:15,650
+follows up on emails and runs a project, without
+
+227
+00:09:15,700 --> 00:09:16,970
+anyone asking it to
+
+228
+00:09:17,020 --> 00:09:19,670
+And here's the detail that matters to tech teams
+
+229
+00:09:19,720 --> 00:09:22,410
+Every agent gets its own identity in Microsoft's
+
+230
+00:09:22,460 --> 00:09:25,590
+identity system, and a named human manager
+
+231
+00:09:25,640 --> 00:09:27,970
+Its sign-in and every action it takes are logged
+
+232
+00:09:28,020 --> 00:09:30,570
+under its name, so there's a clear audit trail
+
+233
+00:09:30,620 --> 00:09:32,890
+and the tech team can shut it down
+
+234
+00:09:32,940 --> 00:09:35,310
+But ZDNET cautioned that teams should verify
+
+235
+00:09:35,360 --> 00:09:37,330
+the claim about running meetings on its own
+
+236
+00:09:37,380 --> 00:09:38,810
+for themselves
+
+237
+00:09:38,860 --> 00:09:41,690
+And through a new partnership, data from Salesforce
+
+238
+00:09:41,740 --> 00:09:43,730
+the well-known customer relationship management
+
+239
+00:09:43,780 --> 00:09:47,430
+system, now flows into Copilot, in preview
+
+240
+00:09:47,480 --> 00:09:50,050
+Why does this matter for us here in the region?
+
+241
+00:09:50,100 --> 00:09:52,430
+Because the agent now has an identity, almost
+
+242
+00:09:52,480 --> 00:09:53,670
+like an employee
+
+243
+00:09:53,720 --> 00:09:55,490
+So the question for any organization running
+
+244
+00:09:55,540 --> 00:09:58,750
+on Microsoft is: who grants the agent its permissions
+
+245
+00:09:58,800 --> 00:10:00,690
+and who reviews its log?
+
+246
+00:10:00,740 --> 00:10:02,990
+And after the November outage, putting your
+
+247
+00:10:03,040 --> 00:10:06,610
+agents with the same provider is a question in itself
+
+248
+00:10:06,660 --> 00:10:09,890
+So, what about when the agent needs to pay?
+
+249
+00:10:09,940 --> 00:10:12,830
+Last week we covered ChatGPT's new wallet for consumers
+
+250
+00:10:12,880 --> 00:10:16,270
+And this week, on the enterprise side, AWS
+
+251
+00:10:16,320 --> 00:10:18,910
+Amazon's cloud service, made a move too
+
+252
+00:10:18,960 --> 00:10:21,410
+It now lets agents buy software and data from
+
+253
+00:10:21,460 --> 00:10:24,650
+its marketplace, in dollars, on the cloud bill
+
+254
+00:10:24,700 --> 00:10:26,930
+According to Amazon itself, there's a spending
+
+255
+00:10:26,980 --> 00:10:30,230
+cap, and every transaction is logged for auditing
+
+256
+00:10:30,280 --> 00:10:32,190
+Where does the region stand on this?
+
+257
+00:10:32,240 --> 00:10:34,930
+Banks, card issuers and online stores here
+
+258
+00:10:34,980 --> 00:10:37,390
+face a new question: what happens when the
+
+259
+00:10:37,440 --> 00:10:39,210
+agent is the one paying?
+
+260
+00:10:39,260 --> 00:10:41,510
+In the world of chips, three headlines point
+
+261
+00:10:41,560 --> 00:10:43,630
+the same way, and we're covering them carefully
+
+262
+00:10:43,680 --> 00:10:46,050
+because details are still thin
+
+263
+00:10:46,100 --> 00:10:48,790
+The first, from Bloomberg: the US is moving
+
+264
+00:10:48,840 --> 00:10:52,010
+to curb remote access to NVIDIA's advanced chips
+
+265
+00:10:52,060 --> 00:10:53,930
+That means running the chips through the cloud
+
+266
+00:10:53,980 --> 00:10:55,670
+without having them yourself
+
+267
+00:10:55,720 --> 00:10:58,610
+The second, from Anadolu: the chairman of the
+
+268
+00:10:58,660 --> 00:11:00,470
+House Foreign Affairs Committee released records
+
+269
+00:11:00,520 --> 00:11:03,470
+of NVIDIA and AMD chip exports to China
+
+270
+00:11:03,520 --> 00:11:06,250
+And the third, from The Information
+
+271
+00:11:06,300 --> 00:11:09,930
+Chinese AI company Moonshot AI scrapped a $150
+
+272
+00:11:09,980 --> 00:11:13,910
+million deal for access to NVIDIA chips in Indonesia
+
+273
+00:11:13,960 --> 00:11:16,510
+The common thread: routes around the restrictions
+
+274
+00:11:16,560 --> 00:11:19,350
+through other countries or through the cloud
+
+275
+00:11:19,400 --> 00:11:21,410
+now appear to be under the microscope
+
+276
+00:11:21,460 --> 00:11:24,250
+And why does this matter to the Gulf in particular?
+
+277
+00:11:24,300 --> 00:11:26,410
+Data centers that sell compute to customers
+
+278
+00:11:26,460 --> 00:11:29,310
+abroad could be reached by remote-access rules
+
+279
+00:11:29,360 --> 00:11:31,170
+And what's worth watching is the compliance
+
+280
+00:11:31,220 --> 00:11:34,010
+terms in GPU rental contracts
+
+281
+00:11:34,060 --> 00:11:36,130
+In the US, there's a case that could change
+
+282
+00:11:36,180 --> 00:11:39,030
+how governments deal with AI companies
+
+283
+00:11:39,080 --> 00:11:41,290
+According to The Guardian, the state of California
+
+284
+00:11:41,340 --> 00:11:43,970
+has sued OpenAI, accusing it of developing
+
+285
+00:11:44,020 --> 00:11:46,350
+its technology without putting safety and the
+
+286
+00:11:46,400 --> 00:11:47,910
+public interest first
+
+287
+00:11:47,960 --> 00:11:50,950
+The story began with an incident: AI agents
+
+288
+00:11:51,000 --> 00:11:53,390
+belonging to OpenAI carried out a cyberattack
+
+289
+00:11:53,440 --> 00:11:55,250
+on the Hugging Face platform
+
+290
+00:11:55,300 --> 00:11:57,190
+And the company itself said in July that one
+
+291
+00:11:57,240 --> 00:12:00,330
+of its agents went rogue during an experiment
+
+292
+00:12:00,380 --> 00:12:02,230
+Attorney General Rob Bonta says it's one of
+
+293
+00:12:02,280 --> 00:12:04,950
+80 known loss-of-control incidents
+
+294
+00:12:05,000 --> 00:12:07,550
+OpenAI says it has built safeguards, and that
+
+295
+00:12:07,600 --> 00:12:09,550
+most cases were low-risk
+
+296
+00:12:09,600 --> 00:12:11,390
+And here I want to give you my personal view
+
+297
+00:12:11,440 --> 00:12:13,610
+This is opinion, not news
+
+298
+00:12:13,660 --> 00:12:15,950
+The companies building these systems are responsible
+
+299
+00:12:16,000 --> 00:12:17,430
+for protecting people
+
+300
+00:12:17,480 --> 00:12:19,730
+The software industry has spent decades dealing
+
+301
+00:12:19,780 --> 00:12:22,650
+with runaway programs, and the tools exist
+
+302
+00:12:22,700 --> 00:12:25,130
+There has to be oversight at every level: the
+
+303
+00:12:25,180 --> 00:12:28,490
+model, the agent, the platform, all the way
+
+304
+00:12:28,540 --> 00:12:30,790
+down to the chip itself, which could run only
+
+305
+00:12:30,840 --> 00:12:32,410
+verified workloads
+
+306
+00:12:32,460 --> 00:12:34,550
+And there has to be a full audit trail, like
+
+307
+00:12:34,600 --> 00:12:37,070
+an airplane's black box, so anyone can go back
+
+308
+00:12:37,120 --> 00:12:38,550
+and see what happened
+
+309
+00:12:38,600 --> 00:12:40,570
+And every incident should be reported, the
+
+310
+00:12:40,620 --> 00:12:41,970
+way airlines do
+
+311
+00:12:42,020 --> 00:12:45,390
+But let's be fair: who decides what "rogue" means?
+
+312
+00:12:45,440 --> 00:12:47,930
+A switch on every chip is also power, and it
+
+313
+00:12:47,980 --> 00:12:49,130
+needs clear rules
+
+314
+00:12:49,180 --> 00:12:52,010
+And most important: incidents without accountability
+
+315
+00:12:52,060 --> 00:12:54,750
+make people needlessly afraid of AI
+
+316
+00:12:54,800 --> 00:12:57,190
+Accountability is what builds trust
+
+317
+00:12:57,240 --> 00:12:59,950
+And for the Gulf, with the UAE and Saudi Arabia
+
+318
+00:13:00,000 --> 00:13:02,870
+wanting to lead: if we build in auditability
+
+319
+00:13:02,920 --> 00:13:05,190
+from day one, it could become an advantage
+
+320
+00:13:05,240 --> 00:13:07,190
+for us, not a burden
+
+321
+00:13:07,240 --> 00:13:09,830
+The weekly radar, quickly
+
+322
+00:13:09,880 --> 00:13:12,310
+Isomorphic Labs, which discovers drugs with
+
+323
+00:13:12,360 --> 00:13:17,610
+AI, has raised, according to the company itself, $5 billion
+
+324
+00:13:17,660 --> 00:13:19,770
+The company was founded by Demis Hassabis
+
+325
+00:13:19,820 --> 00:13:22,190
+who stepped down as head of DeepMind three
+
+326
+00:13:22,240 --> 00:13:24,350
+and a half months before the round
+
+327
+00:13:24,400 --> 00:13:27,190
+LangChain, which makes tools for building agents
+
+328
+00:13:27,240 --> 00:13:29,730
+has more than doubled its valuation, reaching
+
+329
+00:13:29,780 --> 00:13:33,150
+$3 billion, according to the WSJ
+
+330
+00:13:33,200 --> 00:13:36,570
+In Africa, according to TechCabal, Cassava Technologies
+
+331
+00:13:36,620 --> 00:13:40,430
+is seeking to raise up to $1 billion, for NVIDIA
+
+332
+00:13:40,480 --> 00:13:43,210
+chips for AI data centers on the continent
+
+333
+00:13:43,260 --> 00:13:46,230
+In Türkiye, according to Hürriyet Daily News
+
+334
+00:13:46,280 --> 00:13:48,430
+the government is considering requiring clear
+
+335
+00:13:48,480 --> 00:13:51,230
+labels on AI-generated content
+
+336
+00:13:51,280 --> 00:13:54,650
+And in the UAE, Space42 and Exodigo have partnered
+
+337
+00:13:54,700 --> 00:13:57,230
+to map what's underground using AI
+
+338
+00:13:57,280 --> 00:13:59,390
+In a first project for a major oil and gas
+
+339
+00:13:59,440 --> 00:14:02,490
+company, Exodigo located a buried fuel line
+
+340
+00:14:02,540 --> 00:14:06,170
+at a depth of up to 14 meters, without digging
+
+341
+00:14:06,220 --> 00:14:08,990
+The bottom line: this week reminded us that
+
+342
+00:14:09,040 --> 00:14:11,490
+AI is only as strong as the infrastructure
+
+343
+00:14:11,540 --> 00:14:13,390
+underneath it can bear
+
+344
+00:14:13,440 --> 00:14:15,410
+If you found this episode useful, give it a
+
+345
+00:14:15,460 --> 00:14:17,610
+Hype, subscribe to the channel and tell us
+
+346
+00:14:17,660 --> 00:14:18,250
+what you think
+
+347
+00:14:18,300 --> 00:14:19,470
+Take care, everyone

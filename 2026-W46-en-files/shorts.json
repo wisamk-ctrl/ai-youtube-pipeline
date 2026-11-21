@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Jensen Huang Leaves NVIDIA",
+    "start": 37.35,
+    "end": 81.65,
+    "file": "short_01.mp4",
+    "episode_start": 42.35,
+    "hook": "NVIDIA just lost its CEO."
+  },
+  {
+    "title": "Anthropic's IPO Under Pressure",
+    "start": 106.66,
+    "end": 154.01,
+    "file": "short_02.mp4",
+    "episode_start": 111.66,
+    "hook": "Anthropic's IPO has a voter problem."
+  },
+  {
+    "title": "Saudi Arabia's Bunyan Platform",
+    "start": 215.91,
+    "end": 260.95,
+    "file": "short_03.mp4",
+    "episode_start": 220.91,
+    "hook": "AI that never leaves Saudi Arabia."
+  }
+]

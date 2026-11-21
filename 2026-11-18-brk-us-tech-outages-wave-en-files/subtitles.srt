@@ -1,0 +1,75 @@
+1
+00:00:00,000 --> 00:00:02,990
+Vice President JD Vance canceled a summit appearance
+
+2
+00:00:03,040 --> 00:00:05,450
+on Wednesday to attend meetings on a wave of
+
+3
+00:00:05,500 --> 00:00:08,090
+tech outages, CNBC reports
+
+4
+00:00:08,140 --> 00:00:10,490
+Incidents include a nationwide ground stop
+
+5
+00:00:10,540 --> 00:00:13,470
+a Microsoft Outlook outage and a reported blackout
+
+6
+00:00:13,520 --> 00:00:15,450
+of an NSA classified network
+
+7
+00:00:15,500 --> 00:00:20,370
+CNBC also lists issues at JPMorgan Chase, United Airlines and Apple
+
+8
+00:00:20,420 --> 00:00:22,550
+A senior administration official says they
+
+9
+00:00:22,600 --> 00:00:25,430
+are not a cyberattack, but upgrades, patches
+
+10
+00:00:25,480 --> 00:00:27,020
+and other disparate events
+
+11
+00:00:27,070 --> 00:00:29,580
+Intelligence director Jay Clayton says there
+
+12
+00:00:29,630 --> 00:00:31,140
+is no sign they are coordinated
+
+13
+00:00:31,190 --> 00:00:34,000
+Asked about AI's role, the official called
+
+14
+00:00:34,050 --> 00:00:35,760
+it challenging to answer
+
+15
+00:00:35,810 --> 00:00:38,460
+Senator Mark Warner told CNBC he wants better
+
+16
+00:00:38,510 --> 00:00:40,080
+coordination on AI safety
+
+17
+00:00:40,130 --> 00:00:42,860
+For Gulf businesses and governments, watch
+
+18
+00:00:42,910 --> 00:00:44,900
+whether this brings new scrutiny of system
+
+19
+00:00:44,950 --> 00:00:46,360
+upgrades and AI safety

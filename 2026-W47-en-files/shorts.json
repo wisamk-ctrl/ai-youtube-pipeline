@@ -1,0 +1,26 @@
+[
+  {
+    "title": "The Day Microsoft Stopped",
+    "start": 28.78,
+    "end": 74.05,
+    "file": "short_01.mp4",
+    "episode_start": 33.78,
+    "hook": "What if your email stops for days?"
+  },
+  {
+    "title": "Gulf Money and AI",
+    "start": 193.7,
+    "end": 241.51,
+    "file": "short_02.mp4",
+    "episode_start": 198.7,
+    "hook": "Where is Gulf AI money going?"
+  },
+  {
+    "title": "The Biggest IPO in History",
+    "start": 279.47,
+    "end": 325.87,
+    "file": "short_03.mp4",
+    "episode_start": 284.47,
+    "hook": "Anthropic went public. What does it owe?"
+  }
+]

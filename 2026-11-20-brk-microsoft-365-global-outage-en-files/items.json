@@ -1,0 +1,57 @@
+[
+  {
+    "source": "Broadband Breakfast",
+    "source_type": "rss",
+    "title": "Luke Kehoe: Microsoft Outage Exposes Concentration Risks in Digital Infrastructure",
+    "summary": "The Microsoft 365 outage of November 12 and 13 was the largest on Downdetector (an Ookla platform that collects and displays user reports about service issues from around the world) since the AWS outage of October 2025. In the 60 hours after it began, people submitted more than 7.7 million reports about Outlook, Teams and other Microsoft services , about half of them (3.9 million) from the U.S. U.S. reports climbed from about 12:30 p.m. ET on Thursday and peaked at about 14,000 a minute at 1:25 p.m. ET. Counting every service Downdetector tracks, Thursday was the busiest day on its US site in the past year, ahead of January 14, the day of Verizon's network outage. The US House of Representatives said its users were affected, as were city governments, including Austin's. Microsoft puts customer impact at almost 24 hours, long enough for people in each region to run into it as they started work. Reports peaked at around 9 a.m. local time on Friday in Japan and the UK, 10:15 a.m. in India and between 8:30 and 9:15 a.m. across most of Europe. Worldwide, reports stayed at a fifth or more of their busiest hour for about 20 hours, about twice as long as any other large outage of the past year (Steam's on Christmas Eve 2025 came closest, at about 9 hours). More than 90 countries and territories logged at least 1,000 outage reports on Downdetector. Some UK hospitals rescheduled procedures, Japan's Digital Agency could not receive email and Immigration New Zealand paused visa processing. Microsoft's preliminary review , dated November 15, traces the outage to a software defect introduced in July in the networking gateway servers that route traffic into Microsoft 365. The defect surfaced when Teams traffic moved onto a gateway shared with Exchange Online (Microsoft's email service) while nearly 14% of that gateway's capacity was already out of service. At the worst point, more than 80% of those servers stopped responding. Microsoft found no sign of a cyberattack, and its final review is due on November 20. Those gateways sit inside Microsoft's own platform, beyond the point where broadband and mobile networks hand traffic over, and the wider internet held up. Ookla's measurements of latency (the round-trip time from a phone to a server) to major content delivery networks (the server networks that deliver much of the web's content) and Speedtest servers (measuring round-trip time in the last-mile over access networks) did not move through the worst of the outage. The…",
+    "url": "https://broadbandbreakfast.com/luke-kehoe-microsoft-outage-exposes-concentration-risks-in-digital-infrastructure/",
+    "published": "2026-11-19T19:06:14+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "3d7ef22720"
+  },
+  {
+    "source": "Tech Policy Press",
+    "source_type": "rss",
+    "title": "Microsoft Outage Raises Questions Over UK Control of Critical Digital Infrastructure",
+    "summary": "Evie Breese is a UK Reporting Fellow at Tech Policy Press and openDemocracy. The full effects of the global Microsoft outage, which lasted a few days , are now coming into sharp focus. Alongside much of the world, millions of users across UK institutions, including schools, hospitals, police forces , and government agencies , lost access to Microsoft 365, Outlook, Teams, and the generative AI assistant Copilot, disrupting essential and non-essential services. Almost all NHS Trusts suffered email outages, leaving some medical staff resorting to paper records to deliver healthcare in hospitals and GP surgeries. Some medical appointments and operations, including caesareans, had to be canceled . Police forces were unable to receive online crime reports, urging members to report urgent and non-urgent information by phone instead. In the justice system, cases set to be heard at magistrates', Crown, and civil courts were canceled or delayed, including the Manchester-based trial of nine men accused of raping a woman who was drugged by her husband. Even the machinery of government itself ground to a halt, given that as many as 99% of civil servants use Microsoft for communications, including the Ministry of Defence and the Department for Work and Pensions. “Eleanor in the UK could not send urgent cancer referrals. Hugo could not pay his staff, who live paycheque to paycheque. Mohamed, a pharmacist, could not dispense prescriptions,” Victoria Collins, Liberal Democrat Spokesperson, described to Parliament three days later. In the House of Commons on Nov.16, Ian Murray, Minister for Creative Industries, Media, and Online Safety, delivered a speech reassuring parliamentarians that “emergency departments remained open” and there were “no major critical service impacts, and public sector resilience plans were in place.” He admitted the “incident could have been more serious if it had lasted longer.” “No single provider should have such a major impact across the NHS, police and other frontline services,” said the Liberal Democrats Cabinet Office spokesperson Lisa Smart in a statement on 13 November. “The Government must urgently set out a plan to secure our digital sovereignty and stop relying on a few big US tech firms,” she added. The UK currently does not have a defined digital sovereignty strategy, although the government has invested in domestic technology to reduce dependence on foreign suppliers. “We have put £500 million in the sovereign AI fund , £1 billion…",
+    "url": "https://www.techpolicy.press/microsoft-outage-raises-questions-over-uk-control-of-critical-digital-infrastructure/",
+    "published": "2026-11-19T14:07:25+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Microsoft Copilot"
+    ],
+    "id": "b2d7c154ec"
+  },
+  {
+    "source": "openDemocracy",
+    "source_type": "rss",
+    "title": "Microsoft outage raises questions over UK’s critical digital infrastructure",
+    "summary": "The full effects of the global Microsoft outage, which began last Friday and lasted a few days , are now coming into sharp focus. In the UK, essential and non-essential services were disrupted as millions of users at institutions including schools, hospitals, police forces , and government agencies lost access to Microsoft 365, Outlook, Teams, and the generative AI assistant Copilot. Almost all NHS Trusts suffered email outages, leaving some medical staff resorting to paper records to deliver healthcare in hospitals and GP surgeries. Some medical appointments and operations, including caesareans, were cancelled . Police forces were unable to receive online crime reports, urging members to report urgent and non-urgent information by phone instead. In the justice system, cases set to be heard at magistrates’, Crown, and civil courts were cancelled or delayed, including the Manchester-based trial of nine men accused of raping a woman drugged by her husband. Even the machinery of government itself ground to a halt, with as many as 99% of civil servants using Microsoft for communications, including the Ministry of Defence and the Department for Work and Pensions. “Eleanor in the UK could not send urgent cancer referrals. Hugo could not pay his staff, who live paycheque to paycheque. Mohamed, a pharmacist, could not dispense prescriptions,” Victoria Collins, the Liberal Democrats’ spokesperson, told Parliament on 16 November, three days after the outage began. Ian Murray, the minister for creative industries, media, and online safety, reassured parliamentarians that “emergency departments remained open” and there were “no major critical service impacts, and public sector resilience plans were in place”. He admitted the “incident could have been more serious if it had lasted longer”. “No single provider should have such a major impact across the NHS, police and other frontline services,” said Liberal Democrats Cabinet Office spokesperson Lisa Smart in a statement on 13 November. “The government must urgently set out a plan to secure our digital sovereignty and stop relying on a few big US tech firms,” she added. The UK does not currently have a defined digital sovereignty strategy, although the government has invested in domestic technology to reduce dependence on foreign suppliers. “We have put £500m in the sovereign AI fund , £1bn into the AI hardware plan and £2bn into quantum investment , so that the government can be a first customer for some of these…",
+    "url": "https://www.opendemocracy.net/microsoft-outage-raises-questions-over-uks-critical-digital-infrastructure/",
+    "published": "2026-11-19T17:42:16+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Microsoft Copilot"
+    ],
+    "id": "2fae5b338c"
+  }
+]

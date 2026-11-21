@@ -1,0 +1,71 @@
+1
+00:00:00,000 --> 00:00:03,450
+A computer fault has disrupted a US National Security Agency
+
+2
+00:00:03,500 --> 00:00:06,310
+hub in Georgia, NewsCord's roundup reports
+
+3
+00:00:06,360 --> 00:00:08,770
+The site supports intelligence and cyber operations
+
+4
+00:00:08,820 --> 00:00:10,470
+focused on the Middle East
+
+5
+00:00:10,520 --> 00:00:13,030
+The fault hit NSANet, the agency's internal
+
+6
+00:00:13,080 --> 00:00:15,210
+network for classified information, leaving
+
+7
+00:00:15,260 --> 00:00:17,590
+many staff unable to work normally
+
+8
+00:00:17,640 --> 00:00:19,510
+Officials say the most sensitive systems stayed
+
+9
+00:00:19,560 --> 00:00:22,230
+up, with staff using backup channels
+
+10
+00:00:22,280 --> 00:00:23,270
+U.S
+
+11
+00:00:23,320 --> 00:00:25,490
+officials told CNN the outage was linked to
+
+12
+00:00:25,540 --> 00:00:28,250
+security updates, and they ruled out a cyberattack
+
+13
+00:00:28,300 --> 00:00:31,550
+They tied the issues to systems using PHP
+
+14
+00:00:31,600 --> 00:00:33,930
+a widely used programming language
+
+15
+00:00:33,980 --> 00:00:36,530
+Senator Mark Warner told CNN the evidence points
+
+16
+00:00:36,580 --> 00:00:39,070
+to legitimate efforts to secure systems
+
+17
+00:00:39,120 --> 00:00:42,030
+For the Gulf, watch how quickly critical networks
+
+18
+00:00:42,080 --> 00:00:43,850
+recover when security patches fail

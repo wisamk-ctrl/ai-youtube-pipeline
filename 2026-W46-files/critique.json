@@ -1,0 +1,112 @@
+[
+  {
+    "scores": {
+      "hook": 10,
+      "clarity": 9,
+      "pacing": 8,
+      "flow": 10,
+      "arabic": 10,
+      "value": 9
+    },
+    "minimum": 8,
+    "verdict": "Clean Ammani with a strong regional lead and a sharp hook, but it needs breath marks in the long stretches and one ambiguous pronoun fixed before we record.",
+    "defects": [
+      {
+        "axis": "hook",
+        "severity": "minor",
+        "rule": "Hook carries more than one question",
+        "quote": "مين رح يستضيفها؟ ومين رح يدفع التمن؟"
+      },
+      {
+        "axis": "clarity",
+        "severity": "major",
+        "rule": "Pronoun could refer to two things in previous sentences",
+        "quote": "وهي ما بتتوقّع إنه هاد يعجب الناس"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Technical term not in approved list and unexplained",
+        "quote": "تجرّب تدخل منظومة إن في لينك فيوجن"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "No [Pause] across more than 60 spoken words",
+        "quote": "وأكتر ناس انضربت هي شركات الشرائح"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "No [Pause] across more than 60 spoken words",
+        "quote": "شركة أومني أوبس{OmniOps} من الرياض أطلقت منصة بنيان"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "No [Pause] across more than 60 spoken words",
+        "quote": "بتدخّل معلومات بطاقتك مرة وحدة"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "No [Pause] across more than 60 spoken words",
+        "quote": "وقبل ما نسكّر، جولة سريعة على أدوات المبرمجين"
+      },
+      {
+        "axis": "flow",
+        "severity": "major",
+        "rule": "Story appears in two segments without cross-reference",
+        "quote": "وبالانتخابات النصفية الأمريكية، الناخبين بعتوا رسالة واضحة"
+      },
+      {
+        "axis": "value",
+        "severity": "major",
+        "rule": "Segment has no regional implication sentence",
+        "quote": "جولة سريعة على أدوات المبرمجين"
+      },
+      {
+        "axis": "value",
+        "severity": "major",
+        "rule": "Vendor figure without spoken caveat in same sentence",
+        "quote": "ومخطّطة تستثمر بتلات شركات ناشئة كمان"
+      }
+    ],
+    "worst_three": [
+      {
+        "where": "وهي ما بتتوقّع إنه هاد",
+        "problem": "The listener can't tell whether «هي» is the researcher or Anthropic, so the quote's meaning flips.",
+        "fix": "Replace «وزادت إنه طرح أنثروبيك بتقييم عالي هيك بيقرّبها من صورة شركات التقنية الكبيرة والمليارديرية، وهي ما بتتوقّع إنه هاد يعجب الناس.» with «وزادت إنه طرح أنثروبيك بتقييم عالي هيك بيقرّبها من صورة شركات التقنية الكبيرة والمليارديرية. [Pause] وأوستن ما بتتوقّع إنه هالصورة تعجب الناس.»"
+      },
+      {
+        "where": "شركة أومني أوبس من الرياض",
+        "problem": "The region's lead story runs about 150 words with no breath, so the listener loses the thread before the payoff.",
+        "fix": "Insert [Pause] after «والبيانات وتشغيل الموديل، كلهم جوّا السعودية.» and another [Pause] after «في GPU مخصّصة إلك.» and after «مش مربوطة بمزوّد واحد.»."
+      },
+      {
+        "where": "جولة سريعة على أدوات المبرمجين",
+        "problem": "Three tool updates go by with no breath and no line on why engineers here should care.",
+        "fix": "Add [Pause] after «من سطر الأوامر.», and before [Pause 2s] add: «[Pause] وللفرق التقنية بالبنوك والجهات الحكومية بالمنطقة، تحديثات الأمان هاي ممكن تكون أول إشي بيراجعوه قبل ما يحدّثوا.»"
+      }
+    ],
+    "samples": [
+      {
+        "hook": 10,
+        "clarity": 9,
+        "pacing": 8,
+        "flow": 10,
+        "arabic": 10,
+        "value": 9
+      },
+      {
+        "hook": 10,
+        "clarity": 10,
+        "pacing": 8,
+        "flow": 10,
+        "arabic": 10,
+        "value": 10
+      }
+    ],
+    "stable": true
+  }
+]

@@ -1,0 +1,63 @@
+1
+00:00:00,000 --> 00:00:02,650
+Microsoft faces a pair of class actions in
+
+2
+00:00:02,700 --> 00:00:06,770
+Canada over last week's massive outage, Courthouse News reports
+
+3
+00:00:06,820 --> 00:00:09,690
+One suit, filed in Quebec Superior Court, says
+
+4
+00:00:09,740 --> 00:00:11,730
+consumers were blocked from paid Microsoft
+
+5
+00:00:11,780 --> 00:00:14,550
+services on November 12 and 13
+
+6
+00:00:14,600 --> 00:00:16,490
+It claims Microsoft should have anticipated
+
+7
+00:00:16,540 --> 00:00:20,410
+the outage, given other major outages in 2025
+
+8
+00:00:20,460 --> 00:00:22,810
+Microsoft blames a latent defect from July
+
+9
+00:00:22,860 --> 00:00:24,810
+and reduced server capacity
+
+10
+00:00:24,860 --> 00:00:26,950
+It says it was not a cyberattack
+
+11
+00:00:27,000 --> 00:00:30,170
+A second suit, by Metus Lykos Debt Law, seeks
+
+12
+00:00:30,220 --> 00:00:33,490
+to represent all Canadians, including businesses
+
+13
+00:00:33,540 --> 00:00:35,970
+Attorney Darryl Singer says a 24-hour email
+
+14
+00:00:36,020 --> 00:00:39,590
+blackout means lost customers and missed deadlines
+
+15
+00:00:39,640 --> 00:00:42,210
+For Gulf firms that run on cloud platforms
+
+16
+00:00:42,260 --> 00:00:45,090
+watch how outage liability shapes service contracts
