@@ -28,7 +28,16 @@ def main(week: str) -> str:
         src = reviewed.parent / name
         if src.exists() and not (current.parent / name).exists():
             shutil.copy(src, current.parent / name)
-    rev_items, cur_items = reviewed.parent / "items.json", current.parent / "items.json"
+    cur_items = current.parent / "items.json"
+    # An English week also takes the Arabic week's reviewed sources: they can be added after the translation
+    # (W47-en, 2026-11-20: three source cards came out blank).
+    sources = [reviewed.parent / "items.json"] + ([Path("reviewed") / week[:-3] / "items.json"] if week.endswith("-en") else [])
+    for rev_items in sources:
+        _merge_items(rev_items, cur_items)
+    return "using reviewed script"
+
+
+def _merge_items(rev_items: Path, cur_items: Path) -> None:
     if rev_items.exists() and cur_items.exists():   # a story added by hand brings its source (W47 California, 2026-11-20)
         import json
         have = json.loads(cur_items.read_text(encoding="utf-8"))
@@ -36,7 +45,6 @@ def main(week: str) -> str:
         extra = [i for i in json.loads(rev_items.read_text(encoding="utf-8")) if i.get("url") not in urls]
         if extra:
             cur_items.write_text(json.dumps(have + extra, ensure_ascii=False, indent=1), encoding="utf-8")
-    return "using reviewed script"
 
 
 def apply_meta(week: str, out_dir: Path | None = None) -> str:

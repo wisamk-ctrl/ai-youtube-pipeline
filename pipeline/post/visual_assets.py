@@ -85,6 +85,29 @@ body{{background:{bg};color:{fg};font-family:{TEXT}}}
 {extra_css}</style></head><body><div class="grid"></div><div class="tag">{ui("show")}<b>.</b></div>{body}</body></html>"""
 
 
+_EMOJI = re.compile("[\U0001F000-\U0001FAFF\u2600-\u27BF\u200D\uFE0F\U0001F3FB-\U0001F3FF]+")
+
+
+def card_title(title: str) -> str:
+    """A headline as the card shows it: no emoji (W47-en: a newsletter's astronaut on the Cassava card)."""
+    return re.sub(r"\s{2,}", " ", _EMOJI.sub("", title)).strip()
+
+
+_FILLER = {"a", "an", "the", "of", "in", "on", "with", "and", "at", "to", "for", "from", "by", "into", "over",
+           "animation", "animated", "close-up", "macro", "glowing", "blue", "light", "dark", "slow", "aerial"}
+
+
+def broader_queries(query: str) -> list[str]:
+    """Shorter searches to try when a stock search has no unused clip left (W47-en: 26 of 95 stock shots became a
+    bare animation): the main nouns, then the first pair, then the second."""
+    words = [w for w in re.split(r"[\s,]+", query.lower()) if w and w not in _FILLER]
+    out = []
+    for cand in (" ".join(words[:4]), " ".join(words[:2]), " ".join(words[2:4])):
+        if len(cand.split()) >= 2 and cand != query.lower() and cand not in out:
+            out.append(cand)
+    return out
+
+
 def source_html(item: NewsItem, w: int, h: int) -> str:
     domain = re.sub(r"^www\.", "", re.sub(r"^https?://([^/]+).*$", r"\1", item.url or ""))
     if "news.google.com" in domain:
@@ -98,7 +121,7 @@ box-shadow:{h * 0.02:.0f}px {h * 0.02:.0f}px 0 {RED}}}
 .meta{{font:500 {h * 0.022:.0f}px {MONO};letter-spacing:.08em;color:#6B5E8C}}
 .credit{{position:absolute;bottom:{h * 0.07:.0f}px;right:{w * 0.045:.0f}px;font:500 {h * 0.022:.0f}px {MONO};letter-spacing:.1em;text-transform:uppercase;color:{PAPER};opacity:.7}}"""
     body = f"""<div class="clip"><div class="pub">{html.escape(item.source)}</div>
-<div class="hl" dir="auto">{html.escape(item.title.strip())}</div>
+<div class="hl" dir="auto">{html.escape(card_title(item.title))}</div>
 <div class="meta" dir="ltr">{html.escape(" · ".join(x for x in (domain, date) if x))}</div></div>
 <div class="credit" dir="{ui("dir")}">{ui("source")}: {html.escape(item.source)}</div>"""
     return _page(body, w, h, css)
@@ -628,6 +651,11 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                         # Never the same clip twice in one episode (W47-en: four clips shown four times each, founder
                         # 2026-11-20): when a search has no unused clip left, the shot gets a generated tech animation.
                         got = fetch_stock(s.payload, work / "stock", used, search[1], w, secs)
+                        for q in ([] if got else broader_queries(s.payload)):
+                            got = fetch_stock(q, work / "stock", used, search[1], w, secs)
+                            if got:
+                                s.notes.append(f"broader search «{q}»")
+                                break
                     if got:
                         clips[n] = stock_clip(got[0], secs, dest, w, h, fps)
                         stock_used.append({"shot": n, "start": round(s.start, 1), "end": round(s.end, 1),

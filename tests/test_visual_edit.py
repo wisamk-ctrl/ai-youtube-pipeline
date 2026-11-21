@@ -374,3 +374,36 @@ def test_reviewed_items_are_merged_by_url(tmp_path, monkeypatch):
     (tmp_path / "output/W/items.json").write_text(json.dumps([a]), encoding="utf-8")
     apply_reviewed.main("W")
     assert [i["url"] for i in json.loads((tmp_path / "output/W/items.json").read_text())] == ["https://a", "https://b"]
+
+
+def test_english_week_also_gets_the_arabic_weeks_reviewed_sources(tmp_path, monkeypatch):
+    """W47-en: sources added to reviewed/2026-W47/items.json after the translation never reached the English
+    render, so three source cards came out as a blank "Source" title."""
+    import importlib.util
+    import json
+    spec = importlib.util.spec_from_file_location("apply_reviewed", Path(__file__).parents[1] / "scripts" / "apply_reviewed.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    monkeypatch.chdir(tmp_path)
+    for d in ("reviewed/W-en", "reviewed/W", "output/W-en"):
+        (tmp_path / d).mkdir(parents=True)
+    (tmp_path / "reviewed/W-en/script.md").write_text("text\n", encoding="utf-8")
+    (tmp_path / "reviewed/W/items.json").write_text(json.dumps([{"title": "B", "url": "https://b"}]), encoding="utf-8")
+    (tmp_path / "output/W-en/items.json").write_text(json.dumps([{"title": "A", "url": "https://a"}]), encoding="utf-8")
+    mod.main("W-en")
+    assert [i["url"] for i in json.loads((tmp_path / "output/W-en/items.json").read_text())] == ["https://a", "https://b"]
+
+
+def test_source_card_titles_drop_emoji():
+    """W47-en: TechCabal's newsletter title put an astronaut emoji on the Cassava card."""
+    from pipeline.post.visual_assets import card_title
+    assert card_title("👨🏿‍🚀TechCabal Daily – Cassava seeks $1 billion for AI") == "TechCabal Daily – Cassava seeks $1 billion for AI"
+    assert card_title("أنثروبيك تطرح أسهمها") == "أنثروبيك تطرح أسهمها"
+
+
+def test_an_exhausted_stock_search_tries_broader_words_first():
+    """W47-en: 26 of 95 stock shots fell back to a bare animation once the no-repeat rule used up a phrase."""
+    from pipeline.post.visual_assets import broader_queries
+    assert broader_queries("server racks in a data centre, blue light") == [
+        "server racks data centre", "server racks", "data centre"]
+    assert broader_queries("code") == []

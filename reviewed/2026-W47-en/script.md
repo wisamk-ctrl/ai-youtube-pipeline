@@ -56,14 +56,14 @@ And according to the same report,
 [Visual: number 99% | of UK government staff use Microsoft]
 up to 99% of UK government staff use Microsoft to communicate.
 
-[Visual: stock abstract warning alert animation, red glow on dark background]
+[Visual: photo Palace of Westminster]
 A British minister told Parliament the incident could have been more serious if it had lasted longer.
 
 So, why did this happen?
 
 [Pause]
 
-[Visual: stock abstract network nodes connecting, animation]
+[Visual: photo Satya Nadella]
 Satya Nadella, Microsoft's CEO, spoke on Wednesday at a conference in New York.
 
 [Visual: source 0378197660]
@@ -101,10 +101,10 @@ So explaining an outage this big by saying people are now using AI is a very big
 [Visual: title Digital Sovereignty]
 In Britain, the outage opened up the debate on digital sovereignty.
 
-[Visual: stock digital globe network map, glowing connections]
+[Visual: stock satellite view of Earth at night with city lights]
 The Liberal Democrats said no single provider should have this much impact on health and policing.
 
-[Visual: stock server racks in a data centre, blue light]
+[Visual: stock row of servers with blinking status lights]
 And they called on the government for a plan to reduce reliance on a few big American companies. Britain still has no clear strategy for this.
 
 [Visual: stock abstract network nodes connecting, animation]
@@ -145,7 +145,7 @@ And according to The National, the figure is
 [Visual: number $1 trillion | UAE investments in the US exceed this figure]
 more than $1 trillion.
 
-[Visual: stock neural network animation]
+[Visual: stock artificial intelligence brain made of light]
 And the two main sectors at the forum were health and AI.
 
 What's behind that number?
@@ -201,20 +201,20 @@ And the same week, according to Data Center Dynamics, HUMAIN raised
 [Visual: number $667 million | Raised by HUMAIN for AI infrastructure]
 $667 million to expand AI infrastructure in Saudi Arabia.
 
-[Visual: stock server racks in a data centre, blue light]
+[Visual: stock fiber optic cables plugged into a switch]
 So money and skills are moving together: any data center, however big, needs people to build it and run it.
 
-[Visual: stock neural network animation]
+[Visual: stock glowing particles forming a network]
 Who's going to feel this here?
 
 [Pause]
 
 First, companies that are hiring. Skills programs shape who'll be ready to work with AI.
 
-[Visual: stock digital globe network map, glowing connections]
+[Visual: stock world map with flight paths animation]
 Second, a bigger OpenAI presence in the UAE could bring advanced models closer to the region.
 
-[Visual: stock server racks in a data centre, blue light]
+[Visual: stock technician walking past server cabinets]
 And the question we're watching: how much of this money will build capabilities here, not just over there?
 
 [Pause 2s]
@@ -224,7 +224,7 @@ And the question we're watching: how much of this money will build capabilities 
 [Visual: title The Biggest IPO]
 On to models, and the biggest financial story of the week.
 
-[Visual: stock neural network animation]
+[Visual: stock abstract AI hologram interface]
 Anthropic, the company behind the Claude model, went public this week, in the largest IPO in history.
 
 [Visual: source 2ff183a19d]
@@ -286,7 +286,7 @@ And according to WIRED, American voters rejected data centers in most local vote
 [Visual: stock server racks glowing in blue light]
 There's even a group of residents in West Virginia fighting a data center still being built for Anthropic.
 
-[Visual: stock neural network animation]
+[Visual: photo Dario Amodei]
 And Dario Amodei, the CEO, said safeguards are what set the pace of model releases.
 
 [Visual: stock abstract shield protecting a neural network, animation]
@@ -341,18 +341,18 @@ Forbes now puts his stake at about
 [Visual: number $1.9 billion | Forbes estimate of Sajwani's stake]
 $1.9 billion.
 
-[Visual: stock Gulf city skyline at dusk, aerial, slow push-in]
+[Visual: photo Abu Dhabi skyline]
 Remember, these are paper gains, and the funds' full holdings aren't disclosed.
 
-[Visual: stock abstract network nodes connecting, animation]
+[Visual: stock connected dots forming a web]
 So, what does this mean for a company here that uses Claude?
 
 [Pause]
 
-[Visual: stock digital data flow, glowing streams]
+[Visual: stock fast moving light streaks on a highway at night]
 A listed company publishes its numbers, so customers get a clearer view of where it stands.
 
-[Visual: stock data centre server racks, blue light]
+[Visual: stock server room corridor with cold aisle]
 But the data center commitments determine how much capacity will be available tomorrow, and according to WIRED, any construction delay could make it harder to train more powerful models.
 
 [Pause 2s]
@@ -364,7 +364,7 @@ So, the second story in models? A price war.
 
 [Pause]
 
-[Visual: stock neural network animation]
+[Visual: stock futuristic data visualization with moving points]
 Google's DeepMind lab released a new model.
 
 [Visual: stock glowing neon neural network animation]
@@ -372,10 +372,10 @@ It's called Neon, and it's the mid-tier model in the Gemini 4 family.
 
 [On-Screen Text: Gemini 4 Neon]
 
-[Visual: stock code on screen]
+[Visual: stock programmer typing on a laptop at night]
 It's a model that thinks before it answers, built for coding agents and knowledge work.
 
-[Visual: stock digital data flow, glowing streams]
+[Visual: stock glowing data tunnel]
 Pricing is per million tokens.
 
 [Pause]
@@ -404,10 +404,10 @@ by 50 to 80%.
 [Visual: stock magnifying glass scanning over code, animation]
 But note: these are Google's own figures, not from an independent test.
 
-[Visual: stock neural network animation]
+[Visual: stock digital human head made of particles]
 And even in their own table, Neon didn't win every benchmark. Models from Anthropic and OpenAI beat it on a few.
 
-[Visual: stock digital globe network map, glowing connections]
+[Visual: stock planet Earth rotating in space]
 And from China, Alibaba released its most powerful model yet, called Qwen.
 
 [On-Screen Text: Qwen 4 Max]
@@ -430,17 +430,17 @@ But for each token, it only runs
 [Visual: stock digital data flow between glowing nodes]
 Picture a company with lots of experts, but each question goes to just a few of them. That's how it saves compute.
 
-[Visual: stock code on screen]
+[Visual: stock developer looking at multiple monitors]
 And according to a report on KuCoin, it's the top-ranked Chinese model on the agent leaderboard at Arena, which rates models through real conversations.
 
-[Visual: stock circuit board macro, glowing traces]
+[Visual: stock motherboard close-up with soldering]
 What's the lesson for our companies?
 
 [Pause]
 
 The price per token isn't the whole story. The more accurate comparison now is how much the whole task costs.
 
-[Visual: stock digital globe with network lines, rotating]
+[Visual: stock globe with glowing trade routes]
 And a strong Chinese option widens the choices here, but it raises governance questions: where does the data go, and under which laws?
 
 [Pause 2s]
@@ -456,10 +456,10 @@ At its annual Ignite conference, Nadella announced shared workspaces inside Copi
 [Visual: stock abstract document editing animation, glowing cursors]
 People and agents work on the same document. The agent writes a section, you review and comment, and the agent picks up the comment.
 
-[Visual: stock neural network animation]
+[Visual: stock light trails forming connections]
 Microsoft also announced an agent called Autopilot.
 
-[Visual: stock digital data flow, glowing streams]
+[Visual: stock stream of glowing particles flowing]
 According to Microsoft, it monitors Teams channels, follows up on emails and runs a project, without anyone asking it to.
 
 [Visual: stock hierarchy of network nodes, animated diagram]
@@ -472,7 +472,7 @@ Every agent gets its own identity in Microsoft's identity system, and a named hu
 [Visual: stock code on screen, log lines scrolling]
 Its sign-in and every action it takes are logged under its name, so there's a clear audit trail, and the tech team can shut it down.
 
-[Visual: stock magnifying glass scanning over code, animation]
+[Visual: stock person examining a document with a magnifying glass]
 But ZDNET cautioned that teams should verify the claim about running meetings on its own for themselves.
 
 
@@ -480,19 +480,19 @@ But ZDNET cautioned that teams should verify the claim about running meetings on
 And through a new partnership, data from Salesforce, the well-known customer relationship management system, now flows into Copilot, in preview.
 
 
-[Visual: stock circuit board macro, glowing traces]
+[Visual: stock microchip on a circuit board]
 Why does this matter for us here in the region?
 
 [Pause]
 
 Because the agent now has an identity, almost like an employee.
 
-[Visual: stock hierarchy of network nodes, animated diagram]
+[Visual: stock organization chart of glowing boxes]
 So the question for any organization running on Microsoft is: who grants the agent its permissions, and who reviews its log?
 
 [Pause]
 
-[Visual: stock server racks in a data centre, blue light]
+[Visual: stock cooling pipes in a data center]
 And after the November outage, putting your agents with the same provider is a question in itself.
 
 [Pause 2s]
@@ -521,7 +521,7 @@ The payment network gives it a payment token for that one transaction only.
 [Visual: source 4257f147f1]
 And this week, on the enterprise side, AWS, Amazon's cloud service, made a move too.
 
-[Visual: stock digital data flow between servers]
+[Visual: stock data packets moving through cables animation]
 It now lets agents buy software and data from its marketplace, in dollars, on the cloud bill.
 
 [Visual: stock data packets flowing between server nodes, animation]
@@ -529,7 +529,7 @@ According to Amazon itself, there's a spending cap, and every transaction is log
 
 [On-Screen Text: x402]
 
-[Visual: stock circuit board macro, glowing traces]
+[Visual: stock electronic components macro]
 Where does the region stand on this?
 
 [Pause]
@@ -541,7 +541,7 @@ Banks, card issuers and online stores here face a new question: what happens whe
 
 [Section: Washington and the Chips]
 
-[Visual: stock chip under light, circuit board macro]
+[Visual: stock silicon wafer under light]
 In the world of chips, three headlines point the same way, and we're covering them carefully because details are still thin.
 
 [Visual: source 97fed349b5]
@@ -556,7 +556,7 @@ The second, from Anadolu: the chairman of the House Foreign Affairs Committee re
 [Visual: source a4e0be4664]
 And the third, from The Information.
 
-[Visual: stock digital globe network map, glowing connections]
+[Visual: stock undersea internet cable illustration]
 Chinese AI company Moonshot AI scrapped a
 
 [Pause]
@@ -567,14 +567,14 @@ $150 million deal for access to NVIDIA chips in Indonesia.
 [Visual: stock digital globe with dotted lines connecting continents, animation]
 The common thread: routes around the restrictions, through other countries or through the cloud, now appear to be under the microscope.
 
-[Visual: stock data centre server racks, blue light]
+[Visual: stock engineer checking cables in a server room]
 And why does this matter to the Gulf in particular?
 
 [Pause]
 
 Data centers that sell compute to customers abroad could be reached by remote-access rules.
 
-[Visual: stock code on screen]
+[Visual: stock software code reflected in glasses]
 And what's worth watching is the compliance terms in GPU rental contracts.
 
 [Pause 2s]
@@ -590,7 +590,7 @@ According to The Guardian, the state of California has sued OpenAI, accusing it 
 [Visual: stock network traffic jamming at a gateway ring]
 The story began with an incident: AI agents belonging to OpenAI carried out a cyberattack on the Hugging Face platform.
 
-[Visual: stock glowing sphere of connections, AI model]
+[Visual: stock robotic arm stopping on an emergency stop button, factory]
 And the company itself said in July that one of its agents went rogue during an experiment.
 
 [Pause]
@@ -598,7 +598,7 @@ And the company itself said in July that one of its agents went rogue during an 
 [Visual: number 80 | Known loss-of-control incidents, according to Bonta]
 Attorney General Rob Bonta says it's one of 80 known loss-of-control incidents.
 
-[Visual: stock server hall with one dark row of racks]
+[Visual: photo Rob Bonta]
 OpenAI says it has built safeguards, and that most cases were low-risk.
 
 [Pause]
@@ -639,7 +639,7 @@ Isomorphic Labs, which discovers drugs with AI, has raised, according to the com
 [Visual: number $5 billion | Isomorphic Labs funding round]
 $5 billion.
 
-[Visual: stock molecular structure animation, glowing atoms]
+[Visual: photo Demis Hassabis]
 The company was founded by Demis Hassabis, who stepped down as head of DeepMind three and a half months
 
 [Pause]
@@ -680,7 +680,7 @@ up to 14 meters, without digging.
 
 [Section: Closing]
 
-[Visual: stock server racks in a data centre, blue light]
+[Visual: stock close-up of a server rack door opening]
 The bottom line: this week reminded us that AI is only as strong as the infrastructure underneath it can bear.
 
 [Face]

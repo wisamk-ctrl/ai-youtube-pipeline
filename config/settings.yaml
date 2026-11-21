@@ -258,7 +258,8 @@ visuals:
     # the clip on every shot. W46-en: two clocks, a bar chart with figures on it, a street with a shop sign,
     # code with flickering grey blocks that reads as a fault (founder).
     # W47-en (founder 2026-11-20): the "Hello world!" terminal (odd) and the red-and-black 0/1 binary (repeated).
-    blocklist: [pixabay_28320, pixabay_239843, pixabay_2181, pixabay_27693, pixabay_37946, pixabay_32767, pixabay_197931, pixabay_306, pixabay_847, pixabay_5364, pixabay_27706, pixabay_6056, pixabay_6026, pixabay_746, pixabay_2176, pixabay_12126]
+    # W47-en review (2026-11-20): red curtain, pink tissue, airplane in a desert, golden flower, disco ball, abandoned hospital.
+    blocklist: [pixabay_145631, pixabay_33406, pixabay_7536, pixabay_155718, pixabay_49378, pixabay_371998, pixabay_28320, pixabay_239843, pixabay_2181, pixabay_27693, pixabay_37946, pixabay_32767, pixabay_197931, pixabay_306, pixabay_847, pixabay_5364, pixabay_27706, pixabay_6056, pixabay_6026, pixabay_746, pixabay_2176, pixabay_12126]
   dissolve_frames: 0          # off until the W45 length loss (2026-11-07) is traced; 12 = the designed dissolve
   face_mode: minimal          # founder 2026-11-07 (lip sync): face only at the open and the sign-off
   require_face: true          # founder 2026-11-20: a render refuses face chunks without a presenter video
