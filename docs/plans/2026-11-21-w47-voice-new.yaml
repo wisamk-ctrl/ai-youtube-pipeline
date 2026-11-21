@@ -1,0 +1,11 @@
+# Work in progress (2026-11-21): new W47-en chunk audio/video, merged into reviewed/2026-W47-en/voice.yaml when complete.
+# 01-face and 23-face reuse old audio (old 01-face, 11-face) — their face clips are re-made with the v2 look.
+03-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=a3550a8d1d624b4aa3f769aaeeb85216.wav"}
+06-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=8c69d467e4824ccfb5cec25d993005b2.wav"}
+08-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=06f645528ea64a5385295ad1d30b5402.wav"}
+11-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=063fb3e657174345a17f2ef221d5f25e.wav"}
+13-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=6391cc5413c94313a770e8aa25c18bd5.wav"}
+15-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=be19a4ffabee474fad98191fd7d3af54.wav"}
+17-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=5fb3664a29584e149a5d13688216d856.wav"}
+19-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=788d50a77bf0457083a5052c2c8d2a76.wav"}
+21-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=487b8ba9eee1473c8013089cfa3c9869.wav"}
