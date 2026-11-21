@@ -221,7 +221,7 @@ And the question we're watching: how much of this money will build capabilities 
 [Visual: title The Biggest IPO]
 On to models, and the biggest financial story of the week.
 
-[Visual: stock abstract AI hologram interface]
+[Visual: photo File:Secretary of State Peter Kyle visits Anthropic in San Francisco. (54098999333).jpg]
 Anthropic, the company behind the Claude model, went public this week, in the largest IPO in history.
 
 [Visual: source 2ff183a19d]
