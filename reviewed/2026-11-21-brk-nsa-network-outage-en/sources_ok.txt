@@ -1,0 +1,9 @@
+Drafted automatically 2026-11-21 06:58 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) A computer fault has disrupted a US National Security Agency hub in Georgia, NewsCord's roundup reports.  ← NewsCord (5a271fb0ab)
+- (2) The site supports intelligence and cyber operations focused on the Middle East.  ← NewsCord (5a271fb0ab)
+- (3) The fault hit NSANet, the agency's internal network for classified information, leaving many staff unable to work normally.  ← NewsCord (5a271fb0ab)
+- (4) Officials say the most sensitive systems stayed up, with staff using backup channels.  ← NewsCord (5a271fb0ab)
+- (5) U.S. officials told CNN the outage was linked to security updates, and they ruled out a cyberattack.  ← NewsCord (5a271fb0ab)
+- (6) They tied the issues to systems using PHP, a widely used programming language.  ← NewsCord (5a271fb0ab)
+- (7) Senator Mark Warner told CNN the evidence points to legitimate efforts to secure systems.  ← NewsCord (5a271fb0ab)
+- (8) For the Gulf, watch how quickly critical networks recover when security patches fail.  ← regional line, no facts
