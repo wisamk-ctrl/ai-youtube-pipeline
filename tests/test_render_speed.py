@@ -284,3 +284,26 @@ def test_overlay_draws_each_card_only_in_its_window_and_reads_each_image_once(tm
     assert blue[2] > 200 and blue[0] < 60
     assert not (none[0] > 200 and none[1] < 60 and none[2] < 60)
     assert overlays._frames(out) == overlays._frames(src)
+
+
+@ffmpeg
+def test_cards_survive_a_filter_rebuild_at_a_join(tmp_path):
+    """W46-en and the 2026-11-21 timing run: a presenter clip with other colour tags, joined without
+    re-encoding, makes ffmpeg rebuild the filter chain mid-cut. A card image read only once was lost there."""
+    from pipeline.post import overlays
+    from pipeline.script_format import Cue
+    a, b = tmp_path / "a.mp4", tmp_path / "b.mp4"
+    for dest, tags in ((a, []), (b, ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709"])):
+        subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "testsrc=size=480x270:rate=30",
+                        "-t", "2", "-c:v", "libx264", "-preset", "ultrafast", "-pix_fmt", "yuv420p", *tags, str(dest)], check=True)
+    (tmp_path / "list.txt").write_text(f"file '{a}'\nfile '{b}'\n")
+    cut = tmp_path / "cut.mp4"
+    subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "concat", "-safe", "0", "-i",
+                    str(tmp_path / "list.txt"), "-c", "copy", str(cut)], check=True)
+    png = tmp_path / "late.png"
+    subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=red:s=480x270",
+                    "-frames:v", "1", str(png)], check=True)
+    cue = Cue(kind="onscreen", text="x", at_word=0, at_seconds=0.0)
+    out = overlays.overlay(cut, [overlays.Card(cue, 0.2, 0.5, png), overlays.Card(cue, 2.8, 1.0, png)], tmp_path / "with.mp4",
+                           enc=("ultrafast", 16))     # raises when the late card is missing
+    assert overlays._frames(out) == overlays._frames(cut)

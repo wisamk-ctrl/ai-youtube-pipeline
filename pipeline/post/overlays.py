@@ -246,7 +246,9 @@ def overlay(video: Path, cards: list[Card], dest: Path, enc: tuple[str, int] = (
     # keeps its own clock, and each label image keeps playing for the whole length, so a rebuilt chain has it.
     def run(src: Path) -> int:
         inputs, graph, last = card_graph(cards)
-        args = ["ffmpeg", "-y", "-i", str(src), *inputs, "-filter_complex", graph, "-map", last, "-map", "0:a?",
+        # -reinit_filter 0: a join that changes only colour tags no longer rebuilds the chain (which lost a
+        # card read once: 2026-11-21 timing run); every segment already has the cut's size and pixel format.
+        args = ["ffmpeg", "-y", "-reinit_filter", "0", "-i", str(src), *inputs, "-filter_complex", graph, "-map", last, "-map", "0:a?",
                 "-c:a", "copy", "-c:v", "libx264", "-crf", str(enc[1]), "-preset", enc[0], str(dest)]
         subprocess.run(args, check=True, capture_output=True)
         return _frames(dest)
