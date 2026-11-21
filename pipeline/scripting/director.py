@@ -36,7 +36,7 @@ Rules:
 - For [Visual: source <id>] use only ids from <items>; pick the item the story is based on. The list
   holds only outlets that may be credited on screen (wires, primary sources, trade press).
 - Stock search terms are English, concrete and filmable; never a real person, logo or event.
-- Every time the narration names a person, show them: [Visual: photo <their full name>]. Every time it names a
+- Every time the narration names a person, show them with their name under it: [Visual: photo <their full name> | Name, role] (the role in a few words, e.g. | Dario Amodei, CEO of Anthropic); founder 2026-11-21: the audience is the general public. Every time it names a
   company, show its head office: [Visual: photo <Company> headquarters] (founder 2026-11-21). These are licensed
   real photos; the pipeline picks a different one from earlier episodes. Alternate digital and real shots as the
   visual standard says. Use [Visual: generated <scene>]

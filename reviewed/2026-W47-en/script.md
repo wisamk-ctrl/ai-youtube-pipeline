@@ -57,14 +57,14 @@ And according to the same report,
 [Visual: number 99% | of UK government staff use Microsoft]
 up to 99% of UK government staff use Microsoft to communicate.
 
-[Visual: photo File:Palace of Westminster, London - Feb 2007.jpg]
+[Visual: photo File:Palace of Westminster, London - Feb 2007.jpg | UK Parliament, London]
 A British minister told Parliament the incident could have been more serious if it had lasted longer.
 
 So, why did this happen?
 
 [Pause]
 
-[Visual: photo File:MS-Exec-Nadella-Satya-2017-08-31-22 (cropped).jpg]
+[Visual: photo File:MS-Exec-Nadella-Satya-2017-08-31-22 (cropped).jpg | Satya Nadella, CEO of Microsoft]
 Satya Nadella, Microsoft's CEO, spoke on Wednesday at a conference in New York.
 
 [Visual: source 0378197660]
@@ -85,7 +85,7 @@ He also said AI could become like "a nation-state-level attacker that's after yo
 [Visual: title Wissam's Take]
 And here I want to give you my personal view. This is opinion, not news.
 
-[Visual: photo File:Building92microsoft.jpg]
+[Visual: photo File:Building92microsoft.jpg | Microsoft headquarters, Redmond, Washington]
 I'm not convinced by this explanation.
 Companies like Microsoft were early in the AI game, and they understand it.
 
@@ -224,7 +224,7 @@ On to models, and the biggest financial story of the week.
 
 [Visual: title The Biggest IPO]
 
-[Visual: photo File:Secretary of State Peter Kyle visits Anthropic in San Francisco. (54098999333).jpg]
+[Visual: photo File:Secretary of State Peter Kyle visits Anthropic in San Francisco. (54098999333).jpg | Anthropic's San Francisco office, UK minister Peter Kyle's visit, October 2024]
 Anthropic, the company behind the Claude model, went public this week, in the largest IPO in history.
 
 [Visual: source 2ff183a19d]
@@ -292,7 +292,7 @@ And according to WIRED, American voters rejected data centers in most local vote
 [Visual: stock server racks glowing in blue light]
 There's even a group of residents in West Virginia fighting a data center still being built for Anthropic.
 
-[Visual: photo File:Dario Amodei in 2023.jpg]
+[Visual: photo File:Dario Amodei in 2023.jpg | Dario Amodei, CEO and co-founder of Anthropic]
 And Dario Amodei, the CEO, said safeguards are what set the pace of model releases.
 
 [Visual: stock abstract shield protecting a neural network, animation]
@@ -315,7 +315,7 @@ The founder of investment firm Altimeter said he plans to invest $5 billion,
 
 that's five times the largest investment he's ever made in an IPO.
 
-[Visual: photo File:NVIDIA Headquarters.jpg]
+[Visual: photo File:NVIDIA Headquarters.jpg | NVIDIA headquarters, Santa Clara, California]
 Chip companies, including NVIDIA, are investors too, along with Google and Microsoft.
 
 [Visual: source 379ad26c69]
@@ -347,7 +347,7 @@ Forbes Middle East valued his stake at the listing at about
 [Visual: number $1.9 billion | Sajwani's stake at the listing, per Forbes]
 $1.9 billion.
 
-[Visual: photo File:Abu dhabi skylines 2014.jpg]
+[Visual: photo File:Abu dhabi skylines 2014.jpg | Abu Dhabi, United Arab Emirates]
 Remember, these are paper gains, and the funds' full holdings aren't disclosed.
 
 [Visual: stock connected dots forming a web]
@@ -372,7 +372,7 @@ A price war.
 
 [Pause]
 
-[Visual: photo File:Googleplex HQ (cropped).jpg]
+[Visual: photo File:Googleplex HQ (cropped).jpg | Google headquarters, Mountain View, California]
 Google's DeepMind lab released a new model.
 
 [Visual: stock glowing neon neural network animation]
@@ -415,7 +415,7 @@ But note: these are Google's own figures, not from an independent test.
 [Visual: stock digital human head made of particles]
 And even in their own table, Neon didn't win every benchmark. Models from Anthropic and OpenAI beat it on a few.
 
-[Visual: photo File:Alibaba Center in Binjiang Hangzhou2021.jpg]
+[Visual: photo File:Alibaba Center in Binjiang Hangzhou2021.jpg | Alibaba headquarters, Hangzhou, China]
 And from China, Alibaba released its most powerful model yet, called Qwen.
 
 [On-Screen Text: Qwen 4 Max]
@@ -520,7 +520,7 @@ Last week we covered ChatGPT's new wallet for consumers.
 [Visual: source 4257f147f1]
 And this week, on the enterprise side, AWS, Amazon's cloud service, made a move too.
 
-[Visual: photo File:Amazon Spheres 2018.jpg]
+[Visual: photo File:Amazon Spheres 2018.jpg | Amazon headquarters, Seattle]
 It now lets agents buy software and data from its marketplace, in dollars, on the cloud bill.
 
 [Visual: stock data packets flowing between server nodes, animation]
@@ -599,7 +599,7 @@ And the company itself said in July that one of its agents went rogue during an 
 [Visual: number 80 | Known loss-of-control incidents, according to Bonta]
 Attorney General Rob Bonta says it's one of 80 known loss-of-control incidents.
 
-[Visual: photo File:Rob Bonta official portrait.jpg]
+[Visual: photo File:Rob Bonta official portrait.jpg | Rob Bonta, California Attorney General]
 OpenAI says it has built safeguards, and that most cases were low-risk.
 
 [Pause]
@@ -641,7 +641,7 @@ Isomorphic Labs, which discovers drugs with AI, has raised, according to the com
 [Visual: number $5 billion | Isomorphic Labs funding round]
 $5 billion.
 
-[Visual: photo File:Demis Hassabis at 2024 Nobel Week 3.jpg]
+[Visual: photo File:Demis Hassabis at 2024 Nobel Week 3.jpg | Demis Hassabis, founder of Isomorphic Labs]
 The company was founded by Demis Hassabis, who stepped down as head of DeepMind three and a half months
 
 [Pause]
