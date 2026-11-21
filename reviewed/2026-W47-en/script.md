@@ -243,6 +243,12 @@ And on the first day of trading, according to CNBC, the stock closed up
 [Visual: number 17% | First-day trading gain]
 17%.
 
+[Visual: source f2618c8a6e]
+But it didn't last. On Friday, according to the BBC, the shares fell back, at one point by more than 12%, to about $85, close to the IPO price.
+
+[Visual: number 8.5% | Friday's closing fall]
+They closed the day down 8.5%, giving back half of Thursday's gains.
+
 
 [Visual: source cafd31ea08]
 According to WIRED, it now has around
