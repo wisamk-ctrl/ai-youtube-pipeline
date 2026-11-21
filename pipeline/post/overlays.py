@@ -209,7 +209,15 @@ def guide_cards(script: str, wpm: int, out_dir: Path, srt: Path | None, total: f
     return cards
 
 
-def overlay(video: Path, cards: list[Card], dest: Path) -> Path:
+def intermediate(cfg: dict[str, Any] | None) -> tuple[str, int]:
+    """(preset, crf) for a working file between passes (post.intermediate). 2026-11-21: veryfast at crf 16
+    instead of medium at crf 18: about four times faster, and the lower crf keeps at least the old picture
+    quality (the file is larger, and it is only read by the next pass)."""
+    i = ((cfg or {}).get("post", {}) or {}).get("intermediate", {}) or {}
+    return str(i.get("preset", "veryfast")), int(i.get("crf", 16))
+
+
+def overlay(video: Path, cards: list[Card], dest: Path, enc: tuple[str, int] = ("veryfast", 16)) -> Path:
     """One ffmpeg pass: each card is an input overlaid between its start and end time."""
     if not cards:
         log.info("No cue cards to overlay")
@@ -229,7 +237,7 @@ def overlay(video: Path, cards: list[Card], dest: Path) -> Path:
             chain.append(f"[{prev}][{i}:v]overlay=0:0:shortest=1:enable='between(t,{c.at:.2f},{c.at + c.seconds:.2f})'[{out}]")
             prev = out
         args += ["-filter_complex", ";".join(chain), "-map", f"[{prev}]", "-map", "0:a?", "-c:a", "copy",
-                 "-c:v", "libx264", "-crf", "18", "-preset", "medium", str(dest)]
+                 "-c:v", "libx264", "-crf", str(enc[1]), "-preset", enc[0], str(dest)]
         subprocess.run(args, check=True, capture_output=True)
         return _frames(dest)
 
@@ -338,4 +346,4 @@ def run_overlays(video: Path, script: str, cfg: dict[str, Any], out_dir: Path, s
     log.info("Overlaying %d cue cards (%d on-screen, %d b-roll markers, %d topic chips, %d questions)", len(cards),
              sum(c.cue.kind == "onscreen" for c in cards), sum(c.cue.kind == "broll" for c in cards),
              sum(c.cue.kind == "topic" for c in cards), sum(c.cue.kind == "question" for c in cards))
-    return overlay(video, cards, out_dir / "with_cards.mp4")
+    return overlay(video, cards, out_dir / "with_cards.mp4", enc=intermediate(cfg))

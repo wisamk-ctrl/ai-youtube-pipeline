@@ -274,6 +274,12 @@ visuals:
 
 post:
   upload_height: 2160         # the YouTube file is the finished cut scaled to 4K (final_2160p.mp4); 0 = off
+  # Render speed (2026-11-21): the 1080p cut and the 4K master come out of one final pass. CRF 18 sets the
+  # quality on both; the preset trades CPU time for file size (slower = smaller file, same picture).
+  final_preset: medium        # 1080p final_subtitled.mp4 (LinkedIn, Facebook, the preview); was slow
+  upload_preset: veryfast     # 4K master (YouTube re-encodes it anyway)
+  intermediate: {preset: veryfast, crf: 16}   # working files between passes (the cue-card pass); was medium crf 18
+  workers: 4                  # parallel ffmpeg jobs (edit segments, Shorts); 0 = one per CPU
   numbers_gate: warn          # second check on every on-screen figure (scripts/number_check.py): warn | block | off
   repair:
     enabled: true             # re-voice doubled / mispronounced phrases on a finished render (post/repair.py)

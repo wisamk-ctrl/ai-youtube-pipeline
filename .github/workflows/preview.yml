@@ -61,63 +61,9 @@ jobs:
           run-id: ${{ steps.art.outputs.run_id }}
           github-token: ${{ github.token }}
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-      - name: Transcode to a 1080p preview
-        run: |
-          d="art/${{ inputs.week }}"
-          mkdir -p out
-          if [ "${{ inputs.what }}" = "text" ]; then   # the session that drives the pipeline cannot download artifacts
-            mkdir -p "out/${{ inputs.week }}-files"
-            for f in items.json script.md voice_pack.md voice_pack.json source_map.md plan.json critique.json shotlist.md cards.json subtitles.srt timeline.json credits.json stock_used.json thumbnail.png thumbnail_b.png; do
-              [ -f "$d/$f" ] && cp "$d/$f" "out/${{ inputs.week }}-files/" || true
-            done
-            [ -d "$d/cards" ] && cp -r "$d/cards" "out/${{ inputs.week }}-files/cards" || true
-            [ -f "$d/with_cards.mp4" ] && ffmpeg -hide_banner -loglevel error -y -ss 40 -t 12 -i "$d/with_cards.mp4" -vf scale=-2:540 -an "out/${{ inputs.week }}-files/with_cards_40s.mp4" || true
-            for v in "$d"/*.mp4; do   # where does the picture stop? frames per 30 s of every stage
-              echo "== $(basename "$v")"; ffprobe -v error -select_streams v:0 -show_entries packet=pts_time -of csv=p=0 "$v" | awk '{n[int($1/30)]++} END{for(i=0;i<20;i++) printf "%d ", n[i]; print ""}'
-            done > "out/${{ inputs.week }}-files/frames.txt" 2>&1 || true
-            for v in "$d"/shorts/short_*.mp4; do   # the week's Shorts, small enough to push
-              [ -f "$v" ] && ffmpeg -hide_banner -loglevel error -y -i "$v" -vf scale=540:-2 -c:v libx264 -crf 27 -preset fast -c:a aac -b:a 96k "out/${{ inputs.week }}-files/$(basename "$v")" || true
-            done
-            [ -f "$d/shorts/shorts.json" ] && cp "$d/shorts/shorts.json" "out/${{ inputs.week }}-files/" || true
-            ls -la "out/${{ inputs.week }}-files"
-            exit 0
-          fi
-          if [ "${{ inputs.what }}" = "voice" ]; then
-            [ -f "$d/voice_check.mp3" ] || { echo "::error::no voice_check.mp3 in $d (run phase voicecheck first)"; exit 1; }
-            cp "$d/voice_check.mp3" "out/${{ inputs.week }}-voice.mp3"
-            cp "$d/ownvoice.md" "out/${{ inputs.week }}-voice.md"
-            [ -f "$d/voice_words.json" ] && cp "$d/voice_words.json" "out/${{ inputs.week }}-voice.words.json" || true
-            cat "$d/ownvoice.md" | tee -a "$GITHUB_STEP_SUMMARY"
-            exit 0
-          fi
-          for f in final_subtitled.mp4 with_cards.mp4 talking_head.mp4; do [ -f "$d/$f" ] && src="$d/$f" && break; done
-          [ -n "${src:-}" ] || { echo "::error::no video in $d"; ls -R art; exit 1; }
-          echo "Source: $src"
-          [ -f "$d/ownvoice.md" ] && { cat "$d/ownvoice.md"; cat "$d/ownvoice.md" >> "$GITHUB_STEP_SUMMARY"; } || true
-          # Word times of the own-voice recording, for `cut:` spans in voice.yaml (recording time).
-          [ -f "$d/assemble/heard.json" ] && python3 -c "
-          import json, sys
-          for e in json.load(open(sys.argv[1]))['entries'].values():
-              print('WORDS', ' '.join(f'{a // 60:.0f}:{a % 60:04.1f}-{b % 60:04.1f}={w.strip()}' for a, b, w in e['words']))
-          " "$d/assemble/heard.json" | fold -w 3000 || true
-          mkdir -p out
-          # GitHub refuses files over 100 MB: size the bitrate to the length so any episode lands under ~90 MB,
-          # and drop to 720p when that bitrate would be too thin for 1080p.
-          dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$src")
-          kbps=$(python3 -c "print(max(400, min(4000, int(90*8*1000/float('$dur')) - 160)))")
-          height=$([ "$kbps" -ge 1500 ] && echo 1080 || echo 720)
-          echo "Preview: ${dur}s at ${kbps} kbps, ${height}p"
-          ffmpeg -hide_banner -loglevel error -y -i "$src" -vf "scale=-2:${height}" -c:v libx264 -preset medium \
-            -b:v "${kbps}k" -maxrate "$((kbps * 3 / 2))k" -bufsize "$((kbps * 2))k" \
-            -c:a aac -b:a 128k -movflags +faststart "out/${{ inputs.week }}.mp4"
-          ls -la out
-      - name: Push to the previews branch
-        run: |
-          # Keep the other weeks' previews, then put the new file on top (never the other way round).
-          mkdir -p branch && cd branch
-          git init -q -b previews
-          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
-          git fetch -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previews 2>/dev/null && git checkout -q FETCH_HEAD -- . 2>/dev/null || true
-          cp -rf ../out/* .
-          git add -A && git commit -q -m "preview: ${{ inputs.week }} ($(date -u +%FT%H:%MZ)) from ${{ inputs.video_url != '' && 'a direct link' || format('run {0}', steps.art.outputs.run_id) }}"
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" HEAD:previews
+      - name: Build the preview and push it to the previews branch
+        # scripts/preview.sh: also run by the render job right after a render (weekly.yml)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PREVIEW_FROM: ${{ inputs.video_url != '' && 'a direct link' || format('run {0}', steps.art.outputs.run_id) }}
+        run: bash scripts/preview.sh "${{ inputs.what }}" "${{ inputs.week }}" "art/${{ inputs.week }}"

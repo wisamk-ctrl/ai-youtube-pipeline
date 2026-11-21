@@ -97,11 +97,20 @@ def _cache_write(cache: Path, key: str, words: list[Word]) -> None:
         log.warning("Could not write the transcript cache %s: %s", cache, e)
 
 
+def whisper_model(language: str | None) -> str:
+    """WHISPER_MODEL_<LANG> (e.g. WHISPER_MODEL_EN=small.en), else WHISPER_MODEL, else large-v3.
+    2026-11-21: the voice-first captions only align the known script to the voice, so the English week can
+    use a smaller, faster model (W47-en: Whisper medium took 315 s); the alignment check still runs."""
+    lang = (language or "").split("-")[0].upper()
+    return os.environ.get(f"WHISPER_MODEL_{lang}") or os.environ.get("WHISPER_MODEL") or "large-v3"
+
+
 def heard_key(video: Path, model_size: str | None = None, language: str | None = None) -> str:
     """The transcript-cache key `transcribe_words` uses for this file."""
     from pipeline.language import week_language
-    model_size = model_size or os.environ.get("WHISPER_MODEL", "large-v3")
-    return f"{_sha256(Path(video))}:{model_size}:{language or week_language(Path(video).resolve().parent.name)}"
+    language = language or week_language(Path(video).resolve().parent.name)
+    model_size = model_size or whisper_model(language)
+    return f"{_sha256(Path(video))}:{model_size}:{language}"
 
 
 def remember(video: Path, words: list[Word]) -> None:
@@ -116,10 +125,10 @@ def transcribe_words(video: Path, model_size: str | None = None, cache: Path | N
     Cached in <video folder>/heard.json, keyed by the video file's sha256, the model and the language, so a
     post re-run on the same talking_head (repair and run_post both land here) skips Whisper.
     `cache=False` disables it; a Path puts it elsewhere."""
-    model_size = model_size or os.environ.get("WHISPER_MODEL", "large-v3")
     # The week folder names the language: output/<week>-en is the English version (pipeline/language.py).
     from pipeline.language import week_language
     language = language or week_language(Path(video).resolve().parent.name)
+    model_size = model_size or whisper_model(language)
     cache_path = (Path(video).parent / HEARD_CACHE) if cache is True else (cache or None)
     key = (key or f"{_sha256(Path(video))}:{model_size}:{language}" + ("" if vad else ":novad")) if cache_path else ""
     if cache_path:
@@ -336,8 +345,14 @@ def _geometry(video: Path) -> tuple[str, int, int]:
     return st.get("r_frame_rate", "30/1"), int(st["width"]), int(st["height"])
 
 
+def _subs_filter(srt_path: str, w: int, h: int, style: str) -> str:
+    """The libass caption filter (a seam: tests without libass swap in `null`)."""
+    return f"subtitles='{srt_path}':original_size={w}x{h}:force_style='{style}'"
+
+
 def burn_in(video: Path, srt: Path, dest: Path, font_size: int = 54, audio: Path | None = None,
-            insert: tuple[float, Path] | None = None, tail: Path | None = None) -> Path:
+            insert: tuple[float, Path] | None = None, tail: Path | None = None,
+            master: tuple[Path, int, str] | None = None, preset: str = "slow") -> Path:
     """Hard-code captions in the episode's one final, high-quality encode. libass handles RTL shaping.
 
     Captions sit in a translucent navy box (BorderStyle=3), ~54 px on a 1080p frame (PlayRes is set
@@ -352,7 +367,7 @@ def burn_in(video: Path, srt: Path, dest: Path, font_size: int = 54, audio: Path
     iso = _isolated_srt(srt, dest.with_suffix(".isolated.srt"))
     # Escape for ffmpeg's filter parser: ':' and '\' inside the path.
     srt_path = str(iso).replace("\\", "\\\\").replace(":", "\\:")
-    subs = f"subtitles='{srt_path}':original_size={w}x{h}:force_style='{style}'"
+    subs = _subs_filter(srt_path, w, h, style)
     args = ["-i", str(video)]
     if insert:
         at, sting = insert
@@ -377,8 +392,26 @@ def burn_in(video: Path, srt: Path, dest: Path, font_size: int = 54, audio: Path
                   f"[{a_in}]aformat=sample_rates=48000:channel_layouts=stereo[pa];"
                   f"[{k}:a]aformat=sample_rates=48000:channel_layouts=stereo[ta];[pv][pa][tv][ta]concat=n=2:v=1:a=1[vo][ao]")
         vmap, amap = ["-filter_complex", graph, "-map", "[vo]"], ["-map", "[ao]"]
-    _ffmpeg(*args, *vmap, *amap, "-c:v", "libx264", "-crf", "18", "-preset", "slow", "-pix_fmt", "yuv420p",
-            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", str(dest))
+    enc = ["-c:v", "libx264", "-crf", "18", "-preset", preset, "-pix_fmt", "yuv420p",
+           "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart"]
+    if not master:
+        _ffmpeg(*args, *vmap, *amap, *enc, str(dest))
+    else:
+        # The upload master in the same pass (2026-11-21): one decode and one filter graph feed both encoders,
+        # instead of a second full pass that decoded the finished 1080p file again (W47-en: 885 s). The 4K
+        # picture is the same captioned frame scaled up, as before, minus one generation of re-encoding.
+        big, up, big_preset = master
+        graph, label = (f"[0:v]{vmap[1]}[vm]", "[vm]") if vmap[0] == "-vf" else (vmap[1], vmap[3])
+        graph += f";{label}split=2[o1][o2];[o2]scale=-2:{up}:flags=lanczos[o4k]"
+        a1 = a2 = amap[1]
+        if amap[1].startswith("["):        # a filter's sound can feed one output only: split it too
+            graph += f";{amap[1]}asplit=2[oa1][oa2]"
+            a1, a2 = "[oa1]", "[oa2]"
+        # Lighter preset and a short look-ahead for the 4K encode (W46-en: two runs starved the runner).
+        enc4k = ["-c:v", "libx264", "-preset", big_preset, "-crf", "18", "-x264-params", "rc-lookahead=20",
+                 "-threads", "4", *enc[6:]]
+        _ffmpeg(*args, "-filter_complex", graph, "-map", "[o1]", "-map", a1, *enc, str(dest),
+                "-map", "[o4k]", "-map", a2, *enc4k, str(big))
     iso.unlink(missing_ok=True)
     return dest
 

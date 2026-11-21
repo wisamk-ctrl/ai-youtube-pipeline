@@ -182,6 +182,32 @@ def own_voice(data: dict[str, Any]) -> list[dict[str, Any]]:
     return out
 
 
+def _words_of(raw: Any, where: str) -> list[tuple[float, float, str]] | None:
+    """A chunk's word timings from voice.yaml (HeyGen speech with `with_timestamps`): a list of
+    {word, start, end} or [start, end, word], seconds into that chunk's audio."""
+    if raw in (None, ""):
+        return None
+    out = []
+    try:
+        for w in raw:
+            if isinstance(w, dict):
+                out.append((float(w["start"]), float(w["end"]), str(w.get("word", w.get("text", "")))))
+            else:
+                a, b, word = w
+                out.append((float(a), float(b), str(word)))
+    except (TypeError, ValueError, KeyError) as exc:
+        raise ValueError(f"{where}: `words` must list {{word, start, end}} or [start, end, word] ({exc})") from None
+    return out
+
+
+def chunk_words(e: dict[str, Any], offset: float, tempo: float):
+    """The chunk's words (voice.yaml `words`) on the narration's timeline, or None when it has none."""
+    if not e.get("words"):
+        return None
+    from pipeline.post.subtitles import Word
+    return [Word(round(offset + a / tempo, 3), round(offset + b / tempo, 3), w) for a, b, w in e["words"]]
+
+
 def load_voice(path: Path, chunks: list[dict[str, str]]) -> list[dict[str, Any]]:
     """reviewed/<week>/voice.yaml checked against the pack: one entry per chunk, in pack order —
     or, with a `narration:` key, the founder's own recording (`own_voice`)."""
@@ -208,7 +234,9 @@ def load_voice(path: Path, chunks: list[dict[str, str]]) -> list[dict[str, Any]]
             raise ValueError(f"{path.name}: chunk {c['id']}: `video` must be an http(s) link")
         if c["role"] == "face" and not video:   # narration only: the chunk keeps its id and is voice, no face shown
             c = {**c, "role": "voice"}
+        words = _words_of(e.get("words"), f"{path.name}: chunk {c['id']}")
         out.append({**c, **({"top": float(e["top"])} if e.get("top") is not None else {}),
+                    **({"words": words} if words else {}),
                     "audio": str(e["audio"]), "video": video if c["role"] == "face" else "",
                     "duration": float(e["duration"]) if e.get("duration") else None})
     return out
@@ -299,7 +327,12 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
         if e.get("clean"):   # the founder's own read: retakes cut, pauses capped, voice polished
             wav, words = _own_read(e, wav, work, cfg, out_dir, spoken)
         if words is None:
-            known = None
+            # HeyGen speech voiced with word timings (voice.yaml `words`): captions need no Whisper pass.
+            got = chunk_words(e, t, 1.0 if e.get("clean") else tempo)
+            if got is None:
+                known = None
+            elif known is not None:
+                known += got
         elif known is not None:
             known += [type(x)(round(x.start + t, 3), round(x.end + t, 3), x.word) for x in words]
         d = _duration(wav)

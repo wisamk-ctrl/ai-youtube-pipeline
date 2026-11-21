@@ -45,10 +45,31 @@ def test_week_artifacts_kept_90_days_and_partial_work_uploaded_apart():
     text = (WF / "weekly.yml").read_text(encoding="utf-8")
     assert "retention-days: 30" not in text
     steps = _wf("weekly.yml")["jobs"]["render"]["steps"]
-    partial = [s for s in steps if s.get("with", {}).get("name", "").startswith("partial-week-")]
+    partial = [s for s in steps if s.get("with", {}).get("name", "").endswith("partial-week-${{ inputs.week }}")]
     assert partial and partial[0]["if"] == "failure()"
     # The finder asks the API for the exact name, so partial-week-* is never taken for the week.
     assert "const name = `week-${{ inputs.week }}`" in text and "listArtifactsForRepo" in text
+
+
+def test_a_timing_test_run_never_touches_the_weeks_artifact_or_the_founder():
+    """2026-11-21: a render run to measure speed (test_run) saves as test-week-<week>, and reports, chains,
+    previews, alerts and issue closing are all off for it."""
+    wf = _wf("weekly.yml")
+    assert wf[True]["workflow_dispatch"]["inputs"]["test_run"]["type"] == "boolean"
+    steps = wf["jobs"]["render"]["steps"]
+    uploads = [s for s in steps if "upload-artifact" in str(s.get("uses", "")) and "week-" in s.get("with", {}).get("name", "")
+               and "-en" not in s["with"]["name"]]
+    assert uploads and all("inputs.test_run && 'test-'" in s["with"]["name"] for s in uploads)
+    gated = [s for s in steps if s.get("name", "").startswith(("Chain", "Breaking", "Report the edit", "Close run-failed"))]
+    assert len(gated) == 5 and all("!inputs.test_run" in str(s.get("if", "")) for s in gated)
+    assert "!inputs.test_run" in wf["jobs"]["alert"]["if"]
+
+
+def test_the_render_job_makes_the_preview_itself():
+    wf = _wf("weekly.yml")
+    chain = [s for s in wf["jobs"]["render"]["steps"] if s.get("name", "").startswith("Chain — rendered")][0]
+    assert "scripts/preview.sh video" in chain["run"] and "gh workflow run preview.yml" not in chain["run"]
+    assert "scripts/preview.sh" in str(_wf("preview.yml")["jobs"]["preview"]["steps"])
 
 
 def test_script_run_refuses_to_shadow_a_rendered_week():

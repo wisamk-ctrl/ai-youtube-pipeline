@@ -366,6 +366,7 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
         if hooks:
             from pipeline.post.audio import accent
             accent(chime)
+        jobs_: list = []
         for k, sp in enumerate(spans, 1):
             var = VARIANTS[(k - 1) % len(VARIANTS)]
             mid_y = (H - mid_h) // 2 + int(var["mid"])
@@ -397,39 +398,45 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
             hold = (f"trim=start={pre:.3f},setpts=PTS-STARTPTS,tpad=start_mode=clone:start_duration={pre:.3f},"
                     if pre > 0.02 else "")
             log.info("Short %d: %s, %.1f–%.1f s", k, sp.title, sp.start, sp.end)
-            if not _timed("-ss", f"{sp.start:.3f}", "-t", f"{span_s:.3f}", "-i", str(video),
-                   "-vf", f"{hold}scale={SRC_W}:{SRC_H},setsar=1,fps={fps},format=yuv420p", "-af", "aresample=48000",
-                   "-c:v", "libx264", "-preset", "veryfast", "-crf", "14", "-c:a", "pcm_s16le", str(clip)):
-                continue
-            try:
-                from pipeline.post import audio as audio_mod
-                voice_gain = min(12.0, -14.0 - audio_mod.measure(clip)["input_i"])
-            except Exception:  # noqa: BLE001 — an unmeasurable span falls back to the levelling filter
-                voice_gain = None
             hook_s = float(cfg.get("post", {}).get("shorts", {}).get("hook_seconds", HOOK_SECONDS))
             lead, extra, hook_png = (hook_s if hook_text else 0.0), [], dest_dir / f"hook_{k:02d}.png"
-            if hook_text:
+            if hook_text:   # the browser is used here, in order; the encodes below run side by side
                 r.still(hook_html(hook_text, _show_name(cfg)), hook_png)
                 extra = ["-loop", "1", "-i", str(hook_png), "-i", str(chime)]
-            done = _timed("-i", str(clip),
-                    "-loop", "1", "-i", str(title_png), "-loop", "1", "-i", str(end_png), *extra,
-                    *(["-stream_loop", "-1", "-i", str(bed_wav)] if bed_wav else []),
-                    *(["-i", str(outro_file)] if outro_s else []),
-                    "-filter_complex", filter_graph(span_s, mid_y, sub, _font(), fps, lead,
-                                                    (5 if extra else 3, bed_gain) if bed_wav else None, voice_gain,
-                                                    card, ((5 if extra else 3) + (1 if bed_wav else 0), outro_gain) if outro_s else None),
-                    "-map", "[v]", "-map", "[a]", "-t", f"{lead + span_s + card:.3f}",
-                    "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", str(fps),
-                    "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", str(dest))
-            for p in (title_png, sub, hook_png, clip):
-                if p:
-                    p.unlink(missing_ok=True)
-            if not done:
-                dest.unlink(missing_ok=True)
-                continue
-            log.info("Short %d written: %s", k, dest.name)
-            made.append(dict(asdict(sp), file=dest.name, episode_start=round(to_final(sp.start, sting), 2),
-                             hook=hook_text))
+
+            def encode(k=k, sp=sp, span_s=span_s, sub=sub, dest=dest, clip=clip, hold=hold, mid_y=mid_y,
+                       title_png=title_png, hook_png=hook_png, hook_text=hook_text, lead=lead, extra=extra):
+                if not _timed("-ss", f"{sp.start:.3f}", "-t", f"{span_s:.3f}", "-i", str(video),
+                              "-vf", f"{hold}scale={SRC_W}:{SRC_H},setsar=1,fps={fps},format=yuv420p", "-af", "aresample=48000",
+                              "-c:v", "libx264", "-preset", "veryfast", "-crf", "14", "-c:a", "pcm_s16le", str(clip)):
+                    return None
+                try:
+                    from pipeline.post import audio as audio_mod
+                    voice_gain = min(12.0, -14.0 - audio_mod.measure(clip)["input_i"])
+                except Exception:  # noqa: BLE001 — an unmeasurable span falls back to the levelling filter
+                    voice_gain = None
+                done = _timed("-i", str(clip),
+                        "-loop", "1", "-i", str(title_png), "-loop", "1", "-i", str(end_png), *extra,
+                        *(["-stream_loop", "-1", "-i", str(bed_wav)] if bed_wav else []),
+                        *(["-i", str(outro_file)] if outro_s else []),
+                        "-filter_complex", filter_graph(span_s, mid_y, sub, _font(), fps, lead,
+                                                        (5 if extra else 3, bed_gain) if bed_wav else None, voice_gain,
+                                                        card, ((5 if extra else 3) + (1 if bed_wav else 0), outro_gain) if outro_s else None),
+                        "-map", "[v]", "-map", "[a]", "-t", f"{lead + span_s + card:.3f}",
+                        "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", str(fps),
+                        "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", str(dest))
+                for p in (title_png, sub, hook_png, clip):
+                    if p:
+                        p.unlink(missing_ok=True)
+                if not done:
+                    dest.unlink(missing_ok=True)
+                    return None
+                log.info("Short %d written: %s", k, dest.name)
+                return dict(asdict(sp), file=dest.name, episode_start=round(to_final(sp.start, sting), 2), hook=hook_text)
+            jobs_.append(encode)
+        # The Shorts are independent encodes: side by side (2026-11-21; W47-en: 3 × ~65 s one after another).
+        from pipeline.post.jobs import run_all, workers
+        made += [m for m in run_all(jobs_, min(len(jobs_), workers(cfg))) if m]
         end_png.unlink(missing_ok=True)
         chime.unlink(missing_ok=True)
         if bed_wav:

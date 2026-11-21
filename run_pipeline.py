@@ -298,19 +298,23 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         script = repair.apply_corrections(script, plan["correct"])
         (out / "script.md").write_text(script, encoding="utf-8")
     from pipeline.post.subtitles import burn_in
-    video, hides, heard = _repair_speech(cfg, out, video, spoken_text(script))
-    result = run_post(video, spoken_text(script), out, [], burn=False, heard=heard)   # Shorts: post/shorts.py below
+    from pipeline.timing import TIMER
+    with TIMER.stage("captions (Whisper + script alignment)"):
+        video, hides, heard = _repair_speech(cfg, out, video, spoken_text(script))
+        result = run_post(video, spoken_text(script), out, [], burn=False, heard=heard)   # Shorts: post/shorts.py below
     base, skip, accents = video, [], []
     if cfg.get("visuals", {}).get("enabled"):
         # The premium cut (config/visual_standard.md): face for ~a quarter, visuals for the rest.
         from pipeline.post import edit, visual_assets
         script = _directed(cfg, out, script)
         from pipeline.video.voicefirst import face_spans
-        shots = _shotlist(cfg, out, script, edit.duration(video), result["srt"], hides, face_spans(out))
-        clips, _ = visual_assets.build(shots, _items(out), cfg, out)
+        with TIMER.stage("visuals (stock, photos, cards)"):
+            shots = _shotlist(cfg, out, script, edit.duration(video), result["srt"], hides, face_spans(out))
+            clips, _ = visual_assets.build(shots, _items(out), cfg, out)
         from pipeline.post.audio import section_times
-        base = edit.compose(video, shots, clips, cfg, out,
-                            sections=section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]))
+        with TIMER.stage("edited cut"):
+            base = edit.compose(video, shots, clips, cfg, out,
+                                sections=section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]))
         skip = [(s.start, s.end) for n, s in enumerate(shots) if n in clips and s.kind in ("number", "title", "source")]
         accents = [s.start for n, s in enumerate(shots) if n in clips and s.kind in ("number", "title") and s.start > 1.0]
         _check_length("edited cut", base, edit.duration(video))
@@ -319,39 +323,42 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
     if cfg.get("post", {}).get("overlays", {}).get("enabled", True) and not brk:
         from pipeline.post.overlays import run_overlays
         from pipeline.video.voicefirst import face_spans as _faces
-        base = run_overlays(base, script, cfg, out, result["srt"], face=_faces(out), skip_spans=skip)
+        with TIMER.stage("cue cards"):
+            base = run_overlays(base, script, cfg, out, result["srt"], face=_faces(out), skip_spans=skip)
         _check_length("with cue cards", base, _dur(video))
     # Final audio (music bed, whooshes, loudness) and the sting, then the one high-quality encode.
     from pipeline.post import audio
-    sting = None if brk else audio.sting_plan(cfg, script, result["srt"], base, ROOT)
-    mix = audio.master(base, out / "final_audio.wav", cfg, out / "audio",
-                       insert=sting, cuts=audio.section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]),
-                       accents=accents)
+    with TIMER.stage("audio master (music, sting, loudness)"):
+        sting = None if brk else audio.sting_plan(cfg, script, result["srt"], base, ROOT)
+        mix = audio.master(base, out / "final_audio.wav", cfg, out / "audio",
+                           insert=sting, cuts=audio.section_times(script, result["srt"], cfg["scripting"]["words_per_minute"]),
+                           accents=accents)
     from pipeline.post import packaging, shorts as shorts_mod
     tail = None if brk else packaging.end_card(cfg, out)   # 15 s branded end card (post.end_card), no captions over it
-    result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4", audio=mix, insert=sting, tail=tail)
-    extra = (audio.duration_of(sting[1]) if sting else 0) + (audio.duration_of(tail) if tail else 0)
-    _check_length("final (programme + sting + end card)", result["final"], _dur(video) + extra)
-    up = int(cfg.get("post", {}).get("upload_height", 0) or 0)
+    post_cfg = cfg.get("post", {})
+    up = int(post_cfg.get("upload_height", 0) or 0)
+    big, master = None, None
     if up > int(cfg.get("visuals", {}).get("height", 1080)) and not brk:
         # The file for YouTube: the finished cut scaled up (founder 2026-11-13: at least 4K). YouTube gives a
         # 4K upload its better codec and bitrate; the detail is still what the 1080p sources hold.
-        import subprocess
-        big = out / f"final_{up}p.mp4"
         # W46-en: two edits in a row died at about two hours, the second with "the hosted runner lost
-        # communication" (starved of memory, CPU or disk). This is the heaviest step, so the working folders go
-        # first and the encoder runs on a lighter preset with a short look-ahead (the upload is re-encoded by
-        # YouTube anyway; crf 18 keeps the quality, the file is a little larger).
+        # communication" (starved of memory, CPU or disk). The working folders go first, and the 4K encoder
+        # runs on a lighter preset with a short look-ahead (YouTube re-encodes the upload; crf 18 keeps the
+        # quality). 2026-11-21: it is written in the same pass as the 1080p cut (post/subtitles.burn_in).
         import shutil
         for tmp in ("segments", "visuals", "repair"):      # audio/ and endcard/ are still read below
             shutil.rmtree(out / tmp, ignore_errors=True)
-        log.info("Before the %dp master: %.1f GB free on disk", up, shutil.disk_usage(out).free / 1e9)
-        preset = str(cfg.get("post", {}).get("upload_preset", "veryfast"))
-        subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(result["final"]),
-                        "-vf", f"scale=-2:{up}:flags=lanczos", "-c:v", "libx264", "-preset", preset, "-crf", "18",
-                        "-x264-params", "rc-lookahead=20", "-threads", "4",
-                        "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart", str(big)], check=True)
-        log.info("After the %dp master: %.1f GB free on disk", up, shutil.disk_usage(out).free / 1e9)
+        log.info("Before the final pass: %.1f GB free on disk", shutil.disk_usage(out).free / 1e9)
+        big = out / f"final_{up}p.mp4"
+        master = (big, up, str(post_cfg.get("upload_preset", "veryfast")))
+    with TIMER.stage("final pass (captions, sting, end card; 1080p + 4K master)"):
+        result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4", audio=mix, insert=sting, tail=tail,
+                                  master=master, preset=str(post_cfg.get("final_preset", "medium")))
+    extra = (audio.duration_of(sting[1]) if sting else 0) + (audio.duration_of(tail) if tail else 0)
+    _check_length("final (programme + sting + end card)", result["final"], _dur(video) + extra)
+    if big:
+        import shutil
+        log.info("After the final pass: %.1f GB free on disk", shutil.disk_usage(out).free / 1e9)
         _check_length(f"{up}p upload master", big, _dur(result["final"]))
     sting_span = (sting[0], audio.duration_of(sting[1])) if sting else None
     if sting:   # the captions as they sit in the final cut (for a caption-track upload)
@@ -361,7 +368,8 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
                              audio.duration_of(tail) if tail else None, audio.duration_of(result["final"]))
     try:
         if not brk:
-            packaging.render_thumbnail(out, cfg, talking_head=out / "talking_head.mp4")
+            with TIMER.stage("thumbnails"):
+                packaging.render_thumbnail(out, cfg, talking_head=out / "talking_head.mp4")
     except Exception as e:  # noqa: BLE001 — a thumbnail must not sink the episode
         log.warning("Thumbnail failed: %s", e)
     try:
@@ -370,8 +378,9 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         # From the edit before the lower-thirds: a Short has its own title band, and the episode's topic chips
         # and question cards from the neighbouring story leaked into its first second (W45 clip 3).
         clean_cut = out / "edited.mp4" if (out / "edited.mp4").exists() else base
-        result["shorts"] = shorts_mod.build(clean_cut, script, result["srt"], shorts, cfg, out, sting=sting_span,
-                                            breaking=brk)
+        with TIMER.stage("shorts"):
+            result["shorts"] = shorts_mod.build(clean_cut, script, result["srt"], shorts, cfg, out, sting=sting_span,
+                                                breaking=brk)
     except Exception as e:  # noqa: BLE001
         log.warning("Shorts failed: %s", e)
     import shutil  # intermediates are as large as the video itself; keep the artifact lean
@@ -380,6 +389,7 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
         mix.unlink(missing_ok=True)
     for tmp in ("segments", "visuals", "repair", "audio", "endcard"):
         shutil.rmtree(out / tmp, ignore_errors=True)
+    TIMER.write(out / "timings.json")
     log.info("Phase 4 done → %s (similarity %.2f, %d shorts)", result["final"], result["similarity"], len(result["shorts"]))
 
 
@@ -505,7 +515,9 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
         except ValueError as exc:
             sys.exit(f"phase voicecheck: {exc}")
         return
-    voicefirst.assemble(entries, cfg, out, spoken)
+    from pipeline.timing import TIMER
+    with TIMER.stage("talking head (voice + face chunks)"):
+        voicefirst.assemble(entries, cfg, out, spoken)
     phase_post(cfg, out, None)
 
 
