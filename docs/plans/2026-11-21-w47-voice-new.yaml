@@ -21,3 +21,7 @@
 # 19-face fea975910d73d8ec2df1a0db8190f7d4
 # 21-face 42b46883efdc41d3ea94bc76df37c6b5
 # 23-face 12669db28400d5b7527129a4eedb64fe (audio = old 11-face: id=cc0ed3838b614417996744a7186f795a.wav)
+02-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=44fd3d78038f4e1cb4"   # reused: old 02-voice (text unchanged) — copy full URL from voice.yaml
+04-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=65d69e8e476c486c91d1ff59c9ab69ff.wav"
+05-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=52306c3a7024492cbb3999cbd1ca9c66.wav"
+# 07-voice: HeyGen 502 on first try (2026-11-21) — needs the founder's OK to retry
