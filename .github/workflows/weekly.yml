@@ -382,6 +382,7 @@ jobs:
         run: |
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
           git add data/releases.json 2>/dev/null || exit 0
+          git add data/photos_used.json 2>/dev/null || true    # photos shown, so later episodes vary them
           git diff --cached --quiet && exit 0
           git commit -q -m "release: ${{ inputs.week }} waits for its chapter pictures"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done

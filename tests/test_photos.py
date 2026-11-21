@@ -91,3 +91,17 @@ def test_photos_already_used_in_past_episodes_are_skipped():
     """Founder 2026-11-21: keep changing the head-office photos (different angles) from video to video."""
     http = Http([page("File:Googleplex A.jpg", "CC BY 4.0"), page("File:Googleplex B.jpg", "CC BY 4.0")])
     assert photos.commons_search("Googleplex", http=http, avoid={"File:Googleplex A.jpg"})["title"] == "File:Googleplex B.jpg"
+
+
+def test_used_photos_are_recorded_per_week_and_avoided_elsewhere(tmp_path):
+    """Founder 2026-11-21: vary the head-office and people photos from video to video."""
+    f = tmp_path / "photos_used.json"
+    photos.record_used(f, "2026-W47-en", ["File:Googleplex HQ (cropped).jpg"])
+    photos.record_used(f, "2026-W48-en", ["File:NVIDIA Headquarters.jpg"])
+    assert photos.used_elsewhere(f, "2026-W48-en") == {"File:Googleplex HQ (cropped).jpg"}
+    assert photos.used_elsewhere(tmp_path / "missing.json", "W") == set()
+
+
+def test_the_director_asks_for_people_and_head_office_photos():
+    from pipeline.scripting import director
+    assert "headquarters" in director.SYSTEM and "names a person" in director.SYSTEM

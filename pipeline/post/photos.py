@@ -135,3 +135,19 @@ def variety_notes(shots: list) -> list[str]:
     elif longest > 2:
         notes.append(f"{longest} digital shots in a row before a real one (aim for no more than 2)")
     return notes
+
+
+def record_used(path: Path, week: str, titles: list[str]) -> None:
+    """data/photos_used.json: the Commons files each episode showed, so the next ones pick other angles."""
+    import json
+    data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    data[week] = sorted(set(titles))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(dict(sorted(data.items())), ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def used_elsewhere(path: Path, week: str) -> set[str]:
+    import json
+    if not path.exists():
+        return set()
+    return {t for k, ts in json.loads(path.read_text(encoding="utf-8")).items() if k != week for t in ts}
