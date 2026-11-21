@@ -350,10 +350,11 @@ def phase_post(cfg: dict, out: Path, shorts_arg: str | None) -> None:
             shutil.rmtree(out / tmp, ignore_errors=True)
         log.info("Before the final pass: %.1f GB free on disk", shutil.disk_usage(out).free / 1e9)
         big = out / f"final_{up}p.mp4"
-        master = (big, up, str(post_cfg.get("upload_preset", "veryfast")))
+        master = (big, up, str(post_cfg.get("upload_preset", "superfast")))
     with TIMER.stage("final pass (captions, sting, end card; 1080p + 4K master)"):
         result["final"] = burn_in(base, result["srt"], out / "final_subtitled.mp4", audio=mix, insert=sting, tail=tail,
-                                  master=master, preset=str(post_cfg.get("final_preset", "medium")))
+                                  master=master, preset=str(post_cfg.get("final_preset", "veryfast")),
+                                  crf=int(post_cfg.get("final_crf", 16)))
     extra = (audio.duration_of(sting[1]) if sting else 0) + (audio.duration_of(tail) if tail else 0)
     _check_length("final (programme + sting + end card)", result["final"], _dur(video) + extra)
     if big:

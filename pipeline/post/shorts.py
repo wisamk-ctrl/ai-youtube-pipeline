@@ -423,7 +423,8 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
                                                         (5 if extra else 3, bed_gain) if bed_wav else None, voice_gain,
                                                         card, ((5 if extra else 3) + (1 if bed_wav else 0), outro_gain) if outro_s else None),
                         "-map", "[v]", "-map", "[a]", "-t", f"{lead + span_s + card:.3f}",
-                        "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", str(fps),
+                        # veryfast crf 17 ≈ medium crf 19 in picture quality, at a quarter of the CPU (2026-11-21)
+                        "-c:v", "libx264", "-crf", "17", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", str(fps),
                         "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", str(dest))
                 for p in (title_png, sub, hook_png, clip):
                     if p:

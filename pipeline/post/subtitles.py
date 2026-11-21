@@ -352,7 +352,7 @@ def _subs_filter(srt_path: str, w: int, h: int, style: str) -> str:
 
 def burn_in(video: Path, srt: Path, dest: Path, font_size: int = 54, audio: Path | None = None,
             insert: tuple[float, Path] | None = None, tail: Path | None = None,
-            master: tuple[Path, int, str] | None = None, preset: str = "slow") -> Path:
+            master: tuple[Path, int, str] | None = None, preset: str = "slow", crf: int = 18) -> Path:
     """Hard-code captions in the episode's one final, high-quality encode. libass handles RTL shaping.
 
     Captions sit in a translucent navy box (BorderStyle=3), ~54 px on a 1080p frame (PlayRes is set
@@ -392,7 +392,7 @@ def burn_in(video: Path, srt: Path, dest: Path, font_size: int = 54, audio: Path
                   f"[{a_in}]aformat=sample_rates=48000:channel_layouts=stereo[pa];"
                   f"[{k}:a]aformat=sample_rates=48000:channel_layouts=stereo[ta];[pv][pa][tv][ta]concat=n=2:v=1:a=1[vo][ao]")
         vmap, amap = ["-filter_complex", graph, "-map", "[vo]"], ["-map", "[ao]"]
-    enc = ["-c:v", "libx264", "-crf", "18", "-preset", preset, "-pix_fmt", "yuv420p",
+    enc = ["-c:v", "libx264", "-crf", str(crf), "-preset", preset, "-pix_fmt", "yuv420p",
            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart"]
     if not master:
         _ffmpeg(*args, *vmap, *amap, *enc, str(dest))

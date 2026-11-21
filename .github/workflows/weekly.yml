@@ -272,7 +272,7 @@ jobs:
       # 2026-11-21: English captions only align the known script to the voice; small.en does that in about a
       # third of medium's time (W47-en: 315 s). The script/caption similarity check still runs on it.
       WHISPER_MODEL_EN: small.en
-      MEDIA_CACHE: ${{ github.workspace }}/../media-cache   # stock clips and photos, kept across runs (below)
+      MEDIA_CACHE: ${{ github.workspace }}/.media-cache   # stock clips and photos, kept across runs (below); actions/cache refuses ".."
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
@@ -398,6 +398,20 @@ jobs:
           for s in d.get("details", []): print(f"| ↳ {s['stage']} | {s['seconds']:.0f} |")
           print(f"| **total** | **{d['total_s']:.0f}** |")
           EOF
+      - name: Output check (resolution, length, loudness)
+        # Every render: what the founder would check by hand, in the run summary (2026-11-21).
+        if: success() && (inputs.phase == 'assemble' || inputs.phase == 'post' || inputs.phase == 'import')
+        run: |
+          d="output/${{ inputs.week }}"
+          { echo "### Output check ($(nproc) CPUs: $(lscpu | sed -n 's/^Model name: *//p'))"; echo
+            echo "| File | Size | Resolution | Length | Loudness |"; echo "|---|---|---|---|---|"
+            for f in "$d"/final_subtitled.mp4 "$d"/final_*p.mp4 "$d"/shorts/short_*.mp4; do
+              [ -f "$f" ] || continue
+              res=$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x "$f")
+              len=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")
+              lufs=$(ffmpeg -hide_banner -nostats -i "$f" -vn -af ebur128 -f null - 2>&1 | sed -n 's/^ *I: *\(-*[0-9.]*\) LUFS/\1/p' | tail -1)
+              echo "| ${f#$d/} | $(du -h "$f" | cut -f1) | $res | ${len%.*} s | $lufs LUFS |"
+            done; } | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Preview build only (timing test, nothing pushed)
         if: success() && inputs.test_run && inputs.phase == 'assemble'
         env:

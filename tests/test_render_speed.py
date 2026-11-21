@@ -254,3 +254,33 @@ def test_whisper_model_per_language(monkeypatch):
     assert subtitles.whisper_model("en") == "medium" and subtitles.whisper_model("ar") == "medium"
     monkeypatch.setenv("WHISPER_MODEL_EN", "small.en")    # English captions only align known text to the voice
     assert subtitles.whisper_model("en") == "small.en" and subtitles.whisper_model("ar") == "medium"
+
+
+# ── Cue cards: each card image decoded once, not 2× a second for the whole episode ────────────────────
+@ffmpeg
+def test_overlay_draws_each_card_only_in_its_window_and_reads_each_image_once(tmp_path):
+    import numpy as np
+    from pipeline.post import overlays
+    from pipeline.script_format import Cue
+    src = _clip(tmp_path / "cut.mp4", 4.0, size="480x270")
+    pngs = []
+    for k, colour in enumerate(("red", "blue")):
+        png = tmp_path / f"c{k}.png"
+        subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "lavfi", "-i", f"color=c={colour}:s=480x270",
+                        "-frames:v", "1", str(png)], check=True)
+        pngs.append(png)
+    cue = Cue(kind="onscreen", text="x", at_word=0, at_seconds=0.0)
+    cards = [overlays.Card(cue, 0.5, 1.0, pngs[0]), overlays.Card(cue, 2.5, 1.0, pngs[1])]
+    graph = overlays.card_graph(cards)
+    assert "-loop" not in " ".join(graph[0]) and graph[1].count("loop=loop=-1:size=1") == 2
+    out = overlays.overlay(src, cards, tmp_path / "with.mp4", enc=("ultrafast", 16))
+
+    def px(t):
+        r = subprocess.run(["ffmpeg", "-v", "error", "-ss", str(t), "-i", str(out), "-frames:v", "1", "-f", "rawvideo",
+                            "-pix_fmt", "rgb24", "-"], capture_output=True, check=True)
+        return np.frombuffer(r.stdout, dtype=np.uint8).reshape(270, 480, 3)[135, 240].astype(int)
+    red, blue, none = px(1.0), px(3.0), px(2.0)
+    assert red[0] > 200 and red[2] < 60
+    assert blue[2] > 200 and blue[0] < 60
+    assert not (none[0] > 200 and none[1] < 60 and none[2] < 60)
+    assert overlays._frames(out) == overlays._frames(src)
