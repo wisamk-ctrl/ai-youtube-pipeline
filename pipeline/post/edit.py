@@ -91,6 +91,7 @@ def compose(talking_head: Path, shots: list[Shot], clips: dict[int, Path], cfg: 
     dissolve = {k for k in range(1, len(spans)) if spans[k][0] in want
                 and min(spans[k][2] - spans[k][1], spans[k - 1][2] - spans[k - 1][1]) > fade}
     runs: list[list[str]] = [[]]
+    jobs_: list = []
     for k, (n, f0, f1) in enumerate(spans):
         s = shots[n]
         frames = f1 - f0 + (fade if k + 1 in dissolve else 0)
@@ -99,20 +100,27 @@ def compose(talking_head: Path, shots: list[Shot], clips: dict[int, Path], cfg: 
         clip = clips.get(n)
         mode = s.mode if (s.mode == "face" or clip) else "face"
         if mode == "face":
-            _ff("-ss", f"{start:.3f}", "-i", str(talking_head), "-vf", fill, "-frames:v", str(frames), *_enc(fps), str(seg))
+            args = ("-ss", f"{start:.3f}", "-i", str(talking_head), "-vf", fill, "-frames:v", str(frames), *_enc(fps), str(seg))
         elif mode == "visual":
-            _ff("-i", str(clip), "-vf", f"scale={w}:{h},fps={fps},tpad=stop_mode=clone:stop_duration=2",
-                "-frames:v", str(frames), *_enc(fps), str(seg))
+            args = ("-i", str(clip), "-vf", f"scale={w}:{h},fps={fps},tpad=stop_mode=clone:stop_duration=2",
+                    "-frames:v", str(frames), *_enc(fps), str(seg))
         else:
             graph, *_ = corner_filter(w, h, cfg)
-            _ff("-i", str(clip), "-ss", f"{start:.3f}", "-i", str(talking_head), "-filter_complex", graph,
-                "-map", "[out]", "-frames:v", str(frames), *_enc(fps), str(seg))
-        got = round(duration(seg) * fps)
-        if got < frames - 1:   # a short segment shortens the whole cut (W45, 2026-11-07); say which one
-            log.warning("Segment %d (%s %s) is %d frames, expected %d", n, mode, s.kind, got, frames)
+            args = ("-i", str(clip), "-ss", f"{start:.3f}", "-i", str(talking_head), "-filter_complex", graph,
+                    "-map", "[out]", "-frames:v", str(frames), *_enc(fps), str(seg))
+
+        def encode(args=args, seg=seg, n=n, mode=mode, kind=s.kind, frames=frames) -> None:
+            _ff(*args)
+            got = round(duration(seg) * fps)
+            if got < frames - 1:   # a short segment shortens the whole cut (W45, 2026-11-07); say which one
+                log.warning("Segment %d (%s %s) is %d frames, expected %d", n, mode, kind, got, frames)
+        jobs_.append(encode)
         if k in dissolve:
             runs.append([])
         runs[-1].append(f"file '{seg.resolve()}'")
+    # The segments are independent encodes of a few seconds each: side by side (2026-11-21).
+    from pipeline.post.jobs import run_all, workers
+    run_all(jobs_, workers(cfg))
     dest = out_dir / "edited.mp4"
     audio = ["-map", f"{len(runs) if len(runs) > 1 else 1}:a", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(dest)]
     if len(runs) == 1:

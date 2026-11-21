@@ -209,7 +209,32 @@ def guide_cards(script: str, wpm: int, out_dir: Path, srt: Path | None, total: f
     return cards
 
 
-def overlay(video: Path, cards: list[Card], dest: Path) -> Path:
+def intermediate(cfg: dict[str, Any] | None) -> tuple[str, int]:
+    """(preset, crf) for a working file between passes (post.intermediate). 2026-11-21: veryfast at crf 16
+    instead of medium at crf 18: about four times faster, and the lower crf keeps at least the old picture
+    quality (the file is larger, and it is only read by the next pass)."""
+    i = ((cfg or {}).get("post", {}) or {}).get("intermediate", {}) or {}
+    return str(i.get("preset", "veryfast")), int(i.get("crf", 16))
+
+
+def card_graph(cards: list[Card]) -> tuple[list[str], str, str]:
+    """(inputs, filter graph, last label) laying each card on the picture between its start and end.
+
+    Each card image is read and turned into the picture's colour format once, then held in memory for the
+    whole length by the loop filter (2026-11-21). Before, `-loop 1 -framerate 2` decoded and converted every
+    card twice a second for the whole episode: 26 cards × 15 min ≈ 45,000 PNG decodes on one thread, most of
+    the 10-minute pass. The images still play for the whole length, so a rebuilt chain keeps them (below)."""
+    inputs: list[str] = []
+    chain, prev = [], "0:v"
+    for i, c in enumerate(cards, 1):
+        inputs += ["-i", str(c.png)]
+        chain.append(f"[{i}:v]format=yuva420p,loop=loop=-1:size=1:start=0,setpts=N/2/TB[c{i}]")
+        chain.append(f"[{prev}][c{i}]overlay=0:0:shortest=1:enable='between(t,{c.at:.2f},{c.at + c.seconds:.2f})'[v{i}]")
+        prev = f"v{i}"
+    return inputs, ";".join(chain), f"[{prev}]"
+
+
+def overlay(video: Path, cards: list[Card], dest: Path, enc: tuple[str, int] = ("veryfast", 16)) -> Path:
     """One ffmpeg pass: each card is an input overlaid between its start and end time."""
     if not cards:
         log.info("No cue cards to overlay")
@@ -220,16 +245,11 @@ def overlay(video: Path, cards: list[Card], dest: Path) -> Path:
     # clip), and any clock restarted there drops the picture (second edit: frozen from 1:46). So the picture
     # keeps its own clock, and each label image keeps playing for the whole length, so a rebuilt chain has it.
     def run(src: Path) -> int:
-        args = ["ffmpeg", "-y", "-i", str(src)]
-        for c in cards:
-            args += ["-loop", "1", "-framerate", "2", "-i", str(c.png)]
-        chain, prev = [], "0:v"
-        for i, c in enumerate(cards, 1):
-            out = f"v{i}"
-            chain.append(f"[{prev}][{i}:v]overlay=0:0:shortest=1:enable='between(t,{c.at:.2f},{c.at + c.seconds:.2f})'[{out}]")
-            prev = out
-        args += ["-filter_complex", ";".join(chain), "-map", f"[{prev}]", "-map", "0:a?", "-c:a", "copy",
-                 "-c:v", "libx264", "-crf", "18", "-preset", "medium", str(dest)]
+        inputs, graph, last = card_graph(cards)
+        # -reinit_filter 0: a join that changes only colour tags no longer rebuilds the chain (which lost a
+        # card read once: 2026-11-21 timing run); every segment already has the cut's size and pixel format.
+        args = ["ffmpeg", "-y", "-reinit_filter", "0", "-i", str(src), *inputs, "-filter_complex", graph, "-map", last, "-map", "0:a?",
+                "-c:a", "copy", "-c:v", "libx264", "-crf", str(enc[1]), "-preset", enc[0], str(dest)]
         subprocess.run(args, check=True, capture_output=True)
         return _frames(dest)
 
@@ -338,4 +358,4 @@ def run_overlays(video: Path, script: str, cfg: dict[str, Any], out_dir: Path, s
     log.info("Overlaying %d cue cards (%d on-screen, %d b-roll markers, %d topic chips, %d questions)", len(cards),
              sum(c.cue.kind == "onscreen" for c in cards), sum(c.cue.kind == "broll" for c in cards),
              sum(c.cue.kind == "topic" for c in cards), sum(c.cue.kind == "question" for c in cards))
-    return overlay(video, cards, out_dir / "with_cards.mp4")
+    return overlay(video, cards, out_dir / "with_cards.mp4", enc=intermediate(cfg))
