@@ -1,0 +1,22 @@
+[
+  {
+    "source": "BBC",
+    "source_type": "rss",
+    "title": "Anthropic shares fall a day after blockbuster IPO",
+    "summary": "Anthropic's shares have dropped back towards their initial price after a soaring first day on the stock market, as a wider tech sell-off dragged markets down. The sell-off comes as concerns remain over the speed and size of artificial intelligence investment, but also as some large companies including Nvidia and SpaceX faced specific issues that worried investors. Those pressures combined to weigh on US markets through Friday, with all key US indexes closing sharply down on the day, furthering earlier falls over the week. The S&P 500 and the Dow Jones Industrial Average were pushed into correction territory, a point where they are trading at 10% or more down from a recent high. The S&P 500 closed down 3.7%, the Dow Jones Industrial Average was down 1.9% and the tech-heavy Nasdaq Composite Index plunged 5.3%. However, all three indexes were up on where they were a year ago. The speed at which AI investment has been growing - with more than $1 trillion spent in the last year alone by a small handful of major tech companies - has led to ongoing concerns of a financial bubble. Questions are being raised over whether those investments will pay off, and when. Investors were also spooked after the Democrats' resounding win in the US midterms in early November, which sparked fears of a reduction in AI development. Despite a positive first day of trading, Anthropic's shares fell on Friday, dropping at one point by more than 12% to about $85, close to its initial public offering (IPO) price of $83. It closed down 8.5%, reversing half of the gains made on Thursday. The artificial intelligence (AI) company's introduction to the Nasdaq stock exchange on Thursday was a crucial test for the industry and was largely seen as a success, with trading starting at $111.50 before easing to end the day up 17% at $97.17. Analysts said volatility was to be expected in the first days or even weeks of Anthropic's trading, as the company was the first frontier AI firm to go public so had no direct peers. Some have also noted the similarities with Elon Musk's SpaceX, which at the time of its debut in June was the largest IPO on record. Shares in the rocket and AI company experienced large swings in its first few weeks of trading. Ed Moya, a strategist at market intelligence firm AlphaSense, said Anthropic's blockbuster IPO did not appear to have restored confidence in the broader AI market. While AI demand was still very strong, Moya told the BBC that investors were trying to answer…",
+    "url": "https://www.bbc.com/news/articles/c6808ym10vzgo",
+    "published": "2026-11-20T20:00:53+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic",
+      "NVIDIA"
+    ],
+    "id": "f2618c8a6e"
+  }
+]

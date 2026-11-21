@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-21 01:01 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Anthropic's shares fell on Friday, a day after its stock market debut, the BBC reports.  ← BBC (f2618c8a6e)
+- (2) On Thursday, trading started at $111.50 and the stock closed up 17% at $97.17.  ← BBC (f2618c8a6e)
+- (3) On Friday it dropped more than 12% at one point, to about $85, near the $83 IPO price.  ← BBC (f2618c8a6e)
+- (4) It closed down 8.5%, reversing half of Thursday's gains.  ← BBC (f2618c8a6e)
+- (5) The Nasdaq plunged 5.3%, and the S&P 500 and the Dow entered correction territory.  ← BBC (f2618c8a6e)
+- (6) The BBC cites concerns over AI spending, with more than $1 trillion spent in the last year by a few major tech companies.  ← BBC (f2618c8a6e)
+- (7) For the Gulf, watch whether investor nerves change the pace of AI and data center projects.  ← regional line, no facts
