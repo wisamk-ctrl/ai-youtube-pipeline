@@ -361,8 +361,9 @@ jobs:
           WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}
           CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
         run: |
-          gh workflow run preview.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" -f what=video
-          gh workflow run preview.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" -f what=text   # the Shorts
+          # One run for the video and the files (Shorts, script, shot list): GitHub keeps one waiting run per
+          # concurrency group, so two calls let the second replace the first (W47-en, 2026-11-21: stale video on #52).
+          gh workflow run preview.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" -f what=all
           QC=$(for f in output/"$WEEK"/shorts/short_*.mp4; do [ -f "$f" ] && echo "**$(basename "$f")**: $(python scripts/short_check.py "$f")"; done || true)
           python scripts/review_issue.py ready "$WEEK" "$QC"
       - name: Breaking Short ready → preview and tell the founder

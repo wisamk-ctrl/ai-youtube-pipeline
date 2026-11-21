@@ -167,3 +167,14 @@ def test_every_action_is_pinned_to_a_commit():
             if ref.startswith("./"):
                 continue
             assert re.fullmatch(r"[\w.-]+/[\w./-]+@[0-9a-f]{40}", ref), f"{f.name}: {ref} is not pinned to a commit"
+
+
+def test_the_chain_starts_one_preview_run_that_makes_video_and_files():
+    """2026-11-21: the chain started two preview runs (video, then the Shorts). GitHub keeps one waiting run per
+    concurrency group, so the second replaced the first and #52 linked last night's video."""
+    text = (WF / "weekly.yml").read_text(encoding="utf-8")
+    calls = re.findall(r"gh workflow run preview\.yml[^\n]*-f what=(\w+)", text)
+    assert "video" not in calls and calls.count("all") >= 1, calls
+    pv = (WF / "preview.yml").read_text(encoding="utf-8")
+    assert "all" in _wf("preview.yml")[True]["workflow_dispatch"]["inputs"]["what"]["options"]
+    assert '"${{ inputs.what }}" = "all"' in pv
