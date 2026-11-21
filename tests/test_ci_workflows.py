@@ -188,3 +188,7 @@ def test_every_action_is_pinned_to_a_commit():
             if ref.startswith("./"):
                 continue
             assert re.fullmatch(r"[\w.-]+/[\w./-]+@[0-9a-f]{40}", ref), f"{f.name}: {ref} is not pinned to a commit"
+
+
+def test_a_timing_test_run_has_its_own_queue():
+    assert "inputs.test_run && 'test-'" in _wf("weekly.yml")["concurrency"]["group"]

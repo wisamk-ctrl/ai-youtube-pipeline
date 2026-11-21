@@ -72,7 +72,8 @@ env:
 # they are never cancelled (a cancelled render is paid credits lost). GitHub keeps at most one
 # pending run per group: a third dispatch for the same week replaces the waiting one.
 concurrency:
-  group: weekly-${{ inputs.week || 'scheduled' }}
+  # A timing test (test_run) has its own group and artifact names: it never queues behind, or holds up, the week.
+  group: weekly-${{ inputs.test_run && 'test-' || '' }}${{ inputs.week || 'scheduled' }}
   cancel-in-progress: false
 
 jobs:
