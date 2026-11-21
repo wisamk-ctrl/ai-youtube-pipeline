@@ -161,3 +161,11 @@ def test_generated_speech_tempo_is_per_language_and_spares_the_own_read():
     src = inspect.getsource(voicefirst.assemble)
     assert 'tempo_{cfg.get(\'language\', \'ar\')}' in src and 'e.get("clean") or tempo == 1.0' in src
     assert "setpts=PTS/{tempo:.3f}" in src          # a face clip slows with its audio, so the lips still match
+
+
+def test_openers_mode_keeps_a_face_at_each_story_start():
+    """Founder 2026-11-21: "more of me" — a face at every story start: in voice-first each [Face] chunk is shown whole."""
+    voice_first = plan(directed(), 120.0, corner=False, face_mode="openers", face_keep=8.0,
+                       face_only=[(0.0, 7.0), (40.0, 52.0), (110.0, 118.0)])
+    assert [(s.start, s.end) for s in voice_first if s.mode == "face"] == [(0.0, 7.0), (40.0, 52.0), (110.0, 118.0)]
+    assert all(abs(a.end - b.start) < 1e-6 for a, b in zip(voice_first, voice_first[1:]))

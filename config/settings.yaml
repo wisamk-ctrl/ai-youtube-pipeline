@@ -262,7 +262,7 @@ visuals:
     # W47-en review 2 (2026-11-21): a ghostly walking figure and an abandoned roller coaster.
     blocklist: [pixabay_5097, pixabay_10869, pixabay_145631, pixabay_33406, pixabay_7536, pixabay_155718, pixabay_49378, pixabay_371998, pixabay_28320, pixabay_239843, pixabay_2181, pixabay_27693, pixabay_37946, pixabay_32767, pixabay_197931, pixabay_306, pixabay_847, pixabay_5364, pixabay_27706, pixabay_6056, pixabay_6026, pixabay_746, pixabay_2176, pixabay_12126]
   dissolve_frames: 0          # off until the W45 length loss (2026-11-07) is traced; 12 = the designed dissolve
-  face_mode: minimal          # founder 2026-11-07 (lip sync): face only at the open and the sign-off
+  face_mode: openers          # founder 2026-11-21: face at the open, each story's start (face_keep_seconds) and the sign-off; was minimal (2026-11-07, lip sync)
   require_face: true          # founder 2026-11-20: a render refuses face chunks without a presenter video
   face_keep_seconds: 8
   corner:

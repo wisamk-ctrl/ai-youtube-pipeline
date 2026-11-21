@@ -23,12 +23,13 @@ Hi everyone, welcome to AI This Week. I'm Wissam Kishek. I've spent 25 years in 
 [Pause 2s]
 
 [Section: The Day Microsoft Stopped]
+[Face]
+Let's start with the full story.
 
 [Visual: title The Microsoft Outage]
 
 [On-Screen Text: 13 November 2026]
 
-Let's start with the full story.
 
 [Visual: stock glitch effect on computer screens, error animation]
 On Friday, November 13th, Outlook email went down, and so did Teams meetings.
@@ -136,9 +137,10 @@ And the digital sovereignty question raised in Britain applies the same way to a
 [Pause 2s]
 
 [Section: Gulf Money and AI]
+[Face]
+Now let's head to the Gulf, because Gulf money has become part of the AI story in America.
 
 [Visual: stock digital globe with glowing arcs between continents, animation]
-Now let's head to the Gulf, because Gulf money has become part of the AI story in America.
 
 [Visual: stock glowing data streams over a digital map]
 On Thursday, at the Abu Dhabi Investment Forum in New York, the UAE showcased its investments in the US.
@@ -217,9 +219,10 @@ And the question we're watching: how much of this money will build capabilities 
 [Pause 2s]
 
 [Section: The Biggest IPO in History]
+[Face]
+On to models, and the biggest financial story of the week.
 
 [Visual: title The Biggest IPO]
-On to models, and the biggest financial story of the week.
 
 [Visual: photo File:Secretary of State Peter Kyle visits Anthropic in San Francisco. (54098999333).jpg]
 Anthropic, the company behind the Claude model, went public this week, in the largest IPO in history.
@@ -361,9 +364,11 @@ But the data center commitments determine how much capacity will be available to
 [Pause 2s]
 
 [Section: The Model Price War]
+[Face]
+So, the second story in models?
 
 [Visual: title The Price War]
-So, the second story in models? A price war.
+A price war.
 
 [Pause]
 
@@ -449,9 +454,10 @@ And a strong Chinese option widens the choices here, but it raises governance qu
 [Pause 2s]
 
 [Section: Microsoft's Agents Get Their Own Identities]
+[Face]
+Now let's move to agents, and back to Microsoft.
 
 [Visual: title Agents]
-Now let's move to agents, and back to Microsoft.
 
 [Visual: source 2299a81540]
 At its annual Ignite conference, Nadella announced shared workspaces inside Copilot.
@@ -501,9 +507,10 @@ And after the November outage, putting your agents with the same provider is a q
 [Pause 2s]
 
 [Section: Agents Now Have Wallets]
+[Face]
+So, what about when the agent needs to pay?
 
 [Visual: title Agents and Payments]
-So, what about when the agent needs to pay?
 
 [Pause]
 
@@ -532,9 +539,10 @@ Banks, card issuers and online stores here face a new question: what happens whe
 [Pause 2s]
 
 [Section: Washington and the Chips]
+[Face]
+In the world of chips, three headlines point the same way, and we're covering them carefully because details are still thin.
 
 [Visual: stock silicon wafer under light]
-In the world of chips, three headlines point the same way, and we're covering them carefully because details are still thin.
 
 [Visual: source 97fed349b5]
 The first, from Bloomberg: the US is moving to curb remote access to NVIDIA's advanced chips.
@@ -572,9 +580,10 @@ And what's worth watching is the compliance terms in GPU rental contracts.
 [Pause 2s]
 
 [Section: California vs. OpenAI: Who's Responsible?]
+[Face]
+In the US, there's a case that could change how governments deal with AI companies.
 
 [Visual: title California vs. OpenAI]
-In the US, there's a case that could change how governments deal with AI companies.
 
 [Visual: source 7d4307f50c]
 According to The Guardian, the state of California has sued OpenAI, accusing it of developing its technology without putting safety and the public interest first.
@@ -619,9 +628,10 @@ And for the Gulf, with the UAE and Saudi Arabia wanting to lead: if we build in 
 [Pause 2s]
 
 [Section: Weekly Radar]
+[Face]
+The weekly radar, quickly.
 
 [Visual: title Weekly Radar]
-The weekly radar, quickly.
 
 [Visual: source 347b6a04b1]
 Isomorphic Labs, which discovers drugs with AI, has raised, according to the company itself,
