@@ -127,10 +127,22 @@ box-shadow:{h * 0.02:.0f}px {h * 0.02:.0f}px 0 {RED}}}
     return _page(body, w, h, css)
 
 
+def short_title(text: str, limit: int = 60) -> str:
+    """A headline cut to `limit` characters at a word boundary, with an ellipsis (W47-en: "co-leadi")."""
+    text = card_title(text)
+    if len(text) <= limit:
+        return text
+    cut = text[: limit - 1].rsplit(" ", 1)[0].rstrip(" ,;:-–—")
+    return cut + "…"
+
+
 def title_html(text: str, w: int, h: int) -> str:
-    """A story opener: the headline set left like a front page, one accent rule under it."""
+    """A story opener: the headline set left like a front page, one accent rule under it. Type shrinks for long
+    text so a headline fits in about three lines (founder 2026-11-21: the 6:47 card was cluttered)."""
+    n = len(text)
+    scale = 0.135 if n <= 24 else 0.105 if n <= 36 else 0.08 if n <= 60 else 0.065
     css = f""".t{{position:absolute;inset:0;padding:0 {w * 0.08:.0f}px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:{h * 0.04:.0f}px}}
-.p{{font:800 {h * 0.135:.0f}px/1.02 {DISPLAY};letter-spacing:-.035em;text-align:start;max-width:{w * 0.8:.0f}px}}
+.p{{font:800 {round(h * scale)}px/1.05 {DISPLAY};letter-spacing:-.035em;text-align:start;max-width:{w * 0.8:.0f}px}}
 .bar{{width:{w * 0.09:.0f}px;height:{h * 0.01:.0f}px;background:{FOIL};transform-origin:left}}"""
     return _page(f'<div class="t"><div class="p" dir="auto">{html.escape(text)}</div><div class="bar"></div></div>', w, h, css)
 
@@ -212,11 +224,11 @@ class Renderer:
         self.browser.close()
         self._pw.stop()
 
-    def still(self, page_html: str, dest: Path) -> Path:
+    def still(self, page_html: str, dest: Path, transparent: bool = False) -> Path:
         dest.parent.mkdir(parents=True, exist_ok=True)
         self.page.set_content(page_html, wait_until="load")
         self.page.evaluate("document.fonts.ready")
-        self.page.screenshot(path=str(dest))
+        self.page.screenshot(path=str(dest), omit_background=transparent)
         return dest
 
     def animate(self, page_html: str, frames_dir: Path, frames: int, fps: int = 30) -> int:
@@ -310,15 +322,42 @@ def stock_clip(src: Path, seconds: float, dest: Path, w: int, h: int, fps: int) 
     return dest
 
 
-def photo_clip(img: Path, seconds: float, dest: Path, w: int, h: int, fps: int, push: float = 0.06) -> Path:
+def photo_parts(payload: str) -> tuple[str, str, str]:
+    """`<subject or File:…> | Name, role` → (subject, name, role). The label is what the viewer reads under
+    a person's photo (founder 2026-11-21: the audience is the general public, not everyone knows the figures)."""
+    subject, _, label = payload.partition("|")
+    name, _, role = label.partition(",")
+    return subject.strip(), name.strip(), role.strip()
+
+
+def name_html(name: str, role: str, w: int, h: int) -> str:
+    """A lower-third name label on a transparent page, overlaid on a photo."""
+    css = f""".nm{{position:absolute;left:{w * 0.06:.0f}px;bottom:{h * 0.2:.0f}px;padding:{h * 0.018:.0f}px {w * 0.018:.0f}px;
+background:{INK};border-left:{h * 0.008:.0f}px solid {RED};box-shadow:0 {h * 0.01:.0f}px {h * 0.03:.0f}px rgba(0,0,0,.35)}}
+.n{{font:800 {h * 0.042:.0f}px/1.1 {DISPLAY};color:{PAPER};letter-spacing:-.01em}}
+.r{{font:500 {h * 0.026:.0f}px/1.3 {TEXT};color:#E4DCF7;margin-top:{h * 0.006:.0f}px}}"""
+    role_div = f'<div class="r">{html.escape(role)}</div>' if role else ""
+    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}
+html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden;background:transparent}}
+{css}</style></head><body><div class="nm" dir="auto"><div class="n">{html.escape(name)}</div>{role_div}</div></body></html>"""
+
+
+def photo_clip(img: Path, seconds: float, dest: Path, w: int, h: int, fps: int, push: float = 0.06,
+               label: Path | None = None) -> Path:
     """A real photo on screen: fitted whole over a blurred, darkened copy of itself (a portrait is never
-    stretched or cropped to a face), with a slow push-in."""
+    stretched or cropped to a face), with a slow push-in; `label` (a transparent full-frame PNG, name_html)
+    is laid over it still, fading in."""
     n = max(1, round(seconds * fps))
-    vf = (f"split[a][b];[a]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},boxblur=30:2,"
+    vf = (f"[0:v]split[a][b];[a]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},boxblur=30:2,"
           f"eq=brightness=-0.25[bg];[b]scale={w}:{h}:force_original_aspect_ratio=decrease[fg];"
           f"[bg][fg]overlay=(W-w)/2:(H-h)/2,scale={w * 2}:{h * 2},"
           f"zoompan=z='1+{push}*on/{n}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={n}:s={w}x{h}:fps={fps},setsar=1")
-    _ff("-loop", "1", "-i", str(img), "-filter_complex", vf, "-frames:v", str(n), *_enc(fps), str(dest))
+    inputs = ["-loop", "1", "-i", str(img)]
+    if label:
+        inputs += ["-loop", "1", "-i", str(label)]
+        vf += (f"[ph];[1:v]scale={w}:{h},format=rgba,fade=t=in:st=0.3:d=0.4:alpha=1[lb];"
+               f"[ph][lb]overlay=0:0:shortest=1,format=yuv420p")
+    _ff(*inputs, "-filter_complex", vf, "-frames:v", str(n), *_enc(fps), str(dest))
     return dest
 
 
@@ -702,7 +741,7 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                         page = title_html(s.payload, w, h)
                     elif item is not None and not on_screen_ok(item):   # radar note / tier-C outlet: never the credit
                         s.notes.append(f"source {s.payload} ({item.source}) is not creditable on screen; title card instead")
-                        page = title_html((item.entities[0] if item.track == "radar" and item.entities else item.title)[:80], w, h)
+                        page = title_html((item.entities[0] if item.track == "radar" and item.entities else short_title(item.title)), w, h)
                     elif item is None:
                         s.notes.append(f"unknown source id {s.payload}; title card instead")
                         page = title_html(ui("source"), w, h)
@@ -719,17 +758,20 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                         secs, dest, w, h, fps))
                 elif s.kind == "photo":
                     from pipeline.post.photos import fetch_photo, used_elsewhere
-                    avoid = set() if s.payload.startswith("File:") else used_elsewhere(ROOT / "data" / "photos_used.json", out_dir.name)
+                    subject, who, role = photo_parts(s.payload)
+                    avoid = set() if subject.startswith("File:") else used_elsewhere(ROOT / "data" / "photos_used.json", out_dir.name)
                     with TIMER.detail("visuals: photos"):
-                        got = fetch_photo(s.payload, photo_dir, avoid=avoid)
+                        got = fetch_photo(subject, photo_dir, avoid=avoid)
                     if got:
-                        clips[n] = photo_clip(got[0], secs, dest, w, h, fps)
+                        label = renderer.still(name_html(who, role, w, h), work / f"shot_{n:03d}_name.png",
+                                               transparent=True) if who else None
+                        clips[n] = photo_clip(got[0], secs, dest, w, h, fps, label=label)
                         if got[1] not in credits:
                             credits.append(got[1])
                         s.notes.append(f"photo: {got[1]['title']} ({got[1]['license']})")
                     else:     # no reusable photo: the subject's name as a title card, never a lookalike
                         s.notes.append("no reusable photo on Wikimedia Commons; title card instead")
-                        page = title_html(s.payload[:80], w, h)
+                        page = title_html(short_title(photo_parts(s.payload)[1] or photo_parts(s.payload)[0]), w, h)
                         fdir = work / f"shot_{n:03d}_frames"
                         clips[n] = cached(("card", page, round(secs * fps)), lambda: card_clip(
                             fdir, renderer.animate(page, fdir, round(secs * fps), fps), secs, dest, w, h, fps))

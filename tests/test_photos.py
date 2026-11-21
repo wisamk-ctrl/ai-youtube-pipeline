@@ -105,3 +105,34 @@ def test_used_photos_are_recorded_per_week_and_avoided_elsewhere(tmp_path):
 def test_the_director_asks_for_people_and_head_office_photos():
     from pipeline.scripting import director
     assert "headquarters" in director.SYSTEM and "names a person" in director.SYSTEM
+
+
+def test_photo_shots_carry_a_name_label_after_a_bar():
+    """Founder 2026-11-21: a person's photo shows their name (and role) — the audience is the general public."""
+    from pipeline.post import visual_assets as va
+    assert va.photo_parts("File:Dario Amodei in 2023.jpg | Dario Amodei, CEO of Anthropic") == \
+        ("File:Dario Amodei in 2023.jpg", "Dario Amodei", "CEO of Anthropic")
+    assert va.photo_parts("Googleplex") == ("Googleplex", "", "")
+    html = va.name_html("Dario Amodei", "CEO of Anthropic", 1920, 1080)
+    assert "Dario Amodei" in html and "CEO of Anthropic" in html and "background:transparent" in html
+
+
+def test_photo_clip_overlays_the_label(tmp_path):
+    import subprocess
+    import numpy as np
+    from pipeline.post import visual_assets as va
+    img, lab = tmp_path / "p.png", tmp_path / "l.png"
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=gray:s=640x360", "-frames:v", "1", str(img)], check=True)
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=red:s=320x180,format=rgba",
+                    "-vf", "geq=r='255':g='0':b='0':a='if(gt(Y,120),255,0)'", "-frames:v", "1", str(lab)], check=True)
+    out = va.photo_clip(img, 1.0, tmp_path / "o.mp4", 320, 180, 10, label=lab)
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-sseof", "-0.2", "-i", str(out), "-frames:v", "1",
+                          "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
+    px = np.frombuffer(raw, np.uint8).reshape(180, 320, 3)
+    assert px[170, 160, 0] > 150 and px[170, 160, 1] < 100       # the label's red at the bottom
+    assert abs(int(px[40, 160, 0]) - int(px[40, 160, 1])) < 30     # the photo's grey above it
+
+
+def test_the_director_asks_for_a_name_under_every_person_photo():
+    from pipeline.scripting import director
+    assert "| Name, role" in director.SYSTEM

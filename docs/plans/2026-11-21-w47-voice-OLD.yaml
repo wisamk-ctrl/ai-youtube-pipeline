@@ -1,0 +1,22 @@
+# English W47, voiced through the HeyGen connector with the founder's English clone (2026-11-20).
+# Pauses sent as HeyGen's [pause] tag (the instant clone takes no break tags). Faces: presenter look D
+# (navy blazer, hands visible; approved 2026-11-17), image-to-video lip-synced to the face audio.
+# The face links are signed and expire after about a week: assemble before then.
+01-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=a56df909d432437cb7dac475a5136a37.wav
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/dbc9e8daaaa1ecf41f8c362660f49ddf.mp4?Expires=1795805082&Signature=Js~pn8leg1slFZI1OqVHA8Q4nzKvDeri09WgSSrD5tbyXxg6p1IgRIgcLCAew~cZgnfYQwkhA9C~nrxQKG4AoA6jZY82HNeJzP-ocUQSTyoPwrwOLJQQZhPnL9vrOJ5ZXHqLRxQ4K6z67vpNb58ftXG0V25WT~2IiIzUQBHkgeY7-EG8U2FAs7ITkqMbZSn8wFsHqjLLkaLLnjIwM77rWTmysU4AmbtaO690~KuAiez0Wbx2XEeWXLvR0WLfL5lmkUhxa-JugG9iUUBDBwH7YCLg8GjpNK3hUarr7dDfE~mA7HrPSPFKLEKhu6rvo4MrxukNKik-zAdsVlzeiOpYaw__&Key-Pair-Id=K3TSZ3KU01LY58"
+02-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=44fd3d78038f4e1cb45b4c7ab8b84836.wav
+03-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=2020ef1cd3d042fa865aad8d04528e33.wav
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/77338ff2a847342a717be609575bb072.mp4?Expires=1795805100&Signature=cVpUBULEZ1K8Ch~esumuMWxu6YH9n0E~Ygovgt91QVlQZ1WmydQOqKnIpO0npCBtmcWmNXkC9gF9p-Cdh4Rm-2MYTh20WhEQ9aBY1QjuRUYFHkMTWLoYPecePeovid7KTKapHwhBT1C~EdG70nJEJbvSi6sdO-xDS4TPtRbb~bhTFs76PNWyeO9QkEn6GMC27SptYAa~r4KbbxIyw2rMB4YdI1cIR8jkg5pM78py-S2JMCUh1WHgYWOnjSOXO1phtR0McJ7DhmwhttFhLv37zJhLCRM1K0YbDFSHrZRdaM-ZnzDK~Jt3Ffi5sJB2h2z5yR0sTkKBwIqNFEe9Teb4og__&Key-Pair-Id=K3TSZ3KU01LY58"
+04-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=2e01aab256594fabb033e41a5d1dca94.wav
+05-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=889e8d1540784450b7c45b22591f3a42.wav
+06-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=ff7cfe46bcc7480b8ccae4fe931571fa.wav
+07-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=65300eb1de6c4e0697b32ddec5fbd145.wav
+08-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=9bcd431238e44777bd3ea62845270344.wav
+09-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=e0be7320bdde45278ef1acf9887980d8.wav
+10-voice: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=93252f8e0ed8404fb8fac8308c568b84.wav
+# Re-voiced 2026-11-21 (founder review 2): clearer Microsoft view + lawsuits, ADNOC and ChatGPT-wallet repeats cut.
+11-face:
+  audio: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=cc0ed3838b614417996744a7186f795a.wav
+  video: "https://files2.heygen.ai/aws_pacific/avatar_tmp/2f16236adaa04e91bb62e1a24f311c5b/90cba7282e4198fd49125dc2b231069b.mp4?Expires=1795805119&Signature=caJBzSIYu5Db61hhfDNBcvH~wAg6RBNWVmnVMI-B0zR45BpVyIlY0Qp0oO7a5Qc49FHaVF1jS2YYRo~DAbCbP5jkSF6W7WWnbNTFw6PGZ8LYY4MfM2QQky7b4~HToRlm6aF7WhuK1-t1zEUEVp26KNOTx8B7MElkG8FJECT2kSpKiYLBZaugeNbmSGuynEROWZB0lWMephIyBS~0smHLVC6DyK~D0yNbgMdjSt33FqFSdRDG5KSWGSDK2eQzsEPIBpgTPHnMFLyQHaaf0GM7ysA0X56YL03lYyzafoFK78axIlJMoyltNGBpV~dt8W-ljShq2nzfc-OZ7VzRM0HsFQ__&Key-Pair-Id=K3TSZ3KU01LY58"

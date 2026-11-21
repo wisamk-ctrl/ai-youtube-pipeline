@@ -1,0 +1,35 @@
+# Work in progress (2026-11-21): new W47-en chunk audio/video, merged into reviewed/2026-W47-en/voice.yaml when complete.
+# 01-face and 23-face reuse old audio (old 01-face, 11-face) — their face clips are re-made with the v2 look.
+03-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=a3550a8d1d624b4aa3f769aaeeb85216.wav"}
+06-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=8c69d467e4824ccfb5cec25d993005b2.wav"}
+08-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=06f645528ea64a5385295ad1d30b5402.wav"}
+11-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=063fb3e657174345a17f2ef221d5f25e.wav"}
+13-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=6391cc5413c94313a770e8aa25c18bd5.wav"}
+15-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=be19a4ffabee474fad98191fd7d3af54.wav"}
+17-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=5fb3664a29584e149a5d13688216d856.wav"}
+19-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=788d50a77bf0457083a5052c2c8d2a76.wav"}
+21-face: {audio: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=487b8ba9eee1473c8013089cfa3c9869.wav"}
+# Face clips submitted (create_video_from_image, look D v2, 1080p 16:9) — fetch with get_video(video_id) for the URL:
+# 01-face b504af272a4e559d14a50841d6739502 (audio = old 01-face: id=a56df909d432437cb7dac475a5136a37.wav)
+# 03-face d912a73abc195f72339fad9d9ebf618e
+# 06-face 7fdfe00a532967fc0e48e807e0a39b0f
+# 08-face a2e3e879653e05911c992866dc1e4831
+# 11-face 6eb9bd479b4161c4b0090030e73190e0
+# 13-face 6b32e6941fd26a0dfa2711c3c031bb7c
+# 15-face bce2cde49f4550db8ea4313f8b41d104
+# 17-face a2770ce364818cf5dbefedab98206e23
+# 19-face fea975910d73d8ec2df1a0db8190f7d4
+# 21-face 42b46883efdc41d3ea94bc76df37c6b5
+# 23-face 12669db28400d5b7527129a4eedb64fe (audio = old 11-face: id=cc0ed3838b614417996744a7186f795a.wav)
+02-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=44fd3d78038f4e1cb4"   # reused: old 02-voice (text unchanged) — copy full URL from voice.yaml
+04-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=65d69e8e476c486c91d1ff59c9ab69ff.wav"
+05-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=52306c3a7024492cbb3999cbd1ca9c66.wav"
+# 07-voice: HeyGen 502 on first try (2026-11-21) — needs the founder's OK to retry
+09-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=fe601eb0727648ee8eb1c6b7301db712.wav"
+10-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=4ea417ea44154452ac5114519848f891.wav"
+12-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=45147b8652e64a60a0905b7d3c379d33.wav"
+14-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=aa542d5fab07491a83e54657651c6c5e.wav"
+16-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=e0981f116ebc46ec8da43e7120b03972.wav"
+18-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=2d1c70ae021a4a5983fa5d2f522b07e3.wav"
+20-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=14d29cecbcc44431b3de1ff6a64891a4.wav"
+22-voice: "https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=b04bdbf9270d4aa792e2e2dddd9e6ade.wav"

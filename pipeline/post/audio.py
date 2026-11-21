@@ -236,11 +236,12 @@ def master(video: Path, dest: Path, cfg: dict[str, Any], work: Path, insert: tup
     else:
         graph.append("[sc]anullsink")
     if a.get("whoosh", True) and cuts:
-        sw = whoosh(work / "whoosh.wav")
+        from pipeline.post.sfx import cut_sounds       # ElevenLabs sounds when committed (founder 2026-11-21)
+        sounds = cut_sounds(Path(__file__).resolve().parents[2] / a.get("sfx_dir", "assets/sfx"), work)
         sw_gain = voice["input_i"] - 16 + 20                 # ~16 dB under the voice
         for k, t in enumerate(c for c in cuts if not insert or abs(c - insert[0]) > 1.0):
             n, count = count, count + 1
-            inputs += ["-i", str(sw)]
+            inputs += ["-i", str(sounds[k % len(sounds)])]
             ms = max(0, int((t - 0.63) * 1000))           # the swish peaks on the cut
             graph.append(f"[{n}:a]volume={sw_gain:.2f}dB,adelay={ms}:all=1[w{k}]")
             mix.append(f"[w{k}]")

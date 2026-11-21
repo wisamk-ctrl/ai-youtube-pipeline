@@ -1,0 +1,9 @@
+Drafted automatically 2026-11-21 08:53 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) US media report that hackers have breached the US Agriculture Department and the FBI.  ← Gulf News (021b7f33a7)
+- (2) NBC reports the USDA told staff a system for payments to farmers was targeted.  ← Gulf News (021b7f33a7)
+- (3) Two former officials told NBC the hackers may use it as a backdoor to more sensitive material.  ← Gulf News (021b7f33a7)
+- (4) CNN reports the FBI was hacked for the second time since September.  ← Gulf News (021b7f33a7)
+- (5) The FBI is probing an apparent intrusion of the National Crime Information Center, used for warrant checks.  ← Gulf News (021b7f33a7)
+- (6) It remains unclear if the breaches are linked, or who is behind them.  ← Gulf News (021b7f33a7)
+- (7) They follow weeks of major US outages that officials say were not criminal.  ← Gulf News (021b7f33a7)
+- (8) Gulf governments and businesses will be watching how attacks on payment and records systems shape their own cyber defences.  ← regional line, no facts

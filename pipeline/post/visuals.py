@@ -292,7 +292,7 @@ def lint(shots: list[Shot], std: dict[str, Any] | None = None) -> dict[str, Any]
     face = sum(s.seconds for s in shots if s.mode == "face")
     share = face / total
     warnings = []
-    if std.get("face_mode") == "minimal":
+    if std.get("face_mode") in ("minimal", "openers"):
         lo = 0.0       # founder choice 2026-11-07: face only at the open and the sign-off
     if share > cap or share < lo:
         warnings.append(f"face on screen {share:.0%} (standard: {lo:.0%}–{hi:.0%}, never above {cap:.0%})")

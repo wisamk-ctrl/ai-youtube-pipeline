@@ -262,7 +262,7 @@ visuals:
     # W47-en review 2 (2026-11-21): a ghostly walking figure and an abandoned roller coaster.
     blocklist: [pixabay_5097, pixabay_10869, pixabay_145631, pixabay_33406, pixabay_7536, pixabay_155718, pixabay_49378, pixabay_371998, pixabay_28320, pixabay_239843, pixabay_2181, pixabay_27693, pixabay_37946, pixabay_32767, pixabay_197931, pixabay_306, pixabay_847, pixabay_5364, pixabay_27706, pixabay_6056, pixabay_6026, pixabay_746, pixabay_2176, pixabay_12126]
   dissolve_frames: 0          # off until the W45 length loss (2026-11-07) is traced; 12 = the designed dissolve
-  face_mode: minimal          # founder 2026-11-07 (lip sync): face only at the open and the sign-off
+  face_mode: openers          # founder 2026-11-21: face at the open, each story's start (face_keep_seconds) and the sign-off; was minimal (2026-11-07, lip sync)
   require_face: true          # founder 2026-11-20: a render refuses face chunks without a presenter video
   face_keep_seconds: 8
   corner:
@@ -306,7 +306,12 @@ post:
     enabled: true
     music: generated          # generated (our own synthesised pad, never licensed music) | <path to a wav we own> | none
     music_db: -24             # bed level under speech, dB relative to the voice (ducked by the voice)
-    whoosh: true              # synthesised swish on each [Section] cut
+    whoosh: true              # a sound on each [Section] cut: assets/sfx (ElevenLabs) in rotation, else the synthesised swish
+    sfx_dir: assets/sfx       # made by .github/workflows/sfx.yml (scripts/make_sfx.py), founder 2026-11-21
+    sfx:                      # ElevenLabs sound-generation prompts; a sound already in sfx_dir is kept
+      - {name: cut_1_airy_whoosh, seconds: 1.2, prompt: "soft cinematic air whoosh transition, clean, smooth, no music, no voice"}
+      - {name: cut_2_digital_swoosh, seconds: 1.2, prompt: "subtle modern digital swoosh with a soft low impact at the end, tech news broadcast transition, no music"}
+      - {name: cut_3_reverse_swell, seconds: 1.5, prompt: "gentle reverse swell rising into a soft clean click, premium documentary transition, no music, no voice"}
     music_keys: true          # the bed changes key at each story (generated music only)
     accents: true             # a soft chime when a number or title card lands
     loudness_lufs: -14        # YouTube reference; W45 measured -19.6
