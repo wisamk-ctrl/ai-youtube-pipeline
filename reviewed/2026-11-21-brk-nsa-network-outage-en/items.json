@@ -1,0 +1,19 @@
+[
+  {
+    "source": "NewsCord",
+    "source_type": "rss",
+    "title": "NSA Computer Fault Disrupts Georgia Middle East Intelligence Network NSANet: how 5 outlets framed it",
+    "summary": "This article is an automated aggregation of coverage from news outlets. Our editorials offer in-depth analysis curated by the NewsCord team. NSA facility in Georgia handling Middle East intelligence suffered a computer fault since Nov 16. Outages disrupted operations and internal networks at the Georgia hub. A computer fault recorded since November 16 at the United States National Security Agency affected operations at a strategic center in Georgia that supports intelligence and cybersecurity activities related to the Middle East, where Washington maintains a military conflict with Iran. The outage compromised the operation of NSANet, the agency’s internal network used to exchange classified information among its various facilities, and it prevented part of the center’s staff from accessing the usual communication systems. Officials said the most sensitive intelligence-gathering systems remained operational and the agency resorted to alternative channels to maintain information exchange. CNN reported that the incident disrupted operations at the Georgia facility supporting signals intelligence and cyber operations focused on the Middle East, and the disruption began Tuesday and left large numbers of NSA employees unable to work normally. The Independent described the Georgia facility as a National Security Agency location in Georgia that reportedly monitors cybersecurity in the Middle East, and the outage stretched into a third day while employees used workarounds and backup systems to share information. U.S. officials told CNN that the outage was linked to software updates after researchers discovered vulnerabilities last month, and they said a cyberattack had been ruled out. Early investigations pointed to the problem not being the result of a computer intrusion, but of difficulties that arose during the installation of updates intended to fix security vulnerabilities. U.S. officials cited by CNN tied the issues to changes in systems that use PHP, a programming language widely used in the development of applications and web pages. Director of National Intelligence Jay Clayton said, \"And the patching that has gone on following that has caused some of these systems to not come back up when you patch them as expected.\" Sen. Mark Warner, vice chairman of the Senate Intelligence Committee, told CNN that \"The evidence so far points toward legitimate efforts to secure our systems, not malicious activity,\" while Homeland Security Secretary Markwayne Mullin said…",
+    "url": "https://newscord.org/article/nsa-computer-fault-disrupts-georgia-middle-east-intelligence-network-nsanet--Story_20261121_ReportNSAHubforMiddlec96bdc6",
+    "published": "2026-11-21T05:20:07+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "gulf",
+    "entities": [],
+    "id": "5a271fb0ab"
+  }
+]

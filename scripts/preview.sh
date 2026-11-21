@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Watchable preview of a week, pushed to the orphan branch `previews` (one commit, so old previews never
+# Watchable preview of a week (video, text = the files and Shorts, all = both in one push, voice), pushed to the orphan branch `previews` (one commit, so old previews never
 # bloat the repo history). Used by preview.yml (any week's artifact) and, since 2026-11-21, by the render
 # job itself straight after the render (no second job re-downloading the 2.6 GB week artifact).
 #
@@ -12,7 +12,7 @@ out="${PREVIEW_OUT:-preview-out}"
 mkdir -p "$out"
 start=$(date +%s)
 
-if [ "$what" = "text" ]; then   # the session that drives the pipeline cannot download artifacts
+if [ "$what" = "text" ] || [ "$what" = "all" ]; then   # the session that drives the pipeline cannot download artifacts
   mkdir -p "$out/$week-files"
   for f in items.json script.md voice_pack.md voice_pack.json source_map.md plan.json critique.json shotlist.md cards.json subtitles.srt timeline.json credits.json stock_used.json timings.json thumbnail.png thumbnail_b.png; do
     [ -f "$d/$f" ] && cp "$d/$f" "$out/$week-files/" || true
@@ -27,13 +27,14 @@ if [ "$what" = "text" ]; then   # the session that drives the pipeline cannot do
   done
   [ -f "$d/shorts/shorts.json" ] && cp "$d/shorts/shorts.json" "$out/$week-files/" || true
   ls -la "$out/$week-files"
-elif [ "$what" = "voice" ]; then
+fi
+if [ "$what" = "voice" ]; then
   [ -f "$d/voice_check.mp3" ] || { echo "::error::no voice_check.mp3 in $d (run phase voicecheck first)"; exit 1; }
   cp "$d/voice_check.mp3" "$out/$week-voice.mp3"
   cp "$d/ownvoice.md" "$out/$week-voice.md"
   [ -f "$d/voice_words.json" ] && cp "$d/voice_words.json" "$out/$week-voice.words.json" || true
   cat "$d/ownvoice.md" | tee -a "${GITHUB_STEP_SUMMARY:-/dev/null}"
-else
+elif [ "$what" = "video" ] || [ "$what" = "all" ]; then
   src=""
   for f in final_subtitled.mp4 with_cards.mp4 talking_head.mp4; do [ -f "$d/$f" ] && src="$d/$f" && break; done
   [ -n "$src" ] || { echo "::error::no video in $d"; ls -R "$d" | head -50; exit 1; }

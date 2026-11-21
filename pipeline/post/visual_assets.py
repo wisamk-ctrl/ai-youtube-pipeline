@@ -718,9 +718,10 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                         fdir, renderer.count_up(fig.strip(), label.strip(), fdir, min(int(fps * 1.2), round(secs * fps)), fps),
                         secs, dest, w, h, fps))
                 elif s.kind == "photo":
-                    from pipeline.post.photos import fetch_photo
+                    from pipeline.post.photos import fetch_photo, used_elsewhere
+                    avoid = set() if s.payload.startswith("File:") else used_elsewhere(ROOT / "data" / "photos_used.json", out_dir.name)
                     with TIMER.detail("visuals: photos"):
-                        got = fetch_photo(s.payload, photo_dir)
+                        got = fetch_photo(s.payload, photo_dir, avoid=avoid)
                     if got:
                         clips[n] = photo_clip(got[0], secs, dest, w, h, fps)
                         if got[1] not in credits:
@@ -787,6 +788,8 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
         prune_cache(d, int(cap * 1e9))
     (out_dir / "stock_used.json").write_text(json.dumps(stock_used, ensure_ascii=False, indent=2), encoding="utf-8")
     (out_dir / "credits.json").write_text(json.dumps(credits, ensure_ascii=False, indent=2), encoding="utf-8")
+    (out_dir / "photos_used.json").write_text(json.dumps(sorted(c["title"] for c in credits if c.get("provider") == "Wikimedia Commons"),
+                                                         ensure_ascii=False), encoding="utf-8")
     log.info("Visuals: %d card clips reused from the last run", reused)
     log.info("Visuals: %d clips made, %d shots fell back to the face, %d stock credits",
              len(clips), sum(1 for k, s in enumerate(shots) if s.mode != "face" and k not in clips), len(credits))

@@ -432,9 +432,8 @@ jobs:
           PREVIEW_FROM: run ${{ github.run_id }}
         run: |
           # 2026-11-21: the preview is made here, from the files on this runner, instead of preview.yml
-          # downloading the 2.6 GB week artifact again (about 20 min).
-          bash scripts/preview.sh video "$WEEK" "output/$WEEK"
-          bash scripts/preview.sh text "$WEEK" "output/$WEEK"     # the Shorts
+          # downloading the 2.6 GB week artifact again (about 20 min). One push for the video and the files.
+          bash scripts/preview.sh all "$WEEK" "output/$WEEK"
           QC=$(for f in output/"$WEEK"/shorts/short_*.mp4; do [ -f "$f" ] && echo "**$(basename "$f")**: $(python scripts/short_check.py "$f")"; done || true)
           python scripts/review_issue.py ready "$WEEK" "$QC"
       - name: Breaking Short ready → preview and tell the founder
@@ -454,6 +453,7 @@ jobs:
         run: |
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
           git add data/releases.json 2>/dev/null || exit 0
+          git add data/photos_used.json 2>/dev/null || true    # photos shown, so later episodes vary them
           git diff --cached --quiet && exit 0
           git commit -q -m "release: ${{ inputs.week }} waits for its chapter pictures"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done

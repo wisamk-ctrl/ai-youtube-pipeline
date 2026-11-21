@@ -68,7 +68,7 @@ def test_a_timing_test_run_never_touches_the_weeks_artifact_or_the_founder():
 def test_the_render_job_makes_the_preview_itself():
     wf = _wf("weekly.yml")
     chain = [s for s in wf["jobs"]["render"]["steps"] if s.get("name", "").startswith("Chain — rendered")][0]
-    assert "scripts/preview.sh video" in chain["run"] and "gh workflow run preview.yml" not in chain["run"]
+    assert "scripts/preview.sh all" in chain["run"] and "gh workflow run preview.yml" not in chain["run"]
     assert "scripts/preview.sh" in str(_wf("preview.yml")["jobs"]["preview"]["steps"])
 
 
@@ -192,3 +192,15 @@ def test_every_action_is_pinned_to_a_commit():
 
 def test_a_timing_test_run_has_its_own_queue():
     assert "inputs.test_run && 'test-'" in _wf("weekly.yml")["concurrency"]["group"]
+
+
+def test_the_chain_makes_one_preview_with_video_and_files():
+    """2026-11-21: the chain started two preview runs (video, then the Shorts); GitHub keeps one waiting run per
+    concurrency group, so the second replaced the first (#52 linked last night's video). Now the render job
+    pushes one preview with both, and preview.yml's `all` does the same."""
+    text = (WF / "weekly.yml").read_text(encoding="utf-8")
+    assert not re.findall(r"gh workflow run preview\.yml[^\n]*-f what=video", text)
+    assert 'scripts/preview.sh all "$WEEK"' in text
+    assert "all" in _wf("preview.yml")[True]["workflow_dispatch"]["inputs"]["what"]["options"]
+    sh = (ROOT / "scripts" / "preview.sh").read_text(encoding="utf-8")
+    assert '"$what" = "all"' in sh

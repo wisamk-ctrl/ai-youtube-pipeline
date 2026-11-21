@@ -544,6 +544,10 @@ def phase_translate(cfg: dict, out: Path) -> None:
 
 
 def phase_publish(cfg: dict, out: Path) -> None:
+    used = out / "photos_used.json"          # published: the next episodes pick other photos (founder 2026-11-21)
+    if used.exists():
+        from pipeline.post.photos import record_used
+        record_used(ROOT / "data" / "photos_used.json", out.name, json.loads(used.read_text(encoding="utf-8")))
     from pipeline.publish.youtube_upload import run_publish
 
     plan = json.loads((out / "plan.json").read_text(encoding="utf-8"))

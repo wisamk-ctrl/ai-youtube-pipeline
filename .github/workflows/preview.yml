@@ -11,7 +11,7 @@ on:
       what:
         description: "text (the week's script, voice pack and source map, as <week>-files/), video (the most finished cut) or voice (the own-voice check: cleaned read + cut report, from phase voicecheck)"
         type: choice
-        options: [video, voice, text]
+        options: [video, voice, text, all]   # all = the video and the files, in one run
         default: video
       video_url:
         description: "Optional: preview this video instead of the week's artifact (a direct MP4 link, e.g. from HeyGen)"

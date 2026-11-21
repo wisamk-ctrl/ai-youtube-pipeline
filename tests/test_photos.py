@@ -40,17 +40,17 @@ def test_shot_kinds_include_photo_and_generated():
 
 
 def test_only_reusable_licences_are_picked_and_credited():
-    http = Http([page("File:A.jpg", "CC BY-NC 2.0"), page("File:B.jpg", "Fair use"),
-                 page("File:Small.jpg", "CC BY 4.0", width=400), page("File:C.jpg", "CC BY-SA 4.0")])
+    http = Http([page("File:Dario Amodei A.jpg", "CC BY-NC 2.0"), page("File:Dario Amodei B.jpg", "Fair use"),
+                 page("File:Dario Amodei small.jpg", "CC BY 4.0", width=400), page("File:Dario Amodei C.jpg", "CC BY-SA 4.0")])
     got = photos.commons_search("Dario Amodei", http=http)
-    assert got and got["title"] == "File:C.jpg"
+    assert got and got["title"] == "File:Dario Amodei C.jpg"
     assert got["license"] == "CC BY-SA 4.0" and got["author"] == "Jane Doe"
     assert got["provider"] == "Wikimedia Commons" and got["url"].startswith("https://commons.wikimedia.org/")
     assert "Dario Amodei" in http.params["gsrsearch"]
 
 
 def test_no_reusable_photo_returns_none():
-    assert photos.commons_search("Someone", http=Http([page("File:A.jpg", "All rights reserved")])) is None
+    assert photos.commons_search("Someone", http=Http([page("File:Someone A.jpg", "All rights reserved")])) is None
 
 
 def test_photo_credits_name_author_and_licence():
@@ -72,3 +72,36 @@ def test_repeated_stock_searches_are_reported():
     assert photos.variety_notes(extract_shots(script)) == [
         "stock search «neural network animation» used 3 times",
         "3 digital shots in a row before a real one (aim for no more than 2)"]
+
+
+def test_a_photo_must_name_its_subject_in_the_file_title():
+    """2026-11-21: "OpenAI headquarters" matched the European Southern Observatory and "Brad Gerstner" a Trump event."""
+    http = Http([page("File:Welcome to ESO Headquarters.jpg", "CC BY 4.0"), page("File:OpenAI office in San Francisco.jpg", "CC BY 4.0")])
+    assert photos.commons_search("OpenAI headquarters", http=http)["title"] == "File:OpenAI office in San Francisco.jpg"
+    assert photos.commons_search("Brad Gerstner", http=Http([page("File:P2025 President Donald Trump.jpg", "Public domain")])) is None
+
+
+def test_an_exact_commons_file_can_be_named():
+    http = Http([page("File:Alibaba Center in Binjiang Hangzhou2021.jpg", "CC BY-SA 4.0")])
+    got = photos.commons_search("File:Alibaba Center in Binjiang Hangzhou2021.jpg", http=http)
+    assert got["title"] == "File:Alibaba Center in Binjiang Hangzhou2021.jpg" and http.params["titles"].startswith("File:Alibaba")
+
+
+def test_photos_already_used_in_past_episodes_are_skipped():
+    """Founder 2026-11-21: keep changing the head-office photos (different angles) from video to video."""
+    http = Http([page("File:Googleplex A.jpg", "CC BY 4.0"), page("File:Googleplex B.jpg", "CC BY 4.0")])
+    assert photos.commons_search("Googleplex", http=http, avoid={"File:Googleplex A.jpg"})["title"] == "File:Googleplex B.jpg"
+
+
+def test_used_photos_are_recorded_per_week_and_avoided_elsewhere(tmp_path):
+    """Founder 2026-11-21: vary the head-office and people photos from video to video."""
+    f = tmp_path / "photos_used.json"
+    photos.record_used(f, "2026-W47-en", ["File:Googleplex HQ (cropped).jpg"])
+    photos.record_used(f, "2026-W48-en", ["File:NVIDIA Headquarters.jpg"])
+    assert photos.used_elsewhere(f, "2026-W48-en") == {"File:Googleplex HQ (cropped).jpg"}
+    assert photos.used_elsewhere(tmp_path / "missing.json", "W") == set()
+
+
+def test_the_director_asks_for_people_and_head_office_photos():
+    from pipeline.scripting import director
+    assert "headquarters" in director.SYSTEM and "names a person" in director.SYSTEM

@@ -56,14 +56,14 @@ And according to the same report,
 [Visual: number 99% | of UK government staff use Microsoft]
 up to 99% of UK government staff use Microsoft to communicate.
 
-[Visual: photo Palace of Westminster]
+[Visual: photo File:Palace of Westminster, London - Feb 2007.jpg]
 A British minister told Parliament the incident could have been more serious if it had lasted longer.
 
 So, why did this happen?
 
 [Pause]
 
-[Visual: photo Satya Nadella]
+[Visual: photo File:MS-Exec-Nadella-Satya-2017-08-31-22 (cropped).jpg]
 Satya Nadella, Microsoft's CEO, spoke on Wednesday at a conference in New York.
 
 [Visual: source 0378197660]
@@ -84,17 +84,23 @@ He also said AI could become like "a nation-state-level attacker that's after yo
 [Visual: title Wissam's Take]
 And here I want to give you my personal view. This is opinion, not news.
 
-[Visual: photo Microsoft Redmond campus]
+[Visual: photo File:Building92microsoft.jpg]
 I'm not convinced by this explanation.
-Microsoft is one of the earliest companies in AI with Copilot, and it may be six months to a year ahead of others.
+Companies like Microsoft were early in the AI game, and they understand it.
 
 [Visual: generated security analysts in a dark operations room scanning code on large screens, slow push-in]
-And as I understand it, advanced models usually reach cybersecurity firms first.
-So a company the size of Microsoft should find these vulnerabilities before any amateur using much smaller models.
+They have access to models that are at least two or three versions ahead of what the rest of us use.
+Those models should be running on their own systems and platforms, finding the bugs, writing the patches and retesting them, much faster than any amateur out there.
 
 [Pause]
 
-So explaining an outage this big by saying people are now using AI is a very big claim, and it doesn't convince me.
+So explaining an outage this wide by saying people are now using AI doesn't convince me.
+
+[Pause]
+
+[Visual: stock courthouse columns and steps, slow push-in]
+And it will be interesting to see how the world deals with this, especially the lawsuits it could bring.
+Who will the courts hold responsible, and how much, if anything, will be paid to the companies and governments that were hit?
 
 [Pause]
 
@@ -176,12 +182,6 @@ $49 billion for its AI fund.
 [Visual: number 80% | of the portfolio for US projects]
 And it plans to put up to 80% of its portfolio into US projects.
 
-[Visual: stock AI chip glowing under light, circuit board macro]
-And this month, ADNOC and AI company G42 signed a multi-year partnership.
-
-[Visual: stock digital data flow between servers]
-The partnership is with OpenAI, and according to The National, it will expand OpenAI's presence in the UAE.
-
 [Visual: stock code on screen]
 In Saudi Arabia, the story is more about people than money.
 
@@ -209,12 +209,9 @@ Who's going to feel this here?
 
 [Pause]
 
-First, companies that are hiring. Skills programs shape who'll be ready to work with AI.
+Companies that are hiring. Skills programs shape who'll be ready to work with AI.
 
-[Visual: stock world map with flight paths animation]
-Second, a bigger OpenAI presence in the UAE could bring advanced models closer to the region.
-
-[Visual: stock technician walking past server cabinets]
+[Visual: stock modern Gulf city skyline at night, aerial]
 And the question we're watching: how much of this money will build capabilities here, not just over there?
 
 [Pause 2s]
@@ -292,7 +289,7 @@ And according to WIRED, American voters rejected data centers in most local vote
 [Visual: stock server racks glowing in blue light]
 There's even a group of residents in West Virginia fighting a data center still being built for Anthropic.
 
-[Visual: photo Dario Amodei]
+[Visual: photo File:Dario Amodei in 2023.jpg]
 And Dario Amodei, the CEO, said safeguards are what set the pace of model releases.
 
 [Visual: stock abstract shield protecting a neural network, animation]
@@ -315,7 +312,7 @@ The founder of investment firm Altimeter said he plans to invest $5 billion,
 
 that's five times the largest investment he's ever made in an IPO.
 
-[Visual: stock GPU chip close-up under light]
+[Visual: photo File:NVIDIA Headquarters.jpg]
 Chip companies, including NVIDIA, are investors too, along with Google and Microsoft.
 
 [Visual: source 379ad26c69]
@@ -347,7 +344,7 @@ Forbes Middle East valued his stake at the listing at about
 [Visual: number $1.9 billion | Sajwani's stake at the listing, per Forbes]
 $1.9 billion.
 
-[Visual: photo Abu Dhabi skyline]
+[Visual: photo File:Abu dhabi skylines 2014.jpg]
 Remember, these are paper gains, and the funds' full holdings aren't disclosed.
 
 [Visual: stock connected dots forming a web]
@@ -370,7 +367,7 @@ So, the second story in models? A price war.
 
 [Pause]
 
-[Visual: stock futuristic data visualization with moving points]
+[Visual: photo File:Googleplex HQ (cropped).jpg]
 Google's DeepMind lab released a new model.
 
 [Visual: stock glowing neon neural network animation]
@@ -413,7 +410,7 @@ But note: these are Google's own figures, not from an independent test.
 [Visual: stock digital human head made of particles]
 And even in their own table, Neon didn't win every benchmark. Models from Anthropic and OpenAI beat it on a few.
 
-[Visual: stock planet Earth rotating in space]
+[Visual: photo File:Alibaba Center in Binjiang Hangzhou2021.jpg]
 And from China, Alibaba released its most powerful model yet, called Qwen.
 
 [On-Screen Text: Qwen 4 Max]
@@ -510,24 +507,13 @@ So, what about when the agent needs to pay?
 
 [Pause]
 
-[Visual: source 88d77a52ad]
-OpenAI launched a wallet inside ChatGPT, in partnership with American Express, Mastercard and Visa.
-
-[On-Screen Text: American Express | Mastercard | Visa]
-
-[Visual: stock AI agent glowing nodes animation]
-Its agents, called dots, buy things for you, but every transaction needs your approval.
-
 [Visual: stock digital padlock encryption animation]
-And according to the company, the agent never sees your card number.
-
-The payment network gives it a payment token for that one transaction only.
-
+Last week we covered ChatGPT's new wallet for consumers.
 
 [Visual: source 4257f147f1]
 And this week, on the enterprise side, AWS, Amazon's cloud service, made a move too.
 
-[Visual: stock data packets moving through cables animation]
+[Visual: photo File:Amazon Spheres 2018.jpg]
 It now lets agents buy software and data from its marketplace, in dollars, on the cloud bill.
 
 [Visual: stock data packets flowing between server nodes, animation]
@@ -604,7 +590,7 @@ And the company itself said in July that one of its agents went rogue during an 
 [Visual: number 80 | Known loss-of-control incidents, according to Bonta]
 Attorney General Rob Bonta says it's one of 80 known loss-of-control incidents.
 
-[Visual: photo Rob Bonta]
+[Visual: photo File:Rob Bonta official portrait.jpg]
 OpenAI says it has built safeguards, and that most cases were low-risk.
 
 [Pause]
@@ -645,7 +631,7 @@ Isomorphic Labs, which discovers drugs with AI, has raised, according to the com
 [Visual: number $5 billion | Isomorphic Labs funding round]
 $5 billion.
 
-[Visual: photo Demis Hassabis]
+[Visual: photo File:Demis Hassabis at 2024 Nobel Week 3.jpg]
 The company was founded by Demis Hassabis, who stepped down as head of DeepMind three and a half months
 
 [Pause]

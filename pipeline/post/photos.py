@@ -34,28 +34,59 @@ def _text(value: str) -> str:
     return html.unescape(re.sub(r"<[^>]+>", "", value or "")).strip()
 
 
-def commons_search(subject: str, min_width: int = 1200, http=requests) -> dict[str, Any] | None:
-    """The first Commons photo of `subject` under a reusable licence, as a credit-ready dict, or None."""
-    r = http.get(API, timeout=30, headers=UA, params={
-        "action": "query", "format": "json", "generator": "search", "gsrnamespace": 6, "gsrlimit": 15,
-        "gsrsearch": f"{subject} filetype:bitmap", "prop": "imageinfo", "iiprop": "url|size|extmetadata",
-        "iiurlwidth": 1920})
-    r.raise_for_status()
-    pages = sorted((r.json().get("query") or {}).get("pages", {}).values(), key=lambda p: p.get("index", 0))
+_GENERIC = {"headquarters", "hq", "head", "office", "offices", "campus", "building", "tower", "towers", "center",
+            "centre", "the", "of", "in", "at", "and", "photo", "portrait"}
+
+
+def _name_words(subject: str) -> list[str]:
+    """The words of the subject before its first generic word: "OpenAI headquarters" → ["openai"]; a person's name
+    → all of it. A photo's file title must contain every one of them (2026-11-21: "OpenAI headquarters" matched
+    the European Southern Observatory)."""
+    out = []
+    for w in re.findall(r"[\w']+", subject.lower()):
+        if w in _GENERIC:
+            break
+        out.append(w)
+    return out
+
+
+def _get(http, params, tries: int = 4):
+    import time
+    for n in range(tries):
+        r = http.get(API, timeout=30, headers=UA, params=params)
+        if getattr(r, "status_code", 200) != 429 or n == tries - 1:
+            r.raise_for_status()
+            return r.json()
+        time.sleep(5 * (n + 1))               # Commons asks clients to back off
+
+
+def commons_search(subject: str, min_width: int = 1200, http=requests, avoid: set[str] | None = None) -> dict[str, Any] | None:
+    """The first Commons photo of `subject` under a reusable licence, as a credit-ready dict, or None.
+    `File:<name>` names one exact file. Files in `avoid` (used in earlier episodes) are skipped."""
+    base = {"action": "query", "format": "json", "prop": "imageinfo", "iiprop": "url|size|extmetadata", "iiurlwidth": 1920}
+    exact = subject.startswith("File:")
+    params = {**base, "titles": subject} if exact else \
+        {**base, "generator": "search", "gsrnamespace": 6, "gsrlimit": 25, "gsrsearch": f"{subject} filetype:bitmap"}
+    data = _get(http, params) or {}
+    pages = sorted((data.get("query") or {}).get("pages", {}).values(), key=lambda p: p.get("index", 0))
+    need = [] if exact else _name_words(subject)
     for p in pages:
+        title = p.get("title", "")
+        if title in (avoid or set()) or not all(w in title.lower() for w in need):
+            continue
         info = (p.get("imageinfo") or [{}])[0]
         meta = info.get("extmetadata") or {}
         lic = _text((meta.get("LicenseShortName") or {}).get("value", ""))
         if not reusable(lic) or (info.get("width") or 0) < min_width:
             continue
-        return {"provider": "Wikimedia Commons", "title": p.get("title", ""), "license": lic,
+        return {"provider": "Wikimedia Commons", "title": title, "license": lic,
                 "author": _text((meta.get("Artist") or {}).get("value", "")) or "unknown",
                 "url": info.get("descriptionurl", ""), "file": info.get("thumburl") or info.get("url", "")}
     return None
 
 
-def fetch_photo(subject: str, cache: Path, http=requests) -> tuple[Path, dict[str, Any]] | None:
-    found = commons_search(subject, http=http)
+def fetch_photo(subject: str, cache: Path, http=requests, avoid: set[str] | None = None) -> tuple[Path, dict[str, Any]] | None:
+    found = commons_search(subject, http=http, avoid=avoid)
     if not found or not found["file"]:
         return None
     cache.mkdir(parents=True, exist_ok=True)
@@ -104,3 +135,19 @@ def variety_notes(shots: list) -> list[str]:
     elif longest > 2:
         notes.append(f"{longest} digital shots in a row before a real one (aim for no more than 2)")
     return notes
+
+
+def record_used(path: Path, week: str, titles: list[str]) -> None:
+    """data/photos_used.json: the Commons files each episode showed, so the next ones pick other angles."""
+    import json
+    data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    data[week] = sorted(set(titles))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(dict(sorted(data.items())), ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def used_elsewhere(path: Path, week: str) -> set[str]:
+    import json
+    if not path.exists():
+        return set()
+    return {t for k, ts in json.loads(path.read_text(encoding="utf-8")).items() if k != week for t in ts}

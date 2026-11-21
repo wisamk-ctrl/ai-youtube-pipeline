@@ -15,7 +15,7 @@ does not stop a stolen session. Shortening session life and limiting who can act
 | Approval commands | `approve`, `publish`, breaking and inbox commands act only when the repo owner writes them; radar commands only for owner/member/collaborator. |
 | `main` branch | Protected: no force-push, no deletion. |
 | GitHub Actions | Every action pinned to a commit SHA, so a moved tag cannot run new code with our secrets (test: `tests/test_ci_workflows.py`). |
-| Daily integrity check | `scripts/integrity.py`, 06:23 Gulf: channel renamed, handle or description changed, an upload the pipeline did not make, a video deleted or hidden → a "Security: channel changed" issue (and WhatsApp once CallMeBot is set). |
+| Daily integrity check | `scripts/integrity.py`, 06:23 Gulf: channel renamed, handle or description changed, an upload the pipeline did not make, a video deleted or hidden → a "Security: channel changed" issue (and WhatsApp through the Mac relay). |
 | Secrets | Only in GitHub Actions secrets and local gitignored files; never in the repo. |
 
 ## Founder checklist (about 30 minutes; only you can do these)
@@ -29,8 +29,10 @@ does not stop a stolen session. Shortening session life and limiting who can act
 5. **Meta, TikTok, LinkedIn, the partnerships Gmail:** 2FA by authenticator app or passkey, not SMS.
 6. **Sponsorship emails:** never open attachments or "download our brief" links on the Mac that is signed in to
    YouTube. Read them on the phone or ask for the brief as text.
-7. **WhatsApp alerts:** activate CallMeBot from your phone and add `WHATSAPP_PHONE` and `CALLMEBOT_APIKEY` as repo
-   secrets, so the integrity alert reaches you within minutes rather than by email.
+7. **WhatsApp alerts: done (2026-11-21).** The Mac relay (`scripts/mac_alert_relay.py`, installed to
+   `~/bin/pipeline_alert_relay.py`, launchd `com.wissam.pipeline-alerts` every 10 min) sends security,
+   failed-run, episode-ready and breaking-Short alerts through the existing WhatsApp bridge, with a phone
+   alarm for urgent ones. Only while the Mac is awake; GitHub e-mail covers the rest.
 
 ## If the alert fires
 
