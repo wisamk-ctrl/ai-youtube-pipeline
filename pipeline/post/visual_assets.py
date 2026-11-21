@@ -127,10 +127,22 @@ box-shadow:{h * 0.02:.0f}px {h * 0.02:.0f}px 0 {RED}}}
     return _page(body, w, h, css)
 
 
+def short_title(text: str, limit: int = 60) -> str:
+    """A headline cut to `limit` characters at a word boundary, with an ellipsis (W47-en: "co-leadi")."""
+    text = card_title(text)
+    if len(text) <= limit:
+        return text
+    cut = text[: limit - 1].rsplit(" ", 1)[0].rstrip(" ,;:-–—")
+    return cut + "…"
+
+
 def title_html(text: str, w: int, h: int) -> str:
-    """A story opener: the headline set left like a front page, one accent rule under it."""
+    """A story opener: the headline set left like a front page, one accent rule under it. Type shrinks for long
+    text so a headline fits in about three lines (founder 2026-11-21: the 6:47 card was cluttered)."""
+    n = len(text)
+    scale = 0.135 if n <= 24 else 0.105 if n <= 36 else 0.08 if n <= 60 else 0.065
     css = f""".t{{position:absolute;inset:0;padding:0 {w * 0.08:.0f}px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:{h * 0.04:.0f}px}}
-.p{{font:800 {h * 0.135:.0f}px/1.02 {DISPLAY};letter-spacing:-.035em;text-align:start;max-width:{w * 0.8:.0f}px}}
+.p{{font:800 {round(h * scale)}px/1.05 {DISPLAY};letter-spacing:-.035em;text-align:start;max-width:{w * 0.8:.0f}px}}
 .bar{{width:{w * 0.09:.0f}px;height:{h * 0.01:.0f}px;background:{FOIL};transform-origin:left}}"""
     return _page(f'<div class="t"><div class="p" dir="auto">{html.escape(text)}</div><div class="bar"></div></div>', w, h, css)
 
@@ -612,7 +624,7 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                         page = title_html(s.payload, w, h)
                     elif item is not None and not on_screen_ok(item):   # radar note / tier-C outlet: never the credit
                         s.notes.append(f"source {s.payload} ({item.source}) is not creditable on screen; title card instead")
-                        page = title_html((item.entities[0] if item.track == "radar" and item.entities else item.title)[:80], w, h)
+                        page = title_html((item.entities[0] if item.track == "radar" and item.entities else short_title(item.title)), w, h)
                     elif item is None:
                         s.notes.append(f"unknown source id {s.payload}; title card instead")
                         page = title_html(ui("source"), w, h)
@@ -638,7 +650,7 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                         s.notes.append(f"photo: {got[1]['title']} ({got[1]['license']})")
                     else:     # no reusable photo: the subject's name as a title card, never a lookalike
                         s.notes.append("no reusable photo on Wikimedia Commons; title card instead")
-                        page = title_html(s.payload[:80], w, h)
+                        page = title_html(short_title(s.payload), w, h)
                         fdir = work / f"shot_{n:03d}_frames"
                         clips[n] = cached(("card", page, round(secs * fps)), lambda: card_clip(
                             fdir, renderer.animate(page, fdir, round(secs * fps), fps), secs, dest, w, h, fps))

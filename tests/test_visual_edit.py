@@ -407,3 +407,16 @@ def test_an_exhausted_stock_search_tries_broader_words_first():
     assert broader_queries("server racks in a data centre, blue light") == [
         "server racks data centre", "server racks", "data centre"]
     assert broader_queries("code") == []
+
+
+def test_long_title_cards_get_smaller_type_and_whole_words():
+    """Founder 2026-11-21 (W47-en 6:47): a tier-C headline filled the card at title size and was cut to "co-leadi"."""
+    import re
+    from pipeline.post import visual_assets as va
+    head = "Anthropic raises $30B Series G at $380B valuation, with Abu Dhabi's MGX co-leading the round alongside others"
+    short = va.short_title(head)
+    assert len(short) <= 60 and head.startswith(short.rstrip("…").rstrip()) and short.endswith("…")
+    assert not short.rstrip("…").endswith("co-leadi") and va.short_title("OpenAI and G42") == "OpenAI and G42"
+    size = lambda t: int(re.search(r"\.p\{font:800 (\d+)px", va.title_html(t, 1920, 1080)).group(1))
+    assert size("The Biggest IPO") == round(1080 * 0.135)
+    assert size(short) <= round(1080 * 0.08)
