@@ -27,3 +27,17 @@ ChatGPT and Gemini through the founder's Chrome (same prompt, channel described 
 5. Weekly thesis line; the hook teases the top three.
 6. Shorts: breaking Short the day news breaks (news watch flags it); 1–2 explainer/insight Shorts from the ranked list's "one sharp idea" candidates.
 7. Founder approves the ranked list in the review issue before the script is written.
+
+## Second round (same prompt): Perplexity and DeepSeek. Kimi needs a login (not asked).
+New points beyond round one:
+- **"Regional consequence", not "regional angle"** (both): a token mention must not score. Test: a named regional actor, rule, customer, market or supplier, or a decision that changes. DeepSeek: prefer stories that matter in at least two of Gulf/Levant/Türkiye/Africa, or one major market with spillover.
+- **A depth gate** (Perplexity): "can we say something useful in 60–180 s?" If it is only "a company announced something", it is radar.
+- **A kill list** (both): vague "AI is transforming X", funding rounds with no customer or market consequence, demos without deployments, ministerial meetings with no decision, global headlines every channel has with no regional consequence.
+- **Novelty is a tiebreaker** (Perplexity): an older story whose implications became clear can still lead.
+- **Global/regional mix:** Perplexity 60% global-with-regional-consequence / 30% regional-first / 10% radar; DeepSeek two queues blended ~50–60% regional consequence. Consistent with slots: no global story without the regional test, no regional story without decision impact.
+- **Shorts** (Perplexity): three jobs — breaking context (24–48 h), evergreen explainer, best moment from the episode; ~70% evergreen/clips, 30% timely; batch the evergreen ones. DeepSeek: one fact + one implication + one question, understandable without the episode.
+- **Generic explainers leave the weekly show** and go to Shorts (Perplexity).
+- **Recurring decision frames** per story (Perplexity): buy/build/partner, cost, risk, talent, regulation, data.
+- **Quick stories 30–45 s**, radar 3 (Perplexity). Tune from retention only after 6–8 episodes, one variable at a time.
+
+Changes to the decided plan: step 2 gains the depth gate and the kill list; step 3 scores "regional consequence" with the named-actor test; Shorts get the three-jobs rule and the one fact + one implication + one question shape; quick stories 30–45 s.
