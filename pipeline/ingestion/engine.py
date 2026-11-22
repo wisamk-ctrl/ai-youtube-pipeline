@@ -59,6 +59,12 @@ def run_ingestion(cfg: dict[str, Any], week: str = "", out_dir: Path | None = No
     if not ranked:
         raise RuntimeError("Ingestion produced no items above the relevance threshold — check feeds/keys.")
     if out_dir:
+        # The whole scored week, for the story ranking (pipeline/ranking clusters it; items.json keeps the top 30).
+        import json
+        (out_dir / "pool.json").write_text(json.dumps(
+            [i.to_dict() for i in items if i.title.strip() and (i.score >= cfg["scoring"]["min_score"] or i.id in flagged)],
+            ensure_ascii=False), encoding="utf-8")
+        (out_dir / "flagged.json").write_text(json.dumps(sorted(flagged)), encoding="utf-8")
         from pipeline.ingestion.sources_report import sources_md
         (out_dir / "sources.md").write_text(sources_md(items, ranked), encoding="utf-8")
     return ranked

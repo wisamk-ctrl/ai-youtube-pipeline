@@ -157,6 +157,42 @@ scoring:
   max_per_story: 2            # two angles on one story at most
   flagged_seats: 3            # seats reserved for the stories the news watch flagged as big this week
 
+ranking:
+  # Story ranking for the episode and the Shorts (founder 2026-11-22; docs/plans/2026-11-22-news-ranking.md).
+  # The week's scored items are grouped into stories (pipeline/ranking/cluster.py), a model gives each story
+  # 0-3 per criterion with a one-line reason (judge.py), and the code applies the weights, the gates and the
+  # slots (rank.py). The list is saved to data/ranking/<week>.json and posted as the "Ranking: <week>" issue.
+  enabled: true
+  require_approval: true      # the script waits for `/story approve` on the Ranking issue (story-decide.yml)
+  # Haiku: one call a week, 15-20 stories, a short rubric and structured output, and the founder reads every
+  # score and reason before the script. Raise to claude-sonnet-5-5 if the reasons read thin. With no
+  # ANTHROPIC_API_KEY the stories are judged from keywords and outlet tiers and marked "keyword fallback".
+  model: claude-haiku-5-5
+  max_stories: 20             # stories judged a week (plan: 15-20); flagged stories and region seats are kept
+  items_per_story: 5          # articles kept per story for the writer, best outlet tier first, one per outlet
+  weights:                    # total = sum of weight × the 0-3 score, computed in code (max 21)
+    decision_impact: 3        # does it change a decision a manager makes?
+    regional_consequence: 2   # 2 or 3 needs a named regional actor, rule, customer, market or supplier in the sources
+    evidence: 1
+    tension: 1
+  # Gates, pass/fail in code: new development since the last episode (data/covered.json), carried by a tier A
+  # or B outlet (config/publishers.yaml), enough to say for 60-180 s, not on the kill list. A story that fails
+  # one can still be radar, except a repeat with nothing new. Generic explainers go to Shorts.
+  deep:
+    default: 3                # at least one global shift with a regional consequence and one regional-first story
+    min: 2
+    max: 4
+    min_total: 11             # a deep story scores at least this (of 21); fewer than three qualify → fewer deep
+    flex_total: 18            # a fourth deep story needs at least this
+    seconds: [60, 180]
+  quick: 3
+  quick_seconds: [30, 45]
+  radar: 3                    # one line each, with its reason
+  # The Africa and Türkiye seats are scoring.min_per_region above; they apply to the slots too.
+  shorts:
+    max: 3                    # candidates: one fact + one implication + one question, no figure outside the sources
+    breaking_hours: 48        # "breaking context" only for news this fresh
+
 radar:
   # Names NOT on the watchlist. Extraction needs ANTHROPIC_API_KEY (Haiku 5.5, ≈$0.05/week);
   # without it only the hard signals run. Threshold agreed 2026-10-12: 2 sources + 1 signal.

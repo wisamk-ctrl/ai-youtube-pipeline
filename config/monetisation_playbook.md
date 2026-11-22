@@ -11,6 +11,10 @@ CLAUDE.md (facts traced to a source, no invented figures, no investment advice, 
 - Every story has three beats, in this order: what happened (attributed) → why it matters → the regional
   lens (what it means for the Gulf, the Levant and the wider region: a customer, a regulator, a build-out,
   a cost, a comparison). A story with no honest regional lens says so in one line and moves on.
+- The stories and their order come from the week's approved ranking (founder 2026-11-22): about three deep
+  stories of 60 to 180 seconds, three quick ones of 30 to 45 seconds, three radar lines with a reason each.
+  A deep story ends on what to ask or watch next: a question for a vendor or a team, never what to buy or sell.
+  One sentence, the week's thesis, ties the episode together, and the cold open teases the first three stories.
 - At least half of the spoken words are analysis and explanation, not a reading of the source. YouTube
   does not pay for "readings of other materials".
 - A clear break between stories (the title card, key change and chime already mark it): YouTube places

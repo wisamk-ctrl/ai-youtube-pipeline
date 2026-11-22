@@ -122,6 +122,10 @@ jobs:
           python run_pipeline.py ${{ inputs.phase == 'ingest' && 'ingest' || 'all' }} $WEEK_ARG $FIX_ARG
           echo "WEEK_DIR=$(ls -d output/*/ | tail -n1)" >> "$GITHUB_ENV"
           echo "WEEK_ID=$(basename "$(ls -d output/*/ | tail -n1)")" >> "$GITHUB_ENV"
+          # Founder 2026-11-22: the ranked story list is approved before the script is written. A run that
+          # stopped at the ranking has ranking.md and no script.md.
+          D="$(ls -d output/*/ | tail -n1)"
+          if [ ! -f "${D}script.md" ] && [ -f "${D}ranking.md" ]; then echo "STAGE=ranking" >> "$GITHUB_ENV"; fi
       - name: Commit the radar's memory
         # Never blocks the episode: if main moved meanwhile, rebase and retry; if it still fails,
         # warn and carry on so the artifact and the review issue are not lost.
@@ -129,6 +133,7 @@ jobs:
         run: |
           git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
           git add data/radar_state.json data/coverage.json data/youtube_channels.json data/radar_tags.json 2>/dev/null; git add data/radar_state.json data/coverage.json
+          [ -d data/ranking ] && git add data/ranking     # the week's ranking: the /story commands read and change it
           git diff --cached --quiet && exit 0
           git commit -q -m "chore: radar state, coverage, youtube channel cache $(date -u +%F)"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q && exit 0; sleep $((i * 5)); done
@@ -136,7 +141,8 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4
         with:
           # Ingest-only runs have no script.md; name them apart so a render never picks one up.
-          name: ${{ inputs.phase == 'ingest' && 'sources' || 'week' }}-${{ env.WEEK_ID }}
+          # A run that stopped at the ranking has no script.md either.
+          name: ${{ (inputs.phase == 'ingest' || env.STAGE == 'ranking') && 'sources' || 'week' }}-${{ env.WEEK_ID }}
           path: output/
           retention-days: 90     # the maximum for a public repo
       - name: Close run-failed issues (script job only)
@@ -160,8 +166,27 @@ jobs:
             await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo,
               title: `Sources: ${dir.replace('output/','').replace('/','')}`, labels: ['sources'],
               body: clip(`Run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n${srcs}\n\n${cov}`) });
+      - name: Open ranking issue
+        # The ranked list with scores and reasons; `/story …` comments on it move stories, `/story approve`
+        # starts the script (.github/workflows/story-decide.yml).
+        if: inputs.phase != 'ingest' && env.STAGE == 'ranking'
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b  # v7
+        with:
+          script: |
+            const fs = require('fs');
+            const clip = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/clip.js`);
+            const dir = process.env.WEEK_DIR;
+            const week = process.env.WEEK_ID;
+            const body = clip(`Run ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
+              `The script is not written yet. Move or drop stories with the commands at the bottom, then comment \`/story approve\`.\n\n` +
+              fs.readFileSync(`${dir}/ranking.md`, 'utf8'));
+            const title = `Ranking: ${week}`;
+            const open = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, labels: 'ranking', state: 'open', per_page: 100 });
+            const old = open.data.find(i => i.title === title);
+            if (old) await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: old.number, body: `**Ranked again.**\n\n${body}` });
+            else await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, labels: ['ranking'], body });
       - name: Open review issue
-        if: inputs.phase != 'ingest'
+        if: inputs.phase != 'ingest' && env.STAGE != 'ranking'
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b  # v7
         with:
           script: |
@@ -173,6 +198,7 @@ jobs:
             const radar = fs.existsSync(`${dir}/radar_report.md`) ? fs.readFileSync(`${dir}/radar_report.md`, 'utf8') : '';
             const cov = fs.existsSync(`${dir}/coverage.md`) ? fs.readFileSync(`${dir}/coverage.md`, 'utf8') : '';
             const srcs = fs.existsSync(`${dir}/sources.md`) ? fs.readFileSync(`${dir}/sources.md`, 'utf8') : '';
+            const ranking = fs.existsSync(`${dir}/ranking.md`) ? fs.readFileSync(`${dir}/ranking.md`, 'utf8') : '';
             const paste = fs.existsSync(`${dir}/heygen_paste.md`) ? fs.readFileSync(`${dir}/heygen_paste.md`, 'utf8') : '';
             const shotlist = fs.existsSync(`${dir}/shotlist.md`) ? fs.readFileSync(`${dir}/shotlist.md`, 'utf8') : '';
             const crit = fs.existsSync(`${dir}/critique.json`) ? JSON.parse(fs.readFileSync(`${dir}/critique.json`, 'utf8')) : [];
@@ -198,7 +224,7 @@ jobs:
                     `When approved: render in HeyGen's web app from the paste pack below, then run **weekly-roundup** with phase=\`import\`, this week, and the video's link in \`video_url\`. (With API credits, phase=\`video\` renders it automatically instead.)\n\n` +
                     (shotlist ? `${shotlist}\n` : '') +
                     (paste ? `<details><summary>HeyGen paste pack (copy scene by scene)</summary>\n\n${paste}\n</details>\n\n` : '') +
-                    `<details><summary>script.md</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>\n\n${radar}\n\n${cov}\n\n${srcs}\n\nDecide from here: comment \`/promote <name> --track models --group gulf --ar <الاسم>\` or \`/ignore <name>\`.`),
+                    `<details><summary>script.md</summary>\n\n\`\`\`\n${script}\n\`\`\`\n</details>\n\n${ranking}\n\n${radar}\n\n${cov}\n\n${srcs}\n\nDecide from here: comment \`/promote <name> --track models --group gulf --ar <الاسم>\` or \`/ignore <name>\`.`),
             });
       - name: Describe the failure
         # run_pipeline.py's top-level handler writes output/<week>/error.txt; with the log's tail it
