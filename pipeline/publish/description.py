@@ -124,6 +124,42 @@ def cited_urls(source_map_md: str) -> list[str]:
     return list(dict.fromkeys(re.findall(r"\]\((https?://[^)\s]+)\)", source_map_md)))
 
 
+TRACKING = re.compile(r"^(utm_\w+|fbclid|gclid|gclsrc|dclid|msclkid|mc_cid|mc_eid|igshid|oc|ref|ref_src|ref_url|"
+                      r"cmpid|cmp|ocid|smid|ncid|sref|s_cid|taid|guccounter|guce_referrer\w*|source|share\w*)$", re.I)
+
+
+def clean_url(url: str) -> str:
+    """A link without its tracking parameters and fragment; parameters that name the article stay."""
+    from urllib.parse import urlsplit, urlunsplit
+    u = urlsplit(url.strip())
+    keep = [kv for kv in u.query.split("&") if kv and not TRACKING.match(kv.split("=", 1)[0])]
+    return urlunsplit((u.scheme, u.netloc, u.path, "&".join(keep), ""))
+
+
+def short_sources(sources: list[dict[str, Any]], resolve=None, timeout: float = 15.0) -> list[dict[str, Any]]:
+    """The sources with the publisher's own, cleaned link (founder 2026-11-22: W47-en carried Google News
+    redirect links of up to 278 characters). A Google News link that cannot be resolved is kept as it is,
+    so the claim still traces to its source."""
+    from pipeline.ingestion import articles
+    resolve = resolve or articles.resolve_google_news
+    out = []
+    for s in sources:
+        url = s["url"]
+        if articles._is_google(url):
+            found = resolve(url, timeout)
+            if not found:
+                log.warning("Source link not shortened (Google News link did not resolve): %s", clean(s.get("title", "")))
+                out.append(s)
+                continue
+            url = found
+        out.append({**s, "url": clean_url(url)})
+    return out
+
+
+def _source_lines(sources: list[dict[str, Any]]) -> list[str]:
+    return [f"- {clean(s.get('title', ''))}: {clean_url(s['url'])}" for s in sources]
+
+
 def pick_sources(out_dir: Path, plan: dict[str, Any], items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Source items for the description: cited in source_map.md (else used by the plan), never radar
     notes or mailto links; only tier A/B outlets when the tiers say any are present."""
@@ -156,7 +192,7 @@ def pick_sources(out_dir: Path, plan: dict[str, Any], items: list[dict[str, Any]
         if d["url"] not in seen:
             seen.add(d["url"])
             uniq.append(d)
-    return uniq
+    return short_sources(uniq)
 
 
 def credits_line(credits: list[dict[str, Any]], lang: str = "ar") -> str:
@@ -208,7 +244,7 @@ def build_description(plan: dict[str, Any], sources: list[dict[str, Any]], cfg: 
         head += [intro, *chapter_lines(ch), ""]
     elif heads:
         head += [intro, *[f"• {h}" for h in heads], ""]
-    src = [f"- {clean(s.get('title', ''))}: {s['url']}" for s in sources]
+    src = _source_lines(sources)
     src = (["Sources:" if en else "المصادر:"] + src + [""]) if src else []
     tail = []
     bio = clean(cfg.get("publish", {}).get("host_bio_en" if en else "host_bio", ""))
@@ -243,7 +279,7 @@ def localizations(plan: dict[str, Any], sources: list[dict[str, Any]], cfg: dict
     if heads:
         lines += ["In this episode:", *[f"• {h}" for h in heads], ""]
     if sources:
-        lines += ["Sources:", *[f"- {clean(s.get('title', ''))}: {s['url']}" for s in sources], ""]
+        lines += ["Sources:", *_source_lines(sources), ""]
     lines += [DISCLOSURE_EN]
     return {"en": {"title": title[:TITLE_LIMIT], "description": clean("\n".join(lines))[:DESC_LIMIT]}}
 
@@ -259,6 +295,6 @@ def _arabic_localization(plan: dict[str, Any], sources: list[dict[str, Any]]) ->
     if heads:
         lines += ["في هذه الحلقة:", *[f"• {h}" for h in heads], ""]
     if sources:
-        lines += ["المصادر:", *[f"- {clean(s.get('title', ''))}: {s['url']}" for s in sources], ""]
+        lines += ["المصادر:", *_source_lines(sources), ""]
     lines += [DISCLOSURE_AR]
     return {"ar": {"title": title[:TITLE_LIMIT], "description": clean("\n".join(lines))[:DESC_LIMIT]}}
