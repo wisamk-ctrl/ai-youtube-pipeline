@@ -468,3 +468,14 @@ breaking:                     # breaking-news Shorts drafted from the news watch
   max_per_day: 3              # drafts a day; nothing posts without the founder's `post <week>` on the issue
   tries: 2                    # stories tried per run when a draft fails its checks
   repeat_days: 4              # a story drafted in the last 4 days is not drafted again under a new headline (founder 2026-11-20)
+
+# Daily health check (scripts/health.py): the longest each scheduled workflow may go without a SUCCESSFUL run before
+# the "Health: needs a look" issue says so. Every workflow with a schedule needs a line (tests/test_health.py).
+health:
+  max_age_hours:
+    news-watch: 8             # every two hours
+    social: 6                 # hourly
+    release: 6                # every 20 minutes
+    channel: 6                # hourly
+    inbox: 50                 # daily
+    weekly-roundup: 200       # Fridays
