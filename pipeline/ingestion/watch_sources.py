@@ -22,6 +22,7 @@ from urllib.parse import quote_plus
 
 import requests
 
+from pipeline.ingestion.ai_filter import is_ai_relevant
 from pipeline.ingestion.rss_ingest import fetch_feed
 from pipeline.ingestion.text_utils import strip_html, truncate
 from pipeline.ingestion.watchlist import Entity, Watchlist
@@ -129,6 +130,8 @@ def fetch_site_queries(cfg: dict[str, Any]) -> list[NewsItem]:
             continue
         if items is None:
             continue
+        if site.get("ai_only"):     # the query's added "AI" is loose: keep only items that are AI news
+            items = [i for i in items if is_ai_relevant(i.title.rpartition(" - ")[0] or i.title, i.summary)]
         for i in items[: int(site.get("max_items", 6))]:
             _split_publisher(i)
             i.region = site.get("region", "")
