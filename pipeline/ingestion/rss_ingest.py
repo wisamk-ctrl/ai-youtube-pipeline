@@ -23,6 +23,7 @@ from typing import Any
 import feedparser
 import requests
 
+from pipeline.ingestion.ai_filter import is_ai_relevant
 from pipeline.ingestion.text_utils import BROWSER_HEADERS, strip_html, truncate
 from pipeline.models import NewsItem
 
@@ -92,6 +93,10 @@ def fetch_all_feeds(cfg: dict[str, Any]) -> list[NewsItem]:
             continue
         try:
             items = fetch_feed(feed["name"], feed["url"], feed.get("weight", 1.0), since, ing["request_timeout_s"])
+            if feed.get("ai_only"):     # a broad regional outlet: only its AI stories go on to scoring
+                items = [i for i in items if is_ai_relevant(i.title, i.summary)]
+            for i in items:
+                i.region = feed.get("region", i.region)
             log.info("RSS %-28s %3d items in window", feed["name"], len(items))
             out.extend(items)
         except Exception as exc:  # noqa: BLE001 — isolate every feed

@@ -22,6 +22,21 @@ ingestion:
       weight: 1.1
     # The Batch (DeepLearning.AI): every deeplearning.ai URL answers 403 to GitHub runners (2026-11-19), so it is
     # read as a Google News site search below.
+    # Regional tech and business outlets (founder 2026-11-22: more local coverage). Feeds checked 2026-11-22.
+    # They publish far more than AI, so `ai_only: true` passes only their AI stories (pipeline/ingestion/ai_filter.py);
+    # `region` feeds the regional seats in scoring. Tiers are in config/publishers.yaml.
+    - {name: Arabian Business,  url: "https://www.arabianbusiness.com/feed",       region: gulf,   ai_only: true}
+    - {name: ITP.net,           url: "https://www.itp.net/feed",                   region: gulf,   ai_only: true}
+    - {name: AGBI,              url: "https://www.agbi.com/feed/",                 region: gulf,   ai_only: true}
+    - {name: Gulf News,         url: "https://gulfnews.com/feed",                  region: gulf,   ai_only: true}   # latest 12 only: the news watch catches the rest
+    - {name: Saudi Gazette,     url: "https://saudigazette.com.sa/rssFeed/0",      region: gulf,   ai_only: true}
+    - {name: Asharq Al-Awsat,   url: "https://aawsat.com/feed",                    region: gulf,   ai_only: true}   # Arabic
+    - {name: Asharq Al-Awsat English, url: "https://english.aawsat.com/feed",      region: gulf,   ai_only: true}
+    - {name: AITNews,           url: "https://aitnews.com/feed/",                  region: gulf,   ai_only: true}   # Arabic, البوابة العربية للأخبار التقنية
+    - {name: Roya News,         url: "https://royanews.tv/rss",                    region: levant, ai_only: true}   # Arabic, Jordan
+    - {name: Jordan News,       url: "https://www.jordannews.jo/rss",              region: levant, ai_only: true}
+    - {name: Egypt Independent, url: "https://www.egyptindependent.com/feed/",     region: egypt,  ai_only: true}
+    - {name: Webrazzi,          url: "https://webrazzi.com/kategori/yapay-zeka/feed/", region: turkey, ai_only: true}   # Turkish, AI section
 
   # YouTube channels. From a home/office IP the Atom feeds work with no key; from a datacenter
   # (GitHub runners) YouTube answers 404, so set YOUTUBE_API_KEY (Data API v3, 1 quota unit per
@@ -117,6 +132,12 @@ ingestion:
     - { name: TechCabal,          query: 'site:techcabal.com "artificial intelligence" (Egypt OR Morocco OR Tunisia OR Algeria)', region: north_africa, max_items: 4 }
     - { name: Hurriyet Daily News, query: 'site:hurriyetdailynews.com "artificial intelligence"', region: turkey, max_items: 4 }
     - { name: ProPakistani,       query: 'site:propakistani.pk "artificial intelligence"',      region: pakistan, max_items: 4 }
+    # Regional outlets with no usable feed (checked 2026-11-22), filtered to AI news like the regional feeds above.
+    - { name: Khaleej Times,     query: "site:khaleejtimes.com", region: gulf,   ai_only: true, max_items: 6 }
+    - { name: Gulf Business,     query: "site:gulfbusiness.com", region: gulf,   ai_only: true, max_items: 4 }
+    - { name: Wired Middle East, query: "site:wired.me",         region: gulf,   ai_only: true, max_items: 4 }
+    - { name: Jordan Times,      query: "site:jordantimes.com",  region: levant, ai_only: true, max_items: 4 }
+    - { name: Disrupt Africa,    query: "site:disruptafrica.com", region: africa, ai_only: true, max_items: 4 }
 
 scoring:
   min_score: 2.0              # items below this are dropped as noise

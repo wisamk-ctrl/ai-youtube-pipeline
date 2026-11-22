@@ -94,7 +94,22 @@ publishers:
   - {name: TechCabal, tier: B, domains: [techcabal.com]}
   - {name: Hürriyet Daily News, aliases: [Hurriyet Daily News], tier: B, domains: [hurriyetdailynews.com]}
   - {name: ProPakistani, tier: B, domains: [propakistani.pk]}
-  - {name: Asharq Business, ar: [الشرق للأعمال, الشرق بلومبرغ], tier: B, domains: [asharqbusiness.com]}
+  # Regional tech and business outlets added 2026-11-22 (settings: ingestion.rss_feeds / google_news_sites, ai_only).
+  - {name: Arabian Business, ar: [أريبيان بزنس], tier: B, domains: [arabianbusiness.com]}
+  - {name: ITP.net, aliases: [ITP], tier: B, domains: [itp.net]}
+  - {name: AGBI, aliases: [Arabian Gulf Business Insight], tier: B, domains: [agbi.com]}
+  - {name: Saudi Gazette, ar: [سعودي جازيت], tier: B, domains: [saudigazette.com.sa]}
+  - {name: Asharq Al-Awsat, ar: [صحيفة الشرق الأوسط], aliases: [Asharq Al-Awsat English, Asharq Al Awsat], tier: B, domains: [aawsat.com]}
+  - {name: AITNews, ar: [البوابة العربية للأخبار التقنية], aliases: [AIT News], tier: B, domains: [aitnews.com]}
+  - {name: Roya News, ar: [قناة رؤيا], aliases: [Roya], tier: B, domains: [royanews.tv]}
+  - {name: Jordan News, tier: B, domains: [jordannews.jo]}
+  - {name: Jordan Times, tier: B, domains: [jordantimes.com]}
+  - {name: Egypt Independent, tier: B, domains: [egyptindependent.com]}
+  - {name: Webrazzi, tier: B, domains: [webrazzi.com]}
+  - {name: Gulf Business, tier: B, domains: [gulfbusiness.com]}
+  - {name: Wired Middle East, aliases: [WIRED Middle East], tier: B, domains: [wired.me]}
+  - {name: Disrupt Africa, tier: B, domains: [disruptafrica.com, disrupt-africa.com]}
+  - {name: Asharq Business,ar: [الشرق للأعمال, الشرق بلومبرغ], tier: B, domains: [asharqbusiness.com]}
   - {name: Import AI, tier: B, domains: [importai.substack.com, jack-clark.net]}
   - {name: The Batch (DeepLearning.AI), aliases: [The Batch], tier: B, domains: [deeplearning.ai]}
 
