@@ -646,6 +646,14 @@ def phase_announce(cfg: dict, out: Path, video_id: str = "") -> None:
             log.info("Facebook: episode posted (video %s)", fid)
         except Exception as exc:  # noqa: BLE001 — Facebook must not undo a published episode
             log.warning("Facebook: episode not posted: %s", exc)
+    elif text and os.environ.get("BUFFER_API_KEY"):
+        # No Page token (Meta's developer sign-up is blocked): the episode as a link post through Buffer.
+        from pipeline.publish.social import Buffer
+        try:
+            res = Buffer(os.environ["BUFFER_API_KEY"]).post("facebook", text, link=f"https://youtu.be/{video_id}")
+            log.info("Facebook (Buffer): episode link posted %s", res.get("url") or res.get("buffer_id"))
+        except Exception as exc:  # noqa: BLE001 — Facebook must not undo a published episode
+            log.warning("Facebook (Buffer): episode not posted: %s", exc)
 
 
 def main() -> None:

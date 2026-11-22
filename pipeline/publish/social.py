@@ -1,5 +1,7 @@
 """
-Short-form posting on the platforms' own APIs, no third-party service (founder 2026-11-13).
+Short-form posting on the platforms' own APIs (founder 2026-11-13), except Instagram and the Facebook Page,
+which go through Buffer while Meta's developer sign-up is blocked (founder 2026-11-22; class `Buffer`). With
+their own tokens present (INSTAGRAM_TOKEN, FACEBOOK_PAGE_TOKEN) the direct route is used instead.
 
     YouTube Shorts   YouTube Data API (pipeline/google_auth.py)           posts public/unlisted at once
     Instagram Reels  Instagram API with Instagram Login (graph.instagram.com): container → publish
@@ -41,6 +43,7 @@ PLATFORMS = ("youtube", "instagram", "facebook", "tiktok", "linkedin")
 LI = "https://api.linkedin.com"
 IG = "https://graph.instagram.com"
 TT = "https://open.tiktokapis.com"
+BUFFER = "https://api.buffer.com"
 
 
 # ── Secrets ──────────────────────────────────────────────────────────────────
@@ -401,6 +404,83 @@ class FacebookPage:
         return str(self._post(f"{self.page}/feed", message=text, link=link)["id"])
 
 
+# ── Buffer (Instagram and the Facebook Page, no Meta developer account) ─────────
+class Buffer:
+    """Posts through Buffer's API (GraphQL, developers.buffer.com) to the channels connected in the founder's
+    Buffer account. Buffer fetches the video from its public URL, publishes at once (`shareNow`) and reports
+    the post's status, which is read back until it is `sent`: a created post is not yet a published one."""
+    CREATE = ("mutation($input: CreatePostInput!) { createPost(input: $input) { "
+              "... on PostActionSuccess { post { id status } } ... on MutationError { message } } }")
+    STATUS = "query($id: PostId!) { post(input: {id: $id}) { id status externalLink error { message } } }"
+
+    def __init__(self, key: str, http=requests, sleep=time.sleep):
+        self.key, self.http, self.sleep = key, http, sleep
+        self._channels: list[dict[str, str]] | None = None
+
+    def _gql(self, query: str, **variables) -> dict[str, Any]:
+        r = self.http.post(BUFFER, json={"query": query, "variables": variables}, timeout=120,
+                           headers={"Authorization": f"Bearer {self.key}", "Content-Type": "application/json"})
+        data = _ok(r, "Buffer")
+        if data.get("errors"):          # GraphQL answers HTTP 200 even when it refuses
+            raise RuntimeError("Buffer: " + "; ".join(str(e.get("message")) for e in data["errors"])[:400])
+        return data.get("data") or {}
+
+    def channels(self) -> list[dict[str, str]]:
+        """Every channel connected in Buffer: `{id, name, service}` (read once per run)."""
+        if self._channels is None:
+            self._channels = []
+            for org in self._gql("query { account { organizations { id name } } }")["account"]["organizations"]:
+                q = "query($org: OrganizationId!) { channels(input: {organizationId: $org}) { id name service } }"
+                self._channels += [{"id": str(c["id"]), "name": str(c.get("name") or ""),
+                                    "service": str(c["service"]).lower()} for c in self._gql(q, org=org["id"])["channels"]]
+        return self._channels
+
+    def channel(self, service: str) -> str:
+        ids = [c["id"] for c in self.channels() if c["service"] == service]
+        if len(ids) != 1:
+            raise RuntimeError(f"Buffer: {service} is not connected in Buffer" if not ids else
+                               f"Buffer: {len(ids)} {service} channels are connected; keep exactly one")
+        return ids[0]
+
+    def post(self, service: str, text: str, video_url: str = "", link: str = "", wait_s: int = 900) -> dict[str, Any]:
+        """A Reel from a public video URL, or (Facebook) a post with a link card. Returns the Buffer post id and
+        the post's address on the platform once it is live."""
+        if video_url:
+            meta = ({"type": "reel", "shouldShareToFeed": True, "isAiGenerated": True} if service == "instagram"
+                    else {"type": "reel"})
+        else:
+            meta = {"type": "post", **({"linkAttachment": {"url": link}} if link else {})}
+        body = {"channelId": self.channel(service), "text": text, "schedulingType": "automatic", "mode": "shareNow",
+                "assets": [{"video": {"url": video_url}}] if video_url else [], "metadata": {service: meta}}
+        try:
+            made = self._gql(self.CREATE, input=body)["createPost"]
+        except requests.RequestException as exc:   # the request may have reached Buffer: never send it twice
+            raise Unconfirmed(f"Buffer {service}: no answer to the post request ({exc})") from exc
+        if not made.get("post"):
+            raise RuntimeError(f"Buffer {service}: {made.get('message') or 'post refused'}")
+        pid, waited = str(made["post"]["id"]), 0
+        while True:
+            try:
+                st = self._gql(self.STATUS, id=pid)["post"]
+            except Exception as exc:  # noqa: BLE001 — the post exists; a failed status read is not a failed post
+                raise Unconfirmed(f"Buffer {service}: post {pid} made, status not read ({exc})", ref=pid) from exc
+            if st["status"] == "sent":
+                return {"buffer_id": pid, "url": st.get("externalLink") or "", "via": "buffer"}
+            if st["status"] == "error":
+                raise RuntimeError(f"Buffer {service}: {(st.get('error') or {}).get('message') or 'publishing failed'}")
+            if waited >= wait_s:
+                raise Unconfirmed(f"Buffer {service}: post {pid} still {st['status']} after {waited} s", ref=pid)
+            self.sleep(15)
+            waited += 15
+
+
+def buffer_poster(service: str, bf: "Buffer"):
+    def post(e: dict[str, Any], _local: Path) -> dict[str, Any]:
+        text = e["captions"].get(service) or e["captions"].get("instagram") or e.get("title", "")
+        return bf.post(service, text, video_url=e["url"])
+    return post
+
+
 # ── Posting ──────────────────────────────────────────────────────────────────
 def post_due(queue: list[dict[str, Any]], cfg: dict[str, Any], fetch: Callable[[dict[str, Any]], Path],
              posters: dict[str, Callable[[dict[str, Any], Path], dict[str, Any]]],
@@ -525,12 +605,15 @@ def posters(cfg: dict[str, Any]) -> dict[str, Callable]:
     make = {"youtube": youtube_poster, "instagram": instagram_poster, "facebook": facebook_poster, "tiktok": tiktok_poster,
             "linkedin": linkedin_poster}
     out = {}
+    bf = Buffer(os.environ["BUFFER_API_KEY"]) if os.environ.get("BUFFER_API_KEY") else None
     for p in cfg.get("social", {}).get("platforms", PLATFORMS):
         if all(os.environ.get(k) for k in need[p]):
             try:
                 out[p] = make[p](cfg)
             except Exception as exc:  # noqa: BLE001 — a broken token on one platform must not stop the others
                 log.warning("%s not available this run: %s", p, exc)
+        elif bf and p in ("instagram", "facebook"):   # no token of its own: through Buffer
+            out[p] = buffer_poster(p, bf)
         else:
             log.info("%s not connected (secrets missing): skipped", p)
     return out

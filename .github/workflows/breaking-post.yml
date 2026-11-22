@@ -33,6 +33,7 @@ jobs:
       LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN }}
       FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
       FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+      BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}   # Instagram and the Facebook Page through Buffer
       SECRETS_PAT: ${{ secrets.SECRETS_PAT }}
       WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}
       CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}

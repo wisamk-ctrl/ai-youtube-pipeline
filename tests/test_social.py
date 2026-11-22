@@ -277,3 +277,97 @@ def test_tiktok_drafts_mode_sends_the_short_to_the_inbox_with_the_caption_to_pas
     init = next(kw for m, u, kw in http.calls if "inbox/video/init" in u)["json"]
     assert set(init) == {"source_info"}                       # drafts take no post settings
     assert not any("creator_info" in u for _, u, _ in http.calls)
+
+
+# ── Buffer: Instagram and the Facebook Page through a publishing service (founder 2026-11-22) ───────────────
+ORGS = {"data": {"account": {"organizations": [{"id": "org1", "name": "AI This Week"}]}}}
+CHANNELS = {"data": {"channels": [{"id": "ch-ig", "name": "aithisweekme", "service": "instagram"},
+                                  {"id": "ch-fb", "name": "AI This Week", "service": "facebook"}]}}
+
+
+def _created(pid="p1"):
+    return {"data": {"createPost": {"post": {"id": pid, "status": "sending"}}}}
+
+
+def _status(status, **more):
+    return {"data": {"post": {"id": "p1", "status": status, "externalLink": None, "error": None, **more}}}
+
+
+def _buffer(*responses):
+    http = FakeHttp({("POST", "api.buffer.com"): [ORGS, CHANNELS, *responses]})
+    return social.Buffer("key", http=http, sleep=lambda s: None), http
+
+
+def _input(http, n=2):
+    return http.calls[n][2]["json"]["variables"]["input"]
+
+
+def test_buffer_posts_a_reel_now_and_waits_until_it_is_live():
+    bf, http = _buffer(_created(), _status("sending"), _status("sent", externalLink="https://instagram.com/reel/X"))
+    res = bf.post("instagram", "Caption", video_url="https://example.com/a.mp4")
+    assert res == {"buffer_id": "p1", "url": "https://instagram.com/reel/X", "via": "buffer"}
+    sent = _input(http)
+    assert sent["channelId"] == "ch-ig" and sent["mode"] == "shareNow" and sent["schedulingType"] == "automatic"
+    assert sent["assets"] == [{"video": {"url": "https://example.com/a.mp4"}}]
+    assert sent["metadata"] == {"instagram": {"type": "reel", "shouldShareToFeed": True, "isAiGenerated": True}}
+    assert all(c[2]["headers"]["Authorization"] == "Bearer key" for c in http.calls)
+
+
+def test_buffer_facebook_video_is_a_reel_and_a_link_is_a_link_post():
+    bf, http = _buffer(_created(), _status("sent"), _created(), _status("sent"))
+    bf.post("facebook", "Clip", video_url="https://example.com/a.mp4")
+    assert _input(http)["metadata"] == {"facebook": {"type": "reel"}}
+    bf.post("facebook", "Episode text", link="https://youtu.be/abc")
+    sent = _input(http, 4)                       # the channel list is read once, not per post
+    assert sent["assets"] == [] and sent["text"] == "Episode text"
+    assert sent["metadata"] == {"facebook": {"type": "post", "linkAttachment": {"url": "https://youtu.be/abc"}}}
+
+
+def test_buffer_refusal_is_a_plain_failure_that_may_be_retried():
+    bf, _ = _buffer({"data": {"createPost": {"message": "Posting limit reached"}}})
+    with pytest.raises(RuntimeError, match="Posting limit reached") as exc:
+        bf.post("instagram", "x", video_url="https://example.com/a.mp4")
+    assert not isinstance(exc.value, social.Unconfirmed)
+
+
+def test_buffer_publishing_error_and_api_errors_are_raised():
+    bf, _ = _buffer(_created(), _status("error", error={"message": "Instagram rejected the video"}))
+    with pytest.raises(RuntimeError, match="Instagram rejected the video"):
+        bf.post("instagram", "x", video_url="https://example.com/a.mp4")
+    http = FakeHttp({("POST", "api.buffer.com"): [{"errors": [{"message": "Unauthorized"}]}]})
+    with pytest.raises(RuntimeError, match="Unauthorized"):
+        social.Buffer("bad", http=http, sleep=lambda s: None).post("facebook", "x", link="https://youtu.be/a")
+
+
+def test_buffer_still_sending_at_the_deadline_is_unconfirmed_not_failed():
+    bf, _ = _buffer(_created(), *[_status("sending") for _ in range(4)])
+    with pytest.raises(social.Unconfirmed) as exc:
+        bf.post("instagram", "x", video_url="https://example.com/a.mp4", wait_s=30)
+    assert exc.value.ref == "p1"
+
+
+def test_buffer_needs_exactly_one_connected_channel_per_platform():
+    http = FakeHttp({("POST", "api.buffer.com"): [ORGS, {"data": {"channels": [
+        {"id": "ch-ig", "name": "a", "service": "instagram"}]}}]})
+    with pytest.raises(RuntimeError, match="facebook.*not connected in Buffer"):
+        social.Buffer("key", http=http, sleep=lambda s: None).post("facebook", "x", link="https://youtu.be/a")
+
+
+def test_buffer_carries_instagram_and_facebook_only_when_their_own_tokens_are_missing(monkeypatch):
+    for k in ("INSTAGRAM_TOKEN", "FACEBOOK_PAGE_ID", "FACEBOOK_PAGE_TOKEN", "BUFFER_API_KEY"):
+        monkeypatch.delenv(k, raising=False)
+    cfg = {**CFG, "social": {**CFG["social"], "platforms": ["instagram", "facebook"]}}
+    assert social.posters(cfg) == {}
+    monkeypatch.setenv("BUFFER_API_KEY", "key")
+    calls = []
+    monkeypatch.setattr(social.Buffer, "post", lambda self, service, text, **kw: calls.append((service, text, kw)) or {"via": "buffer"})
+    made = social.posters(cfg)
+    entry = {"url": "https://example.com/a.mp4", "title": "Clip", "captions": {"instagram": "IG text", "facebook": "FB text"}}
+    assert made["instagram"](entry, None) == {"via": "buffer"} and made["facebook"](entry, None) == {"via": "buffer"}
+    assert calls == [("instagram", "IG text", {"video_url": "https://example.com/a.mp4"}),
+                     ("facebook", "FB text", {"video_url": "https://example.com/a.mp4"})]
+    monkeypatch.setenv("FACEBOOK_PAGE_ID", "1")
+    monkeypatch.setenv("FACEBOOK_PAGE_TOKEN", "t")
+    calls.clear()
+    monkeypatch.setattr(social.FacebookPage, "post_reel", lambda self, url, text, **kw: "v9")
+    assert social.posters(cfg)["facebook"](entry, None)["video_id"] == "v9" and calls == []
