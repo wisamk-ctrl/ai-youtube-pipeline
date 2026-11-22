@@ -368,7 +368,8 @@ def photo_clip(img: Path, seconds: float, dest: Path, w: int, h: int, fps: int, 
 def pick_file(video: dict[str, Any], min_width: int) -> dict[str, Any] | None:
     files = [f for f in video.get("video_files", []) if f.get("file_type") == "video/mp4" and f.get("width") and f.get("link")]
     files = [f for f in files if (f.get("width") or 0) >= (f.get("height") or 0)]  # landscape only
-    big = sorted((f for f in files if f["width"] >= min_width), key=lambda f: f["width"])
+    # The smallest file that still fills the frame: a 4K original only costs download time (W47-en: 85 MB).
+    big = sorted((f for f in files if f["width"] >= min_width), key=lambda f: (f["width"], f.get("size") or 0))
     return big[0] if big else (max(files, key=lambda f: f["width"]) if files else None)
 
 
@@ -389,7 +390,8 @@ def _pixabay(query: str, key: str, per_page: int, video_type: str, ident: str = 
     r.raise_for_status()
     out = []
     for h in r.json().get("hits") or []:
-        files = [{"file_type": "video/mp4", "width": v.get("width") or 0, "height": v.get("height") or 0, "link": v.get("url")}
+        files = [{"file_type": "video/mp4", "width": v.get("width") or 0, "height": v.get("height") or 0, "link": v.get("url"),
+                  "size": v.get("size") or 0}
                  for v in (h.get("videos") or {}).values() if v.get("url")]
         out.append({"id": f"pixabay_{h['id']}", "duration": h.get("duration", 0), "animation": video_type == "animation",
                     "tags": h.get("tags") or "",
@@ -496,6 +498,15 @@ def keyed(clip: Path, share: float = 0.2) -> bool:
     return False
 
 
+def media_cache(kind: str) -> Path:
+    """Downloaded stock clips and photos, kept across runs (the render job restores it with actions/cache).
+    Files are named by provider clip id, so any week can reuse them. MEDIA_CACHE, else ~/.cache/ai-youtube."""
+    root = Path(os.environ.get("MEDIA_CACHE") or Path.home() / ".cache" / "ai-youtube")
+    d = root / kind
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
 def stock_pins(out_dir: Path) -> dict[str, list[str]]:
     """reviewed/<week>/stock_pins.json — the approved render's stock_used.json: each shot keeps the clip the founder
     approved (2026-11-22: a re-render re-searched Pixabay and swapped 9 of 59 clips). Search text → ids in order."""
@@ -531,11 +542,22 @@ def fetch_pinned(pid: str, query: str, cache: Path, used: set[str], by_id, min_w
     return None
 
 
-def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int, min_seconds: float) -> tuple[Path, dict] | None:
-    """Best unused, relevant clip for the query that is long enough; cached on disk by provider id.
 
-    Relevance (tags shared with the query) ranks first, then animation (the house look), then length.
-    A hit without tags (a provider that sends none) is kept with the lowest relevance."""
+
+def prune_cache(folder: Path, max_bytes: int) -> int:
+    """Delete the least recently used files until the folder fits `max_bytes`; the number removed."""
+    files = sorted((f for f in Path(folder).rglob("*") if f.is_file()), key=lambda f: f.stat().st_mtime, reverse=True)
+    kept, removed = 0, 0
+    for f in files:
+        kept += f.stat().st_size
+        if kept > max_bytes:
+            f.unlink(missing_ok=True)
+            removed += 1
+    return removed
+
+
+def _ranked(query: str, used: set[str], search, min_seconds: float) -> list[dict[str, Any]]:
+    """Unused, relevant hits for the query, best first (see fetch_stock)."""
     scored = []
     for v in search(query):
         if v.get("id") in used:
@@ -545,7 +567,60 @@ def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int,
             scored.append((r, v))
     scored.sort(key=lambda rv: (-rv[0], not rv[1].get("animation", False), rv[1].get("duration", 0) < min_seconds,
                                 -(rv[1].get("width") or 0)))
-    vids = [v for _, v in scored]
+    return [v for _, v in scored]
+
+
+def prefetch_stock(shots: list[tuple[str, float]], cache: Path, used: set[str], search, min_width: int,
+                   workers: int = 8, spare: int = 1) -> int:
+    """Download, side by side, the clip each (search, seconds) shot will most likely take, plus `spare` more
+    per search in case one is a green-screen plate. fetch_stock then finds them on disk. It mirrors
+    fetch_stock's order (a repeated search takes the next unused clip) without deciding anything itself:
+    a miss or a failure here only means fetch_stock downloads that clip the old way. W47-en: 70 clips one
+    after another, about ten minutes of the render. Returns the number downloaded."""
+    from concurrent.futures import ThreadPoolExecutor
+    from pipeline.video import common
+
+    def ask(q: str):
+        try:
+            return q, search(q)
+        except Exception as exc:  # noqa: BLE001 — fetch_stock asks again and handles it
+            log.info("Stock prefetch: search «%s» failed: %s", q, exc)
+            return q, None
+    queries = list(dict.fromkeys(q for q, _ in shots))
+    with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
+        found = dict(pool.map(ask, queries))
+    sim, todo = set(used), {}
+    for q, secs in shots:
+        if found.get(q) is None:
+            continue
+        ranked = [v for v in _ranked(q, sim, lambda _q, r=found[q]: r, secs) if pick_file(v, min_width)]
+        for k, v in enumerate(ranked[:1 + spare]):
+            if k == 0:
+                sim.add(v["id"])
+            dest = cache / f"{v['id']}.mp4"
+            if not dest.exists():
+                todo[dest] = pick_file(v, min_width)["link"]
+
+    def get(item) -> bool:
+        dest, link = item
+        try:
+            common.download(link, dest)
+            return True
+        except Exception as exc:  # noqa: BLE001
+            log.info("Stock prefetch: %s failed: %s", dest.name, exc)
+            return False
+    with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
+        n = sum(pool.map(get, todo.items()))
+    log.info("Stock prefetch: %d of %d clips downloaded (%d searches)", n, len(todo), len(queries))
+    return n
+
+
+def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int, min_seconds: float) -> tuple[Path, dict] | None:
+    """Best unused, relevant clip for the query that is long enough; cached on disk by provider id.
+
+    Relevance (tags shared with the query) ranks first, then animation (the house look), then length.
+    A hit without tags (a provider that sends none) is kept with the lowest relevance."""
+    vids = _ranked(query, used, search, min_seconds)
     for v in vids:
         f = pick_file(v, min_width)
         if not f:
@@ -554,6 +629,8 @@ def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int,
         if not dest.exists():
             from pipeline.video.common import download
             download(f["link"], dest)
+        else:
+            os.utime(dest)    # recently used: kept when the shared cache is pruned
         used.add(v["id"])
         if keyed(dest):   # a green-screen or white plate (W45: a ninja, then a pirate flag; W46: white plates)
             log.info("Stock %s rejected: chroma-key green screen", v["id"])
@@ -647,6 +724,16 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
     work.mkdir(parents=True, exist_ok=True)
     by_id = {i.id: i for i in items}
     search = stock_search(cfg)
+    from pipeline.timing import TIMER
+    stock_dir, photo_dir = media_cache("stock"), media_cache("photos")
+    if search:   # each search is asked once: the prefetch and every shot share the answer
+        memo: dict[str, list] = {}
+
+        def _search(q: str, fn=search[1]) -> list:
+            if q not in memo:
+                memo[q] = fn(q)
+            return memo[q]
+        search = (search[0], _search)
     # Clips a review rejected by eye (figures on screen, off-topic picture): never picked again.
     used: set[str] = {str(i) for i in v.get("stock", {}).get("blocklist", [])}
     stock_used: list[dict] = []          # which clip went on which shot, so a bad one can be named and blocked
@@ -667,10 +754,15 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
         if hit.exists() and hit.stat().st_size > 0:
             reused += 1
             return hit
-        made = make()
+        with TIMER.detail("visuals: cards (browser frames + encode)"):
+            made = make()
         store.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(made, hit)
         return made
+    if search:
+        with TIMER.detail("visuals: stock search + parallel download"):
+            prefetch_stock([(s.payload, s.seconds + 0.5) for s in shots if s.mode != "face" and s.kind in ("stock", "generated")],
+                           stock_dir, used, search[1], w, workers=int(v.get("stock", {}).get("download_workers", 8)))
     renderer = Renderer(w, h) if cards_needed else None
     if renderer:
         renderer.__enter__()
@@ -707,7 +799,8 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                     from pipeline.post.photos import fetch_photo, used_elsewhere
                     subject, who, role = photo_parts(s.payload)
                     avoid = set() if subject.startswith("File:") else used_elsewhere(ROOT / "data" / "photos_used.json", out_dir.name)
-                    got = fetch_photo(subject, work / "photos", avoid=avoid)
+                    with TIMER.detail("visuals: photos"):
+                        got = fetch_photo(subject, photo_dir, avoid=avoid)
                     if got:
                         label = renderer.still(name_html(who, role, w, h), work / f"shot_{n:03d}_name.png",
                                                transparent=True) if who else None
@@ -730,7 +823,7 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                     pin = (pins.get(" ".join(s.payload.lower().split())) or [None]).pop(0) if pins else None
                     if pin and os.environ.get("PIXABAY_API_KEY"):
                         try:
-                            got = fetch_pinned(pin, s.payload, work / "stock", used,
+                            got = fetch_pinned(pin, s.payload, stock_dir, used,
                                                lambda pid: pixabay_by_id(pid, os.environ["PIXABAY_API_KEY"]), w)
                         except Exception as exc:  # noqa: BLE001 — the search takes over
                             log.warning("Pinned clip %s failed: %s", pin, exc)
@@ -739,14 +832,16 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                     if not got and search:   # fetched per shot: a repeated query gets the next unused clip, not the same one
                         # Never the same clip twice in one episode (W47-en: four clips shown four times each, founder
                         # 2026-11-20): when a search has no unused clip left, the shot gets a generated tech animation.
-                        got = fetch_stock(s.payload, work / "stock", used, search[1], w, secs)
-                        for q in ([] if got else broader_queries(s.payload)):
-                            got = fetch_stock(q, work / "stock", used, search[1], w, secs)
-                            if got:
-                                s.notes.append(f"broader search «{q}»")
-                                break
+                        with TIMER.detail("visuals: stock pick (+ late downloads)"):
+                            got = fetch_stock(s.payload, stock_dir, used, search[1], w, secs)
+                            for q in ([] if got else broader_queries(s.payload)):
+                                got = fetch_stock(q, stock_dir, used, search[1], w, secs)
+                                if got:
+                                    s.notes.append(f"broader search «{q}»")
+                                    break
                     if got:
-                        clips[n] = stock_clip(got[0], secs, dest, w, h, fps)
+                        with TIMER.detail("visuals: stock encodes"):
+                            clips[n] = stock_clip(got[0], secs, dest, w, h, fps)
                         stock_used.append({"shot": n, "start": round(s.start, 1), "end": round(s.end, 1),
                                            "search": s.payload, "id": got[1].get("id"), "url": got[1].get("url")})
                         if got[1] not in credits:
@@ -754,7 +849,8 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                     else:
                         s.notes.append("no stock key" if not search else "no stock result")
                         fdir = work / f"shot_{n:03d}_motion"
-                        count = renderer.tech_motion(s.payload, fdir, secs, fps=fps)
+                        with TIMER.detail("visuals: generated motion"):
+                            count = renderer.tech_motion(s.payload, fdir, secs, fps=fps)
                         _ff("-framerate", str(fps), "-i", str(fdir / "f%04d.png"), "-vf", f"scale={w}:{h},fps={fps}",
                             "-frames:v", str(max(1, round(secs * fps))), *_enc(fps), str(dest))
                         clips[n] = dest
@@ -777,6 +873,9 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
         for old in store.iterdir():
             if old.name not in kept_keys:
                 old.unlink(missing_ok=True)
+    cap = float(v.get("stock", {}).get("cache_gb", 3))
+    for d in (stock_dir, photo_dir):   # the shared cache stays small enough to restore in seconds
+        prune_cache(d, int(cap * 1e9))
     (out_dir / "stock_used.json").write_text(json.dumps(stock_used, ensure_ascii=False, indent=2), encoding="utf-8")
     (out_dir / "credits.json").write_text(json.dumps(credits, ensure_ascii=False, indent=2), encoding="utf-8")
     (out_dir / "photos_used.json").write_text(json.dumps(sorted(c["title"] for c in credits if c.get("provider") == "Wikimedia Commons"),

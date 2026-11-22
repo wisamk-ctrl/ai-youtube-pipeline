@@ -332,6 +332,16 @@ visuals:
 
 post:
   upload_height: 2160         # the YouTube file is the finished cut scaled to 4K (final_2160p.mp4); 0 = off
+  # Render speed (2026-11-21): the 1080p cut and the 4K master come out of one final pass, on the hosted
+  # runner's 4 CPUs. Measured on the W47-en frames (SSIM against the source, docs/LESSONS.md):
+  #   1080p: slow/medium crf 18 cost as much CPU as the whole 4K encode; veryfast crf 16 = medium crf 18
+  #          (SSIM 0.943 / 0.944, same size) in a quarter of the time.
+  #   4K:    superfast crf 18 scores above veryfast crf 18 (SSIM 0.940 / 0.924) in 60% of the time; ~20% larger.
+  final_preset: veryfast      # 1080p final_subtitled.mp4 (LinkedIn, Facebook, the preview); was slow crf 18
+  final_crf: 16
+  upload_preset: superfast    # 4K master final_2160p.mp4 at crf 18 (YouTube re-encodes it); was veryfast
+  intermediate: {preset: veryfast, crf: 16}   # working files between passes (the cue-card pass); was medium crf 18
+  workers: 4                  # parallel ffmpeg jobs (edit segments, Shorts); 0 = one per CPU
   numbers_gate: warn          # second check on every on-screen figure (scripts/number_check.py): warn | block | off
   repair:
     enabled: true             # re-voice doubled / mispronounced phrases on a finished render (post/repair.py)
