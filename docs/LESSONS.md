@@ -270,3 +270,16 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 | A looped image is decoded every frame | 26 cue cards at `-loop 1 -framerate 2` = ~45,000 PNG decodes: most of the 10-min card pass | `overlays.card_graph` (each card decoded once) |
 | …and a filter rebuild drops an image read once | First fix lost the last label at a presenter join (colour tags differ → chain rebuilt); the label check stopped the run | `-reinit_filter 0` on the cut; `test_cards_survive_a_filter_rebuild_at_a_join` |
 | A timing run must not touch the week | The first test render queued in the week's group and was cancelled | `test_run` input: own queue, `test-week-*` artifact, no report/chain/preview/alert |
+
+## 2026-11-22: W47-en rework — change a segment, never the whole video (founder)
+- **Rule:** a review change re-makes only the segment it touches: re-voice only the changed chunks, re-make
+  only the face clips whose audio changed, keep every approved clip (stock pins, generated clips, photos,
+  face clips). W47 cost 148 HeyGen credits because faces were re-made twice for new looks; a normal
+  episode is ~100–110.
+- **Gap still open:** the render rebuilds the whole episode (~2.5 h) even for a one-segment change; a
+  segment render (rebuild the changed segment, splice it at its section boundary) is the next build.
+- **Stock pins:** a re-render re-searched Pixabay and swapped 9 of 59 approved clips. Fixed with
+  reviewed/<week>/stock_pins.json (visual_assets.stock_pins / fetch_pinned).
+- **Quality:** the founder rated the generated HeyGen clips (house palette, made for the line) far above
+  stock. Generated clips are the default from W48; stock is the fallback.
+- **Higgsfield:** deferred by the founder (2026-11-22); revisit for a few cinematic showcase shots, PLUS monthly.
