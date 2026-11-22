@@ -308,3 +308,17 @@ def test_an_english_week_uploads_in_english_and_unlisted_has_no_publish_time():
     assert "publishAt" in yu.video_body(plan, text, cfg, datetime(2026, 11, 15, tzinfo=timezone.utc), {}, "en")["status"]
     assert "Full episode" in yu.short_description({"title": "t"}, "abc", cfg, "en")
 
+
+
+def test_a_reviewed_thumbnail_wins_over_the_generated_one(tmp_path, monkeypatch):
+    """Founder 2026-11-22: the thumbnail he picks (reviewed/<week>/thumbnail.jpg) is the one published."""
+    from pipeline.publish import youtube_upload as yu
+    out = tmp_path / "output" / "W"
+    out.mkdir(parents=True)
+    (out / "thumbnail.png").write_bytes(b"generated")
+    monkeypatch.setattr(yu, "ROOT", tmp_path)
+    assert yu.thumbnail_file(out) == out / "thumbnail.png"
+    picked = tmp_path / "reviewed" / "W" / "thumbnail.jpg"
+    picked.parent.mkdir(parents=True)
+    picked.write_bytes(b"founder's pick")
+    assert yu.thumbnail_file(out) == picked

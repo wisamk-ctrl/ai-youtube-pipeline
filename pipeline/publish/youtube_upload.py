@@ -125,7 +125,14 @@ def caption_file(out_dir: Path) -> Path | None:
     return next((p for p in (out_dir / "subtitles.final.srt", out_dir / "subtitles.srt") if p.exists()), None)
 
 
+ROOT = Path(__file__).resolve().parents[2]
+
+
 def thumbnail_file(out_dir: Path) -> Path | None:
+    """The founder's pick (reviewed/<week>/thumbnail.jpg|png, founder 2026-11-22) wins over the generated one."""
+    for picked in (ROOT / "reviewed" / out_dir.name / "thumbnail.jpg", ROOT / "reviewed" / out_dir.name / "thumbnail.png"):
+        if picked.exists() and picked.stat().st_size <= 2 * 1024 * 1024:
+            return picked
     png, jpg = out_dir / "thumbnail.png", out_dir / "thumbnail.jpg"
     if png.exists() and png.stat().st_size <= 2 * 1024 * 1024:
         return png
