@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-22 17:01 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Microsoft is shutting down To Do, its task-manager app, after nearly 10 years.  ← Yahoo Finance (dac3e012d9)
+- (2) The company says the shutdown takes place on June 30, 2027, across Windows, Mac, Android, iOS and the web.  ← Yahoo Finance (dac3e012d9)
+- (3) Existing tasks and lists will not migrate to Microsoft Planner, the new home for work and school tasks.  ← Yahoo Finance (dac3e012d9)
+- (4) Planner is not available on personal accounts, including Microsoft 365 Personal and Family subscribers. They will need another app.  ← Yahoo Finance (dac3e012d9)
+- (5) Microsoft says it will offer an export option, but has not yet published the details.  ← Yahoo Finance (dac3e012d9)
+- (6) The underlying To Do service and APIs will be retired separately, at a date not yet disclosed.  ← Yahoo Finance (dac3e012d9)
+- (7) For Gulf companies running on Microsoft tools, watch how smoothly teams move their task data before the deadline.  ← regional line, no facts

@@ -1,0 +1,19 @@
+[
+  {
+    "source": "Yahoo Finance",
+    "source_type": "rss",
+    "title": "Microsoft is shutting down a popular app with no replacement",
+    "summary": "Microsoft is shutting down a popular task-management app that users have relied on to organize their daily lives for nearly a decade. The decision will leave personal account holders without a direct Microsoft replacement, forcing them to find another application and prepare to move their existing tasks and lists before the shutdown. Microsoft (MSFT) is discontinuing To Do, its task-manager app, after nearly 10 years, according to an announcement on the company's website . The shutdown will take place on June 30, 2027, across Windows, Mac, Android, iOS, and the web, affecting both work or school accounts and personal Microsoft accounts. The underlying To Do service, APIs, and related synchronization support will be retired separately at a later date. Microsoft has not yet disclosed when those services will be discontinued. Additionally, existing To Do tasks and lists will not migrate to the new private task-management experience in Microsoft Planner. Users with work or school accounts will be able to access their existing To Do tasks through Planner until June 30, 2027. After that date, they will no longer be able to view or manage those tasks through Planner. Microsoft says the retirement date does not itself schedule the deletion of existing task data. However, the company plans to provide an option for users to export their To Do information before the apps are discontinued. But instructions, supported data formats, and other export details have not yet been published. Microsoft also cautioned that exporting To Do data will not automatically transfer tasks and lists into Planner or another application . Microsoft Planner, which serves a similar purpose, will become the company's primary destination for managing individual and collaborative tasks for work and school account holders. The updated My tasks experience inside Planner will begin rolling out in December 2026. It aims to provide a centralized place to capture, organize, and focus on private tasks alongside work assigned by colleagues. Here's some of my previous coverage on technology news: TikTok takes on Amazon and Walmart with new strategy Popular dating app drops its biggest rule after 12 years Google shuts down service pretty much everyone uses However, Planner is not available on personal Microsoft accounts, including Microsoft 365 Personal or Family subscribers. These users will need to find another task-management application. Even for work and school users, Planner does not offer a…",
+    "url": "https://finance.yahoo.com/technology/articles/microsoft-shutting-down-popular-app-161700370.html",
+    "published": "2026-11-22T16:17:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "dac3e012d9"
+  }
+]
