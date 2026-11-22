@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-22 06:55 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) A Gulf Today column asks if the public is being told the truth about recent tech outages.  ← Gulf Today (5c4516a4fd)
+- (2) It says the US grounded all departing flights, only the second time since the September 11 attacks.  ← Gulf Today (5c4516a4fd)
+- (3) Microsoft was down for nearly 24 hours, weeks after announcing 60,000 job cuts, the column says.  ← Gulf Today (5c4516a4fd)
+- (4) Several American banks went down, and Apple and the National Security Agency's internal network had brief outages.  ← Gulf Today (5c4516a4fd)
+- (5) One cyber insider says the number of reports hasn't changed, only the newsworthiness threshold.  ← Gulf Today (5c4516a4fd)
+- (6) The columnist writes that whatever company comms teams say, things are clearly not fine.  ← Gulf Today (5c4516a4fd)
+- (7) For Gulf businesses and governments running more services in the cloud, how outages get explained to the public is one to watch.  ← regional line, no facts
