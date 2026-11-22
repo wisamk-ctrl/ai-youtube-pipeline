@@ -261,3 +261,16 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 - **2026-11-21, alerts to WhatsApp:** CallMeBot was planned, but the founder already runs a whatsmeow bridge on his Mac (localhost:8080) for Mac-health, NAS and bill messages. GitHub cannot reach it, so a Mac relay (`scripts/mac_alert_relay.py`, launchd every 10 min) polls the repo with `gh` and sends through the founder's own `whatsapp_monitor.py` functions (one implementation). It reads only the owner's and the pipeline bot's issues and comments: the repo is public. Tests in `tests/test_mac_alert_relay.py`.
 - **2026-11-21, stale preview video on #52:** the chain started two preview runs (`what=video`, then `what=text` for the Shorts) in one concurrency group. GitHub keeps only one *waiting* run per group, so the second replaced the first, even with `cancel-in-progress: false`: the Shorts and files were new, the episode MP4 was last night's (byte-identical, 882 s instead of 895 s). Now one `what=all` run does both. Check a preview's length against the render log's "final" length before calling it ready. Test in `tests/test_ci_workflows.py`.
 - **2026-11-21, W47-en founder review 2:** (1) the Microsoft view was rewritten in the founder's own argument (early movers with models two or three versions ahead should find and patch bugs faster than any amateur) plus the open question of lawsuits and who pays; (2) two repeats cut: ADNOC/G42/OpenAI (W45) and ChatGPT's wallet (W46), kept as one "last week we covered…" line; (3) photos: a Commons photo must name its subject in the file title ("OpenAI headquarters" had matched the European Southern Observatory), `File:` names an exact checked file, and `avoid` skips files used before; head-office photos for NVIDIA, Google, Alibaba and Amazon; (4) a ghostly walking figure and an abandoned roller coaster blocked. Tests in `tests/test_photos.py`.
+
+## 2026-11-22: W47-en rework — change a segment, never the whole video (founder)
+- **Rule:** a review change re-makes only the segment it touches: re-voice only the changed chunks, re-make
+  only the face clips whose audio changed, keep every approved clip (stock pins, generated clips, photos,
+  face clips). W47 cost 148 HeyGen credits because faces were re-made twice for new looks; a normal
+  episode is ~100–110.
+- **Gap still open:** the render rebuilds the whole episode (~2.5 h) even for a one-segment change; a
+  segment render (rebuild the changed segment, splice it at its section boundary) is the next build.
+- **Stock pins:** a re-render re-searched Pixabay and swapped 9 of 59 approved clips. Fixed with
+  reviewed/<week>/stock_pins.json (visual_assets.stock_pins / fetch_pinned).
+- **Quality:** the founder rated the generated HeyGen clips (house palette, made for the line) far above
+  stock. Generated clips are the default from W48; stock is the fallback.
+- **Higgsfield:** deferred by the founder (2026-11-22); revisit for a few cinematic showcase shots, PLUS monthly.
