@@ -8,6 +8,7 @@ or be reviewed by a human in between:
 
     output/<week>/
       items.json          Phase 1  scored + filtered news items (with score breakdowns)
+      ranking.md          Phase 1b the week's stories ranked into deep / quick / radar slots, for approval
       plan.json           Phase 2  editorial plan (structured)
       script.md           Phase 2  Arabic script with pacing markers  ← review / edit this
       tts_text.txt        Phase 3  exactly what the voice engine receives
@@ -58,16 +59,58 @@ def phase_ingest(cfg: dict, out: Path) -> None:
     log.info("Phase 1 done → %s (%d items)", out / "items.json", len(items))
 
 
+def _ranking(cfg: dict, out: Path) -> dict | None:
+    """This week's story ranking (data/ranking/<week>.json), when the ranking stage is on."""
+    from pipeline.ranking import rank
+    return rank.load(out.name) if rank.opts(cfg)["enabled"] else None
+
+
+def phase_rank(cfg: dict, out: Path) -> None:
+    """Cluster the week's scored items into stories, judge, gate and slot them (pipeline/ranking). Decisions the
+    founder already took this week are kept; a fresh ranking needs a fresh approval."""
+    from pipeline.ingestion import covered as cov
+    from pipeline.ranking import rank
+    from pipeline.ranking.cluster import cluster
+
+    src = out / "pool.json" if (out / "pool.json").exists() else out / "items.json"
+    if not src.exists():
+        sys.exit(f"{src} not found — run the ingest phase first.")
+    items = [NewsItem.from_dict(d) for d in json.loads(src.read_text(encoding="utf-8"))]
+    flagged = set(json.loads((out / "flagged.json").read_text(encoding="utf-8"))) if (out / "flagged.json").exists() else set()
+    done = cov.recent(cov.STATE, out.name)
+    stories = cluster(items, cfg, flagged=flagged, covered=done)
+    ranking = rank.build(stories, cfg, out.name, covered=done, previous=rank.load(out.name))
+    saved = rank.save(ranking)
+    (out / "ranking.md").write_text(rank.to_md(ranking), encoding="utf-8")
+    log.info("Ranking: %d items → %d stories (%s) → %s; report %s", len(items), len(stories), ranking["judge"],
+             saved, out / "ranking.md")
+
+
 def phase_script(cfg: dict, out: Path) -> None:
     from pipeline.scripting.script_engine import ScriptEngine
 
     items_path = out / "items.json"
+    ranking = _ranking(cfg, out)
+    if ranking:
+        # The episode is written from the ranked stories only, so items.json becomes their articles (the source
+        # map, the numbers gate and the legal check all read it). The ingest's own top 30 is kept beside it.
+        from pipeline.ranking import rank
+        if rank.awaiting_approval(ranking, cfg):
+            sys.exit(f"The {out.name} ranking is not approved yet: comment `/story approve` on its Ranking issue "
+                     f"(or set ranking.require_approval: false).")
+        if items_path.exists() and not (out / "items_ingest.json").exists():
+            items_path.rename(out / "items_ingest.json")
+        items_path.write_text(json.dumps([i.to_dict() for i in rank.slotted_items(ranking)], ensure_ascii=False, indent=2),
+                              encoding="utf-8")
+        (out / "ranking.md").write_text(rank.to_md(ranking), encoding="utf-8")
     if not items_path.exists():
         sys.exit(f"{items_path} not found — run the ingest phase first.")
     items = [NewsItem.from_dict(d) for d in json.loads(items_path.read_text(encoding="utf-8"))]
 
     from pipeline.ingestion import covered as cov
     engine = ScriptEngine(cfg)
+    if ranking:
+        engine.ranking, engine.ranking_brief = ranking, rank.brief(ranking, cfg)
     engine.covered = cov.recent(cov.STATE, out.name)
     result = engine.run(items, week_label=out.name)
     _write_script_result(cfg, out, result, plan_too=True)
@@ -592,7 +635,7 @@ def phase_announce(cfg: dict, out: Path, video_id: str = "") -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("phase", choices=["ingest", "script", "polish", "score", "direct", "video", "import", "post", "publish", "announce",
+    ap.add_argument("phase", choices=["ingest", "rank", "script", "polish", "score", "direct", "video", "import", "post", "publish", "announce",
                                      "voicepack", "voicecheck", "assemble", "shorts", "translate", "all"])
     ap.add_argument("--fixture", help="Copy fixtures/<name>/items.json into the week folder instead of ingesting (offline testing)")
     ap.add_argument("--shorts", help='Comma-separated start-end seconds for vertical cuts, e.g. "12-55,180-240"')
@@ -616,12 +659,24 @@ def main() -> None:
     _RUN["out"] = out                                 # for the top-level error handler
     (out / ERROR_FILE).unlink(missing_ok=True)         # a stale error must not outlive its run
 
+    _r = _ranking(cfg, out) if cfg["language"] != "en" else None
+    approved = bool(_r and _r.get("approved"))         # an approved ranking is not re-ingested or re-ranked
     if args.fixture:
         import shutil
         shutil.copy(ROOT / "fixtures" / args.fixture / "items.json", out / "items.json")
         log.info("Using fixture items from fixtures/%s", args.fixture)
-    elif args.phase in ("ingest", "all"):
+    elif args.phase in ("ingest", "all", "rank") and not (args.phase == "all" and approved) \
+            and not (args.phase == "rank" and (out / "items.json").exists()):
         phase_ingest(cfg, out)
+    from pipeline.ranking import rank as _rank
+    if args.phase == "rank" or (args.phase == "all" and _rank.opts(cfg)["enabled"] and not approved):
+        phase_rank(cfg, out)
+        if args.phase == "rank" or _rank.awaiting_approval(_ranking(cfg, out), cfg):
+            # The founder approves the ranked list before the script is written (founder 2026-11-22).
+            log.info("Ranking ready for approval: %s\nApprove with `/story approve` on the Ranking issue, then "
+                     "run: python run_pipeline.py script --week %s", out / "ranking.md", out.name)
+            usage.write(out, cfg.get("pricing"))
+            return
     if args.phase in ("script", "all"):
         phase_script(cfg, out)
     if args.phase == "all" and not args.approve:

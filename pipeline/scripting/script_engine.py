@@ -61,6 +61,9 @@ class Segment(BaseModel):
     enterprise_impact: str = Field(description="Why it matters to enterprises in the GCC/MENA, in English")
     broll_ideas: list[str] = Field(description="2-3 concrete B-roll or graphic ideas")
     approx_seconds: int = Field(description="Planned airtime in seconds")
+    # The ranking's story this segment tells (pipeline/ranking): one addressable unit from ranking to render.
+    story_id: str = Field(default="", description="The story_id from the approved running order, when one is given")
+    watch_next: str = Field(default="", description="What to ask a vendor or a team, or what to watch next. Information only, never investment advice")
 
 
 class EditorialPlan(BaseModel):
@@ -147,7 +150,8 @@ class ScriptEngine:
                     week_label=week_label,
                     items_block=_items_block(items),
                     covered_block="\n".join(f"- {t}" for t in getattr(self, "covered", [])) or "(none)",
-                ),
+                ) + (f"\n\n<approved_running_order>\n{self.ranking_brief}\n</approved_running_order>"
+                     if getattr(self, "ranking_brief", "") else ""),
             }],
             output_format=EditorialPlan,
         )
@@ -166,6 +170,11 @@ class ScriptEngine:
         plan.segments = [s for s in plan.segments if s.item_ids]
         if not plan.segments:
             raise ScriptGenerationError("editorial plan has no sourceable segments")
+        if getattr(self, "ranking", None):          # the founder approved an order: the code enforces it
+            from pipeline.ranking import rank
+            missing = rank.align_plan(plan, self.ranking)
+            if missing:
+                log.warning("Plan left out approved stories %s: check the script against ranking.md", missing)
         log.info("Plan: %d segments — %s", len(plan.segments), plan.episode_title_ar)
         return plan
 
