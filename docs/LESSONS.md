@@ -304,3 +304,8 @@ Plan: `docs/plans/2026-11-22-news-ranking.md`. Why: 17 new regional outlets add 
 - **A silent install failure looked like success** while building this: `pip install … > log; echo $?` inside a
   longer command reported the last command's status, and Python 3.15 had no wheel for a pinned package. Use
   Python 3.12 locally (what CI uses) and check the install by importing a package.
+
+## 2026-11-22: W47-en release day
+- **The release gate held the episode 1 h 40 min past its slot.** Every runner check met YouTube's sign-in wall, and the gate treated "cannot see" as "not ready". Fixed in `scripts/release.py`: a blind check releases at the release time and says so (test in `tests/test_release.py`).
+- **LinkedIn was skipped without a word.** `phase_announce` posts only when `linkedin_post_en` exists (W46 had it in `reviewed/<week>/meta.yaml`; W47 had none) and logs nothing otherwise. Open: write the post text with the publish pack, and make a missing text fail loudly.
+- **Facebook Page post by hand** in Meta Business Suite (composer, Instagram unticked, caption plus link). Instagram needs the Short's video file on the Mac; the browser upload takes 10 MB at most.
