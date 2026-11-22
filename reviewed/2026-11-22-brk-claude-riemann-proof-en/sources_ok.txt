@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-22 01:05 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) An Anthropic mathematician says the company's AI, Claude, helped him prove the Riemann hypothesis.  ← The Guardian (3500af305e), The New York Times (3ebde50b56)
+- (2) The Guardian reports Levent Alpöge posted the claim on his personal website on Friday.  ← The Guardian (3500af305e)
+- (3) He says Claude helped develop the solution over about six weeks.  ← The Guardian (3500af305e)
+- (4) The problem dates to 1859, when German mathematician Bernhard Riemann proposed it. It concerns how prime numbers are distributed.  ← The Guardian (3500af305e)
+- (5) On Saturday, the Lean Focused Research Organization and the Mathlib Initiative said they independently verified it.  ← The Guardian (3500af305e)
+- (6) The note came one day after Anthropic listed on Nasdaq. The Guardian says mathematicians are uneasy about companies paying millions for such work.  ← The Guardian (3500af305e)
+- (7) For Gulf governments and research institutions, watch whether AI-assisted proofs reshape how science and research partnerships are funded.  ← regional line, no facts
