@@ -21,7 +21,8 @@
         "url": "https://youtube.com/shorts/5BTcn7jT9wM"
       },
       "instagram": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "held 2026-11-22: queued before Instagram/Facebook were connected; set back to queued to post"
       },
       "tiktok": {
         "status": "posted",
@@ -108,7 +109,8 @@
         "at": "2026-11-18T04:33:52Z"
       },
       "instagram": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "held 2026-11-22: queued before Instagram/Facebook were connected; set back to queued to post"
       },
       "tiktok": {
         "status": "posted",
@@ -168,7 +170,8 @@
         "at": "2026-11-18T04:33:52Z"
       },
       "instagram": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "held 2026-11-22: queued before Instagram/Facebook were connected; set back to queued to post"
       },
       "tiktok": {
         "status": "posted",
@@ -228,7 +231,8 @@
         "at": "2026-11-18T04:33:52Z"
       },
       "instagram": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "held 2026-11-22: queued before Instagram/Facebook were connected; set back to queued to post"
       },
       "tiktok": {
         "status": "posted",
@@ -288,7 +292,8 @@
         "at": "2026-11-18T08:06:55Z"
       },
       "instagram": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "held 2026-11-22: queued before Instagram/Facebook were connected; set back to queued to post"
       },
       "tiktok": {
         "status": "posted",
@@ -330,7 +335,8 @@
         "at": "2026-11-18T13:33:31Z"
       },
       "instagram": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "held 2026-11-22: queued before Instagram/Facebook were connected; set back to queued to post"
       },
       "tiktok": {
         "status": "posted",
@@ -373,10 +379,12 @@
         "url": "https://youtube.com/shorts/ihIQxeRtcu4"
       },
       "instagram": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "held 2026-11-22: queued before Instagram/Facebook were connected; set back to queued to post"
       },
       "facebook": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "held 2026-11-22: queued before Instagram/Facebook were connected; set back to queued to post"
       },
       "tiktok": {
         "status": "posted",
