@@ -98,6 +98,8 @@ def phase_script(cfg: dict, out: Path) -> None:
         if rank.awaiting_approval(ranking, cfg):
             sys.exit(f"The {out.name} ranking is not approved yet: comment `/story approve` on its Ranking issue "
                      f"(or set ranking.require_approval: false).")
+        if not any(s["slot"] in ("deep", "quick") for s in ranking["stories"]):
+            sys.exit(f"The {out.name} ranking has no deep or quick story: promote some with `/story <id> deep because …`.")
         if items_path.exists() and not (out / "items_ingest.json").exists():
             items_path.rename(out / "items_ingest.json")
         items_path.write_text(json.dumps([i.to_dict() for i in rank.slotted_items(ranking)], ensure_ascii=False, indent=2),

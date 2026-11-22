@@ -121,6 +121,10 @@ def test_gates_keep_stories_out_of_the_episode_but_some_can_be_radar():
     assert set(slot(r, "radar")) <= {"unver", "thin", "kill", "glob0"} and len(slot(r, "radar")) == 3
     assert by["old"]["slot"] == "out" and "covered headline" in by["old"]["gates"]["new"]["reason"]
     assert by["glob0"]["gates"]["kill"]["pass"] is False and "regional" in by["glob0"]["gates"]["kill"]["reason"]
+    # The keyword fallback cannot judge a consequence, so it never puts a story on the kill list for lacking one.
+    s, j = st("fb", kind="global", r=0, actor="")
+    rank.score([s], {"fb": {**j, "judged_by": jd.FALLBACK}}, CFG)
+    assert s["gates"]["kill"]["pass"] is True
     assert by["unver"]["gates"]["verified"]["pass"] is False
 
 

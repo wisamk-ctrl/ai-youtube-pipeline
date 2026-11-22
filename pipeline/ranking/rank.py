@@ -65,7 +65,9 @@ def score(stories: list[dict[str, Any]], judgements: dict[str, dict], cfg: dict[
                                               + " (capped at 1: no named regional actor found in the sources)"}
         kind = j.get("kind") if j.get("kind") in ("global", "regional", "explainer") else "global"
         kill = j.get("kill") if j.get("kill") in KILL_TEXT else "none"
-        if kind == "global" and scores["regional_consequence"]["score"] == 0:
+        # A global headline with no regional consequence is on the kill list. Only a model judgement can say
+        # so: the keyword fallback finding no regional word is not evidence that there is no consequence.
+        if kind == "global" and scores["regional_consequence"]["score"] == 0 and j.get("judged_by") != FALLBACK:
             kill = "global_no_regional"
         new = not s.get("repeat") or bool(j.get("new_development"))
         s.update({
@@ -330,9 +332,13 @@ def to_md(r: dict[str, Any]) -> str:
                 + " | ".join(str(sc[c]["score"]) for c in CRITERIA)
                 + f" | {s.get('outlet_count', 1)} ({'/'.join(s.get('tiers', []))}) | {_cell(s['slot_reason'], 120)} |")
 
+    n_ep = sum(1 for s in r["stories"] if s["slot"] in ("deep", "quick"))
     out = [f"## Ranking {r['week']}",
            f"Judged by **{r['judge']}**; totals, gates and slots are computed in code. "
            + ("**Approved** by " + r["approved"]["by"] + "." if r.get("approved") else "**Waiting for your approval.**"),
+           *([f"\n⚠️ **Thin week:** only {n_ep} stor{'y' if n_ep == 1 else 'ies'} passed the gates for the episode. "
+               "Promote stories with `/story <id> deep because …` or check the outlet tiers in config/publishers.yaml."]
+             if n_ep < 4 else []),
            f"\n**Thesis** ({r.get('thesis_by') or 'none'}): {r.get('thesis') or '—'}",
            "**Hook teases:** " + (" · ".join(_cell(by_id[i]["title"], 70) for i in r.get("hook", []) if i in by_id) or "—")]
     names = {"deep": "Deep stories (60-180 s each)", "quick": "Quick stories (30-45 s each)", "radar": "Radar (one line each)"}

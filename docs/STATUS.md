@@ -316,3 +316,20 @@ in the TikTok app: tap the inbox notification, turn on the AI-generated label, p
 a day. Not yet confirmed on a real Short that drafts work for an unaudited app on a public account; if the next
 one fails, upload by hand in TikTok Studio (done for the Anthropic IPO Short, 20 Nov).
 
+
+## Story ranking (built 2026-11-22, for W48; plan `docs/plans/2026-11-22-news-ranking.md`)
+The weekly job now stops after ranking the week's stories and waits for the founder before it writes the script.
+- **Flow:** Friday job → ingest → `rank` → `data/ranking/<week>.json` committed → issue **"Ranking: <week>"** with
+  every story's scores, reasons, gates and slot → the founder comments `/story <id> deep because <reason>` (or
+  `quick`, `radar`, `short`, `drop`, `auto`) as needed, then `/story approve` → the script job runs from the
+  approved slots → the usual "Review: …" issue.
+- **What is in code, not in the model:** the weights (decision ×3, regional consequence ×2, evidence ×1,
+  tension ×1, max 21), the four gates, the named-actor test, the slots (3 deep, flex 2–4; 3 quick; 3 radar; the
+  Africa and Türkiye seats), the Shorts picks, the order of the plan's segments.
+- **Model:** Claude Haiku 5.5 for the 0–3 scores and reasons (`ranking.model`). No API key → keyword fallback,
+  labelled on every story it judged.
+- **Settings:** `config/settings.yaml` → `ranking:`. `require_approval: false` restores the old one-step run.
+- **Locally:** `python run_pipeline.py rank --week <week>` writes `output/<week>/ranking.md`.
+- **Shorts candidates are listed, not yet made:** the ranking names up to three (breaking context, evergreen
+  explainer, best moment) with their fact, implication and question. Making an explainer Short from a candidate
+  is not built; breaking Shorts still come from the news watch (`pipeline/breaking.py`).

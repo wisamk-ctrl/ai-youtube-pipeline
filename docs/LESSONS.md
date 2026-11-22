@@ -274,3 +274,24 @@ Add to this file whenever a run teaches something. Editorial lessons for the scr
 - **Quality:** the founder rated the generated HeyGen clips (house palette, made for the line) far above
   stock. Generated clips are the default from W48; stock is the fallback.
 - **Higgsfield:** deferred by the founder (2026-11-22); revisit for a few cinematic showcase shots, PLUS monthly.
+
+## 2026-11-22: story ranking — stories are ranked, not articles (founder-approved plan)
+Plan: `docs/plans/2026-11-22-news-ranking.md`. Why: 17 new regional outlets add ~80 AI items a week, and W47's
+30 seats had gone to vendor blog posts while a 117-article story was left out.
+- **Rank stories, never articles.** `pipeline/ranking/cluster.py` groups the scored week into at most 20
+  stories. The outlet count is shown and feeds the evidence score; it never multiplies a total (test:
+  `test_many_outlets_on_one_story…`).
+- **The model scores, the code adds.** `judge.py` returns 0–3 per criterion with a reason; its schema has no
+  field for a sum. `rank.py` applies the weights (×3, ×2, ×1, ×1), the gates and the slots. A regional
+  consequence of 2 or 3 is cut to 1 unless the named actor is found in the story's own sources.
+- **Gates are pass/fail, not scores:** new since the last episode, a tier A/B outlet, enough for 60–180 s, not on
+  the kill list. A failed story can be radar; a repeat with nothing new is out; a generic explainer goes to Shorts.
+- **Shorts lines and the thesis carry no figure the sources do not** (`_invented_numbers`); such a candidate is dropped.
+- **The founder decides before the script.** The "Ranking: <week>" issue shows scores and reasons;
+  `/story <id> <slot|drop|auto> because <reason>` and `/story approve` (`story-decide.yml`, owner only). Every
+  decision is logged in `data/ranking/<week>.json` and a change after approval needs a new approval.
+- **One story = one unit, end to end:** the story id is on the plan segment (`story_id`), and the planner's
+  segments are put in the approved order in code (`rank.align_plan`), whatever order the model wrote.
+- **A silent install failure looked like success** while building this: `pip install … > log; echo $?` inside a
+  longer command reported the last command's status, and Python 3.15 had no wheel for a pinned package. Use
+  Python 3.12 locally (what CI uses) and check the install by importing a package.
