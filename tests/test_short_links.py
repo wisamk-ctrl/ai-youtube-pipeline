@@ -30,3 +30,12 @@ def test_other_links_are_not_sent_to_the_resolver():
 def test_the_description_writes_the_cleaned_link():
     text = d.build_description({}, [{"title": "T", "url": "https://x.com/a?utm_source=rss"}], {}, lang="en")
     assert "- T: https://x.com/a\n" in text and "utm_" not in text
+
+
+def test_a_published_description_gets_only_its_links_changed():
+    from scripts.youtube_short_links import shorten
+    g = "https://news.google.com/rss/articles/CBMiABC?oc=5"
+    text = f"Hook.\n- A: {g}\n- B: https://x.com/b?utm_source=rss\nWatch https://youtu.be/abc?t=5\n#AI"
+    out = shorten(text, resolve=lambda u, t: "https://outlet.com/a")
+    assert out == "Hook.\n- A: https://outlet.com/a\n- B: https://x.com/b\nWatch https://youtu.be/abc?t=5\n#AI"
+    assert shorten(text, resolve=lambda u, t: "").count(g) == 1
