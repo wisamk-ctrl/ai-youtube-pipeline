@@ -27,7 +27,6 @@ ingestion:
     # `region` feeds the regional seats in scoring. Tiers are in config/publishers.yaml.
     - {name: Arabian Business,  url: "https://www.arabianbusiness.com/feed",       region: gulf,   ai_only: true}
     - {name: ITP.net,           url: "https://www.itp.net/feed",                   region: gulf,   ai_only: true}
-    - {name: AGBI,              url: "https://www.agbi.com/feed/",                 region: gulf,   ai_only: true}
     - {name: Gulf News,         url: "https://gulfnews.com/feed",                  region: gulf,   ai_only: true}   # latest 12 only: the news watch catches the rest
     - {name: Saudi Gazette,     url: "https://saudigazette.com.sa/rssFeed/0",      region: gulf,   ai_only: true}
     - {name: Asharq Al-Awsat,   url: "https://aawsat.com/feed",                    region: gulf,   ai_only: true}   # Arabic
@@ -132,8 +131,9 @@ ingestion:
     - { name: TechCabal,          query: 'site:techcabal.com "artificial intelligence" (Egypt OR Morocco OR Tunisia OR Algeria)', region: north_africa, max_items: 4 }
     - { name: Hurriyet Daily News, query: 'site:hurriyetdailynews.com "artificial intelligence"', region: turkey, max_items: 4 }
     - { name: ProPakistani,       query: 'site:propakistani.pk "artificial intelligence"',      region: pakistan, max_items: 4 }
-    # Regional outlets with no usable feed (checked 2026-11-22), filtered to AI news like the regional feeds above.
+    # Regional outlets with no usable feed (checked 2026-11-22: MAGNiTT, StartupScene and Menabytes have none at all), filtered to AI news like the regional feeds above.
     - { name: Khaleej Times,     query: "site:khaleejtimes.com", region: gulf,   ai_only: true, max_items: 6 }
+    - { name: AGBI,              query: "site:agbi.com",         region: gulf,   ai_only: true, max_items: 4 }   # its feed answers 405 to our browser User-Agent (2026-11-22)
     - { name: Gulf Business,     query: "site:gulfbusiness.com", region: gulf,   ai_only: true, max_items: 4 }
     - { name: Wired Middle East, query: "site:wired.me",         region: gulf,   ai_only: true, max_items: 4 }
     - { name: Jordan Times,      query: "site:jordantimes.com",  region: levant, ai_only: true, max_items: 4 }
