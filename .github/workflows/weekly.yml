@@ -398,6 +398,8 @@ jobs:
           FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
           FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}   # Instagram and the Facebook Page through Buffer
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}   # Instagram and the Facebook Page through Composio
+          COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
           # Whisper loads a cached model without asking the hub (pipeline/post/subtitles.py) and downloads only on a miss:
           # HF_HUB_OFFLINE=1 on a cache hit failed a breaking Short on 2026-11-18 when the needed size was not in the cache.
           VIDEO_URL: ${{ inputs.video_url }}     # via env, never spliced into the shell line

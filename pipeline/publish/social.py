@@ -1,6 +1,7 @@
 """
 Short-form posting on the platforms' own APIs (founder 2026-11-13), except Instagram and the Facebook Page,
-which go through Buffer while Meta's developer sign-up is blocked (founder 2026-11-22; class `Buffer`). With
+which go through Composio while Meta's developer sign-up is blocked (founder 2026-11-22: the account he
+already has, so no new party; class `Composio`). `Buffer` is the fallback when only its key is set. With
 their own tokens present (INSTAGRAM_TOKEN, FACEBOOK_PAGE_TOKEN) the direct route is used instead.
 
     YouTube Shorts   YouTube Data API (pipeline/google_auth.py)           posts public/unlisted at once
@@ -44,6 +45,7 @@ LI = "https://api.linkedin.com"
 IG = "https://graph.instagram.com"
 TT = "https://open.tiktokapis.com"
 BUFFER = "https://api.buffer.com"
+COMPOSIO = "https://backend.composio.dev/api/v3.1/tools/execute"
 
 
 # ── Secrets ──────────────────────────────────────────────────────────────────
@@ -474,10 +476,92 @@ class Buffer:
             waited += 15
 
 
-def buffer_poster(service: str, bf: "Buffer"):
+# ── Composio (the same two platforms, through the account the founder already has) ──
+class Composio:
+    """Runs Composio's Instagram and Facebook tools over its REST API (docs.composio.dev), signed in through
+    Composio's own Meta app. An HTTP 200 is not a post: every answer must say `successful` and carry an id."""
+
+    def __init__(self, key: str, user_id: str = "", page_id: str = "", http=requests, sleep=time.sleep):
+        self.key, self.user, self.page, self.http, self.sleep = key, user_id, page_id, http, sleep
+
+    def _run(self, slug: str, **arguments) -> dict[str, Any]:
+        body = {"arguments": arguments, **({"user_id": self.user} if self.user else {})}
+        r = self.http.post(f"{COMPOSIO}/{slug}", json=body, timeout=600,
+                           headers={"x-api-key": self.key, "Content-Type": "application/json"})
+        res = _ok(r, "Composio")
+        if not res.get("successful"):
+            raise RuntimeError(f"Composio {slug}: {str(res.get('error') or 'not successful')[:400]}")
+        data = res.get("data")
+        if isinstance(data, str):
+            try:
+                data = json.loads(data)
+            except ValueError:
+                data = {}
+        return data if isinstance(data, dict) else {}
+
+    def pages(self) -> list[dict[str, str]]:
+        """The Facebook Pages the connected account manages (id and name only: never the Page's token)."""
+        d = self._run("FACEBOOK_LIST_MANAGED_PAGES", fields="id,name")
+        return [{"id": str(x["id"]), "name": str(x.get("name") or "")} for x in d.get("data") or []]
+
+    def page_id(self) -> str:
+        if not self.page:
+            found = self.pages()
+            if len(found) != 1:
+                raise RuntimeError("Composio: no Facebook Page is connected" if not found else
+                                   f"Composio: {len(found)} Facebook Pages are connected; set FACEBOOK_PAGE_ID to pick one")
+            self.page = found[0]["id"]
+        return self.page
+
+    def _sent(self, what: str, ref: str, slug: str, **arguments) -> dict[str, Any]:
+        """The one call that makes a post public. No answer, or an answer without an id, may still be a live
+        post, so it is never sent again."""
+        try:
+            d = self._run(slug, **arguments)
+        except requests.RequestException as exc:
+            raise Unconfirmed(f"Composio {what}: no answer to the publish request ({exc})", ref=ref) from exc
+        if not (d.get("id") or d.get("video_id") or d.get("post_id")):
+            raise Unconfirmed(f"Composio {what}: published without an id back; check it by hand", ref=ref)
+        return d
+
+    def post(self, service: str, text: str, video_url: str = "", link: str = "") -> dict[str, Any]:
+        """A Reel from a public video URL, or (Facebook) a post with a link."""
+        if service == "instagram":
+            cid = str(self._run("INSTAGRAM_POST_IG_USER_MEDIA", ig_user_id="me", video_url=video_url, caption=text,
+                                media_type="REELS", share_to_feed=True)["id"])
+            mid = str(self._sent("instagram", cid, "INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH", ig_user_id="me",
+                                 creation_id=cid, max_wait_seconds=300)["id"])
+            try:
+                url = str(self._run("INSTAGRAM_GET_IG_MEDIA", ig_media_id=mid, fields="id,permalink").get("permalink") or "")
+            except Exception as exc:  # noqa: BLE001 — it is posted; the address is a nicety
+                log.info("Instagram permalink not read: %s", exc)
+                url = ""
+            return {"media_id": mid, "url": url, "via": "composio"}
+        page = self.page_id()
+        if video_url:
+            d = self._sent("facebook", "", "FACEBOOK_PUBLISH_PAGE_REEL", page_id=page, file_url=video_url,
+                           description=text, video_state="PUBLISHED", is_ai_generated=True)
+            vid = str(d.get("video_id") or d.get("id"))
+            return {"video_id": vid, "url": f"https://www.facebook.com/reel/{vid}", "via": "composio"}
+        d = self._sent("facebook", "", "FACEBOOK_CREATE_POST", page_id=page, message=text, published=True,
+                       **({"link": link} if link else {}))
+        pid = str(d.get("id") or d.get("post_id"))
+        return {"post_id": pid, "url": f"https://www.facebook.com/{pid}", "via": "composio"}
+
+
+def relay() -> "Composio | Buffer | None":
+    """The service that carries Instagram and the Facebook Page when they have no token of their own:
+    Composio first (the founder's existing account), else Buffer, else none."""
+    e = os.environ
+    if e.get("COMPOSIO_API_KEY"):
+        return Composio(e["COMPOSIO_API_KEY"], e.get("COMPOSIO_USER_ID", ""), e.get("FACEBOOK_PAGE_ID", ""))
+    return Buffer(e["BUFFER_API_KEY"]) if e.get("BUFFER_API_KEY") else None
+
+
+def relay_poster(service: str, via: "Composio | Buffer"):
     def post(e: dict[str, Any], _local: Path) -> dict[str, Any]:
         text = e["captions"].get(service) or e["captions"].get("instagram") or e.get("title", "")
-        return bf.post(service, text, video_url=e["url"])
+        return via.post(service, text, video_url=e["url"])
     return post
 
 
@@ -605,15 +689,15 @@ def posters(cfg: dict[str, Any]) -> dict[str, Callable]:
     make = {"youtube": youtube_poster, "instagram": instagram_poster, "facebook": facebook_poster, "tiktok": tiktok_poster,
             "linkedin": linkedin_poster}
     out = {}
-    bf = Buffer(os.environ["BUFFER_API_KEY"]) if os.environ.get("BUFFER_API_KEY") else None
+    via = relay()
     for p in cfg.get("social", {}).get("platforms", PLATFORMS):
         if all(os.environ.get(k) for k in need[p]):
             try:
                 out[p] = make[p](cfg)
             except Exception as exc:  # noqa: BLE001 — a broken token on one platform must not stop the others
                 log.warning("%s not available this run: %s", p, exc)
-        elif bf and p in ("instagram", "facebook"):   # no token of its own: through Buffer
-            out[p] = buffer_poster(p, bf)
+        elif via and p in ("instagram", "facebook"):   # no token of its own: through Composio or Buffer
+            out[p] = relay_poster(p, via)
         else:
             log.info("%s not connected (secrets missing): skipped", p)
     return out

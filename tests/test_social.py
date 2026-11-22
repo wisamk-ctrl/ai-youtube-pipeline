@@ -371,3 +371,95 @@ def test_buffer_carries_instagram_and_facebook_only_when_their_own_tokens_are_mi
     calls.clear()
     monkeypatch.setattr(social.FacebookPage, "post_reel", lambda self, url, text, **kw: "v9")
     assert social.posters(cfg)["facebook"](entry, None)["video_id"] == "v9" and calls == []
+
+
+# ── Composio: the same two platforms through the account the founder already has (founder 2026-11-22) ───────
+def _done(data):
+    return {"successful": True, "error": None, "data": data}
+
+
+PAGES = _done({"data": [{"id": "1536", "name": "AI This Week"}]})
+
+
+def _composio(*responses, user="me-1"):
+    http = FakeHttp({("POST", "backend.composio.dev"): list(responses)})
+    return social.Composio("key", user, http=http, sleep=lambda s: None), http
+
+
+def _call(http, n):
+    method, url, kw = http.calls[n]
+    return url.rsplit("/", 1)[1], kw["json"]["arguments"], kw
+
+
+def test_composio_instagram_reel_makes_the_container_publishes_and_returns_the_permalink():
+    cp, http = _composio(_done({"id": "c1"}), _done({"id": "m1"}), _done({"id": "m1", "permalink": "https://instagram.com/reel/X"}))
+    res = cp.post("instagram", "Caption #AI", video_url="https://example.com/a.mp4")
+    assert res == {"media_id": "m1", "url": "https://instagram.com/reel/X", "via": "composio"}
+    slug, args, kw = _call(http, 0)
+    assert slug == "INSTAGRAM_POST_IG_USER_MEDIA" and kw["headers"]["x-api-key"] == "key" and kw["json"]["user_id"] == "me-1"
+    assert args == {"ig_user_id": "me", "video_url": "https://example.com/a.mp4", "caption": "Caption #AI",
+                    "media_type": "REELS", "share_to_feed": True}
+    slug, args, _ = _call(http, 1)
+    assert slug == "INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH" and args["creation_id"] == "c1" and args["max_wait_seconds"] == 300
+
+
+def test_composio_facebook_reel_is_published_on_the_one_managed_page_and_marked_ai_generated():
+    cp, http = _composio(PAGES, _done({"video_id": "v7", "success": True}))
+    res = cp.post("facebook", "Clip", video_url="https://example.com/a.mp4")
+    assert res == {"video_id": "v7", "url": "https://www.facebook.com/reel/v7", "via": "composio"}
+    assert _call(http, 0)[1] == {"fields": "id,name"}          # never ask for the Page's access token
+    slug, args, _ = _call(http, 1)
+    assert slug == "FACEBOOK_PUBLISH_PAGE_REEL"
+    assert args == {"page_id": "1536", "file_url": "https://example.com/a.mp4", "description": "Clip",
+                    "video_state": "PUBLISHED", "is_ai_generated": True}
+
+
+def test_composio_facebook_link_post_carries_the_text_and_the_link():
+    cp, http = _composio(PAGES, _done({"id": "1536_99"}))
+    res = cp.post("facebook", "Episode text", link="https://youtu.be/abc")
+    assert res == {"post_id": "1536_99", "url": "https://www.facebook.com/1536_99", "via": "composio"}
+    slug, args, _ = _call(http, 1)
+    assert slug == "FACEBOOK_CREATE_POST"
+    assert args == {"page_id": "1536", "message": "Episode text", "link": "https://youtu.be/abc", "published": True}
+
+
+def test_composio_unsuccessful_tool_is_a_failure_even_with_http_200():
+    cp, _ = _composio({"successful": False, "error": "No connected account found for instagram", "data": {}})
+    with pytest.raises(RuntimeError, match="No connected account") as exc:
+        cp.post("instagram", "x", video_url="https://example.com/a.mp4")
+    assert not isinstance(exc.value, social.Unconfirmed)
+
+
+def test_composio_publish_with_no_id_back_is_unconfirmed_not_retried():
+    cp, _ = _composio(_done({"id": "c1"}), _done({}))
+    with pytest.raises(social.Unconfirmed) as exc:
+        cp.post("instagram", "x", video_url="https://example.com/a.mp4")
+    assert exc.value.ref == "c1"
+
+
+def test_composio_needs_exactly_one_page_unless_told_which():
+    two = _done({"data": [{"id": "1", "name": "A"}, {"id": "2", "name": "B"}]})
+    cp, _ = _composio(two)
+    with pytest.raises(RuntimeError, match="2 Facebook Pages"):
+        cp.post("facebook", "x", link="https://youtu.be/a")
+    http = FakeHttp({("POST", "backend.composio.dev"): [_done({"id": "2_5"})]})
+    cp = social.Composio("key", "u", page_id="2", http=http, sleep=lambda s: None)
+    assert cp.post("facebook", "x", link="https://youtu.be/a")["post_id"] == "2_5"
+
+
+def test_composio_is_preferred_over_buffer_and_the_direct_token_over_both(monkeypatch):
+    for k in ("INSTAGRAM_TOKEN", "FACEBOOK_PAGE_ID", "FACEBOOK_PAGE_TOKEN", "BUFFER_API_KEY", "COMPOSIO_API_KEY", "COMPOSIO_USER_ID"):
+        monkeypatch.delenv(k, raising=False)
+    cfg = {**CFG, "social": {**CFG["social"], "platforms": ["instagram", "facebook"]}}
+    monkeypatch.setenv("BUFFER_API_KEY", "b")
+    monkeypatch.setenv("COMPOSIO_API_KEY", "c")
+    monkeypatch.setattr(social.Buffer, "post", lambda self, *a, **kw: {"via": "buffer"})
+    monkeypatch.setattr(social.Composio, "post", lambda self, *a, **kw: {"via": "composio"})
+    entry = {"url": "https://example.com/a.mp4", "title": "Clip", "captions": {"instagram": "IG", "facebook": "FB"}}
+    made = social.posters(cfg)
+    assert made["instagram"](entry, None) == {"via": "composio"} and made["facebook"](entry, None) == {"via": "composio"}
+    assert type(social.relay()).__name__ == "Composio"
+    monkeypatch.delenv("COMPOSIO_API_KEY")
+    assert type(social.relay()).__name__ == "Buffer"
+    monkeypatch.delenv("BUFFER_API_KEY")
+    assert social.relay() is None

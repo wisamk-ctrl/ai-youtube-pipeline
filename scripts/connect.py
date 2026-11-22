@@ -119,6 +119,21 @@ def check() -> str:
                    f"- Facebook: the saved Page token was refused (HTTP {r.status_code}). Connect again.")
     else:
         out.append("- Facebook: not connected (no `FACEBOOK_PAGE_TOKEN` secret)")
+    if e.get("COMPOSIO_API_KEY"):   # Instagram and the Facebook Page through Composio (no Meta developer account)
+        from pipeline.publish.social import Composio
+        cp = Composio(e["COMPOSIO_API_KEY"], e.get("COMPOSIO_USER_ID", ""))
+        try:
+            pages = cp.pages()
+            out.append("- Composio, Facebook: " + (", ".join(f"Page **{x['name']}**" for x in pages) or "no Page connected"))
+        except Exception as exc:  # noqa: BLE001
+            out.append(f"- Composio, Facebook: not usable ({exc})")
+        try:
+            me = cp._run("INSTAGRAM_GET_USER_INFO", ig_user_id="me")
+            out.append(f"- Composio, Instagram: connected as **@{me.get('username')}**")
+        except Exception as exc:  # noqa: BLE001
+            out.append(f"- Composio, Instagram: not usable ({exc})")
+    else:
+        out.append("- Composio: not connected (no `COMPOSIO_API_KEY` secret)")
     if e.get("BUFFER_API_KEY"):   # Instagram and the Facebook Page through Buffer (no Meta developer account)
         from pipeline.publish.social import Buffer
         try:
@@ -128,8 +143,6 @@ def check() -> str:
                     if sum(c["service"] == s for c in chans) != 1 and not e.get({"instagram": "INSTAGRAM_TOKEN", "facebook": "FACEBOOK_PAGE_TOKEN"}[s])]
         except Exception as exc:  # noqa: BLE001
             out.append(f"- Buffer: the saved key was refused ({exc}). Make a new one.")
-    else:
-        out.append("- Buffer: not connected (no `BUFFER_API_KEY` secret)")
     if e.get("YOUTUBE_REFRESH_TOKEN") and e.get("GOOGLE_CLIENT_ID"):
         t = requests.post("https://oauth2.googleapis.com/token", timeout=60, data={
             "client_id": e["GOOGLE_CLIENT_ID"], "client_secret": e.get("GOOGLE_CLIENT_SECRET", ""),
