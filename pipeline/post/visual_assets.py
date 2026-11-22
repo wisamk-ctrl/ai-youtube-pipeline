@@ -382,9 +382,10 @@ def pixabay_search(query: str, key: str, per_page: int = 10) -> list[dict[str, A
     return out
 
 
-def _pixabay(query: str, key: str, per_page: int, video_type: str) -> list[dict[str, Any]]:
-    r = requests.get("https://pixabay.com/api/videos/", timeout=30, params={
-        "key": key, "q": query[:100], "per_page": max(3, per_page), "safesearch": "true", "video_type": video_type})
+def _pixabay(query: str, key: str, per_page: int, video_type: str, ident: str = "") -> list[dict[str, Any]]:
+    params = {"key": key, "id": ident} if ident else {
+        "key": key, "q": query[:100], "per_page": max(3, per_page), "safesearch": "true", "video_type": video_type}
+    r = requests.get("https://pixabay.com/api/videos/", timeout=30, params=params)
     r.raise_for_status()
     out = []
     for h in r.json().get("hits") or []:
@@ -493,6 +494,41 @@ def keyed(clip: Path, share: float = 0.2) -> bool:
         if (0.299 * red + 0.587 * green + 0.114 * blue).mean() > 135:
             return True
     return False
+
+
+def stock_pins(out_dir: Path) -> dict[str, list[str]]:
+    """reviewed/<week>/stock_pins.json — the approved render's stock_used.json: each shot keeps the clip the founder
+    approved (2026-11-22: a re-render re-searched Pixabay and swapped 9 of 59 clips). Search text → ids in order."""
+    import json
+    f = ROOT / "reviewed" / out_dir.name / "stock_pins.json"
+    pins: dict[str, list[str]] = {}
+    for row in (json.loads(f.read_text(encoding="utf-8")) if f.exists() else []):
+        pins.setdefault(" ".join(str(row["search"]).lower().split()), []).append(str(row["id"]))
+    return pins
+
+
+def pixabay_by_id(pid: str, key: str) -> list[dict[str, Any]]:
+    return _pixabay("", key, 3, "all", ident=pid.removeprefix("pixabay_"))
+
+
+def fetch_pinned(pid: str, query: str, cache: Path, used: set[str], by_id, min_width: int) -> tuple[Path, dict] | None:
+    """The pinned clip itself, whatever its tags say; None when it can't be fetched (the search then takes over)."""
+    if not pid.startswith("pixabay_"):
+        return None
+    for v in by_id(pid):
+        f = pick_file(v, min_width)
+        if not f:
+            continue
+        dest = cache / f"{v['id']}.mp4"
+        if not dest.exists():
+            cache.mkdir(parents=True, exist_ok=True)
+            from pipeline.video.common import download
+            download(f["link"], dest)
+        used.add(v["id"])
+        user = v.get("user") or {}
+        return dest, {"query": query, "id": v["id"], "url": v.get("url"),
+                      "author": user.get("name"), "author_url": user.get("url")}
+    return None
 
 
 def fetch_stock(query: str, cache: Path, used: set[str], search, min_width: int, min_seconds: float) -> tuple[Path, dict] | None:
@@ -615,6 +651,7 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
     used: set[str] = {str(i) for i in v.get("stock", {}).get("blocklist", [])}
     stock_used: list[dict] = []          # which clip went on which shot, so a bad one can be named and blocked
     own = own_clips(out_dir)
+    pins = stock_pins(out_dir)
     clips: dict[int, Path] = {}
     credits: list[dict] = []
     cards_needed = any(s.mode != "face" for s in shots)   # stock needs it too, for the backdrop fallback
@@ -690,7 +727,16 @@ def build(shots: list, items: list[NewsItem], cfg: dict[str, Any], out_dir: Path
                         s.notes.append("our own generated clip")
                         clips[n] = stock_clip(got, secs, dest, w, h, fps)
                         continue
-                    if search:   # fetched per shot: a repeated query gets the next unused clip, not the same one
+                    pin = (pins.get(" ".join(s.payload.lower().split())) or [None]).pop(0) if pins else None
+                    if pin and os.environ.get("PIXABAY_API_KEY"):
+                        try:
+                            got = fetch_pinned(pin, s.payload, work / "stock", used,
+                                               lambda pid: pixabay_by_id(pid, os.environ["PIXABAY_API_KEY"]), w)
+                        except Exception as exc:  # noqa: BLE001 — the search takes over
+                            log.warning("Pinned clip %s failed: %s", pin, exc)
+                        if got:
+                            s.notes.append(f"pinned {pin}")
+                    if not got and search:   # fetched per shot: a repeated query gets the next unused clip, not the same one
                         # Never the same clip twice in one episode (W47-en: four clips shown four times each, founder
                         # 2026-11-20): when a search has no unused clip left, the shot gets a generated tech animation.
                         got = fetch_stock(s.payload, work / "stock", used, search[1], w, secs)

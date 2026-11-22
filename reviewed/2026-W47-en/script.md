@@ -1,17 +1,20 @@
 [Section: Opening]
 
 [Face]
-A little over a week ago, Microsoft's email, meetings and AI assistant suddenly stopped.
-
-[Pause]
+Microsoft has some of the most advanced AI in the world. So how did its email, its meetings and its AI assistant go down for days?
 
 [Visual: stock digital globe network map with lights going dark, animation]
-Millions of people around the world were cut off. In Britain, hospitals went back to paper, and courts postponed cases.
+In Britain, hospitals went back to paper.
 
 [Pause]
 
-[Visual: stock server racks in a data centre, blue light]
-So if your whole company runs on a single provider, what's your plan if this happens to you?
+[Visual: title The Biggest IPO in History]
+This week also brought the largest IPO in history, and Gulf investors made big paper gains from it.
+
+[Visual: title California vs. OpenAI]
+California is suing OpenAI over AI safety. And Google and China's Alibaba are fighting a price war on AI models.
+
+Let's get into it.
 
 [Pause]
 
