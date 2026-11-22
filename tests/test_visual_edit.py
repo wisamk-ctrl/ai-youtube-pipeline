@@ -420,3 +420,25 @@ def test_long_title_cards_get_smaller_type_and_whole_words():
     size = lambda t: int(re.search(r"\.p\{font:800 (\d+)px", va.title_html(t, 1920, 1080)).group(1))
     assert size("The Biggest IPO") == round(1080 * 0.135)
     assert size(short) <= round(1080 * 0.08)
+
+
+def test_stock_pins_keep_the_approved_clips_on_a_re_render(tmp_path, monkeypatch):
+    """Founder 2026-11-22: "I don't want anything else changed" — a re-render re-searched Pixabay and swapped 9 of
+    59 approved clips. reviewed/<week>/stock_pins.json (the approved render's stock_used.json) pins each shot."""
+    import json
+    from pipeline.post import visual_assets as va
+    week = tmp_path / "reviewed" / "W"
+    week.mkdir(parents=True)
+    (week / "stock_pins.json").write_text(json.dumps([
+        {"search": "Server racks, blue light", "id": "pixabay_1"}, {"search": "server racks,  blue light", "id": "pixabay_2"}]))
+    monkeypatch.setattr(va, "ROOT", tmp_path)
+    pins = va.stock_pins(tmp_path / "out" / "W")
+    assert pins == {"server racks, blue light": ["pixabay_1", "pixabay_2"]}
+    hits = {"pixabay_7": {"id": "pixabay_7", "tags": "unrelated words", "duration": 9, "width": 1920, "url": "u",
+                          "video_files": [{"file_type": "video/mp4", "width": 1920, "height": 1080, "link": "https://x/7.mp4"}]}}
+    monkeypatch.setattr(va, "keyed", lambda p: False)
+    import pipeline.video.common as common
+    monkeypatch.setattr(common, "download", lambda link, dest: dest.write_bytes(b"v"))
+    got = va.fetch_pinned("pixabay_7", "server racks, blue light", tmp_path / "c", set(), lambda pid: [hits[pid]], 1280)
+    assert got and got[1]["id"] == "pixabay_7"          # kept although its tags don't match the words
+    assert va.fetch_pinned("pexels_9", "q", tmp_path / "c", set(), lambda pid: [], 1280) is None

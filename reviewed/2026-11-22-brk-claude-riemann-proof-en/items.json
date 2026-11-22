@@ -1,0 +1,41 @@
+[
+  {
+    "source": "The Guardian",
+    "source_type": "rss",
+    "title": "Anthropic mathematician claims he used Claude to prove 19th-century Riemann hypothesis",
+    "summary": "Anthropic’s Levent Alpöge says it took six weeks for him using the AI tool to solve 19th-century Riemann hypothesis A mathematician at Anthropic has convincingly said that the San Francisco -based artificial intelligence (AI) company’s software has helped crack one of the most important unsolved problems in mathematics. Levent Alpöge, a Turkish American mathematician, on Friday posted a note on his personal website saying that Claude, the AI software, had helped prove the Riemann hypothesis. He says that Claude helped develop a solution to the problem during the course of about six weeks. On Saturday afternoon, two organizations announced that they had independently verified Alpöge’s claim after reviewing the programming language he used to share the solution. The proof evidently marks another breakthrough in the use of AI for complicated math problems – even as mathematicians express uneasiness around extremely lucrative private companies dishing out millions of dollars for the technology to solve problems. “Claude and I have had a great time together with such breadth in recent months, but this time Claude far outpaced me near the finish line,” Alpöge wrote, while anthropomorphizing the AI software. “No, Claude flew, and danced, and sparkled near that finish line.” Alpöge linked to computer code – written in a language called Lean – that he maintained could verify the findings. Mathematicians subsequently began working to see if Alpöge’s proof could be confirmed. On Saturday afternoon, the Lean Focused Research Organization – which seeks to advance the use of the programming language – and the Mathlib Initiative, a program that works with Lean for math equations, announced that they had verified Alpöge’s solution. “We have full confidence that Alpöge’s proof of the Riemann hypothesis is correct, and we congratulate him on this achievement,” the groups announced. Alpöge’s note was published just one day after Anthropic went public on the Nasdaq stock market index. He acknowledged that, writing: “The precise timing is horrible. If I could have, I’d have finished this all much earlier.” The Riemann hypothesis is a nearly 170-year-old math problem named after Bernhard Riemann, a German mathematician who proposed it in 1859. The hypothesis deals with prime numbers – whole numbers greater than 1 that can only be divided by themselves and 1. Riemann questioned how often prime numbers appear and how they are distributed along the number line. And he developed a…",
+    "url": "https://www.theguardian.com/technology/2026/nov/21/anthropic-riemann-hypothesis-solved-claude-ai",
+    "published": "2026-11-21T20:01:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic",
+      "Together AI"
+    ],
+    "id": "3500af305e"
+  },
+  {
+    "source": "The New York Times",
+    "source_type": "rss",
+    "title": "Anthropic Mathematician Claims to Solve Riemann Hypothesis With Help From Claude",
+    "summary": "Anthropic Mathematician Claims to Solve Riemann Hypothesis With Help From Claude The New York Times",
+    "url": "https://www.nytimes.com/2026/11/20/science/anthropic-ai-math-riemann-hypothesis.html",
+    "published": "2026-11-21T16:52:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic"
+    ],
+    "id": "3ebde50b56"
+  }
+]

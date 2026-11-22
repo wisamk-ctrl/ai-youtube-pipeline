@@ -1,17 +1,20 @@
 [Section: Opening]
 
 [Face]
-A little over a week ago, Microsoft's email, meetings and AI assistant suddenly stopped.
-
-[Pause]
+Microsoft has some of the most advanced AI in the world. So how did its email, its meetings and its AI assistant go down for days?
 
 [Visual: stock digital globe network map with lights going dark, animation]
-Millions of people around the world were cut off. In Britain, hospitals went back to paper, and courts postponed cases.
+In Britain, hospitals went back to paper.
 
 [Pause]
 
-[Visual: stock server racks in a data centre, blue light]
-So if your whole company runs on a single provider, what's your plan if this happens to you?
+[Visual: title The Biggest IPO in History]
+This week also brought the largest IPO in history, and Gulf investors made big paper gains from it.
+
+[Visual: title California vs. OpenAI]
+California is suing OpenAI over AI safety. And Google and China's Alibaba are fighting a price war on AI models.
+
+Let's get into it.
 
 [Pause]
 
@@ -95,13 +98,14 @@ Those models should be running on their own systems and platforms, finding the b
 
 [Pause]
 
-So explaining an outage this wide by saying people are now using AI doesn't convince me.
+[Visual: stock backup power generators and cooling units outside a data centre]
+And there's a second point. A company the size of Microsoft builds in layers of redundancy: backup systems, other regions, the ability to roll an update back.
+So for an outage to last several days is, to me, quite strange.
+Explaining it by saying people are now using AI doesn't convince me.
 
 [Pause]
 
-[Visual: stock courthouse columns and steps, slow push-in]
-And it will be interesting to see how the world deals with this, especially the lawsuits it could bring.
-Who will the courts hold responsible, and how much, if anything, will be paid to the companies and governments that were hit?
+And who carries the cost of an outage like this is still an open question.
 
 [Pause]
 
