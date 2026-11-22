@@ -42,15 +42,17 @@ def add(week: str, video_id: str, release_at: datetime) -> None:
     save(q)
 
 
-def chapters_ready(video_id: str) -> tuple[bool, str]:
-    """True when YouTube shows each chapter with its own picture (a video without chapters counts as ready)."""
+def chapters_ready(video_id: str) -> tuple[bool | None, str]:
+    """True when YouTube shows each chapter with its own picture (a video without chapters counts as ready).
+    None when the page cannot be read at all: W47-en sat unlisted past its 17:00 slot because the runner met
+    YouTube's sign-in wall on every check, so a check that cannot see releases on time and says so."""
     import hashlib
     import requests
     from scripts.youtube_video_check import UA, chapters
     html = requests.get(f"https://www.youtube.com/watch?v={video_id}", headers=UA, timeout=60).text
     if '"playabilityStatus":{"status":"LOGIN_REQUIRED"' in html:
         # YouTube's bot wall hides the frame previews from this runner: no verdict, so the time limit decides.
-        return False, "YouTube sign-in wall on this runner: cannot judge, waiting for the time limit"
+        return None, "YouTube sign-in wall on this runner: chapter pictures could not be checked"
     ch = chapters(html)
     if not ch:
         # No chapters on the page (none in the description, or not shown yet): fall back to the frame preview.
@@ -96,10 +98,11 @@ def run(now: datetime | None = None, ready=chapters_ready, make_public=None, wai
         at = datetime.strptime(e["release_at"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
         ok, why = ready(e["video_id"])
         late = now >= at + timedelta(hours=wait_hours)
-        if now >= at and (ok or late):
+        blind = ok is None
+        if now >= at and (ok or blind or late):
             make_public(e["video_id"])
             e.update(status="public", at=now.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                     note="chapters ready" if ok else f"made public after {wait_hours:g} h without chapter pictures ({why})")
+                     note="chapters ready" if ok else f"released on time, {why}" if blind else f"made public after {wait_hours:g} h without chapter pictures ({why})")
             lines.append(f"✅ {e['week']} public: https://youtu.be/{e['video_id']} ({e['note']})")
             announce(e["week"], e["video_id"])
         else:
