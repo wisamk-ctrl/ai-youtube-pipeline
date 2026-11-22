@@ -333,3 +333,12 @@ The weekly job now stops after ranking the week's stories and waits for the foun
 - **Shorts candidates are listed, not yet made:** the ranking names up to three (breaking context, evergreen
   explainer, best moment) with their fact, implication and question. Making an explainer Short from a candidate
   is not built; breaking Shorts still come from the news watch (`pipeline/breaking.py`).
+- **Dry run on 2026-W47 (2026-11-22, keyword fallback, no API key on the Mac):** 3,431 scored items → 20 stories.
+  Deep: SDAIA's AI year in Saudi universities (18/21), the NSA outage at a Middle East facility (18), Anthropic's
+  Wall Street debut (16). Quick: MGX and the Anthropic IPO (17), a Claude Code release (15), an African-markets
+  piece (Africa seat). The Haiku judge has not run on live data yet: the first W48 run is its first real test.
+- **Known limits, seen in that run:** headlines are grouped by shared words, so the Anthropic IPO still came out
+  as three or four stories (debut, MGX, share-price pieces); the keyword fallback let a release note into the
+  quick slot and gave the Türkiye seat to a headline that only said "Artificial Intelligence". All three are
+  what `/story <id> drop because …` is for, and the model judge's depth and kill-list answers should catch the
+  last two.

@@ -88,6 +88,16 @@ def test_cluster_marks_verified_by_tier_and_repeats_from_earlier_episodes():
     assert not by[False]["verified"] and not by[False]["repeat"]
 
 
+def test_generic_words_do_not_merge_stories_and_one_stray_article_gives_no_region_seat():
+    a = item("SDAIA launches artificial intelligence initiative across Saudi universities", "SPA", region="gulf")
+    b = item("Nvidia artificial intelligence chips reach Chinese buyers despite curbs", "Reuters", region="cn")
+    assert len(cl.cluster([a, b], CFG)) == 2
+    same = [item(f"Humain signs Aramco sovereign cloud contract {k}", f"Out{k}", region="gulf") for k in range(5)]
+    stray = item("Humain signs Aramco sovereign cloud contract, Ankara watches", "Out9", region="turkey", score=1.0)
+    (story,) = cl.cluster(same + [stray], CFG)
+    assert "gulf" in story["regions"] and "turkey" not in story["regions"]
+
+
 # ── 3. scoring: the model scores, the code does the arithmetic ───────────────
 def test_code_applies_the_weights_and_ignores_any_total_from_the_model():
     s, j = st("a", d=3, r=2, e=1, t=0)

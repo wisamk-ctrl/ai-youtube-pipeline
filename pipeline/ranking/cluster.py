@@ -18,6 +18,29 @@ from pipeline.models import NewsItem
 from pipeline.ranking.rank import opts
 
 
+# Words too general to tie two headlines together (W47 dry run: "artificial intelligence" alone merged a Saudi
+# university programme with chip and China stories).
+_GENERIC = set("artificial intelligence initiative company firm tech technology digital global world market "
+               "business industry announce announced plan plans major billion million ceo chief".split())
+
+
+def _same_story(a: set[str], b: set[str]) -> bool:
+    """Two shared specific words (the scorer's rule, without the generic ones). A stricter share-of-headline
+    test was tried on W47 and split the Anthropic IPO into twelve stories."""
+    return len((a - _GENERIC) & (b - _GENERIC)) >= 2
+
+
+def _regions(g: list[NewsItem]) -> list[str]:
+    """The lead article's regions, plus any region at least half of the story's articles carry: one stray
+    article must not hand a story the Africa or Türkiye seat."""
+    of = lambda i: {r for r in (region_of(i), i.region) if r}
+    count: dict[str, int] = {}
+    for i in g:
+        for r in of(i):
+            count[r] = count.get(r, 0) + 1
+    return sorted(of(g[0]) | {r for r, n in count.items() if n * 2 >= len(g)})
+
+
 def _story_id(items: list[NewsItem], taken: set[str]) -> str:
     """Stable across re-runs: named after the story's earliest article, not its rank."""
     anchor = min(items, key=lambda i: (i.published, i.id))
@@ -41,7 +64,7 @@ def cluster(items: list[NewsItem], cfg: dict[str, Any], flagged: set[str] | None
     for it in pool:
         for g in groups:
             lead = g[0]
-            if words.same(it, lead) or (
+            if _same_story(words.words[it.id], words.words[lead.id]) or (
                     (it.url == lead.url or words.words[it.id] & words.words[lead.id])
                     and _is_duplicate(it, lead, s["dedupe_similarity"])):
                 g.append(it)
@@ -68,7 +91,7 @@ def cluster(items: list[NewsItem], cfg: dict[str, Any], flagged: set[str] | None
             "items": [i.to_dict() for i in best[:o["items_per_story"]]],
             "outlets": outlets, "outlet_count": len(outlets), "tiers": tiers,
             "verified": bool({"A", "B"} & set(tiers)),
-            "regions": sorted({r for r in (region_of(i) for i in g) if r} | {i.region for i in g if i.region}),
+            "regions": _regions(g),
             "flagged": any(i.id in flagged for i in g),
             "repeat": [t for t, w in covered_words if len(lead_words & w) >= 2][:3],
             "published": max(i.published for i in g).isoformat(),
