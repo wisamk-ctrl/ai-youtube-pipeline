@@ -109,7 +109,12 @@
         "at": "2026-11-18T04:33:52Z"
       },
       "instagram": {
-        "status": "queued"
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-22T17:41:30Z",
+        "media_id": "18473480038185996",
+        "url": "https://www.instagram.com/reel/DgDXalEmdRh/",
+        "via": "composio"
       },
       "tiktok": {
         "status": "posted",
