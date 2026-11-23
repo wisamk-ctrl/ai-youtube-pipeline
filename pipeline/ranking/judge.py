@@ -65,7 +65,7 @@ class StoryJudgement(BaseModel):
     depth: bool = Field(description="True if there is something useful to say for 60 to 180 seconds; false if it is only 'a company announced something'")
     kill: Kill = Field(description="The kill-list category this story falls in, or none")
     decision_frame: Literal["buy_build_partner", "cost", "risk", "talent", "regulation", "data", "none"]
-    same_event_as: str = Field(default="", description="The id of an EARLIER story in the list that reports this same event (the same announcement, deal, lawsuit, outage or launch) under another headline; empty when this story stands alone. A different event about the same company is not the same event.")
+    same_event_as: str = Field(description="Required. The id of an EARLIER story in the list that is about the same event as this one: the same IPO, deal, lawsuit, outage or launch, including reaction to it and analysis of it. An empty string when no earlier story is about this event. A different event at the same company is not the same event.")
     short: ShortIdea | None = Field(description="Only if the story has one sharp idea that works as a Short on its own; otherwise null")
 
 
@@ -98,9 +98,11 @@ Also say, per story:
 - kill: vague_transformation ("AI is transforming X"), funding_no_consequence (a round with no customer or
   market consequence), demo_no_deployment, meeting_no_decision (a ministerial meeting with no decision),
   global_no_regional (a global headline with no regional consequence), or none.
-- same_event_as: when a story reports the same event as an earlier story in the list (one IPO, one lawsuit,
-  one launch told under different headlines), give that earlier story's id. Otherwise leave it empty. Two
-  different events about one company are two stories.
+- same_event_as: the week's biggest event usually arrives as several stories: the event itself, the market's
+  reaction, an analysis. Those are one story for the show. For every story, look at the stories listed before it:
+  if one of them is about the same event, give its id; otherwise give an empty string. Example: "X prices its
+  IPO", "X's Wall Street debut" and "Why X's day-one valuation will not last" are one event. "X launches a model"
+  and "X is sued" are two.
 - short: only when the story holds one sharp idea that stands alone as a Short: one fact, one implication,
   one question. Never a summary of several headlines.
 
