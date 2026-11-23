@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import csv
 import re
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -32,6 +32,49 @@ TRAFFIC = {"YT_SEARCH": "YouTube search", "RELATED_VIDEO": "Suggested videos", "
            "END_SCREEN": "End screens", "YT_OTHER_PAGE": "Other YouTube pages", "HASHTAGS": "Hashtags"}
 HISTORY_COLS = ["week", "as_of", "subscribers", "total_views", "views_7d", "watch_hours_7d", "watch_hours_365d",
                 "avg_view_seconds"]
+
+
+PLATS = ("youtube", "instagram", "facebook", "linkedin", "tiktok")
+POST_COLS = ["date", "title", "kind", *PLATS]
+
+
+def live_states(queue: list[dict[str, Any]], days: int = 14) -> dict[str, tuple[str, str]]:
+    """Each platform's state from what really happened lately, not from a note typed once (2026-11-23: Instagram
+    and Facebook showed "blocked" for days while posting fine)."""
+    since = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    out: dict[str, tuple[str, str]] = {}
+    for p in PLATS:
+        rs = [r for e in queue for k, r in (e.get("posts") or {}).items() if k == p]
+        recent = [r for r in rs if str(r.get("at", "")) >= since]
+        ok = [r for r in recent if r.get("status") == "posted"]
+        bad = [r for r in recent if r.get("status") in ("failed", "skipped")]
+        if p == "tiktok" and ok:
+            out[p] = ("manual", f"{len(ok)} sent to your TikTok drafts in {days} days: post them from the app")
+        elif ok:
+            out[p] = ("working", f"{len(ok)} posted in the last {days} days" + (f", {len(bad)} failed" if bad else ""))
+        elif bad:
+            out[p] = ("failing", f"{len(bad)} failed in the last {days} days: {str(bad[-1].get('error', ''))[:80]}")
+    return out
+
+
+def post_rows(queue: list[dict[str, Any]], limit: int = 40) -> list[dict[str, Any]]:
+    """The latest clips with each platform's link (or what happened), newest first."""
+    rows = []
+    for e in queue:
+        posts = e.get("posts") or {}
+        at = max((str(r.get("at", "")) for r in posts.values()), default="") or str(e.get("due", ""))
+        if not any(r.get("status") == "posted" for r in posts.values()):
+            continue
+        row = {"date": at[:10], "title": re.sub(r"\s*#Shorts\s*$", "", str(e.get("title") or e.get("file", ""))),
+               "kind": "breaking" if "-brk-" in str(e.get("week", "")) else "weekly"}
+        for p in PLATS:
+            r = posts.get(p) or {}
+            url = str(r.get("url", ""))
+            row[p] = url if url.startswith("https://") else ("drafts" if p == "tiktok" and r.get("status") == "posted"
+                                                               else (r.get("status") or ""))
+        rows.append(row)
+    rows.sort(key=lambda r: r["date"], reverse=True)
+    return rows[:limit]
 
 
 def append_history(path: Path, row: dict[str, Any]) -> None:
@@ -187,12 +230,15 @@ def write_files(out: Path, *, as_of: str, channel: dict[str, Any], analytics: tu
                 c["posted"] += 1
             elif r.get("status") in ("queued", "failed"):
                 c["waiting"] += 1
+    live = live_states(queue)
     _write(out / "platforms.csv", ["platform", "account", "state", "followers", "posted", "waiting", "note"],
-           [{"platform": name, "account": acct, "state": state,
+           [{"platform": name, "account": acct, "state": live.get(key, (state, note))[0],
              "followers": channel.get("subscriberCount") if key == "youtube" else None,
              "posted": counts.get(key, {}).get("posted", 0) if key else None,
-             "waiting": counts.get(key, {}).get("waiting", 0) if key else None, "note": note}
+             "waiting": counts.get(key, {}).get("waiting", 0) if key else None,
+             "note": live.get(key, (state, note))[1]}
             for name, key, acct, state, note in ACCOUNTS])
+    _write(out / "posts.csv", POST_COLS, post_rows(queue))
     _write(out / "pipeline.csv", ["job", "what_it_does", "schedule", "last_run_utc", "result", "note"],
            [{"job": r["job"], "what_it_does": WHAT.get(r["job"], ""), "schedule": SCHEDULES.get(r["job"], ""),
              "last_run_utc": r.get("last_run_utc", ""), "result": r.get("result", ""), "note": r.get("note", "")}

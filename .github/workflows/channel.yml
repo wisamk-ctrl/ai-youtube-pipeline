@@ -7,11 +7,12 @@ on:
     - cron: "29 5 * * 1"      # Monday 09:29 Gulf: the weekly numbers
     - cron: "47 * * * *"      # hourly: an episode or Short just went public → the WhatsApp kit (Channel + status)
     - cron: "23 2 * * *"      # daily 06:23 Gulf: channel integrity (renamed, new handle, unknown uploads; scripts/integrity.py)
+    - cron: "53 */3 * * *"    # every 3 h: fresh dashboard files (data/dashboard), no issue (founder 2026-11-23)
   workflow_dispatch:
     inputs:
       check:
         type: choice
-        options: [report, watch-script, watch-publish, status-kit, integrity]
+        options: [report, dashboard, watch-script, watch-publish, status-kit, integrity]
         default: report
 
 permissions:
@@ -46,6 +47,7 @@ jobs:
             "29 5 * * 1") c=report ;;
             "47 * * * *") c=status-kit ;;
             "23 2 * * *") c=integrity ;;
+            "53 */3 * * *") c=dashboard ;;
             *) c="${{ inputs.check }}" ;;
           esac
           if [ "$c" = integrity ]; then python scripts/integrity.py; else python scripts/channel.py "$c"; fi

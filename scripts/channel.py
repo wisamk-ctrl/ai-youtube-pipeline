@@ -250,7 +250,7 @@ def platform_numbers(platform: str, r: dict) -> str:
     return ""
 
 
-def report() -> None:
+def report(keep: bool = True) -> None:
     tok = token()
     vids = videos(tok)
     prev = json.loads(STATS.read_text(encoding="utf-8")) if STATS.exists() else {}
@@ -342,8 +342,8 @@ def report() -> None:
     except Exception as e:  # noqa: BLE001 — the report itself must still go out
         print(f"dashboard files not written: {e}")
     STATS.parent.mkdir(parents=True, exist_ok=True)
-    if os.environ.get("GITHUB_EVENT_NAME", "schedule") != "schedule":
-        print("(manual run: the weekly baseline is left as it was)")
+    if not keep or os.environ.get("GITHUB_EVENT_NAME", "schedule") != "schedule":
+        print("(dashboard or manual run: the weekly baseline and issue are left as they were)")
         return
     STATS.write_text(json.dumps({"at": NOW.strftime("%Y-%m-%dT%H:%MZ"), "videos": now_stats}, indent=1), encoding="utf-8")
     if os.environ.get("GITHUB_REPOSITORY"):
@@ -406,4 +406,5 @@ def status_kit() -> None:
 
 if __name__ == "__main__":
     {"watch-script": watch_script, "watch-publish": watch_publish, "report": report,
-     "status-kit": status_kit}[sys.argv[1]]()
+     "status-kit": status_kit,
+     "dashboard": lambda: report(keep=False)}[sys.argv[1]]()   # every 3 h: fresh dashboard files, no issue
