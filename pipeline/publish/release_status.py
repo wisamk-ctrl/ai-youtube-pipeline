@@ -89,7 +89,7 @@ def publish_reply(cfg: dict[str, Any], week: str, have: Have = in_env) -> str:
              f"- LinkedIn: {say_ep[ep['linkedin']]}", f"- Facebook: {say_ep[ep['facebook']]}",
              "- Instagram and TikTok: the full episode is never posted there, only Shorts",
              "- WhatsApp Channel: by hand. A \"WhatsApp kit\" issue brings you the text to paste",
-             "", "**Shorts** (not started by `publish`: they go out when you plan and approve them)"]
+             "", "**Breaking Shorts** (the weekly episode's own Shorts are not posted: founder 2026-11-18 and 2026-11-23)"]
     lines += [f"- {NAMES[p]}: {say_short[v]}" for p, v in st.items()]
     if not alerts_on(have):
         lines += ["", "WhatsApp alerts to your phone are off: the `WHATSAPP_PHONE` and `CALLMEBOT_APIKEY` secrets are not set."]

@@ -59,4 +59,7 @@ per month (670 a month is 8,000 a year, the threshold from 1 February 2027).
   (every claim traced, `reviewed/<date>-brk-<slug>-en/`, with `breaking.yaml`) → sent to the founder → posted to
   YouTube, TikTok and LinkedIn within a couple of hours of his OK.
 - It ends with "More on this in Sunday's episode of AI This Week. Follow so you don't miss it."
-- The weekly episode's own Shorts are no longer posted days later.
+- The weekly episode's own Shorts are no longer posted days later. Confirmed 2026-11-23: `publish` does not
+  queue them, and the two W45 Shorts still waiting were marked skipped.
+- Instagram and TikTok captions carry no WhatsApp link (links are not clickable there): the WhatsApp Channel
+  link goes in each profile's bio, set by hand (founder 2026-11-23).

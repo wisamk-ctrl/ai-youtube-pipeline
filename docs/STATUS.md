@@ -350,8 +350,7 @@ The weekly job now stops after ranking the week's stories and waits for the foun
   - W47 again, keyword fallback: deep MGX and the Anthropic IPO (21), Microsoft's outage warning (17), Anthropic's
     Wall Street debut (16); quick the Riemann claim (16), the Africa seat (11), the Türkiye seat (8).
 - **Known limits:** with the keyword fallback one event under two headlines is only pointed at, not joined (W47:
-  MGX and the debut); a region seat takes a quick slot even at 8/21 and pushes 15-point regional stories to the
-  radar (the report says so, the founder decides); the Türkiye seat's region comes from the outlet, not the story.
+  MGX and the debut); the Türkiye seat's region comes from the outlet, not the story.
 - **Ease of use, 2026-11-23 (third round):** every story has a number and commands take it
   (`/story 7 quick because …`); several commands fit in one comment and numbers mean the list as shown; plain
   `approve` works. The issue opens with a verdict line ("Ready to approve" or "N things to look at") and the run
@@ -366,5 +365,8 @@ The weekly job now stops after ranking the week's stories and waits for the foun
 - **For the founder:** WhatsApp alerts are off until `WHATSAPP_PHONE` and `CALLMEBOT_APIKEY` are set. Facebook
   gets the episode as a link post and no Reel has posted there. Instagram has posted one Reel; the rest were
   skipped and the cause is not investigated. W45-en Shorts #2 and #3 still wait for approval.
-- **Open:** whether Instagram and TikTok captions should carry the WhatsApp link as plain text; whether
-  `publish` should also queue the weekly Shorts (the playbook says they are no longer posted).
+- **Decided by the founder, 2026-11-23:** Instagram and TikTok captions stay without the WhatsApp link (he
+  adds it to the two bios by hand); weekly Shorts stay off and the two W45 entries were marked skipped; a region
+  seat takes a quick slot only from 11/21 up, a weaker one gets a radar line.
+- **Still for the founder:** set `WHATSAPP_PHONE` and `CALLMEBOT_APIKEY` to switch his WhatsApp alerts on; add
+  the WhatsApp Channel link to the Instagram and TikTok bios.
