@@ -441,3 +441,14 @@ service, TikTok private, and Facebook native video.
 - Enforced in `config/monetisation_playbook.md` (Length and shape), the running-order brief (`rank.brief`,
   tested), the writer's structure prompt and both critic rubrics. First real use: the W48 episode; check that the
   bottom line holds no new figure and that the episode stays inside its length.
+
+## 2026-11-23: HeyGen engines side by side (measured, workflow `heygen-cost`, action `face-compare`)
+
+- Same still (look D v3) and same sound, 8 s English and 9.3 s Arabic. Charged from the API wallet:
+  Avatar IV $0.28 and $0.35 (about $0.035 to $0.038 a second); Avatar 6 $0.70 and $0.90 (about $0.09 to $0.10 a
+  second, 2.5 times Avatar IV); precision lip-sync of a finished clip $0.24 and $0.28 (about $0.03 a second, on
+  top of the clip). The whole test, speech included: $3.45.
+- `{"engine": {"type": "heygen-avatar-6"}}` IS accepted on `type: image` requests (HeyGen's Avatar 6 guide says it
+  is not; the schema is right), and so is a top-level `motion_prompt` with it. All clips came back 1906×1080, 25 fps.
+- Not decided: which looks best is the founder's call from the clips (`output/heygen_compare/`, not committed).
+  The show still renders on Avatar IV.
