@@ -46,6 +46,8 @@ def test_publish_reply_names_every_platform_and_what_is_off():
                    "by hand", "alerts to your phone are off"):
         assert needle in msg, needle
     assert "alerts to your phone are off" not in rs.publish_reply(CFG, "2026-W48-en", everything)
+    # Founder 2026-11-23: the weekly episode's own Shorts stay off; only breaking Shorts are posted.
+    assert "Breaking Shorts" in msg and "weekly episode's own Shorts are not posted" in msg and "plan and approve" not in msg
     off = rs.publish_reply(CFG, "2026-W48-en", nothing)
     assert "not connected" in off and "LinkedIn" in off
 
@@ -119,3 +121,13 @@ def test_settings_comment_no_longer_promises_the_link_on_every_caption():
     text = (ROOT / "config" / "settings.yaml").read_text(encoding="utf-8")
     line = next(x for x in text.splitlines() if x.strip().startswith("whatsapp_channel_url:"))
     assert "every Short's caption" not in line and "YouTube, LinkedIn and Facebook" in line
+
+
+def test_no_weekly_short_is_left_waiting_in_the_queue():
+    """Founder 2026-11-23: weekly Shorts stay off, so an unapproved weekly entry must not sit there as 'waiting'."""
+    import json
+    import re
+    q = json.loads((ROOT / "data" / "social_queue.json").read_text(encoding="utf-8"))
+    waiting = [e["id"] for e in q if re.match(r"\d{4}-W\d{2}", e["week"]) and not e.get("approved")
+               and any(r.get("status") == "queued" for r in e["posts"].values())]
+    assert waiting == []

@@ -189,7 +189,8 @@ ranking:
   quick: 3
   quick_seconds: [30, 45]
   radar: 3                    # one line each, with its reason
-  # The Africa and Türkiye seats are scoring.min_per_region above; they apply to the slots too.
+  # The Africa and Türkiye seats are scoring.min_per_region above; they apply to the slots too. A seat story
+  # takes a quick slot only from deep.min_total up; a weaker one gets a radar line (founder 2026-11-23).
   shorts:
     max: 3                    # candidates: one fact + one implication + one question, no figure outside the sources
     breaking_hours: 48        # "breaking context" only for news this fresh

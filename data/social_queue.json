@@ -48,13 +48,16 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "weekly Shorts are off (founder 2026-11-23): never approved, not posted"
       },
       "instagram": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "weekly Shorts are off (founder 2026-11-23): never approved, not posted"
       },
       "tiktok": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "weekly Shorts are off (founder 2026-11-23): never approved, not posted"
       }
     },
     "held": "founder 2026-11-18: old news; Shorts now go out when the news breaks"
@@ -75,13 +78,16 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "weekly Shorts are off (founder 2026-11-23): never approved, not posted"
       },
       "instagram": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "weekly Shorts are off (founder 2026-11-23): never approved, not posted"
       },
       "tiktok": {
-        "status": "queued"
+        "status": "skipped",
+        "note": "weekly Shorts are off (founder 2026-11-23): never approved, not posted"
       }
     },
     "held": "founder 2026-11-18: old news; Shorts now go out when the news breaks"

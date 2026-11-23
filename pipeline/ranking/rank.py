@@ -165,7 +165,9 @@ def assign_slots(r: dict[str, Any], cfg: dict[str, Any], now: datetime | None = 
         if not cand:
             continue
         cand["seat"] = region
-        if _episode_ok(cand):
+        # Founder 2026-11-23: a seat takes a quick slot only when its story reaches the deep-slot minimum; a
+        # weaker one gets a radar line (W47: a seat at 8/21 pushed two 15-point Gulf stories to the radar).
+        if _episode_ok(cand) and cand["total"] >= d["min_total"]:
             lists["quick"].append(cand)
         else:
             lists["radar"].append(cand)

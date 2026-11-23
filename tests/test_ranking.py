@@ -167,6 +167,20 @@ def test_africa_and_turkiye_keep_their_seat():
     assert len(slot(r, "quick")) == 3 and len(slot(r, "radar")) == 3
 
 
+def test_a_weak_seat_gets_a_radar_line_and_never_takes_a_quick_slot_from_a_stronger_story():
+    # Founder 2026-11-23, from W47: the Türkiye seat took a quick slot at 8/21 and two 15-point Gulf stories went
+    # to the radar. A seat takes a quick slot only from the deep-slot minimum (11) up.
+    strong = [st(f"g{n}", "global", d=3, r=2) for n in range(10)]       # enough to fill every slot without a seat
+    weak = st("tr", "regional", d=1, r=1, e=1, t=0, regions=["turkey"])              # 6/21
+    good = st("af", "regional", d=2, r=2, e=1, t=0, regions=["africa"])              # 11/21
+    r = ranked(strong + [st("reg", "regional", d=3, r=3), weak, good])
+    by = {s["id"]: s for s in r["stories"]}
+    assert by["tr"]["total"] < 11 <= by["af"]["total"]
+    assert by["tr"]["slot"] == "radar" and by["tr"]["slot_reason"] == "turkey seat"
+    assert by["af"]["slot"] == "quick" and by["af"]["slot_reason"] == "africa seat"
+    assert all(s["total"] >= 11 for s in r["stories"] if s["slot"] in ("deep", "quick"))
+
+
 def test_generic_explainers_go_to_shorts_never_the_episode():
     idea = {"job": "explainer", "fact": "An agent is software that takes actions for you.",
             "implication": "Your vendor will sell it by the task.", "question": "Who signs off on what it does?"}
@@ -365,6 +379,8 @@ def _ten():
 def test_report_leads_with_what_the_founder_has_to_decide():
     r = ranked(_ten())
     r["judge"] = jd.FALLBACK
+    assert rank.find(r, "af")["slot"] == "radar"                        # a weak seat: a radar line, no quick slot
+    rank.decide(r, "af", "quick", "Africa matters this week", "founder", CFG, now=NOW)
     assert rank.find(r, "af")["slot"] == "quick" and rank.find(r, "r3")["slot"] == "out"
     no = lambda sid: rank.find(r, sid)["ref"]
     md = rank.to_md(r, {**CFG, "scripting": {"target_minutes": 11}})
@@ -373,8 +389,8 @@ def test_report_leads_with_what_the_founder_has_to_decide():
     verdict = md.splitlines()[1]
     assert "to look at" in verdict and "4:30" in verdict and "11:15" in verdict and "target of 11 minutes" in verdict
     assert "rough" in head and "no Shorts lines" in head                # the fallback says what it cannot do
-    # Stories that outscored the africa seat: one line for all of them, and a command ready to copy.
-    assert head.count("africa seat") == 1
+    # Stories that outscored the one the founder put in: one line for all of them, and a command ready to copy.
+    assert head.count("holds your decision") == 1
     assert f"**{no('r3')}** Story r3" in head and f"**{no('q4')}** Story q4" in head
     assert f"  ```\n  /story {no('r3')} quick because …\n  ```" in head     # its own block: a copy button on GitHub
     assert f"**{no('q1')}**, **{no('q2')}** all turn on *anthropic*" in head   # one line per shared word
