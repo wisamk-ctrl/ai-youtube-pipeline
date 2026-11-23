@@ -285,7 +285,7 @@ def test_model_judge_scores_only_known_stories_and_sources_are_fenced():
     stories = _stories()
     sid = next(s["id"] for s in stories if "Humain" in s["title"])
     crit = jd.Criterion(score=3, reason="A named Saudi buyer changes vendor shortlists.")
-    one = jd.StoryJudgement(story_id=sid, kind="regional", decision_impact=crit, regional_consequence=crit,
+    one = jd.StoryJudgement(story_id=sid, same_event_as="", kind="regional", decision_impact=crit, regional_consequence=crit,
                             evidence=crit, tension=crit, regional_actor="Aramco", new_development=True, depth=True,
                             kill="none", decision_frame="buy_build_partner", short=None)
     ghost = one.model_copy(update={"story_id": "made-up"})

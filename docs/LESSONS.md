@@ -366,3 +366,9 @@ Plan: `docs/plans/2026-11-22-news-ranking.md`. Why: 17 new regional outlets add 
   one (`same_event_as`) and `rank.merge_same` joins them in code. Not yet seen on a live judge run.
 - Tests in `tests/test_ranking.py`. Still in the live list: off-topic items the AI filter lets through (an
   archaeology story, climate talks) and newsletter round-ups ("Morning Briefing").
+- **2026-11-23, two dry runs with the live judge (workflow `rank-dry`, prints only):** left optional, the
+  same-event answer came back empty and nothing was joined; made required with an example, the judge joined
+  exactly the three extra Anthropic IPO stories (20 → 17) and nothing else. Seen in the same runs and NOT fixed:
+  the judge's totals moved between two runs on the same items (SDAIA 16 → 9), the IPO story was killed as "no
+  regional consequence" with Abu Dhabi's MGX in its headline, and an off-topic climate-talks item took a Quick
+  slot. Read Friday's ranking with that in mind before approving it.
