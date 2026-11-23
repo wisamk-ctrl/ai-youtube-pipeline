@@ -24,7 +24,7 @@ which the writer, reviewer and critic read on every run).
 
 ## Render routes
 - **Voice-first (default):** `voice_pack.md` (phase `voicepack`, also written by script/direct) → speech per chunk
-  + Avatar IV only for the face chunks via the HeyGen connector → `reviewed/<week>/voice.yaml` → phase `assemble`.
+  + Avatar 6 (`video.heygen.face_engine`) only for the face chunks via the HeyGen connector → `reviewed/<week>/voice.yaml` → phase `assemble`.
 - Automatic: phase `video` (needs HeyGen API credits).
 - Manual: the review issue's paste pack → HeyGen web app → phase `import`
   with the video's ID or link → post-production runs automatically.

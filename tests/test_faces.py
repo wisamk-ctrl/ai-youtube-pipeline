@@ -130,3 +130,30 @@ def test_the_engine_comparison_keeps_one_picture_and_sound_per_language():
     assert "engine" not in videos[0]["body"] and videos[1]["body"]["engine"] == {"type": "heygen-avatar-6"}
     assert sum("motion_prompt" in v["body"] for v in videos) == 1
     assert all(v["of"] in {x["name"] for x in videos} for v in vs if v["kind"] == "lipsync")
+
+
+def test_make_face_names_the_engine_and_keeps_its_clips_apart():
+    """Founder 2026-11-23: face clips move to Avatar 6. The engine is part of the once-only key, so a clip asked
+    for again on another engine is a new clip, never the old one handed back."""
+    def run(**kw):
+        http = Http(posts=[R(200, {"data": {"video_id": "v1"}})], gets=[R(200, {"data": {"status": "completed", "video_url": "u"}})])
+        faces.make_face("https://i/p.png", "https://a/1.wav", "k", http=http, sleep=lambda s: None, **kw)
+        return http.calls[0][2]
+    six, plain = run(engine="heygen-avatar-6"), run()
+    assert six["json"]["engine"] == {"type": "heygen-avatar-6"} and "engine" not in plain["json"]
+    assert six["headers"]["Idempotency-Key"] != plain["headers"]["Idempotency-Key"]
+
+
+def test_face_week_uses_the_engine_from_settings(tmp_path):
+    cfg = {"video": {"heygen": {**CFG["video"]["heygen"], "face_engine": "heygen-avatar-6"}}}
+    seen = []
+    faces.face_week(voice_file(tmp_path), CHUNKS, cfg, "https://raw/x/main", key="k", balance_fn=lambda k: 50.0,
+                    make_fn=lambda img, audio, key, **kw: seen.append(kw) or "https://v/1.mp4")
+    assert seen == [{"engine": "heygen-avatar-6"}] * 2
+
+
+def test_the_show_renders_faces_on_avatar_6_at_its_measured_price():
+    from pipeline.config import load_settings
+    h = load_settings()["video"]["heygen"]
+    assert h["face_engine"] == "heygen-avatar-6"
+    assert h["face_usd_per_second"] >= 0.098, "Avatar 6 was charged up to $0.098 a second (2026-11-23): the wallet guard must not undercount"

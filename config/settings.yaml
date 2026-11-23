@@ -285,7 +285,8 @@ video:
     # prepaid USD wallet, apart from the plan credits. Only when a week has no reviewed/<week>/voice.yaml.
     auto_faces: true
     face_image: assets/brand/presenter/look_d_navy_blazer_rest_v3.png   # look D v3, as W47's hand-made clips
-    face_usd_per_second: 0.04   # HeyGen's price list (platform.heygen.com/pricing, read 2026-11-23): Avatar 4 photo avatar $0.0385/s; our test clip was charged $0.40 for 10.06 s. Kept a little high so the wallet guard errs on the safe side
+    face_engine: heygen-avatar-6   # founder 2026-11-23, after the side-by-side test (docs/LESSONS.md). Remove the line to go back to Avatar IV (then about $0.04 a second)
+    face_usd_per_second: 0.10   # measured 2026-11-23 on Avatar 6: $0.70 for 7.84 s and $0.90 for 9.2 s, so $0.089 to $0.098 a second. Kept a little high so the wallet guard errs on the safe side
     face_budget_margin: 1.25    # the wallet must hold this many times the estimate before any clip is started
     face_link_days: 5           # a finished clip's link expires: older than this, the clip is fetched again
     voice_name_en: ""                             # as HeyGen's voice picker shows it, once known
@@ -486,7 +487,7 @@ explainer:                    # explainer Shorts drafted from the approved ranki
 # Daily health check (scripts/health.py): the longest each scheduled workflow may go without a SUCCESSFUL run before
 # the "Health: needs a look" issue says so. Every workflow with a schedule needs a line (tests/test_health.py).
 health:
-  heygen_min_usd: 5           # warn when the HeyGen API wallet (speech and face clips) falls below this
+  heygen_min_usd: 15          # warn when the HeyGen API wallet (speech and face clips) falls below this. One week's faces on Avatar 6, Arabic and English, need about $13.50 with the safety margin (2026-11-23)
   max_age_hours:
     news-watch: 8             # every two hours
     social: 6                 # hourly

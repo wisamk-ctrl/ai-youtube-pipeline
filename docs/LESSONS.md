@@ -452,3 +452,11 @@ service, TikTok private, and Facebook native video.
   is not; the schema is right), and so is a top-level `motion_prompt` with it. All clips came back 1906×1080, 25 fps.
 - Not decided: which looks best is the founder's call from the clips (`output/heygen_compare/`, not committed).
   The show still renders on Avatar IV.
+
+## 2026-11-23: face clips moved to Avatar 6 (founder's choice after the side-by-side)
+- `video.heygen.face_engine: heygen-avatar-6`; `faces.make_face` sends it and puts it in the once-only key, so a
+  clip asked for again on another engine is a new clip. Remove the setting to return to Avatar IV.
+- `face_usd_per_second` is 0.10 (measured $0.089 to $0.098). About 54 s of face costs about $5.40 per language,
+  $6.75 with the wallet margin. The health floor rose to $15 so the warning comes before a render is refused.
+- Clips already in a week's `voice.yaml` are kept as they are; only missing or expired ones are made on Avatar 6.
+- Enforced by `tests/test_faces.py` (engine sent, engine read from settings, price not under the measured one).

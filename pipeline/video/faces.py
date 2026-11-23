@@ -40,17 +40,19 @@ def balance(key: str, http=requests) -> float | None:
 
 
 def cost(seconds: float, cfg: dict[str, Any]) -> float:
-    return seconds * float(cfg["video"]["heygen"].get("face_usd_per_second", 0.04))
+    return seconds * float(cfg["video"]["heygen"].get("face_usd_per_second", 0.10))
 
 
 def make_face(image_url: str, audio_url: str, key: str, http=requests, sleep: Callable[[float], None] = time.sleep,
-              wait_s: int = 1800, every_s: int = 20) -> str:
-    """One face clip: the still picture speaking the sound file. Returns the finished clip's link."""
+              wait_s: int = 1800, every_s: int = 20, engine: str | None = None) -> str:
+    """One face clip: the still picture speaking the sound file. Returns the finished clip's link.
+    `engine` names HeyGen's model (heygen-avatar-6); left out, HeyGen uses Avatar IV."""
     h = {"X-Api-Key": key, "Accept": "application/json"}
-    once = "face-" + hashlib.sha256(f"{image_url}|{audio_url}".encode("utf-8")).hexdigest()[:40]
+    once = "face-" + hashlib.sha256(f"{image_url}|{audio_url}{'|' + engine if engine else ''}".encode("utf-8")).hexdigest()[:40]
     r = http.post(f"{BASE}/v3/videos", timeout=120, headers={**h, "Content-Type": "application/json", "Idempotency-Key": once},
                   json={"type": "image", "image": {"type": "url", "url": image_url}, "audio_url": audio_url,
-                        "resolution": "1080p", "aspect_ratio": "auto", "title": "AI This Week face clip"})
+                        "resolution": "1080p", "aspect_ratio": "auto", "title": "AI This Week face clip",
+                        **({"engine": {"type": engine}} if engine else {})})
     if r.status_code != 200:
         raise RuntimeError(f"HeyGen face clip: HTTP {r.status_code}: {str(r.text)[:300]}")
     vid = ((r.json() or {}).get("data") or {}).get("video_id")
@@ -94,9 +96,9 @@ def face_week(voice: Path, chunks: list[dict[str, Any]], cfg: dict[str, Any], ra
                           "Top it up at app.heygen.com (API), or make the face clips from chat.")
     image = f"{raw_base.rstrip('/')}/{str(h['face_image']).lstrip('/')}"
     head = "".join(line + "\n" for line in text.splitlines() if line.startswith("#"))
-    made = []
+    made, how = [], {"engine": h["face_engine"]} if h.get("face_engine") else {}
     for i in todo:
-        data[i].update(video=make_fn(image, data[i]["audio"], key), video_at=now.strftime("%Y-%m-%dT%H:%M:%SZ"))
+        data[i].update(video=make_fn(image, data[i]["audio"], key, **how), video_at=now.strftime("%Y-%m-%dT%H:%M:%SZ"))
         voice.write_text(head + yaml.safe_dump(data, sort_keys=False, allow_unicode=True), encoding="utf-8")   # paid: keep it
         made.append(i)
         log.info("Face clip %s made (%.1f s)", i, float(data[i].get("duration") or 0))
