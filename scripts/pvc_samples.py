@@ -64,18 +64,34 @@ def enhance(src: Path, dest: Path) -> None:
 def main(mode: str) -> None:
     WORK.mkdir(exist_ok=True)
     voices = el("/voices").json().get("voices", [])
-    print("Voices on the account:", ", ".join(f"{v['name']} [{v.get('category')}]" for v in voices))
-    pick = [v for v in voices if v.get("category") == "professional"] or \
-           [v for v in voices if "wissam" in v["name"].lower()]
+    mine = [v for v in voices if v.get("category") != "premade"]
+    print("Voices on the account (not premade):", "; ".join(
+        f"{v['name']} [{v.get('category')}, {len(v.get('samples') or [])} rec, "
+        f"fine-tuning: {(v.get('fine_tuning') or {}).get('state')}]" for v in mine))
+    pick = [v for v in mine if "wissam" in v["name"].lower() and v.get("category") == "professional"] or \
+           [v for v in mine if "wissam" in v["name"].lower()]
     if not pick:
-        sys.exit("No professional or 'Wissam' voice found")
+        sys.exit("No voice named Wissam found")
     v = el(f"/voices/{pick[0]['voice_id']}").json()
     samples = v.get("samples") or []
     print(f"Voice: {v['name']} ({v.get('category')}), {len(samples)} recording(s)")
     files = []
     for k, s in enumerate(samples, 1):
         f = WORK / f"rec_{k:02d}{Path(s.get('file_name') or 'x.mp3').suffix or '.mp3'}"
-        f.write_bytes(el(f"/voices/{v['voice_id']}/samples/{s['sample_id']}/audio").content)
+        r = requests.get(f"{EL}/voices/{v['voice_id']}/samples/{s['sample_id']}/audio", timeout=300,
+                         headers={"xi-api-key": os.environ["ELEVENLABS_API_KEY"]})
+        if r.status_code >= 400:   # professional clones keep their recordings under /voices/pvc/
+            r = requests.get(f"{EL}/voices/pvc/{v['voice_id']}/samples/{s['sample_id']}/audio", timeout=300,
+                             headers={"xi-api-key": os.environ["ELEVENLABS_API_KEY"]})
+        if r.status_code >= 400:
+            print(f"  {k:02d} {s.get('file_name')}: not downloadable (HTTP {r.status_code} {r.text[:150]})")
+            continue
+        ctype = r.headers.get("content-type", "")
+        if "json" in ctype:   # some endpoints answer with a signed link
+            url = (r.json() or {}).get("audio_base_64") or (r.json() or {}).get("url")
+            print(f"  {k:02d} returned JSON keys: {list((r.json() or {}).keys())}")
+            continue
+        f.write_bytes(r.content)
         files.append(f)
         print(f"  {k:02d} {s.get('file_name')}: {measure(f)}")
     if not files:
