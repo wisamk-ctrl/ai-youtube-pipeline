@@ -480,7 +480,8 @@ breaking:                     # breaking-news Shorts drafted from the news watch
 
 explainer:                    # explainer Shorts drafted from the approved ranking (pipeline/explainer.py; founder 2026-11-23)
   enabled: true
-  max_per_week: 2             # the ranking's "explainer" candidates, best first; nothing posts without `post <id>`
+  max_per_week: 2             # nothing posts without `post <id>`
+  jobs: [explainer, moment, breaking]   # which of the ranking's Shorts candidates are written up, in this order (the judge rarely says "explainer"; [explainer] restores the narrow rule)
 
 # Daily health check (scripts/health.py): the longest each scheduled workflow may go without a SUCCESSFUL run before
 # the "Health: needs a look" issue says so. Every workflow with a schedule needs a line (tests/test_health.py).

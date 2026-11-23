@@ -79,8 +79,11 @@ def test_an_explainer_candidate_becomes_a_folder_the_render_can_use(tmp_path, mo
 
 def test_only_explainer_candidates_with_their_three_lines_are_drafted(tmp_path, monkeypatch):
     setup(tmp_path, monkeypatch)
-    for r, _ in (ranking(job="breaking"), ranking(job="moment"), ranking(question="")):
-        assert explainer.run({"scripting": {}}, r, Fake([]), NOW, tmp_path / "done.json", tmp_path) == []
+    narrow = {"scripting": {}, "explainer": {"jobs": ["explainer"]}}
+    for r, _ in (ranking(job="breaking"), ranking(job="moment")):
+        assert explainer.run(narrow, r, Fake([]), NOW, tmp_path / "done.json", tmp_path) == []
+    r, _ = ranking(question="")
+    assert explainer.run({"scripting": {}}, r, Fake([]), NOW, tmp_path / "done.json", tmp_path) == []
     r, _ = ranking()
     assert explainer.run({"scripting": {}, "explainer": {"enabled": False}}, r, Fake([]), NOW, tmp_path / "d2.json", tmp_path) == []
 
@@ -111,3 +114,13 @@ def test_the_writer_is_told_why_a_line_failed_the_source_check(tmp_path, monkeyp
     assert len(explainer.run({"scripting": {}}, r, client, NOW, tmp_path / "done.json", tmp_path)) == 1
     retry = client.seen[2]["messages"][0]["content"]
     assert "line 2 is not supported" in retry and why in retry
+
+
+def test_explainers_come_first_then_the_other_candidates_up_to_the_limit():
+    r, _ = ranking()
+    one = r["shorts"][0]
+    r["stories"] += [{**r["stories"][0], "id": "s2"}, {**r["stories"][0], "id": "s3"}]
+    r["shorts"] = [{**one, "story_id": "s2", "job": "breaking"}, {**one, "story_id": "s3", "job": "moment"}, one]
+    picked = [i["story_id"] for i, _ in explainer.candidates(r, set(), 2)]
+    assert picked == ["s1", "s3"]
+    assert [i["story_id"] for i, _ in explainer.candidates(r, {"2026-W48:s1"}, 5)] == ["s3", "s2"]
