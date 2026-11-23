@@ -1,0 +1,20 @@
+name: heygen-cost
+# What HeyGen's API has left and what recent calls cost (scripts/heygen_cost.py). Read-only: nothing is generated.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cost:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests
+      - env:
+          HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
+        run: python scripts/heygen_cost.py
