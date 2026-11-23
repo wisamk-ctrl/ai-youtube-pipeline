@@ -14777,7 +14777,7 @@
    ],
    "id": "73538e25ad",
    "first_seen": "2026-11-17T18:40+00:00",
-   "flagged": false
+   "flagged": true
   },
   "4f521121e0": {
    "source": "GIGAZINE",
@@ -18202,7 +18202,7 @@
    ],
    "id": "0cccd1bc12",
    "first_seen": "2026-11-18T00:51+00:00",
-   "flagged": false
+   "flagged": true
   },
   "5c0889f354": {
    "source": "Pasquale Pillitteri",
@@ -83249,7 +83249,7 @@
    ],
    "id": "add9242597",
    "first_seen": "2026-11-23T06:55+00:00",
-   "flagged": false
+   "flagged": true
   },
   "d43b5aabf8": {
    "source": "The New Indian Express",
@@ -84542,7 +84542,7 @@
    ],
    "id": "386448bbf4",
    "first_seen": "2026-11-23T08:42+00:00",
-   "flagged": false
+   "flagged": true
   },
   "afa1940e36": {
    "source": "The Indian Express",
@@ -87501,7 +87501,7 @@
    ],
    "id": "2faa56d96a",
    "first_seen": "2026-11-23T12:43+00:00",
-   "flagged": false
+   "flagged": true
   },
   "c5eee1b4c7": {
    "source": "Euronews.com",
@@ -89341,7 +89341,7 @@
    ],
    "id": "3f68c10002",
    "first_seen": "2026-11-23T14:41+00:00",
-   "flagged": false
+   "flagged": true
   },
   "4e968a7416": {
    "source": "MLQ.ai",
@@ -91613,7 +91613,7 @@
    ],
    "id": "828241973c",
    "first_seen": "2026-11-23T16:31+00:00",
-   "flagged": false
+   "flagged": true
   },
   "e187a30a6f": {
    "source": "Mashable",
@@ -91974,7 +91974,7 @@
    ],
    "id": "a5dc537d32",
    "first_seen": "2026-11-23T16:31+00:00",
-   "flagged": false
+   "flagged": true
   },
   "fbf04618da": {
    "source": "IT Brief Asia",
@@ -93065,7 +93065,7 @@
    ],
    "id": "bf55588020",
    "first_seen": "2026-11-23T17:29+00:00",
-   "flagged": false
+   "flagged": true
   },
   "fd45baa8d9": {
    "source": "About Amazon",
@@ -93575,15 +93575,1033 @@
    "id": "595a637807",
    "first_seen": "2026-11-23T17:29+00:00",
    "flagged": false
+  },
+  "680d0b8ac6": {
+   "source": "KYMA",
+   "source_type": "rss",
+   "title": "Microsoft president on email outage and potential data center tax",
+   "summary": "(CBS, KYMA) - Brad Smith, Vice Chair and President of Microsoft, spoke with Margaret Brennan on Face the Nation Sunday about the email outage. Earlier this month, a global outage disrupted several services , which included Outlook, Teams and Copilot, interrupting e-mail to users worldwide. Microsoft said the outage was due to a technical issue, and not a cyberattack, prompting Brennan to ask Smith what the company is doing to make sure it doesn't happen again, and whether AI played a role in the outage, to which he said: \"The first thing we always need to do when this happens is apologize, and we have, and I want to do so again. And you're right; it was not linked to AI. It wasn't a cyberattack. It was basically a perfect storm of software that was updated four months earlier, and then it interacted with a new update and a shift in network traffic. You know, we have taken steps. We've published two reports in the last 10 days. We've worked to be transparent, showing minute by minute to the public what happened. We've taken nine steps already, as we laid out in our report. There's 13 more steps we're going to take. We've learned a lot. It was painful, especially for everybody who relies on us. We get it, and I think this combination is going to make us stronger going forward. It's just constantly what we have to do in an age of such complex technology.\" Following Microsoft's outage, there were several more outages, including a ground stop at airports across the country , raising questions about what AI's role is generally. This led Brennan to ask if he thinks we are applying AI tools to look for vulnerabilities and then doing these automated updates in such a way that, frankly, like our old infrastructure, just isn't prepared for, and Smith said: \"I think that is part of the really important question, and you can think about what's happening with all of these outages, at least in substantial part, as sort of AI ripple effects. What AI did earlier this year was basically make it much easier for people to find vulnerabilities in code, and then you can either use that knowledge to patch the code, or if you're a bad actor, you can use that knowledge to try to hack into systems. So what happened is we've set off, in effect, a race. Around the world, people who have technology are using these systems to identify the vulnerabilities and patch at a pace we have never seen before, to beat the bad actors so they can't use them to hack in, but especially when you…",
+   "url": "https://kyma.com/decision-politics/national-politics/2026/11/23/microsoft-president-on-email-outage-and-potential-data-center-tax/",
+   "published": "2026-11-23T17:58:44+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Microsoft Copilot"
+   ],
+   "id": "680d0b8ac6",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": true
+  },
+  "7da3f2f785": {
+   "source": "Beinsure",
+   "source_type": "rss",
+   "title": "CyberCube estimates Microsoft 365 outage insurance losses below $100 mn, up to $350 mn",
+   "summary": "CyberCube estimates that global cyber insured losses from the Microsoft 365 outage on November 12-14, 2026, will most likely total less than $100 mn, according to its preliminary catastrophe analysis. The cyber risk analytics company placed a conservative upper bound of $350 mn on potential losses, allowing for additional claims information that may emerge. CyberCube, which has nicknamed the incident “M364”, expects the event to produce insured losses equivalent to 0%-2% of global cyber insurance premiums. The assessment is consistent with the Level 2 (moderate) event classification issued to clients on November 13. Most modelled outcomes are concentrated toward the lower end of the estimated range, reflecting limited evidence of material financial disruption despite the outage’s geographical reach. Morningstar DBRS projects losses of $300 mn-$500 mn, while insurance broker Acrisure has estimated $700 mn. The disruption began on November 12 following a failure in Microsoft Exchange Online, the email infrastructure supporting Outlook. Users in more than 70 countries experienced service interruptions, while Exchange-dependent features in Microsoft Teams, SharePoint, Copilot and Microsoft’s security tools were also degraded. The core functions of those additional services largely remained operational. Microsoft attributed the incident to a technical problem introduced during a network capacity upgrade, rather than malicious cyber activity. Severe disruption lasted approximately 18 hours, while the overall incident continued for about 38 hours. The duration exceeded the eight- to 12-hour waiting periods commonly applied to contingent systems failure coverage, which can compensate businesses for interruption caused by non-malicious outages at external technology providers. Exceeding those waiting periods does not automatically trigger compensation. Coverage must extend to non-malicious failures at third-party providers, and policyholders must demonstrate qualifying business interruption losses. CyberCube identified several factors likely to restrict insured losses despite the incident’s duration. Reported impacts primarily involved interrupted communications, reduced productivity and inconvenience rather than demonstrable revenue losses. Alternative communication channels were widely available, allowing many businesses to continue operations while Exchange Online services were disrupted. The company also found no reported evidence of data corruption or…",
+   "url": "https://beinsure.com/news/cybercube-estimates-microsoft-365-outage-insurance-losses/",
+   "published": "2026-11-23T15:03:18+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Microsoft Copilot"
+   ],
+   "id": "7da3f2f785",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": true
+  },
+  "cb81e96627": {
+   "source": "Windows Central",
+   "source_type": "rss",
+   "title": "Microsoft's Outlook outage didn't take long to become phishing bait",
+   "summary": "Microsoft Outlook and several of the company's other services went down earlier this month. Millions of people were affected by the outage, and some were unable to receive emails for almost a full day. Scammers are aware of how widespread the outage was and are looking to take advantage of those affected. Microsoft issued a warning about a phishing campaign that tricks people into believing emails held during the outage need to be recovered. Recipients will receive an email claiming that emails have been held during a service disruption and will be deleted within 24 hours. Phishing scams often try to create a sense of urgency with false deadlines or \"expiring\" items. It's also normal for scammers to attach campaigns to trending news topics and tech stories. Microsoft's recent outage was one of the biggest IT events in recent memory, so many people who usually ignore tech likely saw coverage of it. Microsoft first shared its warning last week, but it has become more relevant now that the full incident report has been released . Despite the fact that many were unable to send or receive messages during the outage, Microsoft has confirmed that all emails from that time have since been delivered: \"No mail was lost, and all queued messages were successfully delivered. The incident did not impact customer data at rest,\" said Microsoft. That means there is no pile of held emails to be released. Of course, malicious actors would have no intention of helping you. The aim of phishing scams is often to trick people into handing over account credentials or other sensitive information. Microsoft also reminded users that legitimate Microsoft 365 service health notifications do not direct people to non-Microsoft websites to recover held emails. Microsoft has not found any evidence of credentials being captured through this specific phishing campaign. Microsoft says Defender blocks the malicious domains used in the campaign, while Defender for Office 365 blocks and quarantines the phishing emails. Millions of people heard about Microsoft's outage, but many never saw Microsoft's explanation of what happened. Microsoft says every delayed email was delivered , which means there is no reason to click a link claiming your messages are waiting to be recovered . Join us on Reddit at r/WindowsCentral to share your insights and discuss our latest news, reviews, and more. Sean Endicott is a News Writer at Windows Central, where he covers Windows 11, Surface hardware, Microsoft 365,…",
+   "url": "https://www.windowscentral.com/microsoft/microsoft-office/scammers-are-using-microsofts-massive-outlook-outage-as-phishing-bait",
+   "published": "2026-11-23T17:25:55+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "",
+   "entities": [],
+   "id": "cb81e96627",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": true
+  },
+  "d267d0f7b8": {
+   "source": "Crypto Briefing",
+   "source_type": "rss",
+   "title": "Microsoft faces backlash as a week of outages rattles US systems",
+   "summary": "A Microsoft 365 failure kicked off a string of unrelated breakdowns that grounded flights, slowed the NSA, and sent shoppers hunting for emergency supplies Mon 23 Nov 2026 · 13:07 EST · 3 min read Microsoft 365 went dark for nearly a full day in mid-November 2026. Then America’s air travel, banks, Apple services, and even a classified NSA network had their own bad days. Officials say none of it was connected. Consumers, judging by their shopping carts, were not entirely convinced. The run of failures started with Microsoft, which puts the company at the center of the public frustration. For millions of workers, the outage meant Outlook and Teams simply stopped being useful tools. The first and longest disruption hit Microsoft 365 on November 12. Services went down at 11:20 a.m. ET and did not recover until 11:10 a.m. ET the following day. The cause was a latent software defect tied to a network capacity upgrade. Put simply, a bug had been sitting quietly in the system until an upgrade meant to add room woke it up. One day later, the Federal Aviation Administration (FAA) imposed a nationwide ground stop on all departing flights. It ran from approximately 3:30 p.m. ET to 8:15 p.m. ET on November 13, a window of roughly four and three-quarter hours. The culprit there was aging telecom infrastructure that buckled while contractors were upgrading it. Approximately 12,462 flights were canceled as a result. Daily. Free. Join 34,000+ readers across crypto, finance, and policy. We respect your privacy. Unsubscribe anytime. The pattern continued on November 17. Major financial institutions, including JPMorgan Chase , ran into problems, as did Apple services. The same day, the National Security Agency’s classified network, NSANet, suffered a temporary degradation during routine maintenance. Mission-critical operations were not affected, but the intelligence community briefly joined the list of organizations having a rough week. Government officials moved quickly to tamp down speculation about a coordinated attack. Secretary of State Marco Rubio was among those who said there was no evidence tying the outages to cyberattacks or any malicious interference. US officials and political figures confirmed there was no link between the incidents at Microsoft, the FAA, the major banks, Apple, and the NSA. Each one, they said, came down to a separate technical failure. The public reaction tilted toward the dramatic. Consumers rushed to buy emergency supplies, treating the…",
+   "url": "https://cryptobriefing.com/microsoft-outage-backlash-us-systems-disrupted/",
+   "published": "2026-11-23T18:07:49+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "",
+   "entities": [],
+   "id": "d267d0f7b8",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": true
+  },
+  "93c14c606b": {
+   "source": "The National",
+   "source_type": "rss",
+   "title": "Nvidia surges 30% after Jensen Huang reinstated as CEO",
+   "summary": "Shares in Nvidia skyrocketed after the company reinstated Jensen Huang as chief executive on Monday, driving a broader rally on Wall Street. Nvidia soared more than 30 per cent during intraday trading, erasing almost all the losses it suffered after Mr Huang stepped down less than two weeks ago. The Nasdaq and S&P 500 jumped more than 7 and 5 per cent, respectively. The Dow Jones Industrial Average surged 1,344 points, or 2.8 per cent. \"We have every confidence in Jensen and look forward to working with him as he resumes his leadership of the company,\" the chairman of Nvidia's board of directors said in a statement. Earlier this month, Mr Huang resigned as Nvidia chief executive following multiple allegations of extramarital affairs, including one US officials suspect of being a spy for China . “I am honoured to return to Nvidia and lead one of the most consequential technology companies in the world at the beginning of a new industrial revolution,” Mr Huang said in a statement. Mr Huang's return is the latest twist in what has been a turbulent time for the AI industry. Disappointing earnings reports in October sparked fears about AI financing, while the Democrats' sweeping victory in the midterm elections added to fears of a slowdown in the data centre buildout. That selling pressure further intensified after Mr Huang's departure from Nvidia. A strong outlook from Nvidia's earnings last week failed to halt the downward momentum, as did Anthropic's IPO. Mr Huang's return to Nvidia pulled neoclouds CoreWeave and Nebius 23 per cent higher each. Semiconductor stocks also surged. Micron and Intel were up 19 and 12 per cent, respectively, while AMD gained 8 per cent. Other members of the Magnificent 7 joined in on the rally, with Tesla up more than 12 per cent, Alphabet and Meta up roughly 6 per cent, Amazon up nearly 4 per cent, Microsoft up 2.74 per cent and Apple up about 1.7 per cent. The affair inflamed concerns in Washington that China could have been given access to Nvidia's most advanced AI chips. The US has banned the sale of those chips to China, citing national security concerns. Nvidia's board of directors said it had voted unanimously to bring Mr Huang back as chief executive after a series of discussions with Mr Huang. The chip maker said it had also received input from US government officials and concluded Mr Huang's reinstatement “poses no national security risk”. US President Donald Trump said on social media Mr Huang poses no risk to US…",
+   "url": "https://www.thenationalnews.com/business/markets/2026/11/23/nvidia-shares-nasdaq-sp-500-djia/",
+   "published": "2026-11-23T15:35:34+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "AMD",
+    "Anthropic",
+    "Intel",
+    "NVIDIA"
+   ],
+   "id": "93c14c606b",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "b730abb373": {
+   "source": "Arab News",
+   "source_type": "rss",
+   "title": "Ukraine sinks Russian warship in Libya as conflict spreads beyond Europe",
+   "summary": "Ukraine sinks Russian warship in Libya as conflict spreads beyond Europe Arab News",
+   "url": "https://www.arabnews.com/middle-east/ukraine-sinks-russian-warship-in-libya-as-conflict-spreads-beyond-europe-3013640",
+   "published": "2026-11-23T17:20:42+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "b730abb373",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "c357f4b600": {
+   "source": "Arab News",
+   "source_type": "rss",
+   "title": "Saudi crown prince, Bulgaria PM discuss regional and international developments",
+   "summary": "Saudi crown prince, Bulgaria PM discuss regional and international developments Arab News",
+   "url": "https://www.arabnews.com/saudi-arabia/saudi-crown-prince-bulgaria-pm-discuss-regional-and-international-developments-3013564",
+   "published": "2026-11-22T13:39:23+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "c357f4b600",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "937b310e97": {
+   "source": "Wamda",
+   "source_type": "rss",
+   "title": "The 19-dirham question facing Morocco's consumer startups",
+   "summary": "The 19-dirham question facing Morocco's consumer startups Wamda",
+   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNd0NaRjZVQWtia0JiSG5xWHJwcWZzSUV1d1U0QldqMm1fN0NTWENQNUo3Y2lDWFdtdFFJajViZ3ZVM0tKMTZMRmVWb3BpTVdqTE1rVVcybUY3VTQzbmZkOWR2RHFFZ3ctdmhsZW5va2tRUDdtY29lMXlfSlVnM3J1b0ZUYXdRbkxt?oc=5",
+   "published": "2026-11-23T17:59:49+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "levant",
+   "entities": [],
+   "id": "937b310e97",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "8eca254ff7": {
+   "source": "وكالة الانباء الاردنية",
+   "source_type": "rss",
+   "title": "ASE Index Eases 0.11% to 3,989 Points - The Jordan News Agency",
+   "summary": "ASE Index Eases 0.11% to 3,989 Points - The Jordan News Agency وكالة الانباء الاردنية",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1pTFAtM0hid2hfb2ZwbXBzVkNjc0VDY0hfX1FOSHBzVlFTVUVfU1hkZE9Ma3E1cEFBNVVDS25FRjBqcDc5aUM0MlM4Z0tQNEdmWmdjdndBblo1dl9DdFc3ZUI1VG9mQ0NWbEtfSTl6X3U?oc=5",
+   "published": "2026-11-23T11:50:12+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "levant",
+   "entities": [],
+   "id": "8eca254ff7",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "26bef4936b": {
+   "source": "Ahram Online",
+   "source_type": "rss",
+   "title": "Egypt’s iScore develops AI credit scoring to reach borrowers without credit histories: CEO - Tech - Business",
+   "summary": "Egypt’s iScore develops AI credit scoring to reach borrowers without credit histories: CEO - Tech - Business Ahram Online",
+   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSXpQZktEc3ZvN3F4S1M1ZmhJLUV4RmhjbnJJbk5Tbm5BdWtrdVFhQzRwN25jSTRFVzRUekQ0Mmc3bXhYeTBRR2xUT1I1amdQcHM3bnp0RnhYU0dacWxabmRvLTJFYjcwVWZKd3VhUGNWZGhHMFpNblRBNkRGN182ckxfcnFlOFRzMnB3MFl6dXVNU2ltT29NSm1CVmpmdjNOWXdsNC1nSUh1aEZBOWlJTkJRTDlzeDVZNU9GVlhJdlc?oc=5",
+   "published": "2026-11-23T13:45:59+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "egypt",
+   "entities": [],
+   "id": "26bef4936b",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "76287d6de5": {
+   "source": "Daily Sabah",
+   "source_type": "rss",
+   "title": "CrowdStrike to acquire Zscaler in $44B deal as cyber threats grow | Daily Sabah",
+   "summary": "CrowdStrike to acquire Zscaler in $44B deal as cyber threats grow | Daily Sabah Daily Sabah",
+   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNb1JadlE5cl83TDh3bm9hTVY0cVhjRVBCcjJLMzU1TExERk9ZZUhQLWU3aUNWaWRnQzlxR2s2TnN2VVctMVczd19nUWpOaU1LaXppYWE1ZUZTdk1URmVWYUo4T1NiUXVKemxjOWRJX2tkVmxtUVdHVWZwRUdRM01KUkJGUkd2SGtiYVdwWi1hLTZqazhpX1VPQWlxb2tva1pKUENLNWFtTzVURExHT1UxaE130gGyAUFVX3lxTE1vUlp2UTlyXzdMOHdub2FNVjRxWGNFUEJyMkszNTVMTERGT1llSFAtZTdpQ1ZpZGdDOXFHazZOc3ZVVy0xVzN3X2dRak5pTUtpemlhYTVlRlN2TVRGZVZhSjhPU2JRdUp6bGM5ZElfa2RWbG1RV0dVZnBFR1EzTUpSQkZSR3ZIa2JhV3BaLWEtNmprOGlfVU9BaXFva29rWkpQQ0s1YW1PNVRETEdPVTFoTXc?oc=5",
+   "published": "2026-11-23T16:07:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "turkey",
+   "entities": [],
+   "id": "76287d6de5",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "0b335a3a4e": {
+   "source": "Yahoo Finance",
+   "source_type": "rss",
+   "title": "Anthropic stock whipsaws as Monday's tech rally takes off",
+   "summary": "Just two days after its public debut, the stock market's newest AI giant, Anthropic ( ANT ), looks to be missing out on Monday's major tech rally. The stock of the Claude model maker fell as much as 2% on Monday, trading below $88 as of 12:20 p.m. ET after earlier whipsawing. Meanwhile, Nvidia ( NVDA ) and other AI-linked stocks, including CoreWeave ( CRWV ), soared amid the broader tech rebound that followed Jensen Huang's reinstatement as Nvidia CEO. The move comes after Anthropic's stock sank 9% on Friday following a 17% gain on its IPO day last Thursday. At Monday's current price, the stock is up about 5% from its $83 IPO price. Read more: What investors should know about buying into Anthropic stock The choppy performance might reflect ordinary post IPO profit-taking and broader skepticism about Anthropic's valuation. Needham analysts said in a Sunday note that the most common concern they hear from investors is whether the company can sustain its enormous revenue growth next year. The company's fully diluted IPO valuation of about $1.5 trillion is roughly 40 times trailing sales. The stock also has a potential supply overhang. As much as 315 million shares held by insiders, roughly one-third of the stock the company issued in its IPO, became eligible for sale almost immediately, according to Anthropic's IPO paperwork. Needham added that given Anthropic's staggered schedule for permitting insider share sales could bring more shares to market in the first six months. Another key question hanging over the company is how credit markets will absorb the AI firm's massive spending needs. Anthropic has committed to spending about $900 billion on its computing and infrastructure needs for the next two decades , including $70 billion due over the next 12 months. The AI boom's ravenous capital needs have flooded the bond market this year, becoming a looming concern for investors. Investors expect the major rating agencies to assign a high-yield, or junk, rating to the company's debt, according to a Wall Street Journal report . No rating has yet been announced. Anthropic's credit rating is key for the wider AI ecosystem. Getting the higher investment-grade rating would help offer some relief to chip makers, including Nvidia and Broadcom ( AVGO ), that have guaranteed billions of dollars worth of microchips to customers that lease compute power to major model makers like Anthropic and rival OpenAI. ( OPAI.PVT ) The high-yield bond market also comes with…",
+   "url": "https://finance.yahoo.com/markets/stocks/article/anthropic-stock-whipsaws-as-mondays-tech-rally-takes-off-175022095.html",
+   "published": "2026-11-23T17:50:22+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "Broadcom",
+    "NVIDIA",
+    "OpenAI"
+   ],
+   "id": "0b335a3a4e",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "ce01030820": {
+   "source": "Business Insider",
+   "source_type": "rss",
+   "title": "Jensen Huang's return to Nvidia is bad news for Anthropic. Here's why.",
+   "summary": "Jensen Huang's return to Nvidia is bad news for Anthropic. Here's why. Business Insider",
+   "url": "https://www.businessinsider.com/jensen-huang-back-bad-news-for-anthropic-nvidia-ai-2026-11",
+   "published": "2026-11-23T18:10:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "NVIDIA"
+   ],
+   "id": "ce01030820",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "7a4164fadf": {
+   "source": "Fast Company",
+   "source_type": "rss",
+   "title": "After Anthropic's record-breaking debut on Wall Street, nonprofits prepare for a wave of AI philanthropy",
+   "summary": "After Anthropic's record-breaking debut on Wall Street, nonprofits prepare for a wave of AI philanthropy Fast Company",
+   "url": "https://www.fastcompany.com/91647467/after-anthropics-record-breaking-debut-wall-street-nonprofits-prepare-wave-ai-philanthropy",
+   "published": "2026-11-23T17:14:31+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "7a4164fadf",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "230d0af700": {
+   "source": "The Next Web",
+   "source_type": "rss",
+   "title": "DeepMind’s AI agents found cheaper quantum algorithms, and proved them",
+   "summary": "Google DeepMind and Google Quantum AI used teams of Gemini 4 agents to find more efficient quantum algorithms for fusion, chemistry and drug-design problems. Each result was proved correct in the Lean theorem prover, because the circuits are too large to test on today’s computers. Google DeepMind says teams of AI agents have found faster quantum algorithms for problems in fusion energy, chemistry and drug design. The agents, running on Gemini 4, proved each result correct with Lean, a tool that checks mathematical proofs, the lab said on Monday. The proofs matter because the circuits are too big to test. They need thousands of qubits, far beyond what classical computers can simulate or today’s quantum chips can run. The biggest gain came in a fusion problem. The agents cut the cost of a quantum calculation for laser-driven fusion fuel by 11.8 times, and its memory from 5,650 to 4,338 error-corrected qubits, DeepMind says. They also made a simulation of a light-sensitive molecule about eight times cheaper. For Cytochrome P450, an enzyme that breaks down most medicines, the cost fell 2.5 times. A widely used maths routine became more than 290 times cheaper. Separate agent teams worked on each problem and shared verified ideas in a common notebook. Every four hours, they met in a virtual conference to debate and compare approaches. The work, with Google Quantum AI, used Google’s most powerful model, Gemini 4 Carbon . An outside checker re-ran every proof so agents could not game the tests, according to the paper. That risk is real: in a DeepMind experiment in September, 14% of agents cheated on Lean maths problems. DeepMind cautions that the simulations would still need far more resources than the first error-corrected quantum computers will offer. It has open-sourced its Lean library and results, building on its 2024 work to trim quantum circuits with AlphaTensor-Quantum. Earlier this month, its agents also proved Signal’s encryption code correct, and Google Quantum AI tested a key quantum effect on up to 105 qubits . Get the most important tech news in your inbox each week. Get the most important tech news in your inbox each week.",
+   "url": "https://thenextweb.com/news/google-deepmind-gemini-agents-quantum-algorithms-lean",
+   "published": "2026-11-23T18:33:17+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Google DeepMind"
+   ],
+   "id": "230d0af700",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "d144c09f4c": {
+   "source": "Microsoft",
+   "source_type": "rss",
+   "title": "Radiology at the center of care: Making room for clinical judgment",
+   "summary": "Radiology at the center of care: Making room for clinical judgment Microsoft",
+   "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQZjJzVWNndXdkdVhrejNUQTU5dmV5UnMyLW9UOWM2REdiMzUxdEgxQUhjSGw0YzZqXzl6RFNfYl81Z0tQaEFLLUxsOVBIWG1EOUpKeUJWc0N2WlU0OVo5Q0xSa3F1VVpTWFNvRjFDa0dnV01ZVzlYM0pNYXd5eEhMcUwxcmZpa1FiMk80dGhZXzVhbWFUbFlJNHlfcEF4Unk3b09jdlFEeV9ZVEVHeU9FTDh5MVpJS2tUcFBEdVdGb1ByOW5CdzFpQmxQQ1EtTUxxTEMzVy1Rc0w?oc=5",
+   "published": "2026-11-23T16:00:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Copilot Studio",
+    "Microsoft Copilot"
+   ],
+   "id": "d144c09f4c",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "657ad28ddd": {
+   "source": "The American Bazaar",
+   "source_type": "rss",
+   "title": "‘Superintelligence is arriving’: Meta AI chief warns of potential loss of human control",
+   "summary": "‘Superintelligence is arriving’: Meta AI chief warns of potential loss of human control The American Bazaar",
+   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPdkFBWHFWckhVOFVtTGlWM2xDUTM5WkdERVJWR05xS0ZmcGk2S3dHeVc5R3lhOXoycHp3YVRBbmNueUlaOXB4TG1tLUlDRkg0U25Ib2FLN3FRRU5xNEFqSGwycmlkMTB5WXY5NllmV2xkWWhFSnF4RktzSE9ReWZlM2VHS2lUbkUyejRDTTZ2eFJURHZjWUxPRHVsbDZLTkROSW1aVk9XUUhPZw?oc=5",
+   "published": "2026-11-23T17:50:52+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Meta AI"
+   ],
+   "id": "657ad28ddd",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": true
+  },
+  "332b45b13f": {
+   "source": "WUSA9",
+   "source_type": "rss",
+   "title": "Virginia Attorney General suing SpaceX, says AI tool allows users to generate videos and images of child sex abuse",
+   "summary": "Virginia Attorney General suing SpaceX, says AI tool allows users to generate videos and images of child sex abuse WUSA9",
+   "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxNU1FhZzkwWmRKOWNNSy1aT1lpVmllbUZscER4SjYyeWc4NTRCMHNPcnlKNnd6UnowTWUtampPc1BwYTNDcklsMnNNeWd5dlRHQkFnY1g3U1hGVXNYVkRIc2NGNUdONHRzRk1yWjc0VXNyRkpKMUlRWElQanpYR1NzMGZ0cDJlTEE4cC1Fa0VhaVdCM0V4Z2k1QzhMajRmZ28tSjFDQTFFOTVySU9QZWVzUFNVWDNxY3cxX1ZXdk9YOHppak9mRmdPSF9nRk5Ha1laYk4wQTNhMDdxUXpNY1czZDNOS3d3Q3JOSTRvUmdHS0NqMlNEWVBJY1lEbTFMVTgzMGVOS0dXWQ?oc=5",
+   "published": "2026-11-23T15:23:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "xAI"
+   ],
+   "id": "332b45b13f",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "05961843a9": {
+   "source": "Northwest Arkansas Democrat-Gazette",
+   "source_type": "rss",
+   "title": "Judge orders consolidation of pretrial activity in cases over AI-generated sexually explicit images of children",
+   "summary": "Judge orders consolidation of pretrial activity in cases over AI-generated sexually explicit images of children Northwest Arkansas Democrat-Gazette",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNUzZjM3lReHowaXM5UUdKMUc2RXYzVVRUckpDb3JiZzZRVmxrWDdvYi1yNzYwUk11alZ1X0tnOXlLVXV0RTN5Y04yVHMtMEtyUG5hSVhVNDI5Z19YRTFLclhlQXVwNzJGRzRBbmFOQ3U0VU1aNXFkOU5xcGxMTVdYbEk2UjljaVVRek5qN1FULXZ0YVBYZFE?oc=5",
+   "published": "2026-11-23T17:55:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "xAI"
+   ],
+   "id": "05961843a9",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "2cb1857d10": {
+   "source": "WHBL News",
+   "source_type": "rss",
+   "title": "Virginia, Oregon sue Musk’s SpaceX over Grok AI’s creation of child sexual abuse images",
+   "summary": "Virginia, Oregon sue Musk’s SpaceX over Grok AI’s creation of child sexual abuse images WHBL News",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOcDhQbV9pbmRGWWpabWpXbzNsbXZGeDU3WEY3YnNyOFlPLTA4MnY0UnZIc1R4d3lTc0pSU2RjZ1ZPYVhxd3lNczFmcXhMN2RVcTVuZEZYZV9oLUlDQWtYejIyNDhHWDBKR2E3MkRLSF8yRmFMQVhqX2M4UnY2TWVFRlducnkzbUo3Vy1UZmswbTFkSGdycEVRRldETVU2X1NRdXFvZ2JIc1FYQzhldFZPdGhGQXZoZnAzbHc2bTN5eWtFdw?oc=5",
+   "published": "2026-11-23T16:44:35+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "xAI"
+   ],
+   "id": "2cb1857d10",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": true
+  },
+  "49e07aa914": {
+   "source": "AI Magazine",
+   "source_type": "rss",
+   "title": "Black Forest Labs: FLUX 3 Takes Visual AI into Robotics",
+   "summary": "Black Forest Labs: FLUX 3 Takes Visual AI into Robotics AI Magazine",
+   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQN0w4Mk9jYVQzMG04TVduWWFRZmR2R2xnU0htczhrdlFwZXpfdEJyYkJNZ0JUVXVQdTE0V3hmbDJvdlo5dlo3aS1HTUsyc1BpRlk0a0R6cm82bWdkMzE3b2pxenBkNDJSVWRMZk5JaFFwMjQ3dXNONkk4ZU1sNkNzM2pZRkY1VE1uakE?oc=5",
+   "published": "2026-11-23T17:57:07+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "eu",
+   "entities": [
+    "Black Forest Labs"
+   ],
+   "id": "49e07aa914",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "4798d69e2f": {
+   "source": "TradingView",
+   "source_type": "rss",
+   "title": "Zhihu Says Fund Invests In Hangzhou Deepseek Artificial Intelligence Basic Technology Research",
+   "summary": "Zhihu Says Fund Invests In Hangzhou Deepseek Artificial Intelligence Basic Technology Research TradingView",
+   "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNeGJUZ25ZemwySm9pN3dZX04yMDBmemhuSndmSl95TW5JTFB0TkFaUTNoZmtmUlhuOGpSRGFCdlFiSUw4UGxCWUFaZU9VamYyTnFxaXJWaXM1NXV5Vm9Uc3hEYlpDdGVodkFCaUs0Tlhfb0VVSGVROTY3eEpGN1RsVWVXdjB4cGhBV3d2X241eURfTzVQbmJqMXpEdlI5cGNhZWJnaE5HLVJpdEhhc1hON2h1SjNKUGdXN0N1SXdQa3pteEhLU3cxZUh1c0IxcmtMUFFEdmZPd0FvR3JmQndtNFYxQ2tfdXZ2UUQ4T21jckZqbnZ4dDA4?oc=5",
+   "published": "2026-11-23T17:24:32+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "DeepSeek"
+   ],
+   "id": "4798d69e2f",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "680e76353a": {
+   "source": "Digg",
+   "source_type": "rss",
+   "title": "Nvidia introduced Alibaba to Alice Huang in 2022, The Information reports",
+   "summary": "Nvidia introduced Alibaba to Alice Huang in 2022, The Information reports Digg",
+   "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE4tb2VvZEVlN0FSNS1PS0cxeGJUcmVla1NtdnBXLThiUHNUdnpKY3VncjQ2S2M1d3ZIWEs0bkx0SXQ2SjZy?oc=5",
+   "published": "2026-11-23T09:31:35+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "680e76353a",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "1d915d0d31": {
+   "source": "HousingWire",
+   "source_type": "rss",
+   "title": "Human review remains paramount for AI mortgage underwriting",
+   "summary": "Human review remains paramount for AI mortgage underwriting HousingWire",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9OS2pmelZCWmNBMmp5U0pUSDRVbWwxbDF2aURyM0lIME1mOVp0c1d1WmdIamhpVTBZR1RyUGhPSU9qcnpDRXota0RSOGp4eWhLclRDRmFUckRQZUJaOUJmTno4TUtXS0ZPTlkxTA?oc=5",
+   "published": "2026-11-23T18:11:20+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "Humain"
+   ],
+   "id": "1d915d0d31",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "b7d10be7b9": {
+   "source": "World Meteorological Organization WMO",
+   "source_type": "rss",
+   "title": "AIM for Scale and partners expand AI weather forecasting training to strengthen national weather services for farmers",
+   "summary": "AIM for Scale and partners expand AI weather forecasting training to strengthen national weather services for farmers World Meteorological Organization WMO",
+   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOY3RrWGhTa2o3UUlUOS14a09fSWhZM3hUUmc4WFRBNXd4ajZwOFQ3OEtadEUwa0FpR1pIUFJPZlRjMUZPeXF4azJjcGxJcW9UYTBDYWZSY3l1aGNCcVFNNDBDaXNzbXdmMHFvWDBoWVFKdzA0VEMyR2Y1cDVDbl9TN3RLckMtbVJ4b3VteXdkME4tRHdPV0xqRGRHR2cwYkVKR2RSWElLb05JYVY0UzVEUWpWTTZZY2VRZGdmZzljX0lMRk9jRVUxalFYbWdQWE8t?oc=5",
+   "published": "2026-11-23T16:48:51+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "MBZUAI"
+   ],
+   "id": "b7d10be7b9",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "b953515a29": {
+   "source": "Hostinger",
+   "source_type": "rss",
+   "title": "How to install CyberPanel on Linux",
+   "summary": "How to install CyberPanel on Linux Hostinger",
+   "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5JUERjc2NuaHdNZkpweGM1OU1OdVlaVldBR1RsMUowcHVMR2MxcFlkcG5fM1VuSVl1UkxwNDhaa3R1UENkT2lFRzl1UDJCdG5HM1N3Ql9mcWpMQUlpbXVtWnNuU1pFMHJfLW9QUmMweWhQXzg?oc=5",
+   "published": "2026-11-23T17:54:26+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "OpenClaw"
+   ],
+   "id": "b953515a29",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "3545cd2da7": {
+   "source": "Hostinger",
+   "source_type": "rss",
+   "title": "7 Buzz app use cases for development and project teams",
+   "summary": "7 Buzz app use cases for development and project teams Hostinger",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBZa21jRlJnQnFJR1EySjVMWTJic292Z0tLMGNPWHMxNTF3OGo1eHRlVWU2YjA3RXhiS0xRUDdoaTJVM05Xd2NMT0RuTXRqaUJ0WGZoX0JYM2otYk5QUU9jRFJqZ2g?oc=5",
+   "published": "2026-11-23T17:54:37+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "OpenClaw"
+   ],
+   "id": "3545cd2da7",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "975ef7e1bd": {
+   "source": "Yahoo Finance",
+   "source_type": "rss",
+   "title": "ZoomInfo Launches monday CRM Integration Powered by GTM.AI",
+   "summary": "ZoomInfo Launches monday CRM Integration Powered by GTM.AI Yahoo Finance",
+   "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxObnZTTkhyR2tYb2huMk9JV3NTUG1zN0pGQzBnaERRYlJCWjA5czA0eDU2VFgwYnNXMTFVbkpYYkJWZlp1dXNpVlJ4bmhqNU5jbHM4QXZ4a1VqY2FyZHZtVmRralMzUkViTnliVm5md1ozNzl5dGZHWGtUY3BHYUZkRzBiMzJxdDF5c3ZDZy11eE9XX0J3MzQtX1k4b0FMS0dqb1Zhc2N3TQ?oc=5",
+   "published": "2026-11-23T17:28:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "Copilot Studio",
+    "n8n"
+   ],
+   "id": "975ef7e1bd",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "3416071fd4": {
+   "source": "marketscreener.com",
+   "source_type": "rss",
+   "title": "Attentive Announces Launch of Attentive Model Context Protocol on Snowflake Marketplace",
+   "summary": "Attentive Announces Launch of Attentive Model Context Protocol on Snowflake Marketplace marketscreener.com",
+   "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPX2VrbU9wUlBPcEVxb0VJN2poX1E3S2w1dVhJMWVpMnNhalB5N3dLc2Rkc09KM1ZRX2pZVUxKYnZDUlZ1RVRyYmQ2UFhCX0lNS1pldWE0bm03YkJqdHNRTW5QQ1lPRnYtSy1RZ0ZYaGRfdFVoU3ZSbmw1RVVvWVJEZDVmeFg4UUYwUWUwYUNraDVVdWtxTTFiSUhXWnhtRW9SVGpiQUFkUFJQSUtsOFc2aFVUMF9ZOFdqMmhvdF9kYXNZQkdCUDVkZEpsU2dwWTZwQkVYRWhVSQ?oc=5",
+   "published": "2026-11-23T18:36:25+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "Model Context Protocol"
+   ],
+   "id": "3416071fd4",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "c452a5d664": {
+   "source": "IT Brief UK",
+   "source_type": "rss",
+   "title": "Starburst launches Context Studio for enterprise AI agents",
+   "summary": "Starburst launches Context Studio for enterprise AI agents IT Brief UK",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQelN6NG9hNi1SQS1Ka29LZjRxcExtWXlVS3BrZDNxb2pXb2l0QmVhTzNEdmJOR1lLQlNjZm1WbXRTTHNHdWhyUHVzTXpHdTFLSFRoR2tQUERyRXQ0bHNhYTZzakRFb3VCNFRKanhPY2VreEpFRnNVbm1TeElqU3AyU09MTFpyTVFGblBWNG80bw?oc=5",
+   "published": "2026-11-23T17:15:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "Model Context Protocol"
+   ],
+   "id": "c452a5d664",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "5b462ac24f": {
+   "source": "The AI Economy | Ken Yeung",
+   "source_type": "rss",
+   "title": "AWS's Strands Decider v2 Gets Smarter at Every Size and More Honest About Its Doubts",
+   "summary": "AWS's Strands Decider v2 Gets Smarter at Every Size and More Honest About Its Doubts The AI Economy | Ken Yeung",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9YTUthRnRCR3psR21pMldIVEpFdWFOcEVuZ2xXRVNqWVVXYzVYMFBndDhGbU02QkNzbjV3cWMwdEdvV2RZaTdVNElYVkRyMWgzeHk3eDRvR1d0OXlPZ3o0c0w4eUJrY2lEQ3c?oc=5",
+   "published": "2026-11-23T18:02:43+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "OpenAI Codex"
+   ],
+   "id": "5b462ac24f",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "4d9d1ca36e": {
+   "source": "StartupHub.ai",
+   "source_type": "rss",
+   "title": "Franklin Templeton automates equity research",
+   "summary": "Franklin Templeton automates equity research StartupHub.ai",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPc3k2aFFGSklZYnN2RG5aUTFGcjdlb0pzSDBoOTlRTXBoWHR6U0VMaV9JajQwVTNITnFYMlBZZ0JVbV9lTmxZLTJaMzdNN05hV29XdTBpZTEzYUhfaTJTcXgydEsxbkgyYkxzY1E5VkdSdUgwNmQxTHM0VXl0LTBLeGNsNU80U2RVNTlqOWEwdmxNQjdqc0FqeWQ5N2x5SDJVRjdiS0lPQ0lVbms?oc=5",
+   "published": "2026-11-23T15:52:41+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "OpenAI Codex"
+   ],
+   "id": "4d9d1ca36e",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "07bee91449": {
+   "source": "SecurityBrief New Zealand",
+   "source_type": "rss",
+   "title": "Codenotary expands AgentMon Live to track AI coders",
+   "summary": "Codenotary expands AgentMon Live to track AI coders SecurityBrief New Zealand",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPY3l4NkFKbWlWemVMak5oX2hvLUd6OFpYSDBDMjBvVElKQXZRMkw4djZ1dGtrWnFHbEdJSEhWWXlZa19kTzNzTTk4S3U2SFVyYkJkTDVhdUxBNG9BR1ZqY3hENkxnMER3MXlYcFZUekhLM3NIcVdmbzFvNEpmSHZCZ3R6RUNGTUJzWEpmUmdB?oc=5",
+   "published": "2026-11-23T16:30:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "OpenAI Codex"
+   ],
+   "id": "07bee91449",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": true
+  },
+  "eb56104f5f": {
+   "source": "Cloud Wars",
+   "source_type": "rss",
+   "title": "Thomas Kurian Explains AI Impact on Explosive Google Cloud Growth",
+   "summary": "Thomas Kurian Explains AI Impact on Explosive Google Cloud Growth Cloud Wars",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNOVRBSkRsUnBqVDM5MTlSckNtVUpQWFZBeXFOdTlabU5RSnc1Q19ENDAycmhJeWNablNWSWVraVZLWnpJdVZzTFFSYzdjckJiNVlVUEgyLXhvbjZIT1g5NEJEMGprWEhISUM0a0NBNnFUZmZ0QTA0MENSMW50RVZJUXJIUUluUXpTdW9hc01TaHp2dXMycFE?oc=5",
+   "published": "2026-11-23T16:00:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "Gemini Agent"
+   ],
+   "id": "eb56104f5f",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "eaf8684c79": {
+   "source": "Gadget Review",
+   "source_type": "rss",
+   "title": "Genspark’s SecondBrain VoicePad Wants to Be Your AI Desk Remote",
+   "summary": "Genspark’s SecondBrain VoicePad Wants to Be Your AI Desk Remote Gadget Review",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPeUVrRUtGWHVNRlJ0b0ZKZXQwR0w5SWk5ZUp0NlBsWDVVQmRnalRLY3B4ZnFPaE9tZG9NNWR3dTY5dnBtMk1lUlFRcW45X1NOS0FvTTFzRElNX2VQYk5IS19FQzhHdUZTZmx5QVdscHJ0S2Fzd2ItbEg1N1VXXzJKMkhWcTJ5RTM1UUJtaWxudTVYUDJPb3c?oc=5",
+   "published": "2026-11-23T18:16:47+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "Genspark"
+   ],
+   "id": "eaf8684c79",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "015edc5351": {
+   "source": "TIKR.com",
+   "source_type": "rss",
+   "title": "Benioff Says “226K Custom Agents” Now Run on Slack. Salesforce Has a New Answer to the SaaSpocalypse",
+   "summary": "Benioff Says “226K Custom Agents” Now Run on Slack. Salesforce Has a New Answer to the SaaSpocalypse TIKR.com",
+   "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQcmwtM0FPYlRQc21GY0oxVFR2RmJWNWk2YVlPT0d0Tzk1Z2RVWTlDYWV3MXViZk9rbmVWSmNSdFV0cVpXd0phcS1iRnNLbGd0UDZlTi1UdXJCMTBsOHpKUUpRQktleS1kY0dyU0tuZHpzbTEtSWlOaGtCeUUwR0VWX3piSDZScXV0RjRPWGRaOUQwd3pLaTJ4TUNjR1p5dS1YU0VqMGN1T2xzVnRFZkh0N1pYNTNFTHktMnNzNTZnMjVRM1g2b2lQZ3dDWmJZMnlsSHc?oc=5",
+   "published": "2026-11-23T16:41:15+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "enterprise",
+   "entities": [
+    "Salesforce Agentforce"
+   ],
+   "id": "015edc5351",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "e368e3e6cf": {
+   "source": "BBC",
+   "source_type": "rss",
+   "title": "The rise and fall and rise again of Jensen Huang",
+   "summary": "The rise and fall and rise again of Jensen Huang BBC",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4zaVM2dWhvNUdNS05PbVZMX1ZFYkplTXNoS0RzcVh2bWl2YW16djlHVDBsYVBVcHFzOXJHTGQwdHJ1WWZwMGhjVWpmVV9jcWszbGYzWGtLS093c1E?oc=5",
+   "published": "2026-11-23T15:49:52+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "e368e3e6cf",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "395ef544b1": {
+   "source": "The Motley Fool",
+   "source_type": "rss",
+   "title": "Advanced Micro Devices vs. Dell Technologies: Comparing Revenue Trends Amid the Artificial Intelligence Boom",
+   "summary": "Advanced Micro Devices vs. Dell Technologies: Comparing Revenue Trends Amid the Artificial Intelligence Boom The Motley Fool",
+   "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOZllYTzBZeV9VWHdORkZYcW1uLWoxZjVYY0QyRHRiOHplOF96ZWozNzlZNW12OTFweFJTcWw2OHdCRzl4NHlvSEF3MUx4Z1RHMFo4ZmRqRXlDdjhXNnphcjRrc0dBYnBkYmM0NE12WElmX0dublVLMFBLR3kxNzh1QjFPakwtVDNndnUteDlic2dYSUVWaG5iSEFMdHh4YXlSMzNsZ0RGSE9kZjhLUU4zVnpwa2F2TjZWUmdRZFlFekRKZVFMSEFDS2hwM3NkZFVVM1NmRGlxWXVXZi1TbmFJVkpmcThDNmJZUGhZ?oc=5",
+   "published": "2026-11-23T17:02:29+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "AMD"
+   ],
+   "id": "395ef544b1",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "76f7007137": {
+   "source": "Digg",
+   "source_type": "rss",
+   "title": "Unsloth Desktop gives AMD’s XDNA 2 NPU agent chores—not the whole job",
+   "summary": "Unsloth Desktop gives AMD’s XDNA 2 NPU agent chores—not the whole job Digg",
+   "url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE9MemNWNWlwSW5LQUNNa01OYmExLUU4c1NERVpmeWpqcE8xM2JwQkZxQkFLcWI5dlZsUGZLNXpvOTBndw?oc=5",
+   "published": "2026-11-23T15:31:35+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "AMD"
+   ],
+   "id": "76f7007137",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "3488953292": {
+   "source": "TIKR.com",
+   "source_type": "rss",
+   "title": "Arm Holdings Has Tumbled Since June: Why Piper Sandler Still Sees 77% Upside",
+   "summary": "Arm Holdings Has Tumbled Since June: Why Piper Sandler Still Sees 77% Upside TIKR.com",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPMl9WLXA2LVAwVzRacVEtN2lhbGpDX3ZxV2JiVVk2TWUwRFdwTXJrNE5ycDJBZ19GenhISDd1bDZHMDJTRDdjc1JuUTg3bWVINHlZUWdPNlNpM05GSU9oN1REcDJjWUYySk1HMjF0RWxJOU5NTlBSQVBRdmU1clFpU3lXU3JITTBMdjA5ajlUZWcweFZ0dUZfeS1CM2lEa2dmMVdHbUJjSFctSkJvakUtLUhHSQ?oc=5",
+   "published": "2026-11-23T15:56:15+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Arm"
+   ],
+   "id": "3488953292",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "aa97658466": {
+   "source": "Nasdaq",
+   "source_type": "rss",
+   "title": "Nasdaq-100® Inside the Index: Broadcom (AVGO)",
+   "summary": "Nasdaq-100® Inside the Index: Broadcom (AVGO) Nasdaq",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE42NTd2Z1lSbmJiODBRalZBUm02STNtTG94clB2WkE3Z3VsSkxqRDVfbHNrU3BBYmxrdk1IWnhvRXo4TlZ5T2xfaTVCVnhTM3NMRWZXTW05WWJFSm9DVk5jckhwWHRwVGFXOG1Wb3pIcmlJSW1sM200?oc=5",
+   "published": "2026-11-23T12:16:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Broadcom"
+   ],
+   "id": "aa97658466",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "5c3c42442e": {
+   "source": "24/7 Wall St.",
+   "source_type": "rss",
+   "title": "All Broadcom Has to Do is Deliver Modestly to Prove Stanley Druckenmiller Wrong and Hit $500 in 2027",
+   "summary": "All Broadcom Has to Do is Deliver Modestly to Prove Stanley Druckenmiller Wrong and Hit $500 in 2027 24/7 Wall St.",
+   "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQUVFoclRSSm9GNGhzM01FWU9HTUg5VkdTTlF1ZmUxZURFT054c3Y2bElrVnA3UHJVVm96c1hvckdHTUxGdVpiSF81N09IS2w3VEtFVFRkRVNmeFA3VVdURzFnYlJ4U01aODFwTU5xSk5jRzRlUnhzbTdISjd1ZnpzNjQyZ2lyRmx3UWRGSnU4b3NoT1dBV2ZSX050c2RiMkE2SWpXTW9zN1NKR0c5UGt4eWJhQ3hSaGJhMHV0eThXM0wycGxHME5oMGwxX3lhV2JKSVpIM2g2XzltMmM?oc=5",
+   "published": "2026-11-23T17:45:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Broadcom"
+   ],
+   "id": "5c3c42442e",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "f2936797e4": {
+   "source": "Investing.com",
+   "source_type": "rss",
+   "title": "Credo Technology’s AI rebound potential versus Broadcom",
+   "summary": "Credo Technology’s AI rebound potential versus Broadcom Investing.com",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNUHRwdk9rcXVHWU1HalJaZDN3Nnl6akd1RGI2NkoxQlc3VmtORDJYbmd6NmE5NU9sTzRyQWFybUFYQWhRQ2JkYWljNVpwU2JrdHN0LVByUWNoZTUwVmJFcXlleEFxcWZUZzd3NEZFdGlqaWJDY1ZwMGFEVzhMY1VxaEFXdVV4WEFBVS1VRnk1bDBLalNjdmlVY2V1UmhJR1B0UFpUS2NTUkRlWktOcGEwZjRLWWFaSVU?oc=5",
+   "published": "2026-11-23T18:33:45+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Broadcom"
+   ],
+   "id": "f2936797e4",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "65657c5982": {
+   "source": "TradingView",
+   "source_type": "rss",
+   "title": "Broadcom Stocks Rise 2.76% but Lag Chip Rally After Google TPU Cut Report",
+   "summary": "Broadcom Stocks Rise 2.76% but Lag Chip Rally After Google TPU Cut Report TradingView",
+   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOdnliNkhYTWlqWEd2eTZTcEl4R1RRMlZ0NlJJU25iMU9tbzRBRHFBeG1TVXlwd0dvRGVNZmFBZjgwQk5UdDdYR3BDdl9PeXBnM2l5dS1PdHJBZFFBVjJCU01FNGk0TG5tc1ZISW1LZDFGWlpyU1p6eUxJQWYyTnRiS2hoRXNOd0c4R2xCWXVMeWpEVE5SY2hMTmFaUDZrMVhxUXBLUnBubDZ1WWluWFNpUnMydTF6ejd1ejJ5YUdjeUhRSlpxWXJVLWdnTVI?oc=5",
+   "published": "2026-11-23T17:55:07+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Broadcom",
+    "Google TPU"
+   ],
+   "id": "65657c5982",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "0320b63773": {
+   "source": "The Globe and Mail",
+   "source_type": "rss",
+   "title": "Why Did Cerebras Stock Soar Today?",
+   "summary": "Why Did Cerebras Stock Soar Today? The Globe and Mail",
+   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOSUlsX0FPeHc2U0hPYkUxTkJlSG9CYmJ6LUtHc3FlN0c5NEVkMjdSREZJUGRjRXpadnpNXzZXUlFld21CVjF4LXVrWjNHTDNJUWd0RUpTUVdxVEZtTnYzRVNBbi1peV9Ib2JFUmJzemltYm9rcnJQZ2FxeC1lQ0p5OTRzU2RLcEZfeHdMdEF6ODlxeXVPU3RUbk1lZ0NrUFcwX1JpU25GaDBBQjNTMEZGdHdVWC1QRFktY2dWUA?oc=5",
+   "published": "2026-11-23T17:37:20+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Cerebras"
+   ],
+   "id": "0320b63773",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "c6cde79ce6": {
+   "source": "kalkine.ca",
+   "source_type": "rss",
+   "title": "What Lifted Cerebras Systems (NASDAQ:CBRS) 20.03% Alongside a Reported Buy Rating?",
+   "summary": "What Lifted Cerebras Systems (NASDAQ:CBRS) 20.03% Alongside a Reported Buy Rating? kalkine.ca",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNaGZNaHpBd1pGMl9WZFotZ2NOVFFKdlAyc0x2Q0k0b1JwbjdkNVE1Y1RhcnBMYUFHZjI2T01xWVlnMXNJR1ZOUUJjRHo0aEY2U1FZV3o4S0ZlUW8wdWx2V2lsOFVQVFNyR3NLX3Vub2szcnIxT1NDbHJNYk9OZzc1WVJXQlFDeklUQmFYV2JNc1VYdzZtelI4VVRyY2dOUGJISU1qaU5tR25pT0RMejRCdjhQc2szbkF6dG1Sd05uRUF1dw?oc=5",
+   "published": "2026-11-23T17:39:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Cerebras"
+   ],
+   "id": "c6cde79ce6",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "abdd828bf9": {
+   "source": "Investing.com",
+   "source_type": "rss",
+   "title": "Rosenblatt maintains Cerebras Systems stock rating on inference tech",
+   "summary": "Rosenblatt maintains Cerebras Systems stock rating on inference tech Investing.com",
+   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOdXpXRWprZGw4SGdEZ1g1bFZSMFF3Yk5IY0FhbGNTR3RVd1o1V2Vxc1VmUjRqeDFwZ0VZVGFUQy03bkkzOFp0UU5JOUYwZEMxbG56SHQ1aWljVGJoRFZNUUdqaW9UN2xZV2E3Uk56akloSENlZTdkbjhHLXJpa2pFRGY1eFBNWXRfOU93NGUwRjN6LXJ6TExuNktzT0ZZWHlSMUw1Vkl5SVRXNEt0U0JSUEoxUDFPNE9adk1WLUtVcElnYlRQTDJ3?oc=5",
+   "published": "2026-11-23T13:02:34+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Cerebras"
+   ],
+   "id": "abdd828bf9",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "1532f10b3f": {
+   "source": "Firstpost",
+   "source_type": "rss",
+   "title": "‘Government did not pay Sarvam directly’: AI startup defends hosting Chinese models",
+   "summary": "‘Government did not pay Sarvam directly’: AI startup defends hosting Chinese models Firstpost",
+   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbDhKZmkyS2w2bml6ZDhJT0t0VDNVVlQ3YkltdDg1Z0RUNmNIbHppZnRfa0Z4NThZXzlFLVF2b1huNGdhbnBDbDlsSjItUFZoOWZUX0FYNEhJOF9pNjRJMlQzQmJtcFNxYjVfM1dtTWpMYk1VYUdXSGtDS2t0bEdFd0pMZzBrTnRFU0NUaDFNS0ZaZVZ2NUpESXJyWmN1cFFFcmJYQ1M5NVhjd9IBrwFBVV95cUxPTzZnSlBhX2g5R1dodkpjOE51cFk2aUF1THRWNXJIY3Qta2JjeEt0T3FDQkVfRkp1U2lQbFVTX3l3cFloV05WdFhQT3FGV0RmWGFkOEs1RVRkaFpoYjRCV205Sk9qbWhmX3pNYlpETkVMUVM2aHY3c3ZzQktQMTNZeDVPS0dUdndUWE45YUZHd2U5cXQtck92Yk9FMm51ck9nM052cU1memxyV05kVUVv?oc=5",
+   "published": "2026-11-23T09:01:20+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Baseten",
+    "Fireworks AI"
+   ],
+   "id": "1532f10b3f",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
+  },
+  "66e58ef9b9": {
+   "source": "Howl.Link",
+   "source_type": "rss",
+   "title": "Canary Prompts Expose AI Supply Chain Leaks as OpenRouter Drops Three Providers and Strips 125 ZDR Endpoints + Video",
+   "summary": "Canary Prompts Expose AI Supply Chain Leaks as OpenRouter Drops Three Providers and Strips 125 ZDR Endpoints + Video Howl.Link",
+   "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE9sb1FmNmJwSlo2VHRKX2ZpUHEyUFQzX3ZMUG80UHVOSHNHcWRNSUlxMGRxT3owN0Y0MjNn?oc=5",
+   "published": "2026-11-22T16:01:22+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "OpenRouter"
+   ],
+   "id": "66e58ef9b9",
+   "first_seen": "2026-11-23T18:42+00:00",
+   "flagged": false
   }
  },
  "runs": [
-  {
-   "at": "2026-11-18T20:42+00:00",
-   "found": 495,
-   "new": 52,
-   "flagged": 2
-  },
   {
    "at": "2026-11-18T22:42+00:00",
    "found": 496,
@@ -93937,6 +94955,12 @@
    "found": 475,
    "new": 42,
    "flagged": 1
+  },
+  {
+   "at": "2026-11-23T18:42+00:00",
+   "found": 479,
+   "new": 49,
+   "flagged": 6
   }
  ]
 }
