@@ -1,0 +1,22 @@
+name: pvc-samples
+# The founder's ElevenLabs training recordings: measure, clean, and (upload) send the cleaned sample to HeyGen.
+# Audio never leaves the runner except to HeyGen; nothing is committed or published.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [analyze, upload]
+        default: analyze
+permissions:
+  contents: read
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && pip install -q requests
+      - env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
+        run: python scripts/pvc_samples.py ${{ inputs.mode }}
