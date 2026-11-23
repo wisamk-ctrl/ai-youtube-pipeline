@@ -336,3 +336,13 @@ Plan: `docs/plans/2026-11-22-news-ranking.md`. Why: 17 new regional outlets add 
   breaking-Short message names the channels from settings (TikTok as drafts).
 - **Not done:** TikTok has no identity check. Its sign-in changes on every use, so a second job reading it could
   break posting; it stays "sign-in saved".
+
+## 2026-11-23: what a face clip costs on HeyGen's API (measured, one clip)
+
+- Workflow `heygen-cost`, action `face-test`: look D v3 as a still image plus a W47 sound file, POST /v3/videos
+  (`type: image`, 1080p, default engine). **$0.40 for 10.06 s**, ready in 101 s. Wallet 1.68 → 1.28 USD.
+- W47-en had 11 face clips, 53.7 s in all: about **$2.13 an episode** at that rate. One data point: whether HeyGen
+  bills by the second or in blocks is not known.
+- The API key spends a prepaid USD wallet (auto-reload off), separate from the plan credits the connector spends.
+  Speech from the API comes out of the same wallet; an empty wallet refuses the call (HTTP 402).
+- GET /v3/usage returned an empty list although calls had been made: do not rely on it for charges; read the wallet.
