@@ -413,3 +413,9 @@ service, TikTok private, and Facebook native video.
   17:00). Not known: whether the clock starts at upload or at going public.
 - The check from GitHub runners is still blind (sign-in wall). Run `python scripts/youtube_video_check.py <id>`
   from the Mac for a real answer.
+- **2026-11-23, HeyGen's API price list** (platform.heygen.com/pricing, readable only in a signed-in browser):
+  Avatar 4 photo avatar $0.0385/s (Avatar 3 photo avatar $0.0165/s, the engine whose lip sync we rejected);
+  speech $15 per million characters, at 50% off until 1 December 2026. W47-en at those rates: 14,939 characters
+  of speech $0.22 and 53.7 s of face $2.07, about $2.29 an episode. HeyGen's docs give no supported way for an
+  unattended job to spend plan credits: OAuth (the connector, `heygen auth login --oauth`) needs a browser
+  sign-in and is described as for small trials; an API key always bills the prepaid wallet.
