@@ -120,6 +120,7 @@ def candidates(state: dict[str, Any], now: datetime, done: set[str], hours: floa
     for d in flagged:
         home = next((g for g in groups if SequenceMatcher(None, _norm(d["title"]), _norm(g[0]["title"])).ratio() >= 0.55), None)
         home.append(d) if home else groups.append([d])
+    own = {id(g[0]): [d["title"] for d in g] for g in groups}   # the flagged headlines, for the repeat check
     for g in groups:   # the same story from outlets that were not flagged brings its article text (2026-11-23:
         head = _norm(g[0]["title"])   # the flagged Jensen-returns headlines had no text, Forbes and others did)
         words = {w for w in head.split() if len(w) > 3}
@@ -134,7 +135,7 @@ def candidates(state: dict[str, Any], now: datetime, done: set[str], hours: floa
     out = []
     for g in groups:
         key = _norm(g[0]["title"])[:80]
-        if key in done or (recent and is_repeat([d["title"] for d in g], recent)):
+        if key in done or (recent and is_repeat(own.get(id(g[0]), [g[0]["title"]]), recent)):
             continue
         rich = [d for d in g if len(d.get("summary") or "") >= MIN_TEXT]
         if rich:
