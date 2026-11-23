@@ -1,0 +1,2 @@
+13  (number card, spoken in its line)
+24  (number card, spoken in its line)

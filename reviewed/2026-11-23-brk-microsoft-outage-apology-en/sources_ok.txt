@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-23 01:12 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Microsoft president Brad Smith has apologised again for a global outage that CBS said lasted 24 hours.  ← CBS News (36fc00151f)
+- (2) Smith told CBS it was not linked to AI, and it was not a cyberattack.  ← CBS News (36fc00151f)
+- (3) He blamed a perfect storm: software updated four months earlier, a new update and a shift in network traffic.  ← CBS News (36fc00151f)
+- (4) Microsoft has published two reports in the last 10 days, showing minute by minute what happened.  ← CBS News (36fc00151f)
+- (5) Smith says the company has taken nine steps already, with 13 more to come.  ← CBS News (36fc00151f)
+- (6) He called the wider wave of outages partly AI ripple effects, as AI made flaws in code easier to find.  ← CBS News (36fc00151f)
+- (7) For Gulf firms on global cloud platforms, watch how providers explain and fix outages like this.  ← regional line, no facts
