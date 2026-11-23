@@ -516,3 +516,11 @@ def test_a_story_with_a_regional_name_in_its_headline_is_not_killed_as_global_on
     r = ranked([named, weak, plain])
     kills = {s["id"]: s["gates"]["kill"]["pass"] for s in r["stories"]}
     assert kills == {"a": True, "b": True, "c": False}
+
+
+def test_runs_that_reach_the_same_first_story_by_different_routes_agree():
+    a = {"s1": _j(2, 2, 2, 2), "s2": _j(2, 2, 2, 2, same="s1"), "s3": _j(2, 2, 2, 2, same="s2")}     # s3 → s2 → s1
+    b = {"s1": _j(2, 2, 2, 2), "s2": _j(2, 2, 2, 2), "s3": _j(2, 2, 2, 2, same="s1")}                # s3 → s1
+    c = {"s1": _j(2, 2, 2, 2), "s2": _j(2, 2, 2, 2), "s3": _j(2, 2, 2, 2)}
+    out = jd.combine([a, b, c])
+    assert out["s3"]["same_event_as"] == "s1" and out["s2"]["same_event_as"] == ""

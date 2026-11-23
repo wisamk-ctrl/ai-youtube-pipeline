@@ -222,9 +222,25 @@ def combine(runs: list[dict[str, dict]]) -> dict[str, dict]:
     up to 7 of 21, so which stories made the episode depended on the run. Per criterion the MIDDLE score is kept
     (of two, the lower), with a reason from a run that gave that score; labels go by majority. Two stories are
     called one event only when at least two runs name the same earlier story. Nothing here is averaged."""
+    def first_of(run: dict[str, dict], sid: str) -> str:
+        """The first story of the chain `sid` points along in one run ("" when it points nowhere or in a loop):
+        one run saying C→B→A and another C→A agree that C belongs with A."""
+        seen, cur = {sid}, sid
+        while True:
+            nxt = str((run.get(cur) or {}).get("same_event_as") or "")
+            if not nxt:
+                return "" if cur == sid else cur
+            if nxt not in run:
+                return nxt                     # a story this run did not judge: rank.merge_same checks the id
+            if nxt in seen:
+                return ""
+            seen.add(nxt)
+            cur = nxt
+
     out: dict[str, dict] = {}
     for sid in dict.fromkeys(k for r in runs for k in r):
         js = [r[sid] for r in runs if sid in r]
+        firsts = [first_of(r, sid) for r in runs if sid in r]
         j = dict(js[0])
         for c in _SCORED:
             mid = sorted(int(x[c]["score"]) for x in js)[(len(js) - 1) // 2]
@@ -233,7 +249,7 @@ def combine(runs: list[dict[str, dict]]) -> dict[str, dict]:
             j[label] = _most([x.get(label) for x in js])
         actors = [str(x.get("regional_actor") or "") for x in js if x.get("regional_actor")]
         j["regional_actor"] = _most(actors) if actors else ""
-        same = _most([str(x.get("same_event_as") or "") for x in js], need=min(2, len(js)))
+        same = _most(firsts, need=min(2, len(js)))
         j["same_event_as"] = same or ""
         shorts = [x.get("short") for x in js if x.get("short")]
         j["short"] = shorts[0] if len(shorts) * 2 > len(js) else None
