@@ -477,6 +477,8 @@ breaking:                     # breaking-news Shorts drafted from the news watch
   enabled: true
   hours: 8                    # stories flagged in the last 8 hours
   max_per_day: 3              # drafts a day; nothing posts without the founder's `post <week>` on the issue
+  big_story_sources: 5        # a story carried by this many outlets at once still gets a Short past the daily limit (2026-11-23, Jensen returns)
+  big_story_extra: 2          # ...up to this many extra a day
   tries: 2                    # stories tried per run when a draft fails its checks
   repeat_days: 4              # a story drafted in the last 4 days is not drafted again under a new headline (founder 2026-11-20)
 

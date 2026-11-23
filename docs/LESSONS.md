@@ -471,3 +471,5 @@ service, TikTok private, and Facebook native video.
   copies its calm sample. A livelier voice needs HeyGen's expressiveness setting (untried) or a clone recorded
   in a livelier delivery.
 - Enforced by `tests/test_breaking.py` (pace section).
+
+- **2026-11-23 — "Jensen Huang returns as CEO" got no breaking Short.** Two causes: three smaller stories had used the day's limit of 3, and the flagged headlines (Gulf Business, Gulf News) had no article text, so no draft could be fact-checked. Now a story carried by 5+ outlets at once goes past the limit (up to 2 extra a day: `breaking.big_story_sources`, `big_story_extra`), and a flagged story pulls in the same story from unflagged outlets for its text (`pipeline/breaking.py`).

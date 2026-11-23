@@ -120,6 +120,17 @@ def candidates(state: dict[str, Any], now: datetime, done: set[str], hours: floa
     for d in flagged:
         home = next((g for g in groups if SequenceMatcher(None, _norm(d["title"]), _norm(g[0]["title"])).ratio() >= 0.55), None)
         home.append(d) if home else groups.append([d])
+    for g in groups:   # the same story from outlets that were not flagged brings its article text (2026-11-23:
+        head = _norm(g[0]["title"])   # the flagged Jensen-returns headlines had no text, Forbes and others did)
+        words = {w for w in head.split() if len(w) > 3}
+        have = {id(d) for d in g}
+        for d in pool:
+            if id(d) in have or d.get("flagged"):
+                continue
+            t = _norm(d.get("title") or "")
+            shared = words & {w for w in t.split() if len(w) > 3}
+            if SequenceMatcher(None, head, t).ratio() >= 0.5 or len(shared) >= max(2, len(words) // 2):
+                g.append(d)
     out = []
     for g in groups:
         key = _norm(g[0]["title"])[:80]
@@ -130,6 +141,22 @@ def candidates(state: dict[str, Any], now: datetime, done: set[str], hours: floa
             out.append(sorted(g, key=lambda d: -len(d.get("summary") or "")))
     out.sort(key=lambda g: (-len({d["source"] for d in g}), -max(len(d.get("summary") or "") for d in g)))
     return out
+
+
+def coverage(state: dict[str, Any], group: list[dict[str, Any]], now: datetime, hours: float = 8) -> int:
+    """How many different outlets carry this story in the window, flagged or not (a big story is everywhere at once)."""
+    since = (now - timedelta(hours=hours)).isoformat(timespec="minutes")
+    head = _norm(group[0]["title"])
+    words = {w for w in head.split() if len(w) > 3}
+    seen = set()
+    for d in _items(state):
+        if (d.get("first_seen") or "") < since:
+            continue
+        t = _norm(d.get("title") or "")
+        shared = words & {w for w in t.split() if len(w) > 3}
+        if SequenceMatcher(None, head, t).ratio() >= 0.5 or len(shared) >= max(2, len(words) // 2):
+            seen.add(d.get("source"))
+    return len(seen | {d.get("source") for d in group})
 
 
 # ── Drafting and checking ─────────────────────────────────────────
@@ -309,12 +336,19 @@ def run(cfg: dict[str, Any], state: dict[str, Any], client, now: datetime | None
     # Distinct Shorts drafted automatically today (one Short can cover many headlines; hand-made ones don't count).
     today = {v["week"] for v in done["stories"].values()
              if str(v.get("at", "")).startswith(f"{now:%Y-%m-%d}") and v.get("week") and not v.get("by_hand")}
-    if len(today) >= int(b.get("max_per_day", 3)):
-        log.info("Breaking: %d Shorts drafted today, the daily limit", len(today))
-        return None
-    library = (yaml.safe_load(LIBRARY.read_text(encoding="utf-8")) or {}).get("clips", {})
     recent = recent_titles(done, now, float(b.get("repeat_days", 4)))
-    for group in candidates(state, now, set(done["stories"]), float(b.get("hours", 8)), recent)[: int(b.get("tries", 2))]:
+    groups = candidates(state, now, set(done["stories"]), float(b.get("hours", 8)), recent)
+    if len(today) >= int(b.get("max_per_day", 3)):
+        # 2026-11-23: three small stories used the day's limit and "Jensen Huang returns as CEO" (covered by many
+        # outlets within the hour) was skipped. A story that big still gets a Short, up to `big_story_extra` more a day.
+        big = int(b.get("big_story_sources", 5))
+        groups = [g for g in groups if coverage(state, g, now, float(b.get("hours", 8))) >= big]
+        if not groups or len(today) >= int(b.get("max_per_day", 3)) + int(b.get("big_story_extra", 2)):
+            log.info("Breaking: %d Shorts drafted today, the daily limit", len(today))
+            return None
+        log.info("Breaking: daily limit reached, but %s is a big story: drafting it", groups[0][0]["title"][:80])
+    library = (yaml.safe_load(LIBRARY.read_text(encoding="utf-8")) or {}).get("clips", {})
+    for group in groups[: int(b.get("tries", 2))]:
         key = _norm(group[0]["title"])[:80]
         items = _articles(group)
         from scripts.notify import whatsapp   # founder 2026-11-18: a heads-up while the script is being written
