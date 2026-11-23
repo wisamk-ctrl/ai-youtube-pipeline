@@ -1,0 +1,42 @@
+[
+  {
+    "source": "The Next Web",
+    "source_type": "rss",
+    "title": "OpenAI’s chief scientist calls for industry-wide limits on AI models",
+    "summary": "OpenAI’s chief scientist Jakub Pachocki has asked rival AI labs to agree on limits they won’t cross with their most powerful models. He made the case in an essay published on Sunday, and CEO Sam Altman was quick to back him. The idea is built around perplexity, a score for how well a model guesses the next piece of text. The better the guesses, the lower the score, and Pachocki wants every lab to use the same number to show how far along its models are. We decided to provide more transparency into pretraining progress at OpenAI for the sake of moving toward shared safety bars. In “Perplexity and Intelligence” I argue for common limits based on perplexity and other measurements, with progress beyond them gated on our ability to understand AI behavior. — Jakub Pachocki (@merettm) November 22, 2026 From there, he calls for “common limits, based on perplexity and other measurements” that developers would promise not to cross. The promise would stand until labs truly understand what their models are doing and have better tools to watch them, such as a successor to today’s chain-of-thought monitors. Labs would also agree on common ways to test models and to check each other’s safety claims. Jakub Pachocki doesn’t say where the first limit should sit or when it should kick in. But he does show OpenAI’s hand a little, as the company has published the perplexity scores of its own models for the first time. The numbers fall from about 0.99 for GPT-3.5 to under 0.8 for its newest models. Each drop bought new skills: first fluent conversation, later expert-level cybersecurity, and most recently results on open maths problems. Announcing the essay, titled “Perplexity and Intelligence,” Pachocki said OpenAI is sharing the data “for the sake of moving toward shared safety bars.” All of this comes at a nervous moment for the industry, with worry about the pace of AI progress spreading well beyond the labs. Sam Altman, for his part, wrote on X that shared limits would help keep AI safe and under control. He also called Pachocki’s essay “the most important thing OpenAI has published in a while.” But Sam Altman has sounded this note before. At Salesforce’s Dreamforce conference, he said no company should let its safety depend on what its rivals do, and so has Pachocki. In a September essay , he warned that no one is ready for machines that keep getting smarter this fast. Lawmakers are moving as well, with U.S. Senator Bernie Sanders tabling a bill to ban superintelligence…",
+    "url": "https://thenextweb.com/news/openai-chief-scientist-shared-ai-limits",
+    "published": "2026-11-23T07:48:07+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI",
+      "Perplexity Comet"
+    ],
+    "id": "cc8aa072ff"
+  },
+  {
+    "source": "shattered.io",
+    "source_type": "rss",
+    "title": "OpenAI Chief Scientist Urges AI Limits: Loss Below 0.8",
+    "summary": "OpenAI chief scientist Jakub Pachocki published a proposal on November 22, 2026 that asks AI developers to agree on common limits for increasingly powerful models, as TechCrunch and other outlets reported. Reuters, Bloomberg and The Information also covered the story. It is the clearest public call yet from inside OpenAI for a shared ceiling on capability. The idea is simple to state and hard to build. Companies would commit not to cross agreed limits until researchers reach a concrete milestone in understanding and monitoring AI behavior. Pachocki named perplexity and other measurements as the basis for those limits. OpenAI CEO Sam Altman backed the proposal and said the industry should seek agreement on common limits for AI development. The sources do not report a numerical capability threshold, a price, a product specification or an implementation deadline. That gap defines the story. The proposal sets a direction, and the hard parts remain open. It also lands while lawmakers test their own controls, including the ideas we covered in Newsom’s AI kill switch proposal . This analysis of the Jakub Pachocki AI limits proposal walks through what he said, what the metric can and cannot do, and what to watch next. Add Shattered once in the Google app and our stories show up in your news suggestions. According to the reports, the proposal calls for an industry standard that specifies an initial development limit and the milestones required before anyone exceeds it. Instead of each lab deciding alone how far to push model capability, every major developer would work to the same line and the same gate. The Jakub Pachocki AI limits idea therefore has three moving parts. Each part matters on its own. The limit gives labs a common target. The measurement basis gives auditors something to check. The exit condition ties any future increase to progress on safety science rather than to commercial pressure or a rival’s launch date. The reports also show what the proposal leaves out. They name no limit value, no date for the first agreement, no body to run the standard and no penalty for a lab that crosses the line. Those omissions do not weaken the idea as a first step, but they mean nobody can yet judge how strict or loose the limits would be. The core sentence comes from Pachocki himself. In the essay, as relayed by TechCrunch, he wrote: “I further propose common limits, based on perplexity and other measurements, that developers are committed to not crossing until…",
+    "url": "https://shattered.io/openai-chief-scientist-pachocki-common-ai-limits-perplexity-loss-below-0-8/",
+    "published": "2026-11-23T05:19:26+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI",
+      "Perplexity Comet"
+    ],
+    "id": "dc6e5e3bd0"
+  }
+]

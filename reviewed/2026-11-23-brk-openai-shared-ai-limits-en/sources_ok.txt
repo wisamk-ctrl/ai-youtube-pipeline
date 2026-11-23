@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-23 09:06 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) OpenAI's chief scientist Jakub Pachocki wants rival AI labs to agree on limits for their most powerful models.  ← The Next Web (cc8aa072ff), shattered.io (dc6e5e3bd0)
+- (2) In an essay published November 22, he proposes common limits based on perplexity and other measurements.  ← The Next Web (cc8aa072ff), shattered.io (dc6e5e3bd0)
+- (3) Perplexity scores how well a model guesses the next piece of text.  ← The Next Web (cc8aa072ff)
+- (4) OpenAI published its own scores for the first time, falling from about 0.99 for GPT-3.5 to under 0.8 for its newest models.  ← The Next Web (cc8aa072ff)
+- (5) Labs would stay below the limits until they can understand and monitor model behavior. CEO Sam Altman backed the idea.  ← The Next Web (cc8aa072ff), shattered.io (dc6e5e3bd0)
+- (6) Reports name no limit value, no start date, and no body to run it.  ← shattered.io (dc6e5e3bd0)
+- (7) For Gulf governments building AI capacity, watch whether shared limits become a standard they're expected to follow.  ← regional line, no facts
