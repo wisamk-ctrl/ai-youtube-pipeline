@@ -488,7 +488,7 @@ explainer:                    # explainer Shorts drafted from the approved ranki
 # Daily health check (scripts/health.py): the longest each scheduled workflow may go without a SUCCESSFUL run before
 # the "Health: needs a look" issue says so. Every workflow with a schedule needs a line (tests/test_health.py).
 health:
-  heygen_min_usd: 15          # warn when the HeyGen API wallet (speech and face clips) falls below this. One week's faces on Avatar 6, Arabic and English, need about $13.50 with the safety margin (2026-11-23)
+  heygen_min_usd: 12.5        # warn when the HeyGen API wallet (speech and face clips) falls below this. A week's faces on Avatar 6 in Arabic and English: about $5.40 for the first language, then $6.75 must still be there for the second to start, so about $12.15 (2026-11-23)
   max_age_hours:
     news-watch: 8             # every two hours
     social: 6                 # hourly
