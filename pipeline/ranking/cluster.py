@@ -41,6 +41,13 @@ def _tokens(title: str) -> list[tuple[str, str, int]]:
     return out
 
 
+# A headline that tells the reader to buy or sell (the channel never prescribes investments), and a routine
+# version release ("Claude Code releases v2.1.328"): W47 dry run, both reached the episode list.
+_ADVICE = re.compile(r"\b(worth buying|should you (buy|sell)|time to (buy|sell)|buy the dip|stocks? to (buy|sell|own)|"
+                     r"buy now|a buy\b|price (target|prediction)|could (soar|skyrocket)|biggest winner|millionaire)", re.I)
+_RELEASE = re.compile(r"\breleases?\b.{0,20}?\bv?\d+\.\d+\.\d+|\breleases?\b.{0,20}?\bv\d+\.\d+", re.I)
+
+
 class _Vocab:
     """The week's headlines as word sets: generic and too-common words dropped, a pair of words that names one
     thing joined into one, and the set of words that are names."""
@@ -115,8 +122,11 @@ def cluster(items: list[NewsItem], cfg: dict[str, Any], flagged: set[str] | None
     the Africa/Türkiye seats (`scoring.min_per_region`) are kept in the list even when their lead scores low."""
     o, s = opts(cfg), cfg["scoring"]
     flagged = flagged or set()
-    pool = sorted((i for i in items if i.title.strip() and (i.score >= s["min_score"] or i.id in flagged)),
-                  key=lambda i: (-i.score, i.id))
+    # A headline made only of general words ("Artificial Intelligence") is a topic page, not a story. A headline
+    # with no Latin key words at all (Arabic) is kept.
+    bare = lambda i: bool(_key_words(i.title)) and not (_key_words(i.title) - _GENERIC)
+    pool = sorted((i for i in items if i.title.strip() and not bare(i)
+                   and (i.score >= s["min_score"] or i.id in flagged)), key=lambda i: (-i.score, i.id))
     words = _Vocab(pool)
     groups: list[list[NewsItem]] = []
     for it in pool:
@@ -137,9 +147,10 @@ def cluster(items: list[NewsItem], cfg: dict[str, Any], flagged: set[str] | None
         lead_words = _key_words(g[0].title)
         tiers = sorted({pubs.tier(i) for i in g})
         outlets = list(dict.fromkeys((pubs.lookup(i).name if pubs.lookup(i) else i.source) for i in g))
-        # The articles kept for the writer: the best-tier outlets first, one per outlet.
+        # The articles kept for the writer: the one the story is named after, then the best-tier outlets, one
+        # per outlet.
         seen, best = set(), []
-        for i in sorted(g, key=lambda i: ("ABRC".find(pubs.tier(i)) % 9, -i.score, i.id)):
+        for i in [g[0]] + sorted(g[1:], key=lambda i: ("ABRC".find(pubs.tier(i)) % 9, -i.score, i.id)):
             name = pubs.lookup(i).name if pubs.lookup(i) else i.source
             if name not in seen:
                 seen.add(name)
@@ -154,6 +165,12 @@ def cluster(items: list[NewsItem], cfg: dict[str, Any], flagged: set[str] | None
             "repeat": [t for t, w in covered_words if len(lead_words & w) >= 2][:3],
             "published": max(i.published for i in g).isoformat(),
             "lead_score": g[0].score,
+            "advice_bait": bool(_ADVICE.search(g[0].title)),
+            "routine_release": bool(_RELEASE.search(g[0].title)),
+            # The words most of a story's headlines carry: the report uses them to point at likely duplicates.
+            "common_words": sorted({part for w in set().union(*(words.words[i.id] for i in g))
+                                    if sum(w in words.words[i.id] for i in g) * 5 >= len(g) * 3
+                                    for part in w.split("_")}) if len(g) >= 3 else [],
         })
 
     keep = stories[:o["max_stories"]]

@@ -19,6 +19,7 @@ from typing import Any
 from pipeline.config import ROOT
 from pipeline.models import NewsItem
 from pipeline.ranking.judge import FALLBACK, KILL_TEXT, judge, story_text
+from pipeline.ranking.judge import _REGION as REGION_NAME
 
 DIR = ROOT / "data" / "ranking"
 CRITERIA = ("decision_impact", "regional_consequence", "evidence", "tension")
@@ -69,6 +70,14 @@ def score(stories: list[dict[str, Any]], judgements: dict[str, dict], cfg: dict[
         # so: the keyword fallback finding no regional word is not evidence that there is no consequence.
         if kind == "global" and scores["regional_consequence"]["score"] == 0 and j.get("judged_by") != FALLBACK:
             kill = "global_no_regional"
+        # ...and it has to hold together: not when the same judgement found some regional consequence, and not
+        # when the headline itself names a regional actor or place (live 2026-11-23: the Anthropic IPO story, led
+        # by "Abu Dhabi's MGX emerges as major winner", was killed this way).
+        if kill == "global_no_regional" and (scores["regional_consequence"]["score"] >= 1 or REGION_NAME.search(s["title"])):
+            kill = "none"
+        if s.get("advice_bait"):
+            kill = "investment_call"
+        depth = bool(j.get("depth")) and not s.get("routine_release")
         new = not s.get("repeat") or bool(j.get("new_development"))
         s.update({
             "kind": kind, "scores": scores, "regional_actor": actor if actor.lower() in text else "",
@@ -83,7 +92,8 @@ def score(stories: list[dict[str, Any]], judgements: dict[str, dict], cfg: dict[
                 "verified": {"pass": bool(s.get("verified")), "reason":
                              f"tier {'/'.join(s.get('tiers', [])) or '?'} ({', '.join(s.get('outlets', [])[:4])})"
                              if s.get("verified") else "no tier A or B outlet carries it"},
-                "depth": {"pass": bool(j.get("depth")), "reason": "enough for 60-180 s" if j.get("depth")
+                "depth": {"pass": depth, "reason": "enough for 60-180 s" if depth
+                          else "a routine version release" if s.get("routine_release")
                           else "only an announcement: not enough for 60-180 s"},
                 "kill": {"pass": kill == "none", "reason": "not on the kill list" if kill == "none"
                          else f"kill list: {KILL_TEXT[kill]}"},
@@ -141,7 +151,8 @@ def assign_slots(r: dict[str, Any], cfg: dict[str, Any], now: datetime | None = 
     rest = [s for s in free if s not in lists["deep"]]
     lists["quick"] = [s for s in rest if _episode_ok(s)][:o["quick"]]
     # Gated-out stories can still be radar, except a repeat with nothing new and a generic explainer (Shorts).
-    radar_ok = lambda s: s["gates"]["new"]["pass"] and s["kind"] != "explainer"
+    radar_ok = lambda s: (s["gates"]["new"]["pass"] and s["kind"] != "explainer"
+                          and not s.get("advice_bait") and not s.get("routine_release"))
     lists["radar"] = [s for s in rest if s not in lists["quick"] and radar_ok(s)][:o["radar"]]
 
     for region, n in (cfg.get("scoring", {}).get("min_per_region") or {}).items():
@@ -208,7 +219,7 @@ def pick_shorts(r: dict[str, Any], cfg: dict[str, Any], now: datetime | None = N
     for s in r["stories"]:
         idea = s.get("short") or {}
         want = forced.get(s["id"]) == "short"
-        if forced.get(s["id"]) == "drop" or not (s.get("verified") and s["gates"]["new"]["pass"]):
+        if forced.get(s["id"]) == "drop" or s.get("advice_bait") or not (s.get("verified") and s["gates"]["new"]["pass"]):
             continue
         if not all(str(idea.get(k) or "").strip() for k in ("fact", "implication", "question")):
             if want:        # the founder asked for it: listed, with the lines still to write
@@ -285,7 +296,7 @@ def build(stories: list[dict[str, Any]], cfg: dict[str, Any], week: str, client:
     """Clustered stories → the week's ranking. Decisions already taken this week (`previous`) are kept."""
     now = now or datetime.now(timezone.utc)
     o = opts(cfg)
-    judgements, thesis, by = judge(stories, covered or [], o["model"], client)
+    judgements, thesis, by = judge(stories, covered or [], o["model"], client, runs=int(o.get("judge_runs", 1)))
     stories = merge_same(stories, judgements, o["items_per_story"])
     r: dict[str, Any] = {"week": week, "generated": now.isoformat(), "judge": by, "weights": o["weights"],
                          "thesis": "", "thesis_by": "", "hook": [], "stories": stories, "shorts": [],
@@ -361,51 +372,140 @@ def _cell(text: str, n: int = 90) -> str:
     return re.sub(r"\s+", " ", str(text)).replace("|", "/").strip()[:n]
 
 
-def to_md(r: dict[str, Any]) -> str:
-    w = r.get("weights") or DEFAULTS["weights"]
+def _clock(seconds: int) -> str:
+    return f"{seconds // 60}:{seconds % 60:02d}"
+
+
+def _command(s: dict[str, Any], action: str) -> str:
+    return f"`/story {s['id']} {action} because …`"
+
+
+def checks(r: dict[str, Any]) -> list[str]:
+    """What the founder should look at before approving. Every line is computed here from the ranking."""
+    out: list[str] = []
+    named: set[str] = set()
+    ep = [s for s in r["stories"] if s["slot"] in ("deep", "quick")]
+    if r.get("judge") == FALLBACK:
+        out.append("**Scores are rough.** No model judged this list (no API key, or the call failed): the scores "
+                   "come from keywords and outlet tiers, so read the order as a first sort. There are no Shorts lines "
+                   "and one event told under two headlines is not joined.")
+    if len(ep) < 4:
+        out.append(f"**Thin week:** only {len(ep)} stor{'y' if len(ep) == 1 else 'ies'} passed the gates for the "
+                   "episode. Promote stories with `/story <id> deep because …` or check the outlet tiers in "
+                   "config/publishers.yaml.")
+    # A story left out, or only on the radar, that scored higher than one in the episode (a region seat or your
+    # own decision put that one there).
+    if ep:
+        low = min(ep, key=lambda s: s["total"])
+        beaten = sorted((s for s in r["stories"] if s["slot"] in ("out", "radar") and not s.get("override")
+                         and _episode_ok(s) and s["total"] > low["total"]),
+                        key=lambda s: (s["slot"] != "out", -s["total"]))
+        why = f"the {low['seat']} seat" if low.get("seat") else "your decision" if low.get("override") else "its place"
+        for s in beaten[:3]:
+            named.add(low["id"])
+            out.append(f"`{s['id']}` {_cell(s['title'], 70)} ({s['total']}/{s['max_total']}) is "
+                       f"{'out' if s['slot'] == 'out' else 'only on the radar'}, and scored higher than `{low['id']}` "
+                       f"({low['total']}/{low['max_total']}), which holds {why}. To bring it in: {_command(s, 'quick')}")
+    # Slotted stories whose headlines mostly turn on the same word: one company twice, or one event told twice.
+    slotted = [s for s in r["stories"] if s["slot"] in SLOTS]
+    share: dict[str, list[str]] = {}
+    for s in slotted:
+        for word in s.get("common_words") or []:
+            share.setdefault(word, []).append(s["id"])
+    groups: dict[tuple[str, ...], list[str]] = {}
+    for word, ids in sorted(share.items()):
+        if len(ids) > 1:
+            groups.setdefault(tuple(ids), []).append(word)
+    for ids, words in groups.items():
+        out.append(", ".join(f"`{i}`" for i in ids) + f" all turn on *{', '.join(words)}*: check they are not one event "
+                   f"told twice. To keep one: {_command({'id': ids[-1]}, 'drop')}")
+    for s in slotted:
+        if s.get("seat") and s["id"] not in named:
+            out.append(f"`{s['id']}` holds the {s['seat']} seat with {s['total']}/{s['max_total']}.")
+        if s["slot"] == "radar" and not _passes(s):
+            out.append(f"`{s['id']}` is on the radar although it fails a gate: {_failed(s)}.")
+    return out
+
+
+def to_md(r: dict[str, Any], cfg: dict[str, Any] | None = None) -> str:
+    """The Ranking issue: what needs a decision first, then the episode in running order, then the detail."""
+    o = opts(cfg or {})
+    w = r.get("weights") or o["weights"]
     by_id = {s["id"]: s for s in r["stories"]}
-    head = (f"| # | id | story | total | decision ×{w['decision_impact']} | region ×{w['regional_consequence']} | "
-            f"evidence ×{w['evidence']} | tension ×{w['tension']} | outlets | why this slot |\n|---|---|---|---|---|---|---|---|---|---|")
+    in_slot = {k: [s for s in r["stories"] if s["slot"] == k] for k in SLOTS}
+    fallback = r.get("judge") == FALLBACK
 
-    def row(s: dict[str, Any], n: Any) -> str:
+    def link(s: dict[str, Any], n: int = 110) -> str:
+        url = next((i.get("url") for i in s.get("items", []) if i.get("url")), "")
+        title = _cell(s["title"], n).replace("[", "(").replace("]", ")")
+        return f"[{title}]({url})" if url else title
+
+    def entry(s: dict[str, Any]) -> list[str]:
         sc = s["scores"]
-        return (f"| {n} | {s['id']} | {_cell(s['title'])} | **{s['total']}**/{s['max_total']} | "
-                + " | ".join(str(sc[c]["score"]) for c in CRITERIA)
-                + f" | {s.get('outlet_count', 1)} ({'/'.join(s.get('tiers', []))}) | {_cell(s['slot_reason'], 120)} |")
+        lines = [f"{s['position']}. **{link(s)}** · `{s['id']}` · **{s['total']}/{s['max_total']}** · {s['kind']} · "
+                 f"{s.get('outlet_count', 1)} outlet{'s' if s.get('outlet_count', 1) != 1 else ''} "
+                 f"({'/'.join(s.get('tiers', [])) or '?'})",
+                 f"   - decision {sc['decision_impact']['score']} · region {sc['regional_consequence']['score']} · "
+                 f"evidence {sc['evidence']['score']} · tension {sc['tension']['score']} · in this slot: {_cell(s['slot_reason'], 120)}"]
+        if s.get("judged_by") != FALLBACK:
+            lines.append(f"   - why it matters: {_cell(sc['decision_impact']['reason'], 200)}")
+            lines.append(f"   - in the region: {_cell(sc['regional_consequence']['reason'], 200)}"
+                         + (f" (named: {s['regional_actor']})" if s.get("regional_actor") else ""))
+        if s.get("merged"):
+            lines.append("   - also covers: " + "; ".join(_cell(m, 80) for m in s["merged"]))
+        return lines
 
-    n_ep = sum(1 for s in r["stories"] if s["slot"] in ("deep", "quick"))
-    out = [f"## Ranking {r['week']}",
-           f"Judged by **{r['judge']}**; totals, gates and slots are computed in code. "
-           + ("**Approved** by " + r["approved"]["by"] + "." if r.get("approved") else "**Waiting for your approval.**"),
-           *([f"\n⚠️ **Thin week:** only {n_ep} stor{'y' if n_ep == 1 else 'ies'} passed the gates for the episode. "
-               "Promote stories with `/story <id> deep because …` or check the outlet tiers in config/publishers.yaml."]
-             if n_ep < 4 else []),
-           f"\n**Thesis** ({r.get('thesis_by') or 'none'}): {r.get('thesis') or '—'}",
-           "**Hook teases:** " + (" · ".join(_cell(by_id[i]["title"], 70) for i in r.get("hook", []) if i in by_id) or "—")]
-    names = {"deep": "Deep stories (60-180 s each)", "quick": "Quick stories (30-45 s each)", "radar": "Radar (one line each)"}
+    d, q = len(in_slot["deep"]), len(in_slot["quick"])
+    low = d * o["deep"]["seconds"][0] + q * o["quick_seconds"][0]
+    high = d * o["deep"]["seconds"][1] + q * o["quick_seconds"][1]
+    out = [f"## Ranking {r['week']}: " + (f"approved by {r['approved']['by']}" if r.get("approved") else "waiting for your approval"),
+           f"Judged by **{r['judge']}**; totals, gates and slots are computed in code.",
+           f"\n**The week in one line** ({r.get('thesis_by') or 'none'}): {r.get('thesis') or '—'}",
+           "**Hook teases:** " + (" · ".join(_cell(by_id[i]["title"], 70) for i in r.get("hook", []) if i in by_id) or "—"),
+           "\n### Before you approve"]
+    out += [f"- {c}" for c in checks(r)] or ["Nothing flagged: no story left out scored higher than one in the episode."]
+    out.append(f"\n### The episode as it stands\n{d} deep, {q} quick, {len(in_slot['radar'])} radar. "
+               f"The deep and quick stories run {_clock(low)} to {_clock(high)} at the configured lengths.")
+    names = {"deep": f"Deep ({o['deep']['seconds'][0]}-{o['deep']['seconds'][1]} s each)",
+             "quick": f"Quick ({o['quick_seconds'][0]}-{o['quick_seconds'][1]} s each)", "radar": "Radar (one line each)"}
     for k in SLOTS:
-        rows = [s for s in r["stories"] if s["slot"] == k]
-        out += [f"\n### {names[k]}", head] + [row(s, s["position"]) for s in rows] if rows else [f"\n### {names[k]}\n(none this week)"]
+        out.append(f"\n**{names[k]}**")
+        out += [line for s in in_slot[k] for line in entry(s)] or ["(none this week)"]
+
     out.append("\n### Shorts candidates (picked on their own merits)")
     out += [f"- **{c['job']}** · `{c['story_id']}` {_cell(c['title'], 80)}\n  - Fact: {c['fact']}\n  - Implication: {c['implication'] or '(to write)'}\n  - Question: {c['question'] or '(to write)'}"
-            for c in r.get("shorts", [])] or ["(none this week: no story gave one fact, one implication and one question)"]
+            for c in r.get("shorts", [])] or [
+        "(none: the keyword fallback does not write Shorts lines; they come with the model judge)" if fallback else
+        "(none this week: no story gave one fact, one implication and one question)"]
+
     rest = [s for s in r["stories"] if s["slot"] in ("out", "short")]
     if rest:
-        out += ["\n<details><summary>Out of the episode (" + str(len(rest)) + ")</summary>\n", head] + [row(s, "–") for s in rest] + ["\n</details>"]
-    out.append("\n<details><summary>Reasons for every score</summary>\n")
+        out.append(f"\n### Out of the episode ({len(rest)})")
+        out += [f"- `{s['id']}` {link(s, 90)} · {s['total']}/{s['max_total']} · {_cell(s['slot_reason'], 140)}" for s in rest]
+
+    if r.get("overrides"):
+        out.append("\n### Your decisions")
+        out += [f"- {x['at'][:16]} `{x['story_id']}` → **{x['action']}** by {x['by']}: {x['reason']}" for x in r["overrides"]]
+    example = (rest or r["stories"] or [{"id": "<id>"}])[0]["id"]
+    out.append("\n### Commands (one per comment, repository owner only)\n"
+               f"- `/story {example} quick because <reason>` moves a story (or `deep`, `radar`, `short`, `drop`; "
+               "`auto` hands it back to the ranking)\n"
+               "- `/story approve` writes the script from this list")
+
+    out.append("\n<details><summary>All scores</summary>\n")
+    out.append(f"| id | story | slot | total | decision ×{w['decision_impact']} | region ×{w['regional_consequence']} | "
+               f"evidence ×{w['evidence']} | tension ×{w['tension']} | outlets |\n|---|---|---|---|---|---|---|---|---|")
+    out += [f"| {s['id']} | {_cell(s['title'], 70)} | {s['slot']} | **{s['total']}**/{s['max_total']} | "
+            + " | ".join(str(s["scores"][c]["score"]) for c in CRITERIA)
+            + f" | {s.get('outlet_count', 1)} ({'/'.join(s.get('tiers', []))}) |" for s in r["stories"]]
+    out.append("\n</details>\n\n<details><summary>Reasons for every score and gate</summary>\n")
     for s in r["stories"]:
         out.append(f"**`{s['id']}` {_cell(s['title'], 110)}** ({s['kind']}, judged by {s['judged_by']}"
                    + (f", regional actor: {s['regional_actor']}" if s.get("regional_actor") else "") + ")")
         out += [f"- {c} {s['scores'][c]['score']}: {s['scores'][c]['reason']}" for c in CRITERIA]
-        out += [f"- gate {g}: {'pass' if v['pass'] else 'FAIL'}: {v['reason']}" for g, v in s["gates"].items()]
+        out += [f"- gate {g}: FAIL: {v['reason']}" for g, v in s["gates"].items() if not v["pass"]] or ["- all four gates pass"]
         out.append("")
     out.append("</details>")
-    if r.get("overrides"):
-        out.append("\n### Your decisions")
-        out += [f"- {x['at'][:16]} `{x['story_id']}` → **{x['action']}** by {x['by']}: {x['reason']}" for x in r["overrides"]]
-    out.append("\n### Commands (one per comment, repository owner only)\n"
-               "- `/story <id> deep because <reason>` (or `quick`, `radar`, `short`, `drop`; `auto` hands it back to the ranking)\n"
-               "- `/story approve` writes the script from this list")
     return "\n".join(out) + "\n"
 
 

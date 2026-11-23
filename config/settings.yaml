@@ -168,6 +168,7 @@ ranking:
   # score and reason before the script. Raise to claude-sonnet-5-5 if the reasons read thin. With no
   # ANTHROPIC_API_KEY the stories are judged from keywords and outlet tiers and marked "keyword fallback".
   model: claude-haiku-5-5
+  judge_runs: 3               # the judge is asked this many times and the middle score per criterion is kept (2026-11-23: one run's totals moved by up to 7 of 21 on a second run)
   max_stories: 20             # stories judged a week (plan: 15-20); flagged stories and region seats are kept
   items_per_story: 5          # articles kept per story for the writer, best outlet tier first, one per outlet
   weights:                    # total = sum of weight × the 0-3 score, computed in code (max 21)

@@ -34,6 +34,8 @@ KILL_TEXT = {
     "demo_no_deployment": "a demo with no deployment",
     "meeting_no_decision": "a ministerial meeting with no decision",
     "global_no_regional": "a global headline with no regional consequence",
+    # Set in code only (rank.score), never by the judge:
+    "investment_call": "a buy-or-sell headline: the show never prescribes investments",
 }
 
 
@@ -194,7 +196,7 @@ def fallback(s: dict[str, Any]) -> dict[str, Any]:
     tension = min(3, len({m.group(0).lower() for m in _TENSION.finditer(text)}))
     kill = next((name for name, rx, unless in _KILL_RX if rx.search(title) and not (unless and unless.search(text))), "none")
     kind = "explainer" if _EXPLAINER.search(title) else "regional" if (in_title or regional >= 2) else "global"
-    why = lambda what: f"{what} ({FALLBACK}; no model judgement)"
+    why = lambda what: what
     return {
         "kind": kind,
         "decision_impact": {"score": _band(ent, (1, 2, 4)), "reason": why(f"enterprise keywords weigh {ent:.1f}")},
@@ -208,15 +210,72 @@ def fallback(s: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def judge(stories: list[dict[str, Any]], covered: list[str], model: str, client: Any = None) -> tuple[dict[str, dict], str, str]:
-    """({story_id: judgement}, thesis, who judged). Every story gets a judgement: the model's, else the fallback's."""
+_SCORED = ("decision_impact", "regional_consequence", "evidence", "tension")
+
+
+def _most(values: list[Any], need: int = 1) -> Any:
+    """The most frequent value (the earliest wins a tie); None when it was given fewer than `need` times."""
+    best = max(values, key=lambda v: (values.count(v), -values.index(v)))
+    return best if values.count(best) >= need else None
+
+
+def combine(runs: list[dict[str, dict]]) -> dict[str, dict]:
+    """Several judgements of the same stories → one. Two live runs on the same items (2026-11-23) moved totals by
+    up to 7 of 21, so which stories made the episode depended on the run. Per criterion the MIDDLE score is kept
+    (of two, the lower), with a reason from a run that gave that score; labels go by majority. Two stories are
+    called one event only when at least two runs name the same earlier story. Nothing here is averaged."""
+    def first_of(run: dict[str, dict], sid: str) -> str:
+        """The first story of the chain `sid` points along in one run ("" when it points nowhere or in a loop):
+        one run saying C→B→A and another C→A agree that C belongs with A."""
+        seen, cur = {sid}, sid
+        while True:
+            nxt = str((run.get(cur) or {}).get("same_event_as") or "")
+            if not nxt:
+                return "" if cur == sid else cur
+            if nxt not in run:
+                return nxt                     # a story this run did not judge: rank.merge_same checks the id
+            if nxt in seen:
+                return ""
+            seen.add(nxt)
+            cur = nxt
+
+    out: dict[str, dict] = {}
+    for sid in dict.fromkeys(k for r in runs for k in r):
+        js = [r[sid] for r in runs if sid in r]
+        firsts = [first_of(r, sid) for r in runs if sid in r]
+        j = dict(js[0])
+        for c in _SCORED:
+            mid = sorted(int(x[c]["score"]) for x in js)[(len(js) - 1) // 2]
+            j[c] = dict(next(x[c] for x in js if int(x[c]["score"]) == mid))
+        for label in ("kind", "kill", "decision_frame", "depth", "new_development"):
+            j[label] = _most([x.get(label) for x in js])
+        actors = [str(x.get("regional_actor") or "") for x in js if x.get("regional_actor")]
+        j["regional_actor"] = _most(actors) if actors else ""
+        same = _most(firsts, need=min(2, len(js)))
+        j["same_event_as"] = same or ""
+        shorts = [x.get("short") for x in js if x.get("short")]
+        j["short"] = shorts[0] if len(shorts) * 2 > len(js) else None
+        j["judge_runs"] = len(js)
+        out[sid] = j
+    return out
+
+
+def judge(stories: list[dict[str, Any]], covered: list[str], model: str, client: Any = None,
+          runs: int = 1) -> tuple[dict[str, dict], str, str]:
+    """({story_id: judgement}, thesis, who judged). Every story gets a judgement: the model's (asked `runs` times
+    and combined), else the fallback's."""
     got: dict[str, dict] = {}
     thesis = ""
     if client is None and os.environ.get("ANTHROPIC_API_KEY"):
         import anthropic
         client = anthropic.Anthropic(max_retries=4)
     if client is not None and stories:
-        got, thesis = model_judge(stories, covered, model, client)
+        answers = [model_judge(stories, covered, model, client) for _ in range(max(1, int(runs)))]
+        answers = [a for a in answers if a[0]]
+        got = combine([a[0] for a in answers])
+        thesis = answers[0][1] if answers else ""
+        if answers and len(answers) < runs:
+            log.warning("Ranking judge: %d of %d runs answered", len(answers), runs)
     by = model if got else FALLBACK
     for j in got.values():
         j["judged_by"] = model

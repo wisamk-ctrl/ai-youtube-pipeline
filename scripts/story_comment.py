@@ -57,7 +57,7 @@ def main() -> int:
         else:
             rank.decide(r, sid, action, reason, by, cfg)
             result = (f"`{sid}` → **{action}** (logged: {reason}). The list now reads as below; "
-                      f"`/story approve` when it is right.\n\n{rank.to_md(r)}")
+                      f"`/story approve` when it is right.\n\n{rank.to_md(r, cfg)}")
     except ValueError as e:
         write_outputs(os.environ.get("GITHUB_OUTPUT"), {"kind": "error", "week": "", "result": f"Not applied: {e}"})
         print(f"::warning::{e}")
