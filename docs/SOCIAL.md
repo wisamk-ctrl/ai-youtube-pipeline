@@ -1,7 +1,29 @@
 # Shorts, Reels and TikTok — on the platforms' own APIs
 
-No third-party posting service (founder, 2026-11-13). Code: `pipeline/publish/social.py`,
-`scripts/social.py`, `scripts/connect.py`; workflows `social` (hourly) and `connect`.
+YouTube, TikTok and LinkedIn post on the platforms' own APIs. Instagram and the Facebook Page have no token
+of their own (Meta's developer sign-up is blocked), so they go through Composio, or Buffer if that is set
+(`social.relay`); this replaces "no third-party posting service" (founder, 2026-11-13). Code:
+`pipeline/publish/social.py`, `scripts/social.py`, `scripts/connect.py`; workflows `social` (hourly) and `connect`.
+
+## What goes where (checked against the code and the repository's secrets, 2026-11-23)
+What is connected is worked out in one place, `pipeline/publish/release_status.py`, from the settings and the
+secrets that are set. The reply to `publish`, the "ready to check" message and `social.posters` all read it.
+
+| Platform | Full episode | Shorts (weekly and breaking) | State on 2026-11-23 |
+|---|---|---|---|
+| YouTube | Uploaded private, public at the Sunday slot | Automatic | Connected |
+| LinkedIn | Video, once the episode is public | Automatic | Connected |
+| Facebook Page | A link post through Composio. A video only with `FACEBOOK_PAGE_ID` and `FACEBOOK_PAGE_TOKEN` | Reel through Composio | No Page token. No Reel has posted yet |
+| Instagram | Never | Reel through Composio | No token. One Reel has posted (W46-en #1) |
+| TikTok | Never | To the founder's drafts (`tiktok_mode: inbox`); he posts it | Connected; the app is not audited |
+| WhatsApp Channel | By hand, from the "WhatsApp kit" issue | By hand, same issue | Nothing posts into it by itself |
+| WhatsApp alerts to the founder | | | Off: `WHATSAPP_PHONE` and `CALLMEBOT_APIKEY` are not set |
+
+A platform that is not connected is skipped, and now says so: a warning in the log, a `⏭️` line in the run
+summary, and a note on the queue entry that the "posted" comment shows. The run still passes.
+
+The WhatsApp Channel link is in the Shorts captions on YouTube, LinkedIn and Facebook. Instagram and TikTok
+captions say "link in bio": those two show no clickable links.
 
 ## How it runs each week
 1. The edit makes three vertical clips (`output/<week>/shorts/`).
@@ -11,8 +33,9 @@ No third-party posting service (founder, 2026-11-13). Code: `pipeline/publish/so
 4. Every hour `social` posts what is approved and due, on each connected platform, and records the
    result in the queue. A failed platform is retried next hour (3 tries), the others are not reposted.
 
-TikTok: until TikTok audits our app, posts are **private** (`SELF_ONLY`). Open each in the TikTok
-app → ··· → Privacy → Everyone. Apply for the audit in the TikTok developer portal to lift it.
+TikTok: until TikTok audits our app it rejects direct posts, so each Short goes to your TikTok **drafts**
+(`social.tiktok_mode: inbox`, founder 2026-11-20). Open it in the TikTok app, turn on the AI label, paste the
+caption and post. Apply for the audit in the TikTok developer portal; then set `tiktok_mode: direct`.
 
 ## One-time setup (founder)
 
@@ -98,9 +121,10 @@ account each saved sign-in reaches.
 
 **What posts where, automatically**
 - Shorts (weekly and breaking): YouTube Shorts, Instagram Reels, **Facebook Page Reels**, TikTok, LinkedIn.
-- Episode: YouTube, then native video on LinkedIn and **on the Facebook Page** (`phase_publish`).
-- WhatsApp: no official API posts to a personal status or a Channel. The hourly "Status kit" issue
-  hands the founder the clip and caption; the last tap is his.
+- Episode: YouTube, then native video on LinkedIn (`phase_announce`). On the Facebook Page it is native video
+  only with a Page token; without one it is a link post through Composio (the case today).
+- WhatsApp: no official API posts to a personal status or a Channel. The hourly "WhatsApp kit" issue
+  (`scripts/channel.py`) hands the founder the clip and caption; the last tap is his.
 
 **One-time setup (founder, about 30 minutes)**
 1. Instagram: Settings → Account type → switch to **Professional** (Creator or Business).

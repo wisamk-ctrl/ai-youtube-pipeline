@@ -352,3 +352,12 @@ The weekly job now stops after ranking the week's stories and waits for the foun
 - **Known limits:** with the keyword fallback one event under two headlines is only pointed at, not joined (W47:
   MGX and the debut); a region seat takes a quick slot even at 8/21 and pushes 15-point regional stories to the
   radar (the report says so, the founder decides); the Türkiye seat's region comes from the outlet, not the story.
+
+## Where a release goes (checked 2026-11-23; table in `docs/SOCIAL.md`)
+- The reply to `publish` now lists, per platform, what happens to the episode and to the Shorts, from
+  `pipeline/publish/release_status.py`. Not yet seen on GitHub: its first real run is the next `publish`.
+- **For the founder:** WhatsApp alerts are off until `WHATSAPP_PHONE` and `CALLMEBOT_APIKEY` are set. Facebook
+  gets the episode as a link post and no Reel has posted there. Instagram has posted one Reel; the rest were
+  skipped and the cause is not investigated. W45-en Shorts #2 and #3 still wait for approval.
+- **Open:** whether Instagram and TikTok captions should carry the WhatsApp link as plain text; whether
+  `publish` should also queue the weekly Shorts (the playbook says they are no longer posted).

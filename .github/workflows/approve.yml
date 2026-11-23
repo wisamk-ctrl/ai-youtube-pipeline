@@ -1,7 +1,8 @@
 name: approve
 # The founder's replies on a weekly "Review: … (<week>)" issue drive the chain (founder 2026-11-19):
 #   approve  → English version → voice, render, Shorts → previews + a comment asking to publish
-#   publish  → upload unlisted; public at the Sunday slot; LinkedIn and Facebook when public
+#   publish  → upload private; public at the Sunday slot. The reply says where the episode and the Shorts go,
+#              per platform, from the code (scripts/release_plan.py), so it cannot name a platform that is skipped.
 on:
   issue_comment:
     types: [created]
@@ -23,7 +24,23 @@ jobs:
       TITLE: ${{ github.event.issue.title }}
       BODY: ${{ github.event.comment.body }}
       NUM: ${{ github.event.issue.number }}
+      # Which secrets are set, as flags: the reply says what is connected. No secret value reaches this job.
+      BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY != '' && '1' || '' }}
+      CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY != '' && '1' || '' }}
+      COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY != '' && '1' || '' }}
+      FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID != '' && '1' || '' }}
+      FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN != '' && '1' || '' }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID != '' && '1' || '' }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET != '' && '1' || '' }}
+      INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN != '' && '1' || '' }}
+      LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN != '' && '1' || '' }}
+      TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY != '' && '1' || '' }}
+      TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET != '' && '1' || '' }}
+      TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN != '' && '1' || '' }}
+      WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE != '' && '1' || '' }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN != '' && '1' || '' }}
     steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
       - name: Start the next step
         run: |
           week=$(printf '%s' "$TITLE" | sed -nE 's/.*\(([0-9]{4}-W[0-9]{2}[A-Za-z0-9-]*)\)[[:space:]]*$/\1/p')
@@ -39,6 +56,8 @@ jobs:
             msg="Approved. Making the English version, then voice, render and Shorts. I'll post the preview here (about 2 to 3 hours)."
           else
             gh workflow run weekly.yml --repo "$GITHUB_REPOSITORY" --ref main -f phase=publish -f week="$en"
-            msg="Publishing \`$en\`: uploading unlisted now, public at the Sunday 17:00 Gulf slot. LinkedIn and Facebook follow when it is public."
+            # The publish job is already started above: a failure to build this message never holds it back.
+            msg=$(pip install -q "$(grep -i '^pyyaml==' requirements.lock)" >/dev/null 2>&1; python3 scripts/release_plan.py "$en") \
+              || msg="Publishing \`$en\`. The per-platform summary could not be built: see this run's log."
           fi
           gh issue comment "$NUM" --repo "$GITHUB_REPOSITORY" --body "$msg"

@@ -380,3 +380,17 @@ Plan: `docs/plans/2026-11-22-news-ranking.md`. Why: 17 new regional outlets add 
   the judge's totals moved between two runs on the same items (SDAIA 16 → 9), the IPO story was killed as "no
   regional consequence" with Abu Dhabi's MGX in its headline, and an off-topic climate-talks item took a Quick
   slot. Read Friday's ranking with that in mind before approving it.
+
+## 2026-11-23: messages about where a release goes are built from the code that sends it
+A read-only check found the founder could not tell from the pipeline's messages where anything went. The
+`publish` reply named only LinkedIn and Facebook and said "unlisted" while the setting is private; the "ready"
+message named every configured platform, connected or not; a platform with no secrets was skipped at info level;
+WhatsApp alerts had been off for weeks with nothing saying so; `docs/SOCIAL.md` still said no third-party
+service, TikTok private, and Facebook native video.
+- **One table of secrets, one status function** (`pipeline/publish/release_status.py`). `social.posters`, the
+  `publish` reply (`scripts/release_plan.py`) and `channels_line` read it. Test: `tests/test_release_status.py`.
+- **Off is allowed, silently off is not.** A skipped platform is a warning, a `⏭️` line and a note on the queue
+  entry; alerts that are off log once per run and add a note to the health report.
+- **A workflow that only needs to know whether a secret is set gets a flag, not the secret**
+  (`${{ secrets.X != '' && '1' || '' }}` in `approve.yml`).
+- **A message hard-coded in a workflow drifts.** The old reply was a shell string; the new one is printed by code.
