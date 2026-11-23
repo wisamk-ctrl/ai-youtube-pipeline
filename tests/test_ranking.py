@@ -461,3 +461,58 @@ def test_a_story_pointing_at_itself_or_in_a_loop_is_left_alone():
     mk = lambda i: {"id": i, "title": i, "items": [], "outlets": [i], "outlet_count": 1, "tiers": ["A"], "verified": True}
     js = {"s1": {"same_event_as": "s1"}, "s2": {"same_event_as": "s3"}, "s3": {"same_event_as": "s2"}}
     assert [s["id"] for s in rank.merge_same([mk("s1"), mk("s2"), mk("s3")], js, 5)] == ["s1", "s2", "s3"]
+
+
+# --- a steadier judge (2026-11-23: two live runs on the same items moved totals by up to 7 of 21) ----------------
+def _j(d, r, e, t, **kw):
+    c = lambda n, why: {"score": n, "reason": why}
+    return {"kind": kw.get("kind", "global"), "decision_impact": c(d, f"d{d}"), "regional_consequence": c(r, f"r{r}"),
+            "evidence": c(e, f"e{e}"), "tension": c(t, f"t{t}"), "regional_actor": kw.get("actor", ""),
+            "new_development": kw.get("new", False), "depth": kw.get("depth", True), "kill": kw.get("kill", "none"),
+            "decision_frame": "none", "short": kw.get("short"), "same_event_as": kw.get("same", "")}
+
+
+def test_combine_takes_the_middle_score_and_a_reason_that_goes_with_it():
+    out = jd.combine([{"s1": _j(3, 0, 2, 1)}, {"s1": _j(1, 3, 2, 3)}, {"s1": _j(2, 3, 3, 3)}])["s1"]
+    assert [out[c]["score"] for c in ("decision_impact", "regional_consequence", "evidence", "tension")] == [2, 3, 2, 3]
+    assert out["decision_impact"]["reason"] == "d2" and out["regional_consequence"]["reason"] == "r3"
+    assert out["judge_runs"] == 3
+
+
+def test_combine_takes_the_majority_for_labels_and_needs_agreement_to_join():
+    runs = [{"s2": _j(2, 2, 2, 2, kill="none", depth=True, same="s1", actor="G42", kind="regional")},
+            {"s2": _j(2, 2, 2, 2, kill="none", depth=False, same="s1", actor="G42", kind="regional")},
+            {"s2": _j(2, 2, 2, 2, kill="demo_no_deployment", depth=True, same="", actor="", kind="global")}]
+    out = jd.combine(runs)["s2"]
+    assert (out["kill"], out["depth"], out["same_event_as"], out["regional_actor"], out["kind"]) == ("none", True, "s1", "G42", "regional")
+    split = jd.combine([{"s2": _j(2, 2, 2, 2, same="s1")}, {"s2": _j(2, 2, 2, 2, same="s3")}, {"s2": _j(2, 2, 2, 2)}])["s2"]
+    assert split["same_event_as"] == ""                                       # no two runs agree: not joined
+
+
+def test_combine_uses_the_runs_that_judged_a_story():
+    out = jd.combine([{"s1": _j(3, 3, 3, 3)}, {}, {"s1": _j(1, 1, 1, 1)}])["s1"]
+    assert out["decision_impact"]["score"] == 1 and out["judge_runs"] == 2    # two runs: the lower middle, never a rounded-up score
+    assert jd.combine([{}, {}]) == {}
+
+
+def test_judge_asks_the_model_as_many_times_as_told(monkeypatch):
+    calls = []
+
+    def fake(stories, covered, model, client):
+        calls.append(1)
+        return {"s1": _j(len(calls), 2, 2, 2)}, f"thesis {len(calls)}"
+    monkeypatch.setattr(jd, "model_judge", fake)
+    got, thesis, by = jd.judge([{"id": "s1", "title": "x", "items": []}], [], "m", client=object(), runs=3)
+    assert len(calls) == 3 and got["s1"]["decision_impact"]["score"] == 2 and thesis == "thesis 1" and by == "m"
+    assert got["s1"]["judged_by"] == "m"
+
+
+def test_a_story_with_a_regional_name_in_its_headline_is_not_killed_as_global_only():
+    """Live: the Anthropic IPO story, led by 'Abu Dhabi's MGX emerges as major winner', was killed as a global
+    headline with no regional consequence."""
+    named = st("a", "global", d=2, r=0, e=3, t=3, title="Abu Dhabi's MGX emerges as major winner in Anthropic IPO", kill="global_no_regional")
+    weak = st("b", "global", d=2, r=1, e=3, t=3, title="Anthropic prices its IPO", kill="global_no_regional")
+    plain = st("c", "global", d=2, r=0, e=3, t=3, title="Anthropic prices its IPO", kill="global_no_regional")
+    r = ranked([named, weak, plain])
+    kills = {s["id"]: s["gates"]["kill"]["pass"] for s in r["stories"]}
+    assert kills == {"a": True, "b": True, "c": False}

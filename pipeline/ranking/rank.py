@@ -19,6 +19,7 @@ from typing import Any
 from pipeline.config import ROOT
 from pipeline.models import NewsItem
 from pipeline.ranking.judge import FALLBACK, KILL_TEXT, judge, story_text
+from pipeline.ranking.judge import _REGION as REGION_NAME
 
 DIR = ROOT / "data" / "ranking"
 CRITERIA = ("decision_impact", "regional_consequence", "evidence", "tension")
@@ -69,6 +70,11 @@ def score(stories: list[dict[str, Any]], judgements: dict[str, dict], cfg: dict[
         # so: the keyword fallback finding no regional word is not evidence that there is no consequence.
         if kind == "global" and scores["regional_consequence"]["score"] == 0 and j.get("judged_by") != FALLBACK:
             kill = "global_no_regional"
+        # ...and it has to hold together: not when the same judgement found some regional consequence, and not
+        # when the headline itself names a regional actor or place (live 2026-11-23: the Anthropic IPO story, led
+        # by "Abu Dhabi's MGX emerges as major winner", was killed this way).
+        if kill == "global_no_regional" and (scores["regional_consequence"]["score"] >= 1 or REGION_NAME.search(s["title"])):
+            kill = "none"
         if s.get("advice_bait"):
             kill = "investment_call"
         depth = bool(j.get("depth")) and not s.get("routine_release")
@@ -290,7 +296,7 @@ def build(stories: list[dict[str, Any]], cfg: dict[str, Any], week: str, client:
     """Clustered stories → the week's ranking. Decisions already taken this week (`previous`) are kept."""
     now = now or datetime.now(timezone.utc)
     o = opts(cfg)
-    judgements, thesis, by = judge(stories, covered or [], o["model"], client)
+    judgements, thesis, by = judge(stories, covered or [], o["model"], client, runs=int(o.get("judge_runs", 1)))
     stories = merge_same(stories, judgements, o["items_per_story"])
     r: dict[str, Any] = {"week": week, "generated": now.isoformat(), "judge": by, "weights": o["weights"],
                          "thesis": "", "thesis_by": "", "hook": [], "stories": stories, "shorts": [],
