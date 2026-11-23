@@ -39,3 +39,16 @@ def test_a_check_that_cannot_see_the_page_releases_on_time(tmp_path, monkeypatch
     assert made == []
     release.run(datetime(2026, 11, 22, 13, 5, tzinfo=timezone.utc), ready=blind, make_public=made.append, wait_hours=6)
     assert made == ["v"] and "sign-in wall" in release.load()[0]["note"]
+
+
+def test_with_the_settings_as_they_are_an_episode_goes_public_on_time_without_chapter_pictures(tmp_path, monkeypatch):
+    """Founder 2026-11-23: YouTube makes chapter pictures days after publishing, so waiting for them only made
+    W47-en late (18:40 Gulf, not 17:00)."""
+    monkeypatch.delenv("GITHUB_REPOSITORY", raising=False)
+    setup(tmp_path, monkeypatch, [{"week": "W", "video_id": "v", "release_at": "2026-11-22T13:00:00Z", "status": "waiting"}])
+    made = []
+    release.run(datetime(2026, 11, 22, 12, 59, tzinfo=timezone.utc), ready=lambda v: (False, "1 picture for 11 chapters"), make_public=made.append)
+    assert made == []
+    release.run(datetime(2026, 11, 22, 13, 1, tzinfo=timezone.utc), ready=lambda v: (False, "1 picture for 11 chapters"), make_public=made.append)
+    e = release.load()[0]
+    assert made == ["v"] and e["status"] == "public" and "on time" in e["note"] and "after 0 h" not in e["note"]

@@ -178,7 +178,7 @@ def translate_script(script: str, items: list[NewsItem], cfg: dict[str, Any],
 class EnglishMeta(BaseModel):
     title: str = Field(description="YouTube title in English, at most 70 characters, informative, no clickbait")
     description: str = Field(description="Two or three plain sentences for the YouTube description, informational only")
-    thumbnail_text: str = Field(description="2-4 English words for the thumbnail")
+    thumbnail_text: str = Field(description="2-4 English words for the thumbnail: the lead story as a plain fact of scale, time or record that is in the script ('Days Offline', 'Record IPO'), never a metaphor ('Goes Dark') and never a figure the script does not carry")
     thumbnail_text_b: str = Field(default="", description=(
         "2-4 different English words for a second thumbnail tested against the first (YouTube Test & Compare): "
         "another angle on the same lead story, or the episode's second story; nothing the script does not say"))

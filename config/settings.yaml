@@ -421,8 +421,8 @@ publish:
     companies entering the region and builds AI products of his own.
   partnerships_email: "aithisweek.partnerships@gmail.com"      # sponsors' address: set it and every new description (and scripts/youtube_partnerships.py for old ones) carries it
   privacy: private            # uploaded private and scheduled: YouTube makes it public at publish time (founder 2026-11-14)
-  chapter_gate: true          # stay private until each chapter shows its own picture, then public at the release time (founder 2026-11-18; scripts/release.py)
-  chapter_wait_hours: 6       # past the release time, publish anyway after this long and say so
+  chapter_gate: true          # uploaded private, made public at the release time by scripts/release.py (every 20 min)
+  chapter_wait_hours: 0       # 0 = public at the release time whatever the chapter list shows. YouTube makes chapter pictures two to five days after publishing (measured 2026-11-23), so waiting for them only delays the episode (W47-en: 18:40 Gulf, not 17:00)
   publish_weekday: 6          # 0=Mon … 6=Sun
   publish_hour_utc: 13        # 13:00 UTC = 17:00 Gulf on Sunday (founder 2026-11-17, playbook: Gulf evening, US East morning)
   tags: [الذكاء الاصطناعي, أخبار التقنية, AI, ChatGPT, OpenAI, Claude, Gemini, شركات, الإمارات, السعودية]
