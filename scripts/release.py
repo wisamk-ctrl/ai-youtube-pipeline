@@ -4,6 +4,11 @@ W46-en went public straight after upload, before YouTube had made its frame prev
 the chapter list showed the video's thumbnail. YouTube makes those chapter pictures itself and no API sets
 them, so the only cure is time: upload unlisted, wait until each chapter shows its own picture, then publish.
 
+2026-11-23: measured, those pictures arrive two to five days after publishing, on any channel (W46-en had none
+after 1.5 days and all ten after five). No wait of hours can produce them, so `publish.chapter_wait_hours` is 0:
+the episode goes public at its release time and this script is the scheduler. The check still runs and its
+finding is kept in the note.
+
 data/releases.json holds the waiting episodes: {week, video_id, release_at, status}. Every run (workflow
 `release`, every 20 minutes) checks each waiting one:
   - chapters ready and release time reached → made public;
@@ -102,7 +107,8 @@ def run(now: datetime | None = None, ready=chapters_ready, make_public=None, wai
         if now >= at and (ok or blind or late):
             make_public(e["video_id"])
             e.update(status="public", at=now.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                     note="chapters ready" if ok else f"released on time, {why}" if blind else f"made public after {wait_hours:g} h without chapter pictures ({why})")
+                     note="chapters ready" if ok else f"released on time, {why}" if blind or not wait_hours
+                     else f"made public after {wait_hours:g} h without chapter pictures ({why})")
             lines.append(f"✅ {e['week']} public: https://youtu.be/{e['video_id']} ({e['note']})")
             announce(e["week"], e["video_id"])
         else:
