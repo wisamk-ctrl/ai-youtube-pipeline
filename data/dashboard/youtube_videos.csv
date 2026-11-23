@@ -1,11 +1,13 @@
 type,origin,title,url,views,views_7d,likes,comments
-Episode,,Microsoft's Multi-Day Outage and Anthropic's Record IPO,https://youtu.be/rp0sXtZ9kIc,65,65,4,4
-Episode,,"NVIDIA Loses Its CEO, Microsoft 365 Goes Dark, Anthropic's IPO Wobbles",https://youtu.be/epsMiJaq0E0,52,52,5,0
-Episode,,"ADNOC and G42 Sign OpenAI Deal, GPT-6 Cyber, NVIDIA Vera CPU",https://youtu.be/SiwUgy2lKQc,101,49,9,0
-Short,Episode clip,Jensen Huang Leaves NVIDIA,https://youtu.be/ObuwVd5P-2o,51,51,0,2
-Short,Breaking,Six US Outages in Six Days,https://youtu.be/qTjcBCcUSeM,13,13,1,0
-Short,Breaking,Anthropic Goes Public at $83,https://youtu.be/ihIQxeRtcu4,12,12,0,0
-Short,Breaking,California sues OpenAI,https://youtu.be/lTvwhJlOIbA,12,12,1,0
-Short,Episode clip,ADNOC and G42 with OpenAI,https://youtu.be/5BTcn7jT9wM,11,11,0,0
-Short,Episode clip,Anthropic's IPO Under Pressure,https://youtu.be/tUCLt4NWJMw,6,6,0,0
-Short,Episode clip,Saudi Arabia's Bunyan Platform,https://youtu.be/k0c2e_L24SQ,3,3,0,0
+Episode,,Microsoft's Multi-Day Outage and Anthropic's Record IPO,https://youtu.be/rp0sXtZ9kIc,256,191,29,6
+Episode,,"NVIDIA Loses Its CEO, Microsoft 365 Goes Dark, Anthropic's IPO Wobbles",https://youtu.be/epsMiJaq0E0,54,2,5,0
+Episode,,"ADNOC and G42 Sign OpenAI Deal, GPT-6 Cyber, NVIDIA Vera CPU",https://youtu.be/SiwUgy2lKQc,102,1,9,0
+Short,Breaking,Jensen Huang Is Back,https://youtu.be/gw0YFFBB7kQ,6,6,0,0
+Short,Breaking,Jakub Pachocki Urges AI Limits,https://youtu.be/IyLVIFMAXcQ,5,5,0,0
+Short,Breaking,Anthropic Goes Public at $83,https://youtu.be/ihIQxeRtcu4,14,2,0,0
+Short,Episode clip,Anthropic's IPO Under Pressure,https://youtu.be/tUCLt4NWJMw,7,1,0,0
+Short,Breaking,California sues OpenAI,https://youtu.be/lTvwhJlOIbA,12,0,1,0
+Short,Breaking,Six US Outages in Six Days,https://youtu.be/qTjcBCcUSeM,13,0,1,0
+Short,Episode clip,Saudi Arabia's Bunyan Platform,https://youtu.be/k0c2e_L24SQ,3,0,0,0
+Short,Episode clip,Jensen Huang Leaves NVIDIA,https://youtu.be/ObuwVd5P-2o,51,0,0,2
+Short,Episode clip,ADNOC and G42 with OpenAI,https://youtu.be/5BTcn7jT9wM,11,0,0,0

@@ -1,7 +1,7 @@
 platform,account,state,followers,posted,waiting,note
-YouTube,@AIThisWeekME,working,20,7,2,Episodes and Shorts post automatically
-TikTok,@aithisweek,manual,,7,2,Shorts arrive in your TikTok drafts: paste the caption from the issue and tap Post
-LinkedIn,Wissam Kishek (profile),working,,6,0,Follower count not available to the app
-Instagram,@aithisweekme,blocked,,1,2,Needs the Meta developer app (phone check)
-Facebook,AI This Week (Page),blocked,,0,0,Needs the Meta developer app (phone check)
+YouTube,@AIThisWeekME,working,41,9,0,9 posted in the last 14 days
+TikTok,@aithisweek,manual,,9,0,9 sent to your TikTok drafts in 14 days: post them from the app
+LinkedIn,Wissam Kishek (profile),working,,8,0,8 posted in the last 14 days
+Instagram,@aithisweekme,working,,3,0,3 posted in the last 14 days
+Facebook,AI This Week (Page),working,,2,0,2 posted in the last 14 days
 WhatsApp,AI This Week (Channel),manual,,,,No API: hourly kit for you to post
