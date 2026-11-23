@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-23T04:39:14Z",
+ "checked": "2026-11-23T05:07:43Z",
  "identities": {
   "LinkedIn": [
    "Wissam Kishek"
@@ -14,5 +14,7 @@
    "AI This Week"
   ]
  },
- "problems": []
+ "problems": [
+  "HeyGen wallet: HeyGen's API wallet holds $1.28, under the $5 floor: top it up at app.heygen.com (API)"
+ ]
 }
