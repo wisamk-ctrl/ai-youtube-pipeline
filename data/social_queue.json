@@ -585,5 +585,63 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7530586560740880392"
       }
     }
+  },
+  {
+    "id": "2026-11-23-brk-jensen-back-en#1",
+    "week": "2026-11-23-brk-jensen-back-en",
+    "lang": "en",
+    "file": "2026-11-23-brk-jensen-back-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-23-brk-jensen-back-en/2026-11-23-brk-jensen-back-en-short-01.mp4",
+    "title": "Jensen Huang Is Back",
+    "due": "2026-11-23T17:13:34Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Jensen Huang Is Back\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Jensen Huang Is Back\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Jensen Huang Is Back\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Jensen Huang Is Back\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "Jensen Huang is back as NVIDIA CEO. CNN reports the board reinstated him, saying it is satisfied with his candor and ability to lead, after assurances from senior levels of the US government on national security. NVIDIA shares rose more than 30% on Monday.\n\nMy view: when he resigned, I said the industry had lost its most important leader over a private matter. Today common sense prevailed. He built the world's largest company from scratch, and we need him leading NVIDIA through this AI era. I hope he comes back stronger, and the markets seem to agree.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-23T17:13:36Z",
+        "url": "https://youtube.com/shorts/gw0YFFBB7kQ"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-23T17:13:36Z",
+        "media_id": "18022594721974296",
+        "url": "https://www.instagram.com/reel/DgF5FIBH4vA/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-23T17:13:36Z",
+        "video_id": "1155744496827373",
+        "url": "https://www.facebook.com/reel/1155744496827373",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-23T17:13:36Z",
+        "publish_id": "v_inbox_file~v2.7711416544882100232",
+        "privacy": "draft",
+        "platform_status": "SEND_TO_USER_INBOX",
+        "url": "in your TikTok drafts",
+        "note": "Open TikTok, tap the inbox notification, turn on the AI-generated label, paste this caption and post:\nJensen Huang Is Back\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-23T17:13:36Z",
+        "post": "urn:li:ugcPost:7530680593018437632",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7530680593018437632"
+      }
+    }
   }
 ]
