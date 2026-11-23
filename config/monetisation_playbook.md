@@ -21,6 +21,13 @@ CLAUDE.md (facts traced to a source, no invented figures, no investment advice, 
   mid-roll ads on natural breaks.
 
 ## The presenter is a digital twin
+- **Every episode carries one «رأي وسام» (Wissam's view) segment** (founder 2026-11-23: "a differentiator, and people
+  really like it"; first viewer praise on W47). One view, on the week's biggest or most debated story, 45 to 90
+  seconds, after the facts of that story, opened with a [Visual: title رأي وسام] card and a spoken line that says it is
+  his view, not news. Use his stance from config/founder_views.md when one fits the story; otherwise draft one in his
+  voice (responsibility of the builders, practical regional angle, a fair counterpoint) and mark the section
+  «[DRAFT VIEW: founder to confirm]» in the script so the review shows it. No figures or legal claims inside the view
+  unless they are sourced.
 - The twin reports and explains, and it may also give the founder's own view (founder 2026-11-17: "I want to keep
   posting my view through my digital twin since I will not be earning any money from YouTube anyway. We will
   reconsider this later"). A view is always the founder's own words or approved by him, is labelled on screen
