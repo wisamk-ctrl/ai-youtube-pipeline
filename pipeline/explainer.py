@@ -67,13 +67,21 @@ def dated(d: breaking.Draft) -> list[str]:
     return out
 
 
-def candidates(ranking: dict[str, Any], done: set[str], limit: int) -> list[tuple[dict[str, Any], list[NewsItem]]]:
-    """(idea, the story's articles) for the ranking's explainer candidates not yet drafted, best first."""
+JOBS = ("explainer", "moment", "breaking")
+
+
+def candidates(ranking: dict[str, Any], done: set[str], limit: int,
+               jobs: tuple[str, ...] = JOBS) -> list[tuple[dict[str, Any], list[NewsItem]]]:
+    """(idea, the story's articles) for the ranking's Shorts candidates not yet drafted: those the judge called
+    explainers first, then the others in the order of `jobs`. Three live dry runs (2026-11-23) gave one
+    "explainer" label between them, so that label alone would make almost no Shorts; every candidate already
+    holds one fact, one implication and one question, and is written here as an idea that does not date."""
     stories = {s["id"]: s for s in ranking.get("stories", [])}
     out = []
-    for idea in ranking.get("shorts", []):
+    order = {j: n for n, j in enumerate(jobs)}
+    for idea in sorted(ranking.get("shorts", []), key=lambda i: order.get(i.get("job"), len(order))):
         s = stories.get(idea.get("story_id"))
-        if idea.get("job") != "explainer" or not s or f"{ranking['week']}:{s['id']}" in done:
+        if idea.get("job") not in order or not s or f"{ranking['week']}:{s['id']}" in done:
             continue
         if not all(str(idea.get(k) or "").strip() for k in ("fact", "implication", "question")):
             continue                           # asked for by hand but its lines are still to write
@@ -97,7 +105,8 @@ def run(cfg: dict[str, Any], ranking: dict[str, Any], client, now: datetime | No
     done = json.loads(done_path.read_text(encoding="utf-8")) if done_path.exists() else {"stories": {}}
     library = (yaml.safe_load(breaking.LIBRARY.read_text(encoding="utf-8")) or {}).get("clips", {})
     made = []
-    for idea, items in candidates(ranking, set(done["stories"]), int(e.get("max_per_week", 2))):
+    for idea, items in candidates(ranking, set(done["stories"]), int(e.get("max_per_week", 2)),
+                                  tuple(e.get("jobs", JOBS))):
         key = f"{ranking['week']}:{idea['story_id']}"
         d = breaking.make(items, cfg, client, list(library), system=SYSTEM, brief=brief(idea), extra_check=dated)
         done["stories"][key] = {"at": now.isoformat(timespec="minutes"), "title": idea.get("title", "")}
