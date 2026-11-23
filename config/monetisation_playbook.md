@@ -11,6 +11,17 @@ CLAUDE.md (facts traced to a source, no invented figures, no investment advice, 
 - Every story has three beats, in this order: what happened (attributed) → why it matters → the regional
   lens (what it means for the Gulf, the Levant and the wider region: a customer, a regulator, a build-out,
   a cost, a comparison). A story with no honest regional lens says so in one line and moves on.
+- The switch from fact to analysis is marked in every deep story (founder 2026-11-23, a colleague's feedback:
+  "split facts and news from analysis"): one spoken line that the news ends here and the reading of it starts,
+  with a `[Visual: title شو يعني؟]` card ("What it means" in English). The analysis stays next to its story,
+  never in one block after all the news: a viewer who leaves midway still takes the "so what" with them, and a
+  straight run of news is a "reading of other materials". «رأي وسام» stays the label for the one personal view.
+- Where there is an honest one, "why it matters" carries one line for the end user (founder 2026-11-23, viewer
+  feedback): what changes for a person using these tools at work. One line inside the beat, not a fourth beat.
+- The bottom line (founder 2026-11-23): after the last story and before the sign-off, one closing segment of
+  45 to 60 seconds, «خلاصة الأسبوع» / "The bottom line", gathers the week's three conclusions for the industry
+  and the region and the questions to watch. No new facts or figures, never what to buy or sell, and it comes
+  out of the analysis time, not on top of the episode length.
 - The stories and their order come from the week's approved ranking (founder 2026-11-22): about three deep
   stories of 60 to 180 seconds, three quick ones of 30 to 45 seconds, three radar lines with a reason each.
   A deep story ends on what to ask or watch next: a question for a vendor or a team, never what to buy or sell.

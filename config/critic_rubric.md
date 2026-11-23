@@ -55,6 +55,8 @@ Each one names a rule below; count it under that rule only if the quoted script 
 ## flow — signposts and transitions
 - MAJOR: a segment starts with no spoken transition (§4 list or equivalent).
 - MAJOR: a story appears in two segments without a cross-reference.
+- MAJOR: no «خلاصة الأسبوع» segment before the outro, or one that brings a new fact or figure (playbook, founder 2026-11-23).
+- MINOR: a deep story moves from the reported fact to the analysis with no spoken line marking the switch.
 - MINOR: the same transition phrase used more than twice in the episode.
 - MAJOR: the same "why it matters" question («ليش بيهمّنا؟», «ليش هاد بيهمّنا هون؟») used more than three times in the episode; vary it.
 

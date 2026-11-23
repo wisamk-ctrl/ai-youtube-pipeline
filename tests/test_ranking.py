@@ -488,6 +488,9 @@ def test_script_writer_gets_only_the_slotted_stories_in_the_approved_order():
     brief = rank.brief(r, CFG)
     assert brief.index("Story reg") < brief.index("Story g") and "Story old" not in brief
     assert "what to ask or watch next" in brief and "30" in brief and "investment" in brief
+    # founder 2026-11-23 (viewer feedback): the switch from fact to analysis is marked, the end user gets a line
+    # where there is an honest one, and the conclusions are gathered once before the sign-off
+    assert "What it means" in brief and "end user" in brief and "BOTTOM LINE" in brief
     seg = lambda i: Segment(track="models", item_ids=[i.id], headline_en="h", angle="a", enterprise_impact="e",
                             broll_ideas=[], approx_seconds=90)
     plan = EditorialPlan(episode_title_ar="ع", cold_open_hook_en="h", segments=[seg(a), seg(b)],

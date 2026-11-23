@@ -575,7 +575,13 @@ def brief(r: dict[str, Any], cfg: dict[str, Any]) -> str:
              "The cold open teases the first three stories.",
              f"\nDEEP stories, one segment each, {lo}-{hi} s, in this order. Each follows the same arc: the fact (attributed)",
              "→ what it means for the region → what to ask or watch next (a question for a vendor or a team; information",
-             "only, never investment advice). Put that last beat in watch_next."]
+             "only, never investment advice). Put that last beat in watch_next.",
+             "Mark the switch from fact to analysis in every deep story: one spoken line that the news ends here and the",
+             "reading of it starts, with a title card 'What it means' (Arabic: «شو يعني؟»). Where there is an honest one,",
+             "the analysis carries one line for the end user: what changes for a person using these tools at work.",
+             "BOTTOM LINE: after the last story and before the sign-off, one closing segment of 45-60 s gathers the week's",
+             "three conclusions for the industry and the region and the questions to watch. No new facts or figures in it,",
+             "and it comes out of the analysis time, not on top of the episode length."]
     def line(s: dict[str, Any]) -> str:
         actor = f"; regional actor: {s['regional_actor']}" if s.get("regional_actor") else ""
         frame = f"; decision frame: {s['decision_frame']}" if s.get("decision_frame") not in (None, "", "none") else ""

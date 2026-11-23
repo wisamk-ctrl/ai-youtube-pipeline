@@ -34,6 +34,8 @@ means **the English itself**.
 
 ## flow — signposts and transitions
 - MINOR: a new story starts with no spoken signpost.
+- MAJOR: no "bottom line" segment before the sign-off, or one that brings a new fact or figure (playbook, founder 2026-11-23).
+- MINOR: a deep story moves from the reported fact to the analysis with no spoken line marking the switch.
 - MINOR: a transition that reads as translated ("And now we go to…", calques from Arabic).
 
 ## arabic — here: natural spoken English

@@ -431,3 +431,13 @@ service, TikTok private, and Facebook native video.
   instructions and a check that rejects words that date the Short. `explainer.max_per_week` is 2.
 - Not checked: the spoken outro file is the breaking one (`shorts_outro_breaking_en.wav`); listen to the first
   explainer before posting it. Neither kind of Short goes through the legal flags yet.
+
+## 2026-11-23: viewer feedback on structure (fact vs analysis, the end user, a closing bottom line)
+
+- A colleague asked for facts first and all analysis after; viewers praised the regional take and asked for the
+  end user's angle. Decided: analysis stays next to its story, but every deep story marks the switch (spoken line
+  and a «شو يعني؟» card), "why it matters" carries one end-user line where honest, and a 45 to 60 second
+  «خلاصة الأسبوع» closes the episode before the sign-off.
+- Enforced in `config/monetisation_playbook.md` (Length and shape), the running-order brief (`rank.brief`,
+  tested), the writer's structure prompt and both critic rubrics. First real use: the W48 episode; check that the
+  bottom line holds no new figure and that the episode stays inside its length.
