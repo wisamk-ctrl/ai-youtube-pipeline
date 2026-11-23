@@ -34,6 +34,8 @@ KILL_TEXT = {
     "demo_no_deployment": "a demo with no deployment",
     "meeting_no_decision": "a ministerial meeting with no decision",
     "global_no_regional": "a global headline with no regional consequence",
+    # Set in code only (rank.score), never by the judge:
+    "investment_call": "a buy-or-sell headline: the show never prescribes investments",
 }
 
 
@@ -192,7 +194,7 @@ def fallback(s: dict[str, Any]) -> dict[str, Any]:
     tension = min(3, len({m.group(0).lower() for m in _TENSION.finditer(text)}))
     kill = next((name for name, rx, unless in _KILL_RX if rx.search(title) and not (unless and unless.search(text))), "none")
     kind = "explainer" if _EXPLAINER.search(title) else "regional" if (in_title or regional >= 2) else "global"
-    why = lambda what: f"{what} ({FALLBACK}; no model judgement)"
+    why = lambda what: what
     return {
         "kind": kind,
         "decision_impact": {"score": _band(ent, (1, 2, 4)), "reason": why(f"enterprise keywords weigh {ent:.1f}")},

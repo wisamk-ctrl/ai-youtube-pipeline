@@ -301,6 +301,14 @@ Plan: `docs/plans/2026-11-22-news-ranking.md`. Why: 17 new regional outlets add 
   decision is logged in `data/ranking/<week>.json` and a change after approval needs a new approval.
 - **One story = one unit, end to end:** the story id is on the plan segment (`story_id`), and the planner's
   segments are put in the approved order in code (`rank.align_plan`), whatever order the model wrote.
+- **A story must keep the article it is named after (2026-11-23).** Choosing a story's articles by outlet tier
+  alone dropped the lead article of a 47-outlet story; the link, the named-actor test and the writer all then
+  read a different article. Enforced in `cluster.cluster`; test `test_the_article_a_story_is_named_after…`.
+- **Channel rules that must never bend are code, not a judge's opinion (2026-11-23):** buy-or-sell headlines
+  and routine version releases are flagged in `cluster.py` and gated in `rank.score`, whichever judge ran.
+- **A review issue leads with the decision (2026-11-23).** The first Ranking report was three ten-column tables;
+  what the founder has to weigh (a seat holding a slot at 8/21 over a 15-point story, two stories on one
+  company) was only visible by comparing rows. `rank.checks` computes those lines and they come first.
 - **A silent install failure looked like success** while building this: `pip install … > log; echo $?` inside a
   longer command reported the last command's status, and Python 3.15 had no wheel for a pinned package. Use
   Python 3.12 locally (what CI uses) and check the install by importing a package.

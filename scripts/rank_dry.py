@@ -38,7 +38,7 @@ def main() -> int:
     for sid, title in before:
         print(f"- {sid}: {title}")
     print("\n### The ranking\n")
-    print(rank.to_md(r))
+    print(rank.to_md(r, cfg))
     return 1 if r["judge"] == FALLBACK else 0     # the fallback means the model call failed: not a test of the judge
 
 

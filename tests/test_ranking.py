@@ -309,6 +309,69 @@ def test_a_thesis_with_a_number_not_in_the_sources_is_replaced():
     assert "400" not in r["thesis"] and r["thesis"]
 
 
+# ── second round on the W47 dry run: junk headlines, a story's own article, a report built around the decision ──
+def test_bare_topic_headlines_are_not_stories_but_arabic_headlines_are_kept():
+    items = [item("Artificial Intelligence", "Daily Sabah", region="turkey"),
+             item("الإمارات تطلق منصة ذكاء اصطناعي سيادية", "Al Bayan", region="gulf"),
+             item("Humain signs sovereign cloud contract with Aramco", "Arab News")]
+    titles = {s["title"] for s in cl.cluster(items, CFG)}
+    assert "Artificial Intelligence" not in titles and len(titles) == 2
+
+
+def test_the_article_a_story_is_named_after_is_always_among_its_articles():
+    # W47 dry run: the MGX story's own article was pushed out by five higher-tier outlets, so its link went to
+    # another article and the named-actor test could not find "Abu Dhabi" in the sources.
+    lead = item("Abu Dhabi MGX wins big in Anthropic IPO listing", "Some Blog", score=9.0)
+    rest = [item(f"Anthropic IPO listing: MGX among the winners {n}", src, score=5.0)
+            for n, src in enumerate(("Reuters", "Bloomberg", "CNBC", "The Guardian", "BBC", "CNN"))]
+    story = cl.cluster([lead] + rest, CFG)[0]
+    assert story["items"][0]["title"] == story["title"] == lead.title
+    assert len(story["items"]) == rank.opts(CFG)["items_per_story"]
+
+
+def test_cluster_flags_buy_or_sell_headlines_routine_releases_and_the_words_a_story_turns_on():
+    items = [item("Anthropic Stock Is Down 13%. Is This Dip Worth Buying?", "Motley Fool"),
+             item("Claude Code releases v2.1.328", "GitHub"),
+             item("OpenAI releases GPT-6.2 for enterprise customers", "Reuters")]
+    items += [item(f"Anthropic IPO prices at a record {w}", f"Wire{n}") for n, w in enumerate(("high", "level", "mark"))]
+    stories = cl.cluster(items, CFG)
+    pick = lambda words: next(s for s in stories if words in s["title"])
+    assert pick("Worth Buying")["advice_bait"] and pick("Claude Code")["routine_release"]
+    assert not pick("GPT-6.2")["routine_release"] and not pick("GPT-6.2")["advice_bait"]
+    assert {"anthropic", "ipo"} <= set(pick("IPO")["common_words"]) and pick("Claude Code")["common_words"] == []
+
+
+def test_buy_or_sell_headlines_and_routine_releases_stay_out_even_of_the_radar_unless_the_founder_says_so():
+    bait, j1 = st("bait", d=3, e=3)
+    rel, j2 = st("rel", d=3, e=3)
+    bait["advice_bait"], rel["routine_release"] = True, True
+    r = ranked([(bait, j1), (rel, j2), st("ok", d=1)])
+    assert slot(r, "deep") + slot(r, "quick") + slot(r, "radar") == ["ok"]
+    assert "never prescribes investments" in rank.find(r, "bait")["slot_reason"]
+    assert "routine version release" in rank.find(r, "rel")["slot_reason"]
+    rank.decide(r, "rel", "radar", "a big release for our viewers", "founder", CFG, now=NOW)
+    assert slot(r, "radar") == ["rel"]
+
+
+def test_report_leads_with_what_the_founder_has_to_decide():
+    lead = item("A global shift", "Reuters", url="https://reuters.example/shift").to_dict()
+    pairs = [st("g", d=3, items=[lead]), st("reg", "regional", d=3), st("q1"), st("q2"), st("q3"), st("q4"),
+             st("r1", d=1), st("r2", d=1), st("r3", d=1), st("af", d=0, r=1, e=1, t=0, regions=["africa"])]
+    pairs[2][0]["common_words"], pairs[3][0]["common_words"] = ["anthropic", "ipo"], ["anthropic", "debut"]
+    r = ranked(pairs)
+    r["judge"] = jd.FALLBACK
+    assert rank.find(r, "af")["slot"] == "quick" and rank.find(r, "r3")["slot"] == "out"
+    md = rank.to_md(r)
+    head = md[:md.index("The episode as it stands")]
+    assert "rough" in head and "no Shorts lines" in head                # the fallback says what it cannot do
+    assert "`r3`" in head and "/story r3 quick because" in head        # outscored the africa seat and is out
+    assert "africa seat" in head
+    assert "`q1`, `q2` all turn on *anthropic*" in head                 # one line per shared word, not per pair
+    assert "only on the radar" in head                                  # q4 outscored the seat too
+    assert "[Story g](https://reuters.example/shift)" in md
+    assert "4:30" in md and "11:15" in md                               # 3 deep at 60-180 s + 3 quick at 30-45 s
+
+
 # ── report, storage, and the hand-over to the script writer ──────────────────
 def test_report_shows_scores_reasons_commands_and_the_log(tmp_path, monkeypatch):
     monkeypatch.setattr(rank, "DIR", tmp_path)
@@ -316,8 +379,10 @@ def test_report_shows_scores_reasons_commands_and_the_log(tmp_path, monkeypatch)
                 st("gone", repeat=["covered headline"])])
     rank.decide(r, "old", "radar", "worth one line", "founder", CFG, now=NOW)
     md = rank.to_md(r)
-    for needle in ("/story", "approve", "decision_impact because", "worth one line", "| g |", "×3", "Out"):
+    for needle in ("/story", "approve", "decision_impact because", "worth one line", "| g |", "×3", "Out",
+                   "Before you approve", "The episode as it stands"):
         assert needle in md, needle
+    assert md.index("Before you approve") < md.index("The episode as it stands") < md.index("All scores")
     rank.save(r)
     assert rank.load("2026-W48") == r and rank.load("2026-W48-en") == r and rank.load("2026-W49") is None
 
