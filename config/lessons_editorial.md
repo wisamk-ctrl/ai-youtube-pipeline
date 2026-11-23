@@ -52,5 +52,7 @@ Each lesson comes from a real fault heard or caught in a past episode. Treat a r
   were "Multi-Day Outage", "Days Offline", "Record IPO": each names how long, how big or a record, which makes a
   viewer ask how that happened, and each reads in under half a second on a phone. So: two words where two will
   do; a duration, a size or a record that the script actually states; no metaphor, no figure that is not in the
-  script. When the episode has two big stories the title already names, the second thumbnail (B) takes the
-  second story in the same style. The colours and layout stay as they are (founder).
+  script. When the episode has two lead stories, the first thumbnail (A) pairs them with a slash, two words
+  each ("Days Offline / Record IPO"): it is drawn on two lines, the second in gold. The second thumbnail (B)
+  takes the lead story alone, so YouTube's Test & Compare measures pairing against one story. The colours and
+  layout stay as they are (founder).

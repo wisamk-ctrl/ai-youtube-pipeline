@@ -47,8 +47,15 @@ def _ff(*args: str) -> None:
 def thumbnail_html(text: str, show: str, face_jpg: bytes | None = None, w: int = THUMB_W, h: int = THUMB_H) -> str:
     """The thumbnail page. `text` is the plan's 2–4 Arabic words; the presenter still (if any) sits
     small at the left, the words fill the right (RTL reading start)."""
-    words = text.split()
+    # "Days Offline / Record IPO": two stories, one per line, the second in gold (founder 2026-11-23, after
+    # YouTube's own suggestions paired both lead stories). Without a slash: one block, last word in gold.
+    lines = [part.split() for part in text.split("/") if part.strip()] if "/" in text else []
+    words = text.replace("/", " ").split()
     size = h * (0.2 if len(words) <= 2 else 0.165)       # 3–4 words still read from a phone grid
+    if len(lines) == 2:
+        marked = f"{html.escape(' '.join(lines[0]))}<br><b>{html.escape(' '.join(lines[1]))}</b>"
+    else:
+        marked = _accent_last(words)
     face = ""
     if face_jpg:
         b64 = base64.b64encode(face_jpg).decode()
@@ -71,7 +78,7 @@ border-radius:50%;overflow:hidden;box-shadow:{h * 0.018:.0f}px {h * 0.018:.0f}px
 .face img{{width:100%;height:100%;object-fit:cover}}
 </style></head><body><div class="grid"></div><div class="glow"></div>
 <div class="show" dir="{d}">{html.escape(show)}</div>{face}
-<div class="words" dir="{d}">{_accent_last(words)}</div><div class="bar"></div></body></html>"""
+<div class="words" dir="{d}">{marked}</div><div class="bar"></div></body></html>"""
 
 
 def _accent_last(words: list[str]) -> str:

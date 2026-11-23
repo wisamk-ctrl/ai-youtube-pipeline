@@ -322,3 +322,11 @@ def test_a_reviewed_thumbnail_wins_over_the_generated_one(tmp_path, monkeypatch)
     picked.parent.mkdir(parents=True)
     picked.write_bytes(b"founder's pick")
     assert yu.thumbnail_file(out) == picked
+
+
+def test_thumbnail_takes_two_stories_on_two_lines_the_second_in_gold():
+    """YouTube's own suggestions for W47-en paired both lead stories ("Days Offline" / "Record IPO")."""
+    h = packaging.thumbnail_html("Days Offline / Record IPO", "AI This Week")
+    assert "Days Offline<br><b>Record IPO</b>" in h and " / " not in h.split("<body>")[1]
+    one = packaging.thumbnail_html("Microsoft Goes Dark", "AI This Week")
+    assert "Microsoft Goes <b>Dark</b>" in one and "<br>" not in one

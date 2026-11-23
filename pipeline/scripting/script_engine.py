@@ -71,7 +71,7 @@ class EditorialPlan(BaseModel):
     cold_open_hook_en: str = Field(description="The 15-20 second opening hook idea, in English")
     segments: list[Segment]
     quick_fire_item_ids: list[str] = Field(description="Optional minor items for a 30-second quick-fire round")
-    thumbnail_text_ar: str = Field(description="2-4 Arabic words for the thumbnail: the lead story as a plain fact of scale, time or record that is in the script, never a metaphor and never a figure the script does not carry")
+    thumbnail_text_ar: str = Field(description="The thumbnail's Arabic words. When the episode has two lead stories, pair them with a slash, two words each side ('أيام بلا خدمة / اكتتاب قياسي'), drawn on two lines. Otherwise 2-4 words on the lead story. Always a plain fact of scale, time or record that is in the script, never a metaphor and never a figure the script does not carry")
 
 
 @dataclass
