@@ -349,3 +349,50 @@ def test_settings_document_the_ranking_and_keep_the_region_seats():
     assert 15 <= rk["max_stories"] <= 20 and rk["require_approval"] is True
     assert cfg["scoring"]["min_per_region"] == {"africa": 1, "turkey": 1}
     assert rank.opts(cfg)["weights"] == rank.DEFAULTS["weights"]
+
+
+# --- grouping on names, not verbs (2026-11-23, live W48 items) -------------------------------------------------
+def test_common_verbs_do_not_tie_two_stories_together():
+    """Live: ServiceNow items sat inside an IMF story because both headlines 'raise' a '2026' figure and 'see' one."""
+    imf = item("IMF raises Qatar's 2026 GDP forecast and sees a 14.5% contraction", "Reuters", score=9)
+    now_ = item("ServiceNow raises its 2026 AI contract target and sees agent usage surge", "Bloomberg", score=8)
+    assert len(cl.cluster([imf, now_], CFG)) == 2
+
+
+def test_a_two_word_place_name_counts_once():
+    """Live: 'Saudi Arabia announces new tax' and a Houthi report sat inside the SDAIA universities story."""
+    sdaia = [item("SDAIA launches a year of AI across universities in Saudi Arabia", "SPA", score=9),
+             item("SDAIA opens its AI year for universities in Saudi Arabia", "Arab News", score=8)]
+    other = [item("Saudi Arabia announces a new tax to begin on January 1", "Gulf News", score=7),
+             item("Saudi Arabia intercepts more missiles and drones", "AP", score=6),
+             item("Saudi Arabia signs a football broadcast deal", "Reuters", score=5)]
+    stories = cl.cluster(sdaia + other, CFG)
+    lead = next(s for s in stories if s["title"].startswith("SDAIA launches"))
+    assert lead["outlet_count"] == 2 and len(stories) == 4
+
+
+def test_two_reports_of_one_event_still_group():
+    a = item("California sues OpenAI over safety concerns after rogue agent hacking", "Reuters", score=9)
+    b = item("California sues OpenAI over hacking that stoked AI fears", "AP", score=8)
+    (story,) = cl.cluster([a, b], CFG)
+    assert story["outlet_count"] == 2
+
+
+# --- one event told as several stories: the judge names it, the code joins them ---------------------------------
+def test_stories_the_judge_calls_one_event_are_joined():
+    a = {"id": "s1", "title": "MGX wins in Anthropic IPO", "items": [{"id": "a1", "source": "Reuters"}], "outlets": ["Reuters"], "outlet_count": 1, "tiers": ["A"], "verified": True}
+    b = {"id": "s2", "title": "Anthropic's Wall Street debut", "items": [{"id": "b1", "source": "FT"}, {"id": "b2", "source": "Reuters"}], "outlets": ["FT", "Reuters"], "outlet_count": 2, "tiers": ["B"], "verified": True}
+    c = {"id": "s3", "title": "Why the valuation will not last", "items": [{"id": "c1", "source": "WSJ"}], "outlets": ["WSJ"], "outlet_count": 1, "tiers": ["B"], "verified": True}
+    d = {"id": "s4", "title": "California sues OpenAI", "items": [{"id": "d1", "source": "AP"}], "outlets": ["AP"], "outlet_count": 1, "tiers": ["A"], "verified": True}
+    js = {"s1": {"same_event_as": ""}, "s2": {"same_event_as": "s1"}, "s3": {"same_event_as": "s2"}, "s4": {"same_event_as": "s9"}}
+    out = rank.merge_same([a, b, c, d], js, items_per_story=3)
+    assert [s["id"] for s in out] == ["s1", "s4"] and set(js) == {"s1", "s4"}
+    assert out[0]["outlets"] == ["Reuters", "FT", "WSJ"] and out[0]["outlet_count"] == 3 and out[0]["tiers"] == ["A", "B"]
+    assert [i["id"] for i in out[0]["items"]] == ["a1", "b1", "c1"]            # one per outlet, capped
+    assert out[0]["merged"] == ["Anthropic's Wall Street debut", "Why the valuation will not last"]
+
+
+def test_a_story_pointing_at_itself_or_in_a_loop_is_left_alone():
+    mk = lambda i: {"id": i, "title": i, "items": [], "outlets": [i], "outlet_count": 1, "tiers": ["A"], "verified": True}
+    js = {"s1": {"same_event_as": "s1"}, "s2": {"same_event_as": "s3"}, "s3": {"same_event_as": "s2"}}
+    assert [s["id"] for s in rank.merge_same([mk("s1"), mk("s2"), mk("s3")], js, 5)] == ["s1", "s2", "s3"]

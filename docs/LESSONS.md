@@ -352,3 +352,17 @@ Plan: `docs/plans/2026-11-22-news-ranking.md`. Why: 17 new regional outlets add 
   voice.yaml at once, and the phase refuses before spending when the wallet holds less than 1.25 × the estimate.
   A hand-made voice file under reviewed/ is still used exactly as it is. The daily health check warns when the
   wallet is under `health.heygen_min_usd`. Tests in `tests/test_faces.py`. Not yet run on a real episode.
+
+## 2026-11-23: story grouping, measured on the live W48 items before Friday's first ranked run
+
+- **Verbs were tying unrelated stories together.** Any two shared headline words made one story, so ServiceNow
+  items ("raises … sees") sat inside an IMF story, and "Saudi Arabia announces new tax" inside the SDAIA
+  universities story. A story's articles go to the writer as its sources, so this could put the wrong source under
+  a story. Fix (`pipeline/ranking/cluster.py`): one shared word must be a name (capitalised inside sentence-case
+  headlines), and two words that name one thing ("Saudi Arabia", "Wall Street") count once.
+- **One event was told as several stories** (the Anthropic IPO: four of the top 30). Joining them by headline
+  words was tried two ways (a story's repeated words; votes between members) and both lumped unrelated Microsoft,
+  Google and Nvidia stories together. So the judge now names a story that reports the same event as an earlier
+  one (`same_event_as`) and `rank.merge_same` joins them in code. Not yet seen on a live judge run.
+- Tests in `tests/test_ranking.py`. Still in the live list: off-topic items the AI filter lets through (an
+  archaeology story, climate talks) and newsletter round-ups ("Morning Briefing").

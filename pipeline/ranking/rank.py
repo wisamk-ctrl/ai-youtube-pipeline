@@ -239,6 +239,46 @@ def pick_shorts(r: dict[str, Any], cfg: dict[str, Any], now: datetime | None = N
 
 
 # ── Build, decide, approve ───────────────────────────────────────────────────
+def merge_same(stories: list[dict[str, Any]], judgements: dict[str, dict], items_per_story: int) -> list[dict[str, Any]]:
+    """Join the stories the judge says report one event (`same_event_as`) into the first of them. The grouping by
+    headline words cannot see that "Anthropic IPO" and "Anthropic's Wall Street debut" are one event (live W48
+    items: four stories for it). The model only names the pair; the joining is done here. The kept story keeps
+    its own judgement; a pointer to itself, to an unknown id or round a loop is ignored."""
+    by_id = {s["id"]: s for s in stories}
+
+    def root(sid: str) -> str:
+        seen = {sid}
+        while True:
+            nxt = str((judgements.get(sid) or {}).get("same_event_as") or "")
+            if not nxt or nxt not in by_id:
+                return sid
+            if nxt in seen:
+                return ""                      # a loop: nobody is the first
+            seen.add(nxt)
+            sid = nxt
+
+    roots = {s["id"]: root(s["id"]) for s in stories}      # all worked out first: joining removes judgements
+    out = []
+    for s in stories:
+        r = roots[s["id"]]
+        if r in ("", s["id"]):
+            out.append(s)
+            continue
+        keep = by_id[r]
+        keep["outlets"] = list(dict.fromkeys(keep["outlets"] + s["outlets"]))
+        keep["outlet_count"] = len(keep["outlets"])
+        keep["tiers"] = sorted(set(keep["tiers"]) | set(s["tiers"]))
+        keep["verified"] = bool(keep.get("verified") or s.get("verified"))
+        have = {i.get("source") for i in keep["items"]}
+        for i in s["items"]:
+            if len(keep["items"]) < items_per_story and i.get("source") not in have:
+                keep["items"].append(i)
+                have.add(i.get("source"))
+        keep.setdefault("merged", []).append(s["title"])
+        judgements.pop(s["id"], None)
+    return out
+
+
 def build(stories: list[dict[str, Any]], cfg: dict[str, Any], week: str, client: Any = None,
           covered: list[str] | None = None, now: datetime | None = None,
           previous: dict[str, Any] | None = None) -> dict[str, Any]:
@@ -246,6 +286,7 @@ def build(stories: list[dict[str, Any]], cfg: dict[str, Any], week: str, client:
     now = now or datetime.now(timezone.utc)
     o = opts(cfg)
     judgements, thesis, by = judge(stories, covered or [], o["model"], client)
+    stories = merge_same(stories, judgements, o["items_per_story"])
     r: dict[str, Any] = {"week": week, "generated": now.isoformat(), "judge": by, "weights": o["weights"],
                          "thesis": "", "thesis_by": "", "hook": [], "stories": stories, "shorts": [],
                          "overrides": [x for x in (previous or {}).get("overrides", [])
