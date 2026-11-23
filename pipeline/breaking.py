@@ -134,12 +134,16 @@ def _block(items: list[NewsItem]) -> str:
                        f"{i.title}\n{i.summary}\n</article>" for i in items)
 
 
-def draft(items: list[NewsItem], library: list[str], model: str, client, feedback: str = "") -> Draft:
+def draft(items: list[NewsItem], library: list[str], model: str, client, feedback: str = "",
+          system: str = SYSTEM, brief: str = "") -> Draft:
+    """`system` and `brief` let another kind of Short (pipeline/explainer.py) use the same drafting."""
     lib = "\n".join(f"- {k}" for k in library)
     msg = f"<clip_library>\n{lib}\n</clip_library>\n\n<articles>\n{_block(items)}\n</articles>"
+    if brief:
+        msg += f"\n\n{brief}"
     if feedback:
         msg += f"\n\nYour previous draft failed these checks; fix them:\n{feedback}"
-    resp = client.messages.parse(model=model, max_tokens=4000, system=SYSTEM,
+    resp = client.messages.parse(model=model, max_tokens=4000, system=system,
                                  messages=[{"role": "user", "content": msg}], output_format=Draft)
     usage.record("breaking_draft", model, getattr(resp, "usage", None))
     if resp.parsed_output is None:
@@ -201,17 +205,18 @@ def judge(d: Draft, items: list[NewsItem], model: str, client) -> list[int]:
     return list(resp.parsed_output.unsupported)
 
 
-def make(items: list[NewsItem], cfg: dict[str, Any], client, library: list[str]) -> Draft | None:
-    """A draft that passed both checks (two tries), or None."""
+def make(items: list[NewsItem], cfg: dict[str, Any], client, library: list[str], system: str = SYSTEM,
+         brief: str = "", extra_check=None) -> Draft | None:
+    """A draft that passed both checks (two tries), or None. `extra_check(draft) -> [problems]` adds rules."""
     s = cfg.get("scripting", {})
     model, aux = s.get("model", "claude-opus-5-5"), s.get("aux_model", s.get("model", "claude-sonnet-5-5"))
     feedback = ""
     for attempt in (1, 2):
-        d = draft(items, library, model, client, feedback)
+        d = draft(items, library, model, client, feedback, system, brief)
         if not d.newsworthy:
             log.info("Breaking: the writer judged the story not right for a Short")
             return None
-        problems = mechanical(d, items, library)
+        problems = mechanical(d, items, library) + (extra_check(d) if extra_check else [])
         if not problems:
             bad = judge(d, items, aux, client)
             problems = [f"line {n} is not supported by its cited articles: {d.lines[n - 1].text}"
@@ -235,9 +240,10 @@ def script_md(d: Draft) -> str:
     return "\n".join(out)
 
 
-def write(d: Draft, items: list[NewsItem], now: datetime, library: dict[str, str], root: Path = ROOT) -> str:
+def write(d: Draft, items: list[NewsItem], now: datetime, library: dict[str, str], root: Path = ROOT,
+          kind: str = "brk", end_text: str = "More on this in Sunday's episode") -> str:
     slug = re.sub(r"[^a-z0-9-]+", "", d.slug.lower().replace(" ", "-")).strip("-")[:40] or "story"
-    week = f"{now:%Y-%m-%d}-brk-{slug}-en"
+    week = f"{now:%Y-%m-%d}-{kind}-{slug}-en"
     folder = root / "reviewed" / week
     folder.mkdir(parents=True, exist_ok=True)
     (folder / "script.md").write_text(script_md(d), encoding="utf-8")
@@ -246,7 +252,7 @@ def write(d: Draft, items: list[NewsItem], now: datetime, library: dict[str, str
     (folder / "plan.json").write_text(json.dumps({"language": "en", "episode_title_en": d.title, "segments": [],
                                                   "thumbnail_text_en": d.title}, indent=2), encoding="utf-8")
     (folder / "breaking.yaml").write_text(yaml.safe_dump({
-        "title": d.title, "end_text": "More on this in Sunday's episode",
+        "title": d.title, "end_text": end_text,
         "outro": "assets/brand/shorts_outro_breaking_en.wav", "linkedin": d.linkedin, "drafted": "automatically",
     }, sort_keys=False, allow_unicode=True), encoding="utf-8")
     (folder / "shorts.yaml").write_text(yaml.safe_dump({"hooks": {d.title: d.hook}}, allow_unicode=True), encoding="utf-8")

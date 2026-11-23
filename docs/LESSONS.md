@@ -419,3 +419,15 @@ service, TikTok private, and Facebook native video.
   of speech $0.22 and 53.7 s of face $2.07, about $2.29 an episode. HeyGen's docs give no supported way for an
   unattended job to spend plan credits: OAuth (the connector, `heygen auth login --oauth`) needs a browser
   sign-in and is described as for small trials; an API key always bills the prepaid wallet.
+
+## 2026-11-23: explainer Shorts; and a weekly-Shorts mistake
+
+- **Mistake:** the W47-en episode clips were queued and put to the founder for approval although the playbook has
+  said since 2026-11-18 that weekly Shorts are off ("old news"). They were held before anything posted. Before
+  queuing or proposing any post, read `config/monetisation_playbook.md`; `tests/test_release_status.py` now fails
+  when an unapproved weekly Short waits in the queue.
+- **Explainer Shorts built** (`pipeline/explainer.py`, workflow `explainer`): approving the ranking starts them.
+  They reuse the breaking route (drafting, figure check, second-model check, render, `post <id>`), with their own
+  instructions and a check that rejects words that date the Short. `explainer.max_per_week` is 2.
+- Not checked: the spoken outro file is the breaking one (`shorts_outro_breaking_en.wav`); listen to the first
+  explainer before posting it. Neither kind of Short goes through the legal flags yet.

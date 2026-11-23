@@ -63,3 +63,6 @@ per month (670 a month is 8,000 a year, the threshold from 1 February 2027).
   queue them, and the two W45 Shorts still waiting were marked skipped.
 - Instagram and TikTok captions carry no WhatsApp link (links are not clickable there): the WhatsApp Channel
   link goes in each profile's bio, set by hand (founder 2026-11-23).
+- Explainer Shorts (founder 2026-11-23): when the week's ranking is approved, its "explainer" candidates (two at
+  most) are written fresh as 40–50 s Shorts that explain one idea, with the same line-by-line source checks as a
+  breaking Short and no words that date them. They are not cuts of the episode. Same check and `post <id>` reply.

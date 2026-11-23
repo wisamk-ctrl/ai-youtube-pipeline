@@ -48,11 +48,12 @@ def append_history(path: Path, row: dict[str, Any]) -> None:
 
 
 def short_origin(video_id: str, queue: list[dict[str, Any]]) -> str:
-    """'Breaking' for a same-day breaking Short, 'Episode clip' for one cut from an episode, '' when unknown."""
+    """'Breaking' for a same-day breaking Short, 'Explainer' for one from the ranking, 'Episode clip' for one cut from an episode, '' when unknown."""
     for e in queue:
         url = str((e.get("posts") or {}).get("youtube", {}).get("url") or "")
         if url.rstrip("/").endswith(video_id):
-            return "Breaking" if "-brk-" in str(e.get("week", "")) else "Episode clip"
+            week = str(e.get("week", ""))
+            return "Breaking" if "-brk-" in week else "Explainer" if "-exp-" in week else "Episode clip"
     return ""
 
 

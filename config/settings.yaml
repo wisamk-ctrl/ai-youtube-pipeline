@@ -478,6 +478,10 @@ breaking:                     # breaking-news Shorts drafted from the news watch
   tries: 2                    # stories tried per run when a draft fails its checks
   repeat_days: 4              # a story drafted in the last 4 days is not drafted again under a new headline (founder 2026-11-20)
 
+explainer:                    # explainer Shorts drafted from the approved ranking (pipeline/explainer.py; founder 2026-11-23)
+  enabled: true
+  max_per_week: 2             # the ranking's "explainer" candidates, best first; nothing posts without `post <id>`
+
 # Daily health check (scripts/health.py): the longest each scheduled workflow may go without a SUCCESSFUL run before
 # the "Health: needs a look" issue says so. Every workflow with a schedule needs a line (tests/test_health.py).
 health:

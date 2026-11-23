@@ -70,7 +70,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           WEEK: ${{ steps.apply.outputs.week }}
-        run: gh workflow run weekly.yml --repo "$GITHUB_REPOSITORY" --ref main -f phase=script -f week="$WEEK"
+        run: |
+          gh workflow run weekly.yml --repo "$GITHUB_REPOSITORY" --ref main -f phase=script -f week="$WEEK"
+          # The approved list's explainer Shorts are drafted alongside (.github/workflows/explainer.yml).
+          gh workflow run explainer.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK" || echo "::warning::explainer Shorts not started"
       - name: Reply on the issue
         if: always()
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b  # v7

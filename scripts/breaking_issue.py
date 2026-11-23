@@ -31,7 +31,8 @@ def main(kind: str, week: str, extra: str = "") -> None:
     folder = ROOT / "reviewed" / week
     if kind == "drafted":
         src = (folder / "sources_ok.txt").read_text(encoding="utf-8") if (folder / "sources_ok.txt").exists() else ""
-        body = (f"**New breaking Short drafted: `{week}`**\n\nRendering now (about 5 minutes). The script, line by line "
+        what = "explainer Short (from the approved ranking)" if "-exp-" in week else "breaking Short"
+        body = (f"**New {what} drafted: `{week}`**\n\nRendering now (about 5 minutes). The script, line by line "
                 f"with the article each line rests on:\n\n{src}\n\nI'll post the video link here when it's ready.")
     elif kind == "ready":
         url = f"https://github.com/{repo}/raw/previews/{week}-files/short_01.mp4"
