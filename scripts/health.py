@@ -70,6 +70,15 @@ def gather(gh, repo: str, cfg: dict, state: dict, now: datetime) -> tuple[dict[s
     return problems, ids
 
 
+def alert_note(have=None) -> str:
+    """A line for the report when WhatsApp alerts are off. A note, not a problem: the alerts are optional, and a
+    problem would keep the health issue open for good."""
+    from pipeline.publish import release_status as rs
+    return "" if rs.alerts_on(have or rs.in_env) else (
+        "\n\nNote: WhatsApp alerts are off (the WHATSAPP_PHONE and CALLMEBOT_APIKEY secrets are not set), so this "
+        "report reaches you through GitHub only.")
+
+
 def check() -> int:
     from pipeline.config import load_settings
     from pipeline.publish import health
@@ -79,7 +88,7 @@ def check() -> int:
     state = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
     problems, ids = gather(gh, repo, load_settings(), state, now)
     flat = sorted(f"{a}: {p}" for a, items in problems.items() for p in items)
-    body = health.report(problems)
+    body = health.report(problems) + alert_note()
     print(body)
     if flat and flat != state.get("problems", []):
         raise_issue(gh, repo, body)

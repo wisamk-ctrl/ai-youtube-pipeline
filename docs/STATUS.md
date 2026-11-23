@@ -342,3 +342,13 @@ The weekly job now stops after ranking the week's stories and waits for the foun
   quick slot and gave the Türkiye seat to a headline that only said "Artificial Intelligence". All three are
   what `/story <id> drop because …` is for, and the model judge's depth and kill-list answers should catch the
   last two.
+
+## Where a release goes (checked 2026-11-23; table in `docs/SOCIAL.md`)
+- The reply to `publish` now lists, per platform, what happens to the episode and to the Shorts, from
+  `pipeline/publish/release_status.py`. Not yet seen on GitHub: its first real run is the next `publish`.
+- **For the founder:** WhatsApp alerts are off until `WHATSAPP_PHONE` and `CALLMEBOT_APIKEY` are set. Facebook
+  gets the episode as a link post and no Reel has posted there. Instagram has posted one Reel; the rest were
+  skipped and the cause is not investigated. W45-en Shorts #2 and #3 still wait for approval.
+- **Open:** whether Instagram and TikTok captions should carry the WhatsApp link as plain text; whether
+  `publish` should also queue the weekly Shorts (the playbook says they are no longer posted).
+

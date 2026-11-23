@@ -40,7 +40,7 @@ import requests
 
 log = logging.getLogger(__name__)
 
-PLATFORMS = ("youtube", "instagram", "facebook", "tiktok", "linkedin")
+from pipeline.publish.release_status import NEEDS, PLATFORMS
 LI = "https://api.linkedin.com"
 IG = "https://graph.instagram.com"
 TT = "https://open.tiktokapis.com"
@@ -571,15 +571,23 @@ def post_due(queue: list[dict[str, Any]], cfg: dict[str, Any], fetch: Callable[[
              now: datetime | None = None, only: str | None = None) -> list[str]:
     """Post every approved, due entry on each platform not yet done. Returns one line per attempt."""
     now = now or datetime.now(timezone.utc)
-    lines = []
+    lines, passed_over = [], []
     for e in queue:
         if only and e["id"] != only:
             continue
         if not e.get("approved") or datetime.strptime(e["due"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc) > now:
             continue
         # "unconfirmed": the platform may already show it, so only a person decides whether to send it again.
-        todo = [p for p, r in e["posts"].items()
-                if r.get("status") not in ("posted", "skipped", "unconfirmed") and p in posters]
+        waiting = [p for p, r in e["posts"].items() if r.get("status") not in ("posted", "skipped", "unconfirmed")]
+        todo = [p for p in waiting if p in posters]
+        # A platform with no poster this run (secrets missing, or its token failed) is said, on the run and on
+        # the entry, instead of being passed over: it stays queued and the run still passes.
+        for p in waiting:
+            if p not in posters:
+                e["posts"][p]["note"] = "not connected this run (secrets missing or the token failed): still queued"
+                passed_over.append(f"⏭️ {e['id']} {p}: not connected this run, not posted; still queued")
+            else:
+                e["posts"][p].pop("note", None)
         if not todo:
             continue
         local = fetch(e)
@@ -605,7 +613,7 @@ def post_due(queue: list[dict[str, Any]], cfg: dict[str, Any], fetch: Callable[[
             r.update({("platform_status" if k == "status" else k): v for k, v in dict(res or {}).items()
                       if k not in ("at", "attempts")})                    # TikTok returns its own status
             lines.append(f"✅ {e['id']} {p}: {res}")
-    return lines
+    return lines + passed_over
 
 
 def youtube_poster(cfg: dict[str, Any]):
@@ -679,25 +687,15 @@ def linkedin_poster(cfg: dict[str, Any]):
     return post
 
 
-def channels_line(cfg: dict[str, Any]) -> str:
-    """Where a Short goes, for the messages that ask the founder to approve one: the configured platforms, with
-    TikTok named as drafts while `tiktok_mode` is inbox (it is not published there until he posts it)."""
-    s = cfg.get("social", {})
-    names = {"youtube": "YouTube", "instagram": "Instagram", "facebook": "Facebook", "linkedin": "LinkedIn", "tiktok": "TikTok"}
-    plats = list(s.get("platforms", PLATFORMS))
-    drafts = "tiktok" in plats and s.get("tiktok_mode", "inbox") == "inbox"
-    live = [names[p] for p in plats if not (p == "tiktok" and drafts)]
-    line = ", ".join(live[:-1]) + (" and " if len(live) > 1 else "") + live[-1] if live else ""
-    return (line + (", and to your TikTok drafts" if line else "your TikTok drafts")) if drafts else line
+def channels_line(cfg: dict[str, Any], have: Callable[[str], bool] | None = None) -> str:
+    """Where a Short goes, for the messages that ask the founder to approve one (release_status.channels_line)."""
+    from pipeline.publish import release_status as rs
+    return rs.channels_line(cfg, have or rs.in_env)
 
 
 def posters(cfg: dict[str, Any]) -> dict[str, Callable]:
     """The platforms whose secrets are present (a platform not yet connected is simply not posted to)."""
-    need = {"youtube": ("GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "YOUTUBE_REFRESH_TOKEN"),
-            "instagram": ("INSTAGRAM_TOKEN",),
-            "facebook": ("FACEBOOK_PAGE_ID", "FACEBOOK_PAGE_TOKEN"),
-            "tiktok": ("TIKTOK_CLIENT_KEY", "TIKTOK_CLIENT_SECRET", "TIKTOK_REFRESH_TOKEN"),
-            "linkedin": ("LINKEDIN_TOKEN",)}
+    need = NEEDS            # one table, shared with the messages that say where a release goes
     make = {"youtube": youtube_poster, "instagram": instagram_poster, "facebook": facebook_poster, "tiktok": tiktok_poster,
             "linkedin": linkedin_poster}
     out = {}
@@ -711,5 +709,5 @@ def posters(cfg: dict[str, Any]) -> dict[str, Callable]:
         elif via and p in ("instagram", "facebook"):   # no token of its own: through Composio or Buffer
             out[p] = relay_poster(p, via)
         else:
-            log.info("%s not connected (secrets missing): skipped", p)
+            log.warning("%s not connected (secrets missing): skipped", p)
     return out

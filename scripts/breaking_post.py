@@ -28,8 +28,9 @@ def approve(week: str, queue: Path = ROOT / "data" / "social_queue.json", root: 
         e["captions"]["tiktok"] = tt.replace("Full episode on YouTube: link in bio",
                                              "More on this in Sunday's episode of AI This Week. Follow so you don't miss it.")
         if meta.get("linkedin") and "linkedin" in e["captions"]:
+            follow = f"\nFollow on WhatsApp: {s['whatsapp_channel_url']}" if s.get("whatsapp_channel_url") else ""
             e["captions"]["linkedin"] = (f"{meta['linkedin'].strip()}\n\nMore on this in Sunday's episode of AI This Week."
-                                         f"\n\n{note}\n\n{tags}").strip()
+                                         f"{follow}\n\n{note}\n\n{tags}").strip()
         n += 1
     queue.write_text(json.dumps(q, ensure_ascii=False, indent=2), encoding="utf-8")
     return n

@@ -47,10 +47,11 @@ def test_the_record_survives_on_disk_per_week(tmp_path):
 def test_channels_line_names_tiktok_as_drafts():
     from pipeline.publish.social import channels_line
     cfg = {"social": {"platforms": ["youtube", "instagram", "facebook", "tiktok", "linkedin"], "tiktok_mode": "inbox"}}
-    assert channels_line(cfg) == "YouTube, Instagram, Facebook and LinkedIn, and to your TikTok drafts"
+    on = lambda name: True
+    assert channels_line(cfg, on) == "YouTube, Instagram, Facebook and LinkedIn, and to your TikTok drafts"
     cfg["social"]["tiktok_mode"] = "direct"
-    assert channels_line(cfg) == "YouTube, Instagram, Facebook, TikTok and LinkedIn"
-    assert channels_line({"social": {"platforms": ["youtube"]}}) == "YouTube"
+    assert channels_line(cfg, on) == "YouTube, Instagram, Facebook, TikTok and LinkedIn"
+    assert channels_line({"social": {"platforms": ["youtube"]}}, on) == "YouTube"
 
 
 def test_connection_report_does_not_call_a_relayed_platform_unconnected(monkeypatch):

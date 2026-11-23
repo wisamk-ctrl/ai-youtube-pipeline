@@ -1,6 +1,6 @@
 name: breaking-post
-# The founder's OK on the "Breaking Shorts" issue: a comment `post <week>` publishes that Short to YouTube, TikTok
-# and LinkedIn (scripts/breaking_post.py + scripts/social.py). Only the repository owner's comment counts.
+# The founder's OK on the "Breaking Shorts" issue: a comment `post <week>` publishes that Short to every connected
+# platform in `social.platforms`, TikTok as a draft (scripts/breaking_post.py + scripts/social.py). Only the repository owner's comment counts.
 on:
   issue_comment:
     types: [created]

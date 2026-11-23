@@ -10,11 +10,16 @@ import os
 
 log = logging.getLogger(__name__)
 API = "https://api.callmebot.com/whatsapp.php"
+_warned = False
 
 
 def whatsapp(text: str, http=None) -> bool:
     phone, key = os.environ.get("WHATSAPP_PHONE", "").strip(), os.environ.get("CALLMEBOT_APIKEY", "").strip()
     if not phone or not key:
+        global _warned
+        if not _warned:       # once per run: off is allowed, silently off is not (2026-11-23, off for weeks unnoticed)
+            log.warning("WhatsApp alerts are off: WHATSAPP_PHONE and CALLMEBOT_APIKEY are not set")
+            _warned = True
         return False
     try:
         import requests
