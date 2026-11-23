@@ -46,3 +46,11 @@ Each lesson comes from a real fault heard or caught in a past episode. Treat a r
   them in Amman offices (OpenAI, ADNOC, G42, NVIDIA, AI agents, CPU, CTO, data sovereignty), and figures as
   digits (5 سنين، 2.6 مليار دولار). Names the voice still gets wrong go in config/pronunciation.yaml as a
   spoken spelling (ADNOC → Adnok, HUMAIN → Humane, G42 → G forty-two); captions keep the real name.
+
+- **Thumbnail words: a plain fact of scale, not a metaphor (YouTube's own suggestions on W47-en, founder
+  2026-11-23).** W47's thumbnail said "Microsoft Goes Dark". YouTube's suggested wordings for the same episode
+  were "Multi-Day Outage", "Days Offline", "Record IPO": each names how long, how big or a record, which makes a
+  viewer ask how that happened, and each reads in under half a second on a phone. So: two words where two will
+  do; a duration, a size or a record that the script actually states; no metaphor, no figure that is not in the
+  script. When the episode has two big stories the title already names, the second thumbnail (B) takes the
+  second story in the same style. The colours and layout stay as they are (founder).

@@ -394,3 +394,17 @@ service, TikTok private, and Facebook native video.
 - **A workflow that only needs to know whether a secret is set gets a flag, not the secret**
   (`${{ secrets.X != '' && '1' || '' }}` in `approve.yml`).
 - **A message hard-coded in a workflow drifts.** The old reply was a shell string; the new one is printed by code.
+
+## 2026-11-23: chapter pictures — YouTube makes them days late; our gate could never have helped
+
+- **Measured from the founder's Mac (no sign-in wall there):** W47-en, one day after going public, has its frame
+  previews and 11 chapters, every chapter still on the main thumbnail (`hqdefault.jpg`). W46-en, which looked the
+  same 1.5 days after upload, now has its own picture on all 10 chapters (`hqdefault_<ms>.jpg`). Other channels'
+  chaptered videos from the same search: those two to three days old have their own pictures (one with 6 views);
+  those under a day old do not; one three-day-old 3-minute video still does not.
+- **So:** the pictures arrive roughly two to five days after publishing, whatever the channel, and nothing in the
+  upload or the API sets them. The 2026-11-18 premise ("wait a few hours") was wrong by an order of magnitude:
+  `publish.chapter_gate` cannot produce them and only risks a late release (W47-en went out at 18:40 Gulf, not
+  17:00). Not known: whether the clock starts at upload or at going public.
+- The check from GitHub runners is still blind (sign-in wall). Run `python scripts/youtube_video_check.py <id>`
+  from the Mac for a real answer.
