@@ -98,6 +98,7 @@ def _json(r, who):
 def check() -> str:
     """Which accounts the stored sign-ins reach, by asking each platform who we are. No secret is printed."""
     e, out = os.environ, ["**Connected accounts**", ""]
+    relayed = bool(e.get("COMPOSIO_API_KEY") or e.get("BUFFER_API_KEY"))
     if e.get("LINKEDIN_TOKEN"):
         r = requests.get("https://api.linkedin.com/v2/userinfo", timeout=60, headers={"Authorization": f"Bearer {e['LINKEDIN_TOKEN']}"})
         out.append(f"- LinkedIn: connected as **{r.json().get('name')}**" if r.status_code == 200 else
@@ -110,14 +111,14 @@ def check() -> str:
         d = r.json() if r.status_code == 200 else {}
         out.append(f"- Instagram: connected as **@{d.get('username')}** ({d.get('account_type')})" if d else
                    f"- Instagram: the saved token was refused (HTTP {r.status_code}). Make a new one.")
-    else:
+    elif not relayed:   # carried by Composio or Buffer: their lines below say who it reaches
         out.append("- Instagram: not connected (no `INSTAGRAM_TOKEN` secret)")
     if e.get("FACEBOOK_PAGE_TOKEN") and e.get("FACEBOOK_PAGE_ID"):
         r = requests.get(f"{FB}/{e['FACEBOOK_PAGE_ID']}", timeout=60,
                          params={"fields": "name", "access_token": e["FACEBOOK_PAGE_TOKEN"]})
         out.append(f"- Facebook: connected to the Page **{r.json().get('name')}**" if r.status_code == 200 else
                    f"- Facebook: the saved Page token was refused (HTTP {r.status_code}). Connect again.")
-    else:
+    elif not relayed:
         out.append("- Facebook: not connected (no `FACEBOOK_PAGE_TOKEN` secret)")
     if e.get("COMPOSIO_API_KEY"):   # Instagram and the Facebook Page through Composio (no Meta developer account)
         from pipeline.publish.social import Composio
@@ -132,8 +133,6 @@ def check() -> str:
             out.append(f"- Composio, Instagram: connected as **@{me.get('username')}**")
         except Exception as exc:  # noqa: BLE001
             out.append(f"- Composio, Instagram: not usable ({exc})")
-    else:
-        out.append("- Composio: not connected (no `COMPOSIO_API_KEY` secret)")
     if e.get("BUFFER_API_KEY"):   # Instagram and the Facebook Page through Buffer (no Meta developer account)
         from pipeline.publish.social import Buffer
         try:

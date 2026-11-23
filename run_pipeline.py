@@ -608,54 +608,64 @@ def phase_publish(cfg: dict, out: Path) -> None:
         log.info("LinkedIn and Facebook wait for the release (phase announce)")
 
 
-def phase_announce(cfg: dict, out: Path, video_id: str = "") -> None:
-    """The episode as a native video on LinkedIn and the Facebook Page, once it is public on YouTube."""
+def phase_announce(cfg: dict, out: Path, video_id: str = "") -> list[str]:
+    """The episode on LinkedIn (native video) and the Facebook Page (native video, or a link post through Composio or
+    Buffer), once it is public on YouTube. Each channel once: data/announced.json keeps what went out
+    (pipeline/publish/announce.py). Returns what did not go out."""
+    import subprocess
+    from pipeline.publish import announce as an
     plan = json.loads((out / "plan.json").read_text(encoding="utf-8"))
     video_id = video_id or os.environ.get("VIDEO_URL", "").strip() or str(plan.get("youtube_video_id") or "")
     if not video_id:
         sys.exit("phase announce: no YouTube video id (pass it as video_url)")
-    text = str(plan.get("linkedin_post_en", "")).replace("{url}", f"https://youtu.be/{video_id}").strip()
-    if plan.get("linkedin_post_url"):   # already posted (reviewed meta): never post the episode twice
-        log.info("Already on LinkedIn: %s", plan["linkedin_post_url"])
-    elif text and os.environ.get("LINKEDIN_TOKEN"):
-        # The episode as a native LinkedIn video (founder 2026-11-18: "release the main video to all channels").
-        # LinkedIn takes up to 500 MB, so a lighter 1080p copy is made.
-        import subprocess
-        from pipeline.publish.social import LinkedIn
-        src, light = out / "final_subtitled.mp4", out / "linkedin_episode.mp4"
-        subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(src), "-c:v", "libx264",
-                        "-preset", "veryfast", "-crf", "23", "-maxrate", "5M", "-bufsize", "10M", "-pix_fmt", "yuv420p",
-                        "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(light)], check=True)
-        res = LinkedIn(os.environ["LINKEDIN_TOKEN"], str(cfg.get("social", {}).get("linkedin_version", "202610"))
-                       ).post_video(light, text, plan.get("episode_title_en", "AI This Week"), wait_s=1500)
-        log.info("LinkedIn: episode posted %s", res.get("url") or res.get("post"))
-    if plan.get("facebook_post_id"):   # already posted (reviewed meta)
-        log.info("Already on Facebook: %s", plan["facebook_post_id"])
-    elif text and os.environ.get("FACEBOOK_PAGE_TOKEN") and os.environ.get("FACEBOOK_PAGE_ID"):
-        # The episode as a native Facebook Page video, from the same lighter copy LinkedIn gets.
-        import subprocess
-        from pipeline.publish.social import facebook_page
-        light = out / "linkedin_episode.mp4"
+    link = f"https://youtu.be/{video_id}"
+    text = str(plan.get("linkedin_post_en", "")).replace("{url}", link).strip()
+    title, light = plan.get("episode_title_en", "AI This Week"), out / "linkedin_episode.mp4"
+
+    def lighter() -> Path:   # LinkedIn takes up to 500 MB, so a lighter 1080p copy is made (Facebook gets the same)
         if not light.exists():
             subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(out / "final_subtitled.mp4"),
                             "-c:v", "libx264", "-preset", "veryfast", "-crf", "23", "-maxrate", "5M", "-bufsize", "10M",
                             "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(light)],
                            check=True)
-        try:
-            fid = facebook_page().post_video(light, plan.get("episode_title_en", "AI This Week"), text)
-            log.info("Facebook: episode posted (video %s)", fid)
-        except Exception as exc:  # noqa: BLE001 — Facebook must not undo a published episode
-            log.warning("Facebook: episode not posted: %s", exc)
-    else:
-        # No Page token (Meta's developer sign-up is blocked): the episode as a link post through Composio or Buffer.
-        from pipeline.publish.social import relay
-        via = relay()
-        if text and via:
-            try:
-                res = via.post("facebook", text, link=f"https://youtu.be/{video_id}")
-                log.info("Facebook (%s): episode link posted %s", res.get("via"), res.get("url"))
-            except Exception as exc:  # noqa: BLE001 — Facebook must not undo a published episode
-                log.warning("Facebook (%s): episode not posted: %s", type(via).__name__, exc)
+        return light
+
+    posters, e = {}, os.environ
+    if e.get("LINKEDIN_TOKEN"):   # founder 2026-11-18: "release the main video to all channels"
+        def linkedin() -> str:
+            from pipeline.publish.social import LinkedIn
+            res = LinkedIn(e["LINKEDIN_TOKEN"], str(cfg.get("social", {}).get("linkedin_version", "202610"))
+                           ).post_video(lighter(), text, title, wait_s=1500)
+            return res.get("url") or res.get("post") or ""
+        posters["linkedin"] = linkedin
+    from pipeline.publish.social import relay
+    via = relay()
+    if e.get("FACEBOOK_PAGE_TOKEN") and e.get("FACEBOOK_PAGE_ID"):
+        def facebook() -> str:
+            from pipeline.publish.social import facebook_page
+            return facebook_page().post_video(lighter(), title, text)
+        posters["facebook"] = facebook
+    elif via:   # no Page token (Meta's developer sign-up is blocked): a link post through Composio or Buffer
+        def facebook() -> str:
+            res = via.post("facebook", text, link=link)
+            return res.get("url") or res.get("via") or ""
+        posters["facebook"] = facebook
+    for channel in ("linkedin", "facebook"):
+        if channel not in posters:
+            log.info("%s: not connected, the episode is not announced there", channel)
+    record = ROOT / "data" / "announced.json"
+    done = an.load(record, out.name)
+    for channel, key in (("linkedin", "linkedin_post_url"), ("facebook", "facebook_post_id")):   # reviewed meta
+        if plan.get(key):
+            done.setdefault(channel, str(plan[key]))
+    before = dict(done)
+    done, problems = an.announce(text, done, posters)
+    an.save(record, out.name, done)
+    for channel, ref in done.items():
+        log.info("%s: %s %s", channel, "already announced" if before.get(channel) else "episode posted", ref)
+    for p in problems:
+        log.error("announce: %s", p)
+    return problems
 
 
 def main() -> None:
@@ -736,8 +746,10 @@ def main() -> None:
     if args.phase == "publish":
         phase_publish(cfg, out)
     if args.phase == "announce":
-        phase_announce(cfg, out, args.video_url or "")
+        left = phase_announce(cfg, out, args.video_url or "")
     usage.write(out, cfg.get("pricing"))
+    if args.phase == "announce" and left:   # the episode is public either way; the run fails so it is reported
+        sys.exit("The episode was not announced everywhere: " + "; ".join(left))
 
 
 ERROR_FILE = "error.txt"   # read by .github/workflows/weekly.yml for the run-failed issue

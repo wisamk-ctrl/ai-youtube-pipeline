@@ -323,3 +323,16 @@ Plan: `docs/plans/2026-11-22-news-ranking.md`. Why: 17 new regional outlets add 
   One issue, "Health: needs a look"; it closes itself when all is clear.
 - **Kept honest by tests:** a new workflow fails `tests/test_health.py` until it is either scheduled with a limit in
   settings or named in health.yml's `workflow_run` list.
+
+## 2026-11-23: the episode's announcement — once per channel, and never silently missing
+
+- **What happened (W47-en):** the first announce run posted nothing and finished green (the plan had no announcement
+  text). The second posted to LinkedIn; the Facebook Page got nothing and the log did not say so. Nothing recorded the
+  LinkedIn post, so a third run would have posted the episode there twice.
+- **Fix, and where it is enforced:** `pipeline/publish/announce.py` posts each channel once and keeps the result in
+  `data/announced.json` (committed by weekly.yml even when the run fails). Missing text or a failed channel fails the
+  announce run, which raises the usual run-failed alert. `tests/test_announce.py`.
+- **Also:** the connection report no longer says "Instagram: not connected" when Composio carries it, and the
+  breaking-Short message names the channels from settings (TikTok as drafts).
+- **Not done:** TikTok has no identity check. Its sign-in changes on every use, so a second job reading it could
+  break posting; it stays "sign-in saved".

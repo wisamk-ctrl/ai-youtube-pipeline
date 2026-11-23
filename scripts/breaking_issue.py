@@ -35,7 +35,10 @@ def main(kind: str, week: str, extra: str = "") -> None:
                 f"with the article each line rests on:\n\n{src}\n\nI'll post the video link here when it's ready.")
     elif kind == "ready":
         url = f"https://github.com/{repo}/raw/previews/{week}-files/short_01.mp4"
-        body = (f"**Ready to check: `{week}`**\n\n▶️ {url}\n\nTo publish to YouTube, TikTok and LinkedIn, reply here with:\n\n"
+        from pipeline.config import load_settings
+        from pipeline.publish.social import channels_line
+        where = channels_line(load_settings())
+        body = (f"**Ready to check: `{week}`**\n\n▶️ {url}\n\nTo publish to {where}, reply here with:\n\n"
                 f"```\npost {week}\n```\n\nNo reply, no post." + (f"\n\n{extra}" if extra else ""))
     else:
         body = f"**Posted: `{week}`**\n\n{extra}"

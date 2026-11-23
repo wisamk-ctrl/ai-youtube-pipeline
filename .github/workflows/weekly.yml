@@ -486,6 +486,16 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -q -m "release: ${{ inputs.week }} waits for its chapter pictures"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+      - name: Save the announce record (publish / announce)
+        # Which channels already carry the episode: without it, a second run posts the episode again.
+        if: always() && (inputs.phase == 'publish' || inputs.phase == 'announce')
+        run: |
+          git config user.name "weekly-roundup[bot]" && git config user.email "bot@users.noreply.github.com"
+          git add data/announced.json 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git commit -q -m "announce: ${{ inputs.week }}"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep 5; done
+          echo "::error::Could not save data/announced.json: check LinkedIn and Facebook before running announce again."; exit 1
       - name: Keep the partial work (failed run)
         # A failed render/post must not lose what it made (an imported video, heard.json, clips).
         # Its own name: the "find the week's artifact" steps ask the API for the exact name

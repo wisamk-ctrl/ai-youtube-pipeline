@@ -679,6 +679,18 @@ def linkedin_poster(cfg: dict[str, Any]):
     return post
 
 
+def channels_line(cfg: dict[str, Any]) -> str:
+    """Where a Short goes, for the messages that ask the founder to approve one: the configured platforms, with
+    TikTok named as drafts while `tiktok_mode` is inbox (it is not published there until he posts it)."""
+    s = cfg.get("social", {})
+    names = {"youtube": "YouTube", "instagram": "Instagram", "facebook": "Facebook", "linkedin": "LinkedIn", "tiktok": "TikTok"}
+    plats = list(s.get("platforms", PLATFORMS))
+    drafts = "tiktok" in plats and s.get("tiktok_mode", "inbox") == "inbox"
+    live = [names[p] for p in plats if not (p == "tiktok" and drafts)]
+    line = ", ".join(live[:-1]) + (" and " if len(live) > 1 else "") + live[-1] if live else ""
+    return (line + (", and to your TikTok drafts" if line else "your TikTok drafts")) if drafts else line
+
+
 def posters(cfg: dict[str, Any]) -> dict[str, Callable]:
     """The platforms whose secrets are present (a platform not yet connected is simply not posted to)."""
     need = {"youtube": ("GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "YOUTUBE_REFRESH_TOKEN"),
