@@ -95690,15 +95690,49 @@
    "id": "36828c92d8",
    "first_seen": "2026-11-23T20:41+00:00",
    "flagged": false
+  },
+  "722a1127e6": {
+   "source": "Arabian Business",
+   "source_type": "rss",
+   "title": "UAE launches Mira AI assistant for Emirates ID, visa renewals, work permits and government services",
+   "summary": "UAE launches Mira AI assistant to simplify Emirates ID, residence permit and work permit renewals, with the first government services available in March 2027",
+   "url": "https://www.arabianbusiness.com/business/technology/uae-mira-ai-assistant",
+   "published": "2026-11-23T18:07:15+00:00",
+   "author": "Will Milner",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "722a1127e6",
+   "first_seen": "2026-11-23T22:42+00:00",
+   "flagged": false
+  },
+  "6aa28e9552": {
+   "source": "Arabian Business",
+   "source_type": "rss",
+   "title": "Nvidia shares surge over 30% as Jensen Huang returns as CEO following foreign intelligence concerns",
+   "summary": "Nvidia shares surged more than 30% in premarket trading on Monday after the chipmaking giant reinstated Jensen Huang as chief executive officer, triggering a broader rally in technology stocks and boosting investor confidence in the artificial intelligence sector.",
+   "url": "https://www.arabianbusiness.com/abnews/nvidia-shares-surge-over-30-as-jensen-huang-returns-as-ceo-following-foreign-intelligence-concerns",
+   "published": "2026-11-23T15:00:03+00:00",
+   "author": "Rana Tabbara",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "6aa28e9552",
+   "first_seen": "2026-11-23T22:42+00:00",
+   "flagged": false
   }
  },
  "runs": [
-  {
-   "at": "2026-11-19T00:51+00:00",
-   "found": 483,
-   "new": 47,
-   "flagged": 3
-  },
   {
    "at": "2026-11-19T02:41+00:00",
    "found": 494,
@@ -96052,6 +96086,12 @@
    "found": 472,
    "new": 52,
    "flagged": 2
+  },
+  {
+   "at": "2026-11-23T22:42+00:00",
+   "found": 46,
+   "new": 2,
+   "flagged": 0
   }
  ]
 }
