@@ -2,7 +2,7 @@
 
 The news watch (every two hours) flags big stories. For the strongest new one this module:
   1. gathers the story's articles from data/news_watch.json (the collected article text, never the open web);
-  2. has Claude draft a 40–50 second Short: a hook, 6–8 lines, each with the ids of the articles it rests on and a
+  2. has Claude draft a 40–50 second Short: a hook, 9–12 short lines, each with the ids of the articles it rests on and a
      visual chosen from our own clip library or a title/number card;
   3. checks the draft mechanically (every line cites a source, every figure appears in a cited article, length,
      no advice) and with a second model pass that judges each line against its cited articles;
@@ -61,11 +61,17 @@ class Verdict(BaseModel):
                        "the company says, not that the outlet reports it'")
 
 
+# Pace (founder 2026-11-23: viewers found the Shorts slow). One rule for breaking and explainer Shorts; mechanical()
+# enforces it with a little slack. More, shorter lines also mean a new picture every three to four seconds.
+SHAPE = ("- 95 to 120 spoken words in total, 9 to 12 lines. One short, punchy sentence a line, 14 words at most. The first "
+         "line is at most 10 words and goes straight to the point: no warm-up, no scene-setting.")
+LINES, LINE_WORDS, FIRST_WORDS = (8, 13), 18, 12
+
 SYSTEM = """You write breaking-news YouTube Shorts for «AI This Week», an English AI-news show for business people in
 the Gulf, presented by the host's AI digital twin. You draft one Short from the articles given.
 
 Rules:
-- 85 to 120 spoken words in total, 6 to 8 lines. Short sentences a presenter can say in one breath.
+""" + SHAPE + """
 - Every fact comes from the articles, and each line lists the ids of the articles it uses. Never add facts, figures,
   names or dates from memory. Attribute claims ("Reuters reports", "the company says"). Allegations stay allegations.
 - Figures exactly as the articles give them, written as digits ("6 outages", "$1.5 trillion"). A number card
@@ -161,13 +167,17 @@ def mechanical(d: Draft, items: list[NewsItem], library: list[str]) -> list[str]
     words = sum(len(ln.text.split()) for ln in d.lines)
     if not 70 <= words <= 135:
         problems.append(f"{words} spoken words; keep it between 85 and 120")
-    if not 5 <= len(d.lines) <= 9:
-        problems.append(f"{len(d.lines)} lines; use 6 to 8")
+    if not LINES[0] <= len(d.lines) <= LINES[1]:
+        problems.append(f"{len(d.lines)} lines; use 9 to 12 short ones")
+    if d.lines and len(d.lines[0].text.split()) > FIRST_WORDS:
+        problems.append(f"the first line has {len(d.lines[0].text.split())} words; open in 10 at most")
     if len(d.title) > 34:
         problems.append("title longer than 32 characters")
     prev = ""
     for n, ln in enumerate(d.lines, 1):
         last = n == len(d.lines)
+        if len(ln.text.split()) > LINE_WORDS:
+            problems.append(f"line {n} has {len(ln.text.split())} words; keep a line to 14")
         bad = [s for s in ln.sources if s not in by_id]
         if bad:
             problems.append(f"line {n} cites unknown ids {bad}")

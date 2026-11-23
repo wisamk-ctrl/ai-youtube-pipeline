@@ -573,7 +573,7 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
         return
     from pipeline.timing import TIMER
     with TIMER.stage("talking head (voice + face chunks)"):
-        voicefirst.assemble(entries, cfg, out, spoken)
+        voicefirst.assemble(entries, voicefirst.for_short(cfg) if _breaking(out) else cfg, out, spoken)
     phase_post(cfg, out, None)
 
 

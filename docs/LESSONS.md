@@ -460,3 +460,14 @@ service, TikTok private, and Facebook native video.
   $6.75 with the wallet margin. The health floor rose to $15 so the warning comes before a render is refused.
 - Clips already in a week's `voice.yaml` are kept as they are; only missing or expired ones are made on Avatar 6.
 - Enforced by `tests/test_faces.py` (engine sent, engine read from settings, price not under the measured one).
+
+## 2026-11-23: viewers found the Shorts slow
+- Cause: Shorts inherited the episode's delivery. English speech ran at tempo 0.94, about 133 words a minute, with
+  one picture every 6 to 7 s and an 18-word opening line (the OpenAI Short of 2026-11-23).
+- Fix: `tempo_short_en: 1.08` for Shorts only (`voicefirst.for_short`, used when the folder has `breaking.yaml`);
+  9 to 12 lines of 14 words at most, first line 10 at most (`breaking.SHAPE`, shared with explainer Shorts;
+  `mechanical()` rejects a draft outside it).
+- Not yet heard: the first Short drafted after this is the test. Speed does not add energy to the voice: the clone
+  copies its calm sample. A livelier voice needs HeyGen's expressiveness setting (untried) or a clone recorded
+  in a livelier delivery.
+- Enforced by `tests/test_breaking.py` (pace section).

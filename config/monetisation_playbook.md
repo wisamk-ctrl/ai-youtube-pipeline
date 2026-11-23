@@ -77,6 +77,10 @@ per month (670 a month is 8,000 a year, the threshold from 1 February 2027).
   (every claim traced, `reviewed/<date>-brk-<slug>-en/`, with `breaking.yaml`) → sent to the founder → posted to
   YouTube, TikTok and LinkedIn within a couple of hours of his OK.
 - It ends with "More on this in Sunday's episode of AI This Week. Follow so you don't miss it."
+- Pace (founder 2026-11-23, viewers found the Shorts slow): every Short, breaking or explainer, is spoken faster
+  than the episode (`video.voicefirst.tempo_short_en`), in 9 to 12 short lines with a new picture on each, and its
+  first line reaches the point in 10 words at most. The episode keeps its calmer pace. The rule lives in
+  `pipeline/breaking.py` (`SHAPE`).
 - The weekly episode's own Shorts are no longer posted days later. Confirmed 2026-11-23: `publish` does not
   queue them, and the two W45 Shorts still waiting were marked skipped.
 - Instagram and TikTok captions carry no WhatsApp link (links are not clickable there): the WhatsApp Channel

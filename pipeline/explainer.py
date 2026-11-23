@@ -36,7 +36,7 @@ in the Gulf, the Levant, Türkiye and Africa, presented by the host's AI digital
 explains ONE idea a manager can use, from the articles and the editor's brief.
 
 Rules:
-- 85 to 120 spoken words in total, 6 to 8 lines. Short sentences a presenter can say in one breath.
+""" + breaking.SHAPE + """
 - Start with the idea or the question in plain words, not with a news event. Use what the articles report only as
   the example that makes the idea concrete.
 - The Short must still make sense in three months: no "today", "this week", "yesterday", "breaking" or

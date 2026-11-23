@@ -33,14 +33,20 @@ def good_draft(ids, number_line="Politico counts 6 major outages in 6 days."):
     return breaking.Draft(newsworthy=True, slug="six outages", title="Six US Outages in Six Days",
                           hook="Six US outages in six days.", linkedin="Six outages in six days.", lines=[
         L(text=number_line, visual="number: 6 | Major US outages in 6 days", sources=[ids[0]]),
-        L(text="Microsoft 365 went down on November 12, and more systems followed in the days after it.",
+        L(text="Microsoft 365 went down on November 12.",
           visual="clip: office tower at night, floors going dark", sources=[ids[0]]),
-        L(text="Banks, airlines and a security agency all reported problems during the same busy week.",
-          visual="clip: server hall with one dark row of racks", sources=[ids[1]]),
-        L(text="So was it an attack, as many people online have been asking since the weekend started?",
+        L(text="More systems followed in the days after it.",
+          visual="clip: server hall with one dark row of racks", sources=[ids[0]]),
+        L(text="Banks, airlines and a security agency all reported problems.",
+          visual="clip: network traffic jamming at a gateway ring", sources=[ids[1]]),
+        L(text="It all happened during the same busy week.",
+          visual="clip: three data centers linked by bridges of light", sources=[ids[1]]),
+        L(text="So was it an attack, as many people online have been asking?",
           visual="title: Was it an attack?", sources=[ids[1]]),
-        L(text="Secretary of State Marco Rubio said there is zero evidence of a malign actor behind them.",
+        L(text="Secretary of State Marco Rubio said there is zero evidence of a malign actor.",
           visual="clip: network traffic jamming at a gateway ring", sources=[ids[0]]),
+        L(text="No single cause has been named for the failures so far.",
+          visual="clip: server hall with one dark row of racks", sources=[ids[0]]),
         L(text="For businesses in the Gulf, the thing to watch is how much depends on a single provider.",
           visual="clip: three data centers linked by bridges of light", sources=[]),
     ])
@@ -136,3 +142,37 @@ def test_recent_titles_cover_drafted_stories_inside_the_window():
     assert breaking.recent_titles({"stories": stories}, NOW + timedelta(days=3), days=4) == []    # 5 days old
     skipped = {k: dict(v, skipped=True, week=None) for k, v in stories.items()}
     assert breaking.recent_titles({"stories": skipped}, NOW, days=4) == []     # a failed draft does not block a retry
+
+
+# --- pace (founder 2026-11-23: viewers find the Shorts slow) ---------------------------------------------------
+def test_a_short_is_many_short_lines_with_a_quick_first_one():
+    items = breaking._articles(breaking.candidates(state(), NOW, set())[0])
+    ids = [i.id for i in items]
+    slow_start = good_draft(ids, "Politico, the American news site, now counts 6 major outages in only 6 days of this month.")
+    assert any("first line" in p for p in breaking.mechanical(slow_start, items, LIB))
+    long_line = good_draft(ids)
+    long_line.lines[2].text = "More systems followed in the days after it, " * 3
+    assert any("line 3" in p and "words" in p for p in breaking.mechanical(long_line, items, LIB))
+    few = good_draft(ids)
+    few.lines = few.lines[:3] + few.lines[-3:]
+    assert any("lines" in p for p in breaking.mechanical(few, items, LIB))
+
+
+def test_breaking_and_explainer_shorts_share_one_pace_rule():
+    from pipeline import explainer
+    assert breaking.SHAPE in breaking.SYSTEM and breaking.SHAPE in explainer.SYSTEM
+    assert "9 to 12 lines" in breaking.SHAPE
+
+
+def test_a_short_is_spoken_faster_than_the_episode():
+    import inspect
+    import run_pipeline
+    from pipeline.config import load_settings
+    from pipeline.video import voicefirst
+    cfg = {"language": "en", "video": {"voicefirst": {"tempo_en": 0.94, "tempo_short_en": 1.08}}}
+    fast = voicefirst.for_short(cfg)
+    assert fast["video"]["voicefirst"]["tempo_en"] == 1.08 and cfg["video"]["voicefirst"]["tempo_en"] == 0.94
+    assert voicefirst.for_short({"language": "ar", "video": {"voicefirst": {"tempo": 1.0}}})["video"]["voicefirst"]["tempo"] == 1.0
+    vf = load_settings()["video"]["voicefirst"]
+    assert vf["tempo_short_en"] > 1.0 > vf["tempo_en"]
+    assert "for_short(cfg) if _breaking(out)" in inspect.getsource(run_pipeline)

@@ -56,6 +56,17 @@ def _cfg(cfg: dict[str, Any]) -> dict[str, Any]:
     return cfg.get("video", {}).get("voicefirst", {})
 
 
+def for_short(cfg: dict[str, Any]) -> dict[str, Any]:
+    """The settings for a Short: its own, quicker speech tempo (tempo_short_<language>, else tempo_short) in place
+    of the episode's. Founder 2026-11-23: viewers found the Shorts slow. The settings given are left untouched."""
+    vf, lang = _cfg(cfg), cfg.get("language", "ar")
+    fast = vf.get(f"tempo_short_{lang}", vf.get("tempo_short"))
+    if not fast:
+        return cfg
+    key = f"tempo_{lang}" if f"tempo_{lang}" in vf else "tempo"
+    return {**cfg, "video": {**cfg["video"], "voicefirst": {**vf, key: fast}}}
+
+
 def _words(text: str) -> int:
     return len(spoken_words(_BREAK.sub(" ", text)))
 
