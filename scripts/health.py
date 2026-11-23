@@ -60,6 +60,13 @@ def gather(gh, repo: str, cfg: dict, state: dict, now: datetime) -> tuple[dict[s
         problems["Scheduled jobs"] = health.workflow_problems(last, now, limits)
     except Exception as exc:  # noqa: BLE001
         problems["Scheduled jobs"] = [f"GitHub's run history could not be read ({type(exc).__name__}: {exc})"]
+    floor = cfg.get("health", {}).get("heygen_min_usd")
+    if floor is not None and os.environ.get("HEYGEN_API_KEY"):
+        try:
+            from pipeline.video import faces
+            problems["HeyGen wallet"] = health.wallet_problems(faces.balance(os.environ["HEYGEN_API_KEY"]), float(floor))
+        except Exception as exc:  # noqa: BLE001
+            problems["HeyGen wallet"] = [f"HeyGen's API wallet could not be read ({type(exc).__name__}: {exc})"]
     return problems, ids
 
 

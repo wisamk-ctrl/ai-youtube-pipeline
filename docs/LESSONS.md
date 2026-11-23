@@ -346,3 +346,9 @@ Plan: `docs/plans/2026-11-22-news-ranking.md`. Why: 17 new regional outlets add 
 - The API key spends a prepaid USD wallet (auto-reload off), separate from the plan credits the connector spends.
   Speech from the API comes out of the same wallet; an empty wallet refuses the call (HTTP 402).
 - GET /v3/usage returned an empty list although calls had been made: do not rely on it for charges; read the wallet.
+- **2026-11-23: face clips run on their own.** When a week has no `reviewed/<week>/voice.yaml`, assemble makes
+  the face clips through the API after the speech (`pipeline/video/faces.py`, `video.heygen.auto_faces`), from
+  `face_image`. A clip is asked for once (Idempotency-Key = picture + sound), each finished clip is written to
+  voice.yaml at once, and the phase refuses before spending when the wallet holds less than 1.25 × the estimate.
+  A hand-made voice file under reviewed/ is still used exactly as it is. The daily health check warns when the
+  wallet is under `health.heygen_min_usd`. Tests in `tests/test_faces.py`. Not yet run on a real episode.

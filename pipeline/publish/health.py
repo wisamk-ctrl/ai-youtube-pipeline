@@ -65,6 +65,15 @@ def workflow_problems(last_success: dict[str, str | None], now: datetime, max_ag
     return out
 
 
+def wallet_problems(balance: float | None, min_usd: float) -> list[str]:
+    """HeyGen's prepaid API wallet pays for speech and face clips; empty, a breaking Short's render is refused."""
+    if balance is None:
+        return ["HeyGen's API wallet could not be read"]
+    if balance < min_usd:
+        return [f"HeyGen's API wallet holds ${balance:.2f}, under the ${min_usd:g} floor: top it up at app.heygen.com (API)"]
+    return []
+
+
 def scheduled_workflows(folder: Path) -> dict[str, str]:
     """Workflow name → file name, for every workflow that runs on a schedule."""
     import yaml
@@ -107,4 +116,4 @@ def connection_problems(report: str, baseline: dict[str, list[str]]) -> list[str
 
 def report(problems: dict[str, list[str]]) -> str:
     parts = [f"### {area}\n" + "\n".join(f"- {p}" for p in items) for area, items in problems.items() if items]
-    return "\n\n".join(parts) + "\n" if parts else "All clear: connections, posting queue, news watch and scheduled jobs.\n"
+    return "\n\n".join(parts) + "\n" if parts else "All clear: connections, posting queue, news watch, scheduled jobs and the HeyGen wallet.\n"

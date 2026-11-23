@@ -538,6 +538,16 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
         from pipeline.video.tts import voice_week   # no one in the loop: voice it through the HeyGen API
         voice = voice_week(chunks, cfg, out / "voice.yaml")
         log.info("Voice step done automatically → %s", voice)
+    if voice == out / "voice.yaml" and cfg["video"]["heygen"].get("auto_faces") and os.environ.get("HEYGEN_API_KEY"):
+        # No one in the loop: the presenter clips too, through the HeyGen API (pipeline/video/faces.py). Only for a
+        # voice file made automatically; one committed under reviewed/ is used exactly as it is.
+        from pipeline.video import faces
+        repo = os.environ.get("GITHUB_REPOSITORY", "wisamk-ctrl/ai-youtube-pipeline")
+        try:
+            made = faces.face_week(voice, chunks, cfg, f"https://raw.githubusercontent.com/{repo}/main")
+        except faces.WalletShort as exc:
+            sys.exit(f"phase assemble: {exc}")
+        log.info("Face clips made automatically: %s", ", ".join(made) or "none needed")
     if cfg.get("visuals", {}).get("require_face"):
         import yaml
         faceless = voicefirst.missing_faces(yaml.safe_load(voice.read_text(encoding="utf-8")) or {}, chunks)

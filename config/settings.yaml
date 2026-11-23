@@ -279,6 +279,13 @@ video:
     # English version (week folders ending in -en, phase translate): the founder's English clone.
     # pipeline/language.py swaps it in for voice_id on -en weeks (paste pack, API render, voice pack).
     voice_id_en: e1412c8894c9462eb3aa8bc8ad1f6e26
+    # Face clips without a chat session (pipeline/video/faces.py, founder 2026-11-23). They are paid from the API's
+    # prepaid USD wallet, apart from the plan credits. Only when a week has no reviewed/<week>/voice.yaml.
+    auto_faces: true
+    face_image: assets/brand/presenter/look_d_navy_blazer_rest_v3.png   # look D v3, as W47's hand-made clips
+    face_usd_per_second: 0.04   # measured 2026-11-23: $0.40 for 10.06 s (workflow heygen-cost, face-test)
+    face_budget_margin: 1.25    # the wallet must hold this many times the estimate before any clip is started
+    face_link_days: 5           # a finished clip's link expires: older than this, the clip is fetched again
     voice_name_en: ""                             # as HeyGen's voice picker shows it, once known
     avatar_style: normal
     voice_speed: 1.0
@@ -472,6 +479,7 @@ breaking:                     # breaking-news Shorts drafted from the news watch
 # Daily health check (scripts/health.py): the longest each scheduled workflow may go without a SUCCESSFUL run before
 # the "Health: needs a look" issue says so. Every workflow with a schedule needs a line (tests/test_health.py).
 health:
+  heygen_min_usd: 5           # warn when the HeyGen API wallet (speech and face clips) falls below this
   max_age_hours:
     news-watch: 8             # every two hours
     social: 6                 # hourly

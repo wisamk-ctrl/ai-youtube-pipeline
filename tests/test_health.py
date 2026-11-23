@@ -135,3 +135,9 @@ def test_report_groups_problems_and_says_all_clear():
     assert "All clear" in health.report({})
     body = health.report({"Posting queue": ["a", "b"], "News watch": []})
     assert "### Posting queue" in body and "- a" in body and "News watch" not in body
+
+
+def test_wallet_flags_a_low_or_unreadable_balance():
+    assert health.wallet_problems(12.0, 5) == []
+    assert "$1.28" in health.wallet_problems(1.28, 5)[0] and "$5" in health.wallet_problems(1.28, 5)[0]
+    assert "could not be read" in health.wallet_problems(None, 5)[0]

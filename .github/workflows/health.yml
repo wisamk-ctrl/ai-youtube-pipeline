@@ -57,6 +57,7 @@ jobs:
       COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
       COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
       TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+      HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}   # the API wallet's balance
       WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}
       CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
     steps:
