@@ -55,7 +55,7 @@ def enhance(src: Path, dest: Path) -> None:
     would teach the clone artefacts."""
     chain = ("highpass=f=70,afftdn=nr=10:nf=-50:tn=1,deesser=i=0.3,"
              "acompressor=threshold=-20dB:ratio=2.5:attack=15:release=200:makeup=2,"
-             "silenceremove=stop_periods=-1:stop_duration=0.8:stop_threshold=-45dB,"
+             "silenceremove=stop_periods=-1:stop_duration=0.8:stop_threshold=-45dB:stop_silence=0.45,"   # long gaps shortened, natural pauses kept
              "loudnorm=I=-18:TP=-2:LRA=9")
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-af", chain, "-ac", "1", "-ar", "44100",
                     str(dest)], check=True)
@@ -112,6 +112,17 @@ def main(mode: str) -> None:
                    check=True)
     print("Cleaned (all):", measure(full))
     print("Clone sample (4 min):", measure(sample))
+    if mode == "upload-all":   # every cleaned recording, for a HeyGen professional voice (20+ minutes)
+        for c in cleaned:
+            mp3 = c.with_suffix(".mp3")
+            subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(c), "-b:a", "192k", str(mp3)], check=True)
+            with open(mp3, "rb") as fh:
+                r = requests.post("https://api.heygen.com/v3/assets", timeout=900,
+                                  headers={"X-Api-Key": os.environ["HEYGEN_API_KEY"]},
+                                  files={"file": (mp3.name, fh, "audio/mpeg")})
+            aid = (r.json().get("data") or {}).get("asset_id") if r.status_code < 300 else None
+            print(f"HeyGen asset {mp3.name}: {measure(mp3)['seconds']} s -> {aid or (r.status_code, r.text[:200])}")
+        return
     if mode != "upload":
         return
     with open(sample, "rb") as fh:

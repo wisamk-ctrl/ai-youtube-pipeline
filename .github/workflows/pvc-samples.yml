@@ -6,7 +6,7 @@ on:
     inputs:
       mode:
         type: choice
-        options: [analyze, upload]
+        options: [analyze, upload, upload-all]
         default: analyze
 permissions:
   contents: read
