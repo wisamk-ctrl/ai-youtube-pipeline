@@ -527,5 +527,63 @@
         "note": "held 2026-11-23: weekly Shorts are off (playbook, founder 2026-11-18 and 2026-11-23); queued and approved by mistake, nothing was posted"
       }
     }
+  },
+  {
+    "id": "2026-11-23-brk-openai-shared-ai-limits-en#1",
+    "week": "2026-11-23-brk-openai-shared-ai-limits-en",
+    "lang": "en",
+    "file": "2026-11-23-brk-openai-shared-ai-limits-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-23-brk-openai-shared-ai-limits-en/2026-11-23-brk-openai-shared-ai-limits-en-short-01.mp4",
+    "title": "Jakub Pachocki Urges AI Limits",
+    "due": "2026-11-23T11:00:22Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Jakub Pachocki Urges AI Limits\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Jakub Pachocki Urges AI Limits\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Jakub Pachocki Urges AI Limits\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Jakub Pachocki Urges AI Limits\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "OpenAI's chief scientist is asking rival labs to agree on a shared ceiling for AI capability. In an essay published November 22, Jakub Pachocki proposed common limits based on perplexity and other measurements, which labs would not cross until they can better understand and monitor model behavior. OpenAI published its own perplexity scores for the first time, and CEO Sam Altman backed the proposal, though reports note no limit value, start date or governing body has been named. For Gulf governments and companies investing heavily in AI infrastructure, it is worth watching whether such shared limits evolve into an industry standard that shapes how models are built and deployed in the region.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-23T11:00:23Z",
+        "url": "https://youtube.com/shorts/IyLVIFMAXcQ"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-23T11:00:23Z",
+        "media_id": "18080573378762428",
+        "url": "https://www.instagram.com/reel/DgFOTocEhvq/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-23T11:00:23Z",
+        "video_id": "1493404125994572",
+        "url": "https://www.facebook.com/reel/1493404125994572",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-23T11:00:23Z",
+        "publish_id": "v_inbox_file~v2.7711320352127617045",
+        "privacy": "draft",
+        "platform_status": "SEND_TO_USER_INBOX",
+        "url": "in your TikTok drafts",
+        "note": "Open TikTok, tap the inbox notification, turn on the AI-generated label, paste this caption and post:\nJakub Pachocki Urges AI Limits\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-23T11:00:23Z",
+        "post": "urn:li:ugcPost:7530586560740880392",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7530586560740880392"
+      }
+    }
   }
 ]
