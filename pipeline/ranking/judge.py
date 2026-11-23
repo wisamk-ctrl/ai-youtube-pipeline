@@ -68,6 +68,7 @@ class StoryJudgement(BaseModel):
     kill: Kill = Field(description="The kill-list category this story falls in, or none")
     decision_frame: Literal["buy_build_partner", "cost", "risk", "talent", "regulation", "data", "none"]
     same_event_as: str = Field(description="Required. The id of an EARLIER story in the list that is about the same event as this one: the same IPO, deal, lawsuit, outage or launch, including reaction to it and analysis of it. An empty string when no earlier story is about this event. A different event at the same company is not the same event.")
+    summary: str = Field(description="Required. One plain sentence for the editor: what happened and why it matters to a manager in the region. Only what the sources say; no figure that is not in the sources.")
     short: ShortIdea | None = Field(description="Only if the story has one sharp idea that works as a Short on its own; otherwise null")
 
 
@@ -100,6 +101,8 @@ Also say, per story:
 - kill: vague_transformation ("AI is transforming X"), funding_no_consequence (a round with no customer or
   market consequence), demo_no_deployment, meeting_no_decision (a ministerial meeting with no decision),
   global_no_regional (a global headline with no regional consequence), or none.
+- summary: one plain sentence for the editor who approves the list: what happened and why it matters to a
+  manager in the region. Not the headline again. Only what the sources say, and no figure they do not carry.
 - same_event_as: the week's biggest event usually arrives as several stories: the event itself, the market's
   reaction, an analysis. Those are one story for the show. For every story, look at the stories listed before it:
   if one of them is about the same event, give its id; otherwise give an empty string. Example: "X prices its
@@ -206,7 +209,8 @@ def fallback(s: dict[str, Any]) -> dict[str, Any]:
         "regional_actor": (in_title or in_text).group(0) if (in_title or in_text) else "",
         "new_development": False,
         "depth": len(text) >= 400 and (n >= 2 or bool(re.search(r"\d", text))),
-        "kill": kill, "decision_frame": "none", "short": None, "same_event_as": "", "judged_by": FALLBACK,
+        "kill": kill, "decision_frame": "none", "short": None, "same_event_as": "", "summary": "",
+        "judged_by": FALLBACK,
     }
 
 
@@ -255,6 +259,7 @@ def combine(runs: list[dict[str, dict]]) -> dict[str, dict]:
         j["same_event_as"] = same or ""
         shorts = [x.get("short") for x in js if x.get("short")]
         j["short"] = shorts[0] if len(shorts) * 2 > len(js) else None
+        j["summary"] = next((str(x.get("summary") or "").strip() for x in js if str(x.get("summary") or "").strip()), "")
         j["judge_runs"] = len(js)
         out[sid] = j
     return out

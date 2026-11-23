@@ -321,7 +321,7 @@ one fails, upload by hand in TikTok Studio (done for the Anthropic IPO Short, 20
 The weekly job now stops after ranking the week's stories and waits for the founder before it writes the script.
 - **Flow:** Friday job → ingest → `rank` → `data/ranking/<week>.json` committed → issue **"Ranking: <week>"** with
   every story's scores, reasons, gates and slot → the founder comments `/story <id> deep because <reason>` (or
-  `quick`, `radar`, `short`, `drop`, `auto`) as needed, then `/story approve` → the script job runs from the
+  `quick`, `radar`, `short`, `drop`, `auto`; a story's number works in place of the id) as needed, then `approve` → the script job runs from the
   approved slots → the usual "Review: …" issue.
 - **What is in code, not in the model:** the weights (decision ×3, regional consequence ×2, evidence ×1,
   tension ×1, max 21), the four gates, the named-actor test, the slots (3 deep, flex 2–4; 3 quick; 3 radar; the
@@ -352,6 +352,13 @@ The weekly job now stops after ranking the week's stories and waits for the foun
 - **Known limits:** with the keyword fallback one event under two headlines is only pointed at, not joined (W47:
   MGX and the debut); a region seat takes a quick slot even at 8/21 and pushes 15-point regional stories to the
   radar (the report says so, the founder decides); the Türkiye seat's region comes from the outlet, not the story.
+- **Ease of use, 2026-11-23 (third round):** every story has a number and commands take it
+  (`/story 7 quick because …`); several commands fit in one comment and numbers mean the list as shown; plain
+  `approve` works. The issue opens with a verdict line ("Ready to approve" or "N things to look at") and the run
+  time against `scripting.target_minutes`. After a command the bot replies with what moved and replaces the
+  issue's body, so the issue is always one current list. Flags are grouped, commands sit in copyable blocks,
+  scores show as strips (numbers stay in the folded table), the judge's one-sentence `summary` leads each story
+  with the headline as the link, and the left-out list shows its five highest. Not yet run on GitHub.
 
 ## Where a release goes (checked 2026-11-23; table in `docs/SOCIAL.md`)
 - The reply to `publish` now lists, per platform, what happens to the episode and to the Shorts, from
