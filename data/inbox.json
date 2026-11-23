@@ -1,5 +1,5 @@
 {
- "next": 2,
+ "next": 4,
  "comments": {
   "youtube:UgxwLazuvvx-ISjSPr14AaABAg": {
    "platform": "youtube",
@@ -14,6 +14,38 @@
    "on": "Jensen Huang Leaves NVIDIA #Shorts",
    "n": 1,
    "seen": "2026-11-19",
+   "status": "answered"
+  },
+  "youtube:UgzJ69jsk3VDNLtZECt4AaABAg": {
+   "platform": "youtube",
+   "id": "UgzJ69jsk3VDNLtZECt4AaABAg",
+   "post": "rp0sXtZ9kIc",
+   "author": "@JenniferElkins-m8p",
+   "text": "During a crisis I couldn't get help from Microsoft so they took my data and now I left that's why they're not doing so well",
+   "at": "2026-11-22T17:36:36Z",
+   "likes": 1,
+   "answered": true,
+   "held": false,
+   "url": "https://www.youtube.com/watch?v=rp0sXtZ9kIc&lc=UgzJ69jsk3VDNLtZECt4AaABAg",
+   "on": "Microsoft's Multi-Day Outage and Anthropic's Record IPO",
+   "n": 2,
+   "seen": "2026-11-23",
+   "status": "answered"
+  },
+  "youtube:Ugz596tOIqjnhAm6x6J4AaABAg": {
+   "platform": "youtube",
+   "id": "Ugz596tOIqjnhAm6x6J4AaABAg",
+   "post": "rp0sXtZ9kIc",
+   "author": "@tarek30999",
+   "text": "I like Wissam’s take, good addition!",
+   "at": "2026-11-22T16:41:21Z",
+   "likes": 1,
+   "answered": true,
+   "held": false,
+   "url": "https://www.youtube.com/watch?v=rp0sXtZ9kIc&lc=Ugz596tOIqjnhAm6x6J4AaABAg",
+   "on": "Microsoft's Multi-Day Outage and Anthropic's Record IPO",
+   "n": 3,
+   "seen": "2026-11-23",
    "status": "answered"
   }
  },
