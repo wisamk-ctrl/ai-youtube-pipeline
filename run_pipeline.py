@@ -96,7 +96,7 @@ def phase_script(cfg: dict, out: Path) -> None:
         # map, the numbers gate and the legal check all read it). The ingest's own top 30 is kept beside it.
         from pipeline.ranking import rank
         if rank.awaiting_approval(ranking, cfg):
-            sys.exit(f"The {out.name} ranking is not approved yet: comment `/story approve` on its Ranking issue "
+            sys.exit(f"The {out.name} ranking is not approved yet: comment `approve` on its Ranking issue "
                      f"(or set ranking.require_approval: false).")
         if not any(s["slot"] in ("deep", "quick") for s in ranking["stories"]):
             sys.exit(f"The {out.name} ranking has no deep or quick story: promote some with `/story <id> deep because …`.")
@@ -718,7 +718,7 @@ def main() -> None:
         phase_rank(cfg, out)
         if args.phase == "rank" or _rank.awaiting_approval(_ranking(cfg, out), cfg):
             # The founder approves the ranked list before the script is written (founder 2026-11-22).
-            log.info("Ranking ready for approval: %s\nApprove with `/story approve` on the Ranking issue, then "
+            log.info("Ranking ready for approval: %s\nApprove with `approve` on the Ranking issue, then "
                      "run: python run_pipeline.py script --week %s", out / "ranking.md", out.name)
             usage.write(out, cfg.get("pricing"))
             return

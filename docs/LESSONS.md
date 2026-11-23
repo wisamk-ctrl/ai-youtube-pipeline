@@ -309,6 +309,11 @@ Plan: `docs/plans/2026-11-22-news-ranking.md`. Why: 17 new regional outlets add 
 - **A review issue leads with the decision (2026-11-23).** The first Ranking report was three ten-column tables;
   what the founder has to weigh (a seat holding a slot at 8/21 over a 15-point story, two stories on one
   company) was only visible by comparing rows. `rank.checks` computes those lines and they come first.
+- **A review issue is used from a phone (2026-11-23).** Typing `/story sfa3d quick because …` with a random id,
+  one comment per move, and getting 17,000 characters back each time was the slow part. Numbers, several lines
+  per comment, a short reply and one list kept current in the issue body: `scripts/story_comment.py`,
+  `story-decide.yml`. A number is looked up in the list as it was shown, before anything moves, and one bad line
+  applies nothing: tests `test_numbers_mean_the_list_as_it_was_shown…`.
 - **A silent install failure looked like success** while building this: `pip install … > log; echo $?` inside a
   longer command reported the last command's status, and Python 3.15 had no wheel for a pinned package. Use
   Python 3.12 locally (what CI uses) and check the install by importing a package.

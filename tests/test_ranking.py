@@ -287,7 +287,8 @@ def test_model_judge_scores_only_known_stories_and_sources_are_fenced():
     crit = jd.Criterion(score=3, reason="A named Saudi buyer changes vendor shortlists.")
     one = jd.StoryJudgement(story_id=sid, same_event_as="", kind="regional", decision_impact=crit, regional_consequence=crit,
                             evidence=crit, tension=crit, regional_actor="Aramco", new_development=True, depth=True,
-                            kill="none", decision_frame="buy_build_partner", short=None)
+                            kill="none", decision_frame="buy_build_partner", short=None,
+                            summary="Aramco picked Humain for sovereign cloud, so vendor shortlists change.")
     ghost = one.model_copy(update={"story_id": "made-up"})
     client = FakeClient(jd.Judgement(stories=[one, ghost], thesis="Sovereign cloud contracts now have named Saudi buyers."))
     r = rank.build(stories, CFG, "2026-W48", client=client, now=NOW)
@@ -353,23 +354,98 @@ def test_buy_or_sell_headlines_and_routine_releases_stay_out_even_of_the_radar_u
     assert slot(r, "radar") == ["rel"]
 
 
-def test_report_leads_with_what_the_founder_has_to_decide():
+def _ten():
     lead = item("A global shift", "Reuters", url="https://reuters.example/shift").to_dict()
     pairs = [st("g", d=3, items=[lead]), st("reg", "regional", d=3), st("q1"), st("q2"), st("q3"), st("q4"),
              st("r1", d=1), st("r2", d=1), st("r3", d=1), st("af", d=0, r=1, e=1, t=0, regions=["africa"])]
     pairs[2][0]["common_words"], pairs[3][0]["common_words"] = ["anthropic", "ipo"], ["anthropic", "debut"]
-    r = ranked(pairs)
+    return pairs
+
+
+def test_report_leads_with_what_the_founder_has_to_decide():
+    r = ranked(_ten())
     r["judge"] = jd.FALLBACK
     assert rank.find(r, "af")["slot"] == "quick" and rank.find(r, "r3")["slot"] == "out"
-    md = rank.to_md(r)
+    no = lambda sid: rank.find(r, sid)["ref"]
+    md = rank.to_md(r, {**CFG, "scripting": {"target_minutes": 11}})
     head = md[:md.index("The episode as it stands")]
+    # The verdict is the first thing under the title, with the run time against the episode's target.
+    verdict = md.splitlines()[1]
+    assert "to look at" in verdict and "4:30" in verdict and "11:15" in verdict and "target of 11 minutes" in verdict
     assert "rough" in head and "no Shorts lines" in head                # the fallback says what it cannot do
-    assert "`r3`" in head and "/story r3 quick because" in head        # outscored the africa seat and is out
-    assert "africa seat" in head
-    assert "`q1`, `q2` all turn on *anthropic*" in head                 # one line per shared word, not per pair
-    assert "only on the radar" in head                                  # q4 outscored the seat too
+    # Stories that outscored the africa seat: one line for all of them, and a command ready to copy.
+    assert head.count("africa seat") == 1
+    assert f"**{no('r3')}** Story r3" in head and f"**{no('q4')}** Story q4" in head
+    assert f"  ```\n  /story {no('r3')} quick because …\n  ```" in head     # its own block: a copy button on GitHub
+    assert f"**{no('q1')}**, **{no('q2')}** all turn on *anthropic*" in head   # one line per shared word
     assert "[Story g](https://reuters.example/shift)" in md
-    assert "4:30" in md and "11:15" in md                               # 3 deep at 60-180 s + 3 quick at 30-45 s
+    assert "●●●" in md and "○" in md                                    # scores as strips; numbers in the table
+
+
+def test_every_story_has_a_number_and_the_numbers_follow_the_list_as_shown():
+    r = ranked(_ten())
+    assert [s["ref"] for s in r["stories"]] == list(range(1, 11))
+    assert all(s["ref"] == s["position"] for s in r["stories"] if s["slot"] in rank.SLOTS)
+
+
+def test_a_clean_list_says_ready_to_approve():
+    r = ranked([st("g", d=3), st("reg", "regional", d=3), st("q1"), st("q2")])
+    assert "Ready to approve" in rank.to_md(r).splitlines()[1]
+
+
+def test_the_judges_one_line_summary_leads_and_the_headline_becomes_the_link():
+    pairs = _ten()
+    pairs[0][1]["summary"] = "A named Gulf buyer changes vendor shortlists."
+    pairs[1][1]["summary"] = "Regional AI spending hit $400 billion."            # 400 is not in the sources
+    md = rank.to_md(ranked(pairs))
+    assert "**A named Gulf buyer changes vendor shortlists.**" in md and "[Story g](https://reuters.example/shift)" in md
+    assert "400" not in md and "**Story reg**" in md
+
+
+def test_the_out_list_shows_five_and_folds_the_rest():
+    pairs = _ten() + [st(f"x{n}", d=1, e=n % 3) for n in range(8)]
+    md = rank.to_md(ranked(pairs))
+    out = md[md.index("### Left out"):md.index("### Commands")]
+    shown, folded = out.split("<details>")
+    assert shown.count("\n- **") == 5 and "more left out" in folded and folded.count("\n- **") >= 1
+
+
+def test_story_comments_take_numbers_several_lines_and_a_plain_approve():
+    import story_comment as sc
+    assert sc.parse_all("/story 7 quick because it matters\n\n/story S1A2 drop: covered\napprove") == [
+        ("7", "quick", "it matters"), ("s1a2", "drop", "covered"), ("", "approve", "")]
+    assert sc.parse_all("Approve") == [("", "approve", "")] == sc.parse_all("/story approve\nthanks")
+    for bad in ("thanks", "/story 7 quick", "/story 7 quick because x\n/story 8 sideways because y"):
+        with pytest.raises(ValueError):
+            sc.parse_all(bad)
+
+
+def test_numbers_mean_the_list_as_it_was_shown_and_a_bad_line_applies_nothing():
+    import story_comment as sc
+    r = ranked(_ten())
+    shown = {s["ref"]: s["id"] for s in r["stories"]}
+    with pytest.raises(ValueError):
+        sc.apply(r, [("1", "drop", "x"), ("99", "deep", "y")], "founder", CFG, now=NOW)
+    assert r["overrides"] == [] and r["stories"][0]["id"] == shown[1]
+    kind, reply = sc.apply(r, [("1", "drop", "covered on Thursday"), ("2", "radar", "one line is enough")], "founder", CFG, now=NOW)
+    assert kind == "decide"
+    assert rank.find(r, shown[1])["slot"] == "out" and rank.find(r, shown[2])["slot"] == "radar"   # not the new no. 2
+    assert [o["story_id"] for o in r["overrides"]] == [shown[1], shown[2]]
+    # The reply says what moved, in a few lines; the full list lives in the issue body.
+    assert "deep → out" in reply and "deep → radar" in reply and "All scores" not in reply and len(reply) < 1500
+    kind, reply = sc.apply(r, [("", "approve", "")], "founder", CFG, now=NOW)
+    assert kind == "approve" and r["approved"]["by"] == "founder"
+
+
+def test_the_issue_is_updated_in_place_and_plain_approve_reaches_the_workflow():
+    text = (ROOT / ".github/workflows/story-decide.yml").read_text(encoding="utf-8")
+    job = yaml.safe_load(text)["jobs"]["decide"]
+    assert "startsWith(github.event.comment.body, 'approve')" in job["if"]
+    edit = next(s for s in job["steps"] if "gh issue edit" in s.get("run", ""))
+    assert "--body-file" in edit["run"] and "steps.apply.outputs.kind != 'error'" in edit["if"]
+    weekly = (ROOT / ".github/workflows/weekly.yml").read_text(encoding="utf-8")
+    again = weekly[weekly.index("Open ranking issue"):weekly.index("Open review issue")]
+    assert "issues.update" in again                               # ranked again: the body is replaced, not re-posted
 
 
 # ── report, storage, and the hand-over to the script writer ──────────────────
@@ -379,7 +455,7 @@ def test_report_shows_scores_reasons_commands_and_the_log(tmp_path, monkeypatch)
                 st("gone", repeat=["covered headline"])])
     rank.decide(r, "old", "radar", "worth one line", "founder", CFG, now=NOW)
     md = rank.to_md(r)
-    for needle in ("/story", "approve", "decision_impact because", "worth one line", "| g |", "×3", "Out",
+    for needle in ("/story", "approve", "decision_impact because", "worth one line", "| g |", "×3", "Left out",
                    "Before you approve", "The episode as it stands"):
         assert needle in md, needle
     assert md.index("Before you approve") < md.index("The episode as it stands") < md.index("All scores")

@@ -1,9 +1,11 @@
 # The founder's decisions on the weekly "Ranking: <week>" issue (founder 2026-11-22: he approves the ranked
 # list before the script is written):
 #
-#   /story s1a2 deep because the Jordan angle matters      (or quick | radar | short | drop | auto)
-#   /story approve                                         → writes the script from the list as it stands
+#   /story 7 deep because the Jordan angle matters        (a number from the list, or an id; or quick | radar |
+#                                                         short | drop | auto; several lines in one comment)
+#   approve                                               → writes the script from the list as it stands
 #
+# The issue's body is replaced with the new list and the reply only says what moved.
 # Every move is logged with its reason in data/ranking/<week>.json. Repository owner only, like approve.yml.
 
 name: story-decide
@@ -26,7 +28,7 @@ jobs:
     if: >-
       startsWith(github.event.issue.title, 'Ranking:') &&
       github.event.comment.user.login == github.repository_owner &&
-      startsWith(github.event.comment.body, '/story')
+      (startsWith(github.event.comment.body, '/story') || startsWith(github.event.comment.body, 'approve'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
@@ -41,7 +43,16 @@ jobs:
           BODY: ${{ github.event.comment.body }}
           TITLE: ${{ github.event.issue.title }}
           ACTOR: ${{ github.event.comment.user.login }}
+          ISSUE_BODY: ${{ runner.temp }}/ranking_issue.md
         run: python scripts/story_comment.py
+      - name: Put the new list at the top of the issue
+        # The reply below only says what moved; the issue's own body always holds the list as it stands.
+        if: steps.apply.outputs.kind != 'error'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUM: ${{ github.event.issue.number }}
+          ISSUE_BODY: ${{ runner.temp }}/ranking_issue.md
+        run: gh issue edit "$NUM" --repo "$GITHUB_REPOSITORY" --body-file "$ISSUE_BODY"
       - name: Commit the decision
         if: steps.apply.outputs.kind != 'error'
         env:
