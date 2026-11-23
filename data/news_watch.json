@@ -50819,7 +50819,7 @@
    ],
    "id": "153eb4ee44",
    "first_seen": "2026-11-20T10:42+00:00",
-   "flagged": false
+   "flagged": true
   },
   "a733fa690c": {
    "source": "Yahoo Finance",
@@ -57926,7 +57926,7 @@
    ],
    "id": "74305df291",
    "first_seen": "2026-11-20T20:42+00:00",
-   "flagged": false
+   "flagged": true
   },
   "d014509a30": {
    "source": "Benzinga",
@@ -59148,7 +59148,7 @@
    ],
    "id": "b27ca10c59",
    "first_seen": "2026-11-20T22:41+00:00",
-   "flagged": false
+   "flagged": true
   },
   "4997323209": {
    "source": "The Decoder",
@@ -59974,7 +59974,7 @@
    ],
    "id": "9246527590",
    "first_seen": "2026-11-20T22:41+00:00",
-   "flagged": false
+   "flagged": true
   },
   "efab4ceb2b": {
    "source": "TradingView",
@@ -70859,7 +70859,7 @@
    ],
    "id": "3122b60487",
    "first_seen": "2026-11-22T04:41+00:00",
-   "flagged": false
+   "flagged": true
   },
   "0d6b6116fe": {
    "source": "TechGig",
@@ -75081,7 +75081,7 @@
    ],
    "id": "68f228c481",
    "first_seen": "2026-11-22T14:42+00:00",
-   "flagged": false
+   "flagged": true
   },
   "dac3e012d9": {
    "source": "Yahoo Finance",
@@ -78090,7 +78090,7 @@
    ],
    "id": "00d330afbd",
    "first_seen": "2026-11-22T20:41+00:00",
-   "flagged": false
+   "flagged": true
   },
   "9804de97d5": {
    "source": "TradingView",
@@ -80183,7 +80183,7 @@
    ],
    "id": "1d5faa891c",
    "first_seen": "2026-11-23T00:54+00:00",
-   "flagged": false
+   "flagged": true
   },
   "e9c5fb690c": {
    "source": "Howl.Link",
@@ -81010,7 +81010,7 @@
    ],
    "id": "f03809f1ce",
    "first_seen": "2026-11-23T00:54+00:00",
-   "flagged": false
+   "flagged": true
   },
   "782e03ee41": {
    "source": "Al Arabiya English",
@@ -83075,7 +83075,7 @@
    ],
    "id": "dc6e5e3bd0",
    "first_seen": "2026-11-23T06:55+00:00",
-   "flagged": false
+   "flagged": true
   },
   "76701fb2ae": {
    "source": "TRT World",
@@ -84169,15 +84169,1457 @@
    "id": "1c87cf4789",
    "first_seen": "2026-11-23T06:55+00:00",
    "flagged": false
+  },
+  "2b8690e832": {
+   "source": "Technology Org",
+   "source_type": "rss",
+   "title": "Microsoft’s Brad Smith Warns the AI Patching Race Could Mean Months of Outages",
+   "summary": "Microsoft’s Brad Smith Warns the AI Patching Race Could Mean Months of Outages Technology Org",
+   "url": "https://www.technology.org/2026/11/23/brad-smith-microsoft-ai-patching-race-outages-face-the-nation/",
+   "published": "2026-11-23T08:27:54+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "",
+   "entities": [],
+   "id": "2b8690e832",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": true
+  },
+  "5beb09d245": {
+   "source": "Arab News",
+   "source_type": "rss",
+   "title": "UN urges probe into Benghazi attacks, warns Libya against becoming battleground",
+   "summary": "UN urges probe into Benghazi attacks, warns Libya against becoming battleground Arab News",
+   "url": "https://www.arabnews.com/middle-east/un-urges-probe-into-benghazi-attacks-warns-libya-against-becoming-battleground-3013640",
+   "published": "2026-11-23T01:18:39+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "5beb09d245",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "5a40d2b441": {
+   "source": "Zawya",
+   "source_type": "rss",
+   "title": "South Africa an AI infrastructure investment destination of choice",
+   "summary": "South Africa an AI infrastructure investment destination of choice Zawya",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOeU5uWlRDRkhmdElBV3BXeUtvSEFsMFViYkt4ZHJKNWJLY3c5S185czVSXzB6UTJyZzR1WUVfQzVTUHl0MlNhSXVPZy1OUldBWWMzVGRKc3F1MTItekJPY3JpWndnazA4SURGVWhMTkZRYkVrUVNmLVhMSkxxdWEwNHRxR3lRMnVvX0IyeGppQkRiSTRVck8tZ3NCby1ORU5Ea1lKT2xjNTVVRE0?oc=5",
+   "published": "2026-11-23T08:05:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "5a40d2b441",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "ab60817f1c": {
+   "source": "Anadolu Ajansı",
+   "source_type": "rss",
+   "title": "AI 'kill switch' no solution to growing cybersecurity risks: Former OpenAI board member",
+   "summary": "AI 'kill switch' no solution to growing cybersecurity risks: Former OpenAI board member Anadolu Ajansı",
+   "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQOVduNjljS3ZpTllHLXJiV3dIX1FYREpqaGVtemlLR194TVNWZi1VQ2lUdEVCalBDdWdZMnkzTUhpVUZTeXIteXg2eG93ajU4WXlsSjRkb2F4UUU4VHRuR3J3WUkwRDh2REZ1MVJMU1BsVUUxT2pPX2toZUYwamFnX1dLdU5Cd2RmemM3YWR1RHdXV0pHY0RBaXI5WkxtMEFwR0pQNExmSFFQRlpEOTl6WkREalNSTnBkM05wQ1NFcmVjSjA2MHFYRkdTUzFWRmxKc21sR1NhUjI?oc=5",
+   "published": "2026-11-23T07:05:49+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "OpenAI"
+   ],
+   "id": "ab60817f1c",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "f7184c579d": {
+   "source": "Khaleej Times",
+   "source_type": "rss",
+   "title": "From smart homes to AI gadgets: 10 Amazon White Friday deals in UAE that make life easier",
+   "summary": "From smart homes to AI gadgets: 10 Amazon White Friday deals in UAE that make life easier Khaleej Times",
+   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQWHM0X054R2ZUUTZiYkRmcXdGZkl3Z3kzRlM1T1BJc3VOQ080OXNiWEx5MjQ5Y19TSDQxTzh4OTJ1cnBycEJPQmV1dFBsYm1JWndOcW90QzBZRm11cnNLakN6RERqWWxVWmxWd2FoVTAxd3RxNmNOZEpOQ2lsQzVWNEdteHZvRDZpMGl0WEFITzE2RGpUck5SSldkbVR1amVISWJTNXdFQVRQb1lCMU11VGxzdkxsN2dyejFMSnR2OERXMGZnYjVSRmx2VdIB0wFBVV95cUxPbXJ2TVNtWXd0SHVfQ0xYdl9mUTNKX05yeWI1Sm80aW54QzVkUUhZd1BtU2x2eWN1NWtNOG5rZmpKSDdRdWZKajNZSWRNQ0hWcDAyS1diU0hpYkx1ZGlJMl9HN25VVFViWm1reHdNVnhJQ3pfM0FuMVRjMlJJOWp6MnZZdTZtYzhBRzYzUmtjZUFMTjVYY3lnRDJpc1pMNXhNZE1Na2J2R2xlUWctV25Da3ZXME1ya19Fam1qRzJVQ3NTWWh6YXdOd1RralAwVGJpZjk4?oc=5",
+   "published": "2026-11-23T07:15:08+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "f7184c579d",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "45e1bf6a01": {
+   "source": "Anadolu Ajansı",
+   "source_type": "rss",
+   "title": "AI 'kill switch' no solution to growing cybersecurity risks: Former OpenAI board member",
+   "summary": "A former OpenAI board member cautioned Sunday that an emergency shutdown mechanism for artificial intelligence would provide limited protection against rising cybersecurity risks, as US lawmakers seek to introduce federal regulations for the rapidly developing technology. Helen Toner, executive director of Georgetown University's Center for Security and Emerging Technology, told Fox News on Sunday that a single \"kill switch\" would not be sufficient to address the challenges posed by AI. \"There's not gonna be a single kill switch that can fix all our problems, unfortunately,\" Toner warned Toner said emergency shutdown systems could mitigate certain risks but emphasized that autonomous AI systems and those operating outside US jurisdiction would be harder to regulate. She also questioned whether technology companies were fully disclosing the causes of recent widespread outages, suggesting that some disruptions could stem from urgent efforts to address security flaws before cybercriminals exploit them. Addressing reported discussions between US President Donald Trump and Chinese President Xi Jinping on AI safety, Toner said Washington and Beijing share an interest in avoiding potentially disastrous incidents involving the technology, despite their mutual distrust. news_share_description subscription_contact",
+   "url": "https://www.aa.com.tr/en/artificial-intelligence/ai-kill-switch-no-solution-to-growing-cybersecurity-risks-former-openai-board-member/4133988",
+   "published": "2026-11-23T07:05:49+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "OpenAI"
+   ],
+   "id": "45e1bf6a01",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "0f0c3143f5": {
+   "source": "TechRepublic",
+   "source_type": "rss",
+   "title": "OpenAI’s Reported AI Phone: What We Know So Far",
+   "summary": "OpenAI’s Reported AI Phone: What We Know So Far TechRepublic",
+   "url": "https://www.techrepublic.com/article/news-openai-ai-phone-foxconn-fih-mobile-report/",
+   "published": "2026-11-23T08:42:26+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "OpenAI"
+   ],
+   "id": "0f0c3143f5",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "cc8aa072ff": {
+   "source": "The Next Web",
+   "source_type": "rss",
+   "title": "OpenAI’s chief scientist calls for industry-wide limits on AI models",
+   "summary": "OpenAI’s chief scientist Jakub Pachocki has asked rival AI labs to agree on limits they won’t cross with their most powerful models. He made the case in an essay published on Sunday, and CEO Sam Altman was quick to back him. The idea is built around perplexity, a score for how well a model guesses the next piece of text. The better the guesses, the lower the score, and Pachocki wants every lab to use the same number to show how far along its models are. We decided to provide more transparency into pretraining progress at OpenAI for the sake of moving toward shared safety bars. In “Perplexity and Intelligence” I argue for common limits based on perplexity and other measurements, with progress beyond them gated on our ability to understand AI behavior. — Jakub Pachocki (@merettm) November 22, 2026 From there, he calls for “common limits, based on perplexity and other measurements” that developers would promise not to cross. The promise would stand until labs truly understand what their models are doing and have better tools to watch them, such as a successor to today’s chain-of-thought monitors. Labs would also agree on common ways to test models and to check each other’s safety claims. Jakub Pachocki doesn’t say where the first limit should sit or when it should kick in. But he does show OpenAI’s hand a little, as the company has published the perplexity scores of its own models for the first time. The numbers fall from about 0.99 for GPT-3.5 to under 0.8 for its newest models. Each drop bought new skills: first fluent conversation, later expert-level cybersecurity, and most recently results on open maths problems. Announcing the essay, titled “Perplexity and Intelligence,” Pachocki said OpenAI is sharing the data “for the sake of moving toward shared safety bars.” All of this comes at a nervous moment for the industry, with worry about the pace of AI progress spreading well beyond the labs. Sam Altman, for his part, wrote on X that shared limits would help keep AI safe and under control. He also called Pachocki’s essay “the most important thing OpenAI has published in a while.” But Sam Altman has sounded this note before. At Salesforce’s Dreamforce conference, he said no company should let its safety depend on what its rivals do, and so has Pachocki. In a September essay , he warned that no one is ready for machines that keep getting smarter this fast. Lawmakers are moving as well, with U.S. Senator Bernie Sanders tabling a bill to ban superintelligence…",
+   "url": "https://thenextweb.com/news/openai-chief-scientist-shared-ai-limits",
+   "published": "2026-11-23T07:48:07+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "OpenAI",
+    "Perplexity Comet"
+   ],
+   "id": "cc8aa072ff",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": true
+  },
+  "1ba40ae308": {
+   "source": "Dataconomy",
+   "source_type": "rss",
+   "title": "Apple Builds Autonomous AI Agent To Take On OpenAI And Anthropic",
+   "summary": "Apple Builds Autonomous AI Agent To Take On OpenAI And Anthropic Dataconomy",
+   "url": "https://dataconomy.com/2026/11/23/apple-builds-autonomous-ai-agent-to-take-on-openai-and/",
+   "published": "2026-11-23T07:45:29+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "OpenAI"
+   ],
+   "id": "1ba40ae308",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": true
+  },
+  "57e9306d48": {
+   "source": "Bloomberg.com",
+   "source_type": "rss",
+   "title": "China’s Next AI Deals Clouded by Selloff After Anthropic IPO",
+   "summary": "China’s Next AI Deals Clouded by Selloff After Anthropic IPO Bloomberg.com",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-23/china-s-next-ai-deals-clouded-by-selloff-after-anthropic-ipo",
+   "published": "2026-11-23T07:05:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "57e9306d48",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "b86c8bfaaa": {
+   "source": "FOREX.com",
+   "source_type": "rss",
+   "title": "Nasdaq 100 Forecast: Anthropic IPO fails to calm AI worries",
+   "summary": "Nasdaq 100 Forecast: Anthropic IPO fails to calm AI worries FOREX.com",
+   "url": "https://www.forex.com/en-sg/news-and-analysis/nasdaq-100-forecast-anthropic-ipo-fails-to-calm-ai-worries/",
+   "published": "2026-11-23T06:31:02+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "b86c8bfaaa",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "ecd04db1eb": {
+   "source": "TechCrunch",
+   "source_type": "rss",
+   "title": "How Notable Capital, GIC, and Baillie Gifford bet big on Anthropic before its IPO",
+   "summary": "How Notable Capital, GIC, and Baillie Gifford bet big on Anthropic before its IPO TechCrunch",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQcXd1T2tIdDF2Rm02WEtmZDhHU1pNcXpJcmRvN2lSd2dMWDNyRExCOFRoRVRHMlNrTnJNR3hhWG1pRVJxdVhHUGdFQzhSYkItVnY2bzBCNWRaTjNURldXRzlENjJlWktwLXA0U0dDRnZINy16ZHJ4UkUxYTh5UkdlZVdfRmpTWU05MHdVUXo0S2lYcGdlM29YbUpSQUVMVTIwSkNPbUdzdXlvVHBjeXRzWTZFNVM?oc=5",
+   "published": "2026-11-23T01:25:53+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "ecd04db1eb",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "fd3efd63d8": {
+   "source": "NPR",
+   "source_type": "rss",
+   "title": "Anthropic worker claims to have solved a Holy Grail of math problems with the help of AI",
+   "summary": "Paul Smith, chief commercial officer of Anthropic, center left, and Krishna Rao, chief financial officer of Anthropic, center right, alongside others react during the closing bell ceremony for the Anthropic IPO at Nasdaq MarketSite in New York, Thursday, Nov. 19, 2026. Seth Wenig/AP hide caption A mathematician who works for artificial intelligence giant Anthropic claims he has solved a Holy Grail of math problems with the help of the company's AI tool Claude. It marks the second time in recent months that an AI company or someone linked to one claims to have cracked a famed unsolved math problem. Levent Alpöge, a member of the company's technical staff, made the announcement Friday by way of a four-page explanation posted on his website. He said that he believes by working with Claude, he has found a proof of the Riemann Hypothesis. \"Claude and I have had a great time together with such breadth in recent months, but this time Claude far outpaced me near the finish line,\" Alpöge wrote. \"No, Claude flew, and danced, and sparkled near that finish line.\" Formulated in 1859, the Riemann Hypothesis centers on the distribution of prime numbers — those that are only divisible by one and themselves — as they grow towards infinity. Alpöge said his discovery came late Sunday night. He messaged Anthropic CEO Dario Amodei to ask about \"my ability to announce,\" as the San Francisco-based company was about to make major news with its stock market debut. A day after the company's initial public offering — the most valuable in history — Alpöge revealed he'd solved the problem that has proved elusive for more than 150 years. Anthropic did not respond to an email from The Associated Press requesting comment on Alpöge's claim. Alpöge released his and Claude's proof of the Riemann Hypothesis within 17 million lines of Lean code, a programing language that allows people to program proofs of mathematical theorems. Traditionally the findings buried in that code would be published in a formal paper, said Alex Kontorovich, distinguished professor and department chair of mathematics at Rutgers University. \"Usually when somebody gives you a paper, that's also kind of code for a proof and you have to actually read the paper, follow it yourself, figure out if you believe every single line in that paper. And when you're done, you should have a deep understanding of why something is true,\" he said. He said Claude followed that code and said the proof is true. \"Does that mean I…",
+   "url": "https://www.npr.org/2026/11/21/g-s1-154922/anthropic-worker-claims-to-have-solved-a-holy-grail-of-math-problems-with-the-help-of-ai",
+   "published": "2026-11-21T12:30:16+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "Together AI"
+   ],
+   "id": "fd3efd63d8",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "ddbbba99a6": {
+   "source": "Finance Magnates",
+   "source_type": "rss",
+   "title": "Anthropic IPO: What If the Biggest AI Trade Is a Short?",
+   "summary": "Anthropic (ANT) is now available for trading at Exness , allowing CFD traders to take a view on its IPO in either direction without owning the underlying shares. Anthropic has made its highly anticipated debut under the ticker ANT, opening a new chapter in the AI boom. However, the company's public debut comes amid persistent inflation, political uncertainty, and growing concerns over AI infrastructure spending. With technology valuations under pressure, could Anthropic's biggest trading opportunity turn into a flop? At Exness, traders can take a position in either direction through ANT CFDs without owning the underlying shares. Those expecting further gains can go long, while those anticipating a disappointing market debut can go short. Even before its listing, expectations around Anthropic's valuation have been a roller coaster ride. Earlier discussions placed its potential IPO valuation at approximately $2 trillion, before expectations moved toward $1.5 trillion in October. Following the AI stock selloff, prospective buyers reportedly considered valuations of $1.2 trillion to $1.3 trillion, with some weighing as little as $1.1 trillion. Although these were indicative estimates rather than confirmed offering terms, the revisions highlighted growing caution toward expensive AI stocks. Anthropic ultimately priced its IPO at $83.00 per share, implying an equity valuation of $1.5 trillion. By 20 Nov 2026, the shares were trading at around $97.17 (official closing price), 17% above the offer price. This gives traders a concrete starting point for assessing how much growth is already reflected in the valuation. Newly listed stocks can experience sharp price movements, wider spreads, and liquidity fluctuations, making risk management particularly important. Exness ' Negative Balance Protection provides an additional safeguard by resetting a negative trading account balance to zero following stop-outs, although it does not prevent trading losses. Anthropic's fundamentals remain impressive. Revenue surged over 1,200% YoY to $33.2 billion during the first nine months of 2026, while its operating loss narrowed to $1.3 billion. However, the company also disclosed approximately $895.4 billion in multiyear spending commitments, largely related to computing infrastructure, raising questions about future profitability and the capital required to sustain growth. The broader market environment adds further uncertainty. The Democrats' congressional sweep in November…",
+   "url": "https://www.financemagnates.com/thought-leadership/anthropic-ipo-what-if-the-biggest-ai-trade-is-a-short/",
+   "published": "2026-11-23T07:34:44+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "ddbbba99a6",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "4533c42c08": {
+   "source": "NDTV",
+   "source_type": "rss",
+   "title": "Why Google, Other Tech Giants Are Taking AI 'Feelings' Seriously",
+   "summary": "Why Google, Other Tech Giants Are Taking AI 'Feelings' Seriously NDTV",
+   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNbXdxUktFNTJGajVESjV6ZkNyZklIS0VjVVdfTmZMaUxsOTc2N1B3eFNZNDFSdXFTTlUxYUFVdXgxdTB5MkJjVWU0RWZkTDF3NVJhX1pJVTN3QXFKSzNETzlnd0E3S09PVWk1YmRPeUVEdTBpb3lHcjhWdGdwMzlZbFBwUlhVaGh4NDdadzdBaGNPZVc0eHdtVzR4NjlsNl9haVZxVTljNGlkTGpQNDlzdjFLeVFCd9IBvgFBVV95cUxNQUFpYU9PZGVoVm1yeU0zeUVHYnk1d0JTMXNBakRlUFBwc2Nab2JtZE5ZTzJjLXZNYV9naGJjV1k4VXlUUDNyX1BDb0hocEVqRlV1QWJUcEZtb1M2cXNLM0VIRzFXY3ZjRDE3cXNnT19GWWRFajg5UGZZSmtHSS1YNUFuWng0cHVBVEhyR0ptT2JVaFdSQjlha3ItSFJIb0ZaVjZjX3AzNDdDZy1BU0U4SjhYMVVnR3Y1b1p1MmpB?oc=5",
+   "published": "2026-11-23T08:10:47+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Google DeepMind"
+   ],
+   "id": "4533c42c08",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "d633a2eaea": {
+   "source": "Yahoo Tech",
+   "source_type": "rss",
+   "title": "Microsoft is making Copilot more useful by helping you manage files and PC problems",
+   "summary": "While Copilot may not be everyone's first choice of AI platform, Microsoft is leaving no stones unturned to make it better. Announced at Microsoft Ignite 2026, their annual developer conference, the Hybrid Intelligence Initiative will bring the best of both worlds together: on-device AI models making use of your device's NPU and the raw power of cloud processing via data centers. The prospect of having an AI agent taking over your whole system can seem daunting at first, but Microsoft has made sure to keep it in check by introducing containment, identity and manageability in Windows . These will make sure that the agent is limited to what it can access on the system while distinguishing an agent's activity from a real human's. On top of that, govern access given to agents and monitor what they're up to. This will allow users to give commands in natural language instead of manually locating and editing files on the PC. Troubleshooting is just about to get easier with Copilot, all thanks to local PC diagnostics by allowing the agent to identify the issues. Copilot will be able to scan the PC and help the user understand the issues it discovers. While Microsoft hasn't confirmed whether Copilot will gain the ability to fix the discovered issues on its own, for now it is purely for identifying the issues. Privacy and control remain front and center. Copilot operates locally in a read-only mode to scan system data, and it will always prompt you for explicit permission before accessing your files or personal data. Once granted, it doesn't just point out errors, but also breaks down the root cause and provides step-by-step guidance on how to fix them. Microsoft has slowly, but surely, realized that trying to force AI into every single corner of the operating system can backfir e. Hence, they've started to scale back and remove superficial Copilot integrations from specific Windows utilities where user adoption was low or where it felt intrusive, such as Snipping Tool, Photos, Widgets, and Notepad. It's refreshing to see them make an effort to set things right and bring features that might be useful and not just to hit the \"AI checkbox\". Microsoft has a new Copilot app (again), and this one wants to do everything for you Microsoft wants you to know Copilot AI is not just for entertainment Microsoft wants Copilot to be your new workspace, with Word, Excel, and Powerpoint built in",
+   "url": "https://tech.yahoo.com/ai/copilot/articles/microsoft-making-copilot-more-useful-133006597.html",
+   "published": "2026-11-21T13:30:06+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Microsoft Copilot",
+    "Together AI"
+   ],
+   "id": "d633a2eaea",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "591bae5679": {
+   "source": "Convergence Now",
+   "source_type": "rss",
+   "title": "Meta AI Chief Alexandr Wang Warns Superintelligence Is Coming: Why Human Control Could Be the Biggest Challenge",
+   "summary": "Meta AI Chief Alexandr Wang Warns Superintelligence Is Coming: Why Human Control Could Be the Biggest Challenge Convergence Now",
+   "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNcm5HRFUzYlJnc0FNc2phUk1STE4yVVhOdzJBQVhwc3dhanZyT1FZMjc4a1NHMmFyc0JnaE4tdFR2NlFxdkd0WVQyUGdyNy1yako2MDF6dHN4T2kwZEp2ZFlPNjhpbm1rcWxVc01GbFZmY0xnUDc0bXVpSW1QTGY4d1JTWURUcXhoUlRrSmhqUGQ4RF9zSDZObk84M1U2ckRrMy1KX2hrZTRGOHlzMy1VRFBRbkM4VzlwMEtLZVBNYWJFczF4aEI1aUpSR2xYbmxGS1R0REdsanB3b1hJRDRtV1hjRHlqRHdlSklTQ1puMUo3RzM3SVB0dnRtbw?oc=5",
+   "published": "2026-11-23T08:41:08+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Meta AI"
+   ],
+   "id": "591bae5679",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "386448bbf4": {
+   "source": "The Daily Star",
+   "source_type": "rss",
+   "title": "Superintelligence is on the way, says Meta AI chief",
+   "summary": "Superintelligence is on the way, says Meta AI chief The Daily Star",
+   "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNSDRsaHBlR0JicUVKNUNBM3JWR2J5bFBJSVpELXBraUlKbm80bWd3LXNLVEJiRzJLalRrZmNXMWxlczJtdGFCRW5lZE1RLVdKVUhHTzNhdFh4dGpBcDZtbXpGRzQwdEh0ZWtRUTVteGJFT2kwNmVEaFBzSU1GeS12ZG45OFgtWjBDUDJRQkhQdWFUeU9qbVhhcDhlb3FKUDVBQVNtMw?oc=5",
+   "published": "2026-11-23T08:04:03+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Meta AI"
+   ],
+   "id": "386448bbf4",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "afa1940e36": {
+   "source": "The Indian Express",
+   "source_type": "rss",
+   "title": "Meta’s Alexandr Wang says human control over superintelligent AI is ‘hard to imagine’",
+   "summary": "Meta’s Alexandr Wang says human control over superintelligent AI is ‘hard to imagine’ The Indian Express",
+   "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPZDFmTzR0akJTX2ltS3pueGkwc2k0R3NlVlptcFBueHhydlp1QUdSTUtYNEdCREFyZEtIOEgySkpvTUZSQ2pTLUZ2aDBSYUZwaHNfT25xTnpnU1U1MDduWHRONXRySkNFd084bFFac1FBN1VQdzNTbjM3ZHFZMGxtalJ4YjZWdXJVcU5NTTFhbTMwcWtDTjhYQ2J6Unh1Ykl4ekZrSlE2QlR5dVVIbHNDb29Wdlp1Y3pOSWlVSGY5YnJfTkJHaS1xSzR3dVFWcERROGVEMmtTZkzSAd8BQVVfeXFMT2JVWXBpSmlqVjdIeUNoeXBFa0owejZwdHJ1enA3RFcyRlFHUUdXdWM3SVRmVXJvX0M2MFB3U2JoTS12UTdZaDhROTlmQ1pxUUtfZUhEVW51UkNMMkhSdlhhWFFaRXRtZUtLckoyRW53cG1tZGtCMWpEOFBHSW43Vl9fSFhJTFlBak9xcV8tMnR2V0QybmY3NV9EYWh0RG9raE5uaTlzdldGa0xaWXE1OVZ5OHFvemFtajNFemQ4VmxVX1JRMzlHbDNDUzFtOUVqYVA5R0FxOWNtTDRNc0ljSQ?oc=5",
+   "published": "2026-11-23T08:35:51+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Meta AI"
+   ],
+   "id": "afa1940e36",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "477bfdc3d6": {
+   "source": "Business Standard",
+   "source_type": "rss",
+   "title": "Why Apple wants to make AI agents a native part of the Mac experience",
+   "summary": "Why Apple wants to make AI agents a native part of the Mac experience Business Standard",
+   "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOX2xwZUR6elhVOTIzeGJuczdMSmpEUGhld1RwdnJORVJJS0t5SWZBSFZTUDNva3VMV2RBdHJ6VEFEN0o5cHhQV0ItdUF4M1dhMHVqSDVmdnByalhEOGVFWC1UM0Q3dVJfcS1iTnI3R2ZzaWVSSUk3RUUyNG13VXJaeGJia0hWSjZmZERfaldELTVYLTFkaERvRllBc1h4UmR2b21Rd2p3SFRpUVRhbmMyUWVEak5XYXR4WjZDRlFfZENwbTcyejlfcEVkLXdhanBHQlRoUjRzWDlOVnJMaWRrVy1qelVsVGYwR3lUSdIB8gFBVV95cUxOVUh4dTlZMWJ6eDBkX1lWOWUzN29NaEg1ckhwQVp4NVdPdktSRXM5bFBSNXM3Q3c5MXU3ekVRU2tQQjZxejRudzBHZ1MxcjJHR29FMFdJMkxvZXJyX2tjVkNMVzBDSTN4My1WS2g5Qi02WXFncndHemR0WFZfbW9wbDVnYlBDTDdQYkV2RFFvYkpFWEUzTjZXY1F4WTR4clZXTW10allOODVWak5XS1VSNUtway1Mcy1CTjNaRjd5ektRRTRFbVZwT29VcGExd0pUNDBHbkNWQ0YyWTMyMTlfN3RhM2pETUpKSUdWeUZ1THFCZw?oc=5",
+   "published": "2026-11-23T08:08:04+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Apple Intelligence"
+   ],
+   "id": "477bfdc3d6",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "1b763e4e02": {
+   "source": "The Business Times",
+   "source_type": "rss",
+   "title": "Tech companies growing their business in Apac see Singapore as a useful base",
+   "summary": "Tech companies growing their business in Apac see Singapore as a useful base The Business Times",
+   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQeDhjdWVMU3ZmMEdPMTB6WWtBNHdfMEluam1vSzBLUTFqbm5ycDZma2tmTEZqVEpSWDl3blk0YWhPT050dmJmRVpKUi01LS1CTlZlUkhERkJTVFVSNXVBZ18wNWFzbGZ4eFRSdGV1ZWlxdVZEMUlSdHNTcTlnbFZzWmdmMEZKclRacVJiYnlTUDRpdTJrUjlxcHIxeWxuWDRPNWZ1ZUtsYmNvZEgyYTVjLTZTSl9veGN5dTFz?oc=5",
+   "published": "2026-11-23T04:00:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "eu",
+   "entities": [
+    "Mistral"
+   ],
+   "id": "1b763e4e02",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "ee3d3b5ee1": {
+   "source": "Yahoo Finance UK",
+   "source_type": "rss",
+   "title": "Portugal joins Europe's top 10 for tech investment on back of Tekever funding round",
+   "summary": "Portugal joins Europe's top 10 for tech investment on back of Tekever funding round Yahoo Finance UK",
+   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOTlJacmlqQlZ4WWxieXlmLVVYWHlHcHFGVWFIZ3R0QWJ6SjVIMjVQWnZjTUl4R25DbUpEVG1aVUc2TENQLU9veDR2SnVTRU1UdS01NHloam9zWENBNTQ3UlFUU2tCZTNVdnp3U2pEZjA5OC1JcXplcmV6VGZ4bXZmWEkzZ3A?oc=5",
+   "published": "2026-11-23T07:08:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "eu",
+   "entities": [
+    "Mistral"
+   ],
+   "id": "ee3d3b5ee1",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "184604c989": {
+   "source": "OrcaRouter",
+   "source_type": "rss",
+   "title": "GLM-5.4 vs DeepSeek V4.1 Pro: Neither Has a Price Row Yet",
+   "summary": "GLM-5.4 vs DeepSeek V4.1 Pro: Neither Has a Price Row Yet OrcaRouter",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE8ya1lETldKVG9XcGRfY0ZfN3pSX0FPN3lQQ0lGZlNJejJUZlNBemNwZHNfdWotMEs5cjd0RjFCV2N2NDlmMlpYdEpGcWF6OXgzVUpVc2xia2FEUFJMR0U4bVdLdFZiamxCd0VJ?oc=5",
+   "published": "2026-11-23T06:54:41+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "DeepSeek",
+    "Zhipu AI"
+   ],
+   "id": "184604c989",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "a6b5a6bdec": {
+   "source": "eu.36kr.com",
+   "source_type": "rss",
+   "title": "DeepSeek, Why Are You Panicking? Uncovering the Concerns Behind the Viral AI Model",
+   "summary": "DeepSeek, Why Are You Panicking? Uncovering the Concerns Behind the Viral AI Model eu.36kr.com",
+   "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBHUDNuWVFTSnA5bTZmNk90YkMzZW5uYzhEcGlJY21aRnhwdUVnQVNhWXRhVk1HOTNkMkhtTmM3OTBJazA5SVJnazhxZHJ2eG9TbGhr?oc=5",
+   "published": "2026-11-23T05:13:04+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "DeepSeek"
+   ],
+   "id": "a6b5a6bdec",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "2ede5a85cd": {
+   "source": "explainx.ai",
+   "source_type": "rss",
+   "title": "Unsloth Desktop Local AI: Qwen & Inkling LAN Guide",
+   "summary": "Unsloth Desktop Local AI: Qwen & Inkling LAN Guide explainx.ai",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNZFlnaXNVLTdzWlRTR21IZm9wQ1VYV0ZYT21TWXR5eTJvbXBnSmhnVlBadUdrc1RoZFV0c3pKR1E2QTU3bjVzUTVscXBCZU91VVdfY3BLSUdrTXdOX2tVdlh0ak1TaGlvZTBtbFZGMk4xSnluY0lIMGc5dlN6S2RsQ0pJd3Z2Vnk1ZXI0SGw2ZlNRdw?oc=5",
+   "published": "2026-11-22T00:00:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Alibaba Qwen"
+   ],
+   "id": "2ede5a85cd",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "3c68c5e5ce": {
+   "source": "Seoul Economic Daily",
+   "source_type": "rss",
+   "title": "Qwen Leads in Banking Knowledge, GPT-OSS in Safety, Study Finds",
+   "summary": "Qwen Leads in Banking Knowledge, GPT-OSS in Safety, Study Finds Seoul Economic Daily",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOVjk5NVZkZUxGWWZFblBpQ29rZDNOVlJUU2NReEdoTWJRNlhVU3RzQkZJb3RiQ2V5eVozbFRUVW5sZWdKeGJvR3RaU0FFT2NPN3BXMVFaOXcya0NYQUJSXzFjRml4ajhfaG1qN2d1ZUt2TlktUkdrWTEwbzgwX0dRYzJWb2VDX1ZqV3F1WDRtbUdVOHR5Y2ZLSjB1M3RhUQ?oc=5",
+   "published": "2026-11-23T08:12:51+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Alibaba Qwen",
+    "OpenAI"
+   ],
+   "id": "3c68c5e5ce",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "d7d4ef372e": {
+   "source": "아시아경제",
+   "source_type": "rss",
+   "title": "AI Scientists to Join the Entire Research Process... Government to Pool National Scientific AI Capabilities",
+   "summary": "AI Scientists to Join the Entire Research Process... Government to Pool National Scientific AI Capabilities 아시아경제",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9ETXdDcUxNMzJDSTF1c1RCTW5fOUE4MzRzRzRsQ2Zub2Vib1JoLUZ6SzhRdVZOMVlkeXc4SkFyTWpmdEdETHZfQTVoenI5QWdrOGNtaWxpN0ZPc3BSUVhjaFhJUXA?oc=5",
+   "published": "2026-11-23T05:34:55+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Moonshot AI"
+   ],
+   "id": "d7d4ef372e",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "e8b33ba3fb": {
+   "source": "Pandaily",
+   "source_type": "rss",
+   "title": "Zhipu Adds GLM-5.4 to Coding Plan With Vision Support",
+   "summary": "Zhipu Adds GLM-5.4 to Coding Plan With Vision Support Pandaily",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WTllsekd0RlZTbkQ2bk1PckRkX0wyLVV3RzNPekJZYjREMWZVd2dJRlhvMmlFTVJSYlJlUC1yaU1IUVFkSVRaeElMOFAyU1VoMEFFZXZ1eDZKcnR1OGlKMW1SQ2I3WHVZTmU4UDJR?oc=5",
+   "published": "2026-11-23T07:11:44+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Zhipu AI"
+   ],
+   "id": "e8b33ba3fb",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "0761264c9e": {
+   "source": "Demokratis.co.id",
+   "source_type": "rss",
+   "title": "Z.ai Releases GLM-5.4 With Vision for Coding Plan Users",
+   "summary": "Z.ai Releases GLM-5.4 With Vision for Coding Plan Users Demokratis.co.id",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9RM3ppbTN3ZVJfRU9vTnJfN0JBaTF0Y3Y5ekxYeUcwenNwSEM5SjR6MXBnLWZFZmF3a21LMHFjaTJkMjlEdmhReFo0ZU1EV2Y3UE1IVmdhazFwVGZiWnRFQXUxWVo3XzNiSzdMYw?oc=5",
+   "published": "2026-11-23T07:11:10+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Zhipu AI"
+   ],
+   "id": "0761264c9e",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "53769b76fb": {
+   "source": "SuaraGarut.ID",
+   "source_type": "rss",
+   "title": "Z.ai Releases GLM-5.4 to Coding Plan Subscribers",
+   "summary": "Z.ai Releases GLM-5.4 to Coding Plan Subscribers SuaraGarut.ID",
+   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE0yY2oyRG9QWmRyeEVCdHNMZ01fWmdYenJMTmxXbnNSSDZPMjYyVk91RnM1UnUtNkFXaG9ReGZRa1JKYmU2UjdiMnFBRWI5MUh2UGhzTlNaeVQ1dklucEVwYTJES0dVQQ?oc=5",
+   "published": "2026-11-23T07:08:56+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Zhipu AI"
+   ],
+   "id": "53769b76fb",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "76532fb161": {
+   "source": "TechNode",
+   "source_type": "rss",
+   "title": "MiniMax publishes AI-discovered cryptographic attacks with papers and code",
+   "summary": "MiniMax publishes AI-discovered cryptographic attacks with papers and code TechNode",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQRXJpeGxEVkRpeWJiTnBlc2pYYm1hX0JvcjBKZjFPWTZMZE5JWi1HVXRoLVI0NDlZVS11WVdrcGZNN3BPV1NBdFBpLXM0Q3NnRDl6U1pQbDJmaklWaUExcmxHNmhDY2laSGFPS1ZWYTZkSWRKVjR6SDFmWjVKSXFURHI0dzlHTk5NMDZPZkRzWDdIcExRN1JwbWRaZzdmQjlXeHZwNUI2b2p6Nm8?oc=5",
+   "published": "2026-11-23T06:52:14+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "MiniMax"
+   ],
+   "id": "76532fb161",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "edfee19e65": {
+   "source": "Korea Biomedical Review",
+   "source_type": "rss",
+   "title": "Lunit, M42 partner to use existing chest X-rays for lung cancer detection in UAE",
+   "summary": "Lunit, M42 partner to use existing chest X-rays for lung cancer detection in UAE Korea Biomedical Review",
+   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBENURGLUZrWTVONUdsV25CbGdzYmZoeTVpTVBYemxjQUJsaDNpLVdRZnN6Sng0MHZXR1AyRUoyZVBXZFFYRGZUOXBiTE94MEY0bTlvNVRzencxTzBIS0xXdGR1M21NR05ReWt3c0pLeUdDQdIBckFVX3lxTFBENURGLUZrWTVONUdsV25CbGdzYmZoeTVpTVBYemxjQUJsaDNpLVdRZnN6Sng0MHZXR1AyRUoyZVBXZFFYRGZUOXBiTE94MEY0bTlvNVRzencxTzBIS0xXdGR1M21NR05ReWt3c0pLeUdDQQ?oc=5",
+   "published": "2026-11-23T01:55:19+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "G42"
+   ],
+   "id": "edfee19e65",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "c52317f861": {
+   "source": "Korea.net",
+   "source_type": "rss",
+   "title": "Korea regains top spot in UN's e-gov't assessment after 12 years",
+   "summary": "Korea regains top spot in UN's e-gov't assessment after 12 years Korea.net",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9DNkNlT01IUGkyd1FZSlp2T2pVWWl5N2pNU0tnZWxJbzVUSFI1QXF4QnZqMVhpaTFFZk03Y3RVSjc0b0lkdzd0andaZnRfb2o2c24zWXMxQ0ctQ0FEN0Fwdl85UHlCSmI4S1NzMGdR?oc=5",
+   "published": "2026-11-23T08:22:09+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "TII"
+   ],
+   "id": "c52317f861",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "a9ff36eb8f": {
+   "source": "Autodesk",
+   "source_type": "rss",
+   "title": "The Importance of Human Judgment in AI-Driven Design",
+   "summary": "The Importance of Human Judgment in AI-Driven Design Autodesk",
+   "url": "https://news.google.com/rss/articles/CBMitwJBVV95cUxNeGpXOU5VeTZFcXdwX1prZ3lVTE9xVElSVzFPaE1TenhsMmxQRTd6QWdsdXZPNHE4T1BfY1RIdlU1TmtYMFFMc3hpSmlib3pVVlk1RWRETl9mdTVzbW5TVmNwTnRwZF9hLW1pUVlkLXFwcktwWF9ZQkVBdEpUNGRQenFPUjBOZWVHV05IQkVNZ01NZlBCNlBOQ0Z4VklNR2JrZk5uM2p6ODVvOTBXTWlkZmk3ZmVPeVdqZVRfNXJpUVFhQ2hVeURPMUhMSzFVTmJfMWZocU9zT3J4azhRd0h0SlhqRnRPcllKRTNwQ0ZCQXZwVURXQjBFX2trcEE4Uk12RDA3eGwyTFFDUmF0X3QzbXZURnlpbUNScGtGU3hnM2Y3cUJQdC0tS280YWpkbl9IcFlKUUNjQQ?oc=5",
+   "published": "2026-11-23T00:38:33+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "gulf",
+   "entities": [
+    "Humain"
+   ],
+   "id": "a9ff36eb8f",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "3b270850b0": {
+   "source": "Hostinger",
+   "source_type": "rss",
+   "title": "Hostinger Managed apps: How to set up and manage Paperclip",
+   "summary": "Hostinger Managed apps: How to set up and manage Paperclip Hostinger",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPNTJFck9TTjIzdTgwcWNlYmd4WE9xcGYwMXVfTmFoNHNuUHVVM2dXaldBTnVwelRoNXV2TnQ5Mlg0WlNyM2VncDNLWmFmMlZGNTd0cE0yUHA0NU5pbkJTSjN2Zjl4QkpkT3l6Qi1nNDJYSXkyZ01JZFdZSWNuekYzVjAwU1poakpiLU9yd1ZqMWdnbHhJUWZN?oc=5",
+   "published": "2026-11-23T04:31:24+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "OpenClaw",
+    "n8n"
+   ],
+   "id": "3b270850b0",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "f9706214bd": {
+   "source": "MarkTechPost",
+   "source_type": "rss",
+   "title": "NVIDIA Releases Alpamayo 2 Edge: A 2B Reasoning VLA for DRIVE Thor",
+   "summary": "NVIDIA Releases Alpamayo 2 Edge: A 2B Reasoning VLA for DRIVE Thor MarkTechPost",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNa3d2b0VuZHhfemtsamVHaVZhTUNlaEo3aTllT25ZUEJMdGpHcTRtRVJjRTM0SHp3ajF1WWFwVVc5LWxPanJ6UUI2NUl0b25rbWpGT3RfR1dRUGsyOTlBR2hFTVZCVjg1QkJjbUxHMlBxUnRydU1Xdi1JNmZLNjlfUEtPWVc4UWxkcVpDVkhZLVRCVHI5REVJMnhEMUdkZ9IBngFBVV95cUxNa3d2b0VuZHhfemtsamVHaVZhTUNlaEo3aTllT25ZUEJMdGpHcTRtRVJjRTM0SHp3ajF1WWFwVVc5LWxPanJ6UUI2NUl0b25rbWpGT3RfR1dRUGsyOTlBR2hFTVZCVjg1QkJjbUxHMlBxUnRydU1Xdi1JNmZLNjlfUEtPWVc4UWxkcVpDVkhZLVRCVHI5REVJMnhEMUdkZw?oc=5",
+   "published": "2026-11-22T18:37:57+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "f9706214bd",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "a89f4e122e": {
+   "source": "Hostinger",
+   "source_type": "rss",
+   "title": "How to use Website analytics in Hostinger dashboard",
+   "summary": "How to use Website analytics in Hostinger dashboard Hostinger",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNX0gtX2YwQ0JsUWhxQ1BmdkNELW1MR25ZcEZ4UlN1VEFGODVvREhab3FpVTFBRkJ4cHRoWTlwblRaSGFNUUpmclhBY2Y4bnZhYUZjbDZrU2RfblNzSnd5WGdHOTBjYkVHNU1JVmNVLXBpWnY3SVU2cks1YVVDaWNneGVDeTNEbTFINkplZGpjYw?oc=5",
+   "published": "2026-11-23T08:31:25+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "n8n"
+   ],
+   "id": "a89f4e122e",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "39648203c6": {
+   "source": "Superpower Daily",
+   "source_type": "rss",
+   "title": "Architecting Enterprise AI: From LLM Integration to Secure AI Agents",
+   "summary": "Architecting Enterprise AI: From LLM Integration to Secure AI Agents Superpower Daily",
+   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxObmtuMlMwTmtEWnFXbHZES1ZObXZ4NDZjczdRUTA3ODJfOElmQzZPMmNvR2IyT2hyWml1V040dFp4Q0VrbU1Kb2U4Q2lTbl9nZGZNaDZRb0U4WE5XcnZkc0FPWUtEQ0RubjN1clE5aThkNWVMR01sZEdkOENFaFRIdVpKd0hEQ2d4Z0hyaG1TMkxPVU90NFlIdkZzNEk5R0pqTUtTcDRrMFhCSTJJVkVOZ3pOU0U5YWhDWGN5VlJYZ2J2ZUpKajl2UjBWSzNtMEZ1aXUxU2RR?oc=5",
+   "published": "2026-11-22T20:41:23+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "frameworks",
+   "entities": [
+    "Model Context Protocol"
+   ],
+   "id": "39648203c6",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "41c2d295f2": {
+   "source": "IT Brief UK",
+   "source_type": "rss",
+   "title": "Revenium launches Sidekick for Claude Code cost control",
+   "summary": "Revenium launches Sidekick for Claude Code cost control IT Brief UK",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNQk9XYkF4SjVMMi1tQTFtVk52TlBVTVpfYzczN28xQXV1eTBvTzlObWMtUkt0R0hVSHhTd1NOQVdneTFNQjh2R182b3BCUmxQemhPVEM2VjZpd1B0SEJWNUVrbGg5ZEZoVmlDVVlOWHlDS2FubFlZeDRQTGExZ3NKYzNva0RLR0VSSDJ3?oc=5",
+   "published": "2026-11-23T08:30:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic",
+    "Claude Code"
+   ],
+   "id": "41c2d295f2",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "3867fbd2a2": {
+   "source": "OfficeChai",
+   "source_type": "rss",
+   "title": "Cognition's Team Flew To North Carolina To Have Dinner With A Gujarati Family Just To Hire Their Son, Reveals CEO Scott Wu",
+   "summary": "Cognition's Team Flew To North Carolina To Have Dinner With A Gujarati Family Just To Hire Their Son, Reveals CEO Scott Wu OfficeChai",
+   "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNNHo3ajJkZC1DdmUyS1NZT3dwRW5TeF9wazdTWWRrcUE5a0F0WUpGWTJCeGRIcDJZVXo3dmdIZGF5a0tnc3BHbUlETG1sb2VIcGYtSmE5N0dSMllZQlVyY0xRTlF3bzBkR1czTDhiUFg5Q240S0FyZ3M0OFN1QVpvV05wbHZqVENLWDVJaGN4Wk9WQzdRTlFyUTBWcU9GZnpYVmxmOFJGS1JNLWYyVy14cm8tSm1WSzkxSEx2akMxc1F5eE5fVlZaVUUwMFlDeV82eDZKcDVVcXJ1VkVLdmFRSmwxak5VQlE?oc=5",
+   "published": "2026-11-22T17:27:42+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "Devin"
+   ],
+   "id": "3867fbd2a2",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "1342f321ce": {
+   "source": "shattered.io",
+   "source_type": "rss",
+   "title": "Cursor vs Copilot Overlap: 12 Steps, 70 Min",
+   "summary": "Cursor vs Copilot Overlap: 12 Steps, 70 Min shattered.io",
+   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOX293SXJpYUFsLXBFMlVlbzNYSmYxc1BLZ1BRSnBhUThBUmhXSG9XaGRZemQ1UTY0SkwxWnZ6WjludW1KUk9idXpqajl6anVORGRrQ1pRclJ0aWZiRWNJeGVZaDAwc2wzQXF6UlMtdVBZTjJMTTlZVUNqYTZ1dE1GUHE2VGxBYXVQ?oc=5",
+   "published": "2026-11-23T03:19:26+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Cursor",
+    "Microsoft Copilot"
+   ],
+   "id": "1342f321ce",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "7d2de579f7": {
+   "source": "TradingKey",
+   "source_type": "rss",
+   "title": "SpaceX Q2 2026: Revenue Up 92%, AI Cloud Deals Hit $14.1B, Cursor for $60B — Stock Consolidates Near $115",
+   "summary": "SpaceX Q2 2026: Revenue Up 92%, AI Cloud Deals Hit $14.1B, Cursor for $60B — Stock Consolidates Near $115 TradingKey",
+   "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOZWNZdUh6UDZuUXFIWXBMalM2VzdJLWpqUjVOSkxlOFhXWnQ4dUhwNnI0Q1psTm1VZHVvNHZULTNibUFXWEhBZkcyWVdrSGgyUlItSzRNVlZMRDVyZWR4a1Q2NlVpODVPbkxJM0NycXFWUlZQZTdpUVRDaVk1cmtlOWVwS2I4bFl4WW9DT1ZqbU9IQmZPTHloQWFNTndnMmJsZjRlcW1hOEdQWWdJT0t3bWkyZWdyTm1uVEl5b2xsUUREZWY4VXFPRg?oc=5",
+   "published": "2026-11-22T16:25:29+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "Cursor"
+   ],
+   "id": "7d2de579f7",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "5539bbce60": {
+   "source": "ChannelLife UK",
+   "source_type": "rss",
+   "title": "Genspark to launch SecondBrain VoicePad on Kickstarter",
+   "summary": "Genspark to launch SecondBrain VoicePad on Kickstarter ChannelLife UK",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPbHlNU3B0ZTMwUGRpSXhTdkxlQ3NzZURpUjJiVmp0UlE4bHNjTmhrWk1aQ2VPX3J5aVRDcHhWSDk2UUdYd2tsNmVRZU5tanV3NDFoS0RfWHdSdzFXTmVnVEFZVHR0MkNPbThubTM2bkF1YXBBeXRmci10dXRBVXpMMVZNQmhrUU9rbl96eUpmZw?oc=5",
+   "published": "2026-11-23T07:28:55+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "Genspark"
+   ],
+   "id": "5539bbce60",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "955a44ec74": {
+   "source": "Wisevoter",
+   "source_type": "rss",
+   "title": "Genspark Unveils VoicePad Dictation Device",
+   "summary": "Genspark Unveils VoicePad Dictation Device Wisevoter",
+   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQd2U4Qy1RcGZGNFNfMGRIUmFRLXRkckVTNThFdjBLU09fSms0djBPa3J2YVB1UUdySDViUzRxajRFcmtyN2YzRVJqVVRqZTBjN0o3SzdsdnM4ZDFRNkwxTkVTRmwzVjNiQTB6UkFuV2hlWXJCaGU0TkUxbDRGMUxPNTFZb2ZENFljZmc?oc=5",
+   "published": "2026-11-23T04:47:26+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "products",
+   "entities": [
+    "Genspark"
+   ],
+   "id": "955a44ec74",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "b28aec4d57": {
+   "source": "IT Brief UK",
+   "source_type": "rss",
+   "title": "Connect launches Salesforce Agentforce support across EMEA",
+   "summary": "Connect launches Salesforce Agentforce support across EMEA IT Brief UK",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPZDRxVEdhczNsQ0ZuaWVyTGM2TVBJcG8zcS1GbEtaTnNaVVhwUGU5dEpVLXZHNzYzSjRQMGp4UldGRExCMGdTQXhHNjM1VzluLVJsczQxbmQtQkZWRmdjbDBjWXBPaUIyYTkyT3NNVk9hYmMwVE5DejJWVnFiUkUzODllZ3RudGk2eTZpVDRrQQ?oc=5",
+   "published": "2026-11-23T08:30:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "agents",
+   "region": "enterprise",
+   "entities": [
+    "Salesforce Agentforce"
+   ],
+   "id": "b28aec4d57",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "f9fda6bcc6": {
+   "source": "Yahoo Finance",
+   "source_type": "rss",
+   "title": "Nvidia News Has Investors Rethinking These U.S. AI Chip Stocks",
+   "summary": "Nvidia News Has Investors Rethinking These U.S. AI Chip Stocks Yahoo Finance",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPV0NQWU5NdWFiQTl5cHdmNW9YRlpiVy03b0ZDdHhaQWFHMlRSLWFfeWZoYmM0bHVGVDdvTnRmQ203NW1GSEdZXzVDSk42c21ON0hHaVZodU9tY0JYa0hBWEFOWFFqdm9md01LZkM2Vkp0LU5HUjlqZjJsRTdVZG0tTFlrV3ZqdmxvSE9CejBfNU1NSnpqYnNEMWlWZ3ZQZVk?oc=5",
+   "published": "2026-11-23T07:07:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "f9fda6bcc6",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "8aa3e633f0": {
+   "source": "shattered.io",
+   "source_type": "rss",
+   "title": "AMD vs Nvidia: 7 RTX Tiers, 1 Confirmed Radeon Price",
+   "summary": "AMD vs Nvidia: 7 RTX Tiers, 1 Confirmed Radeon Price shattered.io",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNV2poY2pWbE85OWdaZDVSaXJSUUV6RmxucFYxYmViNzhlajV5THVEQldqNVg4Ymhjc3BpdG9xVzBYSXFyTTZ5Yms4clFhbjQ3eWxsaG1WNEdkWEhvbTN1WlRFMHd4SzRoaTVLYml0OEkyZHFnVWptTDRxbkp1Yll3SFZvSnY1WUpzQVNKdWdnd3p4dldo?oc=5",
+   "published": "2026-11-23T06:27:40+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "AMD",
+    "NVIDIA"
+   ],
+   "id": "8aa3e633f0",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "f90391cb8b": {
+   "source": "آي-فون إسلام",
+   "source_type": "rss",
+   "title": "NVIDIA Does It: Launching RTX Spark—Is This the Moment to Threaten Apple Silicon on Windows PCs?",
+   "summary": "NVIDIA Does It: Launching RTX Spark—Is This the Moment to Threaten Apple Silicon on Windows PCs? آي-فون إسلام",
+   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQN2pVaW9vbEM1dEkzYVNncFBJM0RzMkROYzIyYUJlSmp6NXM5Z1B0NTNpcGFueS1XUWE0LVJMRHU5ZURMZ2xKVzhEaFlGMDY3Q2RTb21xN3N1VkNCbDR1Z3RfWC11SkptdF9jMjdEb2ZpcFQ4VThmQzJhSVRWRExYaWxHbEJISjQ4Vnd3aDRVMGt3N2pZdHZRLXVLRWhVVlM4RGxQZnpkSGZia0c4US1pM0F1MVhoc29DbmxVYjJQTVJMMjVGNnRXbjIwQ1BjUjNROFVHMEo2S0VIZEpGQXc?oc=5",
+   "published": "2026-11-22T17:35:05+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Apple silicon",
+    "NVIDIA"
+   ],
+   "id": "f90391cb8b",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "6bb56a7696": {
+   "source": "آي-فون إسلام",
+   "source_type": "rss",
+   "title": "Goodbye to the Cheapest Mac: Apple Raises the Starting Price of the Mac Mini to $799",
+   "summary": "Goodbye to the Cheapest Mac: Apple Raises the Starting Price of the Mac Mini to $799 آي-فون إسلام",
+   "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNSUhWYndvMDdfSjdXeXpYbmdtUDZyUnlyUE40Rk9wUjB6VGd3d19TWUk2RkV1bkFrTlZCX1A1RUQyMDFHcW1wcEZsUmFXQVM2b1VpYmVZRXNuRDh6dUxCTWtQZEN6NEQ5aG1MclA2Qmp2UE1VVWJSaEhGZXVYNkVsYlJ4aFhWY1lKclpMbnZkX2JKVFlDYlNNMGxxV0g2V0o1SDJEZUMxNHJjSTZTQXJOanJqME9LYTFUQk84aklMWVVQcVhVWnlXdVBaNG53dw?oc=5",
+   "published": "2026-11-22T09:35:07+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Apple silicon"
+   ],
+   "id": "6bb56a7696",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "0ca7a206de": {
+   "source": "LinkedIn",
+   "source_type": "rss",
+   "title": "📉 Intel -64%, Nvidia -48% from record highs. Chip stocks are sliding like it's 2000 🤖 AI hype, data-centre spending & customer financing echo the dot-com era 🔍 But Apple, Microsoft & Amazon have fallen far less. 2000 again, or different this time? Reema Tend",
+   "summary": "📉 Intel -64%, Nvidia -48% from record highs. Chip stocks are sliding like it's 2000 🤖 AI hype, data-centre spending & customer financing echo the dot-com era 🔍 But Apple, Microsoft & Amazon have fallen far less. 2000 again, or different this time? Reema Tend LinkedIn",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQMlRGUzNtTVRFVmF5RERlVWc3OWkybFl1ckNtWjNKVU92ekNpaDVlcjlTUkZ1eC1XWjVnNDB2SUw0dkV0VWNhbWpwTnFaUVA2WjBmdGpoTXpxNkljOURKYTZHZEY3b3BIRTIwT3RSYmhHeDktVXNRTXpib2pnTnhMMHBmR3NUZnU4cnFwSTlpbTZmMkhwYnpiNGRNTEhseG8?oc=5",
+   "published": "2026-11-23T07:06:48+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Intel",
+    "NVIDIA"
+   ],
+   "id": "0ca7a206de",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "f2277381f7": {
+   "source": "Arm Newsroom",
+   "source_type": "rss",
+   "title": "Arm CSS for Mobile 2 delivers advanced AI-powered mobile experiences across the ecosystem",
+   "summary": "Arm CSS for Mobile 2 delivers advanced AI-powered mobile experiences across the ecosystem Arm Newsroom",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPd3RKd0RhaGh0LWttOExYZ0pJSGhIUU83UEl5dTdRYjltempHTzY3NFcyU0MtTlpzNFRtblVRc1d1S3E0VFBYVkltUW4tTEs1SlRsY1hqaGVZekZhT3dyaHJELXlWUEFQc0lvSV90VU8zZ29aMDlWcHFqSGxsYUNmR0xB?oc=5",
+   "published": "2026-11-22T18:34:24+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Arm"
+   ],
+   "id": "f2277381f7",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "cc03cdb68a": {
+   "source": "Trefis",
+   "source_type": "rss",
+   "title": "Why Did Broadcom Stock Drop On Friday?",
+   "summary": "Why Did Broadcom Stock Drop On Friday? Trefis",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNWllGMkdwMWFtZUJLWjdQX1FnbHByQnlBdzZ2R0dTN3I5TS1qR2VHWU9UQ2hvcXpVS0NrMGROOTlodzJKY19BdHZLSERZV0R3SE1KM0lGeUhxd2JfMGY4MjAwM2duV1p5b0ZQZEpMNDhWeGlGREdTTzc0NzNxY09EeDBabS1qN19iSGVCdS16S0FGYjIxRXEwQWFEUnhwZW8?oc=5",
+   "published": "2026-11-23T07:41:20+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Broadcom"
+   ],
+   "id": "cc03cdb68a",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": true
+  },
+  "bd14caad28": {
+   "source": "Simply Wall St",
+   "source_type": "rss",
+   "title": "Broadcom Stock Faces Google Order Cuts And AI Customer Concentration Risk",
+   "summary": "Broadcom Stock Faces Google Order Cuts And AI Customer Concentration Risk Simply Wall St",
+   "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPcDRPSTNlUWNxYm5iaWR4cjNWSzViSWNnLUxxWVEyM3ptQVdGd2tzOXpoMWZiaGo5eE5wSjVKSlNrME96anBJbVJ2NmFPNzViVUlLb3RWcEJBel9kMFhvRWZGS3kzUkNxc1Z6eXY5azZEdXZIelVQWmJWNGVNN3ZWeDBJZzR6Y25XaXBTSzh6Mi0xcm1IWHhIT1NjajBhdlVXUXFrdnRmdGFldm1VVE56UTV5a0tsdXFhc2dobnB5UHY2aHRtM1M3MjUydm92Z3hTYnhZ0gHTAUFVX3lxTE9wNE9JM2VRY3FibmJpZHhyM1ZLNWJJY2ctTHFZUTIzem1BV0Z3a3M5emgxZmJoajl4TnBKNUpKU2swT3pqcEltUnY2YU83NWJVSUtvdFZwQkF6X2QwWG9FZkZLeTNSQ3FzVnp5djlrNkR1dkh6VVBaYlY0ZU03dlZ4MElnNHpjbldpcFNLOHoyLTFybUhYeEhPU2NqMGF2VVdRcWt2dGZ0YWV2bVVUTnpRNXlrS2x1cWFzZ2hucHlQdjZodG0zUzcyNTJ2b3ZneFNieFk?oc=5",
+   "published": "2026-11-22T17:09:01+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Broadcom"
+   ],
+   "id": "bd14caad28",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "b35cb6fa5b": {
+   "source": "BigGo Finance",
+   "source_type": "rss",
+   "title": "Jensen Huang Return to NVIDIA Bets Heat Up as Taiwan Stocks Swing More Than 1,200 Points in Early Trading",
+   "summary": "Jensen Huang Return to NVIDIA Bets Heat Up as Taiwan Stocks Swing More Than 1,200 Points in Early Trading BigGo Finance",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBDc1p4aXpWckh2QkNuQlhxd0VkMGF4MDdPV2Z2T3JCeS1TSVhzdS1WOU16SXdUT1NIQUtOLTY2NzhxMnUyMjJERWNQMnFZcUxhVFBhbWp0dmE5eWNWNmZwZENaN0ZxTzFqTmdNSFctdy04dFVscVE?oc=5",
+   "published": "2026-11-23T01:55:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "b35cb6fa5b",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "13fcb8b1be": {
+   "source": "FourWeekMBA",
+   "source_type": "rss",
+   "title": "GLM-5.4 Ships to Coding Plans With 50% More Weekly Quota",
+   "summary": "GLM-5.4 Ships to Coding Plans With 50% More Weekly Quota FourWeekMBA",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNU1hGVmRUUGVLaWxpVGN4Nm1MaEpxQ0pwSGxXeU8zeWFVSDRoV3FiakxKY2g2WVRPdzNEVEFla0h6ZTM1MG5ZMURmVU9nS3Y5T0piWnRHYm82VWpNNENVREpVMXAwbnlvTVBkZmdpaHNXVjNic3pYbUhOSXJXQnNvS0lrYmxBUjdOUk1Z?oc=5",
+   "published": "2026-11-23T07:04:08+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "cn",
+   "entities": [
+    "Zhipu AI"
+   ],
+   "id": "13fcb8b1be",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "40c075a175": {
+   "source": "finance.biggo.com",
+   "source_type": "rss",
+   "title": "Cerebras CEO: We're 15X Faster Than Nvidia-Era AI Infrastructure｜Sourcery",
+   "summary": "Cerebras CEO: We're 15X Faster Than Nvidia-Era AI Infrastructure｜Sourcery finance.biggo.com",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE96ZzN2Q3UwWGthNTNSLXB2N3g3S2dvZk5XSmo3anhlQ3F6cThDVldtNkZsMkZNNVNDQ1g4WTBET3ktZ1BQU3djZXppbWVjTWpjdnRxZlNPYjFwYjVUeFk0?oc=5",
+   "published": "2026-11-21T23:59:33+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "Cerebras",
+    "NVIDIA"
+   ],
+   "id": "40c075a175",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "3f099104e5": {
+   "source": "Notebookcheck",
+   "source_type": "rss",
+   "title": "OpenRouter cuts three AI providers: Who needs to rotate API keys now",
+   "summary": "OpenRouter cuts three AI providers: Who needs to rotate API keys now Notebookcheck",
+   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOdmVrb1Q2TGVBWlUzc3pDd2djenZ1bHRlUUpBempVeUJGVHJQZ3d0NUoyZDJQRkxPcGRwbXc2WWxXc2ZKQnVWVERZcmlRcHBBc0hkemVUZFI5SHc2bkY2MkFGNndCRXhITzI4YzdTTDhUQTh4dkxXZHF4RS1sa0RuOHZXNXA5Wm15ek51OG13OGJfWE42UVVndXBLbHZhSEp2bmtqbkl0YkNMbFhOb0pmbENB?oc=5",
+   "published": "2026-11-23T08:03:00+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "OpenRouter"
+   ],
+   "id": "3f099104e5",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": true
+  },
+  "25c522e143": {
+   "source": "YourStory.com",
+   "source_type": "rss",
+   "title": "Sarvam defends hosting Chinese models, says focus on developing own models continues",
+   "summary": "Sarvam defends hosting Chinese models, says focus on developing own models continues YourStory.com",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNU0VSQnY4SEVkRmViSDE5enRDSDd3X3ZJVXdYS2xCb0N2U1d4SWR5WTNXblEtYmNmSDcxYTY2bDF3RHdreTlENERFMVNwUXljOHFiMGlqVDB0VXVWMjRPcTEzZFlOYmNORl92ZUFMU3dtaUNGNVhmSXlKNkQyX0Z2c3ROQmM0bkwyczFxVm12YTFIbTlXOUJDUzd1NXBEQmM?oc=5",
+   "published": "2026-11-23T07:41:15+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Fireworks AI"
+   ],
+   "id": "25c522e143",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "92e88eacb1": {
+   "source": "The Indian Express",
+   "source_type": "rss",
+   "title": "‘Token Factory operates on GPUs procured privately’: Sarvam’s defence amid Chinese AI models row",
+   "summary": "‘Token Factory operates on GPUs procured privately’: Sarvam’s defence amid Chinese AI models row The Indian Express",
+   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNSnNQRy1NNnBuMlp5OWx4bEtwdVQxVkRjRktTb2xFR1RMWTh5cUVJNFRZNmtqajFiZFBQSGt1MTVBLUpkQzJ2dnJlTFUzSUQybDNTUXg5OWNtOXBxU0h3aTI3TjFsSmU3a2dIQVFjeThGUVBaY3NpM0ZpRDFCNUFrdmw3bHZpY3BRWkFFb1UwNkFJVW1ITW15UHdOdFNYMzZQY0RiZVI1aVVVUDFpSXk1eGozOEdhbldvSHV30gHCAUFVX3lxTE1UUXRULXU3RzZuZFJucTAyN0JqeWhMNThCZFR0cU9jTmZ3bHhURVNGOWRoSHJPWXg4YlR3R3hMd25TTFdfRXRBRmtRMnNFVFFLcFBHak1QSWpFZUljWFV1WDdocmFZZHNISnlUSFBZUW5RbTZ4N2EtMEF1dEpXaUlyWGpmNl96T0p5VmMxVVZQb0VPWHdUSldJWm1wYzloVFBxZmtGQzFLcXZLR1hDT0lYdXFpYll0X01kOEpkT0R5LTlR?oc=5",
+   "published": "2026-11-23T07:05:06+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Fireworks AI"
+   ],
+   "id": "92e88eacb1",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "cbd844e041": {
+   "source": "Daily Beirut",
+   "source_type": "rss",
+   "title": "Bello Muhammad Sets Guinness Record on 2.9m Bicycle",
+   "summary": "Bello Muhammad Sets Guinness Record on 2.9m Bicycle Daily Beirut",
+   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOcDNFR2txWDJ4QjZ5ejctVWd2TmxyalRzbG04NTU4UGpZUXlQcEQtVjBTRWd5NG54cHllR3BQUzY2UTgxdVNRNURXMGh6U2xkZlRJang4RFNTdXcwRVkyZWZpS09jM1ByQzRoRHB0UkY3ajZHUzgxb3h2S19oWHRHSEpjZkpVMVRZZ2JUM3ZZbnNIWEdwZmhzOEktYm0?oc=5",
+   "published": "2026-11-23T08:38:12+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Fireworks AI"
+   ],
+   "id": "cbd844e041",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "dc44cff65a": {
+   "source": "Business Today",
+   "source_type": "rss",
+   "title": "Sarvam AI targets global inference players with Token Factory, claims competitive AI pricing",
+   "summary": "Sarvam AI targets global inference players with Token Factory, claims competitive AI pricing Business Today",
+   "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNR0lUdUFRMmpGemZEMFJiV3gwTE9wTjhVdzRwRF93eXZZMUVGa0NWRDRRRERkTWxuZF9BcnZRMzdYeUI2WXR0cmFnTmEweTZmNDl5a21FVk5NWmN3SnZKOWJjTGpUZk4wSWpoWF9MLXBLWXBLcHd0NVg3Tm01SVFSXzZuYXZWQTZSaGVCUFg3Yk80NFUxR1h5S2F0Z0x6YlVvTFhaYVhlcnc2b0N5eTF1TkJjN3dwNXVESUtDWGN6bWNhc2djX0hjZEZOWHRra1U3NjdZZmxSeXdieC00U1pLRGhnbi1EVW5mWkJyQzh0UF9ad3FrUGI00gH3AUFVX3lxTE1HSVR1QVEyakZ6ZkQwUmJXeDBMT3BOOFV3NHBEX3d5dlkxRUZrQ1ZENFFERGRNbG5kX0FydlEzN1h5QjZZdHRyYWdOYTB5NmY0OXlrbUVWTk1aY3dKdko5YmNMalRmTjBJamhYX0wtcEtZcEtwd3Q1WDdObTVJUVJfNm5hdlZBNlJoZUJQWDdiTzQ0VTFHWHlLYXRnTHpiVW9MWFphWGVydzZvQ3l5MXVOQmM3d3A1dURJS0NYY3ptY2FzZ2NfSGNkRk5YdGtrVTc2N1lmbFJ5d2J4LTRTWktEaGduLURVbmZaQnJDOHRQX1p3cWtQYjQ?oc=5",
+   "published": "2026-11-23T07:00:06+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "Baseten"
+   ],
+   "id": "dc44cff65a",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "c9ae386317": {
+   "source": "Mezha.net",
+   "source_type": "rss",
+   "title": "OpenRouter removes three inference providers and 125 endpoints from ZDR eligibility",
+   "summary": "OpenRouter removes three inference providers and 125 endpoints from ZDR eligibility Mezha.net",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNaGNfYzZUWFgtSzhoRDJORlBBelFPWjktRWRyYnBMWTlGUkVTYk5Rd1dWMktYaTlzcjB1eGd0T3JacFJ0OGJuZjVJRUtya01zNWpjYzdwQklwbnEtUERNRV81TlRFdkExZmJEZ2ttSVgzZGw5TnoyZDBqNHZQak1pckVrMjV5VjdmRHgw?oc=5",
+   "published": "2026-11-23T08:13:40+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 0.9,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "inference",
+   "entities": [
+    "OpenRouter"
+   ],
+   "id": "c9ae386317",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "b05e2f3f4b": {
+   "source": "Gulf News",
+   "source_type": "rss",
+   "title": "UAE launches mira, AI assistant for government services",
+   "summary": "",
+   "url": "https://gulfnews.com/uae/dubai/uae-launches-mira-ai-assistant-for-government-services-1.500757702",
+   "published": "2026-11-23T08:26:47+00:00",
+   "author": "Sajila Saseendran",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "b05e2f3f4b",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "338b9984a7": {
+   "source": "Gulf News",
+   "source_type": "rss",
+   "title": "AI transforms finance roles as demand for strategic judgement and digital skills rises",
+   "summary": "",
+   "url": "https://gulfnews.com/gn-focus/company-news/ai-transforms-finance-roles-as-demand-for-strategic-judgement-and-digital-skills-rises-1.500757604",
+   "published": "2026-11-23T07:02:59+00:00",
+   "author": "GN Focus Report",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "338b9984a7",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "6e16171da0": {
+   "source": "Gulf News",
+   "source_type": "rss",
+   "title": "FF EAI Robotics Ecosystem (FFR) unveils six robots and five applications in Dubai, advancing physical AI commercialisation across the Middle East",
+   "summary": "",
+   "url": "https://gulfnews.com/gn-focus/company-news/ff-eai-robotics-ecosystem-ffr-unveils-six-robots-and-five-applications-in-dubai-advancing-physical-ai-commercialisation-across-the-middle-east-1.500757599",
+   "published": "2026-11-23T06:58:29+00:00",
+   "author": "GN Focus",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "6e16171da0",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "aeeb48929f": {
+   "source": "Asharq Al-Awsat",
+   "source_type": "rss",
+   "title": "تقرير: أليس هوانغ كانت على اتصال بالمخابرات الصينية خلال علاقتها مع رئيس «إنفيديا»",
+   "summary": "أليس هوانغ، الصينية التي تدور حولها الفضيحة التي هزت شركة إنفيديا، ظلت على اتصال بمسؤول من أعلى أجهزة المخابرات الصينية لمدة تزيد على عام خلال علاقتها بهوانغ.",
+   "url": "https://aawsat.com/node/5344518",
+   "published": "2026-11-23T07:44:38+00:00",
+   "author": "كاتب",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "aeeb48929f",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "6d0461a426": {
+   "source": "Jordan News",
+   "source_type": "rss",
+   "title": "Selling actors' faces to AI: will Hollywood's future change?",
+   "summary": "Artificial intelligence is no longer limited to writing scripts or producing visual effects. It is opening the door to a new shift in filmmaking, based on using actors' faces and features to create digital versions that perform full roles without their owners needing to stand in front of a camera.",
+   "url": "https://www.jordannews.jo/Section-129/Technology/Selling-actors-faces-to-AI-will-Hollywood-s-future-change-59256",
+   "published": "2026-11-23T11:33:18+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "levant",
+   "entities": [],
+   "id": "6d0461a426",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "4260de66b1": {
+   "source": "Webrazzi",
+   "source_type": "rss",
+   "title": "AMD, yapay zeka çipi girişimi Taalas'ı yaklaşık 2,9 milyar dolara satın aldı",
+   "summary": "AMD , yapay zeka modellerinin çalıştırılmasına yönelik özel çipler geliştiren Taalas 'ı yaklaşık 2,9 milyar dolar değerindeki bir anlaşmayla satın aldı . Bu satın almayla şirket, yapay zeka modellerini doğrudan silikon üzerine entegre eden bir teknolojiye sahip olacak. AMD'nin söz konusu teknolojiyi Instinct hızlandırıcı ürün ailesine dahil etmeyi planladığı belirtiliyor. 2023 yılında Toronto'da kurulan Taalas, yapay zeka modellerine özel çipler geliştiriyor. Ljubiša Bajić , Lejla Bajić ve Drago Ignjatović tarafından kurulan şirket, genel amaçlı GPU'lar yerine belirli yapay zeka modellerini temel alan bir donanım yaklaşımı benimsiyor. Bu yaklaşımda yapay zeka modelleri doğrudan silikon üzerine entegre ediliyor. Böylece modellerin çıkarım (inference) süreçlerinin daha hızlı ve verimli hale getirilmesi hedefleniyor. Taalas'ın ilk demonstrasyon çipi, Meta'nın Llama 3.1 8B modeli için geliştirildi. Şirketin açıklamalarına göre çip, kullanıcı başına saniyede yaklaşık 17 bin token işleyebiliyor. AMD'nin satın alma sonrasında bu teknolojiyi Instinct hızlandırıcı yol haritasına dahil etmesi bekleniyor. Şirket bugüne kadar Quiet Capital, Lamond Ventures, Fidelity ve Belgrad merkezli Fifth Quarter Ventures (5QV) gibi yatırımcılardan yaklaşık 220 milyon dolar yatırım aldı. Taalas, Fifth Quarter Ventures'ın ilk fonu kapsamında yatırım yaptığı erken aşama şirketler arasında yer alıyor.",
+   "url": "https://webrazzi.com/2026/11/23/amd-yapay-zeka-cipi-girisimi-taalas-i-yaklasik-2-9-milyar-dolara-satin-aldi/",
+   "published": "2026-11-23T08:15:00+00:00",
+   "author": "Candeğer Muradoğlu",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "AMD",
+    "Meta AI"
+   ],
+   "id": "4260de66b1",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
+  },
+  "af10e891c5": {
+   "source": "Webrazzi",
+   "source_type": "rss",
+   "title": "OpenAI'ın baş bilim insanından yapay zeka gelişimine sınır getirilmesi çağrısı",
+   "summary": "OpenAI'ın baş bilim insanı Jakub Pachocki , yapay zeka modellerinin giderek artan yeteneklerinin beraberinde getirdiği riskleri kontrol altına almak için teknoloji şirketlerinin ortak gelişim sınırları belirlemesini önerdi. Pachocki, 22 Kasım'da yayımladığı blog yazısında , yapay zeka geliştiricilerinin modellerin davranışlarını daha iyi anlayıp denetleyebilecekleri güvenlik mekanizmaları oluşturulana kadar belirli sınırları aşmamaları gerektiğini savundu. Pachocki'nin önerisi, yapay zekanın gelişimini tamamen durdurmayı değil, teknolojik ilerlemeyi güvenlik çalışmalarının hızına göre düzenlemeyi amaçlıyor. OpenAI CEO'su Sam Altman da Pachocki'nin gönderisinin OpenAI'ın bir süredir yayınladığı en önemli şeylerden biri olduğunu ifade ederek yazılan öneriye destek verdi . Yapay zekanın gelişimi nasıl ölçülecek? Pachocki'nin önerisinin merkezinde, yapay zeka modellerinin performansını ölçmek için kullanılan perplexity adlı ölçüt yer alıyor. Bu ölçüt, bir modelin metindeki bir sonraki kelimeyi veya veri parçasını ne kadar doğru tahmin edebildiğini gösteriyor. Daha düşük perplexity değeri, modelin tahmin yeteneğinin daha iyi olduğu anlamına geliyor. Pachocki'ye göre yapay zeka modellerinin belirli görevlerdeki başarısını ölçen testler, teknolojinin hızlı gelişimi nedeniyle zamanla geçerliliğini kaybedebiliyor. Perplexity ise modellerin temel eğitim sürecindeki ilerlemeyi takip etmek için daha tutarlı bir ölçüm sunabiliyor. OpenAI, bu yaklaşımı desteklemek amacıyla modellerinin eğitim süreçlerine ilişkin daha önce kamuoyuyla paylaşmadığı bazı verileri de yayımladı. Şirketin kendi değerlendirme verilerine göre GPT-3.5'in log-perplexity değeri yaklaşık 0,99 , GPT-4' ün ise 0,91 seviyesindeydi . Değerin 0,8'in altına düşmesiyle birlikte matematik ve siber güvenlik gibi alanlarda önemli yeni yetenekler ortaya çıktı. Pachocki, log-perplexity değerinin 0,68 ile 0,70 aralığına gerilemesiyle yeni ve önemli yeteneklerin ortaya çıkabileceğini öngörüyor. Ancak bu değerlerin henüz şirketler için belirlenmiş resmi gelişim sınırları olmadığını belirtelim. Yapay zeka gelişimi 2027'de daha da hızlanabilir Pachocki'nin dikkat çektiği bir diğer konu da yapay zekanın kendi gelişim sürecine katkıda bulunması oldu. Yapay zeka sistemlerinin yeni modellerin eğitim yöntemlerini geliştirmek için kullanılması, teknolojik ilerlemeyi önemli ölçüde hızlandırabilir. Pachocki'ye göre 2027 gibi erken bir tarihte, yapay zeka modellerinin eğitimine yönelik araştırmalarda çok sayıda önemli…",
+   "url": "https://webrazzi.com/2026/11/23/openaiin-bas-bilim-insanindan-yapay-zeka-gelisimine-sinir-getirilmesi-cagrisi/",
+   "published": "2026-11-23T07:00:00+00:00",
+   "author": "Tuğçe İçözü",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "OpenAI",
+    "Perplexity Comet"
+   ],
+   "id": "af10e891c5",
+   "first_seen": "2026-11-23T08:42+00:00",
+   "flagged": false
   }
  },
  "runs": [
-  {
-   "at": "2026-11-18T09:31+00:00",
-   "found": 434,
-   "new": 21,
-   "flagged": 0
-  },
   {
    "at": "2026-11-18T10:42+00:00",
    "found": 465,
@@ -84531,6 +85973,12 @@
    "found": 417,
    "new": 60,
    "flagged": 3
+  },
+  {
+   "at": "2026-11-23T08:42+00:00",
+   "found": 423,
+   "new": 69,
+   "flagged": 4
   }
  ]
 }
