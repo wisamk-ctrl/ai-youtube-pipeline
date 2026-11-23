@@ -119,3 +119,14 @@ def test_face_week_remakes_a_clip_whose_link_has_expired(tmp_path):
 
 def test_cost_is_seconds_times_the_measured_rate():
     assert faces.cost(53.7, CFG) == pytest.approx(53.7 * 0.04)
+
+
+def test_the_engine_comparison_keeps_one_picture_and_sound_per_language():
+    from scripts import heygen_cost as hc
+    vs = hc.variants("https://x/face.png", {"en": "https://x/en.wav", "ar": "https://x/ar.wav"})
+    assert [v["name"] for v in vs if v["lang"] == "ar"] == ["ar avatar-iv (today)", "ar avatar-6", "ar avatar-iv + precision lip-sync"]
+    videos = [v for v in vs if v["kind"] == "video"]
+    assert all(v["body"]["audio_url"] == f"https://x/{v['lang']}.wav" and v["body"]["image"]["url"] == "https://x/face.png" for v in videos)
+    assert "engine" not in videos[0]["body"] and videos[1]["body"]["engine"] == {"type": "heygen-avatar-6"}
+    assert sum("motion_prompt" in v["body"] for v in videos) == 1
+    assert all(v["of"] in {x["name"] for x in videos} for v in vs if v["kind"] == "lipsync")

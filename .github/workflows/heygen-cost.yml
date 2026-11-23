@@ -1,12 +1,13 @@
 name: heygen-cost
 # What HeyGen's API has left and what recent calls cost (scripts/heygen_cost.py). "balance" is read-only.
-# "face-test" renders ONE face clip to measure its price: it spends from the wallet, so only on the founder's word.
+# "face-test" renders ONE face clip to measure its price; "face-compare" renders about seven (engines and
+# lip-sync side by side, English and Arabic). Both spend from the wallet, so only on the founder's word.
 on:
   workflow_dispatch:
     inputs:
       action:
         type: choice
-        options: [balance, face-test]
+        options: [balance, face-test, face-compare]
         default: balance
 
 permissions:
@@ -20,11 +21,15 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
         with:
           python-version: "3.12"
-      - run: pip install -q requests
+      - run: pip install -q requests pyyaml
       - env:
           HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
           ACTION: ${{ inputs.action }}
           IMAGE: https://raw.githubusercontent.com/${{ github.repository }}/main/assets/brand/presenter/look_d_navy_blazer_rest_v3.png
           AUDIO: https://resource2.heygen.ai/text_to_speech/2f16236adaa04e91bb62e1a24f311c5b/e1412c8894c9462eb3aa8bc8ad1f6e26/id=a3550a8d1d624b4aa3f769aaeeb85216.wav
         run: |
-          if [ "$ACTION" = face-test ]; then python scripts/heygen_cost.py face-test "$IMAGE" "$AUDIO"; else python scripts/heygen_cost.py; fi
+          case "$ACTION" in
+            face-test) python scripts/heygen_cost.py face-test "$IMAGE" "$AUDIO" ;;
+            face-compare) python scripts/heygen_cost.py face-compare "$IMAGE" ;;
+            *) python scripts/heygen_cost.py ;;
+          esac
