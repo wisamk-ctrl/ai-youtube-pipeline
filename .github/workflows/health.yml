@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows: [approve, brand, breaking-post, connect, fetch, heygen-assets, heygen-cost, inspect, preview, publish-pack,
-                radar-decide, sfx, story-decide, thumb-survey, video-check, voice-compare, voice-lab, words,
+                radar-decide, rank-dry, sfx, story-decide, thumb-survey, video-check, voice-compare, voice-lab, words,
                 youtube-check, youtube-delete, youtube-partnerships, youtube-short-links]
     types: [completed]
 
