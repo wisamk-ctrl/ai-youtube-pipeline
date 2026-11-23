@@ -81,7 +81,7 @@ def phase_rank(cfg: dict, out: Path) -> None:
     stories = cluster(items, cfg, flagged=flagged, covered=done)
     ranking = rank.build(stories, cfg, out.name, covered=done, previous=rank.load(out.name))
     saved = rank.save(ranking)
-    (out / "ranking.md").write_text(rank.to_md(ranking), encoding="utf-8")
+    (out / "ranking.md").write_text(rank.to_md(ranking, cfg), encoding="utf-8")
     log.info("Ranking: %d items → %d stories (%s) → %s; report %s", len(items), len(stories), ranking["judge"],
              saved, out / "ranking.md")
 
@@ -104,7 +104,7 @@ def phase_script(cfg: dict, out: Path) -> None:
             items_path.rename(out / "items_ingest.json")
         items_path.write_text(json.dumps([i.to_dict() for i in rank.slotted_items(ranking)], ensure_ascii=False, indent=2),
                               encoding="utf-8")
-        (out / "ranking.md").write_text(rank.to_md(ranking), encoding="utf-8")
+        (out / "ranking.md").write_text(rank.to_md(ranking, cfg), encoding="utf-8")
     if not items_path.exists():
         sys.exit(f"{items_path} not found — run the ingest phase first.")
     items = [NewsItem.from_dict(d) for d in json.loads(items_path.read_text(encoding="utf-8"))]

@@ -337,8 +337,18 @@ The weekly job now stops after ranking the week's stories and waits for the foun
   Deep: SDAIA's AI year in Saudi universities (18/21), the NSA outage at a Middle East facility (18), Anthropic's
   Wall Street debut (16). Quick: MGX and the Anthropic IPO (17), a Claude Code release (15), an African-markets
   piece (Africa seat). The Haiku judge has not run on live data yet: the first W48 run is its first real test.
-- **Known limits, seen in that run:** headlines are grouped by shared words, so the Anthropic IPO still came out
-  as three or four stories (debut, MGX, share-price pieces); the keyword fallback let a release note into the
-  quick slot and gave the Türkiye seat to a headline that only said "Artificial Intelligence". All three are
-  what `/story <id> drop because …` is for, and the model judge's depth and kill-list answers should catch the
-  last two.
+- **Second round, 2026-11-23, from that dry run (PR after #62):**
+  - Three rules in code, for either judge: a headline made only of general words ("Artificial Intelligence") is
+    not a story; a buy-or-sell headline is on the kill list and never reaches the radar or the Shorts; a routine
+    version release fails the depth gate and never reaches the radar. `/story <id> radar because …` overrides.
+  - A story's own article is always first among its articles. It had been pushed out by higher-tier outlets,
+    so the MGX story's link and its named-actor test both read another article (17/21 then, 21/21 now).
+  - The Ranking issue opens with **Before you approve** (rough-scores warning, stories that outscored one in the
+    episode, stories that turn on the same company, seats), then the episode in running order with a link, the
+    scores and the model's reasons per story and the run time of the deep and quick slots, then the commands.
+    The full score table and every reason are folded at the bottom.
+  - W47 again, keyword fallback: deep MGX and the Anthropic IPO (21), Microsoft's outage warning (17), Anthropic's
+    Wall Street debut (16); quick the Riemann claim (16), the Africa seat (11), the Türkiye seat (8).
+- **Known limits:** with the keyword fallback one event under two headlines is only pointed at, not joined (W47:
+  MGX and the debut); a region seat takes a quick slot even at 8/21 and pushes 15-point regional stories to the
+  radar (the report says so, the founder decides); the Türkiye seat's region comes from the outlet, not the story.
