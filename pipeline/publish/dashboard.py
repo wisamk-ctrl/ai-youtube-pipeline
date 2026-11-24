@@ -1,6 +1,6 @@
-"""The channel dashboard's data files (founder 2026-11-20): data/dashboard/*.csv, written by the Monday report
-(scripts/channel.py report) from the numbers it already fetched, and uploaded to the dashboard artifact by a weekly
-routine. Every figure is computed here, in code; the routine only copies the files."""
+"""The channel dashboard's data files (founder 2026-11-20): data/dashboard/*.csv, written every 3 hours by
+scripts/channel.py (mode `dashboard`, and the Monday report) and read live from GitHub by the dashboard page
+(founder 2026-11-23). Every figure is computed here, in code; the page only draws it."""
 from __future__ import annotations
 
 import csv
@@ -14,8 +14,8 @@ ACCOUNTS = [
     ("YouTube", "youtube", "@AIThisWeekME", "working", "Episodes and Shorts post automatically"),
     ("TikTok", "tiktok", "@aithisweek", "manual", "Shorts arrive in your TikTok drafts: paste the caption from the issue and tap Post"),
     ("LinkedIn", "linkedin", "Wissam Kishek (profile)", "working", "Follower count not available to the app"),
-    ("Instagram", "instagram", "@aithisweekme", "blocked", "Needs the Meta developer app (phone check)"),
-    ("Facebook", "facebook", "AI This Week (Page)", "blocked", "Needs the Meta developer app (phone check)"),
+    ("Instagram", "instagram", "@aithisweekme", "working", "Reels post automatically"),
+    ("Facebook", "facebook", "AI This Week (Page)", "working", "Reels post automatically"),
     ("WhatsApp", None, "AI This Week (Channel)", "manual", "No API: hourly kit for you to post"),
 ]
 SCHEDULES = {"weekly": "Fri 06:00 + on demand", "news-watch": "every 2 h", "social": "hourly", "release": "every 20 min",
@@ -35,7 +35,16 @@ HISTORY_COLS = ["week", "as_of", "subscribers", "total_views", "views_7d", "watc
 
 
 PLATS = ("youtube", "instagram", "facebook", "linkedin", "tiktok")
-POST_COLS = ["date", "title", "kind", *PLATS]
+STAT_COLS = ["instagram_views", "instagram_likes", "facebook_views", "facebook_likes"]
+POST_COLS = ["date", "title", "kind", *PLATS, *STAT_COLS]
+
+# YouTube Partner Program entry bars (YouTube Help "YouTube Partner Program overview & eligibility", checked
+# 2026-11-24). Either watch route counts: long-form hours in 12 months, or Shorts views in 90 days.
+YPP = [("Fan funding", 500, 3000, 3_000_000), ("Ad revenue", 1000, 4000, 10_000_000)]
+MONEY_COLS = ["tier", "metric", "current", "target", "window", "per_day", "needed_per_day", "eta"]
+WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+EPISODE_COLS = ["week", "step", "status", "date", "link"]
+ALERT_COLS = ["level", "message", "link"]
 
 
 def live_states(queue: list[dict[str, Any]], days: int = 14) -> dict[str, tuple[str, str]]:
@@ -57,8 +66,11 @@ def live_states(queue: list[dict[str, Any]], days: int = 14) -> dict[str, tuple[
     return out
 
 
-def post_rows(queue: list[dict[str, Any]], limit: int = 40) -> list[dict[str, Any]]:
-    """The latest clips with each platform's link (or what happened), newest first."""
+def post_rows(queue: list[dict[str, Any]], limit: int = 40,
+              stats: dict[str, dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+    """The latest clips with each platform's link (or what happened), newest first. stats: views and likes by
+    Instagram media id or Facebook video id, where the platform gave them (blank otherwise, never zero)."""
+    stats = stats or {}
     rows = []
     for e in queue:
         posts = e.get("posts") or {}
@@ -72,9 +84,93 @@ def post_rows(queue: list[dict[str, Any]], limit: int = 40) -> list[dict[str, An
             url = str(r.get("url", ""))
             row[p] = url if url.startswith("https://") else ("drafts" if p == "tiktok" and r.get("status") == "posted"
                                                                else (r.get("status") or ""))
+        for p, key in (("instagram", "media_id"), ("facebook", "video_id")):
+            got = stats.get(str((posts.get(p) or {}).get(key) or ""), {})
+            row[f"{p}_views"], row[f"{p}_likes"] = got.get("views"), got.get("likes")
         rows.append(row)
     rows.sort(key=lambda r: r["date"], reverse=True)
     return rows[:limit]
+
+
+def monetisation_rows(*, subscribers: float | None, hours_365: float | None, shorts_90: float | None,
+                      subs_per_day: float | None, hours_per_day: float | None, shorts_per_day: float | None,
+                      today: str) -> list[dict[str, Any]]:
+    """Where the channel stands against each YouTube Partner Program bar, with the pace of the last 28 days and the
+    date it would be reached at that pace. The Shorts route is a rolling 90 days, so it is reached only when the
+    daily pace itself is high enough: then the date is when the 90-day total would get there."""
+    d0 = date.fromisoformat(today)
+    rows = []
+    for tier, subs_t, hours_t, shorts_t in YPP:
+        for metric, cur, target, window, pace, rolling in (
+                ("Subscribers", subscribers, subs_t, "now", subs_per_day, False),
+                ("Watch hours (long videos)", hours_365, hours_t, "12 months", hours_per_day, False),
+                ("Shorts views", shorts_90, shorts_t, "90 days", shorts_per_day, True)):
+            needed = round(target / 90) if rolling else None
+            if cur is None:
+                eta = ""
+            elif cur >= target:
+                eta = "reached"
+            elif not pace or pace <= 0 or (rolling and pace < target / 90):
+                eta = "not at this pace"
+            else:
+                eta = (d0 + timedelta(days=-(-(target - cur) // pace))).isoformat()
+            rows.append({"tier": tier, "metric": metric, "current": cur, "target": target, "window": window,
+                         "per_day": None if pace is None else round(pace, 2), "needed_per_day": needed, "eta": eta})
+    return rows
+
+
+def weekday_rows(days: list[tuple]) -> list[dict[str, Any]]:
+    """Average views and hours watched on each weekday, from YouTube's daily rows (date, views, minutes)."""
+    acc: dict[int, list[float]] = {}
+    for d, views, minutes in days:
+        a = acc.setdefault(date.fromisoformat(str(d)).weekday(), [0, 0.0, 0.0])
+        a[0] += 1
+        a[1] += float(views or 0)
+        a[2] += float(minutes or 0)
+    return [{"weekday": WEEKDAYS[k], "days": n, "avg_views": round(v / n, 1), "avg_watch_hours": round(m / n / 60, 2)}
+            for k, (n, v, m) in sorted(acc.items())]
+
+
+def episode_steps(week: str, issue: dict[str, Any] | None, owner: str, releases: list[dict[str, Any]],
+                  shorts_posted: int) -> list[dict[str, Any]]:
+    """The week's episode from script to public: each step done (with its date), next, or waiting. Signals: the
+    Review issue and the founder's replies on it, the "ready to check" comment, and data/releases.json."""
+    comments = (issue or {}).get("comments") or []
+    def first(test):   # noqa: E306
+        return next((str(c.get("createdAt", ""))[:10] for c in comments if test(c)), "")
+    mine = lambda c, word: (c.get("author") or {}).get("login") == owner and \
+        str(c.get("body", "")).strip().lower().startswith(word)   # noqa: E731
+    rel = next((r for r in releases if str(r.get("week", "")).removesuffix("-en") == week), None)
+    done = [("Script ready for review", str((issue or {}).get("createdAt", ""))[:10] if issue else ""),
+            ("Script approved", first(lambda c: mine(c, "approve"))),
+            ("Episode and Shorts rendered", first(lambda c: "Episode ready to check" in str(c.get("body", "")))),
+            ("Publish approved", first(lambda c: mine(c, "publish"))),
+            ("Scheduled on YouTube", str((rel or {}).get("release_at", ""))[:10]),
+            ("Public", str((rel or {}).get("at", ""))[:10] if (rel or {}).get("status") == "public" else "")]
+    rows, nxt = [], False
+    for step, when in done:
+        status = "done" if when else ("waiting" if nxt else "next")
+        nxt = nxt or not when
+        rows.append({"week": week, "step": step, "status": status, "date": when,
+                     "link": (issue or {}).get("url", "") if step != "Public" or not rel
+                     else f"https://youtu.be/{rel.get('video_id', '')}"})
+    rows.append({"week": week, "step": f"Shorts posted ({shorts_posted})",
+                 "status": "done" if shorts_posted else "waiting", "date": "", "link": ""})
+    return rows
+
+
+def alert_rows(runs: list[dict[str, str]], live: dict[str, tuple[str, str]], analytics_ok: bool,
+               repo_url: str = "") -> list[dict[str, str]]:
+    """What is broken right now, for the banner at the top: failed jobs, failing platforms, missing YouTube numbers."""
+    out = [{"level": "bad", "message": f"The {r['job']} job failed on its last run ({r.get('last_run_utc', '')} UTC)",
+            "link": f"{repo_url}/actions/workflows/{r['job']}.yml" if repo_url else ""}
+           for r in runs if r.get("result") in ("failure", "timed_out", "startup_failure")]
+    out += [{"level": "bad", "message": f"{p.title()}: {note}", "link": ""}
+            for p, (state, note) in live.items() if state == "failing"]
+    if not analytics_ok:
+        out.append({"level": "warn", "message": "YouTube Analytics gave no numbers for the last 7 days: the YouTube "
+                    "connection may need its analytics permission again", "link": ""})
+    return out
 
 
 def append_history(path: Path, row: dict[str, Any]) -> None:
@@ -116,7 +212,8 @@ def curve_rows(episode: str, curve: list[tuple[float, float]], length_s: float) 
 def needs_you(issues: list[dict[str, Any]], breaking_comments: list[dict[str, Any]], *, linkedin_until: str,
               today: str, breaking_url: str, now: str | None = None,
               published_weeks: set[str] | None = None, breaking_titles: dict[str, list[str]] | None = None,
-              posted_weeks: set[str] | None = None) -> list[dict[str, str]]:
+              posted_weeks: set[str] | None = None,
+              live: dict[str, tuple[str, str]] | None = None) -> list[dict[str, str]]:
     """What waits on the founder: a Review issue from the last 7 days, open failure issues, breaking Shorts ready in
     the last 36 hours but not posted (older drafts are stale news), a LinkedIn token close to expiry, and blocked
     accounts. Open Review issues from earlier weeks are finished work, not waiting."""
@@ -158,7 +255,8 @@ def needs_you(issues: list[dict[str, Any]], breaking_comments: list[dict[str, An
         except ValueError:
             pass
     rows += [{"kind": "Unblock", "item": f"{name}: {note}", "since": "", "link": ""}
-             for name, _, _, state, note in ACCOUNTS if state == "blocked"]
+             for name, key, _, state, note in ACCOUNTS
+             if state == "blocked" and (live or {}).get(key or "", ("blocked",))[0] != "working"]
     return rows
 
 
@@ -190,7 +288,10 @@ def write_files(out: Path, *, as_of: str, channel: dict[str, Any], analytics: tu
                 queue: list[dict[str, Any]], runs: list[dict[str, str]], titles: dict[str, str] | None = None,
                 hours_365: float | None = None, curves: list[tuple] | None = None,
                 chapter_rows: list[tuple[str, int, str]] | None = None, countries: list[tuple] | None = None,
-                traffic: list[tuple] | None = None, needs: list[dict[str, str]] | None = None) -> None:
+                traffic: list[tuple] | None = None, needs: list[dict[str, str]] | None = None,
+                video_subs: dict[str, int] | None = None, post_stats: dict[str, dict[str, Any]] | None = None,
+                money: list[dict[str, Any]] | None = None, weekdays: list[dict[str, Any]] | None = None,
+                episode: list[dict[str, Any]] | None = None, alerts: list[dict[str, str]] | None = None) -> None:
     """analytics: (views, minutes watched, average view s, subscribers gained) for the last 7 days, or None when
     YouTube gave none (left blank, never zero). videos: the report's rows (kind, title, views, change, likes,
     comments, id). runs: {job, last_run_utc, result} per job."""
@@ -205,9 +306,12 @@ def write_files(out: Path, *, as_of: str, channel: dict[str, Any], analytics: tu
     append_history(out / "history.csv", {k: ch_row[k] for k in HISTORY_COLS if k != "week"})
     titles = titles or {}
     full = lambda i, t: re.sub(r"\s*#Shorts\s*$", "", titles.get(i, t))   # noqa: E731
-    _write(out / "youtube_videos.csv", ["type", "origin", "title", "url", "views", "views_7d", "likes", "comments"],
+    subs = video_subs if video_subs is not None else {}
+    _write(out / "youtube_videos.csv", ["type", "origin", "title", "url", "views", "views_7d", "likes", "comments",
+                                        "subscribers_gained"],
            [{"type": k, "origin": short_origin(i, queue) if k == "Short" else "", "title": full(i, t),
-             "url": f"https://youtu.be/{i}", "views": v, "views_7d": d, "likes": l, "comments": c}
+             "url": f"https://youtu.be/{i}", "views": v, "views_7d": d, "likes": l, "comments": c,
+             "subscribers_gained": subs.get(i, 0 if video_subs is not None else None)}
             for k, t, v, d, l, c, i in videos])
     _write(out / "retention_curve.csv", ["episode", "second", "watching_pct"],
            [r for t, c, n in (curves or []) for r in curve_rows(t, c, n)])
@@ -238,7 +342,11 @@ def write_files(out: Path, *, as_of: str, channel: dict[str, Any], analytics: tu
              "waiting": counts.get(key, {}).get("waiting", 0) if key else None,
              "note": live.get(key, (state, note))[1]}
             for name, key, acct, state, note in ACCOUNTS])
-    _write(out / "posts.csv", POST_COLS, post_rows(queue))
+    _write(out / "posts.csv", POST_COLS, post_rows(queue, stats=post_stats))
+    _write(out / "monetisation.csv", MONEY_COLS, money or [])
+    _write(out / "weekdays.csv", ["weekday", "days", "avg_views", "avg_watch_hours"], weekdays or [])
+    _write(out / "episode.csv", EPISODE_COLS, episode or [])
+    _write(out / "alerts.csv", ALERT_COLS, alerts or [])
     _write(out / "pipeline.csv", ["job", "what_it_does", "schedule", "last_run_utc", "result", "note"],
            [{"job": r["job"], "what_it_does": WHAT.get(r["job"], ""), "schedule": SCHEDULES.get(r["job"], ""),
              "last_run_utc": r.get("last_run_utc", ""), "result": r.get("result", ""), "note": r.get("note", "")}

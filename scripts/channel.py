@@ -232,6 +232,67 @@ def platform_lines(days: int = 7) -> list[str]:
     return out
 
 
+def platform_stats(platform: str, r: dict) -> dict:
+    """Views and likes of one posted reel, as numbers ({} when the platform gives none). LinkedIn and TikTok
+    numbers need API permissions the apps do not have."""
+    try:
+        if platform == "instagram" and r.get("media_id") and os.environ.get("INSTAGRAM_TOKEN"):
+            d = requests.get(f"https://graph.instagram.com/v23.0/{r['media_id']}/insights", timeout=30, params={
+                "metric": "views,likes", "access_token": os.environ["INSTAGRAM_TOKEN"]}).json()
+            vals = {m["name"]: m["values"][0]["value"] for m in d.get("data", [])}
+            return {k: int(vals[k]) for k in ("views", "likes") if k in vals}
+        if platform == "facebook" and r.get("video_id") and os.environ.get("FACEBOOK_PAGE_TOKEN"):
+            tok = os.environ["FACEBOOK_PAGE_TOKEN"]
+            d = requests.get(f"https://graph.facebook.com/v23.0/{r['video_id']}", timeout=30, params={
+                "fields": "likes.summary(true)", "access_token": tok}).json()
+            out = {}
+            if "likes" in d:
+                out["likes"] = int(d["likes"].get("summary", {}).get("total_count", 0))
+            ins = requests.get(f"https://graph.facebook.com/v23.0/{r['video_id']}/video_insights", timeout=30, params={
+                "metric": "blue_reels_play_count", "access_token": tok}).json()
+            for m in ins.get("data", []):
+                if m.get("name") == "blue_reels_play_count" and m.get("values"):
+                    out["views"] = int(m["values"][0]["value"])
+            return out
+    except (requests.RequestException, ValueError, KeyError, IndexError, TypeError):
+        return {}
+    return {}
+
+
+def post_stats(queue: list[dict], limit: int = 40) -> dict[str, dict]:
+    """platform_stats for the latest posted reels, keyed by Instagram media id or Facebook video id."""
+    recent = sorted(queue, key=lambda e: str(e.get("due", "")), reverse=True)[:limit]
+    out = {}
+    for e in recent:
+        for plat, key in (("instagram", "media_id"), ("facebook", "video_id")):
+            r = (e.get("posts") or {}).get(plat) or {}
+            if r.get("status") == "posted" and r.get(key):
+                got = platform_stats(plat, r)
+                if got:
+                    out[str(r[key])] = got
+    return out
+
+
+def episode_week(now: datetime) -> str:
+    """The week of the next Sunday episode (on Sunday itself, today's)."""
+    y, w, _ = (now + timedelta(days=(6 - now.weekday()) % 7)).isocalendar()
+    return f"{y}-W{w:02d}"
+
+
+def review_issue(week: str) -> dict | None:
+    """The week's "Review: … (<week>)" issue with its comments, open or closed."""
+    repo = os.environ["GITHUB_REPOSITORY"]
+    found = json.loads(gh("issue", "list", "--repo", repo, "--state", "all", "--search", f"Review: in:title {week}",
+                          "--json", "number,title,url,createdAt"))
+    hit = next((i for i in found if i["title"].startswith("Review:")
+                and i["title"].rstrip(")").split("(")[-1].removesuffix("-en") == week), None)
+    if not hit:
+        return None
+    hit["comments"] = json.loads(gh("issue", "view", str(hit["number"]), "--repo", repo,
+                                    "--json", "comments"))["comments"]
+    return hit
+
+
 def platform_numbers(platform: str, r: dict) -> str:
     try:
         if platform == "instagram" and r.get("media_id") and os.environ.get("INSTAGRAM_TOKEN"):
@@ -319,10 +380,45 @@ def report(keep: bool = True) -> None:
             issues, comments, brk_url = open_needs()
         except (subprocess.SubprocessError, KeyError, ValueError, OSError):
             issues, comments, brk_url = [], [], ""
+        live = dashboard.live_states(json.loads(qf.read_text(encoding="utf-8")) if qf.exists() else [])
+        queue = json.loads(qf.read_text(encoding="utf-8")) if qf.exists() else []
+        m28 = analytics_rows(tok, 28, metrics="subscribersGained,subscribersLost,estimatedMinutesWatched")
+        kinds90 = analytics_rows(tok, 90, dimensions="creatorContentType", metrics="views,estimatedMinutesWatched")
+        kinds28 = analytics_rows(tok, 28, dimensions="creatorContentType", metrics="views,estimatedMinutesWatched")
+        kinds365 = analytics_rows(tok, 365, dimensions="creatorContentType", metrics="views,estimatedMinutesWatched")
+        shorts = lambda rs: sum(float(r[1]) for r in rs if "short" in str(r[0]).lower())   # noqa: E731
+        longmin = lambda rs: sum(float(r[2]) for r in rs if "short" not in str(r[0]).lower())   # noqa: E731
+        long_hours = longmin(kinds365) / 60 if kinds365 else (float(year[0][0]) / 60 if year and year[0] else None)
+        money = dashboard.monetisation_rows(
+            subscribers=float(ch["subscriberCount"]) if ch.get("subscriberCount") else None,
+            hours_365=round(long_hours, 1) if long_hours is not None else None,
+            shorts_90=shorts(kinds90) if kinds90 else None,
+            subs_per_day=(float(m28[0][0]) - float(m28[0][1])) / 28 if m28 and m28[0] else None,
+            hours_per_day=longmin(kinds28) / 60 / 28 if kinds28 else None,
+            shorts_per_day=shorts(kinds28) / 28 if kinds28 else None, today=NOW.strftime("%Y-%m-%d"))
+        vsubs = {str(r[0]): int(r[1]) for r in analytics_rows(tok, 365, dimensions="video", metrics="subscribersGained",
+                                                             sort="-subscribersGained", maxResults=200)}
+        days = [tuple(r) for r in analytics_rows(tok, 90, dimensions="day", metrics="views,estimatedMinutesWatched")]
+        wk = episode_week(NOW)
+        try:
+            issue = review_issue(wk)
+        except (subprocess.SubprocessError, KeyError, ValueError, OSError):
+            issue = None
+        rf = ROOT / "data" / "releases.json"
+        runs = latest_runs()
         dashboard.write_files(
             ROOT / "data" / "dashboard", as_of=NOW.strftime("%Y-%m-%d"), channel=ch, analytics=week,
             videos=rows, retention=[(t, dashboard.retention_numbers(c, n)) for t, c, n in curves],
-            queue=json.loads(qf.read_text(encoding="utf-8")) if qf.exists() else [], runs=latest_runs(),
+            queue=queue, runs=runs,
+            video_subs=vsubs if vsubs or days else None, post_stats=post_stats(queue), money=money,
+            weekdays=dashboard.weekday_rows(days),
+            episode=dashboard.episode_steps(
+                wk, issue, os.environ.get("GITHUB_REPOSITORY_OWNER", "wisamk-ctrl"),
+                json.loads(rf.read_text(encoding="utf-8")) if rf.exists() else [],
+                sum(1 for e in queue if str(e.get("week", "")).removesuffix("-en") == wk
+                    and any(r.get("status") == "posted" for r in (e.get("posts") or {}).values()))),
+            alerts=dashboard.alert_rows(runs, live, week is not None,
+                                        f"https://github.com/{os.environ.get('GITHUB_REPOSITORY', '')}"),
             titles={v["id"]: v["snippet"]["title"] for v in vids},
             hours_365=float(year[0][0]) / 60 if year and year[0] else None,
             curves=curves,
@@ -337,7 +433,7 @@ def report(keep: bool = True) -> None:
                                       today=NOW.strftime("%Y-%m-%d"), breaking_url=brk_url,
                                       now=NOW.strftime("%Y-%m-%dT%H:%M:%SZ"),
                                       published_weeks=posted_weeks, breaking_titles=breaking_titles(),
-                                      posted_weeks=posted_weeks))
+                                      posted_weeks=posted_weeks, live=live))
         print("dashboard files written to data/dashboard/")
     except Exception as e:  # noqa: BLE001 — the report itself must still go out
         print(f"dashboard files not written: {e}")
