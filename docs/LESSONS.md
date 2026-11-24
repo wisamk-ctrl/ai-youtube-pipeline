@@ -500,3 +500,14 @@ service, TikTok private, and Facebook native video.
   Facebook reels have no post insights through its tools. Views for those two need the founder's
   own Meta app tokens (`INSTAGRAM_TOKEN`, `FACEBOOK_PAGE_TOKEN`), which `platform_stats` already uses when set.
 - YouTube Analytics has no hour-of-day dimension: the dashboard's "best day" is by weekday only.
+
+## 2026-11-24: a second breaking Short posted and the pipeline forgot it
+Two `post <week>` comments a few seconds apart. The second run planned its entry, posted on all five platforms,
+then hit a conflict saving `data/social_queue.json`; `social.merge_posts` kept only entries already on main, so
+the new entry vanished. The run was green and its "Posted" comment was empty. A repeat `post` would have sent
+it again.
+- **A merge that takes "everything else from remote" drops what only this run knows.** `merge_posts` now keeps
+  an entry that exists only in this run. Test: `test_merge_posts_keeps_an_entry_this_run_planned_and_posted`.
+- **The record was rebuilt from the run log**, with the pipeline's own caption and approve functions, and marked
+  `restored`. A green job is not a working job: the check was the queue on main, not the run's colour.
+
