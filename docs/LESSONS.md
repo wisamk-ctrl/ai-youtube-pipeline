@@ -461,6 +461,15 @@ service, TikTok private, and Facebook native video.
 - Clips already in a week's `voice.yaml` are kept as they are; only missing or expired ones are made on Avatar 6.
 - Enforced by `tests/test_faces.py` (engine sent, engine read from settings, price not under the measured one).
 
+## 2026-11-24: the Shorts at 1.08 were too fast (founder)
+- Cause: yesterday's fix sped the whole Short up by one number (0.94 to 1.08). One quick pace from start to end
+  is tiring and the opening line goes by before it lands.
+- Fix: the middle of a Short plays at `tempo_short_en: 1.04`; the opening line and the closing line play at
+  that x `pace_short_ends: 0.9` (0.94, the episode's pace). The lines are found by the pauses in the speech
+  (`voicefirst.pace_plan`); a read with no clear pause keeps one pace. Face clips keep one tempo (lip sync).
+- Not yet heard on a real Short. Speed still does not add energy: that needs a livelier clone.
+- Enforced by `tests/test_breaking.py` (tempo never above 1.05; first and last line slower).
+
 ## 2026-11-23: viewers found the Shorts slow
 - Cause: Shorts inherited the episode's delivery. English speech ran at tempo 0.94, about 133 words a minute, with
   one picture every 6 to 7 s and an 18-word opening line (the OpenAI Short of 2026-11-23).

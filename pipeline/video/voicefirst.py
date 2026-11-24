@@ -64,7 +64,49 @@ def for_short(cfg: dict[str, Any]) -> dict[str, Any]:
     if not fast:
         return cfg
     key = f"tempo_{lang}" if f"tempo_{lang}" in vf else "tempo"
-    return {**cfg, "video": {**cfg["video"], "voicefirst": {**vf, key: fast}}}
+    return {**cfg, "video": {**cfg["video"], "voicefirst": {**vf, key: fast, "pace_ends": float(vf.get("pace_short_ends", 1.0) or 1.0)}}}
+
+
+def pace_plan(pauses: list[tuple[float, float]], duration: float, tempo: float, ends: float) -> list[tuple[float, float, float]]:
+    """(start, end, tempo) stretches of one read: the opening line and the closing line at tempo x `ends`, the middle
+    at `tempo`. Founder 2026-11-24: one quick pace all the way through was tiring; a Short slows where it matters.
+    The lines are found by the pauses heard in the read (the first one 1.2 to 8 s in, the last one 1.2 to 9 s before
+    the end); a read too short or with no clear pause keeps one pace."""
+    whole = [(0.0, duration, tempo)]
+    if not ends or ends == 1.0 or duration < 12:
+        return whole
+    mids = [(a + b) / 2 for a, b in pauses]
+    first = next((m for m in mids if 1.2 <= m <= 8.0), None)
+    last = next((m for m in reversed(mids) if duration - 9.0 <= m <= duration - 1.2), None)
+    if last is not None and first is not None and last - first < 3.0:
+        last = None
+    cuts = [0.0] + [m for m in (first, last) if m is not None] + [duration]
+    if len(cuts) == 2:
+        return whole
+    slow = round(tempo * ends, 3)
+    speeds = [slow if first is not None else tempo] + ([tempo] if len(cuts) == 4 else []) + [slow if last is not None else tempo]
+    return [(a, b, x) for a, b, x in zip(cuts, cuts[1:], speeds)]
+
+
+def warp(t: float, plan: list[tuple[float, float, float]]) -> float:
+    """Where a time in the read lands once each stretch of `plan` plays at its own tempo."""
+    out = 0.0
+    for a, b, x in plan:
+        if t <= a:
+            break
+        out += (min(t, b) - a) / x
+    return out
+
+
+def _pauses(wav: Path) -> list[tuple[float, float]]:
+    """The pauses in a read (0.28 s or longer, under -35 dB), from ffmpeg's silencedetect; [] when it cannot say."""
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(wav), "-af", "silencedetect=noise=-35dB:d=0.28",
+                        "-f", "null", "-"], capture_output=True, text=True)
+    if r.returncode != 0:
+        return []
+    a = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", r.stderr)]
+    b = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", r.stderr)]
+    return list(zip(a, b))
 
 
 def _words(text: str) -> int:
@@ -211,12 +253,14 @@ def _words_of(raw: Any, where: str) -> list[tuple[float, float, str]] | None:
     return out
 
 
-def chunk_words(e: dict[str, Any], offset: float, tempo: float):
-    """The chunk's words (voice.yaml `words`) on the narration's timeline, or None when it has none."""
+def chunk_words(e: dict[str, Any], offset: float, tempo: float, plan: list[tuple[float, float, float]] | None = None):
+    """The chunk's words (voice.yaml `words`) on the narration's timeline, or None when it has none. With a pace
+    `plan` (pace_plan) each word lands where its stretch's tempo puts it."""
     if not e.get("words"):
         return None
     from pipeline.post.subtitles import Word
-    return [Word(round(offset + a / tempo, 3), round(offset + b / tempo, 3), w) for a, b, w in e["words"]]
+    at = (lambda x: warp(x, plan)) if plan else (lambda x: x / tempo)
+    return [Word(round(offset + at(a), 3), round(offset + at(b), 3), w) for a, b, w in e["words"]]
 
 
 def load_voice(path: Path, chunks: list[dict[str, str]]) -> list[dict[str, Any]]:
@@ -325,6 +369,8 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
     # Generated speech can be slowed (pitch kept); a face clip is slowed with its audio so the lips still match.
     tempo = float(vf.get(f"tempo_{cfg.get('language', 'ar')}", vf.get("tempo", 1.0)) or 1.0)
     tempo = tempo if 0.5 <= tempo <= 2.0 else 1.0
+    ends = float(vf.get("pace_ends", 1.0) or 1.0)
+    ends = ends if 0.7 <= ends <= 1.0 else 1.0
     work = out_dir / "assemble"
     work.mkdir(parents=True, exist_ok=True)
     wavs, faces, tops, t = [], [], [], 0.0
@@ -333,13 +379,25 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
         src = download(e["audio"], work / f"{e['id']}.audio")
         wav = work / f"{e['id']}.wav"
         slow = [] if e.get("clean") or tempo == 1.0 else ["-af", f"atempo={tempo:.3f}"]   # never the founder's own read
-        _run("-i", str(src), "-vn", *slow, "-ar", "48000", "-ac", "2", str(wav))
+        plan = None
+        if ends != 1.0 and e["role"] == "voice" and not e.get("clean"):
+            # A Short: the opening and the closing line slower than the middle (a face clip keeps one tempo: its lips).
+            plan = pace_plan(_pauses(src), _duration(src), tempo, ends)
+            plan = plan if len(plan) > 1 else None
+        if plan:
+            cut = "".join(f"[0:a]atrim={a:.3f}:{b:.3f},asetpts=PTS-STARTPTS,atempo={x:.3f}[p{k}];" for k, (a, b, x) in enumerate(plan))
+            _run("-i", str(src), "-vn", "-filter_complex",
+                 cut + "".join(f"[p{k}]" for k in range(len(plan))) + f"concat=n={len(plan)}:v=0:a=1[a]",
+                 "-map", "[a]", "-ar", "48000", "-ac", "2", str(wav))
+            log.info("Chunk %s paced: %s", e["id"], ", ".join(f"{a:.1f}-{b:.1f}s x{x:.2f}" for a, b, x in plan))
+        else:
+            _run("-i", str(src), "-vn", *slow, "-ar", "48000", "-ac", "2", str(wav))
         words = None
         if e.get("clean"):   # the founder's own read: retakes cut, pauses capped, voice polished
             wav, words = _own_read(e, wav, work, cfg, out_dir, spoken)
         if words is None:
             # HeyGen speech voiced with word timings (voice.yaml `words`): captions need no Whisper pass.
-            got = chunk_words(e, t, 1.0 if e.get("clean") else tempo)
+            got = chunk_words(e, t, 1.0 if e.get("clean") else tempo, plan)
             if got is None:
                 known = None
             elif known is not None:

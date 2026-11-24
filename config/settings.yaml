@@ -256,7 +256,8 @@ video:
     face_top: 0.5             # where a face clip is cropped to the frame: 0 = its top edge, 0.5 = the middle
     tempo: 1.0                # speed of generated speech (and its face clips); the pitch is kept
     tempo_en: 0.94              # 0.88 after the first feedback sounded flat; founder picked the faster sample 2026-11-16
-    tempo_short_en: 1.08      # Shorts only (breaking and explainer): viewers found them slow (founder 2026-11-23). The episode keeps tempo_en
+    tempo_short_en: 1.04      # Shorts only (breaking and explainer): the middle of the Short. Viewers found 0.94 slow (2026-11-23); 1.08 all the way through was too fast (founder 2026-11-24)
+    pace_short_ends: 0.9      # Shorts only: the opening line and the closing line play at tempo_short x this (1.04 x 0.9 = 0.94, the episode's pace); 1.0 = one pace throughout
     backdrop: "0x0B1220"      # behind the narration where no face video sits (always covered by visuals)
   own_voice:                  # the founder's own recording (pipeline/video/guided.py, ownvoice.py)
     model: large-v3-turbo     # recogniser for the edit: hears short repeats that `medium` hides

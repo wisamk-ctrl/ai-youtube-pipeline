@@ -174,5 +174,31 @@ def test_a_short_is_spoken_faster_than_the_episode():
     assert fast["video"]["voicefirst"]["tempo_en"] == 1.08 and cfg["video"]["voicefirst"]["tempo_en"] == 0.94
     assert voicefirst.for_short({"language": "ar", "video": {"voicefirst": {"tempo": 1.0}}})["video"]["voicefirst"]["tempo"] == 1.0
     vf = load_settings()["video"]["voicefirst"]
-    assert vf["tempo_short_en"] > 1.0 > vf["tempo_en"]
+    # Founder 2026-11-24: 1.08 throughout was too fast. Quicker than the episode, never above 1.05.
+    assert 1.05 >= vf["tempo_short_en"] > vf["tempo_en"]
     assert "for_short(cfg) if _breaking(out)" in inspect.getsource(run_pipeline)
+
+
+# --- a Short's pace varies: slower on the opening and the closing line (founder 2026-11-24) -------------------
+def test_a_short_slows_for_its_first_and_last_line():
+    from pipeline.config import load_settings
+    from pipeline.video import voicefirst
+    vf = load_settings()["video"]["voicefirst"]
+    assert 0.85 <= vf["pace_short_ends"] < 1.0
+    short = voicefirst.for_short({"language": "en", "video": {"voicefirst": {"tempo_en": 0.94, "tempo_short_en": 1.04,
+                                                                               "pace_short_ends": 0.9}}})
+    assert short["video"]["voicefirst"]["pace_ends"] == 0.9
+    # pauses heard in a 40 s read: after the first line (3.1 s) and before the last one (35.2 s)
+    pauses = [(0.0, 0.1), (3.1, 3.5), (9.0, 9.3), (20.0, 20.4), (35.2, 35.6), (39.9, 40.0)]
+    plan = voicefirst.pace_plan(pauses, 40.0, 1.04, 0.9)
+    assert [(round(a, 1), round(b, 1), round(x, 3)) for a, b, x in plan] == [(0.0, 3.3, 0.936), (3.3, 35.4, 1.04), (35.4, 40.0, 0.936)]
+    # a time in the read lands where the changed pace puts it
+    assert abs(voicefirst.warp(3.3, plan) - 3.3 / 0.936) < 1e-6
+    assert abs(voicefirst.warp(40.0, plan) - (3.3 / 0.936 + 32.1 / 1.04 + 4.6 / 0.936)) < 1e-6
+
+
+def test_a_read_with_no_clear_pauses_keeps_one_pace():
+    from pipeline.video import voicefirst
+    assert voicefirst.pace_plan([], 40.0, 1.04, 0.9) == [(0.0, 40.0, 1.04)]
+    assert voicefirst.pace_plan([(3.1, 3.5)], 40.0, 1.04, 1.0) == [(0.0, 40.0, 1.04)]      # no slowing asked for
+    assert voicefirst.pace_plan([(3.1, 3.5)], 6.0, 1.04, 0.9) == [(0.0, 6.0, 1.04)]        # too short to shape
