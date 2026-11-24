@@ -89,3 +89,13 @@ def test_google_news_feed_parses_publisher_and_tags():
 def test_a_raw_search_leaves_the_word_ai_out():
     url = watch_sources.google_news_url("outage Microsoft", 7, raw=True)
     assert "outage+Microsoft+when%3A7d" in url and "AI" not in url
+
+
+def test_marvell_is_watched_on_the_chips_track():
+    """Founder 2026-11-24: Marvell's $115 billion purchase of Lumentum, the year's largest deal, never reached us.
+    Marvell was not a watched name, so its news arrived only when another watched name was in the headline."""
+    assert "Marvell" in [e.name for e in W.entities if e.track == "chips"]
+    i = W.tag(item("Marvell to Acquire Lumentum in $115 Billion AI Optical Connectivity Deal", "All-stock deal."))
+    assert i.track == "chips" and i.entities == ["Marvell"]
+    j = W.tag(item("Lumentum shareholders weigh the merger", "Optical components for AI data centers."))
+    assert j.track == "chips" and "Marvell" in j.entities       # Lumentum counts while the deal is pending
