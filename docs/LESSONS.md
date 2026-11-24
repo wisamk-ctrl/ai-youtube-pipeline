@@ -516,3 +516,17 @@ it again.
 - **The record was rebuilt from the run log**, with the pipeline's own caption and approve functions, and marked
   `restored`. A green job is not a working job: the check was the queue on main, not the run's colour.
 
+## 2026-11-24: the watch follows names, so a big story about anyone else is invisible
+CrowdStrike's $43.9 billion purchase of Zscaler got no breaking Short. Traced through `data/news_watch.json`: the
+big outlets reach the watch only through "<watched name> AI" searches, the 68 names cover models, agents and
+chips, and neither company is one. One copy arrived by chance (Daily Sabah's "artificial intelligence" search),
+and one outlet is below `news_watch.min_publishers`. Every stage worked; the coverage had a hole. Same shape as
+the Microsoft 365 outage on 2026-11-17, which was fixed for outages only.
+- **A search for big deals that bear on AI** (`ingestion.google_news_sites`, "Big deals"). Collected without the
+  added "AI" word, but `always_flag: false`: flagged by the usual several-outlets rule, not on sight.
+- **Checked against the day's real results**: the query's ten live headlines, run through `news_watch.update`,
+  flag the CrowdStrike deal with four outlets (test `test_the_headlines_the_big_deals_search_returned…`).
+- **Still open:** regulation, telecoms and other stories outside the three tracks have no search of their own.
+- **Google News refuses a burst of searches from one machine (429, then 302).** Three test queries in a row from
+  the Mac were blocked; the check was done in a browser.
+
