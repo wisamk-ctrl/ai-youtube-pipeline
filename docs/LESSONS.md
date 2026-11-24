@@ -461,6 +461,16 @@ service, TikTok private, and Facebook native video.
 - Clips already in a week's `voice.yaml` are kept as they are; only missing or expired ones are made on Avatar 6.
 - Enforced by `tests/test_faces.py` (engine sent, engine read from settings, price not under the measured one).
 
+## 2026-11-24: an outage is not news by itself (founder; the AWS alert-delay Short, dropped)
+- What happened: the watch drafted a Short on an AWS outage that was nine days old, from one trade site, with no
+  count of who was affected. It would have been the fourth outage Short in a week.
+- Rule: measure the impact before giving an outage airtime. Outages matter, but not every one goes on everything.
+- Fix: `breaking.outage_unmeasured`: an outage headline is drafted only when an article gives a count of who was
+  hit (users, customers, flights, reports...) or `breaking.outage_min_sources` (3) outlets carry it. Otherwise it is
+  recorded as skipped with the reason. The writer's rules also ask for the measured impact in the first three lines.
+- Not covered in code: the age of the outage itself (the article was new, the outage was not). Check the date by eye.
+- Enforced by `tests/test_breaking.py` (outage section, using the dropped AWS story's own article).
+
 ## 2026-11-24: the Shorts at 1.08 were too fast (founder)
 - Cause: yesterday's fix sped the whole Short up by one number (0.94 to 1.08). One quick pace from start to end
   is tiring and the opening line goes by before it lands.

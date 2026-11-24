@@ -56,3 +56,10 @@ Each lesson comes from a real fault heard or caught in a past episode. Treat a r
   each ("Days Offline / Record IPO"): it is drawn on two lines, the second in gold. The second thumbnail (B)
   takes the lead story alone, so YouTube's Test & Compare measures pairing against one story. The colours and
   layout stay as they are (founder).
+
+- **An outage needs a measured impact (founder, 2026-11-24).** Outages are worth covering, but not every one, and
+  never by reflex. Before an outage goes in the episode or a Short, the script says who was hit and how many, as a
+  source measures it (users, customers, flights, Downdetector reports, hours down for a named service). If no
+  source measures it, it is at most one line inside a bigger story, or it is left out. An outage that is days old
+  is not breaking. One outage story a week is the default; a second needs a count that makes it bigger than the
+  first.

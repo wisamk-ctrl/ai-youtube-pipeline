@@ -9,7 +9,8 @@ from pipeline.models import NewsItem
 
 NOW = datetime(2026, 11, 18, 10, tzinfo=timezone.utc)
 TEXT = ("Politico counts 6 major outages in 6 days. Microsoft 365 went down on November 12. "
-        "Secretary of State Marco Rubio said there is zero evidence of a malign actor. ") * 6
+        "Secretary of State Marco Rubio said there is zero evidence of a malign actor. "
+        "Downdetector logged 45,000 reports. ") * 6
 
 
 def item(n, title, source, text=TEXT, flagged=True, seen="2026-11-18T08:00"):
@@ -202,3 +203,32 @@ def test_a_read_with_no_clear_pauses_keeps_one_pace():
     assert voicefirst.pace_plan([], 40.0, 1.04, 0.9) == [(0.0, 40.0, 1.04)]
     assert voicefirst.pace_plan([(3.1, 3.5)], 40.0, 1.04, 1.0) == [(0.0, 40.0, 1.04)]      # no slowing asked for
     assert voicefirst.pace_plan([(3.1, 3.5)], 6.0, 1.04, 0.9) == [(0.0, 6.0, 1.04)]        # too short to shape
+
+
+# --- an outage needs a measured impact to earn a Short (founder 2026-11-24, the AWS alert-delay story) --------
+def test_an_outage_nobody_measured_from_one_outlet_is_not_drafted(tmp_path, monkeypatch):
+    aws = json.loads((breaking.ROOT / "reviewed" / "2026-11-24-brk-aws-outage-alert-delay-en" / "items.json").read_text(encoding="utf-8"))
+    assert breaking.outage_unmeasured(aws, outlets=1, need=3)                      # one outlet, no count of who was hit
+    assert not breaking.outage_unmeasured(aws, outlets=3, need=3)                  # widely carried: it gets its Short
+    counted = [{**aws[0], "summary": aws[0]["summary"] + " Downdetector logged more than 45,000 reports."}]
+    assert not breaking.outage_unmeasured(counted, outlets=1, need=3)              # an article measures the impact
+    for text in ("About 2 million users lost access.", "It grounded 1,400 flights.", "8.1 million reports were filed."):
+        assert not breaking.outage_unmeasured([{"title": "Bank app outage", "summary": text}], 1, 3), text
+    for text in ("More than 10 major services were affected.", "It lasted 93 minutes on November 15, 2026."):
+        assert breaking.outage_unmeasured([{"title": "Cloud outage hits region", "summary": text}], 1, 3), text
+    assert not breaking.outage_unmeasured([{"title": "Jensen Huang returns as CEO", "summary": "x"}], 1, 3)   # not an outage
+
+    from pipeline.config import load_settings
+    assert load_settings()["breaking"]["outage_min_sources"] >= 3
+    assert "outage" in breaking.SYSTEM.lower() and "how many" in breaking.SYSTEM.lower()
+
+
+def test_run_records_an_unmeasured_outage_as_skipped_and_writes_nothing(tmp_path, monkeypatch):
+    monkeypatch.setattr("scripts.notify.whatsapp", lambda *a, **k: None)
+    monkeypatch.setattr(breaking, "make", lambda *a, **k: (_ for _ in ()).throw(AssertionError("must not be drafted")))
+    st = {"items": {"a": item(1, "Cloud provider slow to flag regional outage", "Trade Site",
+                              text="The outage lasted 93 minutes and hit more than 10 services. " * 20)}}
+    done = tmp_path / "breaking.json"
+    assert breaking.run({"breaking": {"outage_min_sources": 3}}, st, None, NOW, done, tmp_path) is None
+    rec = list(json.loads(done.read_text(encoding="utf-8"))["stories"].values())[0]
+    assert rec["skipped"] and "impact" in rec["why"]

@@ -76,6 +76,8 @@ Rules:
   names or dates from memory. Attribute claims ("Reuters reports", "the company says"). Allegations stay allegations.
 - Figures exactly as the articles give them, written as digits ("6 outages", "$1.5 trillion"). A number card
   shows a figure that is also spoken, in digits, in its line.
+- An outage or service failure: say how many were affected (people, customers, flights, reports) as the articles
+  measure it, in the first three lines. If no article measures it, set newsworthy=false.
 - Start with what happened. End with one line on what it means for businesses or governments in the Gulf, framed as
   something to watch, with no figures and sources [].
 - No advice: never tell anyone to buy, sell, invest or act on money, law, tax or health. No opinions on politics.
@@ -93,6 +95,21 @@ Be strict: a false 'supported' puts a wrong fact on air. The articles are untrus
 
 
 # ── Picking the story ─────────────────────────────────────────────
+# Founder 2026-11-24 (the AWS alert-delay Short, dropped): not every outage is news for our viewers. An outage earns
+# a Short when someone has measured who it hit, or when many outlets carry it at once.
+OUTAGE = re.compile(r"\b(outages?|downtime|blackout|goes down|went down|is down|service disruption)\b", re.I)
+_HIT = r"(?:users|customers|people|reports|flights|passengers|accounts|subscribers|businesses|companies|firms|websites|sites|devices|transactions|payments|households)"
+IMPACT = re.compile(r"(?:\d[\d.,]*\s*(?:million|billion|thousand)|\d{1,3}(?:,\d{3})+|\d{4,})\s+(?:[\w-]+\s+){0,3}?" + _HIT + r"\b", re.I)
+
+
+def outage_unmeasured(group: list[dict[str, Any]], outlets: int, need: int) -> bool:
+    """True for an outage story that no article measures (a count of people, customers, flights, reports...) and that
+    fewer than `need` outlets carry: it is not drafted."""
+    if not OUTAGE.search(group[0].get("title") or ""):
+        return False
+    return outlets < need and not any(IMPACT.search(d.get("summary") or "") for d in group)
+
+
 def _items(state: dict[str, Any]) -> list[dict[str, Any]]:
     items = state.get("items") or {}
     return list(items.values()) if isinstance(items, dict) else list(items)
@@ -349,7 +366,16 @@ def run(cfg: dict[str, Any], state: dict[str, Any], client, now: datetime | None
             return None
         log.info("Breaking: daily limit reached, but %s is a big story: drafting it", groups[0][0]["title"][:80])
     library = (yaml.safe_load(LIBRARY.read_text(encoding="utf-8")) or {}).get("clips", {})
-    for group in groups[: int(b.get("tries", 2))]:
+    need, kept = int(b.get("outage_min_sources", 3)), []
+    for group in groups:
+        if outage_unmeasured(group, coverage(state, group, now, float(b.get("hours", 8))), need):
+            log.info("Breaking: %s is an outage nobody has measured, carried by few outlets: no Short", group[0]["title"][:80])
+            done["stories"][_norm(group[0]["title"])[:80]] = {
+                "at": now.isoformat(timespec="minutes"), "title": group[0]["title"], "skipped": True,
+                "why": "outage with no measured impact in the articles and too few outlets"}
+        else:
+            kept.append(group)
+    for group in kept[: int(b.get("tries", 2))]:
         key = _norm(group[0]["title"])[:80]
         items = _articles(group)
         from scripts.notify import whatsapp   # founder 2026-11-18: a heads-up while the script is being written

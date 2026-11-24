@@ -481,6 +481,7 @@ breaking:                     # breaking-news Shorts drafted from the news watch
   big_story_sources: 5        # a story carried by this many outlets at once still gets a Short past the daily limit (2026-11-23, Jensen returns)
   big_story_extra: 2          # ...up to this many extra a day
   tries: 2                    # stories tried per run when a draft fails its checks
+  outage_min_sources: 3       # an outage with no measured impact in its articles needs this many outlets to get a Short (founder 2026-11-24, the AWS alert-delay story)
   repeat_days: 4              # a story drafted in the last 4 days is not drafted again under a new headline (founder 2026-11-20)
 
 explainer:                    # explainer Shorts drafted from the approved ranking (pipeline/explainer.py; founder 2026-11-23)

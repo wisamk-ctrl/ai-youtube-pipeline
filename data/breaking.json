@@ -282,7 +282,9 @@
   "aws faces customer backlash over 93 minute delay in outage alert": {
    "at": "2026-11-24T03:10+00:00",
    "title": "AWS Faces Customer Backlash Over 93-Minute Delay in Outage Alert",
-   "week": "2026-11-24-brk-aws-outage-alert-delay-en"
+   "week": "2026-11-24-brk-aws-outage-alert-delay-en",
+   "dropped": "2026-11-24",
+   "why": "founder: no measured impact, nine days old, not an AI story; not posted"
   }
  }
 }
