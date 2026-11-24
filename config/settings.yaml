@@ -292,7 +292,7 @@ video:
     # Face clips without a chat session (pipeline/video/faces.py, founder 2026-11-23). They are paid from the API's
     # prepaid USD wallet, apart from the plan credits. Only when a week has no reviewed/<week>/voice.yaml.
     auto_faces: true
-    face_image: assets/brand/presenter/look_d_navy_blazer_rest_v3.png   # look D v3, as W47's hand-made clips
+    face_image: assets/brand/presenter/look_d_navy_blazer_rest_v4.png   # look D v3 with natural lip colour (founder 2026-11-24: lips looked dry and faint)
     face_engine: heygen-avatar-6   # founder 2026-11-23, after the side-by-side test (docs/LESSONS.md). Remove the line to go back to Avatar IV (then about $0.04 a second)
     face_usd_per_second: 0.10   # measured 2026-11-23 on Avatar 6: $0.70 for 7.84 s and $0.90 for 9.2 s, so $0.089 to $0.098 a second. Kept a little high so the wallet guard errs on the safe side
     face_budget_margin: 1.25    # the wallet must hold this many times the estimate before any clip is started
