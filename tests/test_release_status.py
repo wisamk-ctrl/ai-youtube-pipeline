@@ -131,3 +131,17 @@ def test_no_weekly_short_is_left_waiting_in_the_queue():
     waiting = [e["id"] for e in q if re.match(r"\d{4}-W\d{2}", e["week"]) and not e.get("approved")
                and any(r.get("status") == "queued" for r in e["posts"].values())]
     assert waiting == []
+
+
+def test_the_job_that_writes_the_ready_message_knows_which_platforms_are_connected():
+    """2026-11-24: the "Ready to check" message said "To publish to nowhere yet (no platform is connected...)" on
+    every breaking Short, because the step that writes it had none of the platform secrets, so the status read
+    all five as off. It gets the same flags as approve.yml: whether each secret is set, never its value."""
+    weekly = yaml.safe_load((ROOT / ".github" / "workflows" / "weekly.yml").read_text(encoding="utf-8"))
+    steps = [s for job in weekly["jobs"].values() for s in job.get("steps", [])
+             if "breaking_issue.py ready" in s.get("run", "")]
+    assert steps
+    for step in steps:
+        for name in sorted({k for need in rs.NEEDS.values() for k in need} | set(rs.RELAY)):
+            assert step["env"][name] == "${{ secrets.%s != '' && '1' || '' }}" % name, name
+        assert step["env"]["WHATSAPP_PHONE"] == "${{ secrets.WHATSAPP_PHONE }}"       # the alert still needs the value
