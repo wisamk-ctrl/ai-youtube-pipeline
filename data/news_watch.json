@@ -100055,15 +100055,342 @@
    "id": "db1d7accb1",
    "first_seen": "2026-11-24T04:42+00:00",
    "flagged": false
+  },
+  "1acdd8f659": {
+   "source": "Arabian Business",
+   "source_type": "rss",
+   "title": "Space is approaching its App Store moment and AI-enabled satellites can put it to work",
+   "summary": "Easier access to shared satellites can improve access to ideas and bring them to market.",
+   "url": "https://www.arabianbusiness.com/opinion/space-is-approaching-its-app-store-moment-and-ai-enabled-satellites-can-put-it-to-work",
+   "published": "2026-11-24T04:57:55+00:00",
+   "author": "Dr. Hamdullah Mohib",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "1acdd8f659",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "2ef7977f20": {
+   "source": "Gulf News",
+   "source_type": "rss",
+   "title": "US blacklists Megaspeed over AI chip diversion concerns",
+   "summary": "",
+   "url": "https://gulfnews.com/business/us-blacklists-megaspeed-over-ai-chip-diversion-concerns-1.500758752",
+   "published": "2026-11-24T04:44:05+00:00",
+   "author": "Stacy Pereira",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "2ef7977f20",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "33d9f3879e": {
+   "source": "Saudi Gazette",
+   "source_type": "rss",
+   "title": "Trump faces backlash after pushing Nvidia to reinstate Jensen Huang",
+   "summary": "WASHINGTON — US President Donald Trump is facing backlash for pushing Nvidia to reinstate Jensen Huang as its CEO.Nvidia announced on Monday that Huang would be returning as its CEO just days after rejecting his offer to return to the AI chipmaker and less than two weeks after he was forced to resign over a reported affair with a suspected Chinese spy.The company came under pressure from Trump to reappoint Huang and on Monday, the US president said he \"made the deal\" to \"convince\" the tech giant's board to bring him back.But now both Trump and Nvidia are facing bipartisan backlash from lawmakers, just as Huang is due to testify before Congress next week.The CEO's comeback helped end a week-long losing streak in US stocks that left the S&P 500 in correction territory, and added nearly $1 trillion to Nvidia's market value.Board Chairman Harvey C Jones said in a statement earlier in the day: \"The Board believes Jensen is the right person to lead Nvidia, and that his reinstatement is in the best interests of our stockholders, employees, partners and customers.\"The board said it had received input from senior levels of the US government and was confident that Huang's reinstatement posed no national security risk.Trump reportedly enlisted Vice President JD Vance to tell Nvidia's board that Huang's return would not pose a threat to national security.Minutes after Nvidia’s announcement, Trump celebrated it with a statement on Truth Social, describing it as the “correct and proper decision” while arguing that Huang’s leadership is critical to ensuring the success of Nvidia and the US economy.Huang resigned from Nvidia on 12 November following reports of extramarital affairs, including one with a woman, Alice Huang, who was alleged to have ties to Chinese intelligence.On Monday, the US Commerce Department announced it was preparing to blacklist Megaspeed, the Singapore-based Nvidia customer where Alice Huang was CEO.In a brief interview with CNBC on Monday, Trump said he had spoken to Nvidia's board of directors and \"convinced\" them to bring back Huang. Trump praised the Nvidia board for acting \"really responsibly\" in reinstating the CEO.\"They did ask for assurance on the national security threat,\" Trump said. \"And we gave them assurances at least with everything we know. And we know a lot.\"\"People say, is it a threat to have him? No, it's a threat to lose him,\" the president added.The president was asked whether Nvidia stock losses after Huang resigned last week…",
+   "url": "https://saudigazette.com.sa/article/666485/world/trump-faces-bipartisan-backlash-after-pushing-nvidia-to-reinstate-jensen-huang",
+   "published": "2026-11-24T06:25:25+00:00",
+   "author": "Agencies",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "33d9f3879e",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "142829582b": {
+   "source": "Asharq Al-Awsat",
+   "source_type": "rss",
+   "title": "ترمب يحقق مكاسب تصل إلى 15 مليون دولار من قفزة سهم «إنفيديا» بعد عودة هوانغ",
+   "summary": "حقق الرئيس الأميركي دونالد ترمب مكاسب دفترية محتملة تصل إلى 15 مليون دولار من ارتفاع سهم شركة «إنفيديا» بأكثر من 30 في المائة.",
+   "url": "https://aawsat.com/node/5344903",
+   "published": "2026-11-24T05:02:41+00:00",
+   "author": "كاتب",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "142829582b",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "d2b742b22e": {
+   "source": "Asharq Al-Awsat English",
+   "source_type": "rss",
+   "title": "Trump Rewrites the Lame-Duck Rules with Flex on Nvidia CEO",
+   "summary": "",
+   "url": "https://english.aawsat.com/node/5344931",
+   "published": "2026-11-24T06:52:36+00:00",
+   "author": "author",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "d2b742b22e",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "9879043dd6": {
+   "source": "Asharq Al-Awsat English",
+   "source_type": "rss",
+   "title": "US Blacklists Megaspeed Cloud Company Linked to Nvidia Scandal",
+   "summary": "",
+   "url": "https://english.aawsat.com/node/5344929",
+   "published": "2026-11-24T06:48:08+00:00",
+   "author": "author",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "9879043dd6",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "7b76e8c2af": {
+   "source": "Asharq Al-Awsat English",
+   "source_type": "rss",
+   "title": "Nvidia and Board Still Face Legal Risks After Jensen Huang’s Return",
+   "summary": "",
+   "url": "https://english.aawsat.com/node/5344927",
+   "published": "2026-11-24T06:45:37+00:00",
+   "author": "author",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "7b76e8c2af",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "85a011fc1e": {
+   "source": "Asharq Al-Awsat English",
+   "source_type": "rss",
+   "title": "Asian Stocks Rally as Huang’s Return to Nvidia Revives the AI Trade",
+   "summary": "",
+   "url": "https://english.aawsat.com/node/5344926",
+   "published": "2026-11-24T06:40:56+00:00",
+   "author": "author",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "85a011fc1e",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "cb299738fc": {
+   "source": "AITNews",
+   "source_type": "rss",
+   "title": "OpenAI تبدأ طرح GPT-6.2 عالميًا في محادثات ChatGPT لأربع خطط مدفوعة",
+   "summary": "بدأت OpenAI طرح نسخة من GPT-6.2 Sol للمحادثات في ChatGPT عبر أربع خطط مدفوعة عالميًا، مع تحسينات في فهم الصور والبحث واتباع التعليمات والسلامة. نُشر المقال OpenAI تبدأ طرح GPT-6.2 عالميًا في محادثات ChatGPT لأربع خطط مدفوعة أولًا على البوابة التقنية .",
+   "url": "https://aitnews.com/2026/11/24/%d8%b7%d8%b1%d8%ad-%d9%86%d9%85%d9%88%d8%b0%d8%ac-gpt-6-2-%d9%81%d9%8a-%d9%85%d8%ad%d8%a7%d8%af%d8%ab%d8%a7%d8%aa-chatgpt/",
+   "published": "2026-11-24T06:05:10+00:00",
+   "author": "فريق التحرير",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "OpenAI"
+   ],
+   "id": "cb299738fc",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "65e9431410": {
+   "source": "AITNews",
+   "source_type": "rss",
+   "title": "أنثروبيك تتيح للمؤسسات تخزين بيانات «كلود» في سحابتها الخاصة مع مراقبة إساءة الاستخدام",
+   "summary": "أتاحت أنثروبيك نظام EFS تجريبيًا للمؤسسات المؤهلة، لتخزين بيانات استخدام كلود في حساباتها السحابية مع استمرار الكشف الآلي عن أنماط إساءة الاستخدام. نُشر المقال أنثروبيك تتيح للمؤسسات تخزين بيانات «كلود» في سحابتها الخاصة مع مراقبة إساءة الاستخدام أولًا على البوابة التقنية .",
+   "url": "https://aitnews.com/2026/11/24/%d8%a3%d9%86%d8%ab%d8%b1%d9%88%d8%a8%d9%8a%d9%83-%d8%aa%d8%ae%d8%b2%d9%8a%d9%86-%d8%a8%d9%8a%d8%a7%d9%86%d8%a7%d8%aa-%d9%83%d9%84%d9%88%d8%af-%d8%b3%d8%ad%d8%a7%d8%a8%d9%8a%d8%a7/",
+   "published": "2026-11-24T06:02:27+00:00",
+   "author": "فريق التحرير",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Anthropic"
+   ],
+   "id": "65e9431410",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "8d7d1f8606": {
+   "source": "AITNews",
+   "source_type": "rss",
+   "title": "إيرادات HPE تقفز 50% إلى 14.5 مليار دولار بدعم الطلب على الخوادم والذكاء الاصطناعي",
+   "summary": "ارتفعت إيرادات HPE في الربع الرابع من سنتها المالية 2026 بنسبة 50% إلى 14.5 مليار دولار، مع نمو إيرادات الخوادم بنسبة 94.7% ورفع توقعات الإيرادات لعام 2027. نُشر المقال إيرادات HPE تقفز 50% إلى 14.5 مليار دولار بدعم الطلب على الخوادم والذكاء الاصطناعي أولًا على البوابة التقنية .",
+   "url": "https://aitnews.com/2026/11/24/%d8%a5%d9%8a%d8%b1%d8%a7%d8%af%d8%a7%d8%aa-%d9%87%d9%8a%d9%88%d9%84%d9%8a%d8%aa-%d8%a8%d8%a7%d9%83%d8%a7%d8%b1%d8%af-%d8%a7%d9%84%d9%82%d9%8a%d8%a7%d8%b3%d9%8a%d8%a9/",
+   "published": "2026-11-24T05:57:06+00:00",
+   "author": "فريق التحرير",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "",
+   "region": "gulf",
+   "entities": [],
+   "id": "8d7d1f8606",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "b444a5ede1": {
+   "source": "AITNews",
+   "source_type": "rss",
+   "title": "أمازون تطلق 5 نماذج مفتوحة لاتخاذ قرارات وكلاء الذكاء الاصطناعي وتعزز أمان البرمجة",
+   "summary": "أطلقت AWS خمسة نماذج مفتوحة الأوزان من Strands Decider v2 لاتخاذ القرارات بكفاءة، وأضافت دعم Claude Code وCodex وKiro CLI إلى بيئة العزل Strands Box. نُشر المقال أمازون تطلق 5 نماذج مفتوحة لاتخاذ قرارات وكلاء الذكاء الاصطناعي وتعزز أمان البرمجة أولًا على البوابة التقنية .",
+   "url": "https://aitnews.com/2026/11/24/%d8%a3%d9%85%d8%a7%d8%b2%d9%88%d9%86-%d9%86%d9%85%d8%a7%d8%b0%d8%ac-%d8%a7%d8%aa%d8%ae%d8%a7%d8%b0-%d8%a7%d9%84%d9%82%d8%b1%d8%a7%d8%b1/",
+   "published": "2026-11-24T05:18:28+00:00",
+   "author": "فريق التحرير",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "models",
+   "region": "us",
+   "entities": [
+    "Amazon Nova",
+    "Anthropic",
+    "Claude Code"
+   ],
+   "id": "b444a5ede1",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "cc10ecf774": {
+   "source": "Roya News",
+   "source_type": "rss",
+   "title": "أسعار الذهب تواصل الارتفاع للجلسة الثانية بدعم من عودة جنسن هوانغ إلى إنفيديا والطلب الصيني",
+   "summary": "واردات الصين من الذهب تسجل مستوى قياسيا عند 209 مليارات دولار وتدعم ارتداد الأسعار عالميا. للاطلاع على أسعار الذهب أولا بأول اضغط هنا لزيارة موقع رؤيا أسعار الذهب. ارْتَفَعَتْ أَسْعَارُ الذَّهَبِ لِلْجَلْسَةِ الثَّانِيَةِ عَلَى التَّوَالِي، يَوْمَ الثُّلَاثَاءَ، إِذْ أَعَادَتْ عَوْدَةُ جِنْسِنَ هْوَانْغَ إِلَى مَنْصِبِ الرَّئِيسِ التَّنْفِيذِيِّ لِشَرِكَةِ \"إِنْفِيدْيَا\" (Nvidia) الزَّخَمَ إِلَى اسْتِثْمَارَاتِ الذَّكَاءِ الِاصْطِنَاعِيِّ، مَا أَسْهَمَ فِي دَعْمِ الْأَسْوَاقِ الْوَاسِعَةِ وَتَعْزِيزِ السَّبَائِكِ الذَّهَبِيَّةِ فِي أَعْقَابِ التَّرَاجُعِ الْحَادِّ الْأَخِيرِ، بِحَسَبِ بَيَانَاتِ مَوْقِعِ \"إِنْفِسْتِنْغ دُوتْ كُوم\" (Investing.com). وَسَجَّلَ الذَّهَبُ الْفَوْرِيُّ ارْتِفَاعًا بِنِسْبَةِ تِسْعَةٍ بِالْعَشَرَةِ بِالْمِئَةِ لِيَبْلُغَ ثَلَاثَةَ آلَافٍ وَسِتَّمِئَةٍ وَثَمَانِيَةً وَسِتِّينَ دُولَارًا وَثَلَاثَةً وَتِسْعِينَ سِنْتًا لِلْأُوقِيَّةِ عِنْدَ السَّاعَةِ الثَّانِيَةَ عَشْرَةَ وَالنِّصْفِ وَدَقِيقَةٍ صَبَاحًا بِتَوْقِيتِ الْمَمْلَكَةِ الْعَرَبِيَّةِ السُّعُودِيَّةِ، فِيمَا رَبِحَتْ عُقُودُ الذَّهَبِ الْأَمْرِيكِيَّةُ الْآجِلَةُ أَرْبَعَةً بِالْعَشَرَةِ بِالْمِئَةِ لِتَبْلُغَ ثَلَاثَةَ آلَافٍ وَسِتَّمِئَةٍ وَسَبْعَةً وَسِتِّينَ دُولَارًا وَخَمْسَةً وَعِشْرِينَ سِنْتًا، وَذَلِكَ بِالتَّزَامُنِ مَعَ انْخِفَاضِ مُؤَشِّرِ الدُّولَارِ الْأَمْرِيكِيِّ بِنِسْبَةِ وَاحِدٍ بِالْعَشَرَةِ بِالْمِئَةِ إِلَى مِئَةٍ وَأَرْبَعٍ وَوَاحِدٍ وَعِشْرِينَ بِالْمِئَةِ نُقْطَةٍ. وَعَلَى صَعِيدِ الْمَعَادِنِ النَّفِيسَةِ الْأُخْرَى، صَعِدَتِ الْفِضَّةُ بِنِسْبَةِ وَاحِدٍ وَاثْنَيْنِ بِالْعَشَرَةِ بِالْمِئَةِ إِلَى ثَلَاثَةٍ وَأَرْبَعِينَ دُولَارًا وَسِتِّمِئَةٍ وَأَرْبَعَةٍ وَسِتِّينَ جُزْءًا مِنَ الْأَلْفِ لِلْأُوقِيَّةِ، فِيمَا أَضَافَ الْبِلَاتِينُ اثْنَيْنِ بِالْعَشَرَةِ بِالْمِئَةِ لِيَصِلَ إِلَى أَلْفٍ وَثَلَاثِمِئَةٍ وَاثْنَيْنِ وَثَلَاثِينَ دُولَارًا وَتِسْعَةٍ وَعِشْرِينَ سِنْتًا، وَارْتَفَعَ الْبِلَادْيُومُ الْفَوْرِيُّ بِنِسْبَةِ وَاحِدٍ وَثَلَاثَةٍ بِالْعَشَرَةِ بِالْمِئَةِ إِلَى تِسْعِمِئَةٍ وَتِسْعَةِ دُولَارَاتٍ وَوَاحِدٍ وَسِتِّينَ سِنْتًا، بَيْنَمَا صَعِدَتْ عُقُودُ الْبِلَادْيُومِ الْآجِلَةُ بِنِسْبَةِ وَاحِدٍ وَوَاحِدٍ بِالْعَشَرَةِ بِالْمِئَةِ إِلَى تِسْعِمِئَةٍ وَثَلَاثَةِ دُولَارَاتٍ وَخَمْسَةٍ وَعِشْرِينَ سِنْتًا. وَقَفَزَ الذَّهَبُ بِنِسْبَةٍ تَصِلُ إِلَى وَاحِدٍ بِالْمِئَةِ نَحْوَ مُسْتَوَى ثَلَاثَةِ آلَافٍ وَسِتِّمِئَةٍ وَسَبْعِينَ دُولَارًا، بَعْدَ أَنْ سَجَّلَ مَكَاسِبَ بَلَغَتْ اثْنَيْنِ وَسَبْعَةً بِالْعَشَرَةِ بِالْمِئَةِ فِي الْجَلْسَةِ السَّابِقَةِ، لِيُسْهِمَ هَذَا الِارْتِدَادُ الَّذِي امْتَدَّ يَوْمَيْنِ فِي تَعْوِيضِ…",
+   "url": "https://royanews.tv/news/401285",
+   "published": "2026-11-24T06:39:30+00:00",
+   "author": "فريق رؤيا الإخباري",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "cc10ecf774",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "166ff2dcee": {
+   "source": "Roya News",
+   "source_type": "rss",
+   "title": "إنفيديا تعيد جنسن هوانغ لقيادة الشركة بالإجماع وسهمها يقفز 31% وسط ترحيب من ترمب",
+   "summary": "مجلس إدارة إنفيديا يؤكد ثقته بجنسن هوانغ بعد تلقي معطيات من مستويات عليا في الحكومة الأمريكية. أَعْلَنَتْ شَرِكَةُ \"إِنْفِيدْيَا\" (Nvidia) عَنْ عَوْدَةِ مُؤَسِّسِهَا الْمُشَارِكِ جِنْسِنَ هْوَانْغَ لِقِيَادَةِ الشَّرِكَةِ مِنْ جَدِيدٍ بِقَرَارٍ إِجْمَاعِيٍّ مِنْ مَجْلِسِ الْإِدَارَةِ، وَذَلِكَ بَعْدَ أَنْ كَانَ قَدْ غَادَرَ مَنْصِبَهُ فِي الثَّانِي عَشَرَ مِنْ نُوفَمْبَرَ الْجَارِي فِي أَعْقَابِ سِلْسِلَةٍ مِنَ الْفَضَائِحِ وَالتَّقَارِيرِ الَّتِي تَنَاوَلَتْ عِدَّةَ عَلَاقَاتٍ شَخْصِيَّةٍ لَهُ، مِنْ بَيْنِهَا عَلَاقَةٌ مَعَ امْرَأَةٍ مُتَّهَمَةٍ بِكَوْنِهَا جَاسُوسَةً صِينِيَّةً. وَأَوْضَحَ مَجْلِسُ إِدَارَةِ \"إِنْفِيدْيَا\" أَنَّ قَرَارَ إِعَادَةِ تَعْيِينِ هْوَانْغَ جَاءَ عَقِبَ \"سِلْسِلَةٍ مِنَ الْمُنَاقَشَاتِ وَالِاجْتِمَاعَاتِ مَعَهُ\"، خَرَجَ مِنْهَا الْمَجْلِسُ مُقْتَنِعًا بِ\"صَرَاحَتِهِ وَقُدْرَتِهِ عَلَى الْقِيَادَةِ\"، مُؤَكِّدًا أَنَّهُ تَلَقَّى \"مُعْطَيَاتٍ مِنْ مُسْتَوَيَاتٍ عُلْيَا فِي الْحُكُومَةِ الْأَمْرِيكِيَّةِ\" جَعَلَتْهُ \"وَاثِقًا\" مِنْ أَنَّ هْوَانْغَ لَا يُشَكِّلُ خَطَرًا عَلَى الْأَمْنِ الْقَوْمِيِّ، وَذَلِكَ بَعْدَ أَنْ جَادَلَ مُنْتَقِدُونَ بِأَنَّ عَلَاقَتَهُ بِامْرَأَةٍ مُتَّهَمَةٍ بِالتَّجَسُّسِ لِصَالِحِ الصِّينِ قَدْ تُقَوِّضُ جُهُودَ أَمْرِيكَا لِمَنْعِ اسْتِحْوَاذِ الصِّينِ عَلَى رَقَائِقِهَا الْإِلِكْتْرُونِيَّةِ الْمِحْوَرِيَّةِ لِتِكْنُولُوجْيَا الذَّكَاءِ الِاصْطِنَاعِيِّ. وَقَالَ رَئِيسُ مَجْلِسِ الْإِدَارَةِ هَارْفِي سِي جُونْزُ إِنَّ الْمَجْلِسَ يُؤْمِنُ بِأَنَّ جِنْسِنَ هُوَ الشَّخْصُ الْمُنَاسِبُ لِقِيَادَةِ الشَّرِكَةِ وَأَنَّ إِعَادَتَهُ تَصُبُّ فِي مَصْلَحَةِ الْمُسَاهِمِينَ وَالْمُوَظَّفِينَ وَالشُّرَكَاءِ وَالْعُمَلَاءِ، فِيمَا أَعْرَبَ هْوَانْغُ عَنْ شُعُورِهِ بِ\"الشَّرَفِ\" لِلْعَوْدَةِ مُضِيفًا: \"أَتَوَلَّى هَذِهِ الْمَسْؤُولِيَّةَ بِمُنْتَهَى التَّوَاضُعِ وَالْتِزَامٍ مُتَجَدِّدٍ\". وَجَاءَ إِعْلَانُ \"إِنْفِيدْيَا\" بَعْدَ حَمْلَةِ ضُغُوطٍ وَدَعَوَاتٍ مُتَوَاصِلَةٍ مِنْ قَادَةٍ فِي قِطَاعِ التِّكْنُولُوجْيَا، مِنْ بَيْنِهِمْ إِيلُونُ مَاسْكُ، وَمِنْ دُونَالْدَ تْرَمْبَ الَّذِي صَرَّحَ قَبْلَ سَاعَاتٍ مِنَ الْإِعْلَانِ بِأَنَّ إِعَادَةَ تَوْظِيفِ هْوَانْغَ سَتَكُونُ \"أَفْضَلَ شَيْءٍ لِلشَّرِكَةِ، وَكَذَلِكَ لِلْوِلَايَاتِ الْمُتَّحِدَةِ الْأَمْرِيكِيَّةِ\"، فَضْلًا عَنْ عَرِيضَةٍ دَاعِمَةٍ حَصَدَتْ أَكْثَرَ مِنْ مِئَتَيْ أَلْفِ تَوْقِيعٍ، بِمَنْ فِيهِمْ أَشْخَاصٌ يَقُولُونَ إِنَّهُمْ مُوَظَّفُونَ وَمُسْتَثْمِرُونَ فِي الشَّرِكَةِ، مَا دَفَعَ هْوَانْغَ الْأُسْبُوعَ الْمَاضِي، بَعْدَ خَمْسَةِ أَيَّامٍ مِنْ رَحِيلِهِ، إِلَى إِعْلَانِ اسْتِعْدَادِهِ لِلْعَوْدَةِ إِذَا طَلَبَ الْمَجْلِسُ ذَلِكَ. اقرأ أيضاً: ترمب يكشف…",
+   "url": "https://royanews.tv/news/401280",
+   "published": "2026-11-24T05:56:53+00:00",
+   "author": "فريق رؤيا الإخباري",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "166ff2dcee",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "4c3f9c01fc": {
+   "source": "Jordan News",
+   "source_type": "rss",
+   "title": "Dollar Nears 20-Month High as Fed Rate Hike Bets Return",
+   "summary": "The US dollar held on to its gains near a 20-month high in Tuesday’s trading, supported by renewed optimism over artificial intelligence following Jensen Huang’s return as CEO of Nvidia. The development boosted a rally in equity markets and revived expectations that the Federal Reserve could raise interest rates in the coming period.",
+   "url": "https://www.jordannews.jo/Section-112/Economy/Dollar-Nears-20-Month-High-as-Fed-Rate-Hike-Bets-Return-59277",
+   "published": "2026-11-24T09:15:05+00:00",
+   "author": "",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "NVIDIA"
+   ],
+   "id": "4c3f9c01fc",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
+  },
+  "aaf174d238": {
+   "source": "Webrazzi",
+   "source_type": "rss",
+   "title": "Amazon, Decart'ı 7,5 milyar dolara satın aldı",
+   "summary": "Amazon 'un Decart 'ı 7,5 milyar dolara kadar ulaşabilecek bir bedelle satın almak için görüşmeler yürüttüğünü sizlere aktarmıştık . Söz konusu satın alma haberi doğrulandı . Anlaşma kapsamında Amazon, Decart'ın yapay zeka modellerinin farklı donanımlarda daha verimli çalışmasını sağlayan Decart Optimization Stack (DOS) teknolojisini bünyesine katacak. Satın alma, şirketin kurucu ekibinin yanı sıra yapay zeka alanında çalışan araştırmacı ve mühendisleri de kapsıyor. Amazon'un Decart'a ilgisinin arkasında, kendi geliştirdiği Trainium çiplerini Nvidia'ya karşı daha güçlü bir alternatif haline getirme hedefi bulunuyor. Şirket, bugüne kadar Trainium çiplerini kendi veri merkezlerinde kullanıyordu. Şimdi ise bu çipleri müşterilerine sunmaya hazırlanıyor. Decart'ın optimizasyon teknolojisi, geliştiricilerin yapay zeka iş yüklerini Nvidia GPU'ları yerine Amazon'un Trainium çiplerinde çalıştırmasını kolaylaştırabilir. Amazon'da temel yapay zeka modelleri, özel çipler ve kuantum bilişimden sorumlu kıdemli başkan yardımcısı Peter DeSantis, daha verimli hesaplama altyapısının model eğitimi, pekiştirmeli öğrenme ve çıkarım süreçlerini hızlandıracağını belirtiyor. DeSantis'e göre bu verimlilik, müşterilere daha düşük maliyetle daha gelişmiş modeller sunulmasının da önünü açabilir. Amazon ve Decart, anlaşmanın finansal koşullarına ilişkin ek bir açıklama yapmadı.",
+   "url": "https://webrazzi.com/2026/11/24/amazon-decart-i-7-5-milyar-dolara-satin-aldi/",
+   "published": "2026-11-24T07:00:00+00:00",
+   "author": "Candeğer Muradoğlu",
+   "engagement": 0,
+   "source_weight": 1.0,
+   "score": 0.0,
+   "score_breakdown": {},
+   "track": "chips",
+   "region": "makers",
+   "entities": [
+    "AWS Trainium",
+    "NVIDIA"
+   ],
+   "id": "aaf174d238",
+   "first_seen": "2026-11-24T06:46+00:00",
+   "flagged": false
   }
  },
  "runs": [
-  {
-   "at": "2026-11-19T08:41+00:00",
-   "found": 499,
-   "new": 47,
-   "flagged": 1
-  },
   {
    "at": "2026-11-19T10:42+00:00",
    "found": 501,
@@ -100417,6 +100744,12 @@
    "found": 478,
    "new": 58,
    "flagged": 1
+  },
+  {
+   "at": "2026-11-24T06:46+00:00",
+   "found": 59,
+   "new": 16,
+   "flagged": 0
   }
  ]
 }
