@@ -267,7 +267,7 @@ def platform_stats(platform: str, r: dict) -> dict:
 
 
 def composio_stats(via, platform: str, r: dict) -> dict:
-    """Views and likes of a reel posted through Composio, with the tools it offers ({} when it gives none)."""
+    """Likes of an Instagram reel posted through Composio ({} when it gives none)."""
     out: dict = {}
     def run(slug, **kw):   # noqa: E306
         try:
@@ -279,19 +279,8 @@ def composio_stats(via, platform: str, r: dict) -> dict:
         d = run("INSTAGRAM_GET_IG_MEDIA", ig_media_id=r["media_id"], fields="like_count,comments_count")
         if "like_count" in d:
             out["likes"] = int(d["like_count"])
-        d = run("INSTAGRAM_GET_POST_INSIGHTS", ig_post_id=r["media_id"], metric=["views"])
-        for m in d.get("data") or []:
-            if m.get("name") == "views" and m.get("values"):
-                out["views"] = int(m["values"][0]["value"])
-    else:
-        d = run("FACEBOOK_GET_POST_INSIGHTS", post_id=r["video_id"], period="lifetime",
-                metrics="blue_reels_play_count,post_video_likes_by_reaction_type")
-        for m in d.get("data") or []:
-            v = (m.get("values") or [{}])[0].get("value")
-            if m.get("name") == "blue_reels_play_count" and v is not None:
-                out["views"] = int(v)
-            if m.get("name") == "post_video_likes_by_reaction_type" and isinstance(v, dict):
-                out["likes"] = int(sum(v.values()))
+    # Views (Instagram) and every Facebook number are refused to Composio's Meta app (2026-11-24: "Application
+    # does not have permission for this action"; Facebook reels have no post insights there): likes only.
     return out
 
 

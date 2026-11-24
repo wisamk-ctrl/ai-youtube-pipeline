@@ -492,3 +492,11 @@ service, TikTok private, and Facebook native video.
 - Enforced by `tests/test_breaking.py` (pace section).
 
 - **2026-11-23 — "Jensen Huang returns as CEO" got no breaking Short.** Two causes: three smaller stories had used the day's limit of 3, and the flagged headlines (Gulf Business, Gulf News) had no article text, so no draft could be fact-checked. Now a story carried by 5+ outlets at once goes past the limit (up to 2 extra a day: `breaking.big_story_sources`, `big_story_extra`), and a flagged story pulls in the same story from unflagged outlets for its text (`pipeline/breaking.py`).
+
+## Dashboard reel numbers (2026-11-24)
+- Instagram and Facebook post through Composio, so the dashboard reads their numbers there too
+  (`scripts/channel.py` `composio_stats`). Composio's Meta app returns Instagram **likes** only:
+  media insights (views) answer "Application does not have permission for this action", and
+  Facebook reels have no post insights through its tools. Views for those two need the founder's
+  own Meta app tokens (`INSTAGRAM_TOKEN`, `FACEBOOK_PAGE_TOKEN`), which `platform_stats` already uses when set.
+- YouTube Analytics has no hour-of-day dimension: the dashboard's "best day" is by weekday only.
