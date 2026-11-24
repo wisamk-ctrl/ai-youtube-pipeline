@@ -398,6 +398,11 @@ service, TikTok private, and Facebook native video.
   entry; alerts that are off log once per run and add a note to the health report.
 - **A workflow that only needs to know whether a secret is set gets a flag, not the secret**
   (`${{ secrets.X != '' && '1' || '' }}` in `approve.yml`).
+- **A status read from the environment is only as good as the job's environment (2026-11-24).** The day after
+  the status function shipped, every "Ready to check" message said "To publish to nowhere yet (no platform is
+  connected…)": the step that writes it had no platform secrets, so all five read as off. The tests passed a
+  `have` function and never ran the real job's environment. Now the step carries the same set-or-not flags as
+  `approve.yml`, and a test checks every step that writes the message has them.
 - **A message hard-coded in a workflow drifts.** The old reply was a shell string; the new one is printed by code.
 
 ## 2026-11-23: chapter pictures — YouTube makes them days late; our gate could never have helped
