@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-24 09:14 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Amazon is buying key assets of AI startup Decart.  ← SiliconANGLE (dc91f5adc6), Anadolu Ajansı (581c623805)
+- (2) The reported price is $7.5 billion.  ← SiliconANGLE (dc91f5adc6), www.trendingtopics.eu (b7d71fba4a), Tech Times (7b82d0ac05)
+- (3) It gets Decart's tech for running AI models efficiently on different hardware.  ← Webrazzi (aaf174d238), www.trendingtopics.eu (b7d71fba4a)
+- (4) Founders and engineers join too, but not Decart's Lucy or Oasis models.  ← Webrazzi (aaf174d238), Tech Times (7b82d0ac05)
+- (5) Webrazzi says the goal is making Amazon's Trainium chips a rival to Nvidia.  ← Webrazzi (aaf174d238)
+- (6) Amazon is now preparing to offer Trainium chips to customers.  ← Webrazzi (aaf174d238)
+- (7) Would your company run its AI on Amazon's chips instead of Nvidia's?  ← regional line, no facts
