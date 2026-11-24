@@ -276,7 +276,16 @@ def composio_tools(key: str) -> list[str]:
             names += [t.get("slug", "") for t in d.get("items") or []]
         except (requests.RequestException, ValueError):
             pass
-    return [n for n in names if re.search(r"INSIGHT|METRIC|STAT|VIDEO|REEL|GET_IG_MEDIA", n)]
+    out = [n for n in names if re.search(r"INSIGHT|METRIC|STAT|VIDEO|REEL|GET_IG_MEDIA", n)]
+    for slug in ("INSTAGRAM_GET_POST_INSIGHTS", "FACEBOOK_GET_POST_INSIGHTS"):
+        try:
+            d = requests.get(f"https://backend.composio.dev/api/v3/tools/{slug}", timeout=30,
+                             headers={"x-api-key": key}).json()
+            props = (d.get("input_parameters") or {}).get("properties") or {}
+            out.append(f"{slug}({', '.join(f'{k}: {str(v.get(chr(100) + 'escription', ''))[:90]}' for k, v in props.items())})")
+        except (requests.RequestException, ValueError, AttributeError):
+            pass
+    return out
 
 
 def composio_stats(via, platform: str, r: dict) -> dict:
