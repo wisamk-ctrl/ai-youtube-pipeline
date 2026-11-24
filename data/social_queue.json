@@ -643,5 +643,63 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7530680593018437632"
       }
     }
+  },
+  {
+    "id": "2026-11-24-brk-amazon-buys-decart-en#1",
+    "week": "2026-11-24-brk-amazon-buys-decart-en",
+    "lang": "en",
+    "file": "2026-11-24-brk-amazon-buys-decart-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-24-brk-amazon-buys-decart-en/2026-11-24-brk-amazon-buys-decart-en-short-01.mp4",
+    "title": "Amazon Buys Decart for $7.5B",
+    "due": "2026-11-24T13:53:59Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Amazon Buys Decart for $7.5B\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Amazon Buys Decart for $7.5B\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Amazon Buys Decart for $7.5B\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Amazon Buys Decart for $7.5B\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "Amazon is buying key assets of AI startup Decart, for a reported $7.5 billion. The deal brings Decart's optimization technology, which helps AI models run more efficiently on different hardware, along with its founding team, researchers and engineers, but not its Lucy or Oasis models, according to Tech Times. Webrazzi reports the aim is to make Amazon's own Trainium chips a stronger alternative to Nvidia, as Amazon prepares to offer them to customers. For Gulf companies and governments building AI capacity, more choice beyond Nvidia hardware could reshape how they plan their compute.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T13:54:01Z",
+        "url": "https://youtube.com/shorts/aWQThpV0WuU"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T13:54:01Z",
+        "media_id": "18118532731836343",
+        "url": "https://www.instagram.com/reel/DgIG-NbgrWg/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T13:54:01Z",
+        "video_id": "1172174975325536",
+        "url": "https://www.facebook.com/reel/1172174975325536",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T13:54:01Z",
+        "publish_id": "v_inbox_file~v2.7711735942809405441",
+        "privacy": "draft",
+        "platform_status": "SEND_TO_USER_INBOX",
+        "url": "in your TikTok drafts",
+        "note": "Open TikTok, tap the inbox notification, turn on the AI-generated label, paste this caption and post:\nAmazon Buys Decart for $7.5B\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T13:54:01Z",
+        "post": "urn:li:ugcPost:7530992597457260545",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7530992597457260545"
+      }
+    }
   }
 ]
