@@ -59,9 +59,12 @@ def collect(cfg: dict[str, Any]) -> tuple[list[NewsItem], set[str]]:
     c["ingestion"]["watchlist"]["pause_seconds"] = float(nw.get("pause_seconds", 1.5))
     sites = c["ingestion"].get("google_news_sites") or []
     urgent_cfg = copy.deepcopy(c)
-    urgent_cfg["ingestion"]["google_news_sites"] = [s for s in sites if s.get("raw")]
+    # A `raw` search is flagged on sight (outages) unless it says `always_flag: false` (big deals: collected, then
+    # flagged like any story, when several outlets carry it).
+    on_sight = lambda s: bool(s.get("raw")) and s.get("always_flag", True)
+    urgent_cfg["ingestion"]["google_news_sites"] = [s for s in sites if on_sight(s)]
     rest_cfg = copy.deepcopy(c)
-    rest_cfg["ingestion"]["google_news_sites"] = [s for s in sites if not s.get("raw")]
+    rest_cfg["ingestion"]["google_news_sites"] = [s for s in sites if not on_sight(s)]
     watch = load_watchlist()
     urgent = watch_sources.fetch_site_queries(urgent_cfg)
     found = list(urgent)
