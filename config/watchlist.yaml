@@ -108,6 +108,7 @@ tracks:
           - {name: Qualcomm, ar: كوالكوم, aliases: [Snapdragon, Cloud AI 100, AI200], x: Qualcomm}
           - {name: Arm, ar: آرم, aliases: [Arm Holdings], x: Arm}
           - {name: Broadcom, ar: برودكوم, aliases: [XPU]}
+          - {name: Marvell, ar: مارفيل, aliases: [Marvell Technology, Lumentum]}   # founder 2026-11-24; Lumentum while its $115 billion purchase is pending
           - {name: Huawei Ascend, ar: هواوي, aliases: [Ascend, Huawei AI chip, CloudMatrix]}
       hyperscalers:
         label_ar: رقائق السحابة
