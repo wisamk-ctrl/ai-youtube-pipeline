@@ -1,0 +1,8 @@
+Written by hand 2026-11-24 15:12 UTC at the founder's request, from three articles fetched and read that day. The figure check passed; the second-model check was NOT run (no API key on the Mac). Lines 5 and 6 are the founder's view, approved by him in the session; they carry no figures.
+- (1) CrowdStrike is buying Zscaler for $43.9 billion, all in stock.  ← CNBC (26e93aaa93), TechCrunch (c32e65acfc), The Register (ba152944e2)
+- (2) The Register calls it the biggest cybersecurity acquisition on record.  ← The Register (ba152944e2)
+- (3) CrowdStrike protects devices. Zscaler secures the network with zero-trust technology.  ← TechCrunch (c32e65acfc)
+- (4) CrowdStrike says together they can watch what AI agents do and access.  ← The Register (ba152944e2)
+- (5) My view: as AI agents browse the internet, this is a seismic move for security.  ← Wissam's view (founder-approved), no facts
+- (6) Watch the regulators, renewal prices, and whether outages get rarer.  ← The Register (ba152944e2); the outages clause is the founder's view
+- (7) Would your company trust one vendor for all its security?  ← regional line, no facts
