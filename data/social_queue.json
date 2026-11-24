@@ -760,5 +760,63 @@
       }
     },
     "restored": "2026-11-24 from the log of run 45408102136: the queue save dropped this entry after it posted"
+  },
+  {
+    "id": "2026-11-24-brk-crowdstrike-buys-zscaler-en#1",
+    "week": "2026-11-24-brk-crowdstrike-buys-zscaler-en",
+    "lang": "en",
+    "file": "2026-11-24-brk-crowdstrike-buys-zscaler-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-24-brk-crowdstrike-buys-zscaler-en/2026-11-24-brk-crowdstrike-buys-zscaler-en-short-01.mp4",
+    "title": "CrowdStrike Buys Zscaler: $44B",
+    "due": "2026-11-24T15:19:13Z",
+    "approved": true,
+    "captions": {
+      "youtube": "CrowdStrike Buys Zscaler: $44B\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "CrowdStrike Buys Zscaler: $44B\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "CrowdStrike Buys Zscaler: $44B\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "CrowdStrike Buys Zscaler: $44B\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "CrowdStrike is buying Zscaler for $43.9 billion in an all-stock deal. The Register calls it the biggest cybersecurity acquisition on record, ahead of Google's $32 billion purchase of Wiz. CrowdStrike protects devices; Zscaler secures networks with zero-trust technology. CrowdStrike says owning both lets it see what AI agents do on corporate devices, where they connect and what data they reach. The deal still needs regulators and Zscaler shareholders, and is expected to close in the second half of CrowdStrike's fiscal 2028. My view: as AI agents start to browse and act for us, this is a seismic move for security. For Gulf organisations, the question is how much of their defence they want with one vendor.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T15:19:15Z",
+        "url": "https://youtube.com/shorts/N46M6NXkqKY"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T15:19:15Z",
+        "media_id": "17976628263190055",
+        "url": "https://www.instagram.com/reel/DgIQuTDkRTq/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T15:19:15Z",
+        "video_id": "2175610143347214",
+        "url": "https://www.facebook.com/reel/2175610143347214",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T15:19:15Z",
+        "publish_id": "v_inbox_file~v2.7711757698681096213",
+        "privacy": "draft",
+        "platform_status": "SEND_TO_USER_INBOX",
+        "url": "in your TikTok drafts",
+        "note": "Open TikTok, tap the inbox notification, turn on the AI-generated label, paste this caption and post:\nCrowdStrike Buys Zscaler: $44B\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T15:19:15Z",
+        "post": "urn:li:ugcPost:7531013979545067520",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531013979545067520"
+      }
+    }
   }
 ]
