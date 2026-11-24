@@ -1,0 +1,12 @@
+Drafted automatically 2026-11-24 03:10 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) AWS took 93 minutes to tell customers about an outage.  ← THE ELEC, Korea Electronics Industry Media (9fa5edc42f)
+- (2) The outage hit its US East region early on November 15.  ← THE ELEC, Korea Electronics Industry Media (9fa5edc42f)
+- (3) It began at 3:05 a.m. and lasted until 6:53 a.m.  ← THE ELEC, Korea Electronics Industry Media (9fa5edc42f)
+- (4) THE ELEC says more than 10 major AWS services were affected.  ← THE ELEC, Korea Electronics Industry Media (9fa5edc42f)
+- (5) Users hit sign-up errors, authentication failures and connectivity issues.  ← THE ELEC, Korea Electronics Industry Media (9fa5edc42f)
+- (6) The main casualty was IAM Identity Center, an enterprise login system.  ← THE ELEC, Korea Electronics Industry Media (9fa5edc42f)
+- (7) AWS engineers responded within minutes, the report says.  ← THE ELEC, Korea Electronics Industry Media (9fa5edc42f)
+- (8) But the first status page post came only after 93 minutes.  ← THE ELEC, Korea Electronics Industry Media (9fa5edc42f)
+- (9) The Register reports AWS questioned Downdetector's reliability instead of explaining the failure.  ← THE ELEC, Korea Electronics Industry Media (9fa5edc42f)
+- (10) The outage drew little attention, coming early on a Sunday.  ← THE ELEC, Korea Electronics Industry Media (9fa5edc42f)
+- (11) For Gulf firms on global clouds, outage communication is worth watching.  ← regional line, no facts
