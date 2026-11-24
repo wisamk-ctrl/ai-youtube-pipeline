@@ -476,6 +476,20 @@ jobs:
           WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}
           CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
           PREVIEW_FROM: run ${{ github.run_id }}
+          # Which platform secrets are set, as flags, so the message names where the Short will really go
+          # (pipeline/publish/release_status.py). No secret value reaches this step.
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY != '' && '1' || '' }}
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY != '' && '1' || '' }}
+          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID != '' && '1' || '' }}
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN != '' && '1' || '' }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID != '' && '1' || '' }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET != '' && '1' || '' }}
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN != '' && '1' || '' }}
+          LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN != '' && '1' || '' }}
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY != '' && '1' || '' }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET != '' && '1' || '' }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN != '' && '1' || '' }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN != '' && '1' || '' }}
         run: |
           bash scripts/preview.sh text "$WEEK" "output/$WEEK"
           QC=$(python scripts/short_check.py "output/$WEEK/shorts/short_01.mp4" || true)
