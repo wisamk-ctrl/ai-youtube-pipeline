@@ -1,6 +1,6 @@
 [Section: AI This Week]
 
-[Visual: title AI news moves fast]
+[Face]
 AI news moves fast. Most of it misses what it means for our region.
 
 [Visual: stock glowing sphere of connections, AI model]
