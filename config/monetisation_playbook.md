@@ -70,9 +70,10 @@ CLAUDE.md (facts traced to a source, no invented figures, no investment advice, 
 - Judge each change on the dashboard: % watched and views in the first two days, per Short.
 
 ## Publishing
-- Upload on Saturday as private and scheduled; it goes public on Sunday at 07:00 Gulf time (founder 2026-11-24,
-  moved from the evening slot), so it is waiting when the working week starts in Riyadh, Amman and Cairo, and the ad-suitability
-  review is finished before the first viewers arrive. A `publish` sent on Sunday after 07:00 goes out within minutes.
+- Upload on Saturday as private and scheduled; it goes public on Sunday at 17:00 Gulf time, so the
+  ad-suitability review is finished before the first-day viewers arrive (founder 2026-11-24: kept after weighing
+  07:00 and 15:00; Sunday daytime stays free to fix anything). A `publish` sent on Sunday after 17:00 goes out
+  within minutes, not a week later.
 - Never delete and re-upload the same file. Change titles and thumbnails in place.
 
 ## Numbers to watch (weekly, from YouTube Studio)
