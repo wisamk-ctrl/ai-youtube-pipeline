@@ -32,6 +32,9 @@ jobs:
       CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
       INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
       FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+      COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}     # reel views and likes (Instagram and Facebook post through it)
+      COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
+      FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
       LINKEDIN_TOKEN_UNTIL: ${{ secrets.LINKEDIN_TOKEN_UNTIL }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4

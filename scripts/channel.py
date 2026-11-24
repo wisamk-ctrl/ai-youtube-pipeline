@@ -266,15 +266,62 @@ def platform_stats(platform: str, r: dict) -> dict:
     return {}
 
 
+def composio_tools(key: str) -> list[str]:
+    """Composio's Instagram and Facebook tool names that read numbers (printed once, to pick the right ones)."""
+    names = []
+    for kit in ("instagram", "facebook"):
+        try:
+            d = requests.get("https://backend.composio.dev/api/v3/tools", timeout=30, headers={"x-api-key": key},
+                             params={"toolkit_slug": kit, "limit": 200}).json()
+            names += [t.get("slug", "") for t in d.get("items") or []]
+        except (requests.RequestException, ValueError):
+            pass
+    return [n for n in names if re.search(r"INSIGHT|METRIC|STAT|VIDEO|REEL|GET_IG_MEDIA", n)]
+
+
+def composio_stats(via, platform: str, r: dict) -> dict:
+    """Views and likes of a reel posted through Composio, with the tools it offers ({} when it gives none)."""
+    out: dict = {}
+    def run(slug, **kw):   # noqa: E306
+        try:
+            return via._run(slug, **kw)
+        except Exception as exc:  # noqa: BLE001 — a missing number must not stop the dashboard
+            print(f"{platform} numbers via Composio {slug}: {str(exc)[:200]}")
+            return {}
+    if platform == "instagram":
+        d = run("INSTAGRAM_GET_IG_MEDIA", ig_media_id=r["media_id"], fields="like_count,comments_count")
+        if "like_count" in d:
+            out["likes"] = int(d["like_count"])
+        d = run("INSTAGRAM_GET_IG_MEDIA_INSIGHTS", ig_media_id=r["media_id"], metric=["views"])
+        for m in d.get("data") or []:
+            if m.get("name") == "views" and m.get("values"):
+                out["views"] = int(m["values"][0]["value"])
+    else:
+        d = run("FACEBOOK_GET_VIDEO", video_id=r["video_id"], fields="likes.summary(true),views")
+        if isinstance(d.get("likes"), dict):
+            out["likes"] = int(d["likes"].get("summary", {}).get("total_count", 0))
+        if d.get("views") is not None:
+            out["views"] = int(d["views"])
+    return out
+
+
 def post_stats(queue: list[dict], limit: int = 40) -> dict[str, dict]:
-    """platform_stats for the latest posted reels, keyed by Instagram media id or Facebook video id."""
+    """Views and likes for the latest posted reels, keyed by Instagram media id or Facebook video id: with the
+    platform's own token where set, else through Composio, which posts them (founder 2026-11-22)."""
     recent = sorted(queue, key=lambda e: str(e.get("due", "")), reverse=True)[:limit]
+    via = None
+    if os.environ.get("COMPOSIO_API_KEY"):
+        from pipeline.publish import social
+        via = social.Composio(os.environ["COMPOSIO_API_KEY"], os.environ.get("COMPOSIO_USER_ID", ""),
+                              os.environ.get("FACEBOOK_PAGE_ID", ""))
+        print("Composio number tools:", ", ".join(composio_tools(os.environ["COMPOSIO_API_KEY"])) or "none listed")
     out = {}
     for e in recent:
         for plat, key in (("instagram", "media_id"), ("facebook", "video_id")):
             r = (e.get("posts") or {}).get(plat) or {}
             if r.get("status") == "posted" and r.get(key):
-                got = platform_stats(plat, r)
+                got = platform_stats(plat, r) or (composio_stats(via, plat, r) if via and r.get("via") == "composio"
+                                                  else {})
                 if got:
                     out[str(r[key])] = got
     return out
