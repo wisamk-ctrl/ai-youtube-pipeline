@@ -1,5 +1,5 @@
 {
- "next": 4,
+ "next": 5,
  "comments": {
   "youtube:UgxwLazuvvx-ISjSPr14AaABAg": {
    "platform": "youtube",
@@ -46,6 +46,22 @@
    "on": "Microsoft's Multi-Day Outage and Anthropic's Record IPO",
    "n": 3,
    "seen": "2026-11-23",
+   "status": "answered"
+  },
+  "youtube:Ugz214Ibb_ydJdVw-JZ4AaABAg": {
+   "platform": "youtube",
+   "id": "Ugz214Ibb_ydJdVw-JZ4AaABAg",
+   "post": "rp0sXtZ9kIc",
+   "author": "@GraceKishek",
+   "text": "Love this Wissam! Made it easy to understand ai updates , and found your take on this very enriching for the content",
+   "at": "2026-11-23T07:08:27Z",
+   "likes": 1,
+   "answered": true,
+   "held": false,
+   "url": "https://www.youtube.com/watch?v=rp0sXtZ9kIc&lc=Ugz214Ibb_ydJdVw-JZ4AaABAg",
+   "on": "Microsoft's Multi-Day Outage and Anthropic's Record IPO",
+   "n": 4,
+   "seen": "2026-11-24",
    "status": "answered"
   }
  },
