@@ -163,6 +163,8 @@ def test_monetisation_rows_give_pace_and_date():
     s = get[("Fan funding", "Subscribers")]
     assert s["target"] == 500 and s["eta"] == "2028-02-26"   # 459 more at 1 a day
     assert get[("Ad revenue", "Shorts views")]["eta"] == "not at this pace"
+    assert get[("Ad revenue", "Watch hours (long videos)")]["eta"] == "over 3 years at this pace"
+    assert get[("Ad revenue", "Subscribers")]["current"] == 41
     assert get[("Ad revenue", "Shorts views")]["needed_per_day"] == 111111
     none = db.monetisation_rows(subscribers=None, hours_365=None, shorts_90=None, subs_per_day=None,
                                 hours_per_day=None, shorts_per_day=None, today="2026-11-24")

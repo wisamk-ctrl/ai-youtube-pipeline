@@ -239,6 +239,8 @@ def platform_stats(platform: str, r: dict) -> dict:
         if platform == "instagram" and r.get("media_id") and os.environ.get("INSTAGRAM_TOKEN"):
             d = requests.get(f"https://graph.instagram.com/v23.0/{r['media_id']}/insights", timeout=30, params={
                 "metric": "views,likes", "access_token": os.environ["INSTAGRAM_TOKEN"]}).json()
+            if "error" in d:
+                print(f"instagram numbers for {r['media_id']}: {str(d['error'].get('message', ''))[:200]}")
             vals = {m["name"]: m["values"][0]["value"] for m in d.get("data", [])}
             return {k: int(vals[k]) for k in ("views", "likes") if k in vals}
         if platform == "facebook" and r.get("video_id") and os.environ.get("FACEBOOK_PAGE_TOKEN"):
@@ -246,10 +248,15 @@ def platform_stats(platform: str, r: dict) -> dict:
             d = requests.get(f"https://graph.facebook.com/v23.0/{r['video_id']}", timeout=30, params={
                 "fields": "likes.summary(true)", "access_token": tok}).json()
             out = {}
+            for x in (d,):
+                if "error" in x:
+                    print(f"facebook likes for {r['video_id']}: {str(x['error'].get('message', ''))[:200]}")
             if "likes" in d:
                 out["likes"] = int(d["likes"].get("summary", {}).get("total_count", 0))
             ins = requests.get(f"https://graph.facebook.com/v23.0/{r['video_id']}/video_insights", timeout=30, params={
                 "metric": "blue_reels_play_count", "access_token": tok}).json()
+            if "error" in ins:
+                print(f"facebook views for {r['video_id']}: {str(ins['error'].get('message', ''))[:200]}")
             for m in ins.get("data", []):
                 if m.get("name") == "blue_reels_play_count" and m.get("values"):
                     out["views"] = int(m["values"][0]["value"])

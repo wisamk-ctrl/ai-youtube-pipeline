@@ -112,8 +112,12 @@ def monetisation_rows(*, subscribers: float | None, hours_365: float | None, sho
                 eta = "reached"
             elif not pace or pace <= 0 or (rolling and pace < target / 90):
                 eta = "not at this pace"
+            elif -(-(target - cur) // pace) > 3 * 365:
+                eta = "over 3 years at this pace"
             else:
                 eta = (d0 + timedelta(days=-(-(target - cur) // pace))).isoformat()
+            if isinstance(cur, float) and cur.is_integer():
+                cur = int(cur)
             rows.append({"tier": tier, "metric": metric, "current": cur, "target": target, "window": window,
                          "per_day": None if pace is None else round(pace, 2), "needed_per_day": needed, "eta": eta})
     return rows
