@@ -3,7 +3,7 @@ name: channel
 on:
   schedule:
     - cron: "41 11 * * 5"     # Friday 15:41 Gulf: did this week's script run succeed? (script run moved to Friday)
-    - cron: "17 4 * * 0"      # Sunday 08:17 Gulf: is an episode going out today?
+    - cron: "17 16 * * 6"     # Saturday 20:17 Gulf: is an episode going out at the Sunday 07:00 slot?
     - cron: "29 5 * * 1"      # Monday 09:29 Gulf: the weekly numbers
     - cron: "47 * * * *"      # hourly: an episode or Short just went public → the WhatsApp kit (Channel + status)
     - cron: "23 2 * * *"      # daily 06:23 Gulf: channel integrity (renamed, new handle, unknown uploads; scripts/integrity.py)
@@ -46,7 +46,7 @@ jobs:
         run: |
           case "${{ github.event.schedule }}" in
             "41 11 * * 5") c=watch-script ;;
-            "17 4 * * 0") c=watch-publish ;;
+            "17 16 * * 6") c=watch-publish ;;
             "29 5 * * 1") c=report ;;
             "47 * * * *") c=status-kit ;;
             "23 2 * * *") c=integrity ;;

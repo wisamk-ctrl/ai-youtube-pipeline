@@ -1,7 +1,7 @@
 """The show's weekly health: never miss a week, and learn what works.
 
     python scripts/channel.py watch-script     Friday: did this week's script run succeed?
-    python scripts/channel.py watch-publish    Sunday, before 11:00 Gulf: is an episode going out today?
+    python scripts/channel.py watch-publish    Saturday evening: is an episode going out at the Sunday slot?
     python scripts/channel.py report           Monday: views / likes / comments per video and per Short,
                                                the change since last week, watch time when the token allows
 
@@ -96,8 +96,8 @@ def watch_script() -> None:
 
 
 def watch_publish() -> None:
-    """Sunday morning: an episode (over 60 s) is scheduled to go public within the next 12 hours, or went
-    public in the last 24."""
+    """Saturday evening, before the Sunday 07:00 Gulf slot (founder 2026-11-24): an episode (over 60 s) is
+    scheduled to go public within the next 12 hours, or went public in the last 24."""
     vids = videos(token(), 15)
     soon = []
     for v in vids:
@@ -113,9 +113,11 @@ def watch_publish() -> None:
     if soon:
         print("episode ok:", soon)
     else:
-        alarm("No episode is scheduled for today",
-              "Nothing on the channel goes public today. If the week's edit is ready, reply `publish` on the week's "
-              "Review issue: it uploads and goes public at 17:00 Gulf (or as soon as the chapter pictures are ready).")
+        from pipeline.config import load_settings
+        from pipeline.publish.release_status import slot_text
+        alarm("No episode is scheduled for the Sunday slot",
+              "Nothing on the channel goes public in the next 12 hours. If the week's edit is ready, reply `publish` on the week's "
+              "Review issue: it uploads and goes public at the " + slot_text(load_settings()) + " slot.")
 
 
 def retention_points(ratios: list[tuple[float, float]], length_s: float) -> str:

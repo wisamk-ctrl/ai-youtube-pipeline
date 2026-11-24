@@ -26,6 +26,19 @@ ALERTS = ("WHATSAPP_PHONE", "CALLMEBOT_APIKEY")      # WhatsApp alerts to the fo
 Have = Callable[[str], bool]
 
 
+DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+GULF = 4                                              # Gulf Standard Time is UTC+4 all year
+
+
+def slot_text(cfg: dict[str, Any]) -> str:
+    """The weekly release slot in Gulf time, from `publish.publish_weekday` and `publish_hour_utc`, e.g.
+    "Sunday 07:00 Gulf". Every message that states the time uses this, so it cannot drift from the setting."""
+    p = cfg.get("publish", {})
+    hour = int(p.get("publish_hour_utc", 3)) + GULF
+    day = (int(p.get("publish_weekday", 6)) + hour // 24) % 7
+    return f"{DAYS[day]} {hour % 24:02d}:00 Gulf"
+
+
 def in_env(name: str) -> bool:
     return bool(os.environ.get(name, "").strip())
 
@@ -83,7 +96,8 @@ def publish_reply(cfg: dict[str, Any], week: str, have: Have = in_env) -> str:
               "link": "a link post, not the video (the Page has no token of its own)"}
     say_short = {"auto": "automatically", "relay": "through Composio", "drafts": "to your drafts, for you to post",
                  "off": "**not connected**, skipped"}
-    lines = [f"Publishing `{week}`: uploading to YouTube as {privacy} now, public at the Sunday 17:00 Gulf slot."
+    lines = [f"Publishing `{week}`: uploading to YouTube as {privacy} now, public at the {slot_text(cfg)} slot "
+             "(within minutes if that slot has already passed today)."
              if ep["youtube"] == "auto" else f"`{week}`: YouTube is **not connected**, so the episode cannot be uploaded.",
              "", "**The episode, once it is public**",
              f"- LinkedIn: {say_ep[ep['linkedin']]}", f"- Facebook: {say_ep[ep['facebook']]}",

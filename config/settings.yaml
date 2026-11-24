@@ -438,7 +438,7 @@ publish:
   chapter_gate: true          # uploaded private, made public at the release time by scripts/release.py (every 20 min)
   chapter_wait_hours: 0       # 0 = public at the release time whatever the chapter list shows. YouTube makes chapter pictures two to five days after publishing (measured 2026-11-23), so waiting for them only delays the episode (W47-en: 18:40 Gulf, not 17:00)
   publish_weekday: 6          # 0=Mon … 6=Sun
-  publish_hour_utc: 13        # 13:00 UTC = 17:00 Gulf on Sunday (founder 2026-11-17, playbook: Gulf evening, US East morning)
+  publish_hour_utc: 3         # 03:00 UTC = 07:00 Gulf on Sunday (founder 2026-11-24: waiting when the week starts in Riyadh, Amman, Cairo; was 17:00)
   tags: [الذكاء الاصطناعي, أخبار التقنية, AI, ChatGPT, OpenAI, Claude, Gemini, شركات, الإمارات, السعودية]
   hashtags: ["#الذكاء_الاصطناعي", "#أخبار_التقنية", "#AI"]
   tags_en: [AI, AI news, artificial intelligence, OpenAI, Claude, Gemini, NVIDIA, AI agents, Middle East, UAE, Saudi Arabia, enterprise AI]
