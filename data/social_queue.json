@@ -701,5 +701,64 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7530992597457260545"
       }
     }
+  },
+  {
+    "id": "2026-11-24-brk-microsoft-teams-outage-en#1",
+    "week": "2026-11-24-brk-microsoft-teams-outage-en",
+    "lang": "en",
+    "file": "2026-11-24-brk-microsoft-teams-outage-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-24-brk-microsoft-teams-outage-en/2026-11-24-brk-microsoft-teams-outage-en-short-01.mp4",
+    "title": "Microsoft Teams Suffers Outage",
+    "due": "2026-11-24T13:56:36Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Microsoft Teams Suffers Outage\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Microsoft Teams Suffers Outage\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Microsoft Teams Suffers Outage\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Microsoft Teams Suffers Outage\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "More than 130,000 users reported problems when Microsoft's Exchange Online and Teams failed for hours. Computer Weekly calls it a major outage of Microsoft's online applications, and its data shows how deeply the UK public sector relies on these services. The Defiant reports that a Microsoft outage review found gaps in server testing. For Gulf organisations running daily work on the same tools, it is a reminder to ask how operations would continue if they went dark.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T13:58:16Z",
+        "url": "https://youtube.com/shorts/M7JxV3FOt7Q"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T13:58:16Z",
+        "media_id": "18140438494729915",
+        "url": "https://www.instagram.com/reel/DgIHR0LCMji/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T13:58:16Z",
+        "video_id": "1844755750062906",
+        "url": "https://www.facebook.com/reel/1844755750062906",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T13:58:16Z",
+        "publish_id": "v_inbox_file~v2.7711736514471987218",
+        "privacy": "draft",
+        "platform_status": "SEND_TO_USER_INBOX",
+        "url": "in your TikTok drafts",
+        "note": "Open TikTok, tap the inbox notification, turn on the AI-generated label, paste this caption and post:\nMicrosoft Teams Suffers Outage\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-24T13:58:16Z",
+        "post": "urn:li:ugcPost:7530993190594568194",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7530993190594568194"
+      }
+    },
+    "restored": "2026-11-24 from the log of run 45408102136: the queue save dropped this entry after it posted"
   }
 ]

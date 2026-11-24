@@ -87,7 +87,8 @@ def merge_posts(remote: list[dict[str, Any]], ours: list[dict[str, Any]]) -> lis
     """The queue as committed by someone else (`remote`) with this run's posting results laid over it.
 
     A platform record from `ours` wins only when it has more attempts, so a newer result is never undone;
-    everything else (new entries, approvals) comes from `remote`."""
+    everything else (new entries, approvals) comes from `remote`. An entry only this run has (it planned and
+    posted it) is kept: dropping it loses the record of a live post (2026-11-24, a second breaking Short)."""
     mine = {e["id"]: e for e in ours}
     for e in remote:
         o = mine.get(e["id"])
@@ -97,7 +98,8 @@ def merge_posts(remote: list[dict[str, Any]], ours: list[dict[str, Any]]) -> lis
             theirs = e["posts"].get(p, {})
             if int(r.get("attempts", 0)) > int(theirs.get("attempts", 0)):
                 e["posts"][p] = r
-    return remote
+    have = {e["id"] for e in remote}
+    return remote + [e for e in ours if e["id"] not in have]
 
 
 def due_times(first: datetime, count: int, days: list[int], hour_utc: int) -> list[datetime]:

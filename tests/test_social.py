@@ -463,3 +463,24 @@ def test_composio_is_preferred_over_buffer_and_the_direct_token_over_both(monkey
     assert type(social.relay()).__name__ == "Buffer"
     monkeypatch.delenv("BUFFER_API_KEY")
     assert social.relay() is None
+
+
+def test_merge_posts_keeps_an_entry_this_run_planned_and_posted():
+    """2026-11-24: two breaking Shorts were posted one after the other. The second run planned its entry, posted
+    it on five platforms, hit a conflict saving the queue, and the merge kept only entries already on main: the
+    record of a live post was dropped, the run was green, and its "Posted" comment was empty."""
+    remote = [{"id": "a#1", "posts": {"youtube": {"status": "posted", "attempts": 1}}}]
+    ours = [{"id": "a#1", "posts": {"youtube": {"status": "queued"}}},
+            {"id": "b#1", "posts": {"youtube": {"status": "posted", "attempts": 1, "url": "https://youtube.com/shorts/x"}}}]
+    merged = social.merge_posts(remote, ours)
+    assert [e["id"] for e in merged] == ["a#1", "b#1"]
+    assert merged[0]["posts"]["youtube"]["status"] == "posted"            # main's newer record is not undone
+    assert merged[1]["posts"]["youtube"]["url"] == "https://youtube.com/shorts/x"
+
+
+def test_every_breaking_short_posted_today_is_on_record():
+    import json
+    q = json.loads((Path(__file__).resolve().parent.parent / "data" / "social_queue.json").read_text(encoding="utf-8"))
+    teams = [e for e in q if e["id"] == "2026-11-24-brk-microsoft-teams-outage-en#1"]
+    assert len(teams) == 1 and {r["status"] for r in teams[0]["posts"].values()} == {"posted"}
+    assert teams[0]["posts"]["youtube"]["url"] == "https://youtube.com/shorts/M7JxV3FOt7Q"
