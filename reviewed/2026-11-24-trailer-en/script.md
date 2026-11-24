@@ -18,5 +18,8 @@ And what does it mean here? If you run a company in the region: where will your 
 [Visual: title Wissam's view]
 Plus one thing you won't get anywhere else. Wissam's own view, from 25 years of selling technology across this region.
 
+[Visual: title 15 minutes, once a week]
+Fifteen minutes, once a week. Built for people who make decisions in the Gulf, the Levant, Türkiye and Africa.
+
 [Visual: title Every Sunday]
 AI This Week. A new episode every Sunday. Subscribe.
