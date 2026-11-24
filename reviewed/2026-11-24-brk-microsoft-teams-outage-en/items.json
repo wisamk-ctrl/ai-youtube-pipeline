@@ -1,0 +1,38 @@
+[
+  {
+    "source": "Computer Weekly",
+    "source_type": "rss",
+    "title": "Microsoft outage – what went wrong?",
+    "summary": "In this week’s Computer Weekly, after Microsoft’s online applications suffered a major outage, we examine what went wrong. Everyone is talking about Nvidia – but could there be alternative chip makers at the heart of AI datacentres? And Starling Bank talks about implementing AI in a highly regulated environment. Read the issue now. More than 130,000 users reported problems as Exchange Online and Teams failed for hours. Computer Weekly’s data shows how deeply the UK public sector relies on these services Driven by rising inference demands and power constraints, datacentres are evolving beyond Nvidia dominance towards alternative silicon, custom accelerators and edge sites We speak to Starling Bank’s deputy CIO, Frédéric Laurent, about how he uses artificial intelligence for coding personally and in his day job",
+    "url": "https://www.computerweekly.com/ezine/Computer-Weekly/Microsoft-outage-what-went-wrong",
+    "published": "2026-11-24T10:39:08+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "NVIDIA"
+    ],
+    "id": "ad38c0b385"
+  },
+  {
+    "source": "The Defiant",
+    "source_type": "rss",
+    "title": "Microsoft Outage Review Finds Gaps in Server Testing",
+    "summary": "Microsoft Outage Review Finds Gaps in Server Testing The Defiant",
+    "url": "https://thedefiant.io/frontier/infrastructure/microsoft-outage-review-finds-gaps-in-server-testing",
+    "published": "2026-11-24T01:04:40+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "136b84109f"
+  }
+]

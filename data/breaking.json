@@ -290,6 +290,17 @@
    "at": "2026-11-24T09:14+00:00",
    "title": "Amazon, Decart'ı 7,5 milyar dolara satın aldı",
    "week": "2026-11-24-brk-amazon-buys-decart-en"
+  },
+  "microsoft blames software flaw  traffic surge and reduced capacity for global mi": {
+   "at": "2026-11-24T13:10+00:00",
+   "title": "Microsoft Blames Software Flaw, Traffic Surge and Reduced Capacity for Global Microsoft 365 Outage",
+   "skipped": true,
+   "why": "outage with no measured impact in the articles and too few outlets"
+  },
+  "microsoft outage   what went wrong": {
+   "at": "2026-11-24T13:10+00:00",
+   "title": "Microsoft outage – what went wrong?",
+   "week": "2026-11-24-brk-microsoft-teams-outage-en"
   }
  }
 }
