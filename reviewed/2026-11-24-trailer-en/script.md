@@ -1,25 +1,25 @@
 [Section: AI This Week]
 
 [Face]
-I'm not Wissam Kishek. I'm his AI twin.
-
-[Visual: title Your board will ask]
-Your board will ask what AI means for your business. Have the answer first.
+AI news moves fast. Most of it misses what it means for our region.
 
 [Visual: stock glowing sphere of connections, AI model]
-Most AI news is written for Silicon Valley. Not for Riyadh, Amman, Istanbul or Lagos.
+So every week, we take the stories that matter and give you three things.
 
 [Visual: title What happened]
-Every Sunday, in fifteen minutes: what happened, with a source for every fact.
+What happened. The facts, with a source for every one.
 
 [Visual: title What it means for you]
-What it means for your business, your team, your market.
+What it means for you. Your business, your team, your market.
 
 [Visual: title Wissam Kishek's view]
-And the real Wissam Kishek's view, from 25 years selling technology across this region.
+And the view of Wissam Kishek, from 25 years of selling technology and leading teams across this region.
+
+[Visual: title 15 minutes, once a week]
+Fifteen minutes, once a week. Built for people who make decisions in the Gulf, the Levant, Türkiye and Africa.
 
 [Visual: stock mobile network towers over a city at night, gold signal waves]
-When news breaks, a Short the same day.
+And when news breaks, a quick Short the same day.
 
-[Visual: title AI This Week]
-AI This Week. Subscribe, and be the one with the answer.
+[Visual: title Every Sunday]
+AI This Week. A new episode every Sunday. Subscribe.
