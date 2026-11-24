@@ -58,8 +58,16 @@ CLAUDE.md (facts traced to a source, no invented figures, no investment advice, 
 - The description carries the digital-twin disclosure and "informational only, not financial advice".
 
 ## Shorts
-- Two to three a week, each re-edited: a new opening line of 2 to 3 seconds that is not the episode's
-  own sentence, and a pointer to the full episode in the last 5 seconds. Raw cuts rank worse.
+- One or two a day (founder 2026-11-24, to grow Shorts views): breaking Shorts as news lands, plus up to seven
+  explainer Shorts a week from the approved ranking. Each opens with a new line of its own that is not the
+  episode's sentence, and points to the full episode at the end. Raw cuts rank worse.
+- The first two seconds decide a swipe (founder 2026-11-24): the voice starts at once, with the opening line laid
+  over the picture for 2 s (`post.shorts.hook_mode: overlay`), not on a card before it.
+- 20 to 35 seconds (55 to 80 spoken words, 6 to 9 lines). The first line names the best-known company, product or
+  person in the story; the regional angle comes after it.
+- The last line asks viewers a short question they can answer in the comments, never about money, investing,
+  law, tax or health.
+- Judge each change on the dashboard: % watched and views in the first two days, per Short.
 
 ## Publishing
 - Upload on Saturday as private and scheduled; it goes public on Sunday at 17:00 Gulf time, so the
@@ -73,12 +81,12 @@ per month (670 a month is 8,000 a year, the threshold from 1 February 2027).
 ## Breaking-news Shorts (founder 2026-11-18)
 - Viewers called the week-old Shorts "old news". Shorts now go out the day the news breaks; the Sunday episode
   carries the fuller story and the regional lens.
-- Flow: the news watch (every two hours) flags a story → a 40–50 s Short is made from the collected articles
+- Flow: the news watch (every two hours) flags a story → a 20–35 s Short is made from the collected articles
   (every claim traced, `reviewed/<date>-brk-<slug>-en/`, with `breaking.yaml`) → sent to the founder → posted to
   YouTube, TikTok and LinkedIn within a couple of hours of his OK.
 - It ends with "More on this in Sunday's episode of AI This Week. Follow so you don't miss it."
 - Pace (founder 2026-11-23, viewers found the Shorts slow): every Short, breaking or explainer, is spoken faster
-  than the episode (`video.voicefirst.tempo_short_en`), in 9 to 12 short lines with a new picture on each, and its
+  than the episode (`video.voicefirst.tempo_short_en`), in 6 to 9 short lines with a new picture on each, and its
   first line reaches the point in 10 words at most. The episode keeps its calmer pace. The rule lives in
   `pipeline/breaking.py` (`SHAPE`).
 - Pace varies (founder 2026-11-24, one quick pace throughout was too fast): the opening line and the closing line
@@ -87,6 +95,6 @@ per month (670 a month is 8,000 a year, the threshold from 1 February 2027).
   queue them, and the two W45 Shorts still waiting were marked skipped.
 - Instagram and TikTok captions carry no WhatsApp link (links are not clickable there): the WhatsApp Channel
   link goes in each profile's bio, set by hand (founder 2026-11-23).
-- Explainer Shorts (founder 2026-11-23): when the week's ranking is approved, its "explainer" candidates (two at
-  most) are written fresh as 40–50 s Shorts that explain one idea, with the same line-by-line source checks as a
+- Explainer Shorts (founder 2026-11-23): when the week's ranking is approved, its "explainer" candidates (seven at
+  most since 2026-11-24, one a day) are written fresh as 20–35 s Shorts that explain one idea, with the same line-by-line source checks as a
   breaking Short and no words that date them. They are not cuts of the episode. Same check and `post <id>` reply.

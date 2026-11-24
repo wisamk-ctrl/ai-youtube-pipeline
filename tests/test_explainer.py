@@ -42,7 +42,7 @@ def draft(ids, first="Where your data lives now decides which AI you can use."):
     return breaking.Draft(newsworthy=True, slug="data residency", title="Where Does Your AI Keep Data?",
                           hook="Where does your AI keep your data?", linkedin="Data residency shapes AI choices.", lines=[
         L(text=first, visual="title: Where does data live?", sources=[ids[0]]),
-        L(text="Here is the example. Etisalat launched AIO, a sovereign AI platform, as Reuters reports it.",
+        L(text="Etisalat launched AIO, a sovereign AI platform, Reuters reports.",
           visual="clip: server hall with one dark row of racks", sources=[ids[0]]),
         L(text="It is hosted in 3 UAE data centers.",
           visual="number: 3 | UAE data centers hosting AIO", sources=[ids[1]]),
@@ -50,7 +50,7 @@ def draft(ids, first="Where your data lives now decides which AI you can use."):
           visual="clip: three data centers linked by bridges of light", sources=[ids[1]]),
         L(text="Why does that matter?",
           visual="clip: server hall with one dark row of racks", sources=[ids[0]]),
-        L(text="Analysts told Reuters that rules on where data lives shape which AI a bank can use.",
+        L(text="Analysts told Reuters data rules shape which AI a bank can use.",
           visual="clip: three data centers linked by bridges of light", sources=[ids[0]]),
         L(text="So the first question for any AI tool is not what it can do.",
           visual="clip: server hall with one dark row of racks", sources=[ids[0]]),

@@ -61,11 +61,15 @@ class Verdict(BaseModel):
                        "the company says, not that the outlet reports it'")
 
 
-# Pace (founder 2026-11-23: viewers found the Shorts slow). One rule for breaking and explainer Shorts; mechanical()
+# Pace (founder 2026-11-23: viewers found the Shorts slow; 2026-11-24: shorter Shorts, 20-35 s, are watched to the
+# end more often and are pushed further by the Shorts feed). One rule for breaking and explainer Shorts; mechanical()
 # enforces it with a little slack. More, shorter lines also mean a new picture every three to four seconds.
-SHAPE = ("- 95 to 120 spoken words in total, 9 to 12 lines. One short, punchy sentence a line, 14 words at most. The first "
-         "line is at most 10 words and goes straight to the point: no warm-up, no scene-setting.")
-LINES, LINE_WORDS, FIRST_WORDS = (8, 13), 18, 12
+SHAPE = ("- 55 to 80 spoken words in total, 6 to 9 lines. One short, punchy sentence a line, 14 words at most. The first "
+         "line is at most 10 words and goes straight to the point: no warm-up, no scene-setting. It names the "
+         "best-known company, product or person in the story (OpenAI, NVIDIA, Apple, a named CEO): a global name "
+         "stops the scroll, and the regional angle comes after it.")
+LINES, LINE_WORDS, FIRST_WORDS = (5, 10), 18, 12
+WORDS = (45, 95)
 
 SYSTEM = """You write breaking-news YouTube Shorts for «AI This Week», an English AI-news show for business people in
 the Gulf, presented by the host's AI digital twin. You draft one Short from the articles given.
@@ -78,8 +82,9 @@ Rules:
   shows a figure that is also spoken, in digits, in its line.
 - An outage or service failure: say how many were affected (people, customers, flights, reports) as the articles
   measure it, in the first three lines. If no article measures it, set newsworthy=false.
-- Start with what happened. End with one line on what it means for businesses or governments in the Gulf, framed as
-  something to watch, with no figures and sources [].
+- Start with what happened. End with one line on what it means for businesses or governments in the Gulf, asked as a
+  short question viewers can answer in the comments ("Would your company trust one cloud provider now?"), with no
+  figures and sources []. The question never asks about money, investing, law, tax or health.
 - No advice: never tell anyone to buy, sell, invest or act on money, law, tax or health. No opinions on politics.
 - Visuals: one per line. Use 'clip: <key>' with a key copied exactly from the clip library, or a title card
   'title: <at most 6 words>', or 'number: <figure> | <label>'. At most two cards; no two lines in a row with the
@@ -210,10 +215,10 @@ def mechanical(d: Draft, items: list[NewsItem], library: list[str]) -> list[str]
     by_id = {i.id: i for i in items}
     problems = []
     words = sum(len(ln.text.split()) for ln in d.lines)
-    if not 70 <= words <= 135:
-        problems.append(f"{words} spoken words; keep it between 85 and 120")
+    if not WORDS[0] <= words <= WORDS[1]:
+        problems.append(f"{words} spoken words; keep it between 55 and 80")
     if not LINES[0] <= len(d.lines) <= LINES[1]:
-        problems.append(f"{len(d.lines)} lines; use 9 to 12 short ones")
+        problems.append(f"{len(d.lines)} lines; use 6 to 9 short ones")
     if d.lines and len(d.lines[0].text.split()) > FIRST_WORDS:
         problems.append(f"the first line has {len(d.lines[0].text.split())} words; open in 10 at most")
     if len(d.title) > 34:

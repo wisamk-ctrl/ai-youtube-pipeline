@@ -45,8 +45,9 @@ Rules:
   names or dates from memory. Attribute claims ("Reuters reports", "the company says"). Allegations stay allegations.
 - Figures exactly as the articles give them, written as digits. A number card shows a figure that is also spoken,
   in digits, in its line.
-- End with one line on what the idea means for businesses or governments in the region, framed as something to
-  watch or ask, with no figures and sources [].
+- End with one line on what the idea means for businesses or governments in the region, asked as a short question
+  viewers can answer in the comments, with no figures and sources []. The question never asks about money,
+  investing, law, tax or health.
 - title: the idea in at most 32 characters, as a question or a plain statement. hook: at most 8 words.
 - No advice: never tell anyone to buy, sell, invest or act on money, law, tax or health. No opinions on politics.
 - Visuals: one per line. Use 'clip: <key>' with a key copied exactly from the clip library, or a title card

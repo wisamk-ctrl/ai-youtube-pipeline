@@ -155,14 +155,14 @@ def test_a_short_is_many_short_lines_with_a_quick_first_one():
     long_line.lines[2].text = "More systems followed in the days after it, " * 3
     assert any("line 3" in p and "words" in p for p in breaking.mechanical(long_line, items, LIB))
     few = good_draft(ids)
-    few.lines = few.lines[:3] + few.lines[-3:]
+    few.lines = few.lines[:2] + few.lines[-2:]
     assert any("lines" in p for p in breaking.mechanical(few, items, LIB))
 
 
 def test_breaking_and_explainer_shorts_share_one_pace_rule():
     from pipeline import explainer
     assert breaking.SHAPE in breaking.SYSTEM and breaking.SHAPE in explainer.SYSTEM
-    assert "9 to 12 lines" in breaking.SHAPE
+    assert "6 to 9 lines" in breaking.SHAPE
 
 
 def test_a_short_is_spoken_faster_than_the_episode():

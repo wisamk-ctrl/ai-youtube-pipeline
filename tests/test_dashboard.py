@@ -33,7 +33,8 @@ def test_writes_every_file_with_the_dashboard_columns(tmp_path):
                    "avg_view_seconds": "100"}]
     v = read(tmp_path / "youtube_videos.csv")
     assert v[0] == {"type": "Episode", "origin": "", "title": "Ep one", "url": "https://youtu.be/abc", "views": "50",
-                    "views_7d": "10", "likes": "4", "comments": "0", "subscribers_gained": ""}
+                    "views_7d": "10", "likes": "4", "comments": "0", "subscribers_gained": "",
+                    "avg_viewed_pct": "", "views_first_2_days": ""}
     assert read(tmp_path / "retention.csv")[0]["episode"] == "Ep one"
     p = {r["platform"]: r for r in read(tmp_path / "platforms.csv")}
     assert p["YouTube"]["posted"] == "1" and p["YouTube"]["followers"] == "20" and p["TikTok"]["waiting"] == "1"
@@ -207,7 +208,9 @@ def test_alerts_and_post_stats(tmp_path):
     assert row["instagram_views"] == 120 and row["instagram_likes"] == 4 and row["facebook_views"] is None
     db.write_files(tmp_path, as_of="2026-11-24", channel={}, analytics=None, videos=[("Short", "S", 7, 7, 0, 1, "a")],
                    retention=[], queue=q, runs=[], video_subs={}, post_stats={"f1": {"views": 9}},
+                   video_pct={"a": 71.4}, first_days={"a": 12},
                    money=[], weekdays=[], episode=[], alerts=alerts)
-    assert read(tmp_path / "youtube_videos.csv")[0]["subscribers_gained"] == "0"
+    v = read(tmp_path / "youtube_videos.csv")[0]
+    assert v["subscribers_gained"] == "0" and v["avg_viewed_pct"] == "71.4" and v["views_first_2_days"] == "12"
     assert read(tmp_path / "posts.csv")[0]["facebook_views"] == "9"
     assert len(read(tmp_path / "alerts.csv")) == 3

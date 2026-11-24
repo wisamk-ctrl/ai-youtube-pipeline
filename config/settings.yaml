@@ -192,7 +192,8 @@ ranking:
   # The Africa and Türkiye seats are scoring.min_per_region above; they apply to the slots too. A seat story
   # takes a quick slot only from deep.min_total up; a weaker one gets a radar line (founder 2026-11-23).
   shorts:
-    max: 3                    # candidates: one fact + one implication + one question, no figure outside the sources
+    max: 7                    # candidates: one fact + one implication + one question, no figure outside the sources
+                              # (7 = one explainer a day, founder 2026-11-24: more Shorts, more chances in the feed)
     breaking_hours: 48        # "breaking context" only for news this fresh
 
 radar:
@@ -398,11 +399,15 @@ post:
     enabled: true
     face: true                # a small still of the presenter at the left
   shorts:                     # native 9:16 Shorts (post/shorts.py); --shorts "a-b,c-d" overrides the picker
-    hook_seconds: 1.5         # the opening card before the voice starts (was 2.5 s; 2026-11-19: speech sooner keeps scrollers)
+    hook_seconds: 2.0         # how long the opening line shows (overlay: over the first seconds of speech)
+    hook_mode: overlay        # overlay: the voice starts at once, the line over the picture (founder 2026-11-24:
+                              # the first 2 s decide a swipe); card: a full-screen card before the voice (until then)
     enabled: true
-    count: 3
-    min_seconds: 30
-    max_seconds: 58           # + the 2 s «الحلقة الكاملة على القناة» card
+    count: 3                  # clips per episode (they are not posted since 2026-11-23: "old news"; the daily
+                              # Shorts are breaking and explainer Shorts)
+    min_seconds: 20
+    max_seconds: 35           # + the end card (was 30-58 s; shorter Shorts are watched to the end more often)
+    target_seconds: 28
 
 # USD per million tokens, from anthropic.com/pricing. Left empty on purpose: the meter reports
 # tokens either way and only prints a cost once these are filled in.
@@ -486,7 +491,7 @@ breaking:                     # breaking-news Shorts drafted from the news watch
 
 explainer:                    # explainer Shorts drafted from the approved ranking (pipeline/explainer.py; founder 2026-11-23)
   enabled: true
-  max_per_week: 2             # nothing posts without `post <id>`
+  max_per_week: 7             # one a day (founder 2026-11-24, was 2); nothing posts without `post <id>`
   jobs: [explainer, moment, breaking]   # which of the ranking's Shorts candidates are written up, in this order (the judge rarely says "explainer"; [explainer] restores the narrow rule)
 
 # Daily health check (scripts/health.py): the longest each scheduled workflow may go without a SUCCESSFUL run before

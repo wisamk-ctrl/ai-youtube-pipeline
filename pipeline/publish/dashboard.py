@@ -293,7 +293,8 @@ def write_files(out: Path, *, as_of: str, channel: dict[str, Any], analytics: tu
                 hours_365: float | None = None, curves: list[tuple] | None = None,
                 chapter_rows: list[tuple[str, int, str]] | None = None, countries: list[tuple] | None = None,
                 traffic: list[tuple] | None = None, needs: list[dict[str, str]] | None = None,
-                video_subs: dict[str, int] | None = None, post_stats: dict[str, dict[str, Any]] | None = None,
+                video_subs: dict[str, int] | None = None, video_pct: dict[str, float] | None = None,
+                first_days: dict[str, int] | None = None, post_stats: dict[str, dict[str, Any]] | None = None,
                 money: list[dict[str, Any]] | None = None, weekdays: list[dict[str, Any]] | None = None,
                 episode: list[dict[str, Any]] | None = None, alerts: list[dict[str, str]] | None = None) -> None:
     """analytics: (views, minutes watched, average view s, subscribers gained) for the last 7 days, or None when
@@ -311,11 +312,13 @@ def write_files(out: Path, *, as_of: str, channel: dict[str, Any], analytics: tu
     titles = titles or {}
     full = lambda i, t: re.sub(r"\s*#Shorts\s*$", "", titles.get(i, t))   # noqa: E731
     subs = video_subs if video_subs is not None else {}
+    pct, first = video_pct or {}, first_days or {}
     _write(out / "youtube_videos.csv", ["type", "origin", "title", "url", "views", "views_7d", "likes", "comments",
-                                        "subscribers_gained"],
+                                        "subscribers_gained", "avg_viewed_pct", "views_first_2_days"],
            [{"type": k, "origin": short_origin(i, queue) if k == "Short" else "", "title": full(i, t),
              "url": f"https://youtu.be/{i}", "views": v, "views_7d": d, "likes": l, "comments": c,
-             "subscribers_gained": subs.get(i, 0 if video_subs is not None else None)}
+             "subscribers_gained": subs.get(i, 0 if video_subs is not None else None),
+             "avg_viewed_pct": pct.get(i), "views_first_2_days": first.get(i)}
             for k, t, v, d, l, c, i in videos])
     _write(out / "retention_curve.csv", ["episode", "second", "watching_pct"],
            [r for t, c, n in (curves or []) for r in curve_rows(t, c, n)])

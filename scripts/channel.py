@@ -305,6 +305,24 @@ def post_stats(queue: list[dict], limit: int = 40) -> dict[str, dict]:
     return out
 
 
+def first_days_views(tok: str, video_id: str, published: str) -> int | None:
+    """A Short's views on its first two calendar days (UTC), once both days are over and YouTube has them: the
+    number that shows within days whether a new opening or length works (founder 2026-11-24)."""
+    day0 = datetime.fromisoformat(published.replace("Z", "+00:00")).date()
+    if (NOW.date() - day0).days < 4:   # YouTube's numbers lag two to three days
+        return None
+    try:
+        a = requests.get("https://youtubeanalytics.googleapis.com/v2/reports", timeout=30,
+                         headers={"Authorization": f"Bearer {tok}"},
+                         params={"ids": "channel==MINE", "startDate": day0.isoformat(),
+                                 "endDate": (day0 + timedelta(days=1)).isoformat(), "metrics": "views",
+                                 "filters": f"video=={video_id}"})
+        rows = a.json().get("rows") if a.status_code == 200 else None
+        return int(rows[0][0]) if rows else (0 if a.status_code == 200 else None)
+    except (requests.RequestException, ValueError, IndexError, TypeError):
+        return None
+
+
 def episode_week(now: datetime) -> str:
     """The week of the next Sunday episode (on Sunday itself, today's)."""
     y, w, _ = (now + timedelta(days=(6 - now.weekday()) % 7)).isocalendar()
@@ -428,8 +446,13 @@ def report(keep: bool = True) -> None:
             subs_per_day=(float(m28[0][0]) - float(m28[0][1])) / 28 if m28 and m28[0] else None,
             hours_per_day=longmin(kinds28) / 60 / 28 if kinds28 else None,
             shorts_per_day=shorts(kinds28) / 28 if kinds28 else None, today=NOW.strftime("%Y-%m-%d"))
-        vsubs = {str(r[0]): int(r[1]) for r in analytics_rows(tok, 365, dimensions="video", metrics="subscribersGained",
-                                                             sort="-subscribersGained", maxResults=200)}
+        per_video = analytics_rows(tok, 365, dimensions="video", metrics="subscribersGained,averageViewPercentage",
+                                   sort="-subscribersGained", maxResults=200)
+        vsubs = {str(r[0]): int(r[1]) for r in per_video}
+        vpct = {str(r[0]): round(float(r[2]), 1) for r in per_video if len(r) > 2}
+        first2 = {v["id"]: first_days_views(tok, v["id"], v["snippet"]["publishedAt"]) for v in vids
+                  if v["status"].get("privacyStatus") != "private"
+                  and seconds(v["contentDetails"].get("duration")) <= 180}
         days = [tuple(r) for r in analytics_rows(tok, 90, dimensions="day", metrics="views,estimatedMinutesWatched")]
         wk = episode_week(NOW)
         try:
@@ -442,7 +465,8 @@ def report(keep: bool = True) -> None:
             ROOT / "data" / "dashboard", as_of=NOW.strftime("%Y-%m-%d"), channel=ch, analytics=week,
             videos=rows, retention=[(t, dashboard.retention_numbers(c, n)) for t, c, n in curves],
             queue=queue, runs=runs,
-            video_subs=vsubs if vsubs or days else None, post_stats=post_stats(queue), money=money,
+            video_subs=vsubs if vsubs or days else None, video_pct=vpct,
+            first_days={k: v for k, v in first2.items() if v is not None}, post_stats=post_stats(queue), money=money,
             weekdays=dashboard.weekday_rows(days),
             episode=dashboard.episode_steps(
                 wk, issue, os.environ.get("GITHUB_REPOSITORY_OWNER", "wisamk-ctrl"),

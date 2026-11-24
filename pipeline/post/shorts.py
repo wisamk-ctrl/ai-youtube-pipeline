@@ -205,6 +205,19 @@ padding:0 84px;box-sizing:border-box;font-family:{TEXT}}}
 </style></head><body dir="{ui("dir")}"><div class="k">{html.escape(show)}</div><div class="h">{html.escape(hook)}</div><div class="bar"></div></body></html>"""
 
 
+def hook_overlay_html(hook: str, mid_y: int) -> str:
+    """The opening line as a band over the story's picture, for its first seconds while the voice already runs
+    (founder 2026-11-24): the Short still opens with its own new line, but nobody waits through a card."""
+    size = 96 if len(hook) <= 32 else 80 if len(hook) <= 52 else 68
+    mid_h = round(W * 9 / 16 / 2) * 2
+    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}
+html,body{{margin:0;width:{W}px;height:{H}px;background:transparent;overflow:hidden}}
+.b{{position:absolute;left:0;right:0;top:{mid_y + mid_h // 2}px;transform:translateY(-50%);background:rgba(11,22,40,.86);
+padding:44px 72px;box-sizing:border-box;color:{SAND};font:800 {size}px/1.06 {DISPLAY};letter-spacing:-.03em;
+border-top:10px solid {GOLD}}}
+</style></head><body dir="{ui("dir")}"><div class="b">{html.escape(hook)}</div></body></html>"""
+
+
 def hooks_for(out_dir: Path) -> dict[str, str]:
     """Opening lines by section title: the founder's `reviewed/<week>/shorts.yaml` first, then the plan's
     `short_hooks` (written with the title options). A section with no line gets no opening card."""
@@ -262,8 +275,10 @@ def _timed(*args: str) -> bool:
 
 def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: int = 30, hook: float = 0.0,
                  bed: tuple[int, float] | None = None, voice_gain: float | None = None,
-                 card: float = CARD_SECONDS, outro: tuple[int, float] | None = None) -> str:
-    """[0]=edit span, [1]=title PNG, [2]=end card PNG, with a hook also [3]=hook PNG and [4]=chime → [v], [a]."""
+                 card: float = CARD_SECONDS, outro: tuple[int, float] | None = None, overlay: float = 0.0) -> str:
+    """[0]=edit span, [1]=title PNG, [2]=end card PNG, with a hook also [3]=hook PNG and [4]=chime → [v], [a].
+    hook: a full-screen card for that long before the voice; overlay: the hook PNG over the first seconds of the
+    story instead, the voice starting at once and no chime."""
     mid_h = round(W * 9 / 16 / 2) * 2                        # 608: the 16:9 picture at full width
     g = [f"[0:v]fps={fps},setsar=1,split=2[a][b]",
          f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=28:2,eq=brightness=-0.18:saturation=0.8[bg]",
@@ -297,6 +312,9 @@ def filter_graph(span_s: float, mid_y: int, srt: Path | None, font: str, fps: in
         g.append(f"[m5][3:v]overlay=0:0:shortest=1:enable='lt(t,{hook})',format=yuv420p[v]")
         g.append("[4:a]aformat=sample_rates=48000:channel_layouts=stereo,volume=-6dB,adelay=150:all=1[ch]")
         mix.append("[ch]")
+    elif overlay:
+        g.append(f"{end}[m5]")
+        g.append(f"[m5][3:v]overlay=0:0:shortest=1:enable='lt(t,{overlay})',format=yuv420p[v]")
     else:
         g.append(f"{end},format=yuv420p[v]")
     if outro is not None:   # the spoken pointer to the episode, over the end card (founder 2026-11-18)
@@ -333,7 +351,8 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
                 sp.title = near[-1].title
     else:
         spans = pick_spans(script, srt, int(s.get("count", 3)), float(s.get("min_seconds", 30)),
-                           float(s.get("max_seconds", 58)), skip_intro=frozenset(hooks_for(out_dir)))
+                           float(s.get("max_seconds", 58)), float(s.get("target_seconds", 45)),
+                           skip_intro=frozenset(hooks_for(out_dir)))
     if not spans:
         log.info("Shorts: no span of 30–60 s on one story found")
         return []
@@ -399,13 +418,19 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
                     if pre > 0.02 else "")
             log.info("Short %d: %s, %.1f–%.1f s", k, sp.title, sp.start, sp.end)
             hook_s = float(cfg.get("post", {}).get("shorts", {}).get("hook_seconds", HOOK_SECONDS))
-            lead, extra, hook_png = (hook_s if hook_text else 0.0), [], dest_dir / f"hook_{k:02d}.png"
+            over = str(cfg.get("post", {}).get("shorts", {}).get("hook_mode", "card")) == "overlay"
+            lead, extra, hook_png = (hook_s if hook_text and not over else 0.0), [], dest_dir / f"hook_{k:02d}.png"
             if hook_text:   # the browser is used here, in order; the encodes below run side by side
-                r.still(hook_html(hook_text, _show_name(cfg)), hook_png)
+                if over:
+                    r.still(hook_overlay_html(hook_text, mid_y), hook_png, transparent=True)
+                else:
+                    r.still(hook_html(hook_text, _show_name(cfg)), hook_png)
                 extra = ["-loop", "1", "-i", str(hook_png), "-i", str(chime)]
+            over_s = hook_s if hook_text and over else 0.0
 
             def encode(k=k, sp=sp, span_s=span_s, sub=sub, dest=dest, clip=clip, hold=hold, mid_y=mid_y,
-                       title_png=title_png, hook_png=hook_png, hook_text=hook_text, lead=lead, extra=extra):
+                       title_png=title_png, hook_png=hook_png, hook_text=hook_text, lead=lead, extra=extra,
+                       over_s=over_s):
                 if not _timed("-ss", f"{sp.start:.3f}", "-t", f"{span_s:.3f}", "-i", str(video),
                               "-vf", f"{hold}scale={SRC_W}:{SRC_H},setsar=1,fps={fps},format=yuv420p", "-af", "aresample=48000",
                               "-c:v", "libx264", "-preset", "veryfast", "-crf", "14", "-c:a", "pcm_s16le", str(clip)):
@@ -421,7 +446,8 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
                         *(["-i", str(outro_file)] if outro_s else []),
                         "-filter_complex", filter_graph(span_s, mid_y, sub, _font(), fps, lead,
                                                         (5 if extra else 3, bed_gain) if bed_wav else None, voice_gain,
-                                                        card, ((5 if extra else 3) + (1 if bed_wav else 0), outro_gain) if outro_s else None),
+                                                        card, ((5 if extra else 3) + (1 if bed_wav else 0), outro_gain) if outro_s else None,
+                                                        over_s),
                         "-map", "[v]", "-map", "[a]", "-t", f"{lead + span_s + card:.3f}",
                         # veryfast crf 17 ≈ medium crf 19 in picture quality, at a quarter of the CPU (2026-11-21)
                         "-c:v", "libx264", "-crf", "17", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", str(fps),
