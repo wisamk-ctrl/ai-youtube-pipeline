@@ -1,5 +1,6 @@
-Channel trailer, written by hand 2026-11-24 with the founder. Not an episode: it reports no news and names no company.
-- It describes the show: what happened, what it means for the viewer, and Wissam Kishek's view.
-- "A source for every one" is the channel's own rule (CLAUDE.md: every claim traces to a source item).
-- "25 years" is the founder's own experience, as in every episode's welcome line. "Fifteen minutes" is the episode length he gave.
-- The twin's face opens it (first line, founder 2026-11-24); the rest is voice over cards. The pipeline adds its AI-disclosure label.
+Channel trailer v5, written 2026-11-24 with the founder after a second council round. Not an episode: it reports
+no news and names no company.
+- The twin's face says the first line, which is also its disclosure; the pipeline adds its consent label.
+- "A source for every fact" is the channel's own rule. "25 years" is the founder's own experience. "Fifteen minutes"
+  is the episode length he gave. The four cities are examples of the audience, not claims.
+- No figures, no investment wording.
