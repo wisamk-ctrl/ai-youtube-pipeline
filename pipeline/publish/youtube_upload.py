@@ -45,14 +45,16 @@ def build_description(plan: dict[str, Any], sources: list[dict[str, Any]], cfg: 
     return desc.build_description(plan, sources, cfg, **kw)
 
 
-def next_publish_time(cfg: dict[str, Any]) -> datetime:
-    """Next occurrence of the configured weekday/hour, in UTC."""
+def next_publish_time(cfg: dict[str, Any], now: datetime | None = None) -> datetime:
+    """Next occurrence of the configured weekday/hour, in UTC. On the publish day itself, after the slot, the
+    episode goes out within minutes, not a week later (2026-11-24: with the slot at 07:00 Gulf, a `publish`
+    sent on Sunday morning would otherwise have waited seven days)."""
     p = cfg["publish"]
-    now = datetime.now(timezone.utc)
+    now = now or datetime.now(timezone.utc)
     target = now.replace(hour=p["publish_hour_utc"], minute=0, second=0, microsecond=0)
     days_ahead = (p["publish_weekday"] - now.weekday()) % 7
     if days_ahead == 0 and target <= now:
-        days_ahead = 7
+        return (now + timedelta(minutes=15)).replace(second=0, microsecond=0)
     return target + timedelta(days=days_ahead)
 
 

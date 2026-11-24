@@ -34,13 +34,16 @@ def main(kind: str, week: str, extra: str = "") -> None:
     repo = os.environ.get("GITHUB_REPOSITORY", "wisamk-ctrl/ai-youtube-pipeline")
     raw = f"https://github.com/{repo}/raw/previews"
     if kind == "ready":
+        from pipeline.config import load_settings
+        from pipeline.publish.release_status import slot_text
+        slot = slot_text(load_settings())
         body = (f"**Episode ready to check: `{week}`**\n\n"
                 f"▶️ Episode: {raw}/{week}.mp4\n"
                 f"📱 Shorts: {raw}/{week}-files/short_01.mp4 (02, 03 next to it)\n"
                 f"🖼️ Thumbnails: A {raw}/{week}-files/thumbnail.png · B {raw}/{week}-files/thumbnail_b.png "
                 "(A is uploaded; add B in YouTube Studio → the video → Test & Compare)\n\n"
                 "The previews take a few minutes to appear. When you are happy, reply here with:\n\n"
-                "```\npublish\n```\n\nIt uploads unlisted and goes public at the Sunday slot (17:00 Gulf); "
+                "```\npublish\n```\n\nIt uploads and goes public at the weekly slot (" + slot + "); "
                 "LinkedIn and Facebook follow when it is public. No reply, no upload." + (f"\n\n{extra}" if extra else ""))
         from scripts.notify import whatsapp
         whatsapp(f"AI This Week: the episode {week} is rendered. Check it and reply publish on the review issue.\n{raw}/{week}.mp4")

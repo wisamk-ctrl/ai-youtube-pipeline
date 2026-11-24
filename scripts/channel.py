@@ -113,9 +113,11 @@ def watch_publish() -> None:
     if soon:
         print("episode ok:", soon)
     else:
+        from pipeline.config import load_settings
+        from pipeline.publish.release_status import slot_text
         alarm("No episode is scheduled for today",
               "Nothing on the channel goes public today. If the week's edit is ready, reply `publish` on the week's "
-              "Review issue: it uploads and goes public at 17:00 Gulf (or as soon as the chapter pictures are ready).")
+              "Review issue: it uploads and goes public at the " + slot_text(load_settings()) + " slot.")
 
 
 def retention_points(ratios: list[tuple[float, float]], length_s: float) -> str:
