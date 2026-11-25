@@ -5,15 +5,17 @@ usage: python scripts/channel_trailer.py <video.mp4>
 Founder 2026-11-25: "upload it as the channel trailer". The video goes up public (a channel trailer must be
 public), disclosed as synthetic media (the presenter is the AI digital twin), then
 brandingSettings.channel.unsubscribedTrailer is set; every other branding setting is sent back unchanged.
-The trailer is read back afterwards: YouTube has ignored this field for some channels, and then the last
-step stays manual (YouTube Studio → Customisation → Home tab → Channel trailer)."""
+The trailer is read back afterwards, for up to a minute: YouTube applies it with a delay (run 45546994259
+read back empty, yet Studio showed it set). Still empty after that: check it in YouTube Studio → Customisation
+→ Home tab → Channel trailer."""
 from __future__ import annotations
 
 import copy
 import os
 import sys
+import time
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 import requests
 
@@ -44,6 +46,18 @@ def with_trailer(branding: dict[str, Any], video_id: str) -> dict[str, Any]:
     out = copy.deepcopy(branding)
     out.setdefault("channel", {})["unsubscribedTrailer"] = video_id
     return out
+
+
+def confirm(read: Callable[[], str | None], video_id: str, tries: int = 7, wait: float = 10,
+            sleep: Callable[[float], None] = time.sleep) -> bool:
+    """True once the channel reads back `video_id` as its trailer. YouTube applies the setting with a delay
+    (run 45546994259: empty on the first read, set in Studio minutes later), so it asks again `tries` times."""
+    for n in range(tries):
+        if read() == video_id:
+            return True
+        if n < tries - 1:
+            sleep(wait)
+    return False
 
 
 def token() -> str:
@@ -83,10 +97,12 @@ def main(argv: list[str]) -> int:
     if put.status_code >= 400:
         print(f"Trailer not set: {put.status_code} {put.text[:300]}")
         return 1
-    back = requests.get(f"{API}/channels", headers=h, timeout=30, params={"part": "brandingSettings", "id": me["id"]}).json()
-    got = ((back.get("items") or [{}])[0].get("brandingSettings", {}).get("channel", {}) or {}).get("unsubscribedTrailer")
-    if got != vid:
-        print(f"YouTube did not keep the trailer setting (reads back {got!r}): set https://youtu.be/{vid} by hand in "
+    def read() -> str | None:
+        back = requests.get(f"{API}/channels", headers=h, timeout=30, params={"part": "brandingSettings", "id": me["id"]}).json()
+        return ((back.get("items") or [{}])[0].get("brandingSettings", {}).get("channel", {}) or {}).get("unsubscribedTrailer")
+
+    if not confirm(read, vid):
+        print(f"YouTube did not show the trailer setting after a minute: check https://youtu.be/{vid} in "
               "YouTube Studio → Customisation → Home tab → Channel trailer")
         return 2
     print(f"Channel trailer set: https://youtu.be/{vid}")
