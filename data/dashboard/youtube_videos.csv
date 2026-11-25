@@ -1,17 +1,20 @@
 type,origin,title,url,views,views_7d,likes,comments,subscribers_gained,avg_viewed_pct,views_first_2_days
-Episode,,Microsoft's Multi-Day Outage and Anthropic's Record IPO,https://youtu.be/rp0sXtZ9kIc,331,266,36,6,11,21.8,
+Episode,,Microsoft's Multi-Day Outage and Anthropic's Record IPO,https://youtu.be/rp0sXtZ9kIc,333,268,37,6,11,21.8,
 Episode,,"NVIDIA Loses Its CEO, Microsoft 365 Goes Dark, Anthropic's IPO Wobbles",https://youtu.be/epsMiJaq0E0,60,8,6,0,3,25.4,
 Episode,,"ADNOC and G42 Sign OpenAI Deal, GPT-6 Cyber, NVIDIA Vera CPU",https://youtu.be/SiwUgy2lKQc,103,2,10,0,10,25.8,
 Short,Breaking,Jensen Huang Is Back,https://youtu.be/gw0YFFBB7kQ,45,45,1,0,0,,
 Short,Breaking,Jakub Pachocki Urges AI Limits,https://youtu.be/IyLVIFMAXcQ,30,30,1,0,0,,
 Short,Breaking,Amazon Buys Decart for $7.5B,https://youtu.be/aWQThpV0WuU,16,16,0,0,0,,
-Short,Breaking,Microsoft Teams Suffers Outage,https://youtu.be/M7JxV3FOt7Q,10,10,0,0,0,,
+Short,Breaking,Microsoft Teams Suffers Outage,https://youtu.be/M7JxV3FOt7Q,15,15,0,0,0,,
 Short,Breaking,CrowdStrike Buys Zscaler: $44B,https://youtu.be/N46M6NXkqKY,9,9,0,0,0,,
-Short,,"AI This Week | AI news for decision-makers in the Gulf, the Levant, Türkiye and Africa",https://youtu.be/mxYyexP7Ezk,2,2,1,0,0,,
+Short,Breaking,OpenAI Pays Locals to Teach AI,https://youtu.be/CL5sqp6aU74,4,4,0,0,0,,
+Short,Breaking,CIA System Hit by Breach,https://youtu.be/iUL0hKtwGxY,3,3,0,0,0,,
+Short,,"AI This Week | AI news for decision-makers in the Gulf, the Levant, Türkiye and Africa",https://youtu.be/mxYyexP7Ezk,3,3,1,0,0,,
 Short,Breaking,Anthropic Goes Public at $83,https://youtu.be/ihIQxeRtcu4,14,2,0,0,0,41.5,1
 Short,Breaking,California sues OpenAI,https://youtu.be/lTvwhJlOIbA,14,2,1,0,0,59.7,12
 Short,Breaking,Six US Outages in Six Days,https://youtu.be/qTjcBCcUSeM,15,2,1,0,0,122.5,12
 Short,Episode clip,Anthropic's IPO Under Pressure,https://youtu.be/tUCLt4NWJMw,7,1,0,0,0,46.6,1
 Short,Episode clip,ADNOC and G42 with OpenAI,https://youtu.be/5BTcn7jT9wM,12,1,0,0,0,34.4,8
+Short,Breaking,Anthropic Falls Below IPO Price,https://youtu.be/oVa8F63EkjE,0,0,0,0,0,,
 Short,Episode clip,Saudi Arabia's Bunyan Platform,https://youtu.be/k0c2e_L24SQ,3,0,0,0,0,25.2,0
 Short,Episode clip,Jensen Huang Leaves NVIDIA,https://youtu.be/ObuwVd5P-2o,51,0,0,2,1,34.6,13
