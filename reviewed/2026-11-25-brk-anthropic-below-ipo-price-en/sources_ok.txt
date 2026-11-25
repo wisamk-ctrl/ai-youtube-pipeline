@@ -1,0 +1,9 @@
+Drafted automatically 2026-11-25 01:30 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Anthropic shares have fallen below their $83 IPO price.  ← TechCrunch (754f867302), CNBC (f134b5ec81), Forbes (a9f869f13e)
+- (2) TechCrunch reports the stock traded as low as $76 by midday Tuesday.  ← TechCrunch (754f867302)
+- (3) That's down nearly 12% from Monday's close.  ← TechCrunch (754f867302)
+- (4) Observers see it as a barometer for AI valuations.  ← TechCrunch (754f867302)
+- (5) TechCrunch says a weak run could pressure startup valuations and AI IPOs.  ← TechCrunch (754f867302)
+- (6) Nvidia also fell more than 7% by midday.  ← TechCrunch (754f867302)
+- (7) The Motley Fool says nine-month revenue surged 1,200% to $33.24 billion.  ← The Motley Fool (7ed1a00f22)
+- (8) Does this change how your company chooses its AI providers?  ← regional line, no facts
