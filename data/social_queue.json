@@ -975,8 +975,8 @@
         "via": "composio"
       },
       "tiktok": {
-        "status": "failed",
-        "attempts": 2,
+        "status": "skipped",
+        "attempts": 3,
         "error": "Buffer: HTTP 401 /: {\"errors\":[{\"message\":\"Access token is not valid\",\"extensions\":{\"code\":\"UNAUTHENTICATED\"}}]}"
       },
       "linkedin": {
