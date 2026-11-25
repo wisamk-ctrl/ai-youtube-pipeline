@@ -976,7 +976,7 @@
       },
       "tiktok": {
         "status": "failed",
-        "attempts": 1,
+        "attempts": 2,
         "error": "Buffer: HTTP 401 /: {\"errors\":[{\"message\":\"Access token is not valid\",\"extensions\":{\"code\":\"UNAUTHENTICATED\"}}]}"
       },
       "linkedin": {
