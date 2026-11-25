@@ -975,9 +975,8 @@
         "via": "composio"
       },
       "tiktok": {
-        "status": "skipped",
-        "attempts": 3,
-        "error": "Buffer: HTTP 401 /: {\"errors\":[{\"message\":\"Access token is not valid\",\"extensions\":{\"code\":\"UNAUTHENTICATED\"}}]}"
+        "status": "queued",
+        "note": "founder 2026-11-25: Buffer TikTok test, new key"
       },
       "linkedin": {
         "status": "posted",
