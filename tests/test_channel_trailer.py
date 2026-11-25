@@ -16,6 +16,12 @@ def test_the_trailer_is_public_disclosed_and_titled_within_limits():
     assert s["defaultLanguage"] == "en" and s["tags"] == ["AI", "news"]
 
 
+def test_the_description_links_the_channel_from_the_real_settings():
+    import yaml
+    cfg = yaml.safe_load((Path(__file__).resolve().parents[1] / "config" / "settings.yaml").read_text(encoding="utf-8"))
+    assert "Subscribe: https://www.youtube.com/@" in ct.video_body(cfg)["snippet"]["description"]
+
+
 def test_setting_the_trailer_keeps_the_rest_of_the_branding():
     branding = {"channel": {"title": "AI This Week", "keywords": "AI"}, "image": {"bannerExternalUrl": "https://b"}}
     out = ct.with_trailer(branding, "abc123")
