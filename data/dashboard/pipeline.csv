@@ -1,9 +1,9 @@
 job,what_it_does,schedule,last_run_utc,result,note
 weekly,Script run and renders,Fri 06:00 + on demand,2026-11-25 07:19,success,
-news-watch,Spots breaking stories,every 2 h,2026-11-25 16:41,success,
-social,Posts queued Shorts,hourly,2026-11-25 18:28,success,
-release,Makes episodes public,every 20 min,2026-11-25 18:44,success,
-channel,Numbers and WhatsApp kit,hourly + Mon,2026-11-25 18:50,success,
+news-watch,Spots breaking stories,every 2 h,2026-11-25 20:41,success,
+social,Posts queued Shorts,hourly,2026-11-25 21:26,success,
+release,Makes episodes public,every 20 min,2026-11-25 21:44,success,
+channel,Numbers and WhatsApp kit,hourly + Mon,2026-11-25 21:50,success,
 inbox,Daily comment inbox,daily 05:13,2026-11-25 05:19,success,
 breaking-post,Posts an approved breaking Short,on your post reply,2026-11-25 10:15,success,
 approve,Starts the weekly chain,on your approve reply,2026-11-22 07:04,success,
