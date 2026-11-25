@@ -36,7 +36,8 @@ Subscribe: {channel}
 
 def video_body(cfg: dict[str, Any]) -> dict[str, Any]:
     p = cfg.get("publish", {})
-    return {"snippet": {"title": TITLE, "description": DESCRIPTION.format(channel=p.get("channel_url", "")).strip(),
+    channel = cfg.get("social", {}).get("channel_url") or p.get("channel_url", "")
+    return {"snippet": {"title": TITLE, "description": DESCRIPTION.format(channel=channel).strip(),
                         "tags": list(p.get("tags_en", []))[:30], "categoryId": "28",
                         "defaultLanguage": "en", "defaultAudioLanguage": "en"},
             "status": {"privacyStatus": "public", "selfDeclaredMadeForKids": False, "containsSyntheticMedia": True}}
