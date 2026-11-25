@@ -1,0 +1,9 @@
+Drafted automatically 2026-11-25 07:19 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) CIA analysis system breached, The New York Times reports.  ← Saudi Gazette (da28c42e2e)
+- (2) Sources say only unclassified information was exposed, and it's resolved.  ← Saudi Gazette (da28c42e2e)
+- (3) The system handles open source intelligence, like internet and satellite data.  ← Saudi Gazette (da28c42e2e)
+- (4) It's unclear what was taken, or who did it.  ← Saudi Gazette (da28c42e2e)
+- (5) The FBI's national crime database was also recently hacked.  ← Saudi Gazette (da28c42e2e)
+- (6) Apple, JP Morgan Chase and Microsoft also had systems go down this month.  ← Saudi Gazette (da28c42e2e)
+- (7) Intelligence chief Jay Clayton blames rushed upgrades against AI-armed hackers.  ← Saudi Gazette (da28c42e2e)
+- (8) Is your organisation patching fast enough to outpace AI-armed hackers?  ← regional line, no facts

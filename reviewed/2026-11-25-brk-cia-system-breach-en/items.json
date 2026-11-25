@@ -1,0 +1,19 @@
+[
+  {
+    "source": "Saudi Gazette",
+    "source_type": "rss",
+    "title": "US spy agencies hit by cybersecurity breach",
+    "summary": "WASHINGTON — A cybersecurity breach exposed unclassified information on an analysis system used by the Central Intelligence Agency and the Office of the Director of National Intelligence (ODNI), The New York Times reported Tuesday, citing US officials and people familiar with the matter. The breach did not involve any classified information and the issue has been resolved, the sources said. The CIA declined to comment to the newspaper, and the ODNI, which oversees the US intelligence community, did not immediately respond to requests for comment. The breach affected a system that handles open source intelligence, which involves the collection and analysis of publicly available data from sources including the internet, commercial satellites and private data brokers. Though the information is generally public or semi-public, open-source information can give intelligence analysts significant insight on its own or in combination with intelligence obtained from classified spying programs. It was not clear what specific information was compromised or who was responsible. The incident came to light following a series of highly disruptive system failures that unnerved many Americans. Last week, the US Department of Agriculture took internal applications offline following a cybersecurity incident, while the FBI's National Crime Information Center, a nationwide criminal database, was recently hacked, which President Donald Trump called \"not good.\" Separately, the classified network of the National Security Agency (NSA) suffered a dayslong non-cyber outage last week, following a nationwide flight grounding earlier this month blamed on router maintenance. Those incidents followed a nationwide ground stop that snarled air travel after air traffic controllers struggled to communicate with pilots. Apple, JP Morgan Chase and Microsoft also had systems go down this month. The incidents have put a spotlight on the vulnerabilities inside critical infrastructure, banking systems and the digital tools that millions of people use daily. The Trump administration says the series of outages is not part of a coordinated cyberattack and dispatched Director of National Intelligence Jay Clayton to calm Americans in appearances on Sunday morning news shows. Clayton said the outages largely stem from the rush to patch and upgrade systems to stay ahead of hackers who are now empowered with sophisticated artificial intelligence tools to attack at an unprecedented scale.",
+    "url": "https://saudigazette.com.sa/article/666513/world/us-spy-agencies-hit-by-cybersecurity-breach",
+    "published": "2026-11-25T06:22:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "gulf",
+    "entities": [],
+    "id": "da28c42e2e"
+  }
+]
