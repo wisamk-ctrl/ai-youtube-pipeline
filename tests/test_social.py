@@ -484,3 +484,69 @@ def test_every_breaking_short_posted_today_is_on_record():
     teams = [e for e in q if e["id"] == "2026-11-24-brk-microsoft-teams-outage-en#1"]
     assert len(teams) == 1 and {r["status"] for r in teams[0]["posts"].values()} == {"posted"}
     assert teams[0]["posts"]["youtube"]["url"] == "https://youtube.com/shorts/M7JxV3FOt7Q"
+
+
+# ── TikTok through Buffer: public posts without our own app audit (founder 2026-11-25) ───────────────────────
+def test_buffer_tiktok_post_carries_the_ai_generated_label():
+    chans = {"data": {"channels": [{"id": "ch-tt", "name": "aithisweek", "service": "tiktok"}]}}
+    http = FakeHttp({("POST", "api.buffer.com"): [ORGS, chans, _created(), _status("sent", externalLink="https://www.tiktok.com/@aithisweek/video/1")]})
+    out = social.Buffer("key", http=http, sleep=lambda s: None).post("tiktok", "cap", video_url="https://example.com/a.mp4")
+    assert out["url"].startswith("https://www.tiktok.com/") and out["via"] == "buffer"
+    body = [c for c in http.calls if "createPost" in str(c)][0]
+    assert '"tiktok": {"isAiGenerated": true}' in json.dumps(body) and "ch-tt" in json.dumps(body)
+
+
+def _tiktok_env(monkeypatch, buffer=True, native=True):
+    for k in ("BUFFER_API_KEY", "COMPOSIO_API_KEY", "TIKTOK_CLIENT_KEY", "TIKTOK_CLIENT_SECRET", "TIKTOK_REFRESH_TOKEN"):
+        monkeypatch.delenv(k, raising=False)
+    if buffer:
+        monkeypatch.setenv("BUFFER_API_KEY", "b")
+    if native:
+        for k in ("TIKTOK_CLIENT_KEY", "TIKTOK_CLIENT_SECRET", "TIKTOK_REFRESH_TOKEN"):
+            monkeypatch.setenv(k, "x")
+    monkeypatch.setattr(social, "tiktok_poster", lambda cfg: (lambda e, local: {"url": "in your TikTok drafts"}))
+
+
+TT_CFG = {**CFG, "social": {**CFG["social"], "platforms": ["tiktok"], "tiktok_via": "buffer"}}
+TT_ENTRY = {"url": "https://example.com/a.mp4", "title": "Clip", "captions": {"tiktok": "TT text"}}
+
+
+def test_tiktok_goes_through_buffer_when_set(monkeypatch):
+    _tiktok_env(monkeypatch)
+    calls = []
+    monkeypatch.setattr(social.Buffer, "post", lambda self, service, text, **kw: calls.append((service, text, kw)) or {"via": "buffer"})
+    assert social.posters(TT_CFG)["tiktok"](TT_ENTRY, None) == {"via": "buffer"}
+    assert calls == [("tiktok", "TT text", {"video_url": "https://example.com/a.mp4"})]
+
+
+def test_tiktok_falls_back_to_drafts_when_buffer_has_no_tiktok_channel(monkeypatch):
+    _tiktok_env(monkeypatch)
+
+    def refuse(self, service, text, **kw):
+        raise RuntimeError("Buffer: tiktok is not connected in Buffer")
+    monkeypatch.setattr(social.Buffer, "post", refuse)
+    assert social.posters(TT_CFG)["tiktok"](TT_ENTRY, None) == {"url": "in your TikTok drafts"}
+
+
+def test_tiktok_buffer_failure_after_posting_is_not_retried_as_a_draft(monkeypatch):
+    _tiktok_env(monkeypatch)
+
+    def fail(self, service, text, **kw):
+        raise RuntimeError("Buffer tiktok: publishing failed")
+    monkeypatch.setattr(social.Buffer, "post", fail)
+    with pytest.raises(RuntimeError, match="publishing failed"):
+        social.posters(TT_CFG)["tiktok"](TT_ENTRY, None)
+
+
+def test_tiktok_via_buffer_needs_only_the_buffer_key(monkeypatch):
+    _tiktok_env(monkeypatch, native=False)
+    monkeypatch.setattr(social.Buffer, "post", lambda self, *a, **kw: {"via": "buffer"})
+    assert social.posters(TT_CFG)["tiktok"](TT_ENTRY, None) == {"via": "buffer"}
+    _tiktok_env(monkeypatch, buffer=False)
+    assert social.posters(TT_CFG)["tiktok"](TT_ENTRY, None) == {"url": "in your TikTok drafts"}
+
+
+def test_settings_route_tiktok_through_buffer():
+    import yaml
+    s = yaml.safe_load((Path(__file__).resolve().parents[1] / "config/settings.yaml").read_text(encoding="utf-8"))
+    assert s["social"]["tiktok_via"] == "buffer"

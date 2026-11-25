@@ -451,6 +451,7 @@ class Buffer:
         the post's address on the platform once it is live."""
         if video_url:
             meta = ({"type": "reel", "shouldShareToFeed": True, "isAiGenerated": True} if service == "instagram"
+                    else {"isAiGenerated": True} if service == "tiktok"   # TikTok's AI-generated label (founder 2026-11-25)
                     else {"type": "reel"})
         else:
             meta = {"type": "post", **({"linkAttachment": {"url": link}} if link else {})}
@@ -681,6 +682,26 @@ def tiktok_poster(cfg: dict[str, Any]):
     return post
 
 
+def buffer_tiktok_poster(cfg: dict[str, Any], buf: "Buffer"):
+    """TikTok through Buffer (founder 2026-11-25): Buffer is a TikTok-approved partner, so the post goes out
+    public, where our own unaudited app may only fill the founder's drafts. While no TikTok channel is connected
+    in Buffer, the Short still goes to his drafts through our own app. Any other Buffer failure is raised, never
+    retried as a draft: the post may already be live."""
+    native = None
+
+    def post(e: dict[str, Any], local: Path) -> dict[str, Any]:
+        nonlocal native
+        try:
+            return buf.post("tiktok", e["captions"].get("tiktok") or e.get("title", ""), video_url=e["url"])
+        except RuntimeError as exc:
+            if "not connected in Buffer" not in str(exc) or not all(os.environ.get(k) for k in NEEDS["tiktok"]):
+                raise
+            log.warning("TikTok: %s; sending it to the drafts instead", exc)
+            native = native or tiktok_poster(cfg)
+            return native(e, local)
+    return post
+
+
 def linkedin_poster(cfg: dict[str, Any]):
     li = LinkedIn(os.environ["LINKEDIN_TOKEN"], str(cfg.get("social", {}).get("linkedin_version", "202610")))
 
@@ -703,7 +724,9 @@ def posters(cfg: dict[str, Any]) -> dict[str, Callable]:
     out = {}
     via = relay()
     for p in cfg.get("social", {}).get("platforms", PLATFORMS):
-        if all(os.environ.get(k) for k in need[p]):
+        if p == "tiktok" and cfg.get("social", {}).get("tiktok_via") == "buffer" and os.environ.get("BUFFER_API_KEY"):
+            out[p] = buffer_tiktok_poster(cfg, Buffer(os.environ["BUFFER_API_KEY"]))
+        elif all(os.environ.get(k) for k in need[p]):
             try:
                 out[p] = make[p](cfg)
             except Exception as exc:  # noqa: BLE001 — a broken token on one platform must not stop the others
