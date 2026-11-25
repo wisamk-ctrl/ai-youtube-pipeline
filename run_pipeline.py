@@ -526,9 +526,14 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
     _numbers_gate(cfg, out)
     voice = ROOT / "reviewed" / out.name / "voice.yaml"
     chunks = json.loads((out / "voice_pack.json").read_text(encoding="utf-8"))["chunks"]
+    # Optional delivery for this folder only (founder 2026-11-25: the trailer "much more excited"):
+    # reviewed/<week>/speech.yaml with tag (an audio tag such as excited), speed, pitch_variance.
+    import yaml
+    style_file = ROOT / "reviewed" / out.name / "speech.yaml"
+    style = (yaml.safe_load(style_file.read_text(encoding="utf-8")) or {}) if style_file.exists() else None
     if not voice.exists() and (out / "voice.yaml").exists():
         from pipeline.video.tts import is_current
-        if is_current(out / "voice.yaml", chunks):
+        if is_current(out / "voice.yaml", chunks, style):
             voice = out / "voice.yaml"      # voiced automatically on an earlier run, same text
         else:
             log.info("The script changed since the last automatic voice: voicing it again")
@@ -536,7 +541,7 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
         if not os.environ.get("HEYGEN_API_KEY"):
             sys.exit(f"{voice} not found — make the speech and face videos from voice_pack.md first.")
         from pipeline.video.tts import voice_week   # no one in the loop: voice it through the HeyGen API
-        voice = voice_week(chunks, cfg, out / "voice.yaml")
+        voice = voice_week(chunks, cfg, out / "voice.yaml", style=style)
         log.info("Voice step done automatically → %s", voice)
     if voice == out / "voice.yaml" and cfg["video"]["heygen"].get("auto_faces") and os.environ.get("HEYGEN_API_KEY"):
         # No one in the loop: the presenter clips too, through the HeyGen API (pipeline/video/faces.py). Only for a
