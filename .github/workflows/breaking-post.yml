@@ -4,6 +4,11 @@ name: breaking-post
 on:
   issue_comment:
     types: [created]
+  workflow_dispatch:           # the render itself, for a Short the auto-post test lets through (scripts/breaking_auto.py)
+    inputs:
+      week:
+        description: "breaking Short to post, e.g. 2026-11-25-brk-x-en"
+        required: true
 
 permissions:
   contents: write
@@ -17,6 +22,7 @@ concurrency:
 jobs:
   post:
     if: >-
+      github.event_name == 'workflow_dispatch' ||
       github.event.issue.title == 'Breaking Shorts' &&
       github.event.comment.user.login == github.repository_owner &&
       startsWith(github.event.comment.body, 'post ')
@@ -44,7 +50,7 @@ jobs:
       - name: Which Short?
         id: w
         env:
-          BODY: ${{ github.event.comment.body }}
+          BODY: ${{ github.event.comment.body || format('post {0}', inputs.week) }}
         run: |
           w=$(printf '%s' "$BODY" | head -n1 | sed -E 's/^post[[:space:]]+//; s/[^A-Za-z0-9._-].*$//')
           if [ ! -f "reviewed/$w/breaking.yaml" ]; then echo "No breaking Short named '$w'"; exit 1; fi

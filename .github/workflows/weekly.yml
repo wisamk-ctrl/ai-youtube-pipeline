@@ -493,7 +493,12 @@ jobs:
         run: |
           bash scripts/preview.sh text "$WEEK" "output/$WEEK"
           QC=$(python scripts/short_check.py "output/$WEEK/shorts/short_01.mp4" || true)
-          python scripts/breaking_issue.py ready "$WEEK" "$QC"
+          # Founder 2026-11-25: until breaking.auto_post_until, a Short with a clean check posts on its own.
+          if AUTO=$(python scripts/breaking_auto.py "$WEEK" "$QC"); then go=1; else go=0; fi
+          python scripts/breaking_issue.py ready "$WEEK" "$QC
+
+          **Auto-post:** $AUTO"
+          if [ "$go" = 1 ]; then gh workflow run breaking-post.yml --repo "$GITHUB_REPOSITORY" --ref main -f week="$WEEK"; fi
       - name: Save the release queue (publish)
         if: always() && inputs.phase == 'publish'
         run: |
