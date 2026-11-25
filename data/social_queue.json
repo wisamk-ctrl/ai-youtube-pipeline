@@ -876,5 +876,63 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531298811332222976"
       }
     }
+  },
+  {
+    "id": "2026-11-25-brk-openai-openworks-pilot-en#1",
+    "week": "2026-11-25-brk-openai-openworks-pilot-en",
+    "lang": "en",
+    "file": "2026-11-25-brk-openai-openworks-pilot-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-25-brk-openai-openworks-pilot-en/2026-11-25-brk-openai-openworks-pilot-en-short-01.mp4",
+    "title": "OpenAI Pays Locals to Teach AI",
+    "due": "2026-11-25T10:13:32Z",
+    "approved": true,
+    "captions": {
+      "youtube": "OpenAI Pays Locals to Teach AI\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "OpenAI Pays Locals to Teach AI\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "OpenAI Pays Locals to Teach AI\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "OpenAI Pays Locals to Teach AI\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "OpenAI wants locals, not consultants, to bring AI to small businesses. Its OpenWorks pilot pairs people with AI skills with small business owners in 20 U.S. cities, and the help comes at no cost to owners, who also get three free months of ChatGPT Business. Partners can receive stipends of up to $8,000 a month, and the pilot targets restaurants, shops, factories and service businesses. For the Gulf, it raises a question: could community-based AI support help the region's small and family businesses adopt AI faster?\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:13:33Z",
+        "url": "https://youtube.com/shorts/CL5sqp6aU74"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:13:33Z",
+        "media_id": "18155366320550697",
+        "url": "https://www.instagram.com/reel/DgKSlniMmyz/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:13:33Z",
+        "video_id": "1834872584468411",
+        "url": "https://www.facebook.com/reel/1834872584468411",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:13:33Z",
+        "publish_id": "v_inbox_file~v2.7712050074670663700",
+        "privacy": "draft",
+        "platform_status": "SEND_TO_USER_INBOX",
+        "url": "in your TikTok drafts",
+        "note": "Open TikTok, tap the inbox notification, turn on the AI-generated label, paste this caption and post:\nOpenAI Pays Locals to Teach AI\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:13:33Z",
+        "post": "urn:li:ugcPost:7531299505107951616",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531299505107951616"
+      }
+    }
   }
 ]
