@@ -15,7 +15,7 @@ secrets that are set. The reply to `publish`, the "ready to check" message and `
 | LinkedIn | Video, once the episode is public | Automatic | Connected |
 | Facebook Page | A link post through Composio. A video only with `FACEBOOK_PAGE_ID` and `FACEBOOK_PAGE_TOKEN` | Reel through Composio | No Page token. No Reel has posted yet |
 | Instagram | Never | Reel through Composio | No token. One Reel has posted (W46-en #1) |
-| TikTok | Never | To the founder's drafts (`tiktok_mode: inbox`); he posts it | Connected; the app is not audited |
+| TikTok | Never | Through Buffer, public, AI label on (`tiktok_via: buffer`, 2026-11-25); to the founder's drafts while TikTok is not connected in Buffer | Connect @aithisweek in Buffer |
 | WhatsApp Channel | By hand, from the "WhatsApp kit" issue | By hand, same issue | Nothing posts into it by itself |
 | WhatsApp alerts to the founder | | | Off: `WHATSAPP_PHONE` and `CALLMEBOT_APIKEY` are not set |
 

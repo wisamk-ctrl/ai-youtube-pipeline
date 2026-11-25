@@ -50,7 +50,9 @@ def shorts(cfg: dict[str, Any], have: Have = in_env) -> dict[str, str]:
     relay = any(have(k) for k in RELAY)
     out = {}
     for p in s.get("platforms", PLATFORMS):
-        if all(have(k) for k in NEEDS[p]):
+        if p == "tiktok" and s.get("tiktok_via") == "buffer" and have("BUFFER_API_KEY"):
+            out[p] = "relay"       # through Buffer, public (falls back to drafts while Buffer has no TikTok channel)
+        elif all(have(k) for k in NEEDS[p]):
             out[p] = "drafts" if p == "tiktok" and s.get("tiktok_mode", "inbox") == "inbox" else "auto"
         else:
             out[p] = "relay" if relay and p in RELAYED else "off"
