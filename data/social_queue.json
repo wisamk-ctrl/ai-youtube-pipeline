@@ -975,8 +975,14 @@
         "via": "composio"
       },
       "tiktok": {
-        "status": "queued",
-        "note": "founder 2026-11-25: re-sent as the first TikTok-through-Buffer test"
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T19:03:48Z",
+        "publish_id": "v_inbox_file~v2.7712186670103398407",
+        "privacy": "draft",
+        "platform_status": "SEND_TO_USER_INBOX",
+        "url": "in your TikTok drafts",
+        "note": "Open TikTok, tap the inbox notification, turn on the AI-generated label, paste this caption and post:\nCIA System Hit by Breach\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast"
       },
       "linkedin": {
         "status": "posted",
