@@ -975,8 +975,12 @@
         "via": "composio"
       },
       "tiktok": {
-        "status": "queued",
-        "note": "founder 2026-11-25: Buffer TikTok test, new key"
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T19:36:05Z",
+        "buffer_id": "6b0738a6e6fe52f29f95b461",
+        "url": "https://tiktok.com/@aithisweek/video/7712195163497434369",
+        "via": "buffer"
       },
       "linkedin": {
         "status": "posted",
