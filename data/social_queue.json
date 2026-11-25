@@ -818,5 +818,63 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531013979545067520"
       }
     }
+  },
+  {
+    "id": "2026-11-25-brk-anthropic-below-ipo-price-en#1",
+    "week": "2026-11-25-brk-anthropic-below-ipo-price-en",
+    "lang": "en",
+    "file": "2026-11-25-brk-anthropic-below-ipo-price-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-25-brk-anthropic-below-ipo-price-en/2026-11-25-brk-anthropic-below-ipo-price-en-short-01.mp4",
+    "title": "Anthropic Falls Below IPO Price",
+    "due": "2026-11-25T10:11:22Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Anthropic Falls Below IPO Price\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Anthropic Falls Below IPO Price\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Anthropic Falls Below IPO Price\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Anthropic Falls Below IPO Price\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "Anthropic's stock has slipped below its $83 IPO price, days after going public.\n\nTechCrunch reports shares traded as low as $76 by midday Tuesday, down nearly 12% from Monday's close, less than a week after a Nasdaq debut at $111.50. Observers see the stock as a barometer for how public markets value AI, and Nvidia also fell more than 7% on the day. The Motley Fool reports Anthropic's revenue surged 1,200% to $33.24 billion in the first nine months of the year.\n\nFor Gulf businesses and governments building on frontier AI models, the market's view of these labs is now a factor worth watching when choosing long-term technology partners.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:11:24Z",
+        "url": "https://youtube.com/shorts/oVa8F63EkjE"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:11:24Z",
+        "media_id": "17977594371177743",
+        "url": "https://www.instagram.com/reel/DgKSSIuhNa-/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:11:24Z",
+        "video_id": "29278396801828739",
+        "url": "https://www.facebook.com/reel/29278396801828739",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:11:24Z",
+        "publish_id": "v_inbox_file~v2.7712049566408837138",
+        "privacy": "draft",
+        "platform_status": "SEND_TO_USER_INBOX",
+        "url": "in your TikTok drafts",
+        "note": "Open TikTok, tap the inbox notification, turn on the AI-generated label, paste this caption and post:\nAnthropic Falls Below IPO Price\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:11:24Z",
+        "post": "urn:li:ugcPost:7531298811332222976",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531298811332222976"
+      }
+    }
   }
 ]
