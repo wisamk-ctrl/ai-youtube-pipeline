@@ -934,5 +934,63 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531299505107951616"
       }
     }
+  },
+  {
+    "id": "2026-11-25-brk-cia-system-breach-en#1",
+    "week": "2026-11-25-brk-cia-system-breach-en",
+    "lang": "en",
+    "file": "2026-11-25-brk-cia-system-breach-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-25-brk-cia-system-breach-en/2026-11-25-brk-cia-system-breach-en-short-01.mp4",
+    "title": "CIA System Hit by Breach",
+    "due": "2026-11-25T10:16:20Z",
+    "approved": true,
+    "captions": {
+      "youtube": "CIA System Hit by Breach\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "CIA System Hit by Breach\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "CIA System Hit by Breach\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "CIA System Hit by Breach\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "A breach has hit an analysis system used by the CIA. The New York Times reports that unclassified information on an open source intelligence system was exposed, and sources say the issue has been resolved. It is not clear what was compromised or who was responsible, and the incident follows a recent hack of the FBI's national crime database and system failures at Apple, JP Morgan Chase and Microsoft. Director of National Intelligence Jay Clayton links the outages to the rush to patch systems ahead of hackers armed with AI tools. For Gulf governments and businesses, it is a reminder that the speed of security upgrades now matters as much as their scope.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:16:21Z",
+        "url": "https://youtube.com/shorts/iUL0hKtwGxY"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:16:21Z",
+        "media_id": "17970526521231094",
+        "url": "https://www.instagram.com/reel/DgKS-P7Al85/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:16:21Z",
+        "video_id": "1455747606076513",
+        "url": "https://www.facebook.com/reel/1455747606076513",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:16:21Z",
+        "publish_id": "v_inbox_file~v2.7712050842450626581",
+        "privacy": "draft",
+        "platform_status": "SEND_TO_USER_INBOX",
+        "url": "in your TikTok drafts",
+        "note": "Open TikTok, tap the inbox notification, turn on the AI-generated label, paste this caption and post:\nCIA System Hit by Breach\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-25T10:16:21Z",
+        "post": "urn:li:ugcPost:7531300404215803904",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531300404215803904"
+      }
+    }
   }
 ]
