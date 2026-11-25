@@ -112,3 +112,12 @@ def test_voice_week_applies_the_style_and_a_new_style_voices_again(tmp_path):
     dest = voice_week(chunks, cfg, tmp_path / "voice.yaml", key="k", speak_fn=fake, style=style)
     assert seen == [("[excited] Big news.", {"speed": 1.06})]
     assert is_current(dest, chunks, style) and not is_current(dest, chunks)
+
+
+def test_the_closing_sentence_can_take_its_own_tone():
+    """Founder 2026-11-25: an excited 'Subscribe!' as the last word did not sound right: the sign-off is warm."""
+    style = {"tag": "excited", "last_tag": "warm"}
+    assert tts.styled("A new episode every Sunday. Subscribe.", style, last=True) == \
+        "[excited] A new episode every Sunday. [warm] Subscribe."
+    assert tts.styled("Subscribe.", style, last=True) == "[warm] Subscribe."
+    assert tts.styled("Sunday. Subscribe.", style) == "[excited] Sunday. Subscribe."

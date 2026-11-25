@@ -531,6 +531,12 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
     import yaml
     style_file = ROOT / "reviewed" / out.name / "speech.yaml"
     style = (yaml.safe_load(style_file.read_text(encoding="utf-8")) or {}) if style_file.exists() else None
+    if style:   # the timing keys in the same file shape the edit, not the speech (founder 2026-11-25: the trailer's start)
+        for k in ("lead_in", "lead_out"):
+            if k in style:
+                cfg["video"].setdefault("voicefirst", {})[k] = float(style.pop(k))
+        if "music_fade_in" in style:
+            cfg.setdefault("post", {}).setdefault("audio", {})["music_fade_in"] = float(style.pop("music_fade_in"))
     if not voice.exists() and (out / "voice.yaml").exists():
         from pipeline.video.tts import is_current
         if is_current(out / "voice.yaml", chunks, style):

@@ -22,4 +22,4 @@ Fifteen minutes, once a week. Built for people who make decisions in the Gulf, t
 And when news breaks, a quick Short the same day.
 
 [Visual: title Every Sunday]
-AI This Week. A new episode every Sunday. Subscribe.
+AI This Week. A new episode every Sunday. Subscribe, and I'll see you on Sunday.

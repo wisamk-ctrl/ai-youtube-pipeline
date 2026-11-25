@@ -366,6 +366,10 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
     v, vf = cfg.get("visuals", {}), _cfg(cfg)
     w, h, fps = int(v.get("width", 1920)), int(v.get("height", 1080)), int(v.get("fps", 30))
     gap = float(vf.get("gap_seconds", 0.25))
+    # lead_in: seconds the opening face holds its first frame, with the music, before the first word; lead_out: a beat
+    # after the last word (founder 2026-11-25: the trailer's first word on frame one felt abrupt). Both default 0.
+    lead = max(0.0, float(vf.get("lead_in", 0) or 0))
+    lead_out = max(0.0, float(vf.get("lead_out", 0) or 0))
     # Generated speech can be slowed (pitch kept); a face clip is slowed with its audio so the lips still match.
     tempo = float(vf.get(f"tempo_{cfg.get('language', 'ar')}", vf.get("tempo", 1.0)) or 1.0)
     tempo = tempo if 0.5 <= tempo <= 2.0 else 1.0
@@ -373,7 +377,7 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
     ends = ends if 0.7 <= ends <= 1.0 else 1.0
     work = out_dir / "assemble"
     work.mkdir(parents=True, exist_ok=True)
-    wavs, faces, tops, t = [], [], [], 0.0
+    wavs, faces, tops, t = [], [], [], lead
     known: list | None = []            # every word of the narration with its time, when all chunks know theirs
     for n, e in enumerate(entries):
         src = download(e["audio"], work / f"{e['id']}.audio")
@@ -408,13 +412,16 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
         if e.get("duration") and abs(d - e["duration"]) > 0.5:
             log.warning("Chunk %s is %.1fs, voice.yaml says %.1fs", e["id"], d, e["duration"])
         if e["role"] == "face":
-            faces.append((e["id"], download(e["video"], work / f"{e['id']}.face.mp4"), round(t, 3), round(t + d, 3)))
+            start = 0.0 if n == 0 else round(t, 3)       # the opening face also covers the lead-in, held still
+            faces.append((e["id"], download(e["video"], work / f"{e['id']}.face.mp4"), start, round(t + d, 3)))
             tops.append(min(1.0, max(0.0, float(e.get("top", vf.get("face_top", 0.5))))))
         wavs.append(wav)
         t += d + (gap if n < len(entries) - 1 else 0.0)
-    total = t
+    total = t + lead_out
     narration = out_dir / "narration.wav"
-    pads = "".join(f"[{n}:a]apad=pad_dur={gap if n < len(wavs) - 1 else 0}[a{n}];" for n in range(len(wavs)))
+    delay = f"adelay={int(round(lead * 1000))}:all=1," if lead else ""
+    pads = "".join(f"[{n}:a]{delay if n == 0 else ''}apad=pad_dur={gap if n < len(wavs) - 1 else lead_out}[a{n}];"
+                   for n in range(len(wavs)))
     _run(*[x for p in wavs for x in ("-i", str(p))], "-filter_complex",
          pads + "".join(f"[a{n}]" for n in range(len(wavs))) + f"concat=n={len(wavs)}:v=0:a=1[a]",
          "-map", "[a]", "-c:a", "pcm_s16le", str(narration))
@@ -438,7 +445,8 @@ def assemble(entries: list[dict[str, Any]], cfg: dict[str, Any], out_dir: Path, 
             # `top` says where the crop sits (0 = the top edge, 0.5 = the middle).
             graph += (f"[{k - 1}:v]setpts=PTS/{tempo:.3f},scale={w}:{h}:force_original_aspect_ratio=increase,"
                       f"crop={w}:{h}:(iw-{w})/2:(ih-{h})*{tops[k - 1]:.3f},fps={fps},setsar=1,")
-        graph += (f"tpad=stop_mode=clone:stop_duration={b - a:.3f},trim=duration={b - a:.3f},"
+        hold = f"tpad=start_mode=clone:start_duration={lead:.3f}," if lead and k == 1 and a == 0.0 else ""
+        graph += (f"{hold}tpad=stop_mode=clone:stop_duration={b - a:.3f},trim=duration={b - a:.3f},"
                   f"setpts=PTS-STARTPTS+{a:.3f}/TB[f{k}];"
                   f"[v{k - 1}][f{k}]overlay=enable='between(t,{a:.3f},{b:.3f})':eof_action=pass[v{k}];")
     dest = out_dir / "talking_head.mp4"

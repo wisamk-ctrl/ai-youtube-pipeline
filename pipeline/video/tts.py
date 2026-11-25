@@ -53,15 +53,18 @@ def speak(text: str, voice_id: str, language: str, key: str, model: str = "heyge
 TAG_SPAN = 200   # HeyGen: an emotion tag colours about 233 characters of speech after it, so it is repeated
 
 
-def styled(text: str, style: dict[str, Any] | None) -> str:
+def styled(text: str, style: dict[str, Any] | None, last: bool = False) -> str:
     """`text` with the style's audio tag (e.g. "excited") at its start and again at the first sentence
     break after every TAG_SPAN characters. Instant voices perform the tag; it is not spoken."""
-    tag = (style or {}).get("tag")
-    if not tag:
+    tag, end = (style or {}).get("tag"), (style or {}).get("last_tag") if last else None
+    if not tag and not end:
         return text
+    parts = re.split(r"(?<=[.!?؟])\s+", text.strip())
     out, run = [], 0
-    for s in re.split(r"(?<=[.!?؟])\s+", text.strip()):
-        if not out or run >= TAG_SPAN:
+    for k, s in enumerate(parts):
+        if end and k == len(parts) - 1:       # the sign-off in its own tone (one tag at a spot, never two)
+            out.append(f"[{end}] {s}")
+        elif tag and (not out or run >= TAG_SPAN):
             out.append(f"[{tag}] {s}")
             run = 0
         else:
@@ -110,7 +113,7 @@ def voice_week(chunks: list[dict[str, Any]], cfg: dict[str, Any], dest: Path, ke
     out: dict[str, Any] = {}
     for c in chunks:
         extra = {"opts": speech_opts(style)} if speech_opts(style) else {}
-        url, secs = speak_fn(styled(c["text"], style), voice, "en" if en else "ar", key, model, **extra)
+        url, secs = speak_fn(styled(c["text"], style, last=c is chunks[-1]), voice, "en" if en else "ar", key, model, **extra)
         log.info("Voiced %s: %.1f s", c["id"], secs)
         out[c["id"]] = {"audio": url, "duration": round(secs, 3), "text_sha": text_sha(c["text"], style)}
     dest.parent.mkdir(parents=True, exist_ok=True)
