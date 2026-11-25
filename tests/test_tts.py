@@ -83,3 +83,41 @@ def test_a_changed_script_is_voiced_again(tmp_path):
     old = tmp_path / "old.yaml"
     old.write_text("01-voice: {audio: 'https://x/a.wav', duration: 1.0}\n")   # before the text stamp
     assert not is_current(old, chunks)
+
+
+def test_a_speech_style_reaches_heygen_and_tags_the_text():
+    """Founder 2026-11-25: the trailer's voice should sound much more excited. HeyGen instant clones take
+    speed and pitch_variance in the body and perform an [excited] tag that spans about 233 characters."""
+    http = Http([R(200, {"data": {"audio_url": "https://a/3.wav", "duration": 2.0}})])
+    tts.speak("Hi.", "v", "en", "k", http=http, sleep=lambda s: None, opts={"speed": 1.06, "pitch_variance": 1.3})
+    body = http.calls[0][1]["json"]
+    assert body["speed"] == 1.06 and body["pitch_variance"] == 1.3 and body["text"] == "Hi."
+    long = " ".join(["This sentence is about forty characters."] * 8)
+    tagged = tts.styled(long, {"tag": "excited"})
+    assert tagged.startswith("[excited] ") and tagged.count("[excited]") == 2
+    assert tts.styled("Plain.", {}) == "Plain."
+
+
+def test_voice_week_applies_the_style_and_a_new_style_voices_again(tmp_path):
+    from pipeline.video.tts import is_current, voice_week
+    cfg = {"language": "en", "video": {"heygen": {"voice_id_en": "EN"}}}
+    chunks = [{"id": "01-voice", "role": "voice", "text": "Big news."}]
+    seen = []
+
+    def fake(text, voice, lang, key, model, opts=None):
+        seen.append((text, opts))
+        return "https://x/a.wav", 1.0
+
+    style = {"tag": "excited", "speed": 1.06}
+    dest = voice_week(chunks, cfg, tmp_path / "voice.yaml", key="k", speak_fn=fake, style=style)
+    assert seen == [("[excited] Big news.", {"speed": 1.06})]
+    assert is_current(dest, chunks, style) and not is_current(dest, chunks)
+
+
+def test_the_closing_sentence_can_take_its_own_tone():
+    """Founder 2026-11-25: an excited 'Subscribe!' as the last word did not sound right: the sign-off is warm."""
+    style = {"tag": "excited", "last_tag": "warm"}
+    assert tts.styled("A new episode every Sunday. Subscribe.", style, last=True) == \
+        "[excited] A new episode every Sunday. [warm] Subscribe."
+    assert tts.styled("Subscribe.", style, last=True) == "[warm] Subscribe."
+    assert tts.styled("Sunday. Subscribe.", style) == "[excited] Sunday. Subscribe."

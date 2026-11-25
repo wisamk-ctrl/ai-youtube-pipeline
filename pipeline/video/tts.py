@@ -22,9 +22,11 @@ URL = "https://api.heygen.com/v3/models/audio/tts"
 
 
 def speak(text: str, voice_id: str, language: str, key: str, model: str = "heygen-voice-1",
-          http=requests, sleep: Callable[[float], None] = time.sleep, tries: int = 5) -> tuple[str, float]:
-    """(audio URL, seconds) for `text` in the cloned voice."""
-    body = {"voice_id": voice_id, "text": text, "language": language, "model": model}
+          http=requests, sleep: Callable[[float], None] = time.sleep, tries: int = 5,
+          opts: dict[str, Any] | None = None) -> tuple[str, float]:
+    """(audio URL, seconds) for `text` in the cloned voice. `opts` adds delivery fields to the body
+    (speed 0.75-1.25, pitch_variance 0.5-2, expressiveness_boost 0-1)."""
+    body = {"voice_id": voice_id, "text": text, "language": language, "model": model, **(opts or {})}
     wait = 5.0
     for n in range(1, tries + 1):
         r = http.post(URL, json=body, timeout=300, headers={"X-Api-Key": key, "Content-Type": "application/json"})
@@ -48,12 +50,40 @@ def speak(text: str, voice_id: str, language: str, key: str, model: str = "heyge
     raise RuntimeError("HeyGen speech: no answer")
 
 
-def text_sha(text: str) -> str:
+TAG_SPAN = 200   # HeyGen: an emotion tag colours about 233 characters of speech after it, so it is repeated
+
+
+def styled(text: str, style: dict[str, Any] | None, last: bool = False) -> str:
+    """`text` with the style's audio tag (e.g. "excited") at its start and again at the first sentence
+    break after every TAG_SPAN characters. Instant voices perform the tag; it is not spoken."""
+    tag, end = (style or {}).get("tag"), (style or {}).get("last_tag") if last else None
+    if not tag and not end:
+        return text
+    parts = re.split(r"(?<=[.!?؟])\s+", text.strip())
+    out, run = [], 0
+    for k, s in enumerate(parts):
+        if end and k == len(parts) - 1:       # the sign-off in its own tone (one tag at a spot, never two)
+            out.append(f"[{end}] {s}")
+        elif tag and (not out or run >= TAG_SPAN):
+            out.append(f"[{tag}] {s}")
+            run = 0
+        else:
+            out.append(s)
+        run += len(s) + 1
+    return " ".join(out)
+
+
+def speech_opts(style: dict[str, Any] | None) -> dict[str, Any]:
+    return {k: v for k, v in (style or {}).items() if k in ("speed", "pitch_variance", "pitch_shift", "expressiveness_boost")}
+
+
+def text_sha(text: str, style: dict[str, Any] | None = None) -> str:
     import hashlib
-    return hashlib.sha256(" ".join(text.split()).encode("utf-8")).hexdigest()[:16]
+    key = " ".join(text.split()) + (repr(sorted(style.items())) if style else "")
+    return hashlib.sha256(key.encode("utf-8")).hexdigest()[:16]
 
 
-def is_current(path: Path, chunks: list[dict[str, Any]]) -> bool:
+def is_current(path: Path, chunks: list[dict[str, Any]], style: dict[str, Any] | None = None) -> bool:
     """An automatic voice.yaml still matches the chunks: same ids, each voiced from the same text. A restored
     run whose script changed afterwards must be voiced again (2026-11-18: the California Short kept its old voice)."""
     import yaml
@@ -62,12 +92,12 @@ def is_current(path: Path, chunks: list[dict[str, Any]]) -> bool:
     except (OSError, yaml.YAMLError):
         return False
     return (isinstance(data, dict) and set(data) == {c["id"] for c in chunks}
-            and all(isinstance(data[c["id"]], dict) and data[c["id"]].get("text_sha") == text_sha(c["text"])
+            and all(isinstance(data[c["id"]], dict) and data[c["id"]].get("text_sha") == text_sha(c["text"], style)
                     for c in chunks))
 
 
 def voice_week(chunks: list[dict[str, Any]], cfg: dict[str, Any], dest: Path, key: str | None = None,
-               speak_fn: Callable[..., tuple[str, float]] = speak) -> Path:
+               speak_fn: Callable[..., tuple[str, float]] = speak, style: dict[str, Any] | None = None) -> Path:
     """Voice every chunk of the pack and write voice.yaml (chunk id → audio link). A face chunk is voiced
     too and stays narration (no presenter video is made automatically)."""
     import yaml
@@ -82,9 +112,10 @@ def voice_week(chunks: list[dict[str, Any]], cfg: dict[str, Any], dest: Path, ke
     model = str(h.get("tts_model", "heygen-voice-1"))
     out: dict[str, Any] = {}
     for c in chunks:
-        url, secs = speak_fn(c["text"], voice, "en" if en else "ar", key, model)
+        extra = {"opts": speech_opts(style)} if speech_opts(style) else {}
+        url, secs = speak_fn(styled(c["text"], style, last=c is chunks[-1]), voice, "en" if en else "ar", key, model, **extra)
         log.info("Voiced %s: %.1f s", c["id"], secs)
-        out[c["id"]] = {"audio": url, "duration": round(secs, 3), "text_sha": text_sha(c["text"])}
+        out[c["id"]] = {"audio": url, "duration": round(secs, 3), "text_sha": text_sha(c["text"], style)}
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text("# Voiced automatically through the HeyGen API (pipeline/video/tts.py).\n"
                     + yaml.safe_dump(out, sort_keys=False, allow_unicode=True), encoding="utf-8")

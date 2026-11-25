@@ -169,3 +169,38 @@ def test_openers_mode_keeps_a_face_at_each_story_start():
                        face_only=[(0.0, 7.0), (40.0, 52.0), (110.0, 118.0)])
     assert [(s.start, s.end) for s in voice_first if s.mode == "face"] == [(0.0, 7.0), (40.0, 52.0), (110.0, 118.0)]
     assert all(abs(a.end - b.start) < 1e-6 for a, b in zip(voice_first, voice_first[1:]))
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="needs ffmpeg")
+def test_a_lead_in_holds_the_twin_before_the_first_word_and_a_lead_out_holds_the_end(tmp_path, monkeypatch):
+    """Founder 2026-11-25: the trailer's start felt abrupt (the first word on frame one) and the end too quick
+    (the end card 0.6 s after 'Subscribe'). lead_in holds the twin's first frame with the music before he
+    speaks; lead_out leaves a beat after the last word."""
+    media = tmp_path / "media"
+    media.mkdir()
+    _media(media / "a.wav", "sine=frequency=300", 2.0)
+    _media(media / "b.wav", "sine=frequency=500", 3.0)
+    _media(media / "fa.mp4", "sine=frequency=300", 2.0, video=True)
+    files = {"https://r/a": "a.wav", "https://r/b": "b.wav", "https://f/a": "fa.mp4"}
+
+    def fake_download(url, dest):
+        shutil.copy(media / files[url], dest)
+        return dest
+    monkeypatch.setattr(voicefirst, "download", fake_download)
+    cfg = load_settings()
+    cfg["visuals"].update(width=320, height=180)
+    cfg["video"]["voicefirst"].update(lead_in=1.0, lead_out=0.8, tempo_en=1.0, tempo=1.0)
+    out = tmp_path / "week"
+    out.mkdir()
+    entries = [{"id": "01-face", "role": "face", "audio": "https://r/a", "video": "https://f/a", "duration": None},
+               {"id": "02-voice", "role": "voice", "audio": "https://r/b", "video": "", "duration": None}]
+    dest = voicefirst.assemble(entries, cfg, out)
+    gap = cfg["video"]["voicefirst"]["gap_seconds"]
+    total = 1.0 + 2.0 + gap + 3.0 + 0.8
+    assert abs(voicefirst._duration(out / "narration.wav") - total) < 0.05
+    assert abs(voicefirst._duration(dest) - total) < 0.1
+    spans = json.loads((out / "face_spans.json").read_text())
+    assert spans[0]["start"] == 0.0 and abs(spans[0]["end"] - 3.0) < 0.02     # the twin is on screen from frame one
+    vol = subprocess.run(["ffmpeg", "-t", "0.9", "-i", str(out / "narration.wav"), "-af", "volumedetect", "-f", "null", "-"],
+                         capture_output=True, text=True).stderr
+    assert "max_volume: -91" in vol or "max_volume: -inf" in vol               # silent until he speaks

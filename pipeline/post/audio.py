@@ -230,7 +230,7 @@ def master(video: Path, dest: Path, cfg: dict[str, Any], work: Path, insert: tup
             parts.append(f"[bed{k}]")
             count += 1
         graph.append(f"{''.join(parts)}amix=inputs={len(parts)}:normalize=0:duration=longest,"
-                     f"afade=t=in:d=3,afade=t=out:st={max(0.0, dur - 4):.3f}:d=4[bed]")
+                     f"afade=t=in:d={float(a.get('music_fade_in', 3)):.2f},afade=t=out:st={max(0.0, dur - 4):.3f}:d=4[bed]")
         graph.append("[bed][sc]sidechaincompress=threshold=0.03:ratio=6:attack=30:release=500:knee=4[duck]")
         mix.append("[duck]")
     else:

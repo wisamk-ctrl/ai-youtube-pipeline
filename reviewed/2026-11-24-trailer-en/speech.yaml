@@ -1,0 +1,10 @@
+# Delivery for this trailer only (founder 2026-11-25: "make it much more excited"; then "the start is abrupt
+# and the Subscribe ending doesn't sound right").
+# HeyGen instant voice: tags are performed, not spoken; speed offsets tempo_en 0.94 a little.
+tag: excited
+last_tag: warm          # the sign-off in a warm tone, not an excited command
+speed: 1.08
+pitch_variance: 1.4
+lead_in: 1.2            # the twin on screen with the music for 1.2 s before the first word
+lead_out: 1.0           # a beat after the last word before the end card
+music_fade_in: 0.8      # the music is up by the time he speaks (episodes keep 3 s)
