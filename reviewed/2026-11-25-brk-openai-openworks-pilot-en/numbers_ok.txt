@@ -1,0 +1,2 @@
+20  (number card, spoken in its line)
+8000  (number card, spoken in its line)

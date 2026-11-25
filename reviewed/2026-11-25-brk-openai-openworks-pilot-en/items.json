@@ -1,0 +1,21 @@
+[
+  {
+    "source": "The Rundown AI",
+    "source_type": "rss",
+    "title": "OpenAI’s OpenWorks pays locals to bring AI to small businesses",
+    "summary": "OpenAI has launched OpenWorks , a pilot that pays locals with AI skills to work alongside small business owners in 20 U.S. cities. Owners pick a task or problem, and the help comes at no cost. The program, featured in The Rundown , also gives participating businesses three free months of ChatGPT Business. The helpers, called partners, can receive stipends of up to $8,000 a month. The pilot targets independent restaurants, shops, factories, and service businesses. OpenAI’s eligibility rules exclude software companies, firms backed by venture capital, and businesses owned by private equity. Fifteen of the 20 cities are in the Midwest or South. The full city list includes Austin, Seattle, and New York. The current partner application asks applicants to commit four full days each month plus one community workshop. It also asks them to describe an AI problem they have solved and share a social profile or portfolio. The $8,000 figure is a monthly maximum. OpenAI’s FAQ does not specify how it calculates stipends or how long they last. Time and money are major hurdles for small business owners trying to put AI to work. OpenWorks tries to ease both by pairing help from a local partner with a temporary break on software costs. The owner’s chosen task gives that help a clear starting point. A partner can help turn the problem into a process, test the result, and show the owner how to repeat it. That could cut the time spent learning through trial and error. The lasting benefit depends on whether the owner can keep doing the work after the helper leaves. Three free months give owners a chance to test the value before deciding whether to pay for ChatGPT Business. For a recurring task, they can compare completion time before and after the help, including time spent checking and correcting AI output. They should also work out who will maintain the process and what software it will need. The benefit could also come from work an owner previously skipped. In a September 2026 announcement , OpenAI described restaurant owners who compared competitors’ menus with AI, a task they said they otherwise would have left undone. That kind of extra work is another benefit an owner can weigh against the cost of a subscription. For capable locals, the stipend creates a paid route into AI consulting. The work calls for listening and teaching as well as technical skill. Partners need to understand an owner’s priorities and explain the resulting process clearly enough for the owner to…",
+    "url": "https://www.therundown.ai/news/openai-openworks-small-business-ai-pilot",
+    "published": "2026-11-24T14:27:17+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "4c31786cad"
+  }
+]
