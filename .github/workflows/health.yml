@@ -9,7 +9,7 @@ on:
     - cron: "7 3 * * *"        # daily 07:07 Gulf
   workflow_dispatch:
   workflow_run:
-    workflows: [approve, brand, breaking-post, connect, explainer, fetch, heygen-assets, heygen-cost, inspect, preview, publish-pack,
+    workflows: [approve, brand, breaking-post, channel-trailer, connect, explainer, fetch, heygen-assets, heygen-cost, inspect, preview, publish-pack,
                 radar-decide, rank-dry, sfx, story-decide, thumb-survey, video-check, voice-compare, voice-lab, words,
                 youtube-check, youtube-delete, youtube-partnerships, youtube-short-links, pvc-samples]
     types: [completed]

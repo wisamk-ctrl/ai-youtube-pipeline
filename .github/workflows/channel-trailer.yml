@@ -1,0 +1,38 @@
+name: channel-trailer
+# Upload a rendered trailer (the 4K master of an assemble run) public and make it the channel trailer for
+# non-subscribers. Founder 2026-11-25. scripts/channel_trailer.py
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "The assemble run whose 4K master to upload (e.g. 45544520081, trailer v8)"
+        required: true
+      week:
+        description: "Its folder"
+        default: 2026-11-24-trailer-en
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  trailer:
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+      RUN_ID: ${{ inputs.run_id }}
+      WEEK: ${{ inputs.week }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests pyyaml
+      - name: Fetch the 4K master
+        run: |
+          gh run download "$RUN_ID" -R "$GITHUB_REPOSITORY" -n "week-$WEEK" -D render
+          ls -la "render/$WEEK/final_2160p.mp4"
+      - run: python scripts/channel_trailer.py "render/$WEEK/final_2160p.mp4"
