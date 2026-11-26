@@ -1,0 +1,28 @@
+# Series 2 of the evergreen explainers (founder 2026-11-26): researched and scripted together, rendered in two waves
+# (2 episodes, then the other 5 after 48 hours of retention data), released Mon/Wed/Fri around the Sunday episode.
+title: "AI in the Gulf"
+playlist: "AI in the Gulf: explained"
+minutes: 11            # default length; 150 spoken words a minute
+after_series: "the AI Explained series: what GPUs, models and AI agents actually are"
+episodes:
+  - slug: 01-arabic-ai-models
+    title: "The Arabic AI models: who built them and how they compare"
+    minutes: 12
+  - slug: 02-uae-ai-whos-who
+    title: "Who's who of AI in the UAE"
+    minutes: 11
+  - slug: 03-saudi-ai-buildout
+    title: "Saudi Arabia's AI build-out, explained"
+    minutes: 11
+  - slug: 04-sovereign-ai
+    title: "Sovereign AI: why Gulf states want their own"
+    minutes: 10
+  - slug: 05-gulf-data-centre-boom
+    title: "The Gulf's AI data centre boom"
+    minutes: 10
+  - slug: 06-ai-rules-in-the-region
+    title: "AI rules in the Gulf: what businesses need to know"
+    minutes: 11
+  - slug: 07-beyond-uae-and-saudi
+    title: "AI beyond the UAE and Saudi Arabia"
+    minutes: 11
