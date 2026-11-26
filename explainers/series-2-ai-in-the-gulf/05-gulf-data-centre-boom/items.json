@@ -1,0 +1,227 @@
+[
+  {
+    "id": "05-gulf-data-centre-boom-01",
+    "title": "Introducing Stargate UAE",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-stargate-uae/",
+    "published": "2025-05-22",
+    "summary": "OpenAI announced Stargate UAE as the first international deployment of Stargate and the first OpenAI for Countries partnership, with partners G42, Oracle, NVIDIA, Cisco and SoftBank. It includes a 1GW Stargate UAE cluster in Abu Dhabi with 200MW expected to go live in 2026. OpenAI says Stargate UAE has the potential to provide compute within a 2,000-mile radius, reaching up to half the world's population.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-02",
+    "title": "Global Tech Alliance Launches Stargate UAE",
+    "source": "G42",
+    "url": "https://www.g42.ai/resources/news/global-tech-alliance-launches-stargate-uae",
+    "published": "2025-05-22",
+    "summary": "Stargate UAE, a 1-gigawatt compute cluster, will be built by G42 and operated by OpenAI and Oracle, inside the 5-gigawatt UAE-U.S. AI Campus in Abu Dhabi. NVIDIA supplies Grace Blackwell GB300 systems; Cisco provides zero-trust security and connectivity. The first 200-megawatt cluster is expected to go live in 2026. The full campus spans 10 square miles and will be powered by nuclear, solar and natural gas, G42 says.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-03",
+    "title": "G42 Provides Update on Construction of Stargate UAE AI Infrastructure Cluster",
+    "source": "G42 (PR Newswire)",
+    "url": "https://www.prnewswire.com/apac/news-releases/g42-provides-update-on-construction-of-stargate-uae-ai-infrastructure-cluster-302586440.html",
+    "published": "2025-10-16",
+    "summary": "G42 said Stargate UAE, a 1GW cluster, is being developed by Khazna Data Centers, a G42 company, within the 5GW UAE-U.S. AI Campus. The team is building the first 200MW on an accelerated timeline, construction is 'well underway' toward planned 2026 delivery, procurement of all long-lead equipment is complete and first mechanical systems have been delivered to site.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-04",
+    "title": "Khazna Data Centers to Add Over 1GW Hyperscale Capacity Across Multiple Countries By 2030",
+    "source": "Khazna Data Centers",
+    "url": "https://khaznadatacenters.com/press-release/khazna-data-centers-to-add-over-1gw-hyperscale-capacity-across-multiple-countries-by-2030/",
+    "published": "2025-10-14",
+    "summary": "Khazna announced plans to expand operational capacity by more than 1GW over the next five years, with more than 400MW in international markets including Saudi Arabia and Italy. Domestically it is developing hyperscale facilities in Abu Dhabi, Dubai and Ajman and delivering the infrastructure layer for Stargate UAE. Khazna says new facilities are engineered to LEED Gold standards and its modular method reduces potable water use; it says each facility generates more than $320 million in GDP contribution and enables over 1,150 jobs.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-05",
+    "title": "Microsoft and G42 Accelerate UAE's Digital Future with Major Data Centre Expansion",
+    "source": "Microsoft",
+    "url": "https://news.microsoft.com/source/emea/2025/11/microsoft-and-g42-accelerate-uaes-digital-future-with-major-data-centre-expansion/",
+    "published": "2025-11-05",
+    "summary": "As part of Microsoft's $15.2 billion investment announcement in the UAE, Microsoft and G42 announced a 200MW expansion of datacenter capacity delivered through Khazna Data Centers, expected to start coming online before the end of 2026. The capacity strengthens Microsoft Azure's 'sovereign cloud services' in the UAE. Microsoft has committed to skill one million people in the UAE by 2027.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-06",
+    "title": "G42 CEO says company will receive first AI chip shipments 'within months' to support initial 200MW",
+    "source": "DatacenterDynamics",
+    "url": "https://www.datacenterdynamics.com/en/news/g42-ceo-says-company-will-receive-first-ai-chip-shipments-within-months-to-support-initial-200mw-of-capacity-for-planned-stargate-cluster/",
+    "published": "2026-01-21",
+    "summary": "At Davos, G42 CEO Peng Xiao told Bloomberg TV the UAE expected first advanced chip shipments 'within months' for the first 200MW of Stargate, then 'anywhere between 200 to 500MW per quarter' of additional capacity toward 5GW. Chips are mostly Nvidia, plus AMD and Cerebras; G42 gave security assurances to the US government for export licences. The US approved chip sales to the UAE and Saudi Arabia in late November 2025, allowing each 'AI champion' to buy up to 35,000 Nvidia GB300 systems or equivalent. Microsoft's additional $7.9bn for 2026-2029 brings its UAE total to $15.2bn.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-07",
+    "title": "Stargate UAE data centre to cost more than $30bn, AI minister says",
+    "source": "The National",
+    "url": "https://www.thenationalnews.com/future/technology/2026/01/26/stargate-uae-data-centre-to-cost-more-than-30bn-ai-minister-says/",
+    "published": "2026-01-26",
+    "summary": "UAE AI minister Omar Al Olama said the project will cost more than $30 billion, 50 per cent more than the initial forecast in the $20 billion range in spring 2025. The National reports the site at 19.2 square kilometres, more than nine times the size of Monaco. Mubadala said first-phase construction is expected to be completed in Q3 2026. South Korea has also joined the project.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-08",
+    "title": "EXCLUSIVE: UAE revises AI data center plan after Iranian attacks, sources say",
+    "source": "Reuters",
+    "url": "https://www.reuters.com/world/middle-east/uae-revises-ai-data-center-plan-after-iranian-attacks-sources-say-2026-09-11/",
+    "published": "2026-09-11",
+    "summary": "Six people familiar told Reuters the UAE is revising the 5-gigawatt project: originally a 10-square-mile (26 sq km) campus in Abu Dhabi, it will now likely be a network of data centres across the UAE, with air defences, some underground construction, blast-resistant concrete and backup power and cooling under consideration. The first phase, a $30-billion, 1-gigawatt cluster, began construction last year with the first 200MW due this year and is expected to continue with modifications. G42 said work is progressing as planned and specifics are 'subject to continuous review'. Reuters says two AWS data centres in the UAE and one in Bahrain were damaged in March, and in April Iran's armed forces issued a video naming Stargate UAE as a potential target.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-09",
+    "title": "AWS says drones hit two of its datacenters in UAE",
+    "source": "The Register",
+    "url": "https://www.theregister.com/off-prem/2026/03/02/aws-says-drones-hit-two-of-its-datacenters-in-uae/4663049",
+    "published": "2026-03-02",
+    "summary": "AWS confirmed drone strikes caused disruptions in its Middle East (UAE) ME-CENTRAL-1 and Middle East (Bahrain) ME-SOUTH-1 regions; two UAE facilities were 'directly struck' and a strike near a Bahrain facility caused physical impacts. Fires set off sprinklers, damaging equipment. With two of three UAE zones impaired, S3 saw high failure rates. AWS recommended customers back up data and consider migrating to other AWS regions. The Register cites DataCenterMap at roughly 326 data centres across the Middle East.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-10",
+    "title": "AWS 'unable to restore access' to data centers hit by Iran strikes",
+    "source": "DatacenterDynamics",
+    "url": "https://www.datacenterdynamics.com/en/news/aws-unable-to-restore-access-to-data-centers-hit-by-iran-strikes/",
+    "published": "2026-09-16",
+    "summary": "AWS said it is unable to restore access to resources and data hosted exclusively in the mec1-az2 availability zone in the UAE, and in Bahrain that damage spanned multiple zones and 'exceeded what our regional and multi-AZ services are designed to withstand', so data hosted exclusively in that region cannot be restored. AWS says it is replacing affected infrastructure and will update on Bahrain in early 2027. AWS opened its Bahrain region in 2019 and its UAE region in 2022.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-11",
+    "title": "Saudi Arabia's AI co. Humain looking for US data center equity partner, targets 6.6GW by 2034",
+    "source": "DatacenterDynamics",
+    "url": "https://www.datacenterdynamics.com/en/news/saudi-arabias-ai-co-humain-looking-for-us-data-center-equity-partner-targets-66gw-by-2034-with-subsidized-electricity/",
+    "published": "2025-05-28",
+    "summary": "Humain, launched in May 2025 as a PIF subsidiary, targets 1.9GW of data centre capacity by 2030 rising to 6.6GW four years later, which CEO Tareq Amin said would cost $77bn at current market rates. It first plans a 50MW data centre with 18,000 Nvidia GPUs, increasing to 500MW in phases, and has 2.3 square miles of land in the Eastern Province that could host ten 200MW data centres. Riyadh will subsidise electricity prices for facilities in the kingdom.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-12",
+    "title": "Humain secures 211 plots of land in Saudi Arabia for data centers",
+    "source": "DatacenterDynamics",
+    "url": "https://www.datacenterdynamics.com/en/news/humain-secures-211-plots-of-land-in-saudi-arabia-for-data-centers/",
+    "published": "2026-03-12",
+    "summary": "Humain secured 211 plots of land across Saudi Arabia. It is building facilities in Riyadh and Dammam, expected to go live in Q2 2026, with an initial 100MW each, as part of a plan for about 6GW over the next decade. Partnerships include AWS ($5bn 'AI Zone'), a JV with stc for 1GW, xAI for a 500MW data centre, a DataVolt 'multi-gigawatt' pipeline and a $1.2bn financing deal with the National Infrastructure Fund for 250MW. DCD notes a Rest of World/Climate Central report that nearly all Saudi data centres are in regions considered too hot for normal operations.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-13",
+    "title": "xAI and Humain to build 500MW Saudi Arabia data center",
+    "source": "DatacenterDynamics",
+    "url": "https://www.datacenterdynamics.com/en/news/xai-humain-data-center-elon-musk/",
+    "published": "2025-11-20",
+    "summary": "xAI is partnering with Humain to build a 500MW data centre in Saudi Arabia, its first outside the US, with Grok deployed in the country; location not revealed. Humain also announced a JV with AMD and Cisco for 1GW over five years and received Washington's approval to buy up to 35,000 Nvidia GB300 systems or equivalent.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-14",
+    "title": "AWS and HUMAIN Announce Groundbreaking AI Zone",
+    "source": "Amazon (Business Wire via Nasdaq)",
+    "url": "https://www.nasdaq.com/press-release/aws-and-humain-announce-groundbreaking-ai-zone-accelerate-ai-adoption-saudi-arabia",
+    "published": "2025-05-13",
+    "summary": "AWS and HUMAIN plan to invest $5 billion-plus in an 'AI Zone' in Saudi Arabia with dedicated AWS AI infrastructure, UltraCluster networks, SageMaker, Bedrock and Amazon Q. This is in addition to Amazon's US$5.3 billion AWS region in Saudi Arabia. The release cites PwC: AI will contribute $130 billion to Saudi's economy by 2030, more than 40 percent of an estimated $320 billion for the Middle East.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-15",
+    "title": "AWS to launch first cloud infrastructure region in Saudi Arabia by December 2026",
+    "source": "Amazon",
+    "url": "https://www.aboutamazon.com/news/aws/aws-cloud-region-saudi-arabia",
+    "published": "2026-08-31",
+    "summary": "AWS said its first Saudi Arabia region is on track to launch in December 2026, representing more than $5.3 billion (19.88 billion riyal) of planned investment, first announced March 2024. With HUMAIN, AWS will make up to 50MW available in Saudi Arabia's first AI Zone by 2028, including Trainium chips and NVIDIA infrastructure. HUMAIN's ALLAM Arabic model will come to Amazon Bedrock.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-16",
+    "title": "Microsoft Announces That Saudi Arabia East Datacenter Region Will Be Available in November 2026",
+    "source": "Microsoft",
+    "url": "https://news.microsoft.com/source/emea/2026/08/microsoft-announces-saudi-arabia-east-datacenter-region-will-be-available-in-november-2026",
+    "published": "2026-08-31",
+    "summary": "Microsoft said its Saudi Arabia East region, in the Eastern Province with three Azure Availability Zones, will be available in November 2026, offering 'local data residency', security, high availability and 'low-latency access' to cloud and AI services. A Microsoft-sponsored IDC study estimates $44 billion in new revenues for the Saudi economy from the Microsoft cloud ecosystem between 2027 and 2030.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-17",
+    "title": "EMEA data centre mid-year 2026 report",
+    "source": "JLL",
+    "url": "https://www.jll.com/en-ae/insights/emea-data-centre-report",
+    "published": "2026-08-03",
+    "summary": "JLL says Middle East live capacity has reached 1.6 GW, with 2.6 GW in development and 13.8 GW in the planning pipeline, still pointing to a quadrupling by 2030. 'Regional conflict has stalled major completions over the past six months, but schemes are being deferred rather than dropped.' JLL says AI training requirements of 100 MW and above are not latency-sensitive and follow available power, while latency-bound workloads stay near primary markets.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-18",
+    "title": "Capital costs to develop EMEA data centre pipeline reach US$ 562 billion",
+    "source": "Knight Frank",
+    "url": "https://www.knightfrank.ae/newsroom/article/2025/10/emea-data-centres-report-october-2025",
+    "published": "2025-10-14",
+    "summary": "Knight Frank says UAE live data centre capacity surpassed 376MW, with 19.2MW of new capacity coming online in 2025, and UAE vacancy at 2.4%, one of the lowest in EMEA. It notes Microsoft and du announced a US$544m hyperscale facility in Dubai and the Abu Dhabi Digital Strategy 2025-2027 is a US$13bn programme mandating sovereign cloud adoption. Its glossary defines a megawatt as one million watts, usually referring to the IT load a data centre can support, and a gigawatt as 1,000 megawatts.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-19",
+    "title": "Qatar launches AI infrastructure investment venture following AI company launch",
+    "source": "DatacenterDynamics",
+    "url": "https://www.datacenterdynamics.com/en/news/qatar-launches-ai-infrastructure-investment-venture-following-ai-company-launch/",
+    "published": "2025-12-16",
+    "summary": "Qatar's AI company Qai, a subsidiary of the Qatar Investment Authority launched on December 8, formed a $20 billion joint venture with Brookfield focused on AI infrastructure in Qatar and select international markets. Brookfield said it is its inaugural AI infrastructure investment in the Middle East.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-20",
+    "title": "Syntys Breaks Ground on New 20MW Data Center Development in Qatar",
+    "source": "Syntys (PR Newswire)",
+    "url": "https://www.prnewswire.com/news-releases/syntys-breaks-ground-on-new-20mw-data-center-development-in-qatar-302937801.html",
+    "published": "2026-11-12",
+    "summary": "Syntys, carved out of Ooredoo Group, broke ground on a 20MW Tier III data centre in Qatar designed for higher-density GPU racks; representatives of Microsoft and Google attended. Earlier in 2026 it acquired QData QFZ, and now owns four campuses in Qatar. Syntys operates the facilities hosting Ooredoo's sovereign AI cloud on NVIDIA Hopper GPUs. It says in-country hosting keeps sensitive data within national borders.",
+    "source_type": "primary"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-21",
+    "title": "Consortium to develop 400MW hyperscale AI data center in Oman",
+    "source": "DatacenterDynamics",
+    "url": "https://www.datacenterdynamics.com/en/news/consortium-to-develop-400mw-hyperscale-ai-data-center-in-oman/",
+    "published": "2026-11-11",
+    "summary": "A consortium led by Omani firm Mubbadrah plans an AI data centre complex in Salalah, Oman, with initial investment of $3 billion and planned capacity of up to 400MW, powered by grid and renewables; O2 Global Energy will develop 400MW of solar with battery storage. Mubbadrah's CEO said servers and chips are typically provided by tenants as additional investment. Crusoe has indicated interest as a potential customer.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-22",
+    "title": "Kuwait looks to the cloud as power grid feels the strain",
+    "source": "AGBI",
+    "url": "https://www.agbi.com/infrastructure/2026/01/kuwait-looks-to-the-cloud-as-power-grid-feels-the-strain/",
+    "published": "2026-01-23",
+    "summary": "Kuwait invited bids for three power substations to supply Google Cloud and Microsoft data centres, estimated at more than 22 million dinars ($71.5 million). It builds on a January 2023 Google Cloud agreement for a Kuwait cloud region and a March 2025 Microsoft partnership for an AI-powered Azure region. Analysts note Kuwait cut power during peak demand in 2025, has imported electricity via the GCC Interconnection Authority since March 2025 and expects no major new generation 'before 2028'.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-23",
+    "title": "We mapped the world's hottest data centers",
+    "source": "Rest of World",
+    "url": "https://restofworld.org/2025/data-center-heat-map",
+    "published": "2025-12-15",
+    "summary": "Rest of World, with Climate Central, found that in 21 countries including the UAE all data centres are in areas with average annual temperatures above 27 C, and nearly all data centres in Saudi Arabia are in regions that are too hot. ASHRAE's recommended range is 18 C to 27 C. Of 8,808 operational data centres worldwide as of October 2025, only 600 are in areas above 27 C.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-24",
+    "title": "The Gulf's trillion-dollar AI dream faces a water crisis",
+    "source": "Rest of World",
+    "url": "https://restofworld.org/2025/gulf-ai-water-crisis",
+    "published": "2025-08-04",
+    "summary": "Citing Mordor Intelligence, Rest of World reports data centre water consumption in the Middle East and Africa rising from 119 billion litres in 2025 to more than 426 billion litres by 2030, with the UAE alone expected to use 61 billion litres annually by 2030. Gulf summers push operators toward evaporation-based cooling. Khazna told Rest of World it is exploring treated sewage effluent water reuse at some facilities.",
+    "source_type": "press"
+  },
+  {
+    "id": "05-gulf-data-centre-boom-25",
+    "title": "Artificial Intelligence (topic page)",
+    "source": "International Energy Agency",
+    "url": "https://www.iea.org/topics/artificial-intelligence",
+    "published": "",
+    "summary": "The IEA says traditional data centres use between 10 and 25 MW, while hyperscale AI centres can exceed 100 MW, equivalent to the annual electricity consumption of 100,000 households; the largest under construction could consume as much as 2 million households. Data centres were 1.5% of worldwide electricity demand in 2025, rising to about 3% by 2030 in the base case, with demand more than doubling to around 950 TWh, slightly more than Japan's total consumption today.",
+    "source_type": "government"
+  }
+]

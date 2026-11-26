@@ -1,0 +1,227 @@
+[
+  {
+    "id": "06-ai-rules-in-the-region-01",
+    "title": "UAE Federal Decree by Law Concerning the Protection of Personal Data (legislation page)",
+    "source": "UAE Legislation portal (uaelegislation.gov.ae)",
+    "url": "https://uaelegislation.gov.ae/en/legislations/1972",
+    "published": "2021-09-20",
+    "summary": "The official portal lists the Federal Decree by Law Concerning the Protection of Personal Data with an issued date of 20 Sep 2021, an effective date of 02 Jan 2022, and an Official Gazette date of 26 Sep 2021 (Gazette No. 712, supplement). Its legislation state is shown as 'Active'. When fetched on 26 November 2026 the page said 'The last update on this law was listed on 20 Sep 2021'. The Arabic text prevails over the English translation.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-02",
+    "title": "UAE Data Office and PDPL: Compliance Guide for Companies",
+    "source": "ABS Partners (law firm)",
+    "url": "https://abspartners.ae/uae-data-office-pdpl-compliance",
+    "published": "2026-10-28",
+    "summary": "The PDPL (Federal Decree-Law No. 45 of 2021) has been in force since 2 January 2022; the UAE Data Office was created by a separate law, Federal Decree-Law No. 44 of 2021. The PDPL required Executive Regulations within six months of promulgation; they are 'yet to be issued', penalties are left to a Cabinet decision, and the firm found no published enforcement decision. The PDPL does not apply to government data, health and banking/credit data with their own legislation, or free zone companies with their own data law (DIFC, ADGM). It requires consent unless an exception applies, records of processing, a DPO for high-risk processing, impact assessments before certain high-risk processing, and gives a right to object to automated decisions. Health ICT law (Federal Law No. 2 of 2019) restricts storing or transferring health data outside the UAE without approval, and moving data between the mainland and DIFC or ADGM is treated as a cross-border transfer.",
+    "source_type": "press"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-03",
+    "title": "UAE Data Protection Law (PDPL) for IT Teams: Where It Stands in 2026",
+    "source": "PRO TECHnology (IT services firm)",
+    "url": "https://protechnology.ae/uae-pdpl-data-protection-law-it-guide",
+    "published": "2026-11-19",
+    "summary": "The PDPL's executive regulations were still not on the official UAE Legislation portal on 19 November 2026; the firm cites Al Tamimi & Company saying in September 2026 they had not been issued, and warns that web pages stating a regulation number or 2026 issue date should be checked against the portal. Article 28 asked for executive regulations within six months; Article 29 gives controllers no more than six months from their issue to comply, extendable by the Cabinet. Article 26 leaves violations and administrative penalties to a Cabinet decision, so mainland PDPL fine figures should be treated with care. Health data under Federal Law No. 2 of 2019 is stored and processed inside the UAE, with Article 13 allowing it outside only where the health authority issues a resolution.",
+    "source_type": "press"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-04",
+    "title": "One region, multiple regimes: regulatory divergence in GCC",
+    "source": "Stephenson Harwood (law firm)",
+    "url": "https://shlegal.com/insights/one-region-multiple-regimes-regulatory-divergence-in-gcc",
+    "published": "2026-11-25",
+    "summary": "There are four regimes across the UAE and Saudi: Saudi PDPL (in force Sept 2023), UAE PDPL (Jan 2022, Executive Regulations pending), DIFC DPL No. 5 of 2020 (July 2020) and ADGM DPR 2021 (Feb 2021). Breach notification: 72 hours in Saudi and ADGM, 'as soon as practicable' in DIFC, 'promptly' (to be specified) onshore UAE. Saudi fines up to SAR 5 million per breach, doubling on repeat; SDAIA announced in early 2026 that 48 decisions were issued in 2025; ADGM ceiling $28 million, single published penalty $20,000 (May 2024); DIFC recorded nearly 1,300 inspections and assessments in 2025. DIFC Regulation 10 has been in force since September 2023 and moved to full enforcement from January 2026; a 2025 Regulation 10 thematic assessment saw 601 assessments issued and 756 responses. In January 2026 DIFC, ADGM and QFC placed one another on their adequacy lists, but neither list includes onshore UAE or Saudi; SDAIA has published no adequacy list, and the UAE has published no adequacy list or standard contractual clauses. In October 2026 SDAIA consulted on amendments to the PDPL Implementing Regulations (closed 5 November), including removing the harm threshold for breach notification.",
+    "source_type": "press"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-05",
+    "title": "Mohammed bin Rashid approves establishing Artificial Intelligence and Data Authority",
+    "source": "WAM via UAE TDRA Digital Government",
+    "url": "https://dgov.tdra.gov.ae/en/media-hub/news/mohammed-bin-rashid-approves-establishing-artificial-intelligence-and-data-authority",
+    "published": "2026-06-14",
+    "summary": "On 14 June 2026 Sheikh Mohammed bin Rashid approved the establishment of the Artificial Intelligence and Data Authority, 'the single national body responsible for data, artificial intelligence and digital government in the UAE, reporting directly to the Cabinet'. It brings together functions previously held by the Office of Artificial Intelligence, Digital Economy and Remote Work Applications; the Digital Government Sector at the TDRA; and the UAE Data Office. Omar Sultan Al Olama, Minister of State for Artificial Intelligence, was appointed Chairman. Its mandate includes proposing national policies and legislation and setting standards and guidelines for data and AI management.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-06",
+    "title": "Regulation 10",
+    "source": "DIFC Commissioner of Data Protection",
+    "url": "https://www.difc.com/business/registrars-and-commissioners/commissioner-of-data-protection/regulation-10",
+    "published": "",
+    "summary": "The updated DIFC Data Protection Regulations, enacted on September 1, 2023, include Regulation 10 on processing personal data through autonomous and semi-autonomous systems, i.e. artificial intelligence. DIFC describes it as a platform for interoperability around principles, ethics and governance. The page lists an Accreditation and Certification Framework, a Regulation 10 certification application portal, a certification assessment tool and approved Accredited Certification Bodies.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-07",
+    "title": "FAQs: Regulation 10 on Personal Data Processed through Autonomous and Semi-Autonomous Systems (DIFC-DP-GL-24 Rev. 03)",
+    "source": "DIFC Commissioner of Data Protection",
+    "url": "https://assets.difc.com/v1/media/edge/images/dubaiintern0078-difcexperie96c5-production-3253/media/project/difcexperiences/difc/difcwebsite/documents/data-protection-pages/guidance-and-handbooks/lawful-processing/dp-regulation-10-faqs.pdf",
+    "published": "2024-08-27",
+    "summary": "A 'System' processes personal data for human-defined and/or system-defined purposes and generates an output; purely deterministic automated systems are not intended to be captured, and the definition is adapted from the OECD and the EU AI Act. A Deployer (benefits from or directs the system) is akin to a Controller; an Operator (runs it for a Deployer) is akin to a Processor; a Provider develops or commercialises it. Deployers or Operators must give clear and explicit notice to users on initial use, including the impact on rights to rectification, erasure or objection, and Regulation 10 requires a register of AI processing activities. Systems used for High Risk Processing may not be made available commercially unless they meet the Commissioner's audit and certification requirements; certification of a System is valid for a maximum of three years and ACB accreditation for five years. The guidance states it does not have the force of law and is not legal advice.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-08",
+    "title": "ADGM Data Protection Regulations 2021, section 55: General conditions for imposing administrative fines",
+    "source": "ADGM Rulebook (Thomson Reuters)",
+    "url": "https://en.adgm.thomsonreuters.com/rulebook/55-general-conditions-imposing-administrative-fines",
+    "published": "2024-02-28",
+    "summary": "The ADGM Commissioner of Data Protection may impose a fine by Penalty Notice for contraventions of the Regulations; the amount 'must not exceed USD 28 million'. For several contraventions in the same or linked processing operations, the total must also not exceed USD 28 million. Factors include gravity, intent or negligence, mitigation, cooperation and adherence to approved codes or certification. A Notice of Intent must precede a Penalty Notice, with at least 21 days for representations. The page notes it was amended on 28 February 2024.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-09",
+    "title": "ADGM Office of Data Protection: Guidance",
+    "source": "ADGM Office of Data Protection",
+    "url": "https://www.adgm.com/operating-in-adgm/office-of-data-protection/guidance",
+    "published": "",
+    "summary": "ADGM's Office of Data Protection publishes guidance on the Data Protection Regulations 2021 in eight parts, ADGM Standard Contractual Clauses for transfers to jurisdictions without adequate protection, and an ADGM Addendum to the EU SCCs. A Data Protection Impact Assessment is required for a new project likely to result in a high risk to individuals' rights, and a Record of Processing Activity is required of all ADGM entities that process personal data. It also offers DPO-requirement and breach-notification assessment tools.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-10",
+    "title": "QFC, ADGM and DIFC enhance cross-border data flow through reciprocal data protection adequacy recognition",
+    "source": "Qatar Financial Centre",
+    "url": "https://qfc.qa/en/news-detail?id=706",
+    "published": "2026-01-29",
+    "summary": "On 29 January 2026 the QFC announced reciprocal data protection adequacy recognition with ADGM and DIFC, adding each other to their adequacy lists after an assessment process. QFC Data Protection Commissioner Daniel Patterson said this 'reduces compliance burden and cost while maintaining strong rights, accountability and enforcement'.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-11",
+    "title": "The UAE Charter for the Development and Use of Artificial Intelligence",
+    "source": "UAE Legislation portal",
+    "url": "https://uaelegislation.gov.ae/en/policy/details/the-uae-charter-for-the-development-and-use-of-artificial-intelligence",
+    "published": "2024-06-10",
+    "summary": "The Charter (issued date 10 Jun 2024) aims to achieve the goals of the UAE Strategy for Artificial Intelligence. Its twelve principles are: strengthening human-machine ties; safety; algorithmic bias; data privacy; transparency; human oversight; governance and accountability; technological excellence; human commitment; peaceful coexistence with AI; promoting AI awareness for an inclusive future; and commitment to treaties and applicable laws. Its target audience includes the public sector, private companies, consumers, AI developers and researchers.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-12",
+    "title": "AI Ethics: Principles & Guidelines (Dec 2022)",
+    "source": "UAE Artificial Intelligence Office",
+    "url": "https://ai.gov.ae/wp-content/uploads/2023/03/MOCAI-AI-Ethics-EN-1.pdf",
+    "published": "",
+    "summary": "Dated DEC 2022, the document sets out eight AI ethics principles: fair; accountable; transparent; explainable; robust, safe and secure; human centred; sustainable and environmentally friendly; and privacy preserving. It states 'The guidelines are non-binding' and gives non-mandatory guidelines for the public and private sectors. It applies only to AI systems that make or inform 'significant decisions', with 'critical decisions' as a subset. It is published under a Creative Commons Attribution 4.0 licence.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-13",
+    "title": "CBUAE Issues Guidance Note to Protect Consumers and Ensure Responsible Use of Artificial Intelligence in the Financial Sector",
+    "source": "Central Bank of the UAE",
+    "url": "https://centralbank.ae/media/41gjisn4/cbuae-issues-guidance-note-to-protect-consumers-and-ensure-responsible-use-of-artificial-intelligence-in-the-financial-sector-en.pdf",
+    "published": "2026-02-23",
+    "summary": "On 23 February 2026 the CBUAE announced a guidance note on consumer protection and the responsible adoption and use of AI and machine learning by licensed financial institutions. Core principles include governance and accountability, fairness and non-discrimination, transparency and explainability, effective human oversight, and data management and privacy requirements. It applies to all licensed financial institutions. Governor Khaled Mohamed Balama said it emphasises 'the importance of human oversight and data protection requirements'.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-14",
+    "title": "Guidance Note on the Consumer Protection and Responsible Adoption and Use of AI and ML by Licensed Financial Institutions in the U.A.E.",
+    "source": "CBUAE Rulebook",
+    "url": "https://rulebook.centralbank.ae/en/rulebook/guidance-note-consumer-protection-and-responsible-adoption-and-use-artificial-intelligence",
+    "published": "2026-02-11",
+    "summary": "Shown as 'Issued on 11/2/2026'; applies to licensed financial institutions including insurers. Boards and senior management are accountable for AI outcomes, LFIs 'should not employ AI models that they have no control over', and an inventory of all AI models (name, purpose, risk rating) should be kept. Models should be bias-tested periodically, i.e. once a year or each time a model is upgraded or materially changed. Disclosures should be in Arabic and English; customers should be able to request human review of AI decisions, and LFIs should consider opt-out rights for high-impact decisions. Personal data must comply with laws including 'rules on data being retained in the country'; LFIs remain responsible for outsourced AI, must keep the ability to cease use of a model with human intervention, and human-out-of-the-loop should only be used for low-risk, non-material processes.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-15",
+    "title": "Data protection laws in Saudi Arabia",
+    "source": "DLA Piper Data Protection Laws of the World",
+    "url": "https://www.dlapiperdataprotection.com/?c=SA",
+    "published": "",
+    "summary": "Saudi Arabia's PDPL (Royal Decree M/19 of 16 September 2021, amended 27 March 2023) came into effect on 14 September 2023, with businesses generally having until 14 September 2024 to comply. It applies to processing in KSA and to processing of data of KSA residents by entities outside KSA; SDAIA is the regulator, while the Saudi Central Bank and CST keep jurisdiction in their remit. Breaches must be notified to SDAIA within 72 hours via the National Data Governance Portal. Fines reach SAR 5 million for general violations; disclosing sensitive data with intent to harm can bring up to two years' imprisonment and/or SAR 3 million, and courts may double fines for repeat offenders. Transfers abroad are allowed for listed purposes, must not compromise national security, and in banking may need Saudi Central Bank approval. As at February 2026 the PDPL is being actively enforced.",
+    "source_type": "press"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-16",
+    "title": "AI Ethics Principles (September 2023)",
+    "source": "Saudi Data and Artificial Intelligence Authority (SDAIA)",
+    "url": "https://dgp.sdaia.gov.sa/wps/wcm/connect/3fceaa0d-bbb6-4ead-9cab-c141c2eca42d/ai-principles-EN.pdf?MOD=AJPERES&CONVERT_TO=url&CACHEID=ROOTWORKSPACE-3fceaa0d-bbb6-4ead-9cab-c141c2eca42d-p735I9a",
+    "published": "",
+    "summary": "SDAIA's AI Ethics Principles set seven principles: Fairness; Privacy & Security; Humanity; Social & Environmental Benefits; Reliability & Safety; Transparency & Explainability; Accountability & Responsibility. AI risks are classed in four levels: little or no risk (no restrictions, e.g. spam filters, ethical compliance recommended); limited risk (subject to the principles); high risk to basic rights (must undergo pre- and post-conformity assessments plus statutory requirements); and unacceptable risk, such as social profiling, exploitation of children or distortion of behaviour, which is 'not allowed'. Entities may register optionally and SDAIA may award motivational badges for compliance.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-17",
+    "title": "SDAIA Supports Saudi Arabia's Leadership in Shaping Global AI Ethics, Policy, and Research",
+    "source": "Saudi Press Agency",
+    "url": "https://spa.gov.sa/en/N2367884",
+    "published": "2025-07-27",
+    "summary": "SDAIA has introduced a guidelines document for the private sector, non-profit sector and individuals on the use of generative AI tools, underscoring preventive measures to avoid copyright issues. SPA says SDAIA's AI ethics principles include integrity, fairness, privacy, security, reliability, safety, transparency, interpretability, accountability, responsibility, humanity, and social and environmental benefit. The Riyadh Charter on AI for the Islamic World was unanimously approved by all 53 ICESCO member states, and UNESCO recognised ICAIRE in Riyadh as a Category 2 centre.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-18",
+    "title": "SDAIA Issues Deepfakes Guidelines to Regulate Responsible AI Use",
+    "source": "Saudi Press Agency",
+    "url": "https://spa.gov.sa/en/N2580753",
+    "published": "2026-05-08",
+    "summary": "SDAIA issued 'Deepfakes Guidelines Mitigating Risks While Fostering Innovation', defining deepfakes as content manipulated via deep learning. It acknowledges positive uses in education, healthcare and entertainment but warns of financial fraud, impersonation and misinformation, including voice and facial impersonation used to bypass security. The document calls on developers and creators to protect personal data, obtain explicit consent, and use technical safeguards such as digital watermarks and source verification.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-19",
+    "title": "A new framework for data embassies: Saudi Arabia's Global AI Hub Law",
+    "source": "Reed Smith (law firm)",
+    "url": "https://reedsmith.com/our-insights/blogs/viewpoints/102k9af/a-new-framework-for-data-embassies-saudi-arabias-global-ai-hub-law",
+    "published": "2025-04-25",
+    "summary": "On April 14, 2025 Saudi Arabia's Communication, Space & Technology Commission released the first draft of the Global AI Hub Law, built around 'sovereign data centers' or data embassies, where foreign data is stored in Saudi Arabia under the legal protections of a foreign country. It proposes three hub types: private, extended and virtual. The Council of Ministers could terminate arrangements to protect the Kingdom's safety, national security and sovereignty. The draft was open for consultation until May 14, 2025.",
+    "source_type": "press"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-20",
+    "title": "Qatar Central Bank Issues Artificial Intelligence Guideline",
+    "source": "Qatar News Agency",
+    "url": "https://qna.org.qa/en/newsbulletins/2024-09/04/0048-qatar-central-bank-issues-artificial-intelligence-guideline",
+    "published": "2024-09-04",
+    "summary": "On 4 September 2024 Qatar Central Bank (QCB) said it had issued an Artificial Intelligence Guideline to regulate the use of AI within the financial sector, in line with the Third Financial Sector Strategy and the FinTech Strategy. QCB cited benefits including operational efficiency, faster service delivery and lower costs.",
+    "source_type": "government"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-21",
+    "title": "Qatar Central Bank Issues AI Governance Guidelines Requiring Prior Approval for High-Risk Systems",
+    "source": "The Global Banker",
+    "url": "https://theglobalbanker.com/qatar-central-bank-ai-governance-guidelines-high-risk-prior-approval-financial-sector",
+    "published": "2024-09-04",
+    "summary": "The Global Banker reports the QCB AI Guideline applies to all QCB-licensed entities, including banks, insurers and payment service providers. It reports that firms need QCB approval of purchase, licensing or outsourcing agreements for high-risk AI systems before signing, and QCB approval before launching any new AI system. The framework covers governance, accountability, transparency and explainability, fairness and data quality.",
+    "source_type": "press"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-22",
+    "title": "Data protection laws in Qatar",
+    "source": "DLA Piper Data Protection Laws of the World",
+    "url": "https://www.dlapiperdataprotection.com/?t=law&c=QA",
+    "published": "",
+    "summary": "Qatar's Law No. 13 of 2016 made it the first GCC state to issue a generally applicable data protection law; it is supplemented by guidelines from the National Cyber Governance and Assurance Affairs (NCGAA) of the National Cyber Security Agency. Sensitive personal data may not be processed without NCGAA authorisation. Breaches likely to cause damage must be notified to the NCGAA and the data subject within 72 hours. Controllers should not curb trans-border data flow unless processing violates the law or will cause gross damage. DLA Piper says the NCGAA can impose fines of up to 5 million (US$1.4 million); there is no obligation to appoint a DPO. The QFC has separate regulations.",
+    "source_type": "press"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-23",
+    "title": "Qatar Data Protection Law",
+    "source": "PwC Middle East",
+    "url": "https://www.pwc.com/m1/en/services/consulting/technology/cyber-security/navigating-data-privacy-regulations/qatar-data-protection-law.html",
+    "published": "",
+    "summary": "PwC says Qatar's Law No. 13 of 2016 took effect in 2017 and that in December 2020 the Compliance and Data Protection Department of the Ministry of Transport and Communications published guidelines on the law. It describes fines ranging from QAR 1,000,000 to QAR 5,000,000 for non-compliance.",
+    "source_type": "press"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-24",
+    "title": "Personal data protection legislation in the GCC jurisdiction",
+    "source": "HFW (law firm)",
+    "url": "https://hfw.com/insights/personal-data-protection-legislation-in-the-gcc-jurisdiction",
+    "published": "2024-10-28",
+    "summary": "Specific data protection laws are in force in Bahrain (Law No. 30 of 2018, in force 1 August 2019), KSA, Oman (Royal Decree 6/2022, in force 13 February 2023, Executive Regulations in force 5 February 2024), Qatar (Law No. 13 of 2016), QFC, UAE, ADGM and DIFC; Kuwait had no specific law, only CITRA's Data Privacy Protection Regulation for certain telecom providers. In Bahrain, transfers to adequate countries need no prior authorisation, while others need case-by-case authority approval or a qualifying contract. In Oman, the controller must obtain the data subject's express consent before transferring personal data outside the Sultanate, with limited exceptions. Unlike the other GCC jurisdictions, UAE law does not include legitimate interest as a lawful basis. HFW cautions against a 'one size fits all' GCC strategy.",
+    "source_type": "press"
+  },
+  {
+    "id": "06-ai-rules-in-the-region-25",
+    "title": "Data Protection & Privacy 2026 - Kuwait",
+    "source": "Chambers and Partners (GLA & Company)",
+    "url": "https://practiceguides.chambers.com/practice-guides/data-protection-privacy-2026/kuwait",
+    "published": "",
+    "summary": "Kuwait does not have a single, state-wide data protection statute; the main instruments are the Electronic Transactions Law No. 20 of 2014 and the Cybercrime Law No. 63 of 2015. CITRA's Data Privacy Protection Regulation, as amended by Decision No. 26 of 2024, now applies exclusively to CITRA-licensed telecom and internet providers, who must notify CITRA and affected individuals of a breach within 24 hours. Kuwait has not enacted a comprehensive AI law and has no dedicated AI statute. After the Data Classification Policy was repealed in February 2024, Kuwaiti law does not generally address data localisation, aside from sector examples.",
+    "source_type": "press"
+  }
+]

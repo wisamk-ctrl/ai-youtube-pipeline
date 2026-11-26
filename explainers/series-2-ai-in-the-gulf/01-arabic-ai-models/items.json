@@ -1,0 +1,245 @@
+[
+  {
+    "id": "01-arabic-ai-models-01",
+    "title": "Meet \"Jais\", The World's Most Advanced Arabic Large Language Model Open Sourced by G42's Inception",
+    "source": "Cerebras Systems (press release)",
+    "url": "https://www.cerebras.ai/press-release/meet-jais-the-worlds-most-advanced-arabic-large-language-model-open-sourced-by-g42s-inception",
+    "published": "2023-08-30",
+    "summary": "Inception (a G42 company) announced the open-source release of Jais on 30 August 2023, a 13-billion parameter model trained on a 395-billion-token Arabic and English dataset: 116 billion Arabic tokens and 279 billion English tokens. It was built with MBZUAI and Cerebras and trained on the Condor Galaxy 1 (CG-1) supercomputer built by G42 and Cerebras. The name is inspired by the UAE's highest peak. The release says Jais serves more than 400 million Arabic speakers; early users named include the UAE Ministry of Foreign Affairs, ADNOC, Etihad Airways, First Abu Dhabi Bank and e&. It was released on Hugging Face.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-02",
+    "title": "Core42 Sets New Benchmark for Arabic Large Language Models with the Release of Jais 30B",
+    "source": "Cerebras Systems (press release, PRNewswire/G42)",
+    "url": "https://www.cerebras.ai/press-release/core42-sets-new-benchmark-for-arabic-large-language-models-with-the-release-of-jais-30b",
+    "published": "2023-11-09",
+    "summary": "Core42 (a G42 company; Inception had 'converged into Core42') launched Jais 30B on 9 November 2023, following the 13B model of August 2023. Jais 30B was trained on 126 billion Arabic tokens, 251 billion English tokens and 50 billion code tokens. The release says the production training run for Jais 13B was completed in 21 days on CG-1, which has 4 exaFLOPS of training compute. It says fine-tuned Jais 30B responses beat Jais 13B 96% of the time in Arabic and 97% in English. It was released on Hugging Face.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-03",
+    "title": "Inception, Cerebras and MBZUAI Release Jais 2",
+    "source": "MBZUAI",
+    "url": "https://mbzuai.ac.ae/news-events/news/inception-cerebras-mbzuai-release-jais-2-the-next-generation-the-worlds-leading",
+    "published": "",
+    "summary": "Inception (a G42 company), Cerebras and MBZUAI's Institute of Foundation Models announced Jais 2, which they call the world's leading open-weight Arabic LLM, built from the ground up with 70 billion parameters and 'trained on the richest Arabic-first dataset to date'. It targets Modern Standard Arabic and regional dialects, code-switching and informal tone. Cerebras says Jais 2 was trained and is served on Cerebras systems, using 'only a fraction of the compute' of similar-sized models. MBZUAI's Preslav Nakov says Arabic has long been underserved because of limited high-quality training data. A chat app is at jaischat.ai. (Page carries no date; Middle East AI News dates the release 9 December 2025.)",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-04",
+    "title": "Inception, Cerebras and MBZUAI release Jais 2 Arabic LLM",
+    "source": "Middle East AI News",
+    "url": "https://www.middleeastainews.com/p/inception-cerebras-and-mbzuai-release",
+    "published": "2025-12-09",
+    "summary": "Reports the Jais 2 release on 9 December 2025: Jais-2-8B-Chat and Jais-2-70B-Chat are downloadable on Hugging Face, with a web chat site and Android and iOS apps. It reports that in the second half of 2024 Inception released a family of 20 open-source Jais models from 590 million to 70 billion parameters, trained on up to 1.6 trillion tokens of Arabic, English and code. It notes Inception has also built bilingual models for Hindi (Nanda) and Kazakh (Sherkala).",
+    "source_type": "press"
+  },
+  {
+    "id": "01-arabic-ai-models-05",
+    "title": "inception42/Jais-2-70B-Chat model card",
+    "source": "Hugging Face (Inception / MBZUAI / Cerebras)",
+    "url": "https://huggingface.co/inception42/Jais-2-70B-Chat",
+    "published": "2026-10-15",
+    "summary": "Jais-2-70B-Chat is a bilingual Arabic-English model trained from scratch with a custom Arabic-centric vocabulary of 150,272 tokens, a context length of 8,192 tokens, and an Apache 2.0 licence. It covers MSA, regional dialects and Arabic-English code-switching. On the AraGen-12-24 (3C3H) benchmark the card reports Jais-2-70B at 70.71% versus 62.58% for Qwen2.5-72B-Instruct and 61.29% for Llama-3.3-70B-Instruct. On Arabic IFEval (strict prompt level) it reports 66.58 versus 67.33 for Qwen2.5-72B and 58.17 for Llama-3.3-70B; on English IFEval it trails both (70.78 versus 83.53 and 88.20). (Hugging Face metadata labels the file '72B parameters'.)",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-06",
+    "title": "Jais 2: A Family of Arabic-Centric Open Large Language Models (arXiv:2608.13580)",
+    "source": "arXiv (MBZUAI, Cerebras, Inception)",
+    "url": "https://arxiv.org/abs/2608.13580",
+    "published": "2026-07-07",
+    "summary": "The technical report says the Jais 2 family includes, to the authors' knowledge, the largest open Arabic-centric LLM trained from scratch at 70B parameters, plus an 8B variant. It reaches strong Arabic results 'with a substantially smaller token budget than comparable models' and leads the open models evaluated on OALL2 and AraGen. It also scores well on culturally grounded tests including poetry, religion, cuisine and dream interpretation. The models are on Hugging Face under a commercially permissive licence, and the 70B chat app runs on Cerebras hardware at up to 2,000 tokens per second.",
+    "source_type": "paper"
+  },
+  {
+    "id": "01-arabic-ai-models-07",
+    "title": "MBZUAI's Institute of Foundation Models and Inception42 Launch Jais 3",
+    "source": "MBZUAI",
+    "url": "https://mbzuai.ac.ae/news-events/news/mbzuais-institute-foundation-models-inception42-launch-jais-3-arabic-native-ai",
+    "published": "",
+    "summary": "Jais 3 is a fleet of six open language models from 900 million to 375 billion parameters, plus Jais Speech, an Arabic speech recognition model, all built on K2 Horizon, IFM's fully open-source model fleet released in September 2026. Every model has a 512,000-token context window, which MBZUAI calls the longest of any Arabic-native model. The models were trained on MSA and dialects from Emirati and Gulf to North African Arabic, and evaluated on an audited suite of 24 Arabic benchmarks released publicly. At 7B, the average Arabic score rose from 56.4 for the K2 Horizon base to 79.6 for Jais 3. Jais Speech covers dialects from 19 Arab countries; the models are on Hugging Face. It was built by IFM and Inception42 with Cerebras.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-08",
+    "title": "Jais 3 | Arabic-native agentic AI",
+    "source": "Institute of Foundation Models (ifm.ai)",
+    "url": "https://ifm.ai/jais/",
+    "published": "",
+    "summary": "The official Jais page gives the roadmap: Jais 1 in August 2023, Jais 2 in December 2025, and Jais 3 with Jais Speech in October 2026. It says most leading models are designed around English with Arabic adapted afterward, while Jais 3 is built for Arabic from the start for over 400 million speakers. In its own benchmark table Jais 3 3.7B scores an Arabic average of 78.1, against 65.4 for Qwen3.5 4B, 64.5 for Gemma 4 E2B and 44.6 for Falcon-H1 3B. It scores 76.7 on dialects.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-09",
+    "title": "TII Launches Two New AI Models: Falcon Arabic & Falcon-H1",
+    "source": "Technology Innovation Institute (TII)",
+    "url": "https://www.tii.ae/news/middle-easts-leading-ai-powerhouse-tii-launches-two-new-ai-models-falcon-arabic-first-arabic",
+    "published": "2025-05-21",
+    "summary": "On 21 May 2025 TII, the applied research arm of Abu Dhabi's ATRC, unveiled Falcon Arabic, the first Arabic model in the Falcon series, built on Falcon 3-7B and trained on native (non-translated) Arabic data covering MSA and regional dialects. TII says it beats all other regionally available Arabic models on the Open Arabic LLM Leaderboard and matches models up to 10 times its size. It also launched Falcon-H1, a hybrid Transformer-Mamba family in 34B, 7B, 3B, 1.5B, 1.5B-deep and 500M sizes. TII says the Falcon ecosystem has been downloaded over 55 million times. All Falcon models are released under the TII Falcon License, which is based on Apache 2.0.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-10",
+    "title": "Abu Dhabi's TII Launches Falcon-H1 Arabic",
+    "source": "Advanced Technology Research Council (ATRC)",
+    "url": "https://atrc.gov.ae/news/abu-dhabis-tii-launches-falcon-h1-arabic-establishing-the-worlds-leading-arabic-ai-model",
+    "published": "2026-01-05",
+    "summary": "On 5 January 2026 TII announced Falcon-H1 Arabic, a hybrid Mamba-Transformer family in 3B, 7B and 34B sizes with context windows of up to 256K tokens. TII reports Open Arabic LLM Leaderboard (OALL) averages of 61.87% for the 3B model, 10 points ahead of 4B rivals such as Microsoft's Phi-4 Mini; 71.47% for the 7B, ahead of Qatar's Fanar-1-9B and HUMAIN's ALLaM 7B; and 75.36% for the 34B, ahead of Qwen2.5 72B and Llama-3.3 70B. It also cites results on 3LM (STEM), ArabCulture and AraDice (dialects). The models are in a public playground at chat.falconllm.tii.ae.",
+    "source_type": "government"
+  },
+  {
+    "id": "01-arabic-ai-models-11",
+    "title": "Falcon-H1-Arabic",
+    "source": "TII Falcon LLM site",
+    "url": "https://falconllm.tii.ae/falcon-h1-arabic.html",
+    "published": "",
+    "summary": "TII describes Falcon-H1-Arabic as the first Arabic LLM with a Mamba-Transformer hybrid architecture, trained on native Arabic datasets without relying on machine translation. It lists support for MSA and Gulf, Levantine, North African and Egyptian dialects, and says the model supports 18 languages. It says the 256K-token context is equivalent to about 100,000 words and can take in lengthy legal documents, medical records or knowledge bases in one go. TII says the 34B model outperforms 70B+ systems on Arabic benchmarks.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-12",
+    "title": "TII Launches Falcon-Emirati Alongside New Arabic AI Models for Speech and Visual Text Understanding",
+    "source": "Technology Innovation Institute (TII)",
+    "url": "https://www.tii.ae/news/tii-launches-falcon-emirati-alongside-new-arabic-ai-models-speech-and-visual-text",
+    "published": "2026-10-06",
+    "summary": "On 6 October 2026 TII launched Falcon-Emirati, a 7-billion-parameter model for Emirati Arabic built on Falcon-H1-Arabic, along with Falcon-ASR (1.6B, speech-to-text for Emirati and Standard Arabic, English, French, Spanish and Portuguese) and Falcon-OCR-Arabic. Falcon-Emirati scored 84.83% on Alyah, a native Emirati benchmark, which TII says beats every open model it evaluated. TII explains that MSA is used mainly in formal writing, education and news, while everyday speech uses regional dialects that are underrepresented in training data. As a result, a model trained mainly on MSA 'may understand every word of an Emirati sentence while still missing its intended meaning'.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-13",
+    "title": "ALLaM: Large Language Models for Arabic and English (arXiv:2407.15390)",
+    "source": "arXiv (SDAIA / NCAI)",
+    "url": "https://arxiv.org/abs/2407.15390",
+    "published": "2024-07-22",
+    "summary": "The ALLaM paper presents a series of Arabic LLMs for the Arabic Language Technologies ecosystem. It shows that 'second-language acquisition via vocabulary expansion' and pretraining on mixed Arabic and English text can steer a model towards Arabic without catastrophic forgetting of English. It reports that parallel and translated data help align knowledge between languages, and that extensive alignment with human preferences can beat larger models with weaker alignment. The authors report state-of-the-art results on Arabic benchmarks including MMLU Arabic, ACVA and Arabic Exams.",
+    "source_type": "paper"
+  },
+  {
+    "id": "01-arabic-ai-models-14",
+    "title": "ALLaM-7B-Instruct-preview model card",
+    "source": "Hugging Face (SDAIA NCAI, hosted under humain-ai)",
+    "url": "https://huggingface.co/humain-ai/ALLaM-7B-Instruct-preview",
+    "published": "",
+    "summary": "ALLaM is developed by the National Center for Artificial Intelligence (NCAI) at the Saudi Data and AI Authority (SDAIA). The 7B instruct model was trained from scratch: 4 trillion English tokens followed by 1.2 trillion mixed Arabic/English tokens, 5.2 trillion in total, with a 4,096-token context. It was then tuned on 7 million instructions and 260,000 preference pairs. The card names two training paths, models pretrained from scratch and models adapted from open-weight models, and lists Arabic and English as languages. For the licence it says 'see the LICENSE file'; the licence text was not retrieved.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-15",
+    "title": "SDAIA Lists ALLaM 7B Arabic Language Model on Hugging Face",
+    "source": "Saudi Press Agency (SPA)",
+    "url": "https://www.spa.gov.sa/en/N2276379",
+    "published": "2025-03-06",
+    "summary": "On 6 March 2025 SDAIA announced that the 7-billion-parameter ALLaM model was listed on Hugging Face. SPA says ALLaM was first integrated into IBM's watsonx platform and then launched on Microsoft Azure. At LEAP25, Qualcomm and the ALLaM team announced availability on Qualcomm AI Cloud, and an 'ALLAM AI PC' was unveiled. SDAIA links the work to Saudi Vision 2030.",
+    "source_type": "government"
+  },
+  {
+    "id": "01-arabic-ai-models-16",
+    "title": "HUMAIN Launches HUMAIN Chat, Powered by ALLaM 34B",
+    "source": "Saudi Press Agency (SPA), HUMAIN press release",
+    "url": "https://www.spa.gov.sa/en/N2385004",
+    "published": "2025-08-25",
+    "summary": "On 25 August 2025 HUMAIN, a Public Investment Fund company, launched HUMAIN Chat on web, iOS and Android, first in Saudi Arabia with regional rollout to follow. It is powered by ALLaM 34B, which builds on earlier models from SDAIA's National Center for AI. HUMAIN says ALLaM 34B was 'independently verified by Cohere on MMLU' as the most advanced Arabic LLM built in the Arab world, and was refined with input from over 600 domain experts and 250 evaluators. The team has over 120 AI specialists, including 35 PhD holders. Features include web search, Arabic speech input across dialects, Arabic-English switching, compliance with Saudi PDPL and hosting on HUMAIN infrastructure in the Kingdom. The release cites more than 400 million Arabic speakers.",
+    "source_type": "government"
+  },
+  {
+    "id": "01-arabic-ai-models-17",
+    "title": "Fanar: An Arabic-Centric Multimodal Generative AI Platform (arXiv:2501.13944)",
+    "source": "arXiv (QCRI, Hamad Bin Khalifa University)",
+    "url": "https://arxiv.org/abs/2501.13944",
+    "published": "2025-01-18",
+    "summary": "Fanar is built around two Arabic LLMs. Fanar Star is a 7B model trained from scratch on nearly 1 trillion clean, deduplicated Arabic, English and code tokens. Fanar Prime is a 9B model continually trained from Gemma-2 9B on the same token set. An orchestrator routes each prompt to one of them. The platform adds an Islamic RAG system for religious prompts, a 'Recency RAG' for recent events, dialect-aware speech recognition, and image generation. It was designed and built entirely at QCRI, Hamad Bin Khalifa University, and sponsored by Qatar's Ministry of Communications and Information Technology to develop sovereign AI.",
+    "source_type": "paper"
+  },
+  {
+    "id": "01-arabic-ai-models-18",
+    "title": "Fanar 2.0: Arabic Generative AI Stack (arXiv:2603.16397)",
+    "source": "Hugging Face Papers / arXiv (QCRI, HBKU)",
+    "url": "https://huggingface.co/papers/2603.16397",
+    "published": "2026-03-17",
+    "summary": "Fanar 2.0 was designed and operated entirely at QCRI, HBKU, on 256 NVIDIA H100 GPUs. The paper notes that Arabic makes up only about 0.5% of web data despite 400 million native speakers. The core model, Fanar-27B, was continually pretrained from Gemma-3-27B on 120 billion high-quality tokens, 8x fewer pretraining tokens than Fanar 1.0. It still gains +9.1 points in Arabic knowledge, +7.3 in language, +3.5 in dialects and +7.6 in English. New components include FanarGuard (a 4B moderation filter), the Aura speech family, the Oryx vision family, Fanar-Sadiq for Islamic content, Fanar-Diwan for classical poetry and FanarShaheen for translation.",
+    "source_type": "paper"
+  },
+  {
+    "id": "01-arabic-ai-models-19",
+    "title": "QCRI/Fanar-2-27B-Instruct model card",
+    "source": "Hugging Face (QCRI, HBKU)",
+    "url": "https://huggingface.co/QCRI/Fanar-2-27B-Instruct",
+    "published": "2026-03-25",
+    "summary": "Fanar-2-27B-Instruct has 27 billion parameters, a 32,768-token context, an Apache 2.0 licence, and covers Arabic and English. Its stated dialects are MSA, Gulf, Levantine and Egyptian. The card says it was continually pretrained from google/gemma-3-27b-pt on about 166B tokens, over 75,000 H100 GPU hours, then tuned on 4M instructions and 280K preference pairs. Against Fanar 1.0 (9B), it reports ArabicMMLU rising from 67.35% to 74.67% and dialectal Belebele from 83.26% to 86.81%, with context growing from 4,096 to 32,768 tokens. A chat interface, iOS and Android apps and API access are available.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-20",
+    "title": "K2-Think: A Parameter-Efficient Reasoning System (arXiv:2509.07604)",
+    "source": "arXiv (MBZUAI)",
+    "url": "https://arxiv.org/abs/2509.07604",
+    "published": "2025-09-09",
+    "summary": "K2-Think is a 32B-parameter reasoning system built on the Qwen2.5 base model. Its authors say it matches or surpasses much larger models such as GPT-OSS 120B and DeepSeek v3.1, and it was built using only publicly available open-source datasets. It is strongest in maths, and the paper reports state-of-the-art scores among open-source models on public maths benchmarks. It is freely available at k2think.ai and runs at over 2,000 tokens per second per request on Cerebras's Wafer-Scale Engine. (K2 Think is a general reasoning model, not an Arabic-specific model.)",
+    "source_type": "paper"
+  },
+  {
+    "id": "01-arabic-ai-models-21",
+    "title": "K2 Think V2: a fully sovereign reasoning model",
+    "source": "MBZUAI Institute of Foundation Models",
+    "url": "https://mbzuai.ac.ae/news-events/news/k2-think-v2-fully-sovereign-reasoning-model",
+    "published": "",
+    "summary": "IFM says K2 Think is now a 70-billion-parameter open-source general reasoning model built on K2 V2 Instruct. IFM says the model is '100% sovereign and open from pre-training through post-training, using only IFM-curated data'. The original K2 Think was released in September 2025 and K2-V2 in December 2025. In Artificial Analysis testing, K2 Think V2's hallucination rate on AA-Omniscience fell from 89% to 52% and its long-context reasoning score rose from 33% to 53%. It ties for the lead on Artificial Analysis's 'Openness Index' with K2-V2 and Olmo 3.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-22",
+    "title": "The Open Arabic LLM Leaderboard 2",
+    "source": "Hugging Face blog (OALL team: 2A2I, TII, Hugging Face)",
+    "url": "https://huggingface.co/blog/leaderboard-arabic-v2",
+    "published": "2025-02-10",
+    "summary": "The first Open Arabic LLM Leaderboard (OALL) was launched in May 2024 by 2A2I, TII and Hugging Face with 14 benchmarks; within 7 months it received more than 700 model submissions from over 180 organisations. In September 2024 SDAIA and the King Salman Global Academy for Arabic Language launched the BALSAM Index, with about 1,400 datasets, 50,000 questions and 67 tasks. On 5 December 2024 Inception and MBZUAI launched the AraGen generative leaderboard, which uses the 3C3H metric. OALL v2 (February 2025) dropped saturated and machine-translated tasks, because 'many tasks were direct translations from English'. It added native benchmarks: Arabic MMLU (about 15,000 questions from school exams), human-translated MMLU, MedinaQA, AraTrust and ALRAGE. The authors cite Arabic's 'rich and complex morphology' and dialect diversity as reasons Arabic needs its own evaluation.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-23",
+    "title": "Introducing Command R7B Arabic",
+    "source": "Cohere",
+    "url": "https://cohere.com/blog/command-r7b-arabic",
+    "published": "2025-02-27",
+    "summary": "On 27 February 2025 Cohere released Command R7B Arabic, a version of its lightweight Command R7B model optimised for Arabic for enterprises in the Middle East and North Africa. It has a 128k context length and can run on low-end GPUs, a MacBook or even CPUs. Cohere says it focused on Arabic's 'complex morphology' and 'accurate dialectal variations'. The weights are on Hugging Face and Ollama.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-24",
+    "title": "CohereLabs/c4ai-command-r7b-arabic-02-2025 model card",
+    "source": "Hugging Face (Cohere Labs)",
+    "url": "https://huggingface.co/CohereLabs/c4ai-command-r7b-arabic-02-2025",
+    "published": "",
+    "summary": "The card calls Command R7B Arabic an open-weights research release optimised for Arabic (MSA) and English, with about 8 billion parameters (7B transformer plus 1B embedding) and a 128K context. It is licensed CC-BY-NC, which does not allow commercial use, and requires adherence to Cohere Labs' Acceptable Use Policy. Cohere reports an Arabic average of 69.3 versus 67.0 for Gemma 9B, 62.9 for Qwen 2.5 7B and 58.4 for Llama 3.1 8B, across AlGhafa-Native, Arabic MMLU, IFEval AR, TyDi QA Arabic and FaithEval Arabic.",
+    "source_type": "primary"
+  },
+  {
+    "id": "01-arabic-ai-models-25",
+    "title": "Nile-Chat: Egyptian Language Models for Arabic and Latin Scripts (arXiv:2507.04569)",
+    "source": "arXiv (MBZUAI Paris)",
+    "url": "https://arxiv.org/abs/2507.04569",
+    "published": "2025-07-06",
+    "summary": "Nile-Chat is a family of LLMs for Egyptian dialect in 4B, 3x4B-A6B (mixture-of-experts) and 12B sizes. They read and write both Arabic script and Latin-script Arabic ('Arabizi'). The authors say Nile-Chat significantly outperforms LLaMa, Jais and ALLaM on their new Egyptian benchmarks. The 12B model shows a 14.4% gain over Qwen2.5-14B-Instruct on Latin-script benchmarks. All resources are public.",
+    "source_type": "paper"
+  },
+  {
+    "id": "01-arabic-ai-models-26",
+    "title": "AraToken: Optimizing Arabic Tokenization with Normalization Pipeline and Language Extension for Qwen3 (arXiv:2512.18399)",
+    "source": "arXiv",
+    "url": "https://arxiv.org/abs/2512.18399",
+    "published": "2025-12-20",
+    "summary": "The authors say general-purpose tokenisers trained mostly on English and Latin-script languages perform poorly on morphologically rich languages such as Arabic, 'resulting in inflated token sequences and reduced compression efficiency'. They handle Arabic-specific spelling variation such as Alif variants, diacritics and Arabic-Indic numerals. With normalisation, their SentencePiece tokeniser reaches 18% lower fertility, 1.199 versus 1.35 tokens per word, than unnormalised baselines.",
+    "source_type": "paper"
+  },
+  {
+    "id": "01-arabic-ai-models-27",
+    "title": "Do Diacritics Matter? Evaluating the Impact of Arabic Diacritics on Tokenization and LLM Benchmarks",
+    "source": "ACL Anthology (Findings of EACL 2026; Inoue, Alhafni, Habash, Baldwin)",
+    "url": "https://aclanthology.org/2026.findings-eacl.22/",
+    "published": "",
+    "summary": "Diacritics are marks that specify pronunciation, disambiguate meaning or show grammar, and Arabic usage of them varies widely by domain. The authors find modern LLMs cope with the limited diacritics found in ordinary text. Full diacritisation, however, 'leads to substantially increased token fragmentation and degraded performance'. (Published at EACL 2026 in Rabat, March 2026; exact day not given.)",
+    "source_type": "paper"
+  }
+]
