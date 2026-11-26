@@ -31,12 +31,24 @@ def test_write_episode_revises_once_and_writes_the_review_files(tmp_path, monkey
     draft = "[Section: Opening]\nShort hook.\n" + "Fact. " * 40
     calls = []
 
+    class Stream:
+        def __init__(self, kw):
+            calls.append(kw)
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def get_final_message(self):
+            return SimpleNamespace(stop_reason="end_turn", content=[SimpleNamespace(type="text", text=draft)])
+
     class C:
         class messages:
             @staticmethod
-            def create(**kw):
-                calls.append(kw)
-                return SimpleNamespace(content=[SimpleNamespace(type="text", text=draft)])
+            def stream(**kw):
+                return Stream(kw)
     from pipeline.scripting import source_map, translate
     monkeypatch.setattr(translate, "critique_en", lambda s, cfg, client: {"minimum": 7, "worst_three": [], "defects": []})
     monkeypatch.setattr(source_map, "build", lambda s, items, model, client, lang="en": ([], None))
@@ -45,3 +57,12 @@ def test_write_episode_revises_once_and_writes_the_review_files(tmp_path, monkey
     s = xe.write_episode(tmp_path, {"scripting": {"model": "m"}}, "AI in the Gulf", "Next one", 500, C())
     assert len(calls) == 2 and "Next one" in calls[0]["messages"][0]["content"]
     assert (tmp_path / "script.md").exists() and (tmp_path / "checks.md").exists() and s["critic_min"] == 7
+    assert any("bottom line" in p for p in s["open_problems"])   # the fake draft lacks it
+
+
+def test_research_facts_reach_the_source_map(tmp_path):
+    (tmp_path / "items.json").write_text(json.dumps([{"id": "e-07", "title": "T", "source": "S", "url": "https://s/7",
+                                                      "published": "2026-01-01", "summary": "Summary."}]))
+    (tmp_path / "research.md").write_text('9. Li says speakers slip "into English" [e-07].\n10. Other [e-08, e-07].\n')
+    item = xe.load_items(tmp_path)[0]
+    assert 'Research note: Li says speakers slip "into English".' in item.summary and "Research note: Other" in item.summary

@@ -82,9 +82,28 @@ about {target_words} spoken words, add no fact that is not in the sources.
 Output only the revised script."""
 
 
+def research_facts(ep_dir: Path) -> dict[str, list[str]]:
+    """research.md's numbered facts by the source id(s) they cite: the source map checks the script against them too
+    (2026-11-26: a quote in the research notes was reported unsourced because the item summary left it out)."""
+    import re
+    f = ep_dir / "research.md"
+    out: dict[str, list[str]] = {}
+    for line in (f.read_text(encoding="utf-8").splitlines() if f.exists() else []):
+        m = re.match(r"\s*\d+\.\s+(.*)", line)
+        if not m:
+            continue
+        for ids in re.findall(r"\[([^\]]+)\]", m[1]):
+            for i in re.split(r"[,;\s]+", ids):
+                if i:
+                    out.setdefault(i.strip(), []).append(re.sub(r"\s*\[[^\]]+\]", "", m[1]).strip())
+    return out
+
+
 def load_items(ep_dir: Path) -> list[NewsItem]:
-    """The research's items.json as NewsItems (the research ids stay in research.md; the script cites by url)."""
+    """The research's items.json as NewsItems, each with the research facts that cite it (the research ids stay in
+    research.md; the script cites by url)."""
     raw = json.loads((ep_dir / "items.json").read_text(encoding="utf-8"))
+    facts = research_facts(ep_dir)
     out = []
     for r in raw:
         if not r.get("url"):
@@ -95,7 +114,9 @@ def load_items(ep_dir: Path) -> list[NewsItem]:
         except ValueError:
             when = datetime(2026, 1, 1, tzinfo=timezone.utc)
         out.append(NewsItem(source=str(r.get("source") or ""), source_type="rss", title=str(r.get("title") or ""),
-                            summary=f"[research id {r.get('id', '')}] {r.get('summary', '')}", url=str(r["url"]),
+                            summary=f"[research id {r.get('id', '')}] {r.get('summary', '')}"
+                            + "".join(f"\nResearch note: {x}" for x in facts.get(str(r.get("id", "")), [])),
+                            url=str(r["url"]),
                             published=when, region="gulf"))
     return out
 
@@ -120,8 +141,31 @@ def problems_for(script: str, target: int, critique: dict[str, Any] | None) -> l
     return [p for p in out if p.strip()]
 
 
+def structure_problems(script: str) -> list[str]:
+    """Parts every explainer must have; the founder sees what is missing."""
+    out = []
+    if "Wissam's view" not in script:
+        out.append("No «Wissam's view» passage.")
+    if "[Section: The bottom line]" not in script:
+        out.append("No [Section: The bottom line].")
+    if "subscribe" not in script.lower()[-1500:]:
+        out.append("No sign-off asking viewers to subscribe.")
+    return out
+
+
 def _text(resp) -> str:
     return "".join(b.text for b in resp.content if getattr(b, "type", "") == "text").strip()
+
+
+def _write(client, model: str, system: str, user: str) -> str:
+    """One full script. Streams with room to spare; a reply cut off by the token limit is an error, never a draft
+    (2026-11-26: episode 1's first draft stopped mid-sentence, before the bottom line and the sign-off)."""
+    with client.messages.stream(model=model, max_tokens=64000, system=system,
+                                messages=[{"role": "user", "content": user}]) as stream:
+        msg = stream.get_final_message()
+    if getattr(msg, "stop_reason", "") == "max_tokens":
+        raise RuntimeError("the script was cut off by the token limit")
+    return _text(msg)
 
 
 def write_episode(ep_dir: Path, cfg: dict[str, Any], series: str, next_title: str, target_words: int,
@@ -134,24 +178,26 @@ def write_episode(ep_dir: Path, cfg: dict[str, Any], series: str, next_title: st
     items = load_items(ep_dir)
     research = (ep_dir / "research.md").read_text(encoding="utf-8")
     system = SYSTEM.format(series=series, target_words=target_words)
-    resp = client.messages.create(model=model, max_tokens=16000, system=system, messages=[{"role": "user", "content":
-                                  USER.format(research=research, items=items_block(items), next_title=next_title)}])
-    script = _text(resp)
+    script = _write(client, model, system, USER.format(research=research, items=items_block(items),
+                                                       next_title=next_title))
     try:
         crit = critique_en(script, cfg, client)
     except Exception as exc:  # noqa: BLE001 — the critic advises; the draft still goes to the founder
         log.warning("critic unavailable: %s", exc)
         crit = {"error": str(exc)}
-    problems = problems_for(script, target_words, crit)
+    problems = problems_for(script, target_words, crit) + structure_problems(script)
     if problems:
-        resp = client.messages.create(model=model, max_tokens=16000, system=system, messages=[{"role": "user", "content":
-            USER.format(research=research, items=items_block(items), next_title=next_title)
-            + "\n\n" + REVISE.format(target_words=target_words, problems="\n".join(f"- {p}" for p in problems),
-                                     script=script)}])
-        script = _text(resp) or script
+        script = _write(client, model, system, USER.format(research=research, items=items_block(items),
+                                                          next_title=next_title)
+                        + "\n\n" + REVISE.format(target_words=target_words,
+                                                 problems="\n".join(f"- {p}" for p in problems), script=script)) or script
+        try:   # the score of the draft the founder reads, not of the first one
+            crit = {**critique_en(script, cfg, client), "first_draft_minimum": crit.get("minimum")}
+        except Exception as exc:  # noqa: BLE001
+            log.warning("critic unavailable on the revision: %s", exc)
     sents, smap = smap_mod.build(script, items, cfg["scripting"].get("aux_model", model), client, lang="en")
     stats = smap_mod.stats(smap)
-    left = problems_for(script, target_words, None)
+    left = problems_for(script, target_words, None) + structure_problems(script)
     (ep_dir / "script.md").write_text(script + "\n", encoding="utf-8")
     (ep_dir / "critique.json").write_text(json.dumps(crit, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
     (ep_dir / "source_map.md").write_text(smap_mod.render_md(sents, smap, items), encoding="utf-8")
