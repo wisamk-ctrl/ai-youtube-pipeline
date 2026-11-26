@@ -1,175 +1,86 @@
 {
   "scores": {
-    "hook": 9,
-    "clarity": 3,
-    "pacing": 4,
+    "hook": 10,
+    "clarity": 7,
+    "pacing": 9,
     "flow": 10,
     "arabic": 10,
     "value": 9
   },
-  "minimum": 3,
-  "verdict": "Strong, well-sourced structure with honest framing of the leaderboard claims, but it is far too dense for the ear: break up the number-stacked sentences, add pauses throughout, and stop the first story repeating the hook before we record.",
+  "minimum": 7,
+  "verdict": "A clear, well-signposted explainer that is ready to record once one breathless run gets a pause, one ambiguous 'It' gets a name, two terms get explained, and two editorial asides come out of the reported facts.",
   "defects": [
     {
-      "axis": "hook",
-      "severity": "minor",
-      "rule": "Hook carries more than one number",
-      "quote": "More than 400 million people speak Arabic, yet Arabic is only about half a percent"
-    },
-    {
-      "axis": "hook",
+      "axis": "clarity",
       "severity": "major",
-      "rule": "First story restates the hook's facts",
-      "quote": "Arabic makes up [Pause] only about 0.5% of web data"
+      "rule": "Pronoun whose referent could be two things",
+      "quote": "It worked with MBZUAI and with Cerebras"
     },
     {
       "axis": "clarity",
       "severity": "major",
-      "rule": "Sentence carrying three or more figures",
-      "quote": "Inception released 20 open Jais models, from 590 million to 70 billion parameters"
-    },
-    {
-      "axis": "clarity",
-      "severity": "major",
-      "rule": "Sentence carrying three or more figures",
-      "quote": "Jais 2 arrived on 9 December 2025, in 8 billion and 70 billion versions"
-    },
-    {
-      "axis": "clarity",
-      "severity": "major",
-      "rule": "Sentence carrying three or more figures",
-      "quote": "It is six open models, from 900 million to [Pause] 375 billion parameters"
-    },
-    {
-      "axis": "clarity",
-      "severity": "major",
-      "rule": "Sentence carrying three or more figures",
-      "quote": "Falcon-H1 Arabic followed on 5 January 2026, in 3, 7 and 34 billion sizes"
-    },
-    {
-      "axis": "clarity",
-      "severity": "major",
-      "rule": "Sentence carrying three or more figures",
-      "quote": "As of January 2026, TII reported a leaderboard average of 75.36% for its 34B model"
-    },
-    {
-      "axis": "clarity",
-      "severity": "major",
-      "rule": "Sentence carrying three or more figures",
-      "quote": "QCRI trained it on 256 NVIDIA H100 chips, using [Pause] eight times fewer pretraining tokens"
-    },
-    {
-      "axis": "clarity",
-      "severity": "major",
-      "rule": "Sentence carrying three or more figures",
-      "quote": "its 12-billion model gains [Pause] 14.4% over Qwen2.5-14B"
-    },
-    {
-      "axis": "clarity",
-      "severity": "major",
-      "rule": "Sentence carrying three or more figures",
-      "quote": "In under seven months, it received more than [Pause] 700 models from over 180 organisations"
+      "rule": "Unknown name with no few-word explanation",
+      "quote": "such as the different forms of Alif"
     },
     {
       "axis": "clarity",
       "severity": "major",
       "rule": "Technical term with no few-word explanation",
-      "quote": "Jais 3 leads open models on Arabic agentic tasks"
+      "quote": "fully open, from pre-training through post-training"
     },
     {
       "axis": "clarity",
       "severity": "major",
-      "rule": "Name a non-specialist would not know, unexplained",
-      "quote": "SDAIA listed the 7-billion model on Hugging Face"
+      "rule": "Sentence carrying three or more figures",
+      "quote": "in May 2025, built on its Falcon 3 model with seven billion parameters"
     },
     {
       "axis": "pacing",
       "severity": "major",
       "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "By the end, you will know who builds AI"
-    },
-    {
-      "axis": "pacing",
-      "severity": "major",
-      "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "I'm Wissam, and this is AI This Week, AI Explained."
-    },
-    {
-      "axis": "pacing",
-      "severity": "major",
-      "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "A study at the EACL 2026 conference found models cope"
-    },
-    {
-      "axis": "pacing",
-      "severity": "major",
-      "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "It trained on 116 billion Arabic tokens and 279 billion English tokens"
-    },
-    {
-      "axis": "pacing",
-      "severity": "major",
-      "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "Every model holds 512,000 tokens of context"
-    },
-    {
-      "axis": "pacing",
-      "severity": "major",
-      "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "Falcon-H1 Arabic followed on 5 January 2026"
-    },
-    {
-      "axis": "pacing",
-      "severity": "major",
-      "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "Alongside it came speech-to-text and a tool that reads Arabic text"
-    },
-    {
-      "axis": "pacing",
-      "severity": "major",
-      "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "Then it learned from 1.2 trillion mixed Arabic and English tokens"
-    },
-    {
-      "axis": "pacing",
-      "severity": "major",
-      "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "After 25 years selling software across this region, I distrust"
+      "quote": "Preslav Nakov of MBZUAI … education and news."
     },
     {
       "axis": "value",
       "severity": "major",
-      "rule": "Story only reads the source with no analysis or regional lens",
-      "quote": "The stack adds Fanar-Diwan for classical poetry, Fanar-Sadiq for Islamic content"
+      "rule": "View mixed into the reported facts",
+      "quote": "Quality over quantity."
+    },
+    {
+      "axis": "value",
+      "severity": "major",
+      "rule": "View mixed into the reported facts",
+      "quote": "TII puts it well."
     }
   ],
   "worst_three": [
     {
-      "where": "After 25 years selling software",
-      "problem": "The view and the whole bottom line run well over 200 words with no breath, so the listener loses the thread exactly where the episode lands its argument.",
-      "fix": "Insert [Pause] after 'every maker sets its own exam.', after 'not a verdict.', after 'where does your data live?', after 'this region is writing that chapter itself.', and between each of the three bottom-line points; apply the same rule across the script so no stretch exceeds 60 words."
+      "where": "Preslav Nakov of MBZUAI, Abu",
+      "problem": "About 67 words run with no breath, and the channel greeting lands in the middle of a list, so the listener loses the thread between problem one and problem two.",
+      "fix": "Add a [Pause] after the Nakov quote and another after the greeting: '…limited high-quality data.\" [Pause] I'm Wissam, and this is AI This Week, AI Explained. [Pause] The second problem is that there is no single Arabic.'"
     },
     {
-      "where": "Arabic makes up only about",
-      "problem": "The listener hears the 0.5% statistic from the hook a second time and feels the episode is going in circles before it has started.",
-      "fix": "Replace with: 'The Fanar 2.0 paper from QCRI, Qatar's computing research institute, is the source for that half-percent figure. And it is the root of everything else in this story.' Then move straight to Preslav Nakov's quote."
+      "where": "It worked with MBZUAI and",
+      "problem": "After 'Inception is part of G42', the listener can't tell whether 'It' means Inception or G42.",
+      "fix": "Name the subject: 'Inception built Jais with MBZUAI and with Cerebras, an American AI chipmaker.'"
     },
     {
-      "where": "in 3, 7 and 34",
-      "problem": "Sentences packed with dates and three model sizes, like this one and the Jais 2 and Jais 3 lines, blur into noise on a phone speaker.",
-      "fix": "Split each one, for example: 'Falcon-H1 Arabic followed in January 2026. It comes in three sizes, the largest at 34 billion parameters.' Likewise: 'Jais 2 arrived in December 2025. The largest version has 70 billion parameters.' Keep the full figures on the on-screen text only."
+      "where": "the different forms of Alif",
+      "problem": "An English-speaking listener has no idea what Alif is, so the spelling point and the 18 percent figure lose their meaning.",
+      "fix": "Explain it in the same breath: 'such as the different ways of writing Alif, the first letter of the Arabic alphabet, which can appear with or without small marks.'"
     }
   ],
   "samples": [
     {
-      "hook": 9,
-      "clarity": 3,
-      "pacing": 4,
+      "hook": 10,
+      "clarity": 7,
+      "pacing": 9,
       "flow": 10,
       "arabic": 10,
       "value": 9
     }
   ],
   "stable": true,
-  "language": "en"
+  "language": "en",
+  "first_draft_minimum": 3
 }

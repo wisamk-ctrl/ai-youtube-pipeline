@@ -1,163 +1,129 @@
-[On-Screen Text: about 0.5% of web data | 400 million+ speakers]
+Arabic is the language of a whole region. Yet QCRI, Qatar's national computing research institute, says it makes up only about half a percent of web data. [Pause 2s] By the end, you'll know why that trips up AI, and who builds AI that speaks it.
 
-Arabic is spoken by hundreds of millions of people, yet it makes up only about [Pause] half a percent of web data. [Pause] By the end, you will know who builds AI that truly speaks Arabic, how they do it, and how to judge their claims.
+[On-Screen Text: 400 million+ Arabic speakers | ~0.5% of web data (Fanar 2.0 paper, QCRI)]
 
 [Section: Why Arabic breaks AI]
 
-First, why Arabic is so hard for AI. [Pause]
+Let's start with why Arabic is so hard for AI in the first place. [Pause]
 
-Start with the raw material. A large language model, or LLM, is the kind of AI behind chatbots. It learns language by reading enormous amounts of text.
-
-The Fanar 2.0 paper from QCRI, Qatar's computing research institute, is the source for that half-percent figure. And it is the root of everything else in this story.
-
-[On-Screen Text: Arabic ≈ 0.5% of web data (Fanar 2.0 paper, QCRI)]
-
-[Pause]
+The first problem is data. Large language models, the systems behind chatbots, learn by reading enormous amounts of text. The model makers put Arabic speakers at more than [Pause] 400 million. Yet the web offers little Arabic text to learn from. [Pause] Preslav Nakov of MBZUAI, Abu Dhabi's AI university, says Arabic "has long been underserved in AI development due to limited high-quality data."
 
 I'm Wissam, and this is AI This Week, AI Explained.
 
-[Pause]
-
-MBZUAI's Preslav Nakov puts it plainly. He says Arabic "has long been underserved" because of limited high-quality training data. The Fanar paper sets that sliver of data against [Pause] 400 million native speakers.
-
-The second problem is that Arabic is really many Arabics. Modern Standard Arabic, or MSA, is the formal language of writing, education and news. [Pause] Daily conversation happens in regional dialects, and those dialects are thin in AI training data.
-
-Abu Dhabi's Technology Innovation Institute, TII, gives a sharp example. A model trained mainly on MSA "may understand every word of an Emirati sentence while still missing its intended meaning." [Pause]
+The second problem is that there is no single Arabic. Modern Standard Arabic, or MSA, is the formal language. TII, Abu Dhabi's Technology Innovation Institute, says it is used mainly in writing, education and news. [Pause] Everyday conversation happens in regional dialects. Those dialects are underrepresented in training data. TII puts it well. A model trained mainly on MSA "may understand every word of an Emirati sentence while still missing its intended meaning."
 
 [On-Screen Text: MSA at the centre | Gulf · Levantine · Egyptian · North African]
 
-Third, people mix languages. MBZUAI's Haonan Li says Arabic speakers slip "into English or French mid-sentence and back again." That habit is called code-switching. Many Egyptians also type Arabic in Latin letters, a style known as Arabizi. [Pause]
+Third, people mix languages. This is called code-switching. MBZUAI's Haonan Li says Arabic speakers slip "into English or French mid-sentence and back again." [Pause] Egyptian Arabic is also often typed in Latin letters. That is called Arabizi.
 
-Fourth, and hardest to picture, is tokenisation. Models do not read words. They read tokens, which are small chunks of text. A tokeniser is the tool that cuts text into those chunks. [Pause]
+Fourth, and hardest, is tokenisation. A token is a small piece of text: a word, or part of a word. A tokeniser is the tool that chops text into those pieces before the model reads them. [Pause] The AraToken paper says general-purpose tokenisers are trained mostly on English and Latin-script languages. With Arabic, they produce "inflated token sequences."
 
-Here is an illustration, not a measurement. Picture a cashier who only stocks big banknotes in one currency. Pay in English, and the bill is settled in a few big notes. Pay in Arabic, and the cashier counts it out in small coins. [Pause]
+Here's an illustration, not a measurement. Picture a cashier who only stocks big banknotes in one currency. Pay in English, and the bill is settled in a few big notes. [Pause] Pay in Arabic, and the cashier counts it out in small coins. More pieces, more time, more cost. [Pause] And less fits in the till. That till is the context window, meaning how much text a model can hold at once.
 
-That means more pieces, more time and more cost. Less also fits in the till. In AI, that till is the context window: how much text a model can hold at once. [Pause]
+Spelling matters too. One study normalised Arabic spelling variation, such as the different forms of Alif. That cut tokens per word by [Pause] 18 percent.
 
-The research matches the picture. The AraToken paper says general-purpose tokenisers, trained mostly on English, produce "inflated token sequences" for Arabic.
+[On-Screen Text: Normalising spelling: 1.35 → 1.199 tokens per word (AraToken)]
 
-Arabic spelling varies too, with different forms of Alif, optional vowel marks called diacritics, and Arabic-Indic numerals. In one study, tidying up that variation cut tokens per word by [Pause] 18%.
+Diacritics add another twist. These are the small marks that show pronunciation or meaning. [Pause] A 2026 study found models cope with the light diacritics of everyday text. [Pause] But fully diacritised text "leads to substantially increased token fragmentation and degraded performance."
 
-[On-Screen Text: 1.35 → 1.199 tokens per word (−18%), AraToken study]
-
-A study at EACL 2026, a language research conference, found models cope with the light diacritics of everyday text. [Pause] Fully diacritised text, though, "leads to substantially increased token fragmentation and degraded performance." [Pause]
-
-Finally, the tests themselves were weak. A benchmark is a standard exam for AI models. The team behind the Open Arabic LLM Leaderboard says many early Arabic benchmarks "were direct translations from English." [Pause]
+Last, measurement. A benchmark is a standard test for models. [Pause] The organisers of the Open Arabic LLM Leaderboard say many early Arabic benchmarks "were direct translations from English." So their second version removed machine-translated tasks.
 
 [Section: The UAE's two tracks: Jais and Falcon]
 
-Now to Abu Dhabi, where two teams have taken different roads. [Pause]
+Now to Abu Dhabi, where two teams took two different roads. [Pause]
 
-The first road is Jais, named after the UAE's highest peak. Inception, a G42 company, released it open-source on 30 August 2023. It worked with MBZUAI and Cerebras, which co-built the supercomputer Jais trained on.
+Jais came first. On [Pause] 30 August 2023, Inception released it as open source. Inception is part of G42, an Abu Dhabi AI group. It worked with MBZUAI and with Cerebras, an American AI chipmaker. [Pause] Jais had 13 billion parameters. Parameters are the internal settings a model learns, roughly a measure of its size. It was trained on 116 billion Arabic tokens and 279 billion English tokens. [Pause] Jais is named after the UAE's highest peak. Early users named at launch included ADNOC, Etihad Airways and First Abu Dhabi Bank.
 
-It had [Pause] 13 billion parameters. Parameters are the internal settings a model adjusts while learning. More parameters usually means a bigger, more capable model.
+[On-Screen Text: Jais 13B, 30 August 2023, Inception (G42), MBZUAI, Cerebras]
 
-[On-Screen Text: Jais (Aug 2023): 13B parameters | 116B Arabic + 279B English tokens]
+A larger Jais followed in November 2023. Then, Middle East AI News reports, Inception released a family of 20 open Jais models in late 2024.
 
-It trained on 116 billion Arabic tokens and 279 billion English tokens. [Pause] Early users named at launch included the UAE Ministry of Foreign Affairs, ADNOC, Etihad Airways, First Abu Dhabi Bank and e&.
+Jais 2 arrived in December 2025. It came in two sizes: [Pause] 8 billion and 70 billion parameters. It was trained from scratch, meaning built from zero rather than adapted from another company's model. [Pause] Its makers say it used "the richest Arabic-first dataset to date." It also has its own Arabic-centric vocabulary of [Pause] 150,272 tokens. That's our cashier, finally stocking the right denominations. [Pause] Its licence, Apache 2.0, permits commercial use.
 
-Jais 30B followed in November 2023. [Pause] In the second half of 2024, Middle East AI News reports, Inception released 20 open Jais models. The smallest had 590 million parameters, the largest 70 billion.
+On AraGen, an Arabic benchmark, the large Jais 2 scores about [Pause] 71 percent, its model card reports. Qwen, a rival open model of similar size, scores about 63. [Pause] Llama, another rival open model, scores about 61. The same card shows Jais 2 trailing those rivals on English instruction-following.
 
-[Pause]
+[On-Screen Text: AraGen (self-reported): Jais-2-70B 70.71% | Qwen2.5-72B 62.58% | Llama-3.3-70B 61.29%]
 
-Jais 2 arrived in December 2025. The largest version has 70 billion parameters. A smaller 8-billion version came alongside. [Pause] It was trained from scratch, meaning it did not start from someone else's model. Remember the cashier? Jais 2 stocks the right notes. Its vocabulary of [Pause] 150,272 tokens was built around Arabic.
+Jais 3 arrived in October 2026, as a fleet of six open models. The smallest has 900 million parameters. The largest has [Pause] 375 billion. [Pause] It is built on K2 Horizon, MBZUAI's fully open model fleet. Every Jais 3 model has a context window of 512,000 tokens. MBZUAI calls that the longest of any Arabic-native model. [Pause] There's also Jais Speech, which transcribes dialects spoken across 19 Arab countries.
 
-[On-Screen Text: Jais 2 (Dec 2025): 8B and 70B | 150,272-token Arabic-centric vocabulary | Apache 2.0]
+Falcon took a different road. TII launched Falcon Arabic in May 2025, built on its Falcon 3 model with seven billion parameters. [Pause] It was trained on native Arabic data, not translations. TII says it matches models up to 10 times its size.
 
-It carries an Apache 2.0 licence. That makes it open weights: anyone can download the model, and commercial use is allowed. [Pause]
+Falcon-H1 Arabic followed in January 2026, with up to 34 billion parameters. [Pause] It uses a hybrid architecture, combining two model designs called Mamba and Transformer. TII says its context of 256,000 tokens equals roughly 100,000 words. [Pause] On the Open Arabic LLM Leaderboard, TII says its largest model beats bigger rival open models, including Qwen and Llama.
 
-On the AraGen benchmark, the makers report [Pause] 70.71% for their largest model. A 72-billion Qwen model scored 62.58%. A 70-billion Llama model scored 61.29%. [Pause] The same model card shows Jais 2 trailing both on English instruction-following.
+[On-Screen Text: Falcon-H1 Arabic 34B: 75.36% OALL average (TII, January 2026)]
 
-[On-Screen Text: AraGen (makers' figures): Jais-2-70B 70.71% | Qwen2.5-72B 62.58% | Llama-3.3-70B 61.29%]
+Then in October 2026 came Falcon-Emirati, a seven-billion-parameter model for the Emirati dialect. TII says it scored [Pause] 84.83 percent on Alyah, an Emirati benchmark. [Pause] Alongside it came Falcon-ASR for speech-to-text, and Falcon-OCR-Arabic for reading text in images and documents.
 
-[Pause]
+[On-Screen Text: Falcon-Emirati: 84.83% on Alyah (TII, October 2026)]
 
-Then, in October 2026, came Jais 3. It is a fleet of six open models, plus Jais Speech. The largest has [Pause] 375 billion parameters.
-
-[On-Screen Text: Jais 3 (Oct 2026): six models, 900M to 375B | 512K-token context | Jais Speech]
-
-Every model holds 512,000 tokens of context, which MBZUAI calls the longest of any Arabic-native model. [Pause] Jais Speech covers dialects from 19 Arab countries, and can tell which one is being spoken. [Pause]
-
-The second road is Falcon, from TII. Falcon Arabic launched on 21 May 2025. It was built on Falcon 3, a 7-billion model, and trained on native Arabic data, not translations. TII says it matches models up to [Pause] ten times its size.
-
-[Pause]
-
-Falcon-H1 Arabic followed in January 2026. It comes in three sizes, the largest at 34 billion parameters. It uses a hybrid design that combines two ways of processing text, called Mamba and Transformer. [Pause]
-
-Its context reaches 256,000 tokens, which TII says is roughly 100,000 words. That is enough, TII says, for long legal documents or medical records in one go. [Pause]
-
-[On-Screen Text: Falcon-H1 Arabic (Jan 2026): 3B · 7B · 34B | up to 256K tokens ≈ 100,000 words]
-
-As of January 2026, TII reported a leaderboard average for its largest model of [Pause] 75.36%. TII says that beat Qwen and Llama models of 70 billion parameters and more.
-
-[On-Screen Text: OALL average (TII, Jan 2026): Falcon-H1 Arabic 34B 75.36% | vs Qwen2.5 72B, Llama-3.3 70B]
-
-[Pause]
-
-On 6 October 2026, TII launched Falcon-Emirati, a 7-billion model for the Emirati dialect. It scored [Pause] 84.83% on Alyah, an Emirati benchmark. Alongside it came speech-to-text and a tool that reads Arabic text from images. [Pause]
-
-So the contrast is clear. Jais goes big and builds from scratch. Falcon goes compact and efficient.
+So, broadly, Jais has tended to go big, while Falcon has focused on smaller, efficient models. As of May 2025, TII said the Falcon ecosystem had over 55 million downloads.
 
 [Section: Saudi Arabia: ALLaM and HUMAIN Chat]
 
-Next, Riyadh, and a model that moved from the lab to a national chatbot. [Pause]
+Next, Riyadh, where the journey ran from a research lab to a consumer app. [Pause]
 
-ALLaM comes from the National Center for AI at the Saudi Data and AI Authority, SDAIA. Its research paper appeared in July 2024. [Pause]
+ALLaM is developed by the National Center for AI at SDAIA, the Saudi Data and AI Authority. Its paper appeared in July 2024. [Pause] The idea is to teach a model Arabic as a "second language." The team expands its vocabulary and trains on mixed Arabic and English. That way, the model doesn't forget its English.
 
-Its idea is to teach Arabic as a "second language." The team expands the model's vocabulary and trains on mixed Arabic and English. The goal is to steer the model towards Arabic without it forgetting English.
-
-The 7-billion model learned from [Pause] 4 trillion English tokens first. Then it learned from 1.2 trillion mixed Arabic and English tokens.
+ALLaM-7B was first trained on [Pause] 4 trillion English tokens. Then came 1.2 trillion mixed Arabic and English tokens.
 
 [On-Screen Text: ALLaM-7B: 4T English + 1.2T Arabic/English tokens = 5.2T]
 
-[Pause]
+Distribution came through partners. According to the Saudi Press Agency, ALLaM went first to IBM's watsonx, then Microsoft Azure, then Qualcomm AI Cloud. [Pause] In March 2025, SDAIA listed the 7B model on Hugging Face, the public hub where AI models are shared.
 
-ALLaM reached people through partners. The Saudi Press Agency says it went first to IBM's watsonx, then Microsoft Azure, then Qualcomm's AI Cloud. [Pause] On 6 March 2025, SDAIA listed the 7-billion model on Hugging Face. That is a public website where AI models are shared for download.
-
-[Pause]
-
-Then came the bigger step. On 25 August 2025, HUMAIN, a Public Investment Fund company, launched HUMAIN Chat. It runs on ALLaM 34B. [Pause]
-
-HUMAIN says experts shaped that model: more than 600 domain experts and 250 evaluators. A team of over 120 AI specialists, including 35 PhD holders, built it.
-
-[On-Screen Text: HUMAIN Chat (Aug 2025), powered by ALLaM 34B]
+Then, in August 2025, HUMAIN, a Public Investment Fund company, launched HUMAIN Chat. It runs on ALLaM 34B, which builds on SDAIA's earlier models. [Pause] HUMAIN says the model was refined with input from over 600 domain experts and 250 evaluators. HUMAIN Chat offers Arabic speech input across dialects, and switching between Arabic and English.
 
 [Pause]
 
-HUMAIN Chat accepts Arabic speech across dialects and handles Arabic-English switching. It is hosted end-to-end on HUMAIN infrastructure inside Saudi Arabia. It operates under the PDPL, the Kingdom's personal data protection law. [Pause]
-
-One difference matters. The 7-billion ALLaM can be downloaded. Public sources show the 34-billion model offered as a service, not as open weights.
+Crucially, HUMAIN says it is hosted end-to-end on its own infrastructure inside the Kingdom. It also complies with the PDPL, Saudi Arabia's personal data protection law. [Pause] One difference from the 7B: HUMAIN Chat is a service. Our research found no open release of the 34B model's weights, the trained files anyone can download and run.
 
 [Section: Qatar's Fanar and the rest of the field]
 
-Now Doha, and a different idea: a whole platform, not a single model. [Pause]
+Now to Doha, and then a few important players beyond the three hubs. [Pause]
 
-Fanar comes from QCRI at Hamad Bin Khalifa University, sponsored by Qatar's Ministry of Communications and IT. The first version, described in January 2025, had two models. [Pause] Fanar Star was trained from scratch. Fanar Prime was continually trained from Google's Gemma-2. Continual training means taking an existing model and teaching it more. [Pause]
+Fanar is built by QCRI, Qatar's national computing research institute, at Hamad Bin Khalifa University. It is sponsored by Qatar's Ministry of Communications and IT. [Pause] The first version, described in January 2025, had two models. Fanar Star was trained from scratch. Fanar Prime was continually trained from Google's Gemma-2, meaning it started from an existing model and kept learning.
 
-Fanar also uses retrieval, often called RAG. The system looks things up in trusted sources before answering. Fanar has an Islamic retrieval system for religious questions, and a "Recency RAG" for current events. [Pause]
+[Pause]
 
-Fanar 2.0 was published in March 2026. Its core is a 27-billion model, built from Google's Gemma 3. QCRI trained it on 256 NVIDIA H100 chips. It used [Pause] eight times fewer pretraining tokens than Fanar 1.
+Fanar is a platform, not just a model. It includes an Islamic retrieval system for religious questions. Retrieval means the system looks things up in trusted sources before answering. [Pause] A second retrieval system, "Recency RAG", handles current events.
 
-[On-Screen Text: Fanar 2.0 (Mar 2026): 27B | 8× fewer pretraining tokens | Apache 2.0]
+Fanar 2.0 came in March 2026. Fanar's core model builds on Google's open Gemma 3. [Pause] QCRI says it used eight times fewer pretraining tokens than Fanar 1.0. Yet on ArabicMMLU, a knowledge test, the model card reports a rise from [Pause] 67.35 to 74.67 percent. Quality over quantity. [Pause] The stack adds Fanar-Diwan for classical poetry, Fanar-Sadiq for Islamic content, and FanarGuard, a safety filter.
 
-Fewer tokens still brought better scores. The model card reports ArabicMMLU, a test built from school exam questions, rising from 67.35% to 74.67%. [Pause] The stack adds Fanar-Diwan for classical poetry, Fanar-Sadiq for Islamic content, and FanarGuard, a safety filter. [Pause]
+[On-Screen Text: Fanar-2-27B (from Gemma-3-27B): ArabicMMLU 67.35% → 74.67% | Apache 2.0]
 
-Beyond the big three, a few names round out the field. MBZUAI's K2 Think, released in September 2025, is a reasoning model, strongest in maths. It is not Arabic-specific. Its second version has 70 billion parameters. MBZUAI says it is fully open "from pre-training through post-training." [Pause]
+Back in Abu Dhabi, MBZUAI and G42 built K2 Think, a reasoning model released in September 2025. It's not Arabic-specific. [Pause] Its makers say it matches or beats much larger models. Its successor, K2 Think V2, is described by MBZUAI as fully open, from pre-training through post-training.
 
-Cohere released Command R7B Arabic on 27 February 2025. It is small enough to run on a MacBook, or even on ordinary processors. Its licence, CC-BY-NC, does not allow commercial use. [Pause]
+[Pause]
 
-And for Egypt, MBZUAI Paris built Nile-Chat, which reads and writes both Arabic script and Arabizi. On Latin-script tests, its makers report a [Pause] 14.4% gain for the largest model over a similar-sized Qwen model.
+Global companies compete too. In February 2025, Cohere released Command R7B Arabic, with about 8 billion parameters. Cohere says it can run on a MacBook, or even on ordinary processors. [Pause] But its licence, CC-BY-NC, does not allow commercial use.
 
-[On-Screen Text: Nile-Chat 12B: +14.4% vs Qwen2.5-14B-Instruct on Latin-script benchmarks (makers' figures)]
+And for Egypt, MBZUAI Paris built Nile-Chat, which reads and writes both Arabic script and Arabizi.
 
 [Section: Who is best? Reading the leaderboards]
 
-Finally, the question everyone asks: which one is best? [Pause]
+Finally, the question everyone asks: which model is best? [Pause]
 
-Arabic now has its own scoreboards. The Open Arabic LLM Leaderboard launched in May 2024. In under seven months, it received more than [Pause] 700 models. They came from over 180 organisations. [Pause]
-
-SDAIA and the King Salman Global Academy for Arabic Language launched the BALSAM Index in September 2024. Inception and MBZUAI launched AraGen that December. It was the first leaderboard for generative Arabic tasks, where the model writes its own answers. [Pause]
+Leaderboards rank models on shared tests. The Open Arabic LLM Leaderboard launched in May 2024. It came from 2A2I, an Arabic AI research initiative, together with TII and Hugging Face. [Pause] Within seven months, its organisers say, it received more than 700 models. In September 2024, SDAIA and the King Salman Global Academy for Arabic Language launched the BALSAM Index. [Pause] And in December 2024, Inception and MBZUAI launched AraGen, the first leaderboard for generative tasks in Arabic.
 
 [On-Screen Text: OALL (May 2024) · BALSAM (Sep 2024) · AraGen (Dec 2024)]
 
-Here is the catch. Almost every maker claims the top spot. TII claimed the lead for Falcon-H1 Arabic in January
+Here's the catch. Almost everyone claims the top spot. In January 2026, TII said Falcon-H1 Arabic leads its leaderboard across sizes. [Pause] The Jais 2 report claims leading results among the models it evaluated. In October 2026, MBZUAI's large-model lab said Jais 3 leads open models on Arabic agentic tasks. Those are tasks where the AI carries out steps on its own. [Pause] Most of these scores are published by the makers themselves, against rivals they chose.
+
+[On-Screen Text: Wissam's view]
+
+This next part is my view, not a finding from the sources. [DRAFT VIEW: founder to confirm]
+
+After twenty-five years selling enterprise software in this region, I've learned that headline rankings rarely decide anything. What decides is fit. [Pause] Does the model understand the dialect your customers actually speak? Does the licence allow what you plan to do? And where does your data live? [Pause] A model that tops a leaderboard but can't legally sit inside your country, or your contract, isn't the best model for you. I'd rather see a team run five candidates on its own documents than read five press releases. [Pause] And here's the question I'll be watching. When a Gulf government or bank chooses its AI, what will it pick? A home-grown Arabic model, or a global model that has simply got better at Arabic? I don't think the answer will be the same everywhere.
+
+[Section: The bottom line]
+
+Three things to remember.
+
+First, Arabic is hard for AI. There's little data, many dialects, mixed languages, and tokenisers built for English. [Pause]
+
+Second, the region's builders take different roads. Jais has gone big, with models trained from scratch and later built on open foundations. Falcon focuses on efficient models and dialects. ALLaM teaches Arabic as a second language, and powers HUMAIN Chat. Fanar adapts strong open models and wraps them in a platform. [Pause]
+
+Third, read every "number one" claim carefully. Check who measured it, when, and against whom. And check the licence. [Pause]
+
+[Pause 2s]
+
+Next time in the series, we map the who's who of AI in the UAE. If this helped, please Hype the video, then subscribe and tell me in the comments which model you'd test first.
