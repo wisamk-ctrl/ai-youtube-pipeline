@@ -1,0 +1,40 @@
+[
+  {
+    "source": "Channel Insider",
+    "source_type": "rss",
+    "title": "Cisco, OpenAI Launch Shirudo for AI-Driven Cyber Defense",
+    "summary": "Critical PHP vulnerabilities expose security risks for MSPs. Learn why hidden dependencies, AI-assisted attacks, and rapid patching demand attention. MSPs face pressure to turn AI adoption into measurable results. Hereâs how internal productivity and evolving customer needs are reshaping AI strategies. DC power architectures are gaining popularity as AI workloads increase and intensify. Optivâs Kathryn Hall and Steve Fielder discuss how AI is reshaping managed security services, from supporting analysts and reskilling teams to strengthening governance and building deeper customer partnerships. WEIâs Greg LaBrie explains why enterprises are adopting Hardware-as-a-Service and how changing IT spending models create opportunities for channel partners. WCA Technologiesâ Peter Fidler explains how AI, automation, business outcomes, and customer expectations are changing the MSP model. Critical PHP vulnerabilities expose security risks for MSPs. Learn why hidden dependencies, AI-assisted attacks, and rapid patching demand attention. MSPs face pressure to turn AI adoption into measurable results. Hereâs how internal productivity and evolving customer needs are reshaping AI strategies. DC power architectures are gaining popularity as AI workloads increase and intensify. Optivâs Kathryn Hall and Steve Fielder discuss how AI is reshaping managed security services, from supporting analysts and reskilling teams to strengthening governance and building deeper customer partnerships. WEIâs Greg LaBrie explains why enterprises are adopting Hardware-as-a-Service and how changing IT spending models create opportunities for channel partners. WCA Technologiesâ Peter Fidler explains how AI, automation, business outcomes, and customer expectations are changing the MSP model. Cisco and OpenAI launch Shirudo, an open-source cybersecurity project using eBPF and AI agents to defend infrastructure against threats before patches are deployed. Cisco and OpenAI have launched Shirudo, an open-source cybersecurity project that uses AI agents and kernel-level defenses to help organizations protect vulnerable infrastructure before permanent patches can be deployed. âThere is nothing more important than giving security teams the tools they need to match the speed of the AI-driven threats they are facing. We need self-defending infrastructure that acts at the speed of code, learns in real time, and shields itself until patches are safely rolled out,â said Jeetu Patel,…",
+    "url": "https://www.channelinsider.com/ai/cisco-openai-shirudo-ai-cybersecurity/",
+    "published": "2026-11-26T12:40:26+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "00ba03ab58"
+  },
+  {
+    "source": "Gulf Business",
+    "source_type": "rss",
+    "title": "Cisco and OpenAI launch Shirudo to combat AI-driven cyberattacks, block Java4shell exploits",
+    "summary": "Cisco and OpenAI launch Shirudo to combat AI-driven cyberattacks, block Java4shell exploits Gulf Business",
+    "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQaVdnRFJobW9GdFNteUJ3TDhlb1ZFSWcwaDVVbjdkY1JtZGFBN052LXRjMF9nTTZ2Q1c4d2p4aVlVMkdGNkoybDVBUm43blRuRDZwV2duYW1WYkhTQW15Rk1OVDU2bkNtUU1BaWxGb1NaS3Q1MG5aNm96NFFBNDFkZVBQQkVQN094UFpZbkd2eGlTS3gtcDJ6Rm4tOEZHMG5ZT3NVQklndEZVdTFlVk9ZV2FJMkdwLVpyWGZxdzh4cFFuTXBhVjlGV1oxMnF0ZWs3SE04?oc=5",
+    "published": "2026-11-26T13:11:30+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "a229303acb"
+  }
+]

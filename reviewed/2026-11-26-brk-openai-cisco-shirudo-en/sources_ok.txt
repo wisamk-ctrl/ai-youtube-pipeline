@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-26 17:35 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) OpenAI and Cisco just launched Shirudo for AI cyber defense.  ← Channel Insider (00ba03ab58), Gulf Business (a229303acb)
+- (2) The open-source project uses AI agents and eBPF kernel-level defenses.  ← Channel Insider (00ba03ab58)
+- (3) The goal is to shield vulnerable infrastructure before permanent patches are deployed.  ← Channel Insider (00ba03ab58)
+- (4) Gulf Business reports it targets AI-driven cyberattacks and blocks Java4shell exploits.  ← Gulf Business (a229303acb)
+- (5) Jeetu Patel says security teams need tools matching the speed of AI threats.  ← Channel Insider (00ba03ab58)
+- (6) He calls for self-defending infrastructure that shields itself until patches roll out.  ← Channel Insider (00ba03ab58)
+- (7) Would your security team let AI agents guard your infrastructure?  ← regional line, no facts
