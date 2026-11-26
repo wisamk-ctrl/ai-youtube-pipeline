@@ -1,0 +1,308 @@
+[
+  {
+    "id": "02-uae-ai-whos-who-01",
+    "title": "Microsoft invests $1.5 billion in Abu Dhabi's G42 to accelerate AI development and global expansion",
+    "source": "Microsoft",
+    "url": "https://news.microsoft.com/source/2024/04/16/microsoft-invests-1-5-billion-in-abu-dhabis-g42-to-accelerate-ai-development-and-global-expansion/",
+    "published": "2024-04-16",
+    "summary": "On April 16, 2024 G42 and Microsoft announced a $1.5 billion strategic investment by Microsoft in G42. Microsoft Vice Chair and President Brad Smith joins the G42 Board; G42 will run its AI applications and services on Microsoft Azure. Both companies will support a $1B fund for developers. The deal is governed by an Intergovernmental Assurance Agreement (IGAA) developed in close consultation with the UAE and US governments. The release names H.H. Sheikh Tahnoon bin Zayed Al Nahyan as Chairman of G42 and Peng Xiao as Group CEO, and notes earlier milestones: an April 2023 joint plan, a September 2023 sovereign cloud agreement, and Jais on Azure in November 2023.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-02",
+    "title": "Microsoft's $15.2 billion USD investment in the UAE",
+    "source": "Microsoft (Brad Smith, On the Issues blog)",
+    "url": "https://blogs.microsoft.com/on-the-issues/2025/11/03/microsofts-15-2-billion-usd-investment-in-the-uae/",
+    "published": "2025-11-03",
+    "summary": "Microsoft says it will invest $15.2 billion in the UAE between 2023 and the end of 2029. Just over $7.3 billion is invested through end-2025, including the $1.5 billion equity investment in G42, more than $4.6 billion in datacenter capex and more than $1.2 billion in local opex; more than $7.9 billion follows in 2026-2029, including more than $5.5 billion capex. Biden-era export licences let Microsoft accumulate the equivalent of 21,500 Nvidia A100 GPUs; licences approved in September 2025 under the Trump administration allow the equivalent of 60,400 additional A100 chips, involving Nvidia GB300 GPUs. Microsoft calls G42 'the UAE's sovereign AI company'. G42, Microsoft and MBZUAI founded the Responsible AI Future Foundation in Abu Dhabi in February. Microsoft cites its AI Diffusion Report: 59.4 percent of the UAE population uses generative AI, ahead of Singapore at 58.6 percent.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-03",
+    "title": "Microsoft and G42 Accelerate UAE's Digital Future with Major Data Centre Expansion",
+    "source": "G42",
+    "url": "https://www.g42.ai/resources/news/microsoft-and-g42-accelerate-uaes-digital-future-major-data-centre-expansion",
+    "published": "2025-11-05",
+    "summary": "As part of Microsoft's $15.2 billion UAE investment, Microsoft and G42 announced a 200-megawatt expansion of datacenter capacity delivered through Khazna Data Centers, a subsidiary of G42, expected to start coming online before the end of 2026. Peng Xiao describes G42 as a 'neocloud enterprise born in Abu Dhabi' building the 'Intelligence Grid'. Microsoft has committed to skill one million people in the UAE by 2027.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-04",
+    "title": "Introducing Stargate UAE",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-stargate-uae/",
+    "published": "2025-05-22",
+    "summary": "OpenAI calls Stargate UAE the first international deployment of Stargate and the first partnership under OpenAI for Countries, with partners G42, Oracle, NVIDIA, Cisco and SoftBank, developed in coordination with the US government. It includes a 1GW Stargate UAE cluster in Abu Dhabi with 200MW expected to go live in 2026, and UAE investment into US Stargate infrastructure. OpenAI says the UAE will become the first country to enable ChatGPT nationwide, and that Stargate UAE could serve compute within a 2,000-mile radius reaching up to half the world's population.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-05",
+    "title": "Global Tech Alliance Launches Stargate UAE",
+    "source": "G42",
+    "url": "https://www.g42.ai/resources/news/global-tech-alliance-launches-stargate-uae",
+    "published": "2025-05-22",
+    "summary": "G42, OpenAI, Oracle, NVIDIA, SoftBank Group and Cisco announced Stargate UAE, a 1-gigawatt compute cluster to be built by G42 and operated by OpenAI and Oracle, inside the 5-gigawatt UAE-U.S. AI Campus in Abu Dhabi. NVIDIA will supply Grace Blackwell GB300 systems; the first 200-megawatt cluster is expected to go live in 2026. The full campus spans 10 square miles, will provide 5 gigawatts of AI data centre capacity and is to be powered by nuclear, solar and natural gas. The photo caption identifies Sheikh Tahnoon as Chairman of the AIATC, Sheikh Khaled bin Mohamed bin Zayed as Vice-Chairman, and Khaldoon Al Mubarak as a member.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-06",
+    "title": "G42 Provides Update on Construction of Stargate UAE AI Infrastructure Cluster",
+    "source": "G42 (via PR Newswire)",
+    "url": "https://prnewswire.com/news-releases/g42-provides-update-on-construction-of-stargate-uae-ai-infrastructure-cluster-302586430.html",
+    "published": "2025-10-16",
+    "summary": "G42 says Stargate UAE is being developed by Khazna Data Centers, a G42 company, within the 5GW UAE-U.S. AI Campus. The first 200MW of the 1GW cluster is being built on an accelerated timeline; a G42 spokesperson said construction was well underway toward planned 2026 delivery, with procurement of all long-lead equipment completed.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-07",
+    "title": "UAE and US Presidents attend the unveiling of Phase 1 of new 5GW AI campus in Abu Dhabi",
+    "source": "U.S. Mission UAE (reproducing a US Commerce Department release)",
+    "url": "https://ae.usembassy.gov/uae-and-us-presidents-attend-the-unveiling-of-phase-1-of-new-5gw-ai-campus-in-abu-dhabi/",
+    "published": "2025-05-15",
+    "summary": "On May 15, 2025 a 5GW UAE-US AI Campus was unveiled at Qasr Al Watan in the presence of Sheikh Mohamed bin Zayed and President Trump; it is described as the largest outside the US, spanning 10 square miles, built by G42 and operated with several US companies, under the 'US-UAE AI Acceleration Partnership'. It says nearly half the global population lives within 3,200 km (2,000 miles) of the UAE, and compute is reserved for US hyperscalers and approved cloud providers with enhanced KYC. It states the UAE was the first country to appoint a federal Minister of AI in 2017 and established MBZUAI in 2019.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-08",
+    "title": "Fact Sheet: President Donald J. Trump Secures $200 Billion in New U.S.-UAE Deals and Accelerates Previously Committed $1.4 Trillion UAE Investment",
+    "source": "The White House",
+    "url": "https://www.whitehouse.gov/fact-sheets/2025/05/fact-sheet-president-donald-j-trump-secures-200-billion-in-new-u-s-uae-deals-and-accelerates-previously-committed-1-4-trillion-uae-investment/",
+    "published": "2025-05-15",
+    "summary": "The White House says the US and UAE signed an AI agreement on May 15, 2025 supporting a 10-year, $1.4 trillion UAE investment framework. Under it the UAE commits to invest in, build, or finance US data centers at least as large and as powerful as those in the UAE, and to align national security regulations with the US, including protections against diversion of US-origin technology.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-09",
+    "title": "US approves sale of 35,000 AI chips to UAE's G42, Saudis' Humain",
+    "source": "The Business Times (Bloomberg)",
+    "url": "https://www.businesstimes.com.sg/international/global/us-approves-sale-35000-ai-chips-uaes-g42-saudis-humain",
+    "published": "2025-11-20",
+    "summary": "Bloomberg reports the US Commerce Department approved sales to G42 and Saudi Arabia's Humain of AI chips each equivalent to 35,000 Nvidia GB300 processors, contingent on 'rigorous security and reporting requirements' (Commerce statement, Nov 19, 2025). Earlier approvals covered US firms such as Microsoft and Oracle but did not extend to Emirati companies such as G42. G42 previously promised to divest from Huawei, which cleared the way for the Microsoft partnership; Bloomberg says G42 is chaired by Sheikh Tahnoon, the UAE national security adviser.",
+    "source_type": "press"
+  },
+  {
+    "id": "02-uae-ai-whos-who-10",
+    "title": "UAE revises AI data center plan after Iranian attacks, sources say",
+    "source": "Reuters (via The Jerusalem Post)",
+    "url": "https://www.jpost.com/business-and-innovation/article-908379",
+    "published": "2026-09-11",
+    "summary": "Reuters, citing six people familiar, reports the UAE is revising the 5GW AI campus plan after the Iran war (which began in February 2026): it will likely become a network of data centres across the UAE, with air defences and some underground construction considered. Reuters describes Stargate UAE as a $30-billion, 1-gigawatt first phase that began construction in 2025, with the first 200 megawatts due online in 2026. G42 told Reuters work was progressing as planned and specifics are 'subject to continuous review'. Reuters reports two AWS data centres in the UAE were damaged in March 2026 attacks, and that Iran's armed forces named Stargate UAE as a potential target in April.",
+    "source_type": "press"
+  },
+  {
+    "id": "02-uae-ai-whos-who-11",
+    "title": "UAE President issues law establishing Artificial Intelligence and Advanced Technology Council",
+    "source": "Abu Dhabi Media Office",
+    "url": "https://www.mediaoffice.abudhabi/en/government-affairs/in-his-capacity-as-ruler-of-abu-dhabi-uae-president-issues-law-establishing-artificial-intelligence-and-advanced-technology-council/",
+    "published": "2024-01-22",
+    "summary": "On 22 January 2024, Sheikh Mohamed bin Zayed, as Ruler of Abu Dhabi, issued a law establishing the Artificial Intelligence and Advanced Technology Council (AIATC), responsible for policies and strategies on AI research, infrastructure and investment in Abu Dhabi. Sheikh Tahnoon bin Zayed was appointed Chairman and Sheikh Khaled bin Mohamed bin Zayed Vice Chairman; members are Khaldoon Khalifa Al Mubarak, Jassem Mohamed Bu Ataba Al Zaabi, Faisal Abdulaziz Al Bannai and Peng Xiao.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-12",
+    "title": "Abu Dhabi Launches Comprehensive Global Investment Strategy on Artificial Intelligence",
+    "source": "Mubadala",
+    "url": "https://mubadala.com/en/news/abu-dhabi-launches-comprehensive-global-investment-strategy-on-artificial-intelligence",
+    "published": "2024-03-11",
+    "summary": "On 11 March 2024 the AIATC announced MGX, a technology investment company with Mubadala and G42 as founding partners, focused on AI infrastructure, semiconductors, and AI core technologies and applications. Sheikh Tahnoun chairs the MGX board, Khaldoon Al Mubarak is Vice-Chair; board members include Jassem Al Zaabi, Peng Xiao and Ahmed Yahia Al Idrissi, who is CEO. The release says Mubadala created GlobalFoundries in 2009, and G42 and Mubadala together developed Khazna, launched M42 and created Space42.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-13",
+    "title": "Mubadala Investment Company Reports 2024 Financial Results",
+    "source": "Mubadala",
+    "url": "https://www.mubadala.com/en/news/mubadala-investment-company-reports-2024-financial-results",
+    "published": "2025-05-08",
+    "summary": "Mubadala reports assets under management of AED 1.2 trillion (a US$330 billion portfolio) for 2024 and calls MGX, created by the AIATC with G42 and Mubadala as co-founding partners, Abu Dhabi's 'new AI investment champion'. It says MGX co-led the US$30 billion AI Infrastructure Partnership with Microsoft, BlackRock, GIP, NVIDIA and xAI, and invested in OpenAI, Anthropic and Databricks. Space42 was formed through the merger of Yahsat and Bayanat.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-14",
+    "title": "AIP, MGX and BlackRock's GIP Close Acquisition of Aligned Data Centers",
+    "source": "Aligned Data Centers",
+    "url": "https://aligneddc.com/press-release/aip-mgx-and-blackrocks-gip-close-acquisition-of-aligned-data-centers/",
+    "published": "2026-07-21",
+    "summary": "On July 21, 2026 AIP, MGX and BlackRock's GIP completed the acquisition of 100% of Aligned Data Centers at an enterprise value of approximately $40 billion; Aligned has 51 campuses and more than 6.4GW of operational and planned capacity. It is AIP's first investment toward a target of $30 billion of equity, with potential for up to $100 billion including debt. The consortium committed an additional $5 billion of growth capital.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-15",
+    "title": "MGX homepage and portfolio",
+    "source": "MGX",
+    "url": "https://www.mgx.ae",
+    "published": "",
+    "summary": "MGX describes itself as 'born in the UAE', a global AI and advanced technology investor. It says AIP was established in September 2024 by BlackRock, GIP, MGX, Microsoft and NVIDIA, later joined by xAI, the Kuwait Investment Authority and Temasek. Portfolio listings include Aligned, Altera, Anthropic, Binance, Campus AI (France, with Bpifrance, Mistral AI and NVIDIA), Databricks, Khazna, OpenAI, SpaceX and Vantage Data Centers North America.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-16",
+    "title": "G42 launches Core42 to deliver national-scale enterprise cloud and AI capabilities",
+    "source": "G42",
+    "url": "https://www.g42.ai/resources/news/g42-launches-core42-deliver-national-scale-enterprise-cloud-and-ai-capabilities",
+    "published": "2023-10-16",
+    "summary": "On 16 Oct 2023 G42 announced Core42, formed by merging G42 Cloud, Inception and Injazat, to deliver national-scale enterprise AI, sovereign cloud, HPC and cybersecurity for the public sector and regulated industries. Group CTO Kiril Evtimov became CEO of Core42. Former Inception CEO Andrew Jackson, who led the launch of the Jais Arabic LLM, became Chief AI Officer.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-17",
+    "title": "G42 merges Injazat with G42 Cloud and Inception",
+    "source": "Middle East AI News",
+    "url": "https://www.middleeastainews.com/p/g42-merges-injazat-with-g42-cloud",
+    "published": "2023-10-12",
+    "summary": "Middle East AI News reports that Core42 combines G42 Cloud (established by G42 in 2021), Inception (established by G42 in 2018, previously the Inception Institute of Artificial Intelligence) and Injazat (acquired by G42 in 2020 via an equity deal with Mubadala). It also reports G42 manages a $10 billion venture capital fund.",
+    "source_type": "press"
+  },
+  {
+    "id": "02-uae-ai-whos-who-18",
+    "title": "G42 relaunches Inception with family of 20 open-source Jais AI models",
+    "source": "Middle East AI News",
+    "url": "https://www.middleeastainews.com/p/g42-inception-20-open-source-jais-llms",
+    "published": "2024-08-05",
+    "summary": "G42 relaunched Inception as a separate entity driving its AI model development, headed by Andrew Jackson, after it had been merged into Core42 in October 2023. It released 20 open-source Jais models in 8 sizes from 590M to 70B parameters, trained on up to 1.6T tokens, under Apache 2.0 on Hugging Face; Jais was trained on the Condor Galaxy supercomputer network built by Cerebras and G42.",
+    "source_type": "press"
+  },
+  {
+    "id": "02-uae-ai-whos-who-19",
+    "title": "Core42 raises USD 550m to scale AI infrastructure in US and Europe",
+    "source": "Gulf Economist",
+    "url": "https://gulfeconomist.ae/core42-raises-usd-550-m-to-scale-ai-infrastructure-in-us-and-europe/",
+    "published": "2026-05-21",
+    "summary": "Core42 secured USD 550 million through two HSBC structured trade finance facilities (USD 240 million in February 2026, USD 310 million in May 2026) to fund AI cloud and compute deployments in the US and Europe. Its European operations are anchored by a Dublin headquarters with deployments in Italy and France.",
+    "source_type": "press"
+  },
+  {
+    "id": "02-uae-ai-whos-who-20",
+    "title": "About Us",
+    "source": "Presight AI",
+    "url": "https://www.presight.ai/about",
+    "published": "",
+    "summary": "Presight says it was incorporated in ADGM in 2022 as a public company backed by G42, listed on ADX in March 2023 in an IPO 136x oversubscribed raising USD 496 million, and operates in over 17 countries. It acquired a 51% stake in AIQ, ADNOC's industrial AI venture, in an AED 4.9B deal. It reports FY-25 revenue of AED 3.03B (+36.9% YoY) and market cap of about AED 20.08B as of mid-February 2026.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-21",
+    "title": "Abu Dhabi's G42 raises $100m from stake sale in Presight AI",
+    "source": "The National",
+    "url": "https://www.thenationalnews.com/business/markets/2025/09/03/abu-dhabis-g42-to-offer-2-stake-in-presight-ai-to-institutional-investors/",
+    "published": "2025-09-04",
+    "summary": "G42 raised $100 million by selling a 2 per cent stake (118 million shares at Dh3.21) in Presight AI; G42 retains about 68.5 per cent, down from 70.5 per cent. G42 group CFO Ricky Thirion called Presight a cornerstone of the Intelligence Grid. Presight launched a joint venture with the UAE Central Bank in 2025 for sovereign AI payment platforms.",
+    "source_type": "press"
+  },
+  {
+    "id": "02-uae-ai-whos-who-22",
+    "title": "About G42",
+    "source": "G42",
+    "url": "https://www.g42.ai/about",
+    "published": "",
+    "summary": "G42 says it was born in Abu Dhabi and names its investors as Mubadala, Silver Lake, Microsoft and the Dalio Family Office. Leadership listed includes Peng Xiao (Group CEO, an MBZUAI board member and formerly a MicroStrategy executive), Mansoor Al Mansoori (CEO, G42 International, Chairman of Space42, Vice Chairman of Presight, ATRC board member) and Ali Dalloul (CEO, G42 US).",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-23",
+    "title": "About Khazna Data Centers",
+    "source": "Khazna Data Centers",
+    "url": "https://khaznadatacenters.com/about-us/",
+    "published": "2025-04-15",
+    "summary": "Khazna describes itself as one of the fastest-expanding hyperscale data centre platforms, with operational facilities across the UAE; its AUH6 facility has been retrofitted for GPU workloads and Ajman will add 100MW of AI-capable capacity. It lists its shareholders as G42, MGX and Silver Lake, and its CEO as Hassan Alnaqbi.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-24",
+    "title": "G42 CEO Peng Xiao addresses bombshell NYT report about China",
+    "source": "Fortune",
+    "url": "https://fortune.com/asia/2023/11/29/g42-uae-abu-dhabi-ai-ceo-peng-xiao-new-york-times-report-china/",
+    "published": "2023-11-29",
+    "summary": "Fortune says G42 was founded in 2018 and is named after The Hitchhiker's Guide to the Galaxy; Sheikh Tahnoun is chair and controlling shareholder. It relays a New York Times report that US officials pushed G42 to sever ties with Chinese firms such as Huawei; a G42 executive told the NYT the firm was replacing a 'legacy technology supplier, which included Chinese hardware' and remained compliant. Peng Xiao confirmed he gave up US citizenship to become a UAE national.",
+    "source_type": "press"
+  },
+  {
+    "id": "02-uae-ai-whos-who-25",
+    "title": "Tahnoon bin Zayed chairs G42 Board of Directors meeting",
+    "source": "Abu Dhabi Media Office",
+    "url": "https://www.mediaoffice.abudhabi/en/technology/tahnoon-bin-zayed-chairs-g42-board-of-directors-meeting/",
+    "published": "2025-11-06",
+    "summary": "Sheikh Tahnoon bin Zayed, Deputy Ruler of Abu Dhabi and Chairman of G42, chaired the G42 year-end board meeting. Board participants named: Khaldoon Khalifa Al Mubarak, Jassem Mohamed Bu Ataba Al Zaabi, Brad Smith, Egon Durban, Peng Xiao and Martin Edelman. Microsoft is described as G42's trusted partner and minority shareholder.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-26",
+    "title": "Abu Dhabi's Advanced Technology Research Council launches AI71",
+    "source": "Advanced Technology Research Council (ATRC)",
+    "url": "https://atrc.gov.ae/news/abu-dhabis-advanced-technology-research-council-launches-ai71-new-ai-company-pioneering",
+    "published": "2023-11-28",
+    "summary": "On 28 November 2023 ATRC launched AI71, an AI company built on TII's Falcon models, launched by Sheikh Khaled bin Mohamed bin Zayed. TII developed Falcon 7B, 40B and 180B; ATRC's VentureOne subsidiary takes AI71 to market, starting with medical, educational and legal sectors, with a focus on letting clients self-host and retain control of data. ATRC Secretary General Faisal Al Bannai pledged to keep open-sourcing Falcon models.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-27",
+    "title": "Khaled bin Mohamed bin Zayed chairs Advanced Technology Research Council board meeting",
+    "source": "Abu Dhabi Media Office",
+    "url": "https://www.mediaoffice.abudhabi/en/crown-prince-news/khaled-bin-mohamed-bin-zayed-chairs-advanced-technology-research-council-board-meeting/",
+    "published": "2024-02-01",
+    "summary": "Sheikh Khaled bin Mohamed bin Zayed chairs ATRC. Since ATRC was established in 2020 it has set up 10 research centres with 851 researchers from more than 70 countries, including 193 UAE nationals, published 1,114 studies and filed 47 patents. TII is described as ATRC's applied research arm, which launched Falcon, the UAE's first generative AI LLM. Faisal Al Bannai is ATRC Secretary General; Sultan Al Jaber is named Minister of Industry and Advanced Technology.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-28",
+    "title": "About Us: Artificial Intelligence Office",
+    "source": "UAE Artificial Intelligence Office (ai.gov.ae)",
+    "url": "https://ai.gov.ae/about_us/",
+    "published": "",
+    "summary": "Omar Sultan Al Olama was appointed Minister of State for Artificial Intelligence in October 2017, and Minister of State for Artificial Intelligence, Digital Economy and Remote Work Applications in July 2020. His office is responsible for the goals of the UAE National AI Strategy and the UAE Digital Economy Strategy. He is also Managing Director of the World Government Summit and Deputy Managing Director of the Dubai Future Foundation.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-29",
+    "title": "UAE National Strategy for AI",
+    "source": "OECD.AI Policy Navigator",
+    "url": "https://oecd.ai/en/dashboards/policy-initiatives/uae-national-strategy-for-ai-8711",
+    "published": "2025-07-09",
+    "summary": "Entry (added 9 Jul 2025, updated 25 Dec 2025 by the national contact point) says the UAE announced the National Strategy for Artificial Intelligence 2031 in October 2017, aiming for the UAE to be one of the world's AI leaders. It lists eight objectives, including adopting AI across government services, attracting talent, and ensuring strong governance and regulation. The UAE AI Office is responsible for developing and implementing it; the initiative has not been evaluated.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-30",
+    "title": "About us: Our history",
+    "source": "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)",
+    "url": "https://mbzuai.ac.ae/about-us",
+    "published": "",
+    "summary": "MBZUAI was established in 2019 as, in its words, the world's first graduate-level, research-based AI university, with Dr. Sultan Ahmed Al Jaber as founding Board chair; its campus is in Masdar City, Abu Dhabi. Eric Xing was named founding president in November 2020; the first cohort of 78 graduate students from 29 countries arrived in January 2021. A new Board chaired by Khaldoon Khalifa Al Mubarak took office in February 2025; first undergraduates arrived August 2025; Sam Altman received its inaugural honorary doctorate in September 2025.",
+    "source_type": "primary"
+  },
+  {
+    "id": "02-uae-ai-whos-who-31",
+    "title": "ADQ and Energy Capital Partners to launch US$25bn investment partnership in US",
+    "source": "Abu Dhabi Media Office",
+    "url": "https://www.mediaoffice.abudhabi/en/energy/adq-and-energy-capital-partners-to-launch-us25bn-investment-partnership-in-us-to-expand-power-generation-for-energy-intensive-industries/",
+    "published": "2025-03-19",
+    "summary": "ADQ and Energy Capital Partners agreed a 50-50 partnership to build power generation for data centres, hyperscalers and energy-intensive industries, mainly in the US, planning more than US$25 billion across 25 GW of projects with an initial US$5 billion contribution. ADQ's MD and Group CEO is Mohamed Hassan Alsuwaidi; ECP says the focus is new-build natural gas generation.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-32",
+    "title": "Hamdan bin Mohammed launches Dubai Centre for Artificial Intelligence",
+    "source": "Dubai Future Foundation",
+    "url": "https://www.dubaifuture.ae/latest-news/hamdan-bin-mohammed-launches-dubai-centre-for-artificial-intelligence-to-accelerate-ai-adoption-in-government/",
+    "published": "2023-06-09",
+    "summary": "Sheikh Hamdan bin Mohammed, Crown Prince of Dubai, launched the Dubai Centre for Artificial Intelligence (DCAI) at Emirates Towers, AREA 2071, to help government entities deploy AI. It aims to train 1,000 government employees from over 30 entities in generative AI and support more than 20 startups; DFF, DEWA, Dubai Media Council and Dubai Digital Authority oversee implementation.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-33",
+    "title": "Hamdan bin Mohammed launches Dubai Universal Blueprint for Artificial Intelligence",
+    "source": "Dubai Government Protocol",
+    "url": "https://protocol.dubai.ae/en/media-listing/news-events/hamdan-bin-mohammed-launches-dubai-universal-blueprint-for-artificial-intelligence",
+    "published": "",
+    "summary": "Sheikh Hamdan launched the Dubai Universal Blueprint for AI, a yearly plan supporting the D33 agenda target of AED100 billion annually from the digital economy and a 50 percent productivity increase. Phase one: a Chief AI Officer in every Dubai government entity (candidates assessed by the Dubai Centre for AI, part of the Dubai Future Foundation), AI and Web3 incubators, an AI Week in schools, a Dubai commercial licence for AI, and fast-tracked land for data centres.",
+    "source_type": "government"
+  },
+  {
+    "id": "02-uae-ai-whos-who-34",
+    "title": "Crown Prince Sheikh Hamdan unveils Dubai Universal Blueprint for AI",
+    "source": "IndiaAI (Government of India portal)",
+    "url": "https://indiaai.gov.in/article/crown-prince-sheikh-hamdan-unveils-dubai-universal-blueprint-for-ai",
+    "published": "2024-05-03",
+    "summary": "Reported on May 3, 2024 that Sheikh Hamdan 'recently unveiled' the Blueprint via X. Lists four pillars: best application of AI in strategic sectors, a global regulatory and governance sandbox for AI, highest AI adoption in government, and the best environment for AI companies and talent; the plan is reviewed annually.",
+    "source_type": "government"
+  }
+]
