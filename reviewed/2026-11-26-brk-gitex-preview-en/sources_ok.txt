@@ -1,0 +1,4 @@
+Written by hand 2026-11-26 as the GITEX Global 2026 preview Short (founder asked for it).
+- dates, venues, 6,000+ exhibitors, 120+ countries, themes: organiser press release (721dfee12c) and WAM via Zawya (82e6d1b6e3)
+- the summit then Expo City format, exhibitor names: organiser (721dfee12c), TNW (c18e8d3acd)
+- 'bills it as the world's biggest tech and AI show' is the organiser's own claim, attributed as such
