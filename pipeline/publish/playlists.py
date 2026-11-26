@@ -21,8 +21,11 @@ def rules(cfg: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def pick(title: str, text: str, kind: str, cfg: dict[str, Any]) -> list[str]:
-    """Playlist titles for a video: those for its kind (episode or short) whose words appear in it."""
-    hay = f"{title}\n{text}"
+    """Playlist titles for a video: those for its kind (episode or short) whose words appear in its title or the
+    first paragraph of its text. Hashtags and the rest of a description (sources, links) are left out: the house
+    hashtags carry #ChatGPT and an episode's source list names every company (2026-11-26 preview)."""
+    lead = re.sub(r"#\w+", " ", (text or "").strip()).split("\n\n")[0]
+    hay = f"{title}\n{lead}"
     out = []
     for r in rules(cfg):
         if kind not in (r.get("kinds") or ["episode", "short"]):

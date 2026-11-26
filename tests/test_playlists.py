@@ -14,6 +14,8 @@ def test_pick_by_kind_and_words():
     assert pl.pick("ADNOC and G42 sign a deal", "", "episode", CFG) == ["Weekly", "Gulf"]
     assert pl.pick("Jensen Huang Is Back", "NVIDIA's board reinstated him", "short", CFG) == ["Shorts", "Chips"]
     assert pl.pick("Stc and e& results", "", "short", CFG) == ["Shorts", "Gulf"]
+    # hashtags and anything after the first paragraph do not count
+    assert pl.pick("CIA hit by breach", "A breach.\n\n#NVIDIA #UAE\nSources: G42 blog", "short", CFG) == ["Shorts"]
 
 
 class FakeYT:
