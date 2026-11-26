@@ -434,6 +434,27 @@ publish:
     Africa, at companies including Microsoft, Oracle and TIBCO. He now advises AI and software
     companies entering the region and builds AI products of his own.
   partnerships_email: "aithisweek.partnerships@gmail.com"      # sponsors' address: set it and every new description (and scripts/youtube_partnerships.py for old ones) carries it
+  # Topic playlists, filled at upload and at release (pipeline/publish/playlists.py; founder 2026-11-26: keep viewers
+  # watching the next video). No `match` = every video of that kind. Created public on first use.
+  playlists:
+    - title: "AI This Week: weekly episodes"
+      description: "Every weekly episode of AI This Week: the week's AI news and what it means for the Gulf and the region."
+      kinds: [episode]
+    - title: "AI news Shorts"
+      description: "Breaking AI news and quick explainers in under a minute."
+      kinds: [short]
+    - title: "AI in the Gulf"
+      description: "AI in the UAE, Saudi Arabia, Qatar and the wider region: deals, data centres, regulators and builders."
+      match: [UAE, Emirates, Abu Dhabi, Dubai, Saudi, Riyadh, Qatar, Doha, Kuwait, Bahrain, Oman, Gulf, GCC, "Middle East", G42, ADNOC, HUMAIN, MGX, Mubadala, Core42, Khazna, Aramco, SDAIA, Bunyan, Etisalat, "e&", stc]
+    - title: "Big Tech and the AI labs"
+      description: "OpenAI, Anthropic, Google, Microsoft, Meta, Apple, Amazon and the other labs: what they did and why it matters."
+      match: [OpenAI, Anthropic, Google, Gemini, Microsoft, Copilot, Meta, Apple, Amazon, AWS, xAI, Grok, DeepSeek, Alibaba, Mistral, ChatGPT, Claude]
+    - title: "Chips and data centres"
+      description: "NVIDIA, chips, GPUs and the data centres the AI boom runs on."
+      match: [NVIDIA, chip, chips, GPU, semiconductor, TSMC, AMD, Intel, "data centre", "data center", "data centres", Blackwell, Rubin, Vera]
+  first_comment:   # posted by the channel when an episode goes public (scripts/release.py); pin it in Studio
+    question: "Which of this week's stories matters most for your company? Tell us below."
+    previous: "Missed last week's episode?"
   privacy: private            # uploaded private and scheduled: YouTube makes it public at publish time (founder 2026-11-14)
   chapter_gate: true          # uploaded private, made public at the release time by scripts/release.py (every 20 min)
   chapter_wait_hours: 0       # 0 = public at the release time whatever the chapter list shows. YouTube makes chapter pictures two to five days after publishing (measured 2026-11-23), so waiting for them only delays the episode (W47-en: 18:40 Gulf, not 17:00)

@@ -234,7 +234,9 @@ def test_linkedin_uploads_in_parts_waits_for_processing_then_posts(tmp_path):
     assert post["author"] == "urn:li:person:abc" and post["content"]["media"]["id"] == "urn:li:video:V"
 
 
-def test_linkedin_caption_links_the_channel_and_caps_tags_at_ten(tmp_path):
+def test_linkedin_caption_links_the_channel_and_caps_tags_at_ten(tmp_path, monkeypatch):
+    from pipeline.publish import playlists
+    monkeypatch.setattr(playlists, "latest_episode_url", lambda root=None: "")
     cfg = {"publish": {"hashtags_en": [f"#T{i}" for i in range(12)]},
            "social": {"channel_url": "https://www.youtube.com/@AIThisWeekME",
                       "platforms": ["linkedin", "tiktok"], "require_approval": True}}
@@ -550,3 +552,12 @@ def test_settings_route_tiktok_through_buffer():
     import yaml
     s = yaml.safe_load((Path(__file__).resolve().parents[1] / "config/settings.yaml").read_text(encoding="utf-8"))
     assert s["social"]["tiktok_via"] == "buffer"
+
+
+def test_captions_link_the_latest_episode_when_one_is_public(monkeypatch):
+    from pipeline.publish import playlists
+    monkeypatch.setattr(playlists, "latest_episode_url", lambda root=None: "https://youtu.be/abc")
+    cfg = {"publish": {}, "social": {"channel_url": "https://www.youtube.com/@AIThisWeekME"}}
+    yt = social.caption({"title": "S"}, cfg, "en", "youtube")
+    assert "Latest full episode: https://youtu.be/abc" in yt and "Channel: https://www.youtube.com/@AIThisWeekME" in yt
+    assert "link in bio" in social.caption({"title": "S"}, cfg, "en", "tiktok")

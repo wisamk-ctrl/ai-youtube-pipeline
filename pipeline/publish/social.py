@@ -124,6 +124,11 @@ def caption(short: dict[str, Any], cfg: dict[str, Any], lang: str, platform: str
     more = s.get(f"more_{lang}", "Full episode on YouTube: link in bio" if lang == "en" else "الحلقة الكاملة على يوتيوب")
     if platform in ("linkedin", "youtube", "facebook") and s.get("channel_url"):   # these show links: give the real one
         more = (f"Full episode: {s['channel_url']}" if lang == "en" else f"الحلقة الكاملة: {s['channel_url']}")
+        from pipeline.publish.playlists import latest_episode_url
+        ep = latest_episode_url()   # one tap to the newest episode, not the channel page (founder 2026-11-26)
+        if ep:
+            more = (f"Latest full episode: {ep}\nChannel: {s['channel_url']}" if lang == "en"
+                    else f"آخر حلقة كاملة: {ep}\nالقناة: {s['channel_url']}")
     if platform == "linkedin":   # broad, high-reach tags (founder 2026-11-18)
         tags = list(s.get(f"linkedin_hashtags_{lang}", tags))[:10]
     if platform in ("linkedin", "youtube", "facebook") and s.get("whatsapp_channel_url"):
@@ -633,7 +638,9 @@ def youtube_poster(cfg: dict[str, Any]):
                 "status": {"privacyStatus": cfg.get("social", {}).get("youtube_privacy", "public"),
                            "selfDeclaredMadeForKids": False, "containsSyntheticMedia": True}}
         vid = yu._insert(yt, body, local)
-        return {"url": f"https://youtube.com/shorts/{vid}"}
+        from pipeline.publish import playlists
+        lists = playlists.place(yt, vid, e.get("title", ""), e["captions"].get("linkedin", ""), "short", cfg)
+        return {"url": f"https://youtube.com/shorts/{vid}", **({"playlists": lists} if lists else {})}
     return post
 
 

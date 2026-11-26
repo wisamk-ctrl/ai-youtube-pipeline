@@ -79,6 +79,29 @@ def announce(week: str, video_id: str) -> None:
     log.info("announce %s: %s", week, "started" if r.returncode == 0 else r.stderr.strip()[:200])
 
 
+def after_release(e: dict, q: list[dict], yt=None, cfg: dict | None = None) -> list[str]:
+    """Once public: the episode goes into its playlists and gets the channel's first comment (a question, and the
+    previous episode). Never stops the release (founder 2026-11-26: keep viewers watching the next video)."""
+    from pipeline.config import load_settings
+    from pipeline.publish import playlists
+    cfg = cfg or load_settings()
+    out = []
+    try:
+        yt = yt or youtube()
+        snip = yt.videos().list(part="snippet", id=e["video_id"]).execute()["items"][0]["snippet"]
+        lists = playlists.place(yt, e["video_id"], snip.get("title", ""), snip.get("description", ""), "episode", cfg)
+        out.append(f"  playlists: {', '.join(lists) or 'none matched'}")
+        if not e.get("first_comment"):
+            prev = [r for r in q if r.get("status") == "public" and r.get("video_id") != e["video_id"]]
+            prev.sort(key=lambda r: str(r.get("at") or r.get("release_at") or ""))
+            url = f"https://youtu.be/{prev[-1]['video_id']}" if prev else ""
+            e["first_comment"] = playlists.post_comment(yt, e["video_id"], playlists.first_comment_text(cfg, url))
+            out.append("  first comment posted: pin it in YouTube Studio (Comments → ⋮ → Pin), the API cannot pin")
+    except Exception as exc:  # noqa: BLE001 — the episode is public; these are niceties
+        out.append(f"  ⚠️ playlists / first comment not done: {str(exc)[:200]}")
+    return out
+
+
 def youtube():
     from pipeline.google_auth import client
     return client("youtube")
@@ -110,6 +133,7 @@ def run(now: datetime | None = None, ready=chapters_ready, make_public=None, wai
                      note="chapters ready" if ok else f"released on time, {why}" if blind or not wait_hours
                      else f"made public after {wait_hours:g} h without chapter pictures ({why})")
             lines.append(f"✅ {e['week']} public: https://youtu.be/{e['video_id']} ({e['note']})")
+            lines += after_release(e, q)
             announce(e["week"], e["video_id"])
         else:
             e["last_check"] = f"{now:%Y-%m-%dT%H:%MZ}: {why}"
