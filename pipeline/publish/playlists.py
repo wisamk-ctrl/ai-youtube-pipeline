@@ -62,7 +62,14 @@ def ensure(yt, titles: list[str], cfg: dict[str, Any], have: dict[str, str] | No
 
 
 def in_playlist(yt, playlist_id: str, video_id: str) -> bool:
-    res = yt.playlistItems().list(part="id", playlistId=playlist_id, videoId=video_id, maxResults=1).execute()
+    """False also when YouTube does not know the playlist yet: a playlist created seconds ago answers 404 to
+    playlistItems.list for a while (2026-11-26 backfill), while playlistItems.insert already works."""
+    try:
+        res = yt.playlistItems().list(part="id", playlistId=playlist_id, videoId=video_id, maxResults=1).execute()
+    except Exception as exc:  # noqa: BLE001
+        if "404" in str(exc):
+            return False
+        raise
     return bool(res.get("items"))
 
 

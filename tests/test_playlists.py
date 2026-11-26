@@ -76,3 +76,22 @@ def test_latest_episode_and_first_comment(tmp_path):
     assert pl.latest_episode_url(tmp_path) == "https://youtu.be/new"
     text = pl.first_comment_text({"publish": {}}, "https://youtu.be/old")
     assert "matters most" in text and text.endswith("https://youtu.be/old")
+
+
+def test_a_brand_new_playlist_answering_404_still_gets_the_video():
+    yt = FakeYT()
+    real = yt.playlistItems
+
+    def items():
+        inner = real()
+
+        class I:
+            def list(self, **kw):
+                raise RuntimeError("<HttpError 404 when requesting playlistItems>")
+
+            def insert(self, part, body):
+                return inner.insert(part, body)
+        return I()
+    yt.playlistItems = items
+    assert pl.place(yt, "v1", "NVIDIA", "", "short", CFG) == ["Shorts", "Chips"]
+    assert len(yt.items) == 2
