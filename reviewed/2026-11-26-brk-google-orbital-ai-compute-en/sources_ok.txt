@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-26 01:18 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Google will test AI data center racks in orbit.  ← Data Center Knowledge (9008ae6288)
+- (2) It booked a Blue Origin New Glenn launch for the first quarter of 2029.  ← Data Center Knowledge (9008ae6288)
+- (3) Project Suncatcher uses solar-powered satellites carrying Google's Tensor Processing Units.  ← Data Center Knowledge (9008ae6288)
+- (4) The goal: test AI workloads at roughly single-rack scale.  ← Data Center Knowledge (9008ae6288)
+- (5) IDC's Dave McCarthy says no technician can swap a failed GPU at 500 kilometers.  ← Data Center Knowledge (9008ae6288)
+- (6) Data Center Knowledge reports heat rejection is the biggest engineering obstacle.  ← Data Center Knowledge (9008ae6288)
+- (7) Would Gulf data center operators ever look to space for compute?  ← regional line, no facts
