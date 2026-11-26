@@ -990,5 +990,61 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531300404215803904"
       }
     }
+  },
+  {
+    "id": "2026-11-26-brk-google-orbital-ai-compute-en#1",
+    "week": "2026-11-26-brk-google-orbital-ai-compute-en",
+    "lang": "en",
+    "file": "2026-11-26-brk-google-orbital-ai-compute-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-26-brk-google-orbital-ai-compute-en/2026-11-26-brk-google-orbital-ai-compute-en-short-01.mp4",
+    "title": "Google Books Blue Origin Launch",
+    "due": "2026-11-26T01:22:33Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Google Books Blue Origin Launch\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Google Books Blue Origin Launch\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Google Books Blue Origin Launch\n\nFull episode: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Google Books Blue Origin Launch\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "Google wants to know if AI computing can work in orbit. The company has booked a Blue Origin New Glenn launch for the first quarter of 2029 for Project Suncatcher, which will test solar-powered satellites carrying Google's Tensor Processing Units at roughly the scale of individual data center racks. Data Center Knowledge reports that heat rejection is the biggest engineering obstacle, and IDC's Dave McCarthy notes that no technician can swap a failed GPU at 500 kilometers. For the Gulf, where data centers are being built at speed, the test is an early sign of where AI infrastructure might go beyond the ground.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-26T01:22:33Z",
+        "url": "https://youtube.com/shorts/yFrwoP-3TjA"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-26T01:22:33Z",
+        "media_id": "18126013126951834",
+        "url": "https://www.instagram.com/reel/DgL6kHCoGLd/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-26T01:22:33Z",
+        "video_id": "1524240029520997",
+        "url": "https://www.facebook.com/reel/1524240029520997",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-26T01:22:33Z",
+        "buffer_id": "6b078a0ab8e2338b857bf663",
+        "url": "https://tiktok.com/@aithisweek/video/7712284690052287745",
+        "via": "buffer"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-26T01:22:33Z",
+        "post": "urn:li:ugcPost:7531528535996338176",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531528535996338176"
+      }
+    }
   }
 ]
