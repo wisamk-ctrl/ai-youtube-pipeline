@@ -247,6 +247,8 @@ scripting:
 
 video:
   provider: heygen            # heygen | elevenlabs_did
+  voice_provider: heygen      # automatic narration in the voice-first route: heygen | elevenlabs (pipeline/video/eleven_tts.py;
+                              # HeyGen still makes the face clips from that audio). Switch once the new ElevenLabs voice is trained
   # How [Pause] markers reach the speech engine:
   #   ssml     → <break time="0.8s"/> (ElevenLabs multilingual v2; HeyGen voices that support it)
   #   ellipsis → "..." (works everywhere, less precise)

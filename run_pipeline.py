@@ -543,6 +543,11 @@ def phase_assemble(cfg: dict, out: Path, check_only: bool = False) -> None:
             voice = out / "voice.yaml"      # voiced automatically on an earlier run, same text
         else:
             log.info("The script changed since the last automatic voice: voicing it again")
+    eleven = cfg["video"].get("voice_provider") == "elevenlabs" and os.environ.get("ELEVENLABS_API_KEY")
+    if not voice.exists() and eleven:   # founder 2026-11-26: narration from ElevenLabs, HeyGen only for the faces
+        from pipeline.video.eleven_tts import voice_week as eleven_week
+        voice = eleven_week(chunks, cfg, out / "voice.yaml", out.name, style=style)
+        log.info("Voice step done automatically through ElevenLabs → %s", voice)
     if not voice.exists():
         if not os.environ.get("HEYGEN_API_KEY"):
             sys.exit(f"{voice} not found — make the speech and face videos from voice_pack.md first.")
