@@ -1,7 +1,7 @@
 tier,metric,current,target,window,per_day,needed_per_day,eta
-Fan funding,Subscribers,49,500,now,1.64,,2027-08-27
+Fan funding,Subscribers,50,500,now,1.64,,2027-08-27
 Fan funding,Watch hours (long videos),14,3000,12 months,0.5,,over 3 years at this pace
 Fan funding,Shorts views,161,3000000,90 days,5.75,33333,not at this pace
-Ad revenue,Subscribers,49,1000,now,1.64,,2028-06-26
+Ad revenue,Subscribers,50,1000,now,1.64,,2028-06-27
 Ad revenue,Watch hours (long videos),14,4000,12 months,0.5,,over 3 years at this pace
 Ad revenue,Shorts views,161,10000000,90 days,5.75,111111,not at this pace
