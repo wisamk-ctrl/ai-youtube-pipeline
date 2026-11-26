@@ -1046,5 +1046,59 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531528535996338176"
       }
     }
+  },
+  {
+    "id": "2026-11-26-brk-openai-cisco-shirudo-en#1",
+    "week": "2026-11-26-brk-openai-cisco-shirudo-en",
+    "lang": "en",
+    "file": "2026-11-26-brk-openai-cisco-shirudo-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-26-brk-openai-cisco-shirudo-en/2026-11-26-brk-openai-cisco-shirudo-en-short-01.mp4",
+    "title": "OpenAI and Cisco Launch Shirudo",
+    "due": "2026-11-26T17:41:37Z",
+    "approved": true,
+    "captions": {
+      "youtube": "OpenAI and Cisco Launch Shirudo\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "OpenAI and Cisco Launch Shirudo\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "OpenAI and Cisco Launch Shirudo\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "OpenAI and Cisco Launch Shirudo\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "OpenAI and Cisco have launched Shirudo, an open-source project for AI-driven cyber defense. According to Channel Insider, it uses AI agents and eBPF kernel-level defenses to protect vulnerable infrastructure before permanent patches can be deployed. Gulf Business reports it is built to combat AI-driven cyberattacks and block Java4shell exploits. For Gulf organisations running critical digital infrastructure, it raises a practical question: how much of the gap between disclosure and patching should AI agents be trusted to cover?\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "queued",
+        "note": "not connected this run (secrets missing or the token failed): still queued"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-26T17:41:38Z",
+        "media_id": "18438952069195483",
+        "url": "https://www.instagram.com/reel/DgNqmk9vCul/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-26T17:41:38Z",
+        "video_id": "1537999071513311",
+        "url": "https://www.facebook.com/reel/1537999071513311",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-26T17:41:38Z",
+        "buffer_id": "6b086f7ef0a96d0f21788ac7",
+        "url": "https://tiktok.com/@aithisweek/video/7712536977274490133",
+        "via": "buffer"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-26T17:41:38Z",
+        "post": "urn:li:ugcPost:7531774921501401089",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531774921501401089"
+      }
+    }
   }
 ]
