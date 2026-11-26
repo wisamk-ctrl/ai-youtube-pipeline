@@ -1,0 +1,104 @@
+{
+  "scores": {
+    "hook": 9,
+    "clarity": 6,
+    "pacing": 9,
+    "flow": 10,
+    "arabic": 10,
+    "value": 10
+  },
+  "minimum": 6,
+  "verdict": "Well-sourced and region-focused with a clean bottom line, but fix the greeting placement, explain the half-dozen unfamiliar names, unify the show name and get the founder to sign off the draft view before we record.",
+  "defects": [
+    {
+      "axis": "hook",
+      "severity": "major",
+      "rule": "Greeting comes before the first story's facts",
+      "quote": "I'm Wissam, and this is AI This Week, AI Explained."
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Unknown company name with no few-word explanation",
+      "quote": "There is also a one-gigawatt joint venture with stc."
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Unknown company name with no few-word explanation",
+      "quote": "Qai formed a twenty-billion-dollar joint venture with Brookfield."
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Unknown company name with no few-word explanation",
+      "quote": "Syntys, carved out of Ooredoo, broke ground"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Unknown company name with no few-word explanation",
+      "quote": "a consortium led by Mubbadrah plans up to four hundred megawatts"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Unknown source name with no few-word explanation",
+      "quote": "Rest of World and Climate Central found every UAE data centre"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Unknown source name with no few-word explanation",
+      "quote": "Rest of World cites Mordor Intelligence on Middle East"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "Then came physical attack. In March 2026, AWS said"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "In Oman, a consortium led by Mubbadrah plans"
+    },
+    {
+      "axis": "flow",
+      "severity": "minor",
+      "rule": "Transition reads as translated",
+      "quote": "First, let's learn how to measure one of these buildings."
+    }
+  ],
+  "worst_three": [
+    {
+      "where": "I'm Wissam, and this is",
+      "problem": "The listener gets the channel introduction before the first story has delivered a single fact past the hook, so the opening momentum stalls.",
+      "fix": "Move the greeting to after the restaurant gas-line analogy and the first [Pause]. Cut the ident to one line of at most 20 words: 'I'm Wissam, and this is AI Explained.' Use the same show name as the sign-off. That sign-off currently says «AI in the Gulf»; pick one name and drop the « » marks."
+    },
+    {
+      "where": "joint venture with Brookfield",
+      "problem": "Listeners hear a run of names they cannot place and lose who is doing what: stc, Brookfield, Ooredoo, Mubbadrah, Rest of World, Climate Central, Mordor Intelligence.",
+      "fix": "Add a few words to each name: 'stc, Saudi Arabia's largest telecom company'; 'Brookfield, the Canadian investment giant'; 'Syntys, a company spun out of Qatar's telecom operator Ooredoo'; 'a consortium led by Mubbadrah, an Omani investment firm'; 'the tech news site Rest of World and the climate research group Climate Central'; 'the market research firm Mordor Intelligence'."
+    },
+    {
+      "where": "Then came physical attack.",
+      "problem": "About 73 words of dense, alarming facts run straight into a new technical definition with no breath, so the drone strike and the availability-zone idea blur together.",
+      "fix": "Rewrite as: 'Then came a physical attack. In March 2026, AWS said drones had directly struck two of its UAE facilities. A strike near a Bahrain facility also caused damage. Fires set off sprinklers, and the water damaged equipment. [Pause]' Do the same in the Oman–Kuwait passage: add a [Pause] after 'backed by solar and batteries.'"
+    }
+  ],
+  "samples": [
+    {
+      "hook": 9,
+      "clarity": 6,
+      "pacing": 9,
+      "flow": 10,
+      "arabic": 10,
+      "value": 10
+    }
+  ],
+  "stable": true,
+  "language": "en",
+  "first_draft_minimum": 3
+}

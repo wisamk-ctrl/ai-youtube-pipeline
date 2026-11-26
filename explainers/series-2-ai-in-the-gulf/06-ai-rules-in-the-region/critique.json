@@ -1,0 +1,68 @@
+{
+  "scores": {
+    "hook": 10,
+    "clarity": 9,
+    "pacing": 9,
+    "flow": 9,
+    "arabic": 10,
+    "value": 10
+  },
+  "minimum": 9,
+  "verdict": "Clear, well-sourced and well-signposted. Fix the unearned 'binding' claim in the bottom line, add a pause before the free-zone section, and split the SDAIA numbers sentence, then record.",
+  "defects": [
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "A sentence carrying three or more figures",
+      "quote": "SDAIA's 2023 ethics principles set seven principles and four risk levels."
+    },
+    {
+      "axis": "clarity",
+      "severity": "minor",
+      "rule": "A sentence over 25 words",
+      "quote": "those three regimes are the federal mainland, the Dubai International Financial Centre, or DIFC"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "Finally, soft law. The UAE AI Charter was issued in June 2024."
+    },
+    {
+      "axis": "flow",
+      "severity": "major",
+      "rule": "Bottom line brings a new fact or claim",
+      "quote": "the binding AI-specific rules are in the DIFC, and in the central bank guidance"
+    }
+  ],
+  "worst_three": [
+    {
+      "where": "in the central bank guidance",
+      "problem": "The recap calls the central bank guidance binding, a claim the episode never made; its quoted lines say 'should', so a compliance listener could be misled about its legal force.",
+      "fix": "Rewrite point two using only what was reported: 'Two: the most detailed AI rules sit in the DIFC's Regulation 10 and in central bank guidance for banks. Most other AI ethics documents are voluntary.'"
+    },
+    {
+      "where": "Finally, soft law. The UAE",
+      "problem": "From 'Finally, soft law' through the Regulation 10 enforcement line, the listener hears about 95 words with no pause, across a section change, and the AI Charter and DIFC material blur together.",
+      "fix": "Insert [Pause] after 'The guidelines are non-binding.' and again after 'In plain words, AI.', so the soft-law beat ends before the free-zone section opens."
+    },
+    {
+      "where": "set seven principles and four",
+      "problem": "The ear has to hold three numbers at once (2023, seven, four) and loses which one belongs to what.",
+      "fix": "Split it: 'On AI, SDAIA published ethics principles in 2023. They set seven principles. [Pause] They also sort AI into four risk levels.'"
+    }
+  ],
+  "samples": [
+    {
+      "hook": 10,
+      "clarity": 9,
+      "pacing": 9,
+      "flow": 9,
+      "arabic": 10,
+      "value": 10
+    }
+  ],
+  "stable": true,
+  "language": "en",
+  "first_draft_minimum": 7
+}

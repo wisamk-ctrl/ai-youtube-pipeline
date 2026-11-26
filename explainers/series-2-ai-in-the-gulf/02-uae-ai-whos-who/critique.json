@@ -1,0 +1,134 @@
+{
+  "scores": {
+    "hook": 10,
+    "clarity": 7,
+    "pacing": 4,
+    "flow": 10,
+    "arabic": 10,
+    "value": 10
+  },
+  "minimum": 4,
+  "verdict": "The content is solid and well sourced, but it reads like a dense briefing. Add pauses every 50 to 60 words, clear up the 'It' after the Mubadala line, and explain Databricks and Energy Capital Partners before we record.",
+  "defects": [
+    {
+      "axis": "hook",
+      "severity": "minor",
+      "rule": "Hook carries more than one question",
+      "quote": "who sets the rules, who holds the money, who builds"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Company name a non-specialist would not know, unexplained",
+      "quote": "Mubadala says MGX invested in OpenAI, Anthropic and Databricks"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Company name a non-specialist would not know, unexplained",
+      "quote": "agreed an equal partnership with Energy Capital Partners"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Pronoun whose referent could be two things",
+      "quote": "It also co-led the AI Infrastructure Partnership"
+    },
+    {
+      "axis": "clarity",
+      "severity": "minor",
+      "rule": "Sentence over 25 words",
+      "quote": "issued a law creating the Artificial Intelligence and Advanced Technology Council"
+    },
+    {
+      "axis": "clarity",
+      "severity": "minor",
+      "rule": "Sentence over 25 words",
+      "quote": "G42 lists its investors as Mubadala, Abu Dhabi's state investment fund"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "First, who sets the rules. There are two layers"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "eight objectives. They include using AI across government services"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "Remember three of those names: Tahnoon, Khaldoon Al Mubarak"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "The first family member is Core42."
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "Now, who pays, and who does the research."
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "Phase one puts a Chief AI Officer in every"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "In May 2025, a 5-gigawatt UAE-US AI Campus was unveiled"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "The plan is moving. In September 2026, Reuters reported"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "In the UAE, the same handful of people sign"
+    }
+  ],
+  "worst_three": [
+    {
+      "where": "First, who sets the rules",
+      "problem": "The opening segment runs about 90 words with no breath, and the greeting is buried mid-story, so the listener gets a wall of names and dates right after the hook.",
+      "fix": "Insert [Pause] after 'the first country to appoint a federal minister of AI.' Move 'I'm Wissam, and this is AI This Week, AI Explained.' to right after the hook, followed by [Pause]. Insert another [Pause] after 'The aim is to be one of the world's AI leaders by then.'"
+    },
+    {
+      "where": "Phase one puts a Chief",
+      "problem": "Roughly 90 words, the end of the Dubai story through the start of the American deal, run with no pause, so the section change is lost.",
+      "fix": "Add [Pause] after 'fast-tracked land for data centres.' and another after 'the capital and the research.' before the 'Finally' signpost, so the analysis and the new section each get a beat."
+    },
+    {
+      "where": "Mubadala says MGX invested in",
+      "problem": "Listeners cannot tell whether 'It' means Mubadala or MGX, and Databricks means nothing to a non-specialist.",
+      "fix": "Rewrite as: 'Mubadala says MGX invested in OpenAI, Anthropic and Databricks, a US company that helps businesses manage data for AI. MGX also co-led the AI Infrastructure Partnership...' Do the same for ADQ: 'with Energy Capital Partners, a US energy investment firm.'"
+    }
+  ],
+  "samples": [
+    {
+      "hook": 10,
+      "clarity": 7,
+      "pacing": 4,
+      "flow": 10,
+      "arabic": 10,
+      "value": 10
+    }
+  ],
+  "stable": true,
+  "language": "en",
+  "first_draft_minimum": 6
+}

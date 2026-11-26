@@ -1,0 +1,98 @@
+{
+  "scores": {
+    "hook": 10,
+    "clarity": 8,
+    "pacing": 7,
+    "flow": 10,
+    "arabic": 10,
+    "value": 9
+  },
+  "minimum": 7,
+  "verdict": "Well sourced and clearly signposted, but the section breaks have no breathing room, the opinion section borrows think-tank authority, and the draft view needs the founder's sign-off before we record.",
+  "defects": [
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "A sentence carrying three or more figures",
+      "quote": "In May 2025, G42 said it expected the first 200 megawatts to go live in 2026."
+    },
+    {
+      "axis": "clarity",
+      "severity": "minor",
+      "rule": "Sentence over 25 words, with a nested citation",
+      "quote": "the data-centre trade publication DCD reported, citing the Wall Street Journal"
+    },
+    {
+      "axis": "clarity",
+      "severity": "minor",
+      "rule": "Sentence over 25 words",
+      "quote": "And Carnegie, citing a report by CNAS, a Washington security think tank"
+    },
+    {
+      "axis": "clarity",
+      "severity": "minor",
+      "rule": "Written-English construction that does not work aloud",
+      "quote": "a licence requirement with a presumption of approval, plus its approved-entity carve-out"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "The Tony Blair Institute says it \"is about strategic agency"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "The Gulf also has a natural edge."
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "That same month, Brookfield and Qai announced a twenty-billion-dollar"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "The Tony Blair Institute sums up the bargain."
+    },
+    {
+      "axis": "value",
+      "severity": "major",
+      "rule": "Presenter mixes a personal view with reported facts",
+      "quote": "That is what Brookings, Carnegie and the Tony Blair Institute all call"
+    }
+  ],
+  "worst_three": [
+    {
+      "where": "The Tony Blair Institute sums up the bargain",
+      "problem": "Each section break here has no spoken pause, so the listener gets 75 to 100 words in a row, running straight from one section into the next, and loses the thread.",
+      "fix": "Add [Pause] before every [Section] marker in the script, especially after 'limits on Chinese collaboration.', after 'forty per cent of them were Arabic.', after 'AI runs on electricity, and lots of it.' and after 'without another party's permission.' Also add a [Pause] inside the long Brookings/IISS/Carnegie run, after 'digital authoritarianism.'"
+    },
+    {
+      "where": "That is what Brookings, Carnegie",
+      "problem": "Within the labelled view, Wissam's opinion and the think tanks' sourced position run together, so the listener can't tell whether 'Own what's critical. Steer the rest.' is Wissam's view or a reported finding.",
+      "fix": "Close the view first: 'That's my view.' [Pause]. Then put the sourced line after it as reported fact: 'For the record, Brookings, Carnegie and the Tony Blair Institute all describe the goal as \"managed interdependence\": own what's critical, steer the rest.' Also resolve the [DRAFT VIEW] marker with the founder before recording."
+    },
+    {
+      "where": "expected the first 200 megawatts",
+      "problem": "Two dates and a power figure in one sentence blur together on first hearing.",
+      "fix": "Split it: 'G42 said the first 200 megawatts should go live in 2026.' Drop 'In May 2025' here, because the previous paragraph already dates the unveiling to May 2025."
+    }
+  ],
+  "samples": [
+    {
+      "hook": 10,
+      "clarity": 8,
+      "pacing": 7,
+      "flow": 10,
+      "arabic": 10,
+      "value": 9
+    }
+  ],
+  "stable": true,
+  "language": "en",
+  "first_draft_minimum": 5
+}

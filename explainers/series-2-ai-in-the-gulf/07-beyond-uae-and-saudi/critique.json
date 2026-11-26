@@ -1,0 +1,92 @@
+{
+  "scores": {
+    "hook": 9,
+    "clarity": 8,
+    "pacing": 9,
+    "flow": 10,
+    "arabic": 9,
+    "value": 9
+  },
+  "minimum": 8,
+  "verdict": "Well-sourced and mostly easy on the ear, but split the two long unpaused passages, fix the dangling 'it' and give Türkiye a regional 'so what' before we record.",
+  "defects": [
+    {
+      "axis": "hook",
+      "severity": "major",
+      "rule": "First story restates the hook's facts instead of carrying on",
+      "quote": "The venture is worth 20 billion dollars, covering Qatar"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Pronoun whose referent could be two different things",
+      "quote": "Brookfield's chief executive called it the firm's first AI infrastructure investment"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Unfamiliar name with no few-word explanation",
+      "quote": "DatacenterDynamics, citing Bloomberg, reported a move"
+    },
+    {
+      "axis": "clarity",
+      "severity": "minor",
+      "rule": "Abbreviation that does not work aloud",
+      "quote": "It was worth QR 9 billion."
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "Writing your own recipe book, in your own dialect, takes longer."
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "On models, I don't think it's either-or."
+    },
+    {
+      "axis": "arabic",
+      "severity": "major",
+      "rule": "Word-for-word translation that sounds odd to a native speaker",
+      "quote": "200,000 trained and certified AI talents"
+    },
+    {
+      "axis": "value",
+      "severity": "major",
+      "rule": "Story with no regional-lens beat or analysis",
+      "quote": "Next, Türkiye, with the biggest targets in this group."
+    }
+  ],
+  "worst_three": [
+    {
+      "where": "Brookfield's chief executive called it",
+      "problem": "Coming straight after a sentence about GPUs, the listener cannot tell whether 'it' means the chips, the processing power or the $20 billion venture.",
+      "fix": "Move the line up so it directly follows the venture's value, and name the thing: 'Brookfield's chief executive called the Qatar venture the firm's first AI infrastructure investment in the Middle East.' Then explain compute and GPUs afterwards."
+    },
+    {
+      "where": "On models, I don't think",
+      "problem": "About 80 words of opinion run with no [Pause], so the key question at the end gets lost in one long breath.",
+      "fix": "Insert [Pause] after 'when sensitive data must stay home.' and another before 'What will actually run on this, and who will measure it?' so the closing question stands on its own."
+    },
+    {
+      "where": "Next, Türkiye, with the biggest targets",
+      "problem": "The Türkiye segment reads out targets and model names but never says what they mean for the Gulf or the wider region, so a listener gets no reason to care.",
+      "fix": "Add one closing line before the Morocco section, for example: 'For Gulf buyers, this matters because Türkiye is pitching itself as a nearby supplier of models and data-centre capacity that competes directly with Gulf hubs.' Keep it attributed or framed as analysis, not as a view."
+    }
+  ],
+  "samples": [
+    {
+      "hook": 9,
+      "clarity": 8,
+      "pacing": 9,
+      "flow": 10,
+      "arabic": 9,
+      "value": 9
+    }
+  ],
+  "stable": true,
+  "language": "en",
+  "first_draft_minimum": 4
+}

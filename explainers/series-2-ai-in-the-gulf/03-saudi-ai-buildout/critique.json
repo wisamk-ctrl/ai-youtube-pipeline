@@ -1,0 +1,80 @@
+{
+  "scores": {
+    "hook": 10,
+    "clarity": 7,
+    "pacing": 9,
+    "flow": 10,
+    "arabic": 10,
+    "value": 10
+  },
+  "minimum": 7,
+  "verdict": "Tight, well-sourced and properly labelled, but fix the ambiguous 'His', break two breathless runs with pauses, and give Nebius and DataVolt a few words each before we record.",
+  "defects": [
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Pronoun whose referent could be two different things",
+      "quote": "His ambition, as he told CNBC"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "A sentence carrying three or more figures",
+      "quote": "add about 2 to 3 gigawatts by 2030"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Unfamiliar company name with no few-word explanation",
+      "quote": "Nebius signed a preliminary framework for up to 50 megawatts"
+    },
+    {
+      "axis": "clarity",
+      "severity": "major",
+      "rule": "Unfamiliar company name with no few-word explanation",
+      "quote": "DataVolt plans a 1.5 gigawatt AI campus at Oxagon"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "And Fortune says Amin is preparing for a stock market listing"
+    },
+    {
+      "axis": "pacing",
+      "severity": "major",
+      "rule": "More than 60 spoken words with no [Pause]",
+      "quote": "So when you read the next big gigawatt headline"
+    }
+  ],
+  "worst_three": [
+    {
+      "where": "His ambition, as he told",
+      "problem": "The line before names both the Crown Prince and Tareq Amin, so listeners can't tell whose ambition this is, and could pin a corporate boast on the head of state.",
+      "fix": "Replace with: \"Amin's ambition, as he told CNBC: 'We want to be the third-largest AI provider in the world, behind the United States and China.'\""
+    },
+    {
+      "where": "And Fortune says Amin is",
+      "problem": "About 64 words run from the IPO news straight into Wissam's personal view with no breath, so the switch from reported fact to opinion blurs on the ear.",
+      "fix": "Add [Pause] after \"No timetable or size has been announced.\" and keep \"This next part is my view, not a reported fact.\" as its own beat, followed by [Pause] before \"After 25 years selling enterprise software...\""
+    },
+    {
+      "where": "S&P expects the two countries",
+      "problem": "Four numbers in one breath (two countries, 2, 3, 2030) blur together on a phone speaker.",
+      "fix": "Split into two sentences: \"S&P expects Saudi Arabia and the UAE to add two to three gigawatts between them. [Pause] That's by the end of the decade.\" Also explain the newcomers: \"Nebius, a European AI cloud company, signed...\" and \"DataVolt, a Saudi data-centre developer, plans...\""
+    }
+  ],
+  "samples": [
+    {
+      "hook": 10,
+      "clarity": 7,
+      "pacing": 9,
+      "flow": 10,
+      "arabic": 10,
+      "value": 10
+    }
+  ],
+  "stable": true,
+  "language": "en",
+  "first_draft_minimum": 5
+}
