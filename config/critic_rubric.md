@@ -34,6 +34,10 @@ Each one names a rule below; count it under that rule only if the quoted script 
 - MINOR: the hook (everything before the greeting) exceeds 45 spoken words.
 - MINOR: the hook carries more than one story, one number or one question.
 - Not a defect: a pause placed before a number, even mid-sentence; that is the house style (§4).
+- MAJOR: the greeting or channel introduction comes before the first story's facts (it belongs after the first
+  story, in one sentence of at most 20 words).
+- MAJOR: the first story restates the hook's facts instead of carrying on from them.
+- MINOR: more than one title card in the cold open (several stories listed instead of one hook).
 
 ## clarity — understood on first hearing
 - MAJOR: a pronoun or «ذلك/هذا» whose referent could be two different things in the previous two sentences.

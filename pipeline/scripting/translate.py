@@ -32,7 +32,8 @@ from pydantic import BaseModel, Field
 from pipeline import usage
 from pipeline.config import ROOT
 from pipeline.models import NewsItem
-from pipeline.script_format import MARKER_RE, PAUSE_RE, count_spoken_words, has_shots, parse_shot
+from pipeline.script_format import (MARKER_RE, PAUSE_RE, count_spoken_words, has_shots, lint_opening, opening_notes,
+                                    parse_shot)
 from pipeline.scripting import critic as critic_mod
 
 log = logging.getLogger(__name__)
@@ -271,6 +272,9 @@ def critique_en(script: str, cfg: dict[str, Any], client: anthropic.Anthropic) -
     ccfg = cfg["scripting"].get("critic", {})
     model = ccfg.get("model", cfg["scripting"]["model"])
     rubric = RUBRIC_EN_PATH.read_text(encoding="utf-8")
+    notes = opening_notes(lint_opening(script))   # the Arabic voice lint never reads English; this check does
+    if notes:
+        rubric = f"{rubric}\n\n## Opening-check findings for this script\n{notes}"
     c = critic_mod.critique(script, "(the rubric is the style guide for the English edition)", model, client,
                             rubric, system=CRITIC_SYSTEM, schema=CritiqueEn)
     rec = critic_mod.round_record(c, [c.scores], True)

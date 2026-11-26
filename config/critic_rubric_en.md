@@ -18,6 +18,10 @@ means **the English itself**.
 ## hook — the first 20 seconds (before the greeting)
 - MAJOR: the first sentence is a greeting, a date or the channel name, not a news fact.
 - MINOR: the hook carries more than one story, one number or one question, or exceeds 45 words.
+- MAJOR: the greeting or channel introduction comes before the first story's facts (it belongs after the first
+  story, in one sentence of at most 20 words).
+- MAJOR: the first story restates the hook's facts instead of carrying on from them.
+- MINOR: more than one title card in the cold open (several stories listed instead of one hook).
 
 ## clarity — clear for the ear, on first hearing
 - MAJOR: a sentence carrying three or more figures.

@@ -508,3 +508,74 @@ def ensure_host_intro(script: str, line: str, lang: str = "ar") -> str:
                 break
         section = "\n".join(lines)
     return script[:m.end()] + section + script[end:]
+
+
+# ── The opening, in either language (founder 2026-11-26) ────────────────────
+# W47-en: four stories in the cold open, then a welcome with the host's career before the first story, which then
+# restated the hook. The steepest drop came at 0:13-0:18 and half the viewers had gone by 1:37. The Arabic voice
+# lint never saw the English script, so these checks are language-neutral and run on both.
+_SECTION_RE = re.compile(r"^\[Section:\s*([^\]]*)\]\s*$", re.M)
+_GREETING_ANY = re.compile(r"أهلا\s+فيكم|أهلا\s+وسهلا|أهلاً\s+فيكم|\bwelcome\s+(?:back\s+)?to\b|\bhi\s+everyone\b|"
+                           r"\bhello\s+everyone\b", re.I)
+_TITLE_CARD = re.compile(r"\[Visual:\s*title\b", re.I)
+OPENING_HOOK_MAX_WORDS = 50       # one story, its number, one question, and one sentence teasing what comes next
+OPENING_TITLE_CARDS_MAX = 1
+WELCOME_MAX_WORDS = 20            # name and show; the career line belongs at the sign-off
+OPENING_RULES = {
+    "hook-words": f"the cold open (before the first [Section] that follows it) runs over {OPENING_HOOK_MAX_WORDS} "
+                  "spoken words: keep one story, its number and one question, then one sentence on what's coming",
+    "hook-cards": "more than one title card in the cold open: it lists several stories instead of hooking on one; "
+                  "tease the others in a single spoken sentence",
+    "welcome-first": "the greeting comes before the first story: go from the hook straight into the first story's "
+                     "facts, and welcome viewers in one sentence after that story's 'why it matters'",
+    "welcome-words": f"the welcome runs over {WELCOME_MAX_WORDS} spoken words: name and show only; the host's "
+                     "background goes in the sign-off",
+}
+
+
+def _sections_of(script: str) -> list[tuple[str, str]]:
+    """(title, body) per [Section: …]; text before the first marker is a section titled ''."""
+    parts, last, title = [], 0, ""
+    for m in _SECTION_RE.finditer(script):
+        if m.start() > last or parts:
+            parts.append((title, script[last:m.start()]))
+        title, last = m.group(1).strip(), m.end()
+    parts.append((title, script[last:]))
+    return [(t, b) for t, b in parts if t or b.strip()]
+
+
+def lint_opening(script: str) -> list[VoiceFinding]:
+    """The opening's shape: a short hook on one story, the first story next, a one-line welcome after it."""
+    secs = _sections_of(script)
+    if not secs:
+        return []
+    out: list[VoiceFinding] = []
+    hook = secs[0][1]
+    words = spoken_words(spoken_text(hook))
+    if len(words) > OPENING_HOOK_MAX_WORDS:
+        out.append(VoiceFinding("hook-words", " ".join(words[:12]) + "…", f"{len(words)} words"))
+    cards = len(_TITLE_CARD.findall(hook))
+    if cards > OPENING_TITLE_CARDS_MAX:
+        out.append(VoiceFinding("hook-cards", secs[0][0] or "cold open", f"{cards} title cards"))
+    for n, (title, body) in enumerate(secs):
+        g = _GREETING_ANY.search(spoken_text(body))
+        if not g:
+            continue
+        before = len(spoken_words(spoken_text(body)[:g.start()]))
+        if n == 0 or (n == 1 and before < 3):   # in the hook, or opening the section after it, before any facts
+            out.append(VoiceFinding("welcome-first", title or "opening", f"greeting in section {n + 1}"))
+        if title and n > 0:
+            w = spoken_words(spoken_text(body))
+            if len(w) > WELCOME_MAX_WORDS and len(w) < 80:   # a dedicated welcome section, not a story with a hello
+                out.append(VoiceFinding("welcome-words", " ".join(w[:12]) + "…", f"{len(w)} words"))
+        break
+    return out
+
+
+def opening_notes(findings: list[VoiceFinding]) -> str:
+    """The opening findings as evidence for the critic (they count under its hook rule). Empty if clean."""
+    if not findings:
+        return ""
+    return "\n".join(["A deterministic check of the episode's opening found these problems (critic rubric: hook). "
+                      "Count each under the hook rule and fix it in the script:"]
+                     + [f"- [{f.rule}] «{f.quote}» ({f.detail}): {OPENING_RULES[f.rule]}" for f in findings])

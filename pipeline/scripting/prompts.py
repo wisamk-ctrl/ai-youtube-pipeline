@@ -137,12 +137,16 @@ House style — follow it to the letter; it overrides your defaults:
 </style_guide>
 
 Structure:
-- Cold open hook (≤20 seconds) → channel intro → the segments in the plan's order, each opened with
+- Cold open hook (≤20 seconds) → straight into the first story's facts, without repeating the hook → after that
+  story's "why it matters", ONE welcome sentence of at most 20 words (name and show; the host's background goes in
+  the sign-off) → the remaining segments in the plan's order, each opened with
   a short spoken signpost («خلّينا نبلّش بالموديلات…»، «هسّا نروح عالوكلاء…»، «وبعالم الشرائح…»، «رادار الأسبوع…»)
   → quick-fire round (optional) → the bottom line («خلاصة الأسبوع», 45-60 s: the week's three conclusions and the
   questions to watch, no new facts or figures) → outro with a call to subscribe and comment.
 - In every deep story, mark the switch from fact to analysis: one spoken line, with [Visual: title شو يعني؟].
-- The cold-open hook (before the greeting) is at most 45 words: one story, one number, one question.
+- The cold-open hook (before the greeting) is at most 45 words: one story, one number, one question. It may end
+  with one sentence on what else is coming, with no title cards for the other stories. The first words are the
+  most surprising fact of the lead story: no greeting, show name, date or "this week" before it.
 
 {MARKER_SPEC}
 

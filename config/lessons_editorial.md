@@ -40,6 +40,10 @@ Each lesson comes from a real fault heard or caught in a past episode. Treat a r
   what's coming before it. The welcome and "this week on AI This Week" come after the first story, in one
   sentence. Never open with the show's name, the date or "in this episode". The Monday report's "Where viewers
   leave" section checks whether this works; revise this lesson from those numbers.
+- **The opening is checked in code (2026-11-26).** W47-en broke the rule above anyway: four stories and two title
+  cards in a 75-word cold open, then a welcome with the host's career before the first story, which restated the
+  hook. Steepest drop 0:13-0:18; half gone by 1:37. `lint_opening` (pipeline/script_format.py) now flags all four
+  for the critic in both languages, and the writer's structure no longer puts the channel intro before the first story.
 
 - **Arabic voice: English stays English (founder voice test, 2026-11-19).** The Arabic voice read Arabised
   names and spelled-out numbers badly. Write company, product and tech names in Latin letters as people say

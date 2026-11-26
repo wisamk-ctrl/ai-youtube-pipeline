@@ -41,7 +41,8 @@ from pydantic import BaseModel, Field
 from pipeline import usage
 from pipeline.config import ROOT
 from pipeline.models import NewsItem
-from pipeline.script_format import count_spoken_words, lint_voice, voice_lint_md, voice_lint_notes
+from pipeline.script_format import (count_spoken_words, lint_opening, lint_voice, opening_notes, voice_lint_md,
+                                    voice_lint_notes)
 from pipeline.scripting import critic as critic_mod
 from pipeline.scripting import prompts
 from pipeline.scripting import source_map as smap_mod
@@ -233,7 +234,7 @@ class ScriptEngine:
         else:
             instruction = f"Cut about {-delta} words, trimming the least important passages first."
 
-        notes = voice_lint_notes(lint_voice(draft))
+        notes = "\n\n".join(x for x in (voice_lint_notes(lint_voice(draft)), opening_notes(lint_opening(draft))) if x)
         user = prompts.REVIEWER_USER.format(
             current_words=current,
             target_words=self.target_words,
@@ -291,7 +292,7 @@ class ScriptEngine:
         The voice lint of the script goes to the critic as evidence: the critic reads the written
         script, the lint reads what the voice will say."""
         ccfg = self.cfg.get("critic", {})
-        notes = voice_lint_notes(lint_voice(script))
+        notes = "\n\n".join(x for x in (voice_lint_notes(lint_voice(script)), opening_notes(lint_opening(script))) if x)
         rubric = f"{self.rubric}\n\n## Voice-lint findings for this script\n{notes}" if notes else self.rubric
         c, samples, stable = critic_mod.consensus(script, self.style_guide, rubric, ccfg,
                                                   ccfg.get("model", self.cfg["model"]), self.client)
