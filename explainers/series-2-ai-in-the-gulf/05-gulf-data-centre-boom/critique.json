@@ -1,104 +1,98 @@
 {
   "scores": {
     "hook": 9,
-    "clarity": 6,
+    "clarity": 7,
     "pacing": 9,
     "flow": 10,
-    "arabic": 10,
-    "value": 10
+    "arabic": 9,
+    "value": 9
   },
-  "minimum": 6,
-  "verdict": "Well-sourced and region-focused with a clean bottom line, but fix the greeting placement, explain the half-dozen unfamiliar names, unify the show name and get the founder to sign off the draft view before we record.",
+  "minimum": 7,
+  "verdict": "Well sourced and clearly structured, but explain Stargate and the research outlets, add the two missing pauses, and move the AWS backup fact out of the view before we record.",
   "defects": [
     {
       "axis": "hook",
       "severity": "major",
-      "rule": "Greeting comes before the first story's facts",
-      "quote": "I'm Wissam, and this is AI This Week, AI Explained."
+      "rule": "First story restates the hook's facts instead of carrying on",
+      "quote": "A 100-megawatt AI site draws about as much power as 100,000 homes"
     },
     {
       "axis": "clarity",
       "severity": "major",
-      "rule": "Unknown company name with no few-word explanation",
-      "quote": "There is also a one-gigawatt joint venture with stc."
+      "rule": "Unknown product name with no few-word explanation",
+      "quote": "OpenAI says Stargate UAE could serve computing"
     },
     {
       "axis": "clarity",
       "severity": "major",
-      "rule": "Unknown company name with no few-word explanation",
-      "quote": "Qai formed a twenty-billion-dollar joint venture with Brookfield."
+      "rule": "Pronoun whose referent could be two things",
+      "quote": "It describes a 1-gigawatt cluster"
     },
     {
       "axis": "clarity",
       "severity": "major",
-      "rule": "Unknown company name with no few-word explanation",
-      "quote": "Syntys, carved out of Ooredoo, broke ground"
-    },
-    {
-      "axis": "clarity",
-      "severity": "major",
-      "rule": "Unknown company name with no few-word explanation",
-      "quote": "a consortium led by Mubbadrah plans up to four hundred megawatts"
-    },
-    {
-      "axis": "clarity",
-      "severity": "major",
-      "rule": "Unknown source name with no few-word explanation",
+      "rule": "Unknown organisation names with no explanation",
       "quote": "Rest of World and Climate Central found every UAE data centre"
     },
     {
       "axis": "clarity",
       "severity": "major",
-      "rule": "Unknown source name with no few-word explanation",
-      "quote": "Rest of World cites Mordor Intelligence on Middle East"
+      "rule": "Unknown company name with no explanation",
+      "quote": "Citing Mordor Intelligence, Rest of World reports"
     },
     {
       "axis": "pacing",
       "severity": "major",
       "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "Then came physical attack. In March 2026, AWS said"
+      "quote": "OpenAI called it the first international deployment of its Stargate programme"
     },
     {
       "axis": "pacing",
       "severity": "major",
       "rule": "More than 60 spoken words with no [Pause]",
-      "quote": "In Oman, a consortium led by Mubbadrah plans"
+      "quote": "JLL still points to a quadrupling by 2030"
     },
     {
-      "axis": "flow",
-      "severity": "minor",
-      "rule": "Transition reads as translated",
-      "quote": "First, let's learn how to measure one of these buildings."
+      "axis": "arabic",
+      "severity": "major",
+      "rule": "Sentence reads as word-for-word translation",
+      "quote": "could serve computing within a 2,000-mile radius"
+    },
+    {
+      "axis": "value",
+      "severity": "major",
+      "rule": "Mixes a reported fact into the labelled view",
+      "quote": "AWS itself advised customers to back up data"
     }
   ],
   "worst_three": [
     {
-      "where": "I'm Wissam, and this is",
-      "problem": "The listener gets the channel introduction before the first story has delivered a single fact past the hook, so the opening momentum stalls.",
-      "fix": "Move the greeting to after the restaurant gas-line analogy and the first [Pause]. Cut the ident to one line of at most 20 words: 'I'm Wissam, and this is AI Explained.' Use the same show name as the sign-off. That sign-off currently says «AI in the Gulf»; pick one name and drop the « » marks."
+      "where": "Stargate UAE could serve computing",
+      "problem": "Stargate is the episode's central project, but a general listener first hears the name with no idea what it is, and 'serve computing' sounds like a translation.",
+      "fix": "Rewrite as: 'That is why a Gulf site can serve users far away. OpenAI says Stargate UAE, its giant AI computing project in Abu Dhabi, could reach users within 2,000 miles, about half the world's population.' Then in the UAE section, say 'Stargate, OpenAI's programme of very large AI data centres'."
     },
     {
-      "where": "joint venture with Brookfield",
-      "problem": "Listeners hear a run of names they cannot place and lose who is doing what: stc, Brookfield, Ooredoo, Mubbadrah, Rest of World, Climate Central, Mordor Intelligence.",
-      "fix": "Add a few words to each name: 'stc, Saudi Arabia's largest telecom company'; 'Brookfield, the Canadian investment giant'; 'Syntys, a company spun out of Qatar's telecom operator Ooredoo'; 'a consortium led by Mubbadrah, an Omani investment firm'; 'the tech news site Rest of World and the climate research group Climate Central'; 'the market research firm Mordor Intelligence'."
+      "where": "OpenAI called it the first",
+      "problem": "The listener gets 72 words with no breath, and 'It describes' could mean OpenAI or the project, so the 1-gigawatt figure lands loosely.",
+      "fix": "Add [Pause] after 'Now to the biggest single plan in the region, in Abu Dhabi.' Replace 'It describes a 1-gigawatt cluster' with 'OpenAI describes the project as a 1-gigawatt cluster, a group of AI computing buildings working together.'"
     },
     {
-      "where": "Then came physical attack.",
-      "problem": "About 73 words of dense, alarming facts run straight into a new technical definition with no breath, so the drone strike and the availability-zone idea blur together.",
-      "fix": "Rewrite as: 'Then came a physical attack. In March 2026, AWS said drones had directly struck two of its UAE facilities. A strike near a Bahrain facility also caused damage. Fires set off sprinklers, and the water damaged equipment. [Pause]' Do the same in the Oman–Kuwait passage: add a [Pause] after 'backed by solar and batteries.'"
+      "where": "A 100-megawatt AI site draws",
+      "problem": "The listener hears the hook's '100,000 homes' fact again as if it were new, so the first story feels like it is repeating itself instead of moving forward.",
+      "fix": "Cut the restatement and build on the hook, e.g.: 'So that hundred-thousand-homes figure is a 100-megawatt site, and the Gulf's biggest plan is fifty times that.' Alternatively, change the hook to the 2-million-homes figure and keep 100,000 homes here."
     }
   ],
   "samples": [
     {
       "hook": 9,
-      "clarity": 6,
+      "clarity": 7,
       "pacing": 9,
       "flow": 10,
-      "arabic": 10,
-      "value": 10
+      "arabic": 9,
+      "value": 9
     }
   ],
   "stable": true,
   "language": "en",
-  "first_draft_minimum": 3
+  "first_draft_minimum": 7
 }

@@ -1,9 +1,9 @@
 # Checks
 
-- **words**: 1700
+- **words**: 1761
 - **target**: 1650
-- **unsourced**: 9
-- **claims**: 103
-- **critic_min**: 4
+- **unsourced**: 12
+- **claims**: 109
+- **critic_min**: 8
 
 No open length or opening problems.

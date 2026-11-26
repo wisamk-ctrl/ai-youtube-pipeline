@@ -1,203 +1,115 @@
-[On-Screen Text: A large AI data centre ≈ the electricity of 100,000 homes (IEA)]
-
-According to the IEA, one large AI data centre can draw the electricity of a hundred thousand homes. The Gulf is planning many. By the end, you'll understand what a gigawatt of AI really means.
-
-[Pause 2s]
-
-I'm Wissam, and this is AI This Week, AI Explained.
+A single AI data centre can use as much electricity as a hundred thousand homes, the IEA says. The Gulf is planning many of them. By the end, you'll understand what a gigawatt of AI means, who is building it, and what 2026 changed.
 
 [Section: What a gigawatt of AI means]
 
-First, let's learn how to measure one of these buildings.
+First, how do you measure a data centre? Not the way most people think. [Pause]
 
-AI data centres are measured in power, not in floor space or number of servers.
+Data centres are measured in power, not floor space. A data centre is a building full of computers that run websites, apps and AI. According to the International Energy Agency, the IEA, a traditional one uses between 10 and 25 megawatts.
 
-[On-Screen Text: 1 MW = one million watts | 1 GW = 1,000 MW (Knight Frank)]
+[On-Screen Text: Traditional data centre: 10–25 MW | Hyperscale AI: 100 MW+ (IEA)]
 
-A megawatt is one million watts. The property firm Knight Frank says it usually means the computing load a site can support. A gigawatt is a thousand megawatts.
+A hyperscale AI centre, meaning a giant site built for AI, can exceed [Pause] 100 megawatts. The IEA says the largest data centre now being built could use as much electricity as [Pause] 2 million homes.
 
-[Pause]
+I'm Wissam, and this is AI This Week, AI Explained.
 
-Think of a restaurant. Its seats don't decide how many meals it can serve. Its kitchen gas line does. The size of that pipe decides how much cooking happens at once. A data centre's megawatts are its gas line. They decide how much computing can run at the same time.
+So what is a megawatt here? The consultancy Knight Frank defines it as one million watts. In a data centre, it usually means the IT load. That is the amount of computing equipment the site can power. [Pause] A gigawatt is 1,000 megawatts.
 
-[Pause]
+[On-Screen Text: 1 GW = 1,000 MW (Knight Frank)]
 
-So how big is the pipe? The International Energy Agency, the IEA, says a traditional data centre uses [Pause] between ten and twenty-five megawatts. A hyperscale AI centre, meaning one built at giant scale, can exceed [Pause] one hundred megawatts. That's the scale from our opening number.
+Here is a simple way to picture it. Think of a restaurant. The number of seats does not tell you how much food it can make. The kitchen's gas line does. [Pause] The bigger the pipe, the more cooking can happen at once. A data centre's megawatts are that gas line. A 100-megawatt AI site draws about as much power as 100,000 homes. [Pause]
 
-[On-Screen Text: Traditional: 10–25 MW | Hyperscale AI: 100+ MW (IEA)]
+Across the world, this adds up. The IEA says data centres used 1.5% of global electricity in 2025. In its base case, that rises to about [Pause] 3% by 2030. That is slightly more than Japan's entire current consumption, the IEA says. [Pause]
 
-The IEA adds that the largest data centre under construction could use as much power as [Pause] two million households.
+One more idea: distance. Latency is the delay as data travels between a user and a computer. The property firm JLL says AI training, the process of teaching a model, does not need low latency. Training sites of 100 megawatts and above "follow available power." Work that needs fast answers stays near major cities. [Pause]
 
-Worldwide, data centres used one and a half percent of electricity in 2025. In the IEA's base case, that reaches about three percent by 2030. That is slightly more than all of Japan's current electricity use.
+That is why a Gulf site can serve far-away users. OpenAI says Stargate UAE could serve computing within a 2,000-mile radius, reaching up to half the world's population.
 
-[Pause]
+[Section: The UAE bet: Stargate, Khazna, Microsoft]
 
-One more idea: distance. Latency is the delay as data travels to you and back. Chatbots and banking apps need it short. The property adviser JLL says training AI models is different.
+Now to the biggest single plan in the region, in Abu Dhabi.
 
-[Pause]
+Stargate UAE was announced on 22 May 2025. OpenAI called it the first international deployment of its Stargate programme. It describes a 1-gigawatt cluster, a group of AI computing buildings working together. [Pause]
 
-Training is the long process of teaching a model, and it doesn't need to be near users. It "follows available power". OpenAI says its UAE cluster could serve computing within a two-thousand-mile radius. It says that reaches up to half the world's population.
+[On-Screen Text: 200 MW inside 1 GW Stargate UAE inside 5 GW UAE–U.S. AI Campus]
 
-[Section: The UAE bet]
+That cluster sits inside a much bigger plan, the 5-gigawatt UAE–U.S. AI Campus. G42, the Abu Dhabi technology group, says the campus covers about 10 square miles. It says the campus will be powered by nuclear, solar and natural gas. [Pause]
 
-Now to the biggest single plan in the region.
+Who does what? According to G42, it builds the cluster through its company Khazna Data Centers. OpenAI and Oracle operate it. NVIDIA, the chipmaker, supplies AI computing systems called Grace Blackwell GB300. Cisco provides security and networking, and SoftBank is a partner.
 
-[On-Screen Text: Stargate UAE: 1 GW cluster inside 5 GW UAE–U.S. AI Campus]
+[On-Screen Text: Builds: G42 / Khazna | Operates: OpenAI, Oracle | Chips: NVIDIA]
 
-Stargate UAE was announced on the twenty-second of May, 2025. OpenAI called it the first international deployment of Stargate.
+The first stage is [Pause] 200 megawatts. When it was announced, that stage was expected to go live in 2026. Mubadala, the Abu Dhabi investor, said first-phase construction was expected to finish in the third quarter of 2026. When this episode was researched, no source we checked confirmed it was operating. [Pause]
 
-[Pause]
+The price has grown. In January 2026, UAE AI minister Omar Al Olama said the project would cost more than [Pause] 30 billion dollars. That was about 50% more than the first estimate. In spring 2025, it was around 20 billion dollars. Reports differ on exactly what the figure covers.
 
-Picture three squares nested inside each other. The outer square is the UAE–U.S. AI Campus in Abu Dhabi, planned at [Pause] five gigawatts. G42, the AI group building it, says it spans about ten square miles. It also says the campus will run on nuclear, solar and natural gas. Inside sits the Stargate cluster, one gigawatt. Inside that sits the first phase, two hundred megawatts.
+[On-Screen Text: Cost: more than $30bn (Omar Al Olama, Jan 2026)]
 
-[Pause]
+In January 2026, G42's chief executive described the pace after the first stage. He said it would add "anywhere between 200 to 500 megawatts per quarter." [Pause] The goal is the full 5 gigawatts.
 
-[On-Screen Text: Builder: G42 / Khazna | Operators: OpenAI, Oracle | Chips: NVIDIA | Network & security: Cisco | Partner: SoftBank]
+Beyond Stargate, Khazna plans more than 1 gigawatt of new capacity over five years. It announced that plan in October 2025. More than 400 megawatts of it is abroad, in markets such as Saudi Arabia and Italy. [Pause] Microsoft and G42 also announced 200 megawatts in the UAE, delivered through Khazna. It is part of Microsoft's [Pause] 15.2-billion-dollar UAE investment.
 
-G42 builds it, through its data centre company Khazna. OpenAI and Oracle operate it. NVIDIA supplies the chips, Cisco the networking and security, and SoftBank is a partner.
+How tight is the market? Knight Frank said in October 2025 that UAE live capacity had passed 376 megawatts. Vacancy, the share of space still free to rent, was just [Pause] 2.4%. Knight Frank called that one of the lowest in Europe, the Middle East and Africa.
 
-[Pause]
+[Section: Saudi Arabia's HUMAIN and the rest of the Gulf]
 
-When does it switch on? The partners said the first two hundred megawatts were expected in 2026. The investment company Mubadala pointed to the third quarter of 2026 for first-phase construction. The sources we used don't confirm that milestone has been met.
+Next, Saudi Arabia, and then a quick tour of the neighbours.
 
-[Pause]
+HUMAIN was launched in May 2025 as a company of the Public Investment Fund. It targets [Pause] 1.9 gigawatts by 2030. It aims for 6.6 gigawatts by 2034. Its chief executive said that would cost 77 billion dollars at market rates at the time.
 
-The price has grown. In January 2026, UAE AI minister Omar Al Olama said the project would cost [Pause] more than thirty billion dollars. That is about fifty percent above the spring 2025 estimate. Reuters describes the one-gigawatt first phase as a thirty-billion-dollar project.
+[On-Screen Text: HUMAIN target: 1.9 GW by 2030, 6.6 GW by 2034 (company, May 2025)]
 
-[Pause]
+According to DatacenterDynamics, Riyadh will subsidise electricity prices for HUMAIN's facilities in the kingdom. [Pause] HUMAIN has also secured 211 plots of land across the country. Its Riyadh and Dammam sites were planned at 100 megawatts each, initially, for the second quarter of 2026. Their launch was not confirmed in our sources. [Pause]
 
-The sources don't make clear exactly what that figure covers.
+The partner list is long. HUMAIN announced an AWS "AI Zone" worth more than 5 billion dollars. It has a 1-gigawatt joint venture with stc, the Saudi telecoms group, and another with the chipmaker AMD and Cisco. [Pause] And xAI, the company behind Grok, plans a 500-megawatt data centre with HUMAIN, its first outside the US. [Pause]
 
-Chips needed permission. G42 gave security assurances to the US government to obtain export licences. In late November 2025, Washington approved sales to the UAE and Saudi Arabia. Each country's "AI champion" could buy up to thirty-five thousand Nvidia GB300 systems, large AI computing systems, or equivalent.
+The global clouds are arriving too. A cloud region is a cluster of data centres a provider runs in one country. In August 2026, AWS said its first Saudi region was on track for December 2026. Microsoft said its Saudi Arabia East region would be available in November 2026. [Pause]
 
-[Pause]
-
-Then the pace. G42's chief executive spoke about it in January 2026. He expects to add two hundred to five hundred megawatts every quarter after the first phase.
-
-Khazna also has its own plans, announced in October 2025. It aims to add more than one gigawatt over five years. Over four hundred megawatts of that would be abroad.
-
-[Pause]
-
-Microsoft and G42 announced a two-hundred-megawatt expansion through Khazna. It is part of Microsoft's [Pause] fifteen-point-two-billion-dollar UAE investment.
-
-Demand looks tight. As of October 2025, Knight Frank put UAE live capacity above three hundred seventy-six megawatts. Vacancy, meaning space nobody has rented, was just two point four percent.
-
-[Section: Saudi Arabia and the rest of the Gulf]
-
-Next, the rest of the Gulf, starting with the biggest stated target.
-
-[On-Screen Text: HUMAIN target: 1.9 GW by 2030 | 6.6 GW by 2034 (company, May 2025)]
-
-HUMAIN launched in May 2025 as a subsidiary of the Public Investment Fund. It aims for [Pause] nearly two gigawatts by 2030. By 2034, it wants six point six.
-
-[Pause]
-
-Its chief executive put the cost at seventy-seven billion dollars, at the market rates of that time. Riyadh will subsidise electricity for its facilities in the kingdom.
-
-HUMAIN has secured two hundred and eleven plots of land. Its first sites in Riyadh and Dammam were planned at a hundred megawatts each.
-
-[Pause]
-
-Its announced partners include AWS, with an AI Zone worth five billion dollars or more. There is also a one-gigawatt joint venture with stc. xAI plans a five-hundred-megawatt centre, its first outside the US. AMD and Cisco plan another joint venture.
-
-[Pause]
-
-The global cloud companies are also building their own Saudi regions. A cloud region is a cluster of data centres in one area. As of August 2026, AWS said its first Saudi region was on track for December 2026. Microsoft announced its Saudi Arabia East region for November 2026.
-
-[Pause]
-
-Qatar's sovereign fund launched an AI company, Qai, in December 2025. Qai formed a twenty-billion-dollar joint venture with Brookfield. In November 2026, Syntys, carved out of Ooredoo, broke ground on a twenty-megawatt data centre. It is built for GPUs, the chips that run AI, packed densely into racks.
-
-[Pause]
-
-In Oman, a consortium led by Mubbadrah plans up to four hundred megawatts in Salalah. It is backed by solar and batteries.
-
-Kuwait shows the power problem. It invited bids for three substations to feed Google Cloud and Microsoft data centres. The Gulf business outlet AGBI reports that Kuwait cut power at peak demand in 2025. It has imported electricity through the Gulf's shared grid connection since March 2025.
-
-[Pause]
-
-And Bahrain was early. AWS opened its region there in 2019, before its UAE region in 2022.
+Around the Gulf: Qatar's Qai, a Qatar Investment Authority company, formed a 20-billion-dollar AI infrastructure venture with the investment firm Brookfield. In Oman, a consortium led by the Omani firm Mubbadrah plans an AI data centre of up to 400 megawatts in Salalah. [Pause] Kuwait shows the limits. According to the business news site AGBI, Kuwait cut power during peak demand in 2025. It has also imported electricity through the GCC Interconnection Authority. And Bahrain was early: AWS opened a region there in 2019.
 
 [Section: Heat, water and missiles]
 
-Now, the problems that money alone doesn't solve.
+Now the hard part: what can go wrong. [Pause]
 
-[On-Screen Text: ASHRAE recommended range: 18–27°C]
+Computers like it cool. ASHRAE, the engineering body, recommends a range of [Pause] 18 to 27 degrees Celsius. Rest of World and Climate Central found every UAE data centre sits in an area averaging above 27 degrees.
 
-The engineering body ASHRAE recommends that data centres run in a range of [Pause] eighteen to twenty-seven degrees Celsius. Rest of World and Climate Central found every UAE data centre sits where yearly averages exceed twenty-seven degrees. Nearly all Saudi data centres are in regions that are too hot.
+[On-Screen Text: ASHRAE range: 18–27°C | Every UAE data centre: area averaging above 27°C]
 
-[Pause]
+Cooling needs water. Citing Mordor Intelligence, Rest of World reports the Middle East and Africa's data centre water use rising sharply. In 2025, it was 119 billion litres. [Pause] By 2030, it is projected at more than 426 billion. [Pause] Gulf summers push operators toward evaporative cooling, which uses water to carry heat away. Khazna says it is exploring reuse of treated sewage water. [Pause]
 
-Heat pushes operators toward evaporative cooling. That cools equipment by evaporating water, much like sweat cools your skin. Rest of World cites Mordor Intelligence on Middle East and Africa data-centre water use. It was about [Pause] one hundred nineteen billion litres in 2025. By 2030 it could pass [Pause] four hundred twenty-six billion. Khazna says it is exploring reuse of treated wastewater.
+Then came the war. [Pause] In March 2026, AWS said two of its UAE facilities were "directly struck" by drones. A strike near a Bahrain facility also caused physical impacts. Fires set off sprinklers, which damaged equipment. [Pause]
 
-[Pause]
+To understand the damage, you need one term. An availability zone is a separate group of data centres within a region. Clouds spread copies across zones, so losing one should not lose your data. [Pause]
 
-Then came physical attack. In March 2026, AWS said two of its UAE facilities were "directly struck" by drones. A strike near a Bahrain facility also caused physical damage. Fires set off sprinklers, and the water damaged equipment.
+In September 2026, AWS said it could not restore data held only in one UAE zone. In Bahrain, AWS said the damage exceeded what its services spread across several zones are designed to withstand. [Pause]
 
-[On-Screen Text: Availability zone = separate data centres with their own power and cooling]
+Reuters reported that in April 2026, Iran's armed forces issued a video naming Stargate UAE as a potential target. [Pause] In September 2026, Reuters reported the UAE was revising the 5-gigawatt plan. It cited six people familiar with the matter. One campus would likely become a network of sites, with air defences and underground construction under consideration. G42 told Reuters that work was "progressing as planned" and "subject to continuous review." [Pause]
 
-To understand what followed, you need one term. An availability zone is a group of data centres with separate power and cooling. A cloud region usually has several, so losing one shouldn't lose your data.
+[Section: What it means for a business in the region]
 
-[Pause]
+So what does all this mean if you run a business here?
 
-In September 2026, AWS said it could not restore data held only in one UAE zone. In Bahrain, AWS said the damage exceeded what its services spread across several zones are designed to withstand.
+Local cloud regions bring two promises. Microsoft describes them as "local data residency," meaning your data stays in the country, and "low-latency access." [Pause]
 
-[Pause]
+[On-Screen Text: Middle East capacity, H1 2026 (JLL): 1.6 GW live | 2.6 GW in development | 13.8 GW planned]
 
-According to Reuters, in April 2026 Iran's armed forces released a video naming Stargate UAE as a potential target. In September 2026, Reuters reported that the UAE is revising the five-gigawatt plan. That report cited six people familiar with the matter.
-
-[Pause]
-
-The single campus would likely become a network of sites across the country. Air defences, some underground construction and blast-resistant concrete were under consideration. G42 told Reuters work was "progressing as planned", with specifics "subject to continuous review".
-
-JLL says the conflict stalled major completions, but projects are being "deferred rather than dropped".
-
-[Section: What it means for a business here]
-
-Finally, what this means if you run systems in the region.
-
-Local cloud regions bring two promises. Microsoft calls them "local data residency" and "low-latency access". Data residency means your data physically stays inside the country.
-
-[Pause]
-
-But 2026 showed something important. "In-country" does not mean "in one safe place". AWS itself advised customers to back up data and consider moving workloads to other regions.
+The growth story continues. In its mid-2026 report, JLL put Middle East live capacity at [Pause] 1.6 gigawatts. It counted 2.6 gigawatts in development and 13.8 gigawatts planned. JLL still points to a quadrupling by 2030. It says conflict "stalled major completions," but schemes are "deferred rather than dropped."
 
 [On-Screen Text: Wissam's view]
 
-What follows is my view, not a fact from the sources.
-
-[DRAFT VIEW: founder to confirm]
-
-For twenty-five years, I've watched companies across this region treat "local" as the finish line. Get the data in-country, tick the regulator's box, done. This past year rewrote that. The data centres were local. Some data was still lost.
-
-[Pause]
-
-So I'd frame resilience as a board question, not an IT footnote. Ask where your data lives, and in how many separate places. Ask what happens if a whole region goes dark. None of this argues against building here. The ambition is real, and the region needs this capacity close to home. But sovereignty and safety are different goals. You have to design for both, on purpose.
-
-[Pause]
-
-On the market, as of mid-2026 JLL puts Middle East live capacity at [Pause] one point six gigawatts. It says two point six are in development and thirteen point eight are planned.
-
-[On-Screen Text: Middle East capacity, H1 2026 (JLL): Live 1.6 GW | In development 2.6 GW | Planned 13.8 GW]
-
-JLL still points to a quadrupling by 2030. These numbers change every six months, so always check the date.
+This next part is my own view. [DRAFT VIEW: founder to confirm] After twenty-five years in enterprise software across this region, here is what I take from 2026. "In the country" is not the same as "in a safe place." Many leaders treated a local cloud region as the finish line. It is the starting line. [Pause] AWS itself advised customers to back up data and consider moving workloads to other regions. If your systems live in one zone, that is a single point of failure. [Pause] I also think the spread-out, hardened design Reuters described is the right instinct. Distance and redundancy cost less than rebuilding trust. [Pause] The question for every board is simple: if one building goes dark, does your business keep running?
 
 [Section: The bottom line]
 
 Three things to remember.
 
-One: AI data centres are measured in power. A hyperscale AI site can match a hundred thousand homes, and the Gulf plans gigawatts.
+One: AI data centres are measured in power. A hyperscale AI site can use as much electricity as 100,000 homes, the IEA says.
 
 [Pause]
 
-Two: the UAE and Saudi Arabia lead, with global partners. Qatar, Oman and Kuwait follow, and power is often the limit.
+Two: the Gulf's plans are enormous. They include a 5-gigawatt campus in the UAE and HUMAIN's target of 6.6 gigawatts in Saudi Arabia. Several key launch dates were still unconfirmed when this was researched.
 
 [Pause]
 
-Three: heat, water and conflict are part of the bill. The 2026 strikes showed that local data still needs copies in separate places.
+Three: heat, water and conflict are part of the bill. The 2026 strikes showed that data kept in a single zone can be lost.
 
-[Pause 2s]
-
-In the next episode of «AI in the Gulf», we explain AI rules in the Gulf: what businesses need to know.
-
-If this helped, please Hype the video, then subscribe and tell me in the comments what you'd like explained next.
+Next in our AI in the Gulf series: AI rules in the Gulf, and what businesses need to know. If this helped, hit Hype, then subscribe and tell me in the comments what you'd like explained next.
