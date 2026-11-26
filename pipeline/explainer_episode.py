@@ -186,15 +186,20 @@ def write_episode(ep_dir: Path, cfg: dict[str, Any], series: str, next_title: st
         log.warning("critic unavailable: %s", exc)
         crit = {"error": str(exc)}
     problems = problems_for(script, target_words, crit) + structure_problems(script)
-    if problems:
+    first = crit.get("minimum") if isinstance(crit, dict) else None
+    for _round in range(int(cfg.get("explainers", {}).get("max_revisions", 2))):
+        if not problems or (_round and isinstance(crit, dict) and (crit.get("minimum") or 0) >= 7):
+            break
         script = _write(client, model, system, USER.format(research=research, items=items_block(items),
                                                           next_title=next_title)
                         + "\n\n" + REVISE.format(target_words=target_words,
                                                  problems="\n".join(f"- {p}" for p in problems), script=script)) or script
         try:   # the score of the draft the founder reads, not of the first one
-            crit = {**critique_en(script, cfg, client), "first_draft_minimum": crit.get("minimum")}
+            crit = {**critique_en(script, cfg, client), "first_draft_minimum": first}
         except Exception as exc:  # noqa: BLE001
             log.warning("critic unavailable on the revision: %s", exc)
+            break
+        problems = problems_for(script, target_words, crit) + structure_problems(script)
     sents, smap = smap_mod.build(script, items, cfg["scripting"].get("aux_model", model), client, lang="en")
     stats = smap_mod.stats(smap)
     left = problems_for(script, target_words, None) + structure_problems(script)
