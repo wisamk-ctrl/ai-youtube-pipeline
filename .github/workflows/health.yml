@@ -11,7 +11,7 @@ on:
   workflow_run:
     workflows: [approve, brand, breaking-post, channel-trailer, connect, explainer, fetch, heygen-assets, heygen-cost, inspect, preview, publish-pack,
                 radar-decide, rank-dry, sfx, story-decide, thumb-survey, video-check, voice-compare, voice-lab, words,
-                youtube-check, youtube-delete, youtube-partnerships, youtube-short-links, pvc-samples, playlists]
+                youtube-check, youtube-delete, youtube-partnerships, youtube-short-links, pvc-samples, playlists, quota]
     types: [completed]
 
 permissions:
