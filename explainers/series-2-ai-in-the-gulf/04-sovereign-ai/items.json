@@ -1,0 +1,281 @@
+[
+  {
+    "id": "04-sovereign-ai-01",
+    "title": "NVIDIA: National Transformation With Sovereign AI",
+    "source": "NVIDIA",
+    "url": "https://nvidia.com/en-gb/industries/global-public-sector",
+    "published": "",
+    "summary": "NVIDIA defines sovereign AI as 'a nation's domestic capability to produce artificial intelligence using its own infrastructure, data, workforce, and business networks.' It says the goal is 'to protect and preserve local languages, values, culture, and history,' and that the rise of generative AI has increased the imperative for nations to invest. The page frames domestic AI as 'critical to economic growth, national security, cultural preservation, and innovation.'",
+    "source_type": "primary"
+  },
+  {
+    "id": "04-sovereign-ai-02",
+    "title": "How Nations Are Deploying AI for Strategic Priorities",
+    "source": "NVIDIA Blog",
+    "url": "https://blogs.nvidia.com/blog/nations-deploy-ai-strategic-priorities/",
+    "published": "2026-07-06",
+    "summary": "This is where NVIDIA's older 'What Is Sovereign AI?' URL now redirects (rewritten, author Calista Redmond). It lists five ingredients of a national AI strategy: an AI imperative, an AI-ready workforce, AI models and data ('trained and fine-tuned with local data, hosted and run on local infrastructure, subject only to local laws'), an AI ecosystem, and AI factories ('locally owned, operated and governed AI clouds'). NVIDIA says its AI Nations initiative has run since 2019. Jensen Huang quote: 'The AI factory will become the bedrock of modern economies across the world.'",
+    "source_type": "primary"
+  },
+  {
+    "id": "04-sovereign-ai-03",
+    "title": "Early Lessons in the Pursuit of Sovereign AI",
+    "source": "Carnegie Endowment for International Peace",
+    "url": "https://carnegieendowment.org/research/2026/06/early-lessons-in-the-pursuit-of-sovereign-ai",
+    "published": "2026-06-17",
+    "summary": "Shreya Joshi writes that sovereign AI 'generally refers to a nation's ability to independently design, develop, and govern AI systems using its domestic infrastructure, nationally held data, and a homegrown talent base', and that analysts increasingly see it as a spectrum across the AI stack. Motivations named: national security, economic competitiveness and cultural/linguistic drivers. It cites a CNAS finding that NVIDIA supplied GPUs for 52 percent of all tracked infrastructure projects worldwide. It says the UAE has 'reportedly spent' $148 billion on AI investments at home and abroad since the start of 2024, that economic diversification is a key motivator, and that UAE efforts 'have deepened the UAE's reliance on Washington in lieu of Beijing.' It describes a Feb 2026 G42/MBZUAI/Cerebras deal for an 8-exaflop supercomputer in India, governed by India's data-localisation rules, and argues for 'managed interdependence'.",
+    "source_type": "paper"
+  },
+  {
+    "id": "04-sovereign-ai-04",
+    "title": "Is AI sovereignty possible? Balancing autonomy and interdependence",
+    "source": "Brookings Institution",
+    "url": "https://brookings.edu/articles/is-ai-sovereignty-possible-balancing-autonomy-and-interdependence",
+    "published": "2026-02-17",
+    "summary": "Brookings (with CEPS) defines AI sovereignty 'as a spectrum of strategies to enhance a country's capacity to make independent decisions about critical AI infrastructure deployment, use, and adoption, rather than literal autarky.' Motivations: national security and resilience, economic competitiveness, cultural and linguistic inclusion, and influence in global governance. Its central finding is that 'full-stack AI sovereignty is structurally infeasible for almost any country.' It warns sovereign AI 'can also become a vehicle for protectionism, fragmented markets and standards, and duplicative or stranded public investment' and can become 'tools for digital authoritarianism'. It recommends 'managed interdependence'.",
+    "source_type": "paper"
+  },
+  {
+    "id": "04-sovereign-ai-05",
+    "title": "Sovereignty in the Age of AI: Strategic Choices, Structural Dependencies and the Long Game Ahead",
+    "source": "Tony Blair Institute for Global Change",
+    "url": "https://institute.global/insights/tech-and-digitalisation/sovereignty-in-the-age-of-ai-strategic-choices-structural-dependencies",
+    "published": "2026-01-19",
+    "summary": "TBI says the US and China 'together control more than 90 per cent of global AI data-centre capacity.' It says the UAE-US AI Acceleration Partnership gives the UAE 'secure access to US frontier compute by accepting export controls and limits on Chinese collaboration.' It names Norway, the UAE, Saudi Arabia and France as having structural energy advantages. It cites open-weight models Falcon (UAE) and Mistral (France), and describes the UAE posture as 'Frontier Adjacency Through Accelerated State Investment', noting its open-weight Arabic LLMs Falcon, Jais and K2 Think, while 'the UAE remains dependent on foreign chips and frontier models.'",
+    "source_type": "paper"
+  },
+  {
+    "id": "04-sovereign-ai-06",
+    "title": "AI isolationism 'would be a mistake' (press release)",
+    "source": "Tony Blair Institute for Global Change",
+    "url": "https://institute.global/insights/news/ai-isolationism-would-be-a-mistake",
+    "published": "2026-01-19",
+    "summary": "TBI says AI sovereignty 'is about strategic agency, not self-sufficiency' and proposes a 'Control, Steer, Depend' framework: direct control of critical systems such as sensitive data, steering through regulation, procurement, standards and partnerships, and negotiated, diversified dependence where unavoidable. Tony Blair: 'No state can dominate every layer of the AI stack.'",
+    "source_type": "press"
+  },
+  {
+    "id": "04-sovereign-ai-07",
+    "title": "Department of Commerce Announces Rescission of Biden-Era Artificial Intelligence Diffusion Rule",
+    "source": "U.S. Bureau of Industry and Security",
+    "url": "https://www.bis.gov/press-release/department-commerce-announces-rescission-biden-era-artificial-intelligence-diffusion-rule-strengthens",
+    "published": "2025-05-13",
+    "summary": "The AI Diffusion Rule was issued on January 15, 2025, with compliance requirements due on May 15, 2025. Commerce said it would have 'undermined U.S. diplomatic relations with dozens of countries by downgrading them to second-tier status.' BIS enforcement officials were instructed not to enforce it, and BIS said it would publish a regulation formalising the rescission and 'issue a replacement rule in the future.' The same day it issued guidance on Huawei Ascend chips, on US chips training Chinese models, and on diversion. (The page as fetched in Nov 2026 shows 'SI' where the original statement said 'AI'.)",
+    "source_type": "government"
+  },
+  {
+    "id": "04-sovereign-ai-08",
+    "title": "Trump administration officially rescinds Biden's AI diffusion rules",
+    "source": "TechCrunch",
+    "url": "https://techcrunch.com/2025/05/13/trump-administration-officially-rescinds-bidens-ai-diffusion-rules",
+    "published": "2025-05-13",
+    "summary": "TechCrunch reports the rule 'introduced limits on exporting U.S.-made AI chips to many countries for the first time'. It divided countries into three tiers: Tier 1 (e.g. Japan, South Korea) with no restrictions, Tier 2 (e.g. Mexico, Portugal) facing chip export limits for the first time, and Tier 3 (e.g. China, Russia) with tightened controls. Citing Bloomberg, it says a replacement would likely focus on direct negotiations with countries.",
+    "source_type": "press"
+  },
+  {
+    "id": "04-sovereign-ai-09",
+    "title": "UAE, US Presidents attend unveiling of Phase 1 of new 5GW AI campus in Abu Dhabi",
+    "source": "UAE Embassy in the US (WAM)",
+    "url": "https://www.uae-embassy.org/news/uae-us-presidents-attend-unveiling-phase-1-new-5gw-ai-campus-abu-dhabi",
+    "published": "2025-05-15",
+    "summary": "WAM reports a 5GW UAE-US AI Campus in Abu Dhabi, described as the largest outside the US, to be built by G42 and operated with several US companies under the US-UAE AI Acceleration Partnership. 'The UAE and US will work together to regulate access to the compute resources, which are reserved for US hyperscalers and approved cloud service providers.' It will use nuclear, solar and gas power. Howard Lutnick: 'American companies will operate the data centres.' The UAE appointed the first federal AI minister in 2017 and founded MBZUAI in 2019.",
+    "source_type": "government"
+  },
+  {
+    "id": "04-sovereign-ai-10",
+    "title": "Global Tech Alliance Launches Stargate UAE",
+    "source": "G42",
+    "url": "https://www.g42.ai/resources/news/global-tech-alliance-launches-stargate-uae",
+    "published": "2025-05-22",
+    "summary": "G42, OpenAI, Oracle, NVIDIA, SoftBank Group and Cisco announced Stargate UAE, a 1-gigawatt compute cluster in the 5GW campus, built by G42 and operated by OpenAI and Oracle, using NVIDIA Grace Blackwell GB300 systems. The first 200-megawatt cluster is expected to go live in 2026. The full campus spans 10 square miles. UAE entities will also expand investments in US digital infrastructure such as Stargate U.S. Sam Altman called it the first major milestone of 'OpenAI for Countries'.",
+    "source_type": "primary"
+  },
+  {
+    "id": "04-sovereign-ai-11",
+    "title": "HUMAIN and NVIDIA Announce Strategic Partnership to Build AI Factories",
+    "source": "NVIDIA Newsroom",
+    "url": "https://nvidianews.nvidia.com/news/humain-and-nvidia-announce-strategic-partnership-to-build-ai-factories-of-the-future-in-saudi-arabia",
+    "published": "2025-05-13",
+    "summary": "HUMAIN, a PIF subsidiary, plans AI factories in Saudi Arabia 'with a projected capacity of up to 500 megawatts powered by several hundred thousand of NVIDIA's most advanced GPUs over the next five years.' The first phase is an 18,000 NVIDIA GB300 Grace Blackwell supercomputer. Jensen Huang: 'AI, like electricity and internet, is essential infrastructure for every nation.' The release ties the work to Vision 2030 goals of economic diversification.",
+    "source_type": "primary"
+  },
+  {
+    "id": "04-sovereign-ai-12",
+    "title": "HRH Crown Prince launches HUMAIN as global AI powerhouse",
+    "source": "Public Investment Fund (PIF)",
+    "url": "https://pif.gov.sa/en/news-and-insights/press-releases/2025/hrh-crown-prince-launches-humain-as-global-ai-powerhouse",
+    "published": "2025-05-12",
+    "summary": "Crown Prince Mohammed bin Salman announced HUMAIN, a PIF-owned company that will 'operate and invest across the artificial intelligence (AI) value chain', chaired by the Crown Prince. It will offer data centers, AI infrastructure and cloud, and 'one of the world's most powerful multimodal Arabic large language models.' PIF cites the 2024 Global AI Index ranking Saudi Arabia world leader in government AI strategy.",
+    "source_type": "primary"
+  },
+  {
+    "id": "04-sovereign-ai-13",
+    "title": "HUMAIN (portfolio profile)",
+    "source": "Public Investment Fund (PIF)",
+    "url": "https://pif.gov.sa/en/our-investments/our-portfolio/humain",
+    "published": "",
+    "summary": "PIF says HUMAIN was launched in May 2025 'to build the entire AI stack: data centers, cloud infrastructure, models, and applications' and supports Vision 2030 'by reducing reliance on oil'. Its models include ALLAM, an Arabic multimodal LLM 'co-developed with SDAIA'. Partners named: NVIDIA, Microsoft, AMD, Qualcomm, AWS, Google Cloud, Groq. The page cites an MCIT hyperscale data-centre plan of more than 1.3 GW before 2030.",
+    "source_type": "primary"
+  },
+  {
+    "id": "04-sovereign-ai-14",
+    "title": "US approves advanced chip sales to Saudi Arabia and the UAE",
+    "source": "DatacenterDynamics",
+    "url": "https://datacenterdynamics.com/en/news/us-approves-chip-sales-to-saudi-arabia-and-the-uae",
+    "published": "2025-11-20",
+    "summary": "Citing the Wall Street Journal, DCD reports up to 70,000 AI chips can be sold: HUMAIN and G42 may each buy up to 35,000 Nvidia GB300 systems or equivalent. A Commerce spokesperson: 'Approvals are conditioned on both companies meeting rigorous security and reporting requirements' (details not specified). HUMAIN says it intends to deploy up to 600,000 Nvidia chips over the next three years. Saudi Arabia raised its US investment commitments to almost $1 trillion; the UAE announced $1.4 trillion over ten years in May.",
+    "source_type": "press"
+  },
+  {
+    "id": "04-sovereign-ai-15",
+    "title": "Department of Commerce Eases Export Controls for UAE",
+    "source": "U.S. Bureau of Industry and Security",
+    "url": "https://www.bis.gov/press-release/department-commerce-eases-export-controls-uae",
+    "published": "2026-07-10",
+    "summary": "BIS moved the UAE out of Country Groups D:3 and D:4 and into A:5, citing its status as a U.S. Major Defense Partner and support for 'Operation Epic Fury'. 'Consistent with the U.S.-UAE Artificial Intelligence Cooperation framework signed in May 2025, Commerce is approving the UAE Government and certain companies to receive advanced computing items in the UAE license-free.' The UAE reaffirmed its commitment to make matching investments in US AI digital infrastructure.",
+    "source_type": "government"
+  },
+  {
+    "id": "04-sovereign-ai-16",
+    "title": "BIS Upgrades the UAE from Country Group D to Country Group A Under the EAR",
+    "source": "Akin Gump",
+    "url": "https://www.akingump.com/en/insights/alerts/bis-upgrades-the-uae-from-country-group-d-to-country-group-a-under-the-ear-allowing-increased-trade-in-advanced-computing-and-defense-items",
+    "published": "2026-07-15",
+    "summary": "The final rule was published July 14, 2026. A licence is still required for advanced computing items to the UAE except for Approved Entities: UAE government agencies, G42 and Core42 (pre-approved for 270 days, after which they must become 'U.S. companies' or apply for an advisory opinion), and US AI firms Amazon, Apple, Google, Meta, Microsoft, OpenAI, Oracle and X.AI and their subsidiaries. MGX gets favourable licence review but is not an Approved Entity. Other UAE firms can apply; BIS reviews within 30 days.",
+    "source_type": "press"
+  },
+  {
+    "id": "04-sovereign-ai-17",
+    "title": "BIS Upgrades UAE Export Control Status, with AI Chip Access Limited to Approved Entities",
+    "source": "Morgan Lewis",
+    "url": "https://morganlewis.com/pubs/2026/07/bis-upgrades-uae-export-control-status-with-ai-chip-access-limited-to-approved-entities",
+    "published": "2026-07-21",
+    "summary": "The rule took effect July 10, 2026. Morgan Lewis writes it 'does not generally ease exports of advanced computing items to the UAE' outside approved entities. The two UAE AI companies' authorisation expires, absent further notice, on April 6, 2027 (270 days after July 10, 2026) unless they 'become US companies', a term the rule does not define. The US named the UAE a Major Defense Partner on September 23, 2024. On July 14, 2026, Under Secretary Jeffrey Kessler told Congress the administration no longer intends to replace the AI Diffusion Rule. EO 14320 (July 23, 2025) created the American AI Exports Program.",
+    "source_type": "press"
+  },
+  {
+    "id": "04-sovereign-ai-18",
+    "title": "US Commerce Department interim final rule restricts remote access to advanced semiconductors and rescinds AI Diffusion Rule",
+    "source": "EY Global Tax News",
+    "url": "https://globaltaxnews.ey.com/news/2026-2484",
+    "published": "2026-11-19",
+    "summary": "On 16 November 2026 BIS issued an interim final rule, 'Addressing Remote Access to Advanced Semiconductors', which formally rescinds the AI Diffusion Rule and swaps its country tiers for destination-based and end-use controls. New licence requirements apply to Brazil, Indonesia, Malaysia, Singapore and Thailand, citing diversion risk. A licence is needed for chips going to data centres anywhere that provide large compute to China-, D:5- or Macau-headquartered firms. The UAE is covered by a licence requirement with a presumption of approval, plus the carve-out for UAE-approved entities. Under EO 14434 the rule replaces 'AI' with 'Super Intelligence' ('SI') throughout the EAR.",
+    "source_type": "press"
+  },
+  {
+    "id": "04-sovereign-ai-19",
+    "title": "BIS Interim Final Rule Targets Remote Access to Advanced Semiconductors, Rescinds AI Diffusion Rule",
+    "source": "Greenberg Traurig",
+    "url": "https://www.gtlaw.com/en/insights/2026/11/bis-interim-final-rule-targets-remote-access-to-advanced-semiconductors-rescinds-ai-diffusion-rule",
+    "published": "2026-11-18",
+    "summary": "The IFR was published and took effect Nov. 19, 2026, with comments open until Jan. 19, 2027. The data-centre control is triggered above 12,000,000 aggregate TPP provided to D:5- or Macau-headquartered companies, counted across linked data centres. The rule removes the AI Diffusion Rule's country tiers, revokes the controls on AI model weights (ECCN 4E091), and removes the Data Center Validated End-User authorization. The UAE 'is subject to its own treatment' under the earlier UAE final rule. The rule notes the AI Diffusion Rule was never enforced.",
+    "source_type": "press"
+  },
+  {
+    "id": "04-sovereign-ai-20",
+    "title": "Microsoft invests $1.5 billion in Abu Dhabi's G42",
+    "source": "Microsoft",
+    "url": "https://news.microsoft.com/source/2024/04/16/microsoft-invests-1-5-billion-in-abu-dhabis-g42-to-accelerate-ai-development-and-global-expansion",
+    "published": "2024-04-16",
+    "summary": "Microsoft announced a $1.5 billion investment in G42; Brad Smith joined G42's board. G42 will run its AI applications and services on Azure. The deal is governed by 'a detailed Intergovernmental Assurance Agreement (IGAA) between G42 and Microsoft that was developed in close consultation with both the UAE and US governments,' including a commitment to comply with US trade and security laws. A $1B developer fund was announced. G42's chairman is Sheikh Tahnoon bin Zayed Al Nahyan.",
+    "source_type": "primary"
+  },
+  {
+    "id": "04-sovereign-ai-21",
+    "title": "Microsoft invests $1.5 billion in AI firm G42 which faces U.S. scrutiny for China ties",
+    "source": "CNBC",
+    "url": "https://cnbc.com/2024/04/16/microsoft-to-invest-1point5-billion-in-emirati-ai-firm-g42-takes-minority-stake.html",
+    "published": "2024-04-16",
+    "summary": "CNBC says the deal followed months of US scrutiny of G42's alleged China links. Rep. Mike Gallagher asked Commerce to examine G42 and alleged ties to Huawei and Chinese military and intelligence services, which G42 'categorically' denied. G42 said: 'we have pursued a commercial strategy since 2022 to fully align with our U.S. partners and not to engage with Chinese companies.' G42's chairman is also the UAE's national security adviser.",
+    "source_type": "press"
+  },
+  {
+    "id": "04-sovereign-ai-22",
+    "title": "Brookfield and Qai Form $20 Billion Strategic Investment Partnership for AI Infrastructure",
+    "source": "Brookfield Asset Management",
+    "url": "https://bam.brookfield.com/press-releases/brookfield-and-qai-form-20-billion-strategic-investment-partnership-ai",
+    "published": "2025-12-09",
+    "summary": "Brookfield and Qai, 'Qatar's AI company and a subsidiary of Qatar Investment Authority (QIA)', announced a $20 billion joint venture for AI infrastructure in Qatar and select international markets, including an Integrated Compute center. It is Brookfield's first AI infrastructure investment in the Middle East, and part of a programme to mobilise up to $100 billion globally. Qai's chairman is Abdulla Al-Misnad. QIA was founded in 2005.",
+    "source_type": "primary"
+  },
+  {
+    "id": "04-sovereign-ai-23",
+    "title": "Qatar launches national AI company under QIA",
+    "source": "Middle East AI News",
+    "url": "https://www.middleeastainews.com/p/qatar-launches-national-ai-company",
+    "published": "2025-12-08",
+    "summary": "Qatar established Qai under QIA to 'develop, manage and invest in advanced AI infrastructures both within Qatar and internationally', in line with Qatar National Vision 2030. It is chaired by Abdullah bin Hamad Al Misnad, head of the Prime Minister's Executive Office. The outlet says Qatar 'has been slower to invest' than its neighbours. Fanar, Qatar's sovereign LLM from QCRI at Hamad Bin Khalifa University, launched in December 2024 and was trained on 1.3 trillion tokens with 40% Arabic data.",
+    "source_type": "press"
+  },
+  {
+    "id": "04-sovereign-ai-24",
+    "title": "Qatar launches Qai, Fanar 2.0 platform at World Summit AI",
+    "source": "The Peninsula",
+    "url": "https://thepeninsulaqatar.com/article/10/12/2025/qatar-launches-qai-fanar-20-platform-at-world-summit-ai",
+    "published": "2025-12-10",
+    "summary": "Qatar marked the launch of Qai and of Fanar 2.0, 'an Arabic Large Language Model', at the second World Summit AI Qatar, in line with Digital Agenda 2030. MCIT minister Mohammed bin Ali Al Mannai: 'Artificial intelligence is not merely a technological option; it is a strategic necessity.' MCIT's Reem Al Mansoori pointed to 'reliable and affordable energy' and said Qatar positions itself as a hub for GPU-intensive workloads.",
+    "source_type": "press"
+  },
+  {
+    "id": "04-sovereign-ai-25",
+    "title": "Is the Gulf Buying AI Sovereignty or Renting It?",
+    "source": "Middle East Council on Global Affairs",
+    "url": "https://mecouncil.org/blog_posts/is-the-gulf-buying-ai-sovereignty-or-renting-it",
+    "published": "2026-08-06",
+    "summary": "Opinion by Muhanad Seloom (Doha Institute): sovereignty is 'the capacity to make consequential choices without another party's permission.' He argues 'the chips are American. The cloud that runs them is, in most of these deals, operated by American firms. The frontier models... are American.' He writes that to win US approval G42 removed Chinese technology, adopted screening that excludes Chinese firms and divested Chinese holdings, and that the real question is 'who holds the off-switch.' He sees the genuinely sovereign layer in data, open-weight models (the UAE's open releases, Saudi Arabic-language systems) and people, and names the shortage of engineers as the constraint.",
+    "source_type": "paper"
+  },
+  {
+    "id": "04-sovereign-ai-26",
+    "title": "What the Iran War Is Costing Joint Gulf-U.S. Ambitions for AI",
+    "source": "CSIS",
+    "url": "https://csis.org/analysis/what-iran-war-costing-joint-gulf-us-ambitions-ai",
+    "published": "2026-07-15",
+    "summary": "Joseph A. Farsakh writes that by early 2026 Saudi Arabia, Qatar and the UAE had committed roughly $2.5 trillion to US-linked technology investments and were targeting 8-10 gigawatts of AI compute. Iranian drone strikes hit three AWS datacenters (two in the UAE, one in Bahrain), and Iran published a list of 29 tech targets across Bahrain, the UAE, Qatar and Israel. He writes that the same AWS infrastructure serving Gulf banking was 'simultaneously processing targeting data for U.S. military operations': 'Gulf states sought data sovereignty; what they got was closer to its inverse.' He notes Brookfield confirmed its $20 billion QIA data-centre partnership would go ahead.",
+    "source_type": "paper"
+  },
+  {
+    "id": "04-sovereign-ai-27",
+    "title": "The national security implications of building frontier AI data centers overseas",
+    "source": "Brookings Institution",
+    "url": "https://brookings.edu/articles/the-national-security-implications-of-building-frontier-ai-data-centers-overseas",
+    "published": "2026-08-03",
+    "summary": "Brookings says that on March 1, in response to Operation Epic Fury, Iranian drone strikes damaged three AWS data-centre facilities in the Middle East. It lists four US-side risks of overseas frontier AI infrastructure: compromise (theft of chips, model weights, IP), jurisdiction (local lawful-access and data-localisation rules), long-term dependency (host states gaining 'structural leverage'), and physical vulnerability. It notes Gulf investors 'have been able to use sovereign wealth to take positions in AI infrastructure'. The project is funded by Google.org.",
+    "source_type": "paper"
+  },
+  {
+    "id": "04-sovereign-ai-28",
+    "title": "Gulf AI infrastructure and the limits of technological sovereignty",
+    "source": "IISS (Strategic Comments, Vol. 32, Comment 12)",
+    "url": "https://iiss.org/publications/strategic-comments/2026/06/gulf-ai-infrastructure-and-the-limits-of-technological-sovereignty",
+    "published": "2026-06",
+    "summary": "IISS says Gulf AI investment brought 'jurisdictional, technological and security-related dependencies on the United States' that 'contradict these autonomy claims.' It says Iranian ballistic missiles struck the Gulf in February 2026, after joint US-Israeli strikes; Abu Dhabi's planned 5GW campus 'sat directly in the strike zone', and the Strait of Hormuz and Bab el-Mandeb, through which Gulf fibre runs, came under threat. It says over 50 countries pursue AI ambitions while trying to preserve sovereignty. (Only the opening section was accessible.)",
+    "source_type": "paper"
+  },
+  {
+    "id": "04-sovereign-ai-29",
+    "title": "The new playbook for AI leadership: The case of the United Arab Emirates",
+    "source": "Atlantic Council GeoTech Center",
+    "url": "https://atlanticcouncil.org/wp-content/uploads/2026/05/the-new-playbook-for-ai-leadership-the-case-of-the-united-arab-%EF%BB%BFemirates.pdf",
+    "published": "2026-05",
+    "summary": "The report credits the UAE's 'long-horizon national vision, institutional agility, and investment-led innovation model' for rapid progress. It names trade-offs: 'continued reliance on expatriate talent, incipient regulatory coherence, and a need for stronger ethical safeguards, alongside rising pressure on energy and water infrastructure.' It says the UAE's US-China balancing 'introduced uncertainty around supply chains and political trust' and that its AI infrastructure 'has been threatened by Iran' since February 2026. Disclosure: Google supported the report; GeoTech also receives UAE Embassy support.",
+    "source_type": "paper"
+  },
+  {
+    "id": "04-sovereign-ai-30",
+    "title": "UAE National Strategy for Artificial Intelligence 2031",
+    "source": "UAE Artificial Intelligence Office",
+    "url": "https://ai.gov.ae/wp-content/uploads/2021/07/uae-national-strategy-for-artificial-intelligence-2031.pdf",
+    "published": "",
+    "summary": "The strategy aims to make the UAE one of the leading nations in AI by 2031, 'generating up to AED 335 billion in extra growth.' It sets eight strategic objectives, starting with 'Build a reputation as an AI destination' and 'Develop a fertile ecosystem for AI.' The foreword is by Omar Sultan Al Olama, Minister of State for Artificial Intelligence, and quotes Sheikh Mohammed bin Rashid: 'We want the UAE to become the world's most prepared country for artificial intelligence.'",
+    "source_type": "government"
+  },
+  {
+    "id": "04-sovereign-ai-31",
+    "title": "National Strategy for Data & AI (NSDAI)",
+    "source": "Saudi Data & AI Authority (SDAIA), via OECD.AI",
+    "url": "https://wp.oecd.ai/app/uploads/2021/12/Saudi_Arabia_National_Strategy_for_Data_and_AI_2020.pdf",
+    "published": "2020-10-21",
+    "summary": "Saudi Arabia's NSDAI sets 2030 targets including: ~40% of the workforce trained in basic data and AI literacy, ~15K local data and AI specialists, ~5K data and AI experts, ~30Bn SAR cumulative FDI and ~45Bn SAR cumulative local investment in data and AI, top 20 in data and AI publications, and ~300 data and AI startups.",
+    "source_type": "government"
+  }
+]

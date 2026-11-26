@@ -1,0 +1,290 @@
+[
+  {
+    "id": "03-saudi-ai-buildout-01",
+    "title": "HUMAIN (PIF portfolio page)",
+    "source": "Public Investment Fund",
+    "url": "https://www.pif.gov.sa/en/our-investments/our-portfolio/humain/",
+    "published": "",
+    "summary": "PIF says HUMAIN was launched in May 2025 under PIF to build the entire AI stack: data centers, cloud infrastructure, models and applications, and is chaired by HRH Crown Prince Mohammed bin Salman. It lists ALLAM as co-developed with SDAIA and names partners NVIDIA, Microsoft, AMD, Qualcomm, AWS, Google Cloud and Groq. The page cites an MCIT hyperscale data center plan of >1.3 GW before 2030 and '3 GW of anticipated data center capacity by 2030'. It puts the Saudi data center market at USD 1.9Bn in 2024, projected to reach USD 3.9Bn by 2030 (~13% CAGR).",
+    "source_type": "primary"
+  },
+  {
+    "id": "03-saudi-ai-buildout-02",
+    "title": "HUMAIN and NVIDIA Announce Strategic Partnership to Build AI Factories of the Future in Saudi Arabia",
+    "source": "NVIDIA Newsroom",
+    "url": "https://nvidianews.nvidia.com/news/humain-and-nvidia-announce-strategic-partnership-to-build-ai-factories-of-the-future-in-saudi-arabia",
+    "published": "2025-05-13",
+    "summary": "HUMAIN, described as the new full AI value chain subsidiary of PIF, plans AI factories in Saudi Arabia with projected capacity of up to 500 megawatts powered by several hundred thousand NVIDIA GPUs over the next five years. The first phase is an 18,000 NVIDIA GB300 Grace Blackwell AI supercomputer with InfiniBand networking. HUMAIN will also deploy NVIDIA Omniverse and the two will run upskilling for thousands of Saudi citizens and developers. Jensen Huang: 'AI, like electricity and internet, is essential infrastructure for every nation.'",
+    "source_type": "primary"
+  },
+  {
+    "id": "03-saudi-ai-buildout-03",
+    "title": "AMD and HUMAIN Form Strategic, $10B Collaboration to Advance Global AI",
+    "source": "AMD Newsroom",
+    "url": "https://newsroom.amd.com/news/amd-and-humain-form-strategic-10b-collaboration",
+    "published": "2025-05-13",
+    "summary": "AMD and HUMAIN say they will invest up to $10B to deploy 500 megawatts of AI compute capacity over the next five years, through AMD-based AI computing centers stretching from Saudi Arabia to the United States. HUMAIN oversees end-to-end delivery (data centers, power, fiber); AMD supplies Instinct GPUs, EPYC CPUs, Pensando DPUs, Ryzen AI and the ROCm software. The companies said they were on track to activate multi-exaflop capacity by early 2026.",
+    "source_type": "primary"
+  },
+  {
+    "id": "03-saudi-ai-buildout-04",
+    "title": "AWS and HUMAIN announce a more than $5B investment to accelerate AI adoption in Saudi Arabia and globally",
+    "source": "Amazon (About Amazon)",
+    "url": "https://www.aboutamazon.com/news/company-news/amazon-aws-humain-ai-investment-in-saudi-arabia",
+    "published": "2025-05-13",
+    "summary": "AWS and HUMAIN plan to invest $5 billion-plus to build an 'AI Zone' in Saudi Arabia with dedicated AWS AI infrastructure, UltraCluster networks, SageMaker, Bedrock and Amazon Q. This is in addition to the AWS infrastructure region Amazon is building in Saudi Arabia, a US$5.3 billion investment, due in 2026. AWS has committed with PIF to train 100,000 Saudi citizens in cloud and generative AI. Amazon cites PwC: AI will contribute $130 billion to Saudi's economy by 2030, more than 40 percent of an estimated $320 billion for the Middle East.",
+    "source_type": "primary"
+  },
+  {
+    "id": "03-saudi-ai-buildout-05",
+    "title": "HUMAIN and QUALCOMM to deploy AI Infrastructure in Saudi Arabia For Global Inferencing",
+    "source": "Qualcomm",
+    "url": "https://www.qualcomm.com/news/releases/2025/10/humain-and-qualcomm-to-deploy-ai-infrastructure-in-saudi-arabia-",
+    "published": "2025-10-27",
+    "summary": "HUMAIN is targeting 200 megawatts, starting in 2026, of Qualcomm AI200 and AI250 rack solutions to deliver AI inference services in Saudi Arabia and globally. The announcement came ahead of the 9th Future Investment Initiative and follows a May 2025 announcement at the US-Saudi Investment Forum. The program will integrate HUMAIN's ALLaM models with Qualcomm platforms.",
+    "source_type": "primary"
+  },
+  {
+    "id": "03-saudi-ai-buildout-06",
+    "title": "Elon Musk's xAI will be first customer for Nvidia-backed data center in Saudi Arabia",
+    "source": "CNBC",
+    "url": "https://www.cnbc.com/2025/11/19/musks-xai-will-be-customer-for-nvidia-data-center-in-saudi-arabia.html",
+    "published": "2025-11-19",
+    "summary": "At the U.S.-Saudi Investment Forum in Washington on Nov. 19, 2025, Nvidia and xAI said the Saudi data center being built with hundreds of thousands of Nvidia chips will count xAI as its first customer; Humain said the project would include about 600,000 Nvidia GPUs. CNBC reports AMD will provide Instinct MI450 chips that may require as much as 1 gigawatt of power by 2030, with Cisco providing infrastructure, and that Humain will deploy 200 megawatts of Qualcomm chips.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-07",
+    "title": "AI model-optimized chip developer Groq receives $1.5B commitment from Saudi Arabia",
+    "source": "SiliconANGLE",
+    "url": "https://siliconangle.com/2025/02/12/llm-optimized-chip-developer-groq-receives-1-5b-commitment-saudi-arabia/",
+    "published": "2025-02-12",
+    "summary": "Groq announced a $1.5 billion commitment from Saudi Arabia to expand delivery of its AI chips; according to Reuters the money goes toward expanding its inference data center in Dammam. The facility runs Groq's LPU (Language Processing Unit) chips, optimized for inference. GroqCloud was updated to let customers run workloads in the Dammam data center.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-08",
+    "title": "Saudi AI firm Humain is pouring billions into data centers. Will it pay off?",
+    "source": "CNBC",
+    "url": "https://www.cnbc.com/2025/08/27/saudi-arabia-wants-to-be-worlds-third-largest-ai-provider-humain.html",
+    "published": "2025-08-27",
+    "summary": "Tareq Amin told CNBC: 'We want to be the third-largest AI provider in the world, behind the United States and China.' Humain does not disclose investment targets but has announced $23 billion for strategic technology partnerships and a $10 billion venture fund. It had started building two campuses of 11 data centers, each of 200 MW; it wanted 50 MW built by Q4 2025, then 50 MW more each quarter into 2026, targeting 1.9 gigawatts by 2030 and six gigawatts by 2034. HR Minister Ahmed Al-Rajhi said AI roles in Saudi Arabia face a 50% hiring gap; CNBC notes competition from the UAE's Stargate campus.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-09",
+    "title": "Humain breaks ground two data centers, with first facilities expected to go live in Q2 2026",
+    "source": "DatacenterDynamics",
+    "url": "https://www.datacenterdynamics.com/en/news/humain-breaks-ground-two-data-centers-with-first-facilities-expected-to-go-live-in-q2-2026/",
+    "published": "2025-08-26",
+    "summary": "Humain broke ground on data centers in Riyadh and Dammam, expected to go live in Q2 2026 with an initial capacity of 100MW each, CEO Tareq Amin told Bloomberg. Chip delivery depended on US government approval. DCD describes Humain as aiming to deliver 6.6GW of data center capacity over the next decade.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-10",
+    "title": "HUMAIN Launches HUMAIN Chat, Powered by ALLaM 34B",
+    "source": "Saudi Press Agency",
+    "url": "https://www.spa.gov.sa/en/N2385004",
+    "published": "2025-08-25",
+    "summary": "HUMAIN launched HUMAIN Chat on Aug. 25, 2025, an Arabic conversational AI app on web, iOS and Android, powered by ALLaM 34B, launching first in Saudi Arabia. The release says it is built for 'more than 400 million Arabic speakers', is hosted end-to-end on HUMAIN infrastructure in the Kingdom and complies with Saudi PDPL. ALLaM 34B builds on models developed by the National Center for AI at SDAIA, was refined with input from over 600 domain experts and 250 evaluators, and was built by over 120 AI specialists including 35 PhD holders. HUMAIN says Cohere verified it on MMLU as the most advanced Arabic LLM built in the Arab world (company claim).",
+    "source_type": "government"
+  },
+  {
+    "id": "03-saudi-ai-buildout-11",
+    "title": "Saudi-owned Arabic app HUMAIN Chat launches in Kingdom",
+    "source": "Arab News",
+    "url": "https://www.arabnews.com/saudi-arabia/saudi-owned-arabic-app-humain-chat-launches-in-kingdom-2613023",
+    "published": "2025-08-26",
+    "summary": "Arab News reports HUMAIN Chat is HUMAIN's first application in its AI suite. It describes HUMAIN as wholly owned by PIF at the time and launched in May by Crown Prince Mohammed bin Salman. It says ALLaM was designed to serve 'the 350 million people who speak Arabic' (differs from SPA's 400 million).",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-12",
+    "title": "ALLaM-7B-Instruct-preview (model card)",
+    "source": "Hugging Face / humain-ai",
+    "url": "https://huggingface.co/humain-ai/ALLaM-7B-Instruct-preview",
+    "published": "",
+    "summary": "ALLaM is a series of Arabic language models developed by the National Center for Artificial Intelligence (NCAI) at SDAIA; the model now sits under the humain-ai organisation on Hugging Face. ALLaM-7B-Instruct-preview is a 7B-parameter model trained from scratch: 4T English tokens then 1.2T mixed Arabic/English tokens (5.2 trillion total), context length 4096 tokens. It reports an Arabic benchmark average of 64.42 versus 52.67 for AceGPT-v2-8B-Chat (the team's own evaluation).",
+    "source_type": "primary"
+  },
+  {
+    "id": "03-saudi-ai-buildout-13",
+    "title": "ALLaM: Large Language Models for Arabic and English",
+    "source": "arXiv",
+    "url": "https://arxiv.org/abs/2407.15390",
+    "published": "2024-07-22",
+    "summary": "Paper by M Saiful Bari and 24 other authors, submitted 22 July 2024, presenting ALLaM, a series of Arabic-English LLMs. It describes using vocabulary expansion and mixed Arabic/English pretraining to steer a model toward Arabic without catastrophic forgetting of English, and reports state-of-the-art results on Arabic benchmarks including MMLU Arabic, ACVA and Arabic Exams. The paper was published at ICLR 2025 (per model card citation).",
+    "source_type": "paper"
+  },
+  {
+    "id": "03-saudi-ai-buildout-14",
+    "title": "About SDAIA",
+    "source": "Saudi Data & AI Authority",
+    "url": "https://sdaia.gov.sa/en/SDAIA/about/Pages/About.aspx",
+    "published": "",
+    "summary": "SDAIA is the Kingdom's competent authority for data and AI, established by Royal Order No. (A/471) dated 29/12/1440 AH, headquartered in Riyadh and linked directly to the Prime Minister. Its sub-entities are the National Data Management Office (NDMO), the National Center for AI (NCAI) and the National Information Center (NIC). Its pillars include regulation, government cloud, national platforms, and 'global leadership in Arabic language technologies'.",
+    "source_type": "government"
+  },
+  {
+    "id": "03-saudi-ai-buildout-15",
+    "title": "National Strategy for Data & AI",
+    "source": "Saudi Data & AI Authority",
+    "url": "https://sdaia.gov.sa/en/SDAIA/SdaiaStrategies/Pages/NationalStrategyForDataAndAI.aspx",
+    "published": "",
+    "summary": "The strategy was approved by King Salman on July 17, 2020; the Crown Prince chairs SDAIA's board. Its phases: National Enabler (2021), Specialist (2025), Industry Leader (2030). Targets: rank among the top 15 countries in AI, +20K data and AI specialists and experts, top 10 in open data, attract ~75B SAR investments in data and AI, top 20 in scientific contribution, and +300 startups. Priority sectors: education, government, healthcare, energy, mobility.",
+    "source_type": "government"
+  },
+  {
+    "id": "03-saudi-ai-buildout-16",
+    "title": "Saudi Arabia unveils national strategy for data and AI",
+    "source": "The National",
+    "url": "https://www.thenationalnews.com/business/technology/saudi-arabia-unveils-national-strategy-for-data-and-ai-1.1097271",
+    "published": "2020-10-22",
+    "summary": "SDAIA president Abdullah Bin Sharaf Alghamdi unveiled the NSDAI at the first Global AI Summit in Riyadh (October 2020). The kingdom aimed to attract $20 billion of foreign and local investment in data and AI in the next 10 years, train up to 20,000 data and AI specialists and have 300 active startups by 2030. It aimed to place Saudi Arabia among the top 15 AI nations by 2030.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-17",
+    "title": "Aramco Digital, Groq Partner to Build World's Largest AI Inferencing Data Center",
+    "source": "Saudi Press Agency",
+    "url": "https://www.spa.gov.sa/N2170581",
+    "published": "2024-09-12",
+    "summary": "Aramco Digital and Groq announced a partnership at the GAIN Summit in Riyadh on Sept. 12, 2024 to establish what they called the world's largest inferencing data center in Saudi Arabia. SPA says it would process 5.28 million tokens per second by the end of 2024 (the release's 2025 figure, '53 tokens per second', appears garbled and should not be used).",
+    "source_type": "government"
+  },
+  {
+    "id": "03-saudi-ai-buildout-18",
+    "title": "Saudi Arabia Reaches One Million Citizens Trained in AI Through 'SAMAI' Initiative",
+    "source": "Saudi Press Agency",
+    "url": "https://spa.gov.sa/en/N2439614",
+    "published": "2025-11-09",
+    "summary": "The Ministry of Education, the Ministry of Human Resources and Social Development and SDAIA said the 'One Million Saudis in AI' (SAMAI) initiative had surpassed one million citizens trained and certified in AI. Registrants were 52% female and 48% male; employees made up 70% of participants and students 30%.",
+    "source_type": "government"
+  },
+  {
+    "id": "03-saudi-ai-buildout-19",
+    "title": "PIF and Aramco agree for Aramco to acquire a significant minority stake in HUMAIN, with PIF retaining majority ownership",
+    "source": "Public Investment Fund",
+    "url": "https://www.pif.gov.sa/en/news-and-insights/press-releases/2025/pif-and-aramco-agree-for-aramco-to-acquire-a-significant-minority-stake-in-humain-with-pif-retaining-majority-ownership/",
+    "published": "2025-10-28",
+    "summary": "PIF and Aramco signed a non-binding term sheet on 28 October 2025 for Aramco to acquire a significant minority stake in HUMAIN, combining their AI programs and assets in HUMAIN with PIF keeping the majority. PIF also says the Saudi Company for Artificial Intelligence (SCAI), wholly owned by PIF, had recently been transferred to HUMAIN.",
+    "source_type": "primary"
+  },
+  {
+    "id": "03-saudi-ai-buildout-20",
+    "title": "PIF and Aramco close HUMAIN transaction to accelerate HUMAIN's global growth",
+    "source": "Aramco",
+    "url": "https://www.aramco.com/en/news-media/news/2026/pif-and-aramco-close-humain-transaction-to-accelerate-humains-global-growth",
+    "published": "2026-11-01",
+    "summary": "On Nov. 1, 2026 PIF and Aramco closed the deal: Aramco, through a wholly owned subsidiary, holds 49% of HUMAIN and PIF retains 51%. Aramco transfers key AI, compute and digital assets and contributes approximately SAR 9.9 billion ($2.6 billion) in cash in 2026. The release cites 'the planned deployment of 3 gigawatts of AI data center capacity by 2030'. Amin Nasser says Aramco has achieved $11.3 billion in Technology Realized Value since 2023.",
+    "source_type": "primary"
+  },
+  {
+    "id": "03-saudi-ai-buildout-21",
+    "title": "Aramco closes $2.6bn deal for 49% stake in Humain",
+    "source": "Arab News",
+    "url": "https://www.arabnews.com/finance/aramco-closes-26bn-deal-for-49-stake-in-humain-3009220",
+    "published": "2026-11-01",
+    "summary": "Arab News confirms the 49/51 Aramco-PIF structure and the SR9.9 billion ($2.6 billion) cash contribution, formalising the October 2025 term sheet. It reports that on Oct. 21, 2026 Humain and DataVolt signed a preliminary framework with Nebius for up to 50 MW at their planned Oxagon (NEOM) campus, half of the initial 100 MW under construction in a planned 360 MW first phase, operational in phases from Q4 2027.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-22",
+    "title": "From launch to IPO: how Saudi AI firm Humain grew in 16 months",
+    "source": "Arab News (Asharq Bloomberg)",
+    "url": "https://www.arabnews.com/business/from-launch-to-ipo-how-saudi-ai-firm-humain-grew-in-16-months-3000770",
+    "published": "2026-09-07",
+    "summary": "Humain launched on May 12, 2025, announced by the Crown Prince. In December 2025 it formed a JV with stc's Center3 for AI data centers of up to 1 GW, starting at 250 MW. In November 2025 Amazon and Humain announced plans for up to 150,000 AI accelerators in Riyadh. On Feb. 18, 2026 Humain announced a $3 billion investment in xAI, later converted into SpaceX shares. Reuters reported in May 2026 that Humain hired Goldman Sachs for at least SR20 billion ($5.33 billion) of data center financing; the company previously set 2029 for listings in Saudi Arabia and New York, with no IPO timetable or size announced.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-23",
+    "title": "Humain raises $667m for AI buildout in Saudi Arabia",
+    "source": "DatacenterDynamics",
+    "url": "https://www.datacenterdynamics.com/en/news/humain-raises-667m-for-ai-buildout-in-saudi-arabia/",
+    "published": "2026-11-14",
+    "summary": "Humain and the National Infrastructure Fund (Infra) signed two financing agreements totaling SAR 2.5 billion ($667m): a GPU facility of up to SAR 1.1 billion ($293.3m) for about 25MW of IT load, and up to SAR 1.4 billion ($373.3m) for substations, transmission and grid connections. Humain is targeting 1GW of IT capacity. DCD says Humain has more than 200 plots of land for potential data centers and will take capacity at Oxagon in NEOM.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-24",
+    "title": "Saudi's Humain turns to outside investment as the kingdom reins in fiscal spending",
+    "source": "Fortune (via Yahoo Finance)",
+    "url": "https://finance.yahoo.com/technology/ai/articles/saudi-humain-turns-outside-investment-095532267.html",
+    "published": "2026-09-09",
+    "summary": "Fortune reports Tareq Amin is assembling a team to prepare an IPO and said at FII in October 2025 he aimed to list in Saudi Arabia and New York by 2029. Humain aims for 1.9 GW by 2030 and over 6 GW by 2034, and told Bloomberg its timeline is on track. Citing official Saudi data, the kingdom's data center capacity rose from 68 MW in 2021 to 467 MW in Q1 2026. Alvarez & Marsal estimates 12 watts of data center capacity per capita in Saudi Arabia vs around 50 in the UAE and U.S., and up to $42 billion of project capital needed by 2030 if about half of announced capacity is delivered.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-25",
+    "title": "Saudi AI firms Humain, DataVolt partner for data center on kingdom's Red Sea coast",
+    "source": "Reuters",
+    "url": "https://www.reuters.com/business/energy/saudi-ai-firms-humain-datavolt-partner-data-center-kingdoms-red-sea-coast-2026-08-31/",
+    "published": "2026-08-31",
+    "summary": "Humain and DataVolt will develop around 100 MW of the first phase of a data center at Oxagon in NEOM, expected to be available in 2028, NEOM said. It is part of the 360 MW first phase of DataVolt's planned campus, within a wider 1.5 GW AI campus. Reuters says Humain targets 6 GW of capacity by 2034 and that NEOM plans have been scaled back amid cost overruns.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-26",
+    "title": "Microsoft and HUMAIN announce long-term strategic collaboration",
+    "source": "Microsoft Source EMEA",
+    "url": "https://news.microsoft.com/source/emea/features/microsoft-and-humain-announce-long-term-strategic-collaboration-to-enable-ai-transformation-in-saudi-arabia-and-beyond/",
+    "published": "2026-08-26",
+    "summary": "HUMAIN and Microsoft announced a long-term collaboration on 26 August 2026. They intend to make HUMAIN's ALLAM models available through Microsoft Foundry and the Microsoft 365 Copilot ecosystem, and pair HUMAIN AI experts with Microsoft Forward Deployed Engineers to help organisations deploy AI.",
+    "source_type": "primary"
+  },
+  {
+    "id": "03-saudi-ai-buildout-27",
+    "title": "How Aramco is driving AI on an industrial scale",
+    "source": "Oil Review Middle East",
+    "url": "https://oilreviewmiddleeast.com/technical-focus/how-aramco-is-driving-ai-on-an-industrial-scale",
+    "published": "2025-02-10",
+    "summary": "At LEAP 2025 Aramco EVP Ahmad Al-Khowaiter said aramcoMETABRAIN was serving the business with a 70 billion parameter model, with a one trillion parameter model in development, and introduced Plant METABRAIN, a time-series model. He said Aramco collects 10 billion data points daily, has 1,500 petabytes of storage and has trained more than 6,000 AI developers. Aramco Digital, Aramco's digital and technology subsidiary, announced with Qualcomm AI-enabled industrial 5G smartphones supporting 450MHz spectrum.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-28",
+    "title": "Aramco reveals 250B LLM; GAIA backed by $1 billion funding",
+    "source": "Middle East AI News",
+    "url": "https://www.middleeastainews.com/p/aramco-reveals-250b-llm-gaia-backed",
+    "published": "2024-03-07",
+    "summary": "At LEAP 2024 Aramco announced METABRAIN, described as a 250 billion parameter industrial LLM trained on 7 trillion tokens of public and internal data. Naver signed with Aramco Digital to help develop a sovereign cloud and Arabic LLM-based sovereign AI. Saudi Arabia announced $1 billion for the GAIA generative-AI startup accelerator, and NTDP a $266m programme aiming for 20 to 25 AI foundation models in 5 years.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-29",
+    "title": "DataVolt and NEOM to develop region's first net-zero AI factory",
+    "source": "NEOM",
+    "url": "https://www.neom.com/en-us/newsroom/datavolt-signs-agreement-with-neom",
+    "published": "2025-02-10",
+    "summary": "NEOM and DataVolt signed an agreement on 10 February 2025 for a 1.5-gigawatt 'AI factory' at Oxagon. An initial USD 5 billion investment by DataVolt funds phase one, expected to be operational by 2028. The ambition is to run entirely on renewable energy at net zero.",
+    "source_type": "primary"
+  },
+  {
+    "id": "03-saudi-ai-buildout-30",
+    "title": "UAE, Saudi Arabia to add up to 3GW of data centre power by 2030",
+    "source": "Khaleej Times",
+    "url": "https://www.khaleejtimes.com/business/uae-saudi-arabia-to-add-up-to-3gw-of-data-centre-power-by-2030",
+    "published": "2026-10-05",
+    "summary": "Citing S&P, the UAE and Saudi Arabia will add around 2 to 3 GW of IT power and hold more than 80 per cent of regional capacity by 2030. Stargate UAE is a 5GW campus whose initial 1 GW is expected over the next three years; Humain's projects could reach up to 1.9 GW by 2030, rising to 6.0-6.6 GW in 2034. S&P says Saudi additions will likely materialise later in the decade while the UAE is accelerating. 451 Research: average build cost about $11 million/MW in the UAE and $13 million/MW in Saudi Arabia for 2026-2030.",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-31",
+    "title": "Does the Nvidia turmoil spell trouble for the Gulf's AI ambitions?",
+    "source": "Fortune",
+    "url": "https://fortune.com/2026/11/18/does-the-nvidia-turmoil-spell-trouble-for-the-gulfs-ai-ambitions/",
+    "published": "2026-11-18",
+    "summary": "Fortune reports that on Nov. 19, 2025 the U.S. Commerce Department authorized export of up to 35,000 Nvidia Blackwell GB300 chips to both G42 and Humain. In October 2026 Humain announced plans with Nvidia to deploy around 27,000 GPUs and up to 84 MW of capacity in a multi-phase program starting Q4 2026, with large-scale deployments from mid-2027. Fortune also reports leadership turmoil at Nvidia involving Jensen Huang's departure (check status before air).",
+    "source_type": "press"
+  },
+  {
+    "id": "03-saudi-ai-buildout-32",
+    "title": "Gulf AI: The War as a Catalyst for Deepening Regional-US Strategic Tech Cooperation",
+    "source": "Middle East Institute",
+    "url": "https://mei.edu/publication/gulf-ai-the-war-as-a-catalyst-for-deepening-regional-us-strategic-tech-cooperation/",
+    "published": "2026-09-28",
+    "summary": "MEI senior fellow Mohammed Soliman writes that the UAE, Saudi Arabia and Qatar are collectively planning 8-10 GW of compute in near-term deployments. Saudi Arabia pledged $600 billion during the May 2025 US state visit; the UAE agreed a 10-year $1.4 trillion framework. The UAE was moved to Country Group A:5 in July 2026; Saudi Arabia has not been. As a condition of US chip approvals, G42 and Humain were required to phase out Huawei equipment. He estimates a gigawatt of compute costs $30 billion to $50 billion and Gulf-to-South Asia latency at about 25-40 ms vs 150-200 ms from the US East Coast (analysis/opinion).",
+    "source_type": "press"
+  }
+]

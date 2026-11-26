@@ -1,0 +1,272 @@
+[
+  {
+    "id": "07-beyond-uae-and-saudi-01",
+    "title": "Brookfield and Qai Form $20 Billion Strategic Investment Partnership for AI Infrastructure",
+    "source": "Brookfield Asset Management",
+    "url": "https://bam.brookfield.com/press-releases/brookfield-and-qai-form-20-billion-strategic-investment-partnership-ai",
+    "published": "2025-12-09",
+    "summary": "Brookfield and Qai, Qatar's AI company and a subsidiary of Qatar Investment Authority (QIA), announced a strategic partnership to establish a $20 billion joint venture focused on AI infrastructure in Qatar and select international markets. Plans include fully integrated AI facilities and an Integrated Compute center to expand regional access to high-performance compute. Brookfield will invest through its Brookfield Artificial Intelligence Infrastructure Fund (BAIIF); the partnership is a cornerstone of a global programme that aims to mobilise up to $100 billion. Bruce Flatt called it Brookfield's inaugural AI infrastructure investment in the Middle East. QIA was founded in 2005.",
+    "source_type": "primary"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-02",
+    "title": "Qatar announces Fanar 2.0 Arabic AI model",
+    "source": "Middle East AI News",
+    "url": "https://www.middleeastainews.com/p/qatar-announces-fanar-20-arabic-ai",
+    "published": "2025-12-10",
+    "summary": "QCRI at Hamad Bin Khalifa University announced Fanar 2.0 at the second World Summit AI in Doha on 9 December 2025: a 27 billion parameter model, versus the 9-billion parameter original released in December 2024. The Fanar 2.0 family covers text, image generation, speech-to-text, text-to-speech, audio understanding and Arabic poetry generation, and uses the FanarGuard moderation filter. QCRI Executive Director Dr Ahmed Elmagarmid said work had begun on Fanar 3.0 for release in December 2026. The original project was sponsored by the Ministry of Communications and IT with Google Cloud as technology provider; the site reports the original was trained on 1.3 trillion tokens (40% Arabic, 50% English, 10% code). QCRI employs more than 100 engineers and researchers.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-03",
+    "title": "Fanar: An Arabic-Centric Multimodal Generative AI Platform (arXiv:2501.13944)",
+    "source": "arXiv / QCRI Fanar Team",
+    "url": "https://arxiv.org/abs/2501.13944",
+    "published": "2025-01-18",
+    "summary": "Fanar's core is two Arabic LLMs: Fanar Star, a 7B parameter model trained from scratch on nearly 1 trillion clean Arabic, English and code tokens, and Fanar Prime, a 9B model continually trained on the Gemma-2 9B base on the same token set, with prompts routed between them by an orchestrator. The platform adds an Islamic RAG system for religious prompts, a Recency RAG, bilingual speech recognition supporting multiple Arabic dialects, image generation and an attribution service. Design and development were entirely undertaken at HBKU's QCRI, sponsored by Qatar's Ministry of Communications and IT to enable sovereign AI development. The paper lists Ummar Abbas and 40 other authors.",
+    "source_type": "paper"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-04",
+    "title": "QCRI/Fanar-1-9B model card",
+    "source": "Hugging Face / QCRI",
+    "url": "https://huggingface.co/QCRI/Fanar-1-9B",
+    "published": "",
+    "summary": "Fanar-1-9B is an Arabic-English LLM from QCRI at HBKU, continually pretrained from google/gemma-2-9b on 1T tokens: about 515B English, 410B Arabic and 102B code tokens. The card lists 8.7 billion parameters, a 4096-token context and an Apache 2.0 licence. It supports Modern Standard Arabic and dialects including Gulf, Levantine and Egyptian. It is sponsored by Qatar's Ministry of Communications and Information Technology.",
+    "source_type": "primary"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-05",
+    "title": "HE the Minister: We Envision Fanar as High-Accuracy Arabic LLM",
+    "source": "Qatar Ministry of Communications and Information Technology (MCIT)",
+    "url": "https://mcit.gov.qa/en/news/he-the-minister-we-envision-fanar-as-high-accuracy-arabic-llm-capable-of-processing-and-understanding-natural-arabic",
+    "published": "2024-05-16",
+    "summary": "At the Qatar Economic Forum 2024, Minister Mohammed bin Ali Al Mannai described Fanar as a collaboration between MCIT and QCRI, to be fed around 300 billion words of Arabic content. He said there is a considerable gap in generative AI capabilities between Arabic and English that Fanar aims to bridge. He noted the Amir's allocation of a 9 billion QR incentive package to support comprehensive digital transformation, along with a billion-dollar fund to support regional entrepreneurs and emerging companies, in line with National Development Strategy 3.",
+    "source_type": "government"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-06",
+    "title": "MOTC Announces Qatar's National Artificial Intelligence Strategy",
+    "source": "Hamad Bin Khalifa University",
+    "url": "https://hbku.edu.qa/en/news/qitcom-qcri-hbku",
+    "published": "2019-10-29",
+    "summary": "A blueprint produced by QCRI was accepted as Qatar's national AI strategy, announced by Minister of Transport and Communications Jassim Bin Saif Al-Sulaiti at QITCOM 2019. The minister called it the first strategy of its kind developed in collaboration between government and a research institute. Its six pillars are Talent; Data Access; Employment; Wealth Creation; Embracing an AI + X Future; and Thought Leadership in AI Ethics. QCRI was founded in 2010.",
+    "source_type": "primary"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-07",
+    "title": "QIA participates in Anthropic's Series F $13 billion fundraise",
+    "source": "Qatar Investment Authority",
+    "url": "https://qia.qa/en/Newsroom/Pages/QIA-participates-in-Anthropic%E2%80%99s-Series-F-$13-billion-fundraise.aspx",
+    "published": "2025-09-02",
+    "summary": "QIA invested in Anthropic, maker of the Claude models, in its $13 billion Series F, led by ICONIQ and co-led by Fidelity and Lightspeed, at a $183 billion post-money valuation.",
+    "source_type": "primary"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-08",
+    "title": "QIA Increases Investment in Anthropic Through $65 Billion Series H Financing",
+    "source": "Qatar Investment Authority",
+    "url": "https://qia.qa/en/Newsroom/Pages/QIA-Increases-Investment-in-Anthropic-Through-$65-Billion-Series-H-Financing.aspx",
+    "published": "2026-05-28",
+    "summary": "QIA said it participated in Anthropic's $65 billion Series H, its third consecutive Anthropic round, after first investing in September 2025 and joining the Series G in February 2026. QIA says the round values Anthropic at USD $965 billion post-money. QIA describes its strategy as partnering with category-defining technology companies across AI, software, advanced computing and digital infrastructure.",
+    "source_type": "primary"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-09",
+    "title": "Qatar's AI momentum: Turning national ambition into measurable economic value",
+    "source": "PwC Middle East",
+    "url": "https://pwc.com/m1/en/media-centre/articles/qatars-ai-momentum-national-ambition-economic-value.html",
+    "published": "2026-11-12",
+    "summary": "PwC says Qatar aims to become a leading regional hub for AI by 2030, guided by Qatar National Vision 2030, the Third National Development Strategy 2024-2030 and MCIT's Digital Agenda 2030. It cites Qai's $20 billion partnership with Brookfield and plans to deploy advanced GPU capacity with MEEZA, Microsoft's 2024 expansion of its Qatar cloud region and an initiative with MCIT bringing GPU-backed Azure OpenAI to Qatar. Ooredoo's data-centre platform Syntys reported 26 MW of operational IT capacity in Qatar after acquiring Q Data in January 2026. MCIT indicators in October 2026 for its Microsoft 365 Copilot programme showed more than 8,000 active users and 96 AI agent use cases. PwC's Qatar CEO survey found 84% of surveyed CEOs have defined AI roadmaps.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-10",
+    "title": "Microsoft strengthens partnership with Kuwait Government, announces intent to establish AI powered Azure Region",
+    "source": "Microsoft",
+    "url": "https://news.microsoft.com/en-xm/2025/03/06/microsoft-strengthens-partnership-with-kuwait-government-announces-intent-to-establish-ai-powered-azure-region-to-accelerate-ai-transformation-and-drive-economic-growth",
+    "published": "2025-03-06",
+    "summary": "Microsoft signed a strategic partnership with the Government of Kuwait, represented by the Central Agency for Information Technology (CAIT) and CITRA, in line with Kuwait Vision 2035, with the intent to establish an AI-powered Azure Region. The deal includes a Microsoft Technology Innovation Hub operating an AI Innovation Center and a Cloud Center of Excellence. The government will enable government employees with Microsoft 365 Copilot, supported by a Copilot Center of Excellence.",
+    "source_type": "primary"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-11",
+    "title": "Kuwait wealth fund joins Microsoft and BlackRock's $30bn AI Infrastructure Partnership",
+    "source": "DatacenterDynamics",
+    "url": "https://datacenterdynamics.com/en/news/kuwait-wealth-fund-joins-microsoft-and-blackrocks-30bn-ai-infrastructure-partnership",
+    "published": "2025-06-04",
+    "summary": "Citing Bloomberg, DCD reports the Kuwait Investment Authority would be the first non-founding financial anchor of the AI Infrastructure Partnership (AIP) founded by BlackRock with Microsoft and MGX, which aims to raise up to $30bn in equity alongside some $70bn in debt. No financial details of KIA's contribution were disclosed. DCD describes KIA as the second-largest sovereign fund in the Middle East with $1 trillion, and says this was KIA's first move into AI under managing director Sheikh Saoud Salem Al-Sabah.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-12",
+    "title": "Microsoft opens its Digital Innovation Center (MDIC) in Kuwait",
+    "source": "Microsoft",
+    "url": "https://news.microsoft.com/source/emea/2026/11/microsoft-opens-its-digital-innovation-center-mdic-in-kuwait-to-accelerate-ai-innovation-and-advance-vision-2035",
+    "published": "2026-11-15",
+    "summary": "Microsoft opened the Microsoft Digital Innovation Center (MDIC) in Kuwait, established through a partnership with the State of Kuwait government under New Kuwait Vision 2035. It is meant to give government entities, startups, developers and students hands-on access to Microsoft AI, cloud and cybersecurity, with a focus on skills. Minister of State for Communications and IT Omar Saud Abdulaziz Al-Omar called it a step toward a knowledge-based, AI-powered economy.",
+    "source_type": "primary"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-13",
+    "title": "AI regulation in Kuwait",
+    "source": "AI Regulation Map",
+    "url": "https://airegulationmap.org/country/kuwait",
+    "published": "2026-11-02",
+    "summary": "The tracker says Kuwait has no AI-specific legislation imposing obligations; the Kuwait National AI Strategy 2025-2028 remains a draft roadmap and its proposed High-Level Steering Committee is not established. CITRA published a Guide for Adopting Artificial Intelligence in the State of Kuwait v1.0. Ministerial Decision No. 159 of 2026 added AI services and solutions as a licensable commercial activity. A parliamentary bill to establish a Public Authority for Artificial Intelligence lapsed when the National Assembly was dissolved in May 2024.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-14",
+    "title": "Bahrain Launches National AI Policy and Adopts GCC Ethics Manual",
+    "source": "Information & eGovernment Authority (iGA), Bahrain",
+    "url": "https://iga.gov.bh/en/article/bahrain-launches-national-ai-policy-and-adopts-gcc-ethics-manual",
+    "published": "2025-07-27",
+    "summary": "Bahrain launched a National Policy for the Use of Artificial Intelligence and adopted the GCC Guiding Manual on the Ethics of AI Use. The policy rests on four pillars: legal compliance, AI use and adoption, public education and awareness, and local and international cooperation. It emphasises compliance with the Personal Data Protection Law, the Protection of Information and State Documents Law and the Open Data Policy, and supports Bahrain Economic Vision 2030. iGA Chief Executive Mohammed Ali Al Qaed described its aim as responsible, secure AI use that improves government efficiency.",
+    "source_type": "government"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-15",
+    "title": "Oman Launches National Artificial Intelligence Programme",
+    "source": "Oman News Agency",
+    "url": "https://omannews.gov.om/topics/en/80/show/118806/ona",
+    "published": "2024-09-22",
+    "summary": "Oman launched the National Programme for Artificial Intelligence and Advanced Digital Technologies, covering 2024 to 2026 and aligned with Oman Vision 2040. It envisages a national open-data platform, a national AI R&D centre, an AI 'studio', an Omani language model versed in Omani cultural content, and a 4IR centre with the World Economic Forum. Minister Said Hamoud Al Ma'awali said it upgrades a 2022 executive programme. It aims to place Oman among the top 50 countries in the Government AI Readiness Index and to lift the digital economy's GDP share to 10 percent by 2040, from 2 percent in 2021.",
+    "source_type": "government"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-16",
+    "title": "Oman Launches Three National Initiatives at the Artificial Intelligence and Quantum Computing Forum",
+    "source": "Oman National Open Data Portal",
+    "url": "https://opendata.gov.om/en/community/news/9e0dd590-5b43-48f6-9ed6-04f908d41c33",
+    "published": "2025-09-08",
+    "summary": "At COMEX 2025, Undersecretary Dr Ali bin Amer Al Shidhani announced three initiatives under the national AI programme: the Omani language model 'Maeen', designed to support government institutions with linguistic applications; the Omani AI Studio, an innovation platform joining government, private sector and academia; and the National Open Data Portal.",
+    "source_type": "government"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-17",
+    "title": "Artificial Intelligence Special Zone in Muscat to drive digital economy",
+    "source": "Oman Observer (ONA)",
+    "url": "https://omanobserver.om/article/1188895/oman/artificial-intelligence-special-zone-in-muscat-to-drive-digital-economy",
+    "published": "2026-05-01",
+    "summary": "Royal Decree No. 50/2026 established an Artificial Intelligence Special Zone in Muscat Governorate, linked to the Eleventh Five-Year Development Plan (2026-2030) and Oman Vision 2040. The zone covers approximately 104,000 square metres in the Wilayat of Seeb and is expected to host semiconductors, robotics and AI industries plus startups, under the Special Economic Zones and Free Zones Law. It raises the number of zones under OPAZ to 24.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-18",
+    "title": "Factbox: All you need to know about 2nd edition of Egypt national AI strategy",
+    "source": "Ahram Online",
+    "url": "https://english.ahram.org.eg/UI/Front/Inner.aspx?NewsContentID=539743",
+    "published": "2025-02-03",
+    "summary": "The National Council for Artificial Intelligence (NCAI) launched the second edition of Egypt's National AI Strategy (2025-2030), built on six pillars (governance, technology, data, infrastructure, ecosystem, talent) with 21 strategic initiatives. Initiatives include developing national AI models for local challenges, creating high-quality Arabic language datasets, developing a national data center for AI, expanding AI cloud computing, supporting AI startups and a national AI certification system. The stated aim is to position Egypt as a regional AI leader in Africa and the Arab world.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-19",
+    "title": "Egypt Launches Second National AI Strategy, Anchoring Its Position as a Regional Digital Leader",
+    "source": "TechAfrica News",
+    "url": "https://techafricanews.com/2025/07/14/egypt-launches-second-national-ai-strategy-anchoring-its-position-as-a-regional-digital-leader",
+    "published": "2025-07-14",
+    "summary": "The strategy's 2030 targets include raising ICT's contribution to GDP to 7.7%, establishing 250+ AI-driven startups and training over 30,000 AI specialists. Capgemini announced an AI Center of Excellence in Cairo and planned to double its Egyptian workforce to over 1,200 employees by end-2025. Microsoft pledged to train and certify 100,000 individuals in AI under a national partnership.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-20",
+    "title": "Launch of Karnak Chat",
+    "source": "Applied Innovation Center (AIC), Egypt MCIT",
+    "url": "https://aic.gov.eg/news/43",
+    "published": "2026-08-23",
+    "summary": "On 23 August 2026 MCIT announced the pilot launch of Karnak Chat, a conversational system built on the Karnak LLM developed at the Applied Innovation Center, an MCIT affiliate. Karnak was built by enhancing the latest global open-source models with curated Egyptian and Arab data. Its objectives include digital sovereignty by running securely in local data centres if needed, and high accuracy in Modern Standard Arabic and Egyptian colloquial Arabic. A free version is offered on Hugging Face.",
+    "source_type": "government"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-21",
+    "title": "Infrastructure, sovereignty, and energy: Inside Egypt's first AI Everything summit",
+    "source": "Fast Company Middle East",
+    "url": "https://fastcompanyme.com/technology/infrastructure-sovereignty-and-energy-inside-egypts-first-ai-everything-summit",
+    "published": "2026-02-12",
+    "summary": "At AI Everything MEA in Cairo, ITIDA CEO Ahmed ElZaher, speaking for the minister, launched Karnak, Egypt's first nationally developed, locally grounded LLM, named after Karnak Temple in Luxor. He said Karnak is the highest-ranking Arabic LLM in the 30-40 billion parameter category and competitive with 70-80 billion parameter models. Fast Company ME reports that under its 2025-2030 strategy Egypt aims to generate an estimated $42.7bn in AI-related economic value by the end of the decade. Other launches included AI tools in the Digital Egypt platform and locally developed healthcare AI engines.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-22",
+    "title": "Jordanian Minister of Digital Economy to QNA: Groundwork Laid for New Phase of AI Economy",
+    "source": "Qatar News Agency",
+    "url": "https://qna.org.qa/en/News-Area/News/2026-10/21/jordanian-minister-of-digital-economy-to-qna-groundwork-laid-for-new-phase-of-ai-economy-goal-to-foster-innovation-across-the-region",
+    "published": "2026-10-21",
+    "summary": "Minister of Digital Economy and Entrepreneurship Sami Smeirat said 42 of the 68 projects in the executive plan of Jordan's AI Strategy (2023-2027), about 62%, have reached implementation or completion. The 2025 progress report shows 14 projects completed (about 21%) and 28 underway (about 42%). Priority sectors are education, energy, water, agriculture, government services and transport; examples include the Siraj educational platform, electrical load forecasting, agricultural water efficiency and AI traffic management. The National Council for Future Technology plays a coordinating role.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-23",
+    "title": "Naif Al-Rajhi Investment acquires strategic stake in Mawdoo3",
+    "source": "Jawlah",
+    "url": "https://jawlah.co/en/37592",
+    "published": "2024-11-25",
+    "summary": "Saudi-based Naif Al-Rajhi Investment acquired an undisclosed strategic stake in Jordan's Mawdoo3, a company specialising in AI and Arabic large language models. Mawdoo3 owns more than 200 Arabic websites and had raised $25 million across three rounds, the last a $10 million Series B in May 2019. It developed its own NLP tools and LLMs for various sectors, and plans to expand especially in Saudi Arabia.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-24",
+    "title": "Türkiye unveils new AI Action Plan",
+    "source": "CMS (law firm)",
+    "url": "https://cms.law/en/tur/legal-updates/turkiye-unveils-new-ai-action-plan",
+    "published": "2026-09-10",
+    "summary": "Türkiye published its AI Action Plan 2026-2030 on 18 August 2026 through Presidential Circular No. 2026/9, building on the 2021-2025 National AI Strategy and the 2024-2025 Action Plan. It has 16 actions across four pillars (Recognise, Benefit, Produce, Govern). Targets include 10,000 advanced AI specialists, 100,000 AI application professionals, at least 1 GW of AI and data-centre capacity, at least USD 10 billion of mainly private investment, sandboxes in at least five sectors, a National AI Research Fund of at least TRY 10 billion, an AI Growth Fund of TRY 15 billion and at least five AI Growth Zones by end-2028. It creates a National AI Board chaired by the President, a 'GPU for All' programme and plans for sector-specific foundation models for export.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-25",
+    "title": "Türkiye targets $10 bln in AI infrastructure investment",
+    "source": "Hürriyet Daily News",
+    "url": "https://www.hurriyetdailynews.com/turkiye-targets-10-bln-in-ai-infrastructure-investment-229132",
+    "published": "2026-11-07",
+    "summary": "Industry and Technology Minister Mehmet Fatih Kacır said at the TRT World Forum that Türkiye aims to attract at least $10 billion of mostly private investment in data centres, cloud and AI infrastructure by 2030 and raise installed data-centre capacity to at least 1 gigawatt. The plan calls for AI literacy training for 5 million people. He said the first version of BİLGE, a domestically developed Turkish-language LLM, would soon be available to developers, researchers and startups. Around 9,000 researchers have used the national supercomputer infrastructure, and the government plans secure access to at least 2,000 public-sector datasets.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-26",
+    "title": "Turkish large language model T3 AI launches beta version",
+    "source": "A News (Anadolu Agency)",
+    "url": "https://anews.com.tr/turkey/2025/07/12/turkish-large-language-model-t3-ai-launches-beta-version/amp",
+    "published": "2025-07-12",
+    "summary": "T3AI, described as the first Turkish LLM, developed by the Turkish Technology Team (T3) Foundation and defence firm Baykar, launched a beta on the TEKNOFEST social platform. It is open-source; partners include the Ministry of National Education, SETA, TRT, the Turkish Academy of Sciences, Anadolu Agency and Microsoft. It was developed with contributions from 1,792 volunteers from 67 provinces. Selçuk Bayraktar said it was built to understand texts from Turkic countries.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-27",
+    "title": "Türkiye's new homegrown AI model 'Kumru' sparks viral debate",
+    "source": "Türkiye Today",
+    "url": "https://turkiyetoday.com/business/turkiyes-new-homegrown-ai-model-kumru-sparks-viral-debate-and-raises-bigger-questions-3208432",
+    "published": "2025-10-15",
+    "summary": "Kumru, from Turkish startup VNGRS, is based on Meta's LLaMA-3 architecture with 7.4 billion parameters and can run on consumer GPUs with 16 GB of VRAM. It went viral for wrong answers in its early 0.2.1 test version. VNGRS says it targets corporate and institutional users, especially regulated sectors such as finance that need on-premises AI. The outlet says Türkiye's AI research ecosystem remains severely underfunded.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-28",
+    "title": "Turkey updates artificial intelligence strategy with defense focus",
+    "source": "Milli Müdafaa (citing AA Savunma)",
+    "url": "https://millimudafaa.com/current-news/turkey-updates-artificial-intelligence-strategy-defense-focus",
+    "published": "",
+    "summary": "Development of Turkish-language LLMs is a cornerstone of Türkiye's AI strategy; TÜBİTAK is also developing an LLM. HAVELSAN's MAIN corporate AI platform contains a 9-billion-parameter LLM focused on Turkish. Data centres in Ankara through a Turkcell-Google Cloud partnership are expected to be fully operational by 2028, keeping data in Türkiye. The Presidency of Defense Industries participates in the AI planning.",
+    "source_type": "press"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-29",
+    "title": "Morocco Moves AI Strategy Into Implementation, Targets MAD 100 Bln in GDP Value by 2030",
+    "source": "Maroc.ma (Kingdom of Morocco portal / MAP)",
+    "url": "https://maroc.ma/en/news/morocco-moves-ai-strategy-implementation-targets-mad-100-bln-gdp-value-2030",
+    "published": "2026-09-09",
+    "summary": "The 'Morocco AI 2030' roadmap, also called 'AI Made in Morocco', aims by 2030 to generate 100 billion dirhams ($10 billion) in added value to GDP, create 50,000 direct and indirect jobs, and train and certify 200,000 AI talents. Its three pillars are sovereignty and trust, innovation and competitiveness, and impact, adoption and outreach. Implementation relies on the JAZARI Institutes network: JAZARI ROOT, JAZARI Smart City, JAZARI EduTech and JAZARI Industrie X.0. The ministry unveiled a sovereign AI marketplace and Idarati AI, an agentic assistant for administrative procedures.",
+    "source_type": "government"
+  },
+  {
+    "id": "07-beyond-uae-and-saudi-30",
+    "title": "Morocco targets 100,000 new AI-trained workers a year",
+    "source": "7news Morocco",
+    "url": "https://en.7news.ma/morocco-ai-2030-plan",
+    "published": "2026-09-11",
+    "summary": "Morocco AI 2030 sits within Digital Morocco 2030. Data-centre capacity is expected to reach almost 1GW, including a planned Dakhla complex of up to 500MW on renewable energy and a 50MW data centre with sovereign cloud in Rabat. The central Jazari institute will work on AI in Arabic, French, Darija and Amazigh, and the government wants a large local language model that understands Darija and Amazigh. The plan targets 100,000 newly trained people a year by 2030 in AI and other digital fields. Partners named include Nokia, Orange Business, Oracle, Mistral AI and Onepoint.",
+    "source_type": "press"
+  }
+]
