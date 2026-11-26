@@ -686,6 +686,14 @@ def phase_announce(cfg: dict, out: Path, video_id: str = "") -> list[str]:
         log.info("%s: %s %s", channel, "already announced" if before.get(channel) else "episode posted", ref)
     for p in problems:
         log.error("announce: %s", p)
+    if cfg.get("newsletter", {}).get("enabled", True) and not (out / "newsletter.md").exists():
+        try:   # LinkedIn's newsletter cannot be posted by an app: the issue goes on the Review issue, ready to paste
+            from pipeline.publish import newsletter
+            issue, bad = newsletter.write(out, cfg, link)
+            subprocess.run([sys.executable, str(ROOT / "scripts" / "review_issue.py"), "note", out.name,
+                            newsletter.review_comment(issue, bad)], check=False)
+        except Exception as exc:  # noqa: BLE001 — the episode is announced; the newsletter is a draft for the founder
+            log.error("newsletter issue not written: %s", exc)
     return problems
 
 
