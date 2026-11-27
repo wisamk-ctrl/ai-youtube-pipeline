@@ -178,7 +178,19 @@ padding:.12em .45em .22em;border-radius:.35em;text-shadow:0 4px 18px rgba(0,0,0,
 <div class="t"><div class="p" dir="{ui("dir")}">{html.escape(title)}</div><div class="bar"></div></div></body></html>"""
 
 
-def end_html(show: str, text: str | None = None) -> str:
+def end_html(show: str, text: str | None = None, ask: str | None = None) -> str:
+    """The closing card. A Short that asks (founder 2026-11-27) shows its question and invites the answer."""
+    if ask:
+        size = 96 if len(ask) <= 40 else 80 if len(ask) <= 60 else 68
+        return f"""<!doctype html><html><head><meta charset="utf-8"><style>{_fonts()}
+html,body{{margin:0;width:{W}px;height:{H}px;overflow:hidden}}
+body{{background:{NAVY};color:{SAND};display:flex;flex-direction:column;align-items:center;justify-content:center;
+gap:56px;padding:0 84px;box-sizing:border-box;font-family:{TEXT}}}
+.q{{font:800 {size}px/1.08 {DISPLAY};letter-spacing:-.03em;text-align:center}}
+.c{{font:700 52px {TEXT};color:{GOLD};text-align:center}}
+.b{{font:700 46px {TEXT};color:{NAVY};background:{GOLD};padding:.3em 1em .36em}}
+</style></head><body dir="{ui("dir")}"><div class="q">{html.escape(ask)}</div>
+<div class="c">{html.escape(ui("answer_below"))}</div><div class="b">{html.escape(show)}</div></body></html>"""
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{_fonts()}
 html,body{{margin:0;width:{W}px;height:{H}px;overflow:hidden}}
 body{{background:{NAVY};color:{SAND};
@@ -366,7 +378,8 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
     mid_h = round(W * 9 / 16 / 2) * 2
     with Renderer(W, H) as r:
         end_png = dest_dir / "end_card.png"
-        r.still(end_html(_show_name(cfg), (breaking or {}).get("end_text")), end_png)
+        ask = str((breaking or {}).get("question") or "").strip() or None
+        r.still(end_html(_show_name(cfg), (breaking or {}).get("end_text"), ask), end_png)
         hooks = hooks_for(out_dir)
         bed_wav, bed_gain = None, 0.0
         if str(cfg.get("post", {}).get("audio", {}).get("music", "generated")) == "generated":
@@ -459,7 +472,8 @@ def build(video: Path, script: str, srt: Path | None, spans_arg: list[tuple[floa
                     dest.unlink(missing_ok=True)
                     return None
                 log.info("Short %d written: %s", k, dest.name)
-                return dict(asdict(sp), file=dest.name, episode_start=round(to_final(sp.start, sting), 2), hook=hook_text)
+                return dict(asdict(sp), file=dest.name, episode_start=round(to_final(sp.start, sting), 2), hook=hook_text,
+                            **({"question": ask} if ask else {}))
             jobs_.append(encode)
         # The Shorts are independent encodes: side by side (2026-11-21; W47-en: 3 × ~65 s one after another).
         from pipeline.post.jobs import run_all, workers

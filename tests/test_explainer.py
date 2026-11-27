@@ -40,7 +40,7 @@ def ranking(job="explainer", **idea):
 def draft(ids, first="Where your data lives now decides which AI you can use."):
     L = breaking.Line
     return breaking.Draft(newsworthy=True, slug="data residency", title="Where Does Your AI Keep Data?",
-                          hook="Where does your AI keep your data?", linkedin="Data residency shapes AI choices.", lines=[
+                          hook="Where does your AI keep your data?", linkedin="Data residency shapes AI choices.", question="Would your company keep its AI data at home?", lines=[
         L(text=first, visual="title: Where does data live?", sources=[ids[0]]),
         L(text="Etisalat launched AIO, a sovereign AI platform, Reuters reports.",
           visual="clip: server hall with one dark row of racks", sources=[ids[0]]),

@@ -583,3 +583,44 @@ def test_plan_week_reads_the_photo_credits_of_the_render(tmp_path):
                                                    "license": "CC BY 2.0", "title": "File:a.jpg"}]))
     new = social.plan_week(out, CFG, [], lambda f: f, datetime(2026, 11, 2, tzinfo=timezone.utc))
     assert all("Photo: Jane Doe, CC BY 2.0, via Wikimedia Commons" in c for c in new[0]["captions"].values())
+
+
+def test_a_short_that_asks_leads_its_caption_with_the_question_and_carries_it_to_the_queue(tmp_path, monkeypatch):
+    """Founder 2026-11-27: the question is the caption's first line on every platform."""
+    from pipeline.publish import playlists
+    monkeypatch.setattr(playlists, "latest_episode_url", lambda root=None: None)
+    q = "Would your company trust one cloud provider now?"
+    for platform in ("youtube", "tiktok", "instagram", "linkedin", "facebook"):
+        text = social.caption({"title": "Six Outages", "question": q}, CFG, "en", platform)
+        assert text.startswith(q + " Answer in the comments.")
+    assert social.caption({"title": "S"}, CFG, "en", "youtube").startswith("S")
+    out = week(tmp_path, 1)
+    (out / "shorts" / "shorts.json").write_text(json.dumps([{"title": "Six Outages", "file": "short_01.mp4", "question": q}]))
+    new = social.plan_week(out, CFG, [], lambda f: f, datetime(2026, 11, 2, tzinfo=timezone.utc))
+    assert new[0]["question"] == q
+
+
+class FakeYT:
+    def __init__(self, fail=False):
+        self.sent, self.fail = [], fail
+
+    def commentThreads(self):
+        return self
+
+    def insert(self, part, body):
+        self.sent.append(body)
+        return self
+
+    def execute(self):
+        if self.fail:
+            raise RuntimeError("quota")
+        return {"id": "c1"}
+
+
+def test_the_channel_asks_the_question_as_the_first_comment_and_a_failure_never_stops_the_post():
+    yt = FakeYT()
+    assert social.ask_first(yt, "vid", {"question": "Yes or no?"}) == "c1"
+    assert yt.sent[0]["snippet"]["videoId"] == "vid"
+    assert yt.sent[0]["snippet"]["topLevelComment"]["snippet"]["textOriginal"].startswith("Yes or no?")
+    assert social.ask_first(FakeYT(), "vid", {}) == ""
+    assert social.ask_first(FakeYT(fail=True), "vid", {"question": "Yes or no?"}) == ""
