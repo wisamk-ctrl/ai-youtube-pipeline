@@ -232,3 +232,27 @@ def test_run_records_an_unmeasured_outage_as_skipped_and_writes_nothing(tmp_path
     assert breaking.run({"breaking": {"outage_min_sources": 3}}, st, None, NOW, done, tmp_path) is None
     rec = list(json.loads(done.read_text(encoding="utf-8"))["stories"].values())[0]
     assert rec["skipped"] and "impact" in rec["why"]
+
+
+def test_a_short_shows_the_real_person_or_head_office_it_names(tmp_path, monkeypatch):
+    """Founder 2026-11-27: Shorts show real faces and head offices, as episodes do (licensed Wikimedia photos)."""
+    st = state()
+    items = breaking._articles(breaking.candidates(st, NOW, set())[0])
+    ids = [i.id for i in items]
+    d = good_draft(ids)
+    d.lines[1].visual = "photo: Microsoft headquarters"
+    d.lines[6].visual = "photo: Marco Rubio | Marco Rubio, US Secretary of State"
+    assert breaking.mechanical(d, items, LIB) == []
+    assert "photo:" in breaking.SYSTEM and "headquarters" in breaking.SYSTEM
+    from pipeline import explainer
+    assert breaking.VISUALS in breaking.SYSTEM and breaking.VISUALS in explainer.SYSTEM
+    script = breaking.script_md(d)
+    assert "[Visual: photo Microsoft headquarters]" in script
+    assert "[Visual: photo Marco Rubio | Marco Rubio, US Secretary of State]" in script
+
+
+def test_a_photo_of_someone_the_articles_never_name_is_refused():
+    items = breaking._articles(breaking.candidates(state(), NOW, set())[0])
+    d = good_draft([i.id for i in items])
+    d.lines[6].visual = "photo: Elon Musk | Elon Musk, CEO of Tesla"
+    assert any("Elon Musk" in p for p in breaking.mechanical(d, items, LIB))

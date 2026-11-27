@@ -115,7 +115,22 @@ def due_times(first: datetime, count: int, days: list[int], hour_utc: int) -> li
     return out
 
 
-def caption(short: dict[str, Any], cfg: dict[str, Any], lang: str, platform: str) -> str:
+def photo_credits(credits: list[dict[str, Any]] | None, lang: str) -> str:
+    """CC BY / BY-SA photos need attribution where they are shown: the Short's own caption (founder 2026-11-27)."""
+    names = []
+    for c in credits or []:
+        if "wikimedia" in str(c.get("provider") or "").lower():
+            name = ", ".join(x for x in (str(c.get("author") or "").strip(), str(c.get("license") or "").strip()) if x)
+            if name and name not in names:
+                names.append(name)
+    if not names:
+        return ""
+    return ("Photo: " if lang == "en" else "صورة: ") + "; ".join(names) + (
+        ", via Wikimedia Commons" if lang == "en" else "، عبر ويكيميديا كومنز")
+
+
+def caption(short: dict[str, Any], cfg: dict[str, Any], lang: str, platform: str,
+            credits: list[dict[str, Any]] | None = None) -> str:
     from pipeline.publish import description as desc
     s = cfg.get("social", {})
     tags = s.get(f"hashtags_{lang}") or cfg["publish"].get("hashtags_en" if lang == "en" else "hashtags", [])
@@ -136,7 +151,8 @@ def caption(short: dict[str, Any], cfg: dict[str, Any], lang: str, platform: str
     if platform == "youtube" and cfg.get("publish", {}).get("partnerships_email"):
         more += f"\nPartnerships: {cfg['publish']['partnerships_email']}"
     note = desc.DISCLOSURE_EN if lang == "en" else desc.DISCLOSURE_AR
-    return "\n\n".join(x for x in (desc.clean(short.get("title", "")), more, note, " ".join(tags)) if x)
+    return "\n\n".join(x for x in (desc.clean(short.get("title", "")), more, note, photo_credits(credits, lang),
+                                    " ".join(tags)) if x)
 
 
 def plan_week(out_dir: Path, cfg: dict[str, Any], queue: list[dict[str, Any]], asset_url: Callable[[str], str],
@@ -154,6 +170,8 @@ def plan_week(out_dir: Path, cfg: dict[str, Any], queue: list[dict[str, Any]], a
     slots = due_times(start or datetime.now(timezone.utc), len(shorts), list(s.get("days", [0, 2, 4])),
                       int(s.get("hour_utc", 15)))
     platforms = [p for p in s.get("platforms", PLATFORMS) if p in PLATFORMS]
+    cred = out_dir / "credits.json"
+    credits = json.loads(cred.read_text(encoding="utf-8")) if cred.exists() else []
     new = []
     for n, (sh, due) in enumerate(zip(shorts, slots), 1):
         name = f"{week}-short-{n:02d}.mp4"
@@ -161,7 +179,7 @@ def plan_week(out_dir: Path, cfg: dict[str, Any], queue: list[dict[str, Any]], a
             "id": f"{week}#{n}", "week": week, "lang": lang, "file": name, "url": asset_url(name),
             "title": sh.get("title", ""), "due": due.strftime("%Y-%m-%dT%H:%M:%SZ"),
             "approved": not s.get("require_approval", True),
-            "captions": {p: caption(sh, cfg, lang, p) for p in platforms},
+            "captions": {p: caption(sh, cfg, lang, p, credits) for p in platforms},
             "posts": {p: {"status": "queued"} for p in platforms},
         })
     queue.extend(new)
