@@ -40,7 +40,7 @@ def test_explainer_shorts_still_wait_for_the_founder():
 
 def test_settings_carry_the_window_to_sunday_dubai():
     s = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))
-    assert str(s["breaking"]["auto_post_until"]).startswith("2026-11-29T23:59")
+    assert str(s["breaking"]["auto_post_until"]).startswith("2026-12-06T23:59")   # extended a week (founder 2026-11-27)
 
 
 def test_render_dispatches_the_post_and_post_workflow_accepts_it():
