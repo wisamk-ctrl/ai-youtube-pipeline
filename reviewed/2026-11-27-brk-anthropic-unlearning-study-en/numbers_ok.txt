@@ -1,0 +1,4 @@
+100  (number card, spoken in its line)
+14  (number card, spoken in its line)
+22  (number card, spoken in its line)
+23  (number card, spoken in its line)

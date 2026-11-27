@@ -1,0 +1,12 @@
+title: 'Anthropic: AI Can''t Fully Forget'
+end_text: More on this in Sunday's episode
+outro: assets/brand/shorts_outro_breaking_en.wav
+linkedin: Can an AI model truly forget what it was taught? New Anthropic research
+  suggests not. Researchers Jasmine Shone and Lisa Dunlap found that 14 of 23 model
+  checkpoints put through unlearning still ranked the correct answers to hazardous
+  cybersecurity questions highest, even though their test accuracy fell to near chance.
+  The authors say unlearning created backdoor-like mechanisms, with activation on
+  affected neurons rising by 22-100x on cyber text. For Gulf organisations deploying
+  AI in government and critical sectors, it raises the question of how much assurance
+  a model's safety claims can really offer.
+drafted: automatically

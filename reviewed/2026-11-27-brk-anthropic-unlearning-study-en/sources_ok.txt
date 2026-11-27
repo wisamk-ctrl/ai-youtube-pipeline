@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-27 09:13 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Anthropic research says AI models keep cyberattack knowledge after unlearning.  ← Crypto Briefing (0b3d650ae1)
+- (2) Researchers tested 23 model checkpoints that had been through unlearning.  ← Crypto Briefing (0b3d650ae1)
+- (3) On standard tests, accuracy on cyber questions fell to near chance.  ← Crypto Briefing (0b3d650ae1)
+- (4) But in 14 of 23 cases, models still ranked the correct answers highest.  ← Crypto Briefing (0b3d650ae1)
+- (5) The researchers say unlearning created backdoor-like mechanisms inside the models.  ← Crypto Briefing (0b3d650ae1)
+- (6) Activation on affected neurons rose by 22-100x on cyber text.  ← Crypto Briefing (0b3d650ae1)
+- (7) Would your company trust an AI model that claims to have forgotten?  ← regional line, no facts
