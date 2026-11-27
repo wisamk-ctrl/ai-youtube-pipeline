@@ -1208,5 +1208,59 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7532011079338516480"
       }
     }
+  },
+  {
+    "id": "2026-11-27-brk-nvidia-halts-asia-shipments-en#1",
+    "week": "2026-11-27-brk-nvidia-halts-asia-shipments-en",
+    "lang": "en",
+    "file": "2026-11-27-brk-nvidia-halts-asia-shipments-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-27-brk-nvidia-halts-asia-shipments-en/2026-11-27-brk-nvidia-halts-asia-shipments-en-short-01.mp4",
+    "title": "Nvidia Halts Asia Chip Shipments",
+    "due": "2026-11-27T11:31:00Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Nvidia Halts Asia Chip Shipments\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Nvidia Halts Asia Chip Shipments\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Nvidia Halts Asia Chip Shipments\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Nvidia Halts Asia Chip Shipments\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "Nvidia has told partners to pause AI server shipments to four South-East Asian countries.\n\nThe Financial Times reports that Dell and Supermicro informed customers in Malaysia, Singapore, Thailand and Indonesia that Nvidia will not authorise their orders, as the US tightens export controls to keep advanced AI computing away from China. Nvidia recorded $104 billion in revenue through its Singapore subsidiary in 2025, and a cloud executive told the FT the unclear licensing rules are causing chaos in the region.\n\nFor the Gulf's fast-growing data centre sector, it is a reminder that access to AI chips can change quickly with export policy.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "queued",
+        "note": "not connected this run (secrets missing or the token failed): still queued"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T11:31:01Z",
+        "media_id": "17916973902286765",
+        "url": "https://www.instagram.com/reel/DgPk-_txvNd/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T11:31:01Z",
+        "video_id": "2320844312026980",
+        "url": "https://www.facebook.com/reel/2320844312026980",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T11:31:01Z",
+        "buffer_id": "6b096a21658222306c0a515a",
+        "url": "https://tiktok.com/@aithisweek/video/7712812554602450197",
+        "via": "buffer"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T11:31:01Z",
+        "post": "urn:li:ugcPost:7532044544985423872",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7532044544985423872"
+      }
+    }
   }
 ]
