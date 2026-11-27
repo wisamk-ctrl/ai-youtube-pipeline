@@ -1154,5 +1154,59 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531898991853187073"
       }
     }
+  },
+  {
+    "id": "2026-11-27-brk-anthropic-unlearning-study-en#1",
+    "week": "2026-11-27-brk-anthropic-unlearning-study-en",
+    "lang": "en",
+    "file": "2026-11-27-brk-anthropic-unlearning-study-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-27-brk-anthropic-unlearning-study-en/2026-11-27-brk-anthropic-unlearning-study-en-short-01.mp4",
+    "title": "Anthropic: AI Can't Fully Forget",
+    "due": "2026-11-27T09:20:04Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Anthropic: AI Can't Fully Forget\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Anthropic: AI Can't Fully Forget\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Anthropic: AI Can't Fully Forget\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Anthropic: AI Can't Fully Forget\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "Can an AI model truly forget what it was taught? New Anthropic research suggests not. Researchers Jasmine Shone and Lisa Dunlap found that 14 of 23 model checkpoints put through unlearning still ranked the correct answers to hazardous cybersecurity questions highest, even though their test accuracy fell to near chance. The authors say unlearning created backdoor-like mechanisms, with activation on affected neurons rising by 22-100x on cyber text. For Gulf organisations deploying AI in government and critical sectors, it raises the question of how much assurance a model's safety claims can really offer.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "queued",
+        "note": "not connected this run (secrets missing or the token failed): still queued"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T09:20:05Z",
+        "media_id": "18114719948232903",
+        "url": "https://www.instagram.com/reel/DgPWAI_hRUJ/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T09:20:05Z",
+        "video_id": "1533070941976445",
+        "url": "https://www.facebook.com/reel/1533070941976445",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T09:20:05Z",
+        "buffer_id": "6b094b71776ce2127602c8a1",
+        "url": "https://tiktok.com/@aithisweek/video/7712778383935196417",
+        "via": "buffer"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T09:20:05Z",
+        "post": "urn:li:ugcPost:7532011079338516480",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7532011079338516480"
+      }
+    }
   }
 ]
