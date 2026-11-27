@@ -1,0 +1,4014 @@
+{
+ "week": "2026-W48",
+ "generated": "2026-11-27T06:53:42.474939+00:00",
+ "judge": "claude-haiku-5-5",
+ "weights": {
+  "decision_impact": 3,
+  "regional_consequence": 2,
+  "evidence": 1,
+  "tension": 1
+ },
+ "thesis": "This week's strongest stories show AI firms moving into public markets and large deals while US chip export and Nvidia leadership uncertainty puts pressure on Gulf AI investment plans.",
+ "thesis_by": "claude-haiku-5-5",
+ "hook": [
+  "s7240",
+  "sa075",
+  "sa290"
+ ],
+ "stories": [
+  {
+   "title": "Artefact unveils AI sovereignty framework as UAE moves half of government services to Agentic AI",
+   "items": [
+    {
+     "source": "Zawya",
+     "source_type": "rss",
+     "title": "Artefact unveils AI sovereignty framework as UAE moves half of government services to Agentic AI",
+     "summary": "The white paper was written to support the agentic AI transformation objectives of the Abu Dhabi Government and the UAE federal government Artefact presented the paper in Abu Dhabi to senior government officials and business leaders, with an address by H.E. Marie Audouard, Ambassador of France to the UAE Exclusive dinner brought together senior public- and private-sector leaders for discussions on AI adoption and government agentification Abu Dhabi, UAE - Artefact, a global leader in AI deployment, has published ‘Closing the AI Sovereignty Gap,’ a white paper that sets out how UAE government entities can scale agentic AI while keeping control of the infrastructure, data, models and agents behind it. The paper was unveiled at an exclusive Artefact AI Connect Dinner in Abu Dhabi, bringing together senior government officials, business executives and industry leaders from the public and private sectors. The evening provided a platform to exchange perspectives on the opportunities and challenges of scaling AI adoption across the UAE, with a focus on the role of strategic partnerships in supporting AI implementation across government entities and businesses. H.E. Marie Audouard, Ambassador of France to the UAE, opened the evening with an address highlighting the strong ties between France and the UAE and the opportunities to further strengthen bilateral cooperation through joint initiatives in artificial intelligence and innovation. She said: “Artificial intelligence has become a strategic pillar of the France-UAE partnership, reflecting the shared ambition and determination of both countries to work together. Artefact’s presence in the UAE, as evidenced by its recent recognition as Google Cloud’s AI Partner of the Year for EMEA, illustrates the growing role of French expertise in AI, data, and digital transformation.” The gathering featured insights from Vincent Luciani, Co-founder and Executive Chairman of Artefact, who shared perspectives on how organizations can move beyond isolated AI applications to reinvent core operations, emphasizing AI sovereignty, responsible governance and human-centric transformation as drivers of competitive advantage. Christelle Salame, Managing Partner at Artefact examined the agentification of government processes and services, its potential to transform interactions with citizens, residents and businesses, and the key opportunities and challenges surrounding its implementation. Commenting on the significance of the gathering,…",
+     "url": "https://www.zawya.com/en/press-release/artefact-unveils-ai-sovereignty-framework-as-uae-moves-half-of-government-services-to-agentic-ai-2505563",
+     "published": "2026-11-25T07:22:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 24.832,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.9,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 1.01,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 11.422
+     },
+     "track": "chips",
+     "region": "inference",
+     "entities": [
+      "Together AI"
+     ],
+     "id": "be61f4254e"
+    },
+    {
+     "source": "www.wam.ae",
+     "source_type": "rss",
+     "title": "Mohammed bin Rashid witnesses launch of new UAE Government services model, AI concierge agent ‘Mira’",
+     "summary": "Mohammed bin Rashid witnesses launch of new UAE Government services model, AI concierge agent ‘Mira’ www.wam.ae",
+     "url": "https://www.wam.ae/en/article/c3efg2l-mohammed-bin-rashid-witnesses-launch-new-uae",
+     "published": "2026-11-23T14:25:03+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 22.954,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 4.4,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 0.718,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 11.101
+     },
+     "track": "",
+     "region": "gulf",
+     "entities": [],
+     "id": "301055eace"
+    },
+    {
+     "source": "Arabian Business",
+     "source_type": "rss",
+     "title": "UAE launches Mira AI assistant for Emirates ID, visa renewals, work permits and government services",
+     "summary": "UAE launches Mira AI assistant to simplify Emirates ID, residence permit and work permit renewals, with the first government services available in March 2027",
+     "url": "https://www.arabianbusiness.com/business/technology/uae-mira-ai-assistant",
+     "published": "2026-11-23T18:07:15+00:00",
+     "author": "Will Milner",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 18.163,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 2.0,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 0.741,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 11.422
+     },
+     "track": "",
+     "region": "gulf",
+     "entities": [],
+     "id": "722a1127e6"
+    },
+    {
+     "source": "Khaleej Times",
+     "source_type": "rss",
+     "title": "UAE to launch AI assistant Mira for government services in March 2027",
+     "summary": "UAE to launch AI assistant Mira for government services in March 2027 Khaleej Times",
+     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPV0JVa3I4SUh5S0REelpjZy1Xa0xQNDN3bFYxZkRSeGRLd3NjWkUxOVJwaFRpSDBxZDJ3NjF0MTd1M2J0SzhTS1pYZDV4RHlEWG16XzBqNzNRYU5teDFiOGlMLWlicDNqMkswUjFqcTRpUDR1cFR3X2pQdzR2OEVraUxzWFNZSUhYa1hFdHNYX3I0NGhnQTdr0gGfAUFVX3lxTE00MGRnZnhmRURrNmgwVmZGeE5Db20wc3JpeGZtbjZuRGRIUENvYzh6c3M5MzVZMUZVbnp0UlRJYk1Rdm15VjJ4dFpMcFVPbmVreGl6cG1Vb0JmRlFzVm0xd2haVy1HZFJlSUFhZDdsYS1kVEg2ODhXLXBXWFI2VlRIU0ZsZGNSZ2RSajZFbXp6S3RNTUFYemFiRGZpRk1tMA?oc=5",
+     "published": "2026-11-23T08:56:54+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 18.108,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 2.0,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 0.686,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 11.422
+     },
+     "track": "",
+     "region": "gulf",
+     "entities": [],
+     "id": "c47be3663a"
+    },
+    {
+     "source": "Gulf News",
+     "source_type": "rss",
+     "title": "UAE launches mira, AI assistant for government services",
+     "summary": "",
+     "url": "https://gulfnews.com/uae/dubai/uae-launches-mira-ai-assistant-for-government-services-1.500757702",
+     "published": "2026-11-23T08:26:47+00:00",
+     "author": "Sajila Saseendran",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 17.784,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 2.0,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 0.683,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 11.101
+     },
+     "track": "",
+     "region": "gulf",
+     "entities": [],
+     "id": "b05e2f3f4b"
+    }
+   ],
+   "outlets": [
+    "Zawya",
+    "WAM",
+    "Arabian Business",
+    "Khaleej Times",
+    "Gulf News",
+    "ProPakistani",
+    "Yahoo Finance"
+   ],
+   "outlet_count": 7,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "gulf",
+    "inference"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-25T12:13:42+00:00",
+   "lead_score": 24.832,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "government",
+    "mira",
+    "service",
+    "uae"
+   ],
+   "id": "s7240",
+   "kind": "regional",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "Government service changes affect how businesses and residents handle permits and IDs"
+    },
+    "regional_consequence": {
+     "score": 3,
+     "reason": "UAE Government services are directly changed by the Mira assistant"
+    },
+    "evidence": {
+     "score": 3,
+     "reason": "WAM, Arabian Business, Khaleej Times and Gulf News report the launch"
+    },
+    "tension": {
+     "score": 1,
+     "reason": "Rollout timing and service scope remain open"
+    }
+   },
+   "regional_actor": "UAE Government",
+   "decision_frame": "data",
+   "short": {
+    "job": "explainer",
+    "fact": "The UAE's Mira AI assistant will first offer government services in March 2027, covering Emirates ID, visa and work permit renewals.",
+    "implication": "Businesses that handle these permits will need to plan for the switch to an AI assistant channel.",
+    "question": "Which of your company's government transactions would you trust an AI assistant to complete?"
+   },
+   "summary": "The UAE is launching Mira, an AI assistant for government services such as Emirates ID, visa renewals and work permits, with the first services due in March 2027.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 16,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (Zawya, WAM, Arabian Business, Khaleej Times)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": true,
+     "reason": "not on the kill list"
+    }
+   },
+   "override": "",
+   "slot": "deep",
+   "slot_reason": "by rank",
+   "position": 1,
+   "ref": 1
+  },
+  {
+   "title": "Trump's threat on AI data centres could be an opportunity for the Gulf",
+   "items": [
+    {
+     "source": "The National",
+     "source_type": "rss",
+     "title": "Trump's threat on AI data centres could be an opportunity for the Gulf",
+     "summary": "US President Donald Trump's threat to penalise American companies building data centres overseas could accelerate home-grown AI development in countries such as Saudi Arabia and the UAE, where billions of dollars are being invested in infrastructure. Recent turmoil at Nvidia and growing scrutiny of American chip exports have also highlighted the global implications of US technology policy uncertainty. On Friday, Mr Trump threatened to impose taxes on American companies building data centres overseas. US gives SpaceX approval for data centres in space Three days later, Jensen Huang was reinstated as Nvidia's chief executive following Mr Trump's intervention. Both developments highlight Washington's influence over who builds AI infrastructure and who can access the technology that powers it. Nvidia accounts for an estimated 40 per cent of capital spending by major cloud providers and about 80 per cent among other AI infrastructure operators, Mr Huang said in an interview with the BG2 podcast last month. In Abu Dhabi, the planned five-gigawatt UAE-US AI campus, expected to cost more than $30 billion, will house Stargate UAE , a one-gigawatt computing cluster bringing together G42, OpenAI, Oracle, Nvidia, Cisco and SoftBank. In Saudi Arabia, Public Investment Fund-owned AI company Humain expanded its partnership with Nvidia last month with plans for an 84-megawatt AI computing project. The company is targeting more than six gigawatts of data centre capacity by 2034. Last week, the US Department of Commerce introduced new export restrictions to prevent companies from bypassing chip controls through overseas data centres. Further scrutiny is expected when Democrats take control of Congress in January, with lawmakers pushing for tighter AI regulation. Meanwhile, the UAE, which joined the US-led Pax Silica initiative in January, was among nine US partners that pledged to safeguard sensitive AI technology earlier this month. Greater scrutiny of how American chips are used could work in the UAE's favour, said Chiara Spina, assistant professor of entrepreneurship and family enterprise at Insead. “Where the UAE has a competitive advantage would be instead in investing in data centres which proved to be extremely safe,” she told The National . David Bach, president of Swiss business school IMD, told The National that \"the unpredictability in US policy is a risk, but it's also a tremendous opportunity,” Businesses are regionalising digital services, much as they did…",
+     "url": "https://www.thenationalnews.com/future/technology/2026/11/26/trumps-threat-on-ai-data-centres-could-be-an-opportunity-for-the-gulf/",
+     "published": "2026-11-26T03:15:05+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.3,
+     "score": 23.15,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.5,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 1.192,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 6.0
+     },
+     "track": "models",
+     "region": "gulf",
+     "entities": [
+      "G42",
+      "Humain",
+      "NVIDIA",
+      "OpenAI",
+      "Together AI"
+     ],
+     "id": "e9521947b4"
+    },
+    {
+     "source": "Forbes",
+     "source_type": "rss",
+     "title": "Trump Data Center Tax: Why Gulf AI Needs Washington's Permission",
+     "summary": "Trump Data Center Tax: Why Gulf AI Needs Washington's Permission Forbes",
+     "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNai1Mbml4SElaOU9odDRwWjJ0UjVDcGE4Nmdic0hhaWVqOXZpNGZ0NmxGbzZ6dWVfbEQ1by12cXRDTkV6SWhOczdSdXhNTkFKb1FDT0pkS2VVbE9vd0pxcnNvN1JfUlotMnB2V3VkMVN3UDJwRzNBSzY1a3BjZFZBQkZPM1R0RWI0Y0ZhUzFaSkh6SXNGd0xQanhUWVg5TFJVYnR5S2NGZU9NZGtteU5tbmZieEhDQnZub1B6RFJXSWRYUl9HSzJnaUtKSmdDYkVXSUdCRFFERldaNjdIRndF?oc=5",
+     "published": "2026-11-21T18:41:06+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 9.806,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.499,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 7.755
+     },
+     "track": "models",
+     "region": "gulf",
+     "entities": [
+      "Humain"
+     ],
+     "id": "d7d63c9370"
+    }
+   ],
+   "outlets": [
+    "The National",
+    "Google News"
+   ],
+   "outlet_count": 2,
+   "tiers": [
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "gulf"
+   ],
+   "flagged": false,
+   "repeat": [],
+   "published": "2026-11-26T05:23:00+00:00",
+   "lead_score": 23.15,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "centre",
+    "gulf",
+    "trump"
+   ],
+   "id": "sa075",
+   "kind": "regional",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "A threatened tax on overseas data centres bears on Gulf investment and regulation choices"
+    },
+    "regional_consequence": {
+     "score": 2,
+     "reason": "Saudi Arabia and the UAE are named markets where the threat could change plans."
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "The National and Forbes report it, but the threat is a statement, not a rule"
+    },
+    "tension": {
+     "score": 3,
+     "reason": "Open question whether the threat becomes policy and how Gulf AI development responds"
+    }
+   },
+   "regional_actor": "Saudi Arabia and the UAE",
+   "decision_frame": "regulation",
+   "short": null,
+   "summary": "Trump threatened to tax American companies building data centres overseas, which The National says could accelerate home-grown AI development in Saudi Arabia and the UAE.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 15,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier B/C (The National, Google News)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": true,
+     "reason": "not on the kill list"
+    }
+   },
+   "override": "",
+   "slot": "deep",
+   "slot_reason": "by rank",
+   "position": 2,
+   "ref": 2
+  },
+  {
+   "title": "Jensen Huang 'honoured to return' to Nvidia less than two weeks after resignation",
+   "items": [
+    {
+     "source": "The National",
+     "source_type": "rss",
+     "title": "Jensen Huang 'honoured to return' to Nvidia less than two weeks after resignation",
+     "summary": "Jensen Huang is \"honoured\" to return to chip maker Nvidia, after the company's board of directors announced he was being brought back less than two weeks after his resignation. Mr Huang resigned after admitting to an extramarital affair with a technology executive whom US authorities believe was spying for China . He also faces accusations he knowingly circumvented US export laws designed to keep American AI and semiconductor technology out of China . Nvidia surges 30% after Jensen Huang reinstated as CEO \"I am honoured to return to Nvidia and lead one of the most consequential technology companies in the world at the beginning of a new industrial revolution,\" he said. \"I am grateful for the love and support of my family, I can’t wait to get back to work.\" Nvidia's share price leapt by roughly 30 per cent at market opening. US President Donald Trump, who has publicly encouraged Nvidia's board of directors to bring Mr Huang back, welcomed the decision. “On a personal note, I have gotten to know Jensen and he is a great patriot and national treasure,” Mr Trump posted on Truth Social. “Separately, Nvidia should continue its thorough internal investigation of the company’s compliance with US export controls in order to ensure that it is fulfilling its legal obligations and patriotic duty to protect US national security.” In an interview with CNBC on Monday, Mr Trump said that he had personally spoken with Nvidia's board of directors to try to convince them to bring Mr Huang back. \"The mistake has been corrected,\" technology tycoon Elon Musk, who had also pushed for Mr Huang's return to Nvidia, posted on X. Israeli Prime Minister Benjamin Netanyahu also weighed in on the news, boasting Nvidia's work with Israel's technology industry. \"Continuity in Nvidia's leadership is good news for that partnership and for the global AI industry,\" he said. OpenAI's chief executive Sam Altman, with whom Mr Huang and Nvidia have several business deals, congratulated Mr Huang. But hanging over Mr Huang's return is the lingering controversy related to his dealings with China. Democrats and Republicans in Congress have called for inquiries into Mr Huang and Nvidia's circumvention of US export laws. Media reports indicate that the Securities and Exchange Commission is conducting an investigation into the company's accounting practices and investor disclosures. “The SEC does not comment on the existence or non-existence of a possible investigation,” a representative for the…",
+     "url": "https://www.thenationalnews.com/news/us/2026/11/23/jensen-huang-statement-nvidia-returns-trump/",
+     "published": "2026-11-24T03:38:38+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 26.402,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.1,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.802,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 18.0
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA",
+      "OpenAI"
+     ],
+     "id": "8f025dd00d"
+    },
+    {
+     "source": "Reuters",
+     "source_type": "rss",
+     "title": "Huang's return to Nvidia brings open-weight AI debate to forefront in Washington",
+     "summary": "Huang's return to Nvidia brings open-weight AI debate to forefront in Washington Reuters",
+     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQcE80eU84aDZfY24tLUhfMURrVFZHdkt3UHZuNjcxOXA3MUdWU0ZXUV9Od0d2QUJUWVFtZEN4X19BekxhdUFzcUNlVFYtZVdiMHgtTEFPQWtxU2xIS2NwUW1HVzJkUjNRS2tiMkJEa1ltcG42enk0czYyQXNjN0xibUd1SFNGU3pzd1diLWxDcFlmUVVqUmRoNVJ5VzVDNUVmMDJNRmxTY2dJSjJ3MGk4UUNhTk9DaGNLQ1E?oc=5",
+     "published": "2026-11-24T23:59:28+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 24.61,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.2,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.95,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "4054838678"
+    },
+    {
+     "source": "CNN",
+     "source_type": "rss",
+     "title": "Tech stock sell-off deepens as AI fears outweigh Huang’s Nvidia return",
+     "summary": "Tech stock sell-off deepens as AI fears outweigh Huang’s Nvidia return CNN",
+     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQQ1FuS01WaVlhenhqc2I2M2hUckJlTm9fUjZ3N2ZjSmtTM3pCSkktYzlUM094TkV2NFROMjBseXlla2R3US1xRjh1QktLalI3dmVHZ2dpWGY4UEVXa2lKemFvX2doTXZ3d0FOTkV3NW5aYlZBWk9HZzhUa19aZW1GbWVmWFlvQQ?oc=5",
+     "published": "2026-11-25T14:02:14+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 22.876,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.068,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "56f14548d8"
+    },
+    {
+     "source": "The New York Times",
+     "source_type": "rss",
+     "title": "Live Updates: Huang’s Return to Nvidia Sparks Stock Rally and Lawmaker Skepticism",
+     "summary": "Live Updates: Huang’s Return to Nvidia Sparks Stock Rally and Lawmaker Skepticism The New York Times",
+     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNdnQ0LTNaSmJtV2pfeHlCZmVqWDM1QXU0TkZZcnYxS1JpTGozTVR2dVhfM013NUp2VWdoMmdFWjZtR0tUenJlOURYNGFtcmZwZjJrd2VnSjUxVnFoZk90bWhrV3d3NzNkTTlyNjM3NzZXaXZLUEdEWlV4ZGdEeUZQY0xZbzBnZUYz?oc=5",
+     "published": "2026-11-24T12:27:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 22.636,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.863,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "c8706c74aa"
+    },
+    {
+     "source": "BBC",
+     "source_type": "rss",
+     "title": "Trump faces backlash after saying he 'convinced' Nvidia to reinstate CEO Jensen Huang",
+     "summary": "Trump faces backlash after saying he 'convinced' Nvidia to reinstate CEO Jensen Huang BBC",
+     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBGLU9yX2djdGRQV01hM0llUENSZ0U3a1YzQU1WdWx5Z0dMMVJGUFduWkhJTjBxOHVVeE9SN1lyaE1sNjdJYWVENzhrRUJ2cXNUZEZHaUpRUHE0UXM?oc=5",
+     "published": "2026-11-24T10:53:37+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 22.623,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.852,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "da5cde5bb2"
+    }
+   ],
+   "outlets": [
+    "The National",
+    "Egypt Independent",
+    "Reuters",
+    "Saudi Gazette",
+    "Wired Middle East",
+    "CNN",
+    "Google News",
+    "The New York Times",
+    "BBC",
+    "Bloomberg",
+    "CNBC",
+    "Wall Street Journal",
+    "Arabian Business",
+    "Gulf News",
+    "Khaleej Times",
+    "Dawn",
+    "Business Recorder",
+    "Daily Sabah",
+    "Gulf Business",
+    "Asharq Al-Awsat",
+    "Zawya",
+    "Hürriyet Daily News",
+    "Jordan Times",
+    "Webrazzi",
+    "NPR",
+    "Business Insider",
+    "Investor's Business Daily",
+    "Tom's Hardware"
+   ],
+   "outlet_count": 28,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "makers"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-26T21:07:25+00:00",
+   "lead_score": 26.402,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "huang",
+    "jensen",
+    "nvidia"
+   ],
+   "id": "sa290",
+   "merged": [
+    "The Trump team is getting more and more evasive about Jensen Huang"
+   ],
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "Leadership and export-law exposure at a key chip supplier bears on supply planning"
+    },
+    "regional_consequence": {
+     "score": 1,
+     "reason": "No Gulf, Levant, Türkiye or African actor is named"
+    },
+    "evidence": {
+     "score": 3,
+     "reason": "Reuters, BBC, NYT and CNN all report the reinstatement"
+    },
+    "tension": {
+     "score": 3,
+     "reason": "Reinstatement is disputed in Washington over export-law allegations and a reported espionage link"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "risk",
+   "short": null,
+   "summary": "Nvidia's board reinstated Jensen Huang less than two weeks after his resignation, and US lawmakers are questioning the move while its shares moved sharply.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 14,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (The National, Egypt Independent, Reuters, Saudi Gazette)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": true,
+     "reason": "not on the kill list"
+    }
+   },
+   "override": "",
+   "slot": "deep",
+   "slot_reason": "by rank",
+   "position": 3,
+   "ref": 3
+  },
+  {
+   "title": "Nvidia chip buyers told to rule out Chinese renters to buy GPUs, sources say",
+   "items": [
+    {
+     "source": "CNBC",
+     "source_type": "rss",
+     "title": "Nvidia chip buyers told to rule out Chinese renters to buy GPUs, sources say",
+     "summary": "Nvidia chip buyers told to rule out Chinese renters to buy GPUs, sources say CNBC",
+     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1ydHdQWUpYRU16SjgyRXBibzZ6UFN4RThEMUV3VkRJV0NCNmk1Nm1wTFlvTnpsLS1VVHdmczlIQjZRN0RKZnlBdm5oSmFUY0lCaWV5dTY2bDBiRHcyV0lfMjk3ZS1TQW1oM3F0TTJFRdIBdEFVX3lxTE1hb0dnX1V6U3RzcVduQUhNcHBONFFMMVVaaThOcEc5dy1EOVMwUXBVM1lSMWljNm12aTJXT0FvMWdkaUdyTEZyZGY0dHJ0R3kxQllKQ2RaMl9MYmxIY2pHcTh6TWVDRkhCSkVqUVUtbVFOam81?oc=5",
+     "published": "2026-11-26T15:34:08+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 23.558,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.321,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 16.279
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "dab21b3101"
+    },
+    {
+     "source": "Reuters",
+     "source_type": "rss",
+     "title": "EXCLUSIVE: US chip curbs, distillation crackdown threaten Chinese AI model development, sources say",
+     "summary": "EXCLUSIVE: US chip curbs, distillation crackdown threaten Chinese AI model development, sources say Reuters",
+     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQSHo5VjlHR1l4UkdCSmFGNUd6WVlZNXlwZXl6Yk5oYUFnTm9ISC1ZSWdmbi1aZ3R1b1Q3bXhpaXVoSXRaNy1hcWdSWHdCd2RFVGx6WlhYN25pZXI4Q2xHWGpQVkJYN2MwTk1ma2NERnBKTHhBUXpHSElLeFdwdEpVZFZZcWhxMm1QUEVpeHRYSXczYXNJelJTUWtHdEkxSGpud2NxeV90R0VjTXVkTmE4U0JRZWVRM1RFUmt3UGhIbw?oc=5",
+     "published": "2026-11-26T07:19:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.167,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.233,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 14.863
+     },
+     "track": "models",
+     "region": "cn",
+     "entities": [
+      "Moonshot AI",
+      "Zhipu AI"
+     ],
+     "id": "75529b48bd"
+    },
+    {
+     "source": "Asharq Al-Awsat English",
+     "source_type": "rss",
+     "title": "Trump Rewrites the Lame-Duck Rules with Flex on Nvidia CEO",
+     "summary": "",
+     "url": "https://english.aawsat.com/node/5344931",
+     "published": "2026-11-24T06:52:36+00:00",
+     "author": "author",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 20.203,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.824,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 16.279
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "d2b742b22e"
+    },
+    {
+     "source": "Khaleej Times",
+     "source_type": "rss",
+     "title": "What is NVIDIA RTX Spark? Everything you need to know before you buy the new RTX laptop",
+     "summary": "What is NVIDIA RTX Spark? Everything you need to know before you buy the new RTX laptop Khaleej Times",
+     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPaWNfbkpxWURlSjZXMWpNMnIyTVJfWElCc2hyWHEwTE1FamtXcERGa0wyZnBOUlMtUTQ5bnZTU0k1U3p5OXV1OGpSczhKQ3N1T1dYRjRaTGJXX3NLUHF2Ym5nZ2xoQk5KS29iVWNpREF1ZTItN3M3aUU2ZUsyVVNHOW96dDNFM0x0QlpYNTNlQVhEZUdVYnJDR0JxUE1CMFBsdDhScEJMVlVzaUJ3NnpyM3NnSEprZVFJcEpQU1o0MFFBNmhUSTJkbtIB0AFBVV95cUxPTHhzNmE2OHVDX0lIbFRoWUo2Z29MX0U1ZmVXTnNSaHBkcXUwUkY3N1cxU3huakJub3EwUDhIUlZwNWNsSW41cTVXbUpUQ2VoYWVveEFEMUhJY1RuX2ltYWdGTjlGR29rM1h6NmRYS0RoM1puMjV0TGcyTEt6V1FkYTYwSVZmQzF1M0NiT2hIUWhDbV9hU3diLXNKWHhZcVNJNTFiX3Q0NFpHYlJyZkl4VHlGcmRnVkR0dEpqQzEzMVZXaFJpa3RSVGFZRl9iempJ?oc=5",
+     "published": "2026-11-20T12:09:04+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 18.487,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.387,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 15.0
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "2fc9915035"
+    },
+    {
+     "source": "Anadolu Ajansı",
+     "source_type": "rss",
+     "title": "US-based but Chinese-owned firms buy Nvidia’s most advanced AI chips: Report",
+     "summary": "US-based but Chinese-owned firms buy Nvidia’s most advanced AI chips: Report Anadolu Ajansı",
+     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPck5lMm83LTBidWFpR3NvSURRTk45eWNXMmozWC1lMkhLRDN0S1hvX1NaOHl3dkZxNzA3NXpIQkJaNmZHSGZ4TVI1czkta3drLWVWUmh5QmVjRW5ybTRQbHJKa2ZyV2pqM0tDdXBzSEN5SGVtalc1UkRVcFJ3eTlOOUtnN0RCVUlkMldwT0ZxWjNlanFfRk9JQWtaTnprMGNNeVVaOG41MmFrRm9wdG1RckEyZXlVOVU0?oc=5",
+     "published": "2026-11-26T17:23:25+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 9.087,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.341,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 17.101,
+      "repeat": -13.631
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "4f08ed63df"
+    }
+   ],
+   "outlets": [
+    "CNBC",
+    "Asharq Al-Awsat",
+    "Reuters",
+    "Google News",
+    "Khaleej Times",
+    "Anadolu Agency",
+    "Egypt Independent"
+   ],
+   "outlet_count": 7,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "makers"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-26T22:54:44+00:00",
+   "lead_score": 23.558,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "nvidia"
+   ],
+   "id": "s3f25",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "Chip-buyer screening and export curbs bear on compliance and sourcing decisions"
+    },
+    "regional_consequence": {
+     "score": 1,
+     "reason": "No Gulf, Levant, Türkiye or African actor is named"
+    },
+    "evidence": {
+     "score": 1,
+     "reason": "Reports rest on unnamed sources, which the criteria score low."
+    },
+    "tension": {
+     "score": 3,
+     "reason": "Export curbs set against Chinese model development and compliance demands"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "regulation",
+   "short": null,
+   "summary": "According to CNBC sources, Nvidia chip buyers were told to rule out Chinese renters, and Reuters sources say US chip curbs and a distillation crackdown threaten Chinese AI model development.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 12,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (CNBC, Asharq Al-Awsat, Reuters, Google News)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": true,
+     "reason": "not on the kill list"
+    }
+   },
+   "override": "",
+   "slot": "quick",
+   "slot_reason": "by rank",
+   "position": 4,
+   "ref": 4
+  },
+  {
+   "title": "Anthropic (ANT) Puts Claude Into Enterprise Security As Its AI Builds Successors",
+   "items": [
+    {
+     "source": "Yahoo Finance",
+     "source_type": "rss",
+     "title": "Anthropic (ANT) Puts Claude Into Enterprise Security As Its AI Builds Successors",
+     "summary": "Anthropic PBC (NasdaqGS:ANT) has integrated its Claude Mythos 5.1 model into Zscaler Endpoint AI Security for enterprise threat detection. Anthropic and Zscaler report that Claude Mythos 5.1 now supports next generation endpoint analysis for corporate cybersecurity teams. Cofounder Jack Clark says Anthropic's Claude system autonomously designs successor models, which he describes as evidence that the Singularity has arrived. The combination of Claude Mythos 5.1 in Zscaler security tools and Claude self improvement only captures part of Anthropic's current story. Check out 1 major warning sign that Anthropic PBC investors should know about. For investors watching how enterprise AI security and autonomous model development intersect, it can help to compare Anthropic with wider peers through 41 AI small caps . Anthropic PBC develops large scale Claude AI systems for commercial use. This cybersecurity push shows how the US software group is trying to embed its models directly into enterprise workflows where reliability, governance and constant model refinement matter as much as raw capability. See which insiders are buying and selling Anthropic PBC following this latest news. For Anthropic PBC investors, this update leans into two very different catalysts. Claude Mythos 5.1 inside Zscaler's Endpoint AI Security backs the case that Anthropic's models are being used for concrete, high stakes work, which supports the existing thesis around enterprise adoption and real workloads. Jack Clark's claim that Claude now designs successor models, framed as evidence that the Singularity has arrived, puts pressure on a different front: governance, model oversight, and how public markets price extremely fast, partly autonomous improvement in a stock that has already seen sharp swings and is described as highly illiquid. From here, the key reference point is Anthropic's first full quarter of reported results as a public company that includes this Zscaler collaboration. Pay close attention to disclosed enterprise security customer metrics and any commentary on Claude Mythos usage, since those figures will show how much this kind of deployment is feeding into the high revenue growth investors are already assuming. Add Anthropic PBC to your Watchlist and get alerts as these catalysts play out. This article is general in nature and was produced with the assistance of AI automation, based on data and analysis from Simply Wall St. We provide commentary based on historical data…",
+     "url": "https://finance.yahoo.com/technology/ai/articles/anthropic-ant-puts-claude-enterprise-180702342.html",
+     "published": "2026-11-22T18:07:02+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 24.744,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 10.9,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.606,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 17.721
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "2625ea3372"
+    },
+    {
+     "source": "Amazon Nova",
+     "source_type": "rss",
+     "title": "Introducing the Amazon Bedrock Trusted Access API, with Enterprise Frontier Safeguards and Enterprise Data Controls for Claude models",
+     "summary": "Today we are announcing the general availability of the trusted access program API on Amazon Bedrock . The API gives you one place to discover, request, and enroll in model provider trusted access programs. We are also announcing the public preview of the first two offerings for Claude models: Enterprise Frontier Safeguards (EFS) and Enterprise Data Controls (EDC). Both are available on Amazon Bedrock, including Claude Fable, Claude Mythos, and Claude Opus 5.5 and Sonnet 5.5 used through the Cyber Verification Program (CVP). Frontier AI labs require stricter safety monitoring policies to their most capable models, and those policies still apply on Amazon Bedrock. For eligible customers, model providers also offer customers more control on how those policies are met, such as where retained data is stored and how it is reviewed. Each offering has its own terms, approvals, and settings. The Amazon Bedrock trusted access program API gives every provider offering one consistent Amazon Bedrock experience. Your teams discover offerings, check eligibility, and enroll in the same way for every provider. Your administrators decide who can enroll, using existing IAM policies and service control policies. As more model providers add offerings, those appear in the same place. EFS and EDC were built in partnership between AWS and Anthropic. They let you access Anthropic’s most capable models safely, from both a model use and a customer data perspective. With both EFS and EDC, when automated safety monitoring finds a risk, it creates a Safety Case for your team to review. With EFS, customers store their data in their own AWS account, and prompts and completions are not retained by Anthropic or Amazon Bedrock. With EDC, retained data is stored in Amazon-managed storage instead of your account and prompts and completions are not retained by Anthropic. One application gives access to both offerings. In this post, we explain how the trusted access program API works, then walk through EFS and EDC storage options and setup. How trusted access programs work A trusted access program is a named provider program that gives customers more control of safety reviews and access to model capabilities in exchange for accepting the program’s terms. Amazon Bedrock trusted access program API now gives you one place to find the model and use case programs available to your account. EFS and EDC are the first offerings available today. Offerings that providers add later appear in the same…",
+     "url": "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/",
+     "published": "2026-11-24T05:01:14+00:00",
+     "author": "Dani Mitchell",
+     "engagement": 0,
+     "source_weight": 1.2,
+     "score": 11.796,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 8.9,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.811,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 12.0,
+      "repeat": -17.693
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Amazon Nova",
+      "Anthropic"
+     ],
+     "id": "25e97c2ec0"
+    },
+    {
+     "source": "Webrazzi",
+     "source_type": "rss",
+     "title": "Anthropic, Claude ile oluşturulan araçları masaüstü uygulamasına dönüştürüyor",
+     "summary": "Yapay zeka şirketi Anthropic , Claude üzerinden oluşturulan araçları masaüstü uygulamalarına dönüştürmeyi sağlayan yeni özelliğini duyurdu . Install as app adı verilen özellik sayesinde kullanıcılar, Claude'un Artifacts özelliğiyle hazırladıkları araçları Mac ve Windows bilgisayarlarına uygulama olarak yükleyebiliyor. Yeni özellik, beta sürümüyle kademeli olarak kullanıma sunuluyor. Claude'un Artifacts özelliği , kullanıcıların yapay zeka yardımıyla etkileşimli araçlar, web sayfaları ve farklı içerikler oluşturmasına olanak tanıyor. Yeni güncellemeyle birlikte bu araçlar artık yalnızca Claude'un içinde çalışmakla sınırlı kalmıyor. Kullanıcılar, oluşturdukları araçları kendilerine ait simgeleri bulunan ve ayrı pencerelerde açılan masaüstü uygulamalarına dönüştürebiliyor. Üstelik uygulama oluşturmak için yazılım paketleme veya dijital imzalama işlemlerine gerek duyulmuyor. Kullanıcıların uygulamanın ne yapmasını istediklerini Claude'a anlatmaları, oluşturulan aracı denemeleri ve ardından Install as app seçeneğini kullanmaları yeterli oluyor. Oluşturulan uygulamalar bilgisayardaki dosyalara erişebiliyor Bu yeni özellikle hazırlanan uygulamalar, kullanıcıların izin vermesi halinde bilgisayarın işletim sistemiyle etkileşime geçebiliyor. Uygulamalar bildirim gönderebiliyor, klavye kısayollarını kullanabiliyor ve Mac'in menü çubuğuna veya Windows'un sistem tepsisine yerleştirilebiliyor. Ayrıca oluşturulan uygulamalar Claude'un yapay zeka yeteneklerinden ve kullanıcının bağladığı hizmetlerden yararlanabiliyor. Kullanıcılar Artifacts üzerinde değişiklik yaptığında masaüstü uygulaması da otomatik olarak güncelleniyor. Anthropic, yeni özelliğin kullanım alanlarını göstermek için farklı örnekler de paylaştı . Bunlar arasında katmanlı bir görsel düzenleme aracı olan Linnet, dosya yöneticisi Phosphor, klasörleri düzenlemeye yardımcı olan Sift ve bilgisayarın performansını takip eden Vitals bulunuyor. Şirket ayrıca Claude destekli terminal uygulaması Tern'i de örnek olarak gösteriyor. Uygulamalar için üç farklı izin seviyesi bulunuyor Anthropic, bilgisayara yüklenen uygulamalar için üç farklı izin seviyesi sunuyor. Varsayılan izin seviyesinde uygulamalar yalnızca bir web tarayıcısında gerçekleştirebilecekleri işlemleri yapabiliyor. İkinci seviyede bildirim gönderme, klavye kısayollarını kullanma ve diğer pencerelerin üzerinde görüntülenme gibi ek özelliklere erişim sağlanabiliyor. Tam erişim izni verilen uygulamalar ise bilgisayardaki dosyaları okuyabiliyor,…",
+     "url": "https://webrazzi.com/2026/11/25/anthropic-claude-ile-olusturulan-araclari-masaustu-uygulamasina-donusturuyor/",
+     "published": "2026-11-25T08:45:00+00:00",
+     "author": "Tuğçe İçözü",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 21.632,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.022,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 15.51
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "ca8799e0e4"
+    },
+    {
+     "source": "Dawn",
+     "source_type": "rss",
+     "title": "'We don't want to die': Protesters slam Claude creator Anthropic after IPO debut",
+     "summary": "'We don't want to die': Protesters slam Claude creator Anthropic after IPO debut Dawn",
+     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQVDVkVWw3UFB5TkYwT1djdWJYT200cFJtNkpMb0oyd0NpelJlRzBaejZsODR3UkVaOWduZ0thcTRZMlZzanVDaVlTXy1DMm1UczUxbFoyOWdNcF9Memt0VWtmeXNZam9vQ0NVMUNzX0ljZ2EyWVVuOGs4Vy1ldE1Za3RVLS1GaDE0aEFrcUd4NGE5S0g2dWRfMHVwdlJlanA4blVHbl9SUDZZQ2MtUTUw?oc=5",
+     "published": "2026-11-20T14:46:57+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 10.598,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.395,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 18.0,
+      "repeat": -15.897
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "1d04a8973d"
+    },
+    {
+     "source": "Coinpaper",
+     "source_type": "rss",
+     "title": "Why Is Anthropic Stock Falling Today? ANT Drops 3% Despite Massive AI Stock Rally",
+     "summary": "Anthropic stock ( NASDAQ: ANT ) came under renewed pressure on November 23, with shares reportedly falling approximately 3% even as Nvidia, CoreWeave and other artificial intelligence stocks staged a sharp recovery. The divergence comes just four days after Anthropic completed the largest initial public offering in Wall Street history. ANT closed Friday at $88.91, down 8.5% for the session and nearly 23% below its November 19 trading debut at $111.50. The decline has complicated expectations that Anthropic's record-breaking IPO would revive enthusiasm across the technology sector. Meanwhile, Nvidia's rebound following Jensen Huang's return as CEO has helped lift semiconductor and AI infrastructure stocks, leaving Anthropic's relative weakness particularly noticeable. Anthropic's public debut initially generated extraordinary investor demand. According to the company's November 20 announcement , the offering raised approximately $93.5 billion in gross proceeds, including shares sold through the underwriters' additional purchase option. The company sold shares at $83, but ANT opened at $111.50 on November 19 before climbing to an intraday peak of $115.10. Shares closed Thursday at $97.17 before falling another 8.5% on Friday. The earlier 10% premarket selloff reflected growing concerns that investors had paid too much for exposure to the Claude developer. The stock's proximity to its offering price leaves little of the initial market premium intact, even though investors who purchased directly at $83 remain above their entry price. Monday's broader AI rebound followed Nvidia's decision to reinstate Jensen Huang as chief executive, reversing a board decision made six days earlier. Nvidia shares surged in premarket trading, while AMD, Micron and CoreWeave also recovered after last week's historic AI stock selloff . Anthropic faces a different set of immediate challenges. Its IPO established a valuation exceeding $1 trillion, making expectations for future revenue growth and profitability particularly demanding. The company also disclosed substantial long-term infrastructure commitments. Its prospectus outlines extensive computing arrangements, while investors must evaluate whether future AI revenue can support those obligations. Another distinction involves Anthropic's shareholder structure. Nvidia, AMD, Broadcom, Micron and several other technology companies purchased approximately $26 billion in Anthropic shares through a concurrent private placement at the…",
+     "url": "https://coinpaper.com/39280/why-is-anthropic-stock-falling-today-ant-drops-3-despite-massive-ai-stock-rally",
+     "published": "2026-11-23T14:43:20+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.885,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.1,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.72,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 16.932
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "AMD",
+      "Anthropic",
+      "Broadcom",
+      "NVIDIA"
+     ],
+     "id": "185b32dc2f"
+    }
+   ],
+   "outlets": [
+    "Yahoo Finance",
+    "Webrazzi",
+    "Coinpaper",
+    "The Motley Fool",
+    "Google News",
+    "Dataconomy",
+    "Amazon",
+    "Dawn",
+    "Foreign Policy Journal",
+    "Unite.AI",
+    "Benzinga"
+   ],
+   "outlet_count": 11,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "us"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-26T19:50:02+00:00",
+   "lead_score": 24.744,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "anthropic"
+   ],
+   "id": "sa79a",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "Enterprise security and data controls for Claude on Bedrock bear on vendor choice"
+    },
+    "regional_consequence": {
+     "score": 1,
+     "reason": "Amazon Bedrock and Zscaler are named, but no regional market is"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "Yahoo Finance, Amazon's own blog, Dawn and Coinpaper; the mix is uneven"
+    },
+    "tension": {
+     "score": 2,
+     "reason": "Security gains set against protests and a cofounder's claims about self-designing models"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "risk",
+   "short": null,
+   "summary": "Anthropic's Claude Mythos 5.1 is now in Zscaler's endpoint security product, and Amazon Bedrock has added a trusted access API with Claude safeguards.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 12,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (Yahoo Finance, Webrazzi, Coinpaper, The Motley Fool)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": true,
+     "reason": "not on the kill list"
+    }
+   },
+   "override": "",
+   "slot": "quick",
+   "slot_reason": "by rank",
+   "position": 5,
+   "ref": 5
+  },
+  {
+   "title": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+   "items": [
+    {
+     "source": "www.wam.ae",
+     "source_type": "rss",
+     "title": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+     "summary": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes www.wam.ae",
+     "url": "https://www.wam.ae/en/article/17jk87m-anthropic-launches-claude-ship-letting-agents",
+     "published": "2026-11-24T23:43:16+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 31.582,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 8.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.948,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "af1edeac1a"
+    },
+    {
+     "source": "NPR",
+     "source_type": "rss",
+     "title": "Anthropic says it will put humanity first. Will its IPO change that?",
+     "summary": "Dario Amodei, CEO of Anthropic, is seen on video outside the Nasdaq MarketSite in Times Square as shares begin trading after the company's IPO on Nov. 19, 2026. Critics say now that the AI giant is a public company, its commitment to put safety first will be tested. Michael M. Santiago/Getty Images hide caption As Anthropic executives and co-founders gathered to celebrate the artificial intelligence company's market debut at the Nasdaq stock exchange on Thursday, CEO Dario Amodei spoke about AI's potential benefits, and risks, to humanity. \"There is a gigantic difference between how AI will go if we pay little attention to safety versus how it will go if we are obsessed with safety,\" Amodei said before ringing the ceremonial opening bell. \"And an obsession with safety and public benefit has been built into Anthropic's DNA from the start.\" Anthropic raised a record $81.3 billion from the IPO and a further $26 billion through a separate private placement, surpassing SpaceX and vaulting into the ranks of publicly traded companies worth more than $1 trillion. The company has built its reputation on the promise that developing safe AI matters more than winning the race for commercial dominance. It has cultivated an image as an AI safety pioneer, presenting itself as a company willing to put humanity's long-term interests ahead of industry competition. But now that Anthropic is a public company, that commitment faces a new test. The IPO has brought in new investors, greater scrutiny and pressure to deliver returns to shareholders. Some critics question whether the company can stay true to its founding mission. The commercial demands of being a public company may cloud safety decisions that could negatively impact the company's share price, such as delaying the release of potentially risky models, legal experts told NPR. Anthropic's concerns about AI safety are not merely part of its public messaging. Amodei has repeatedly warned about the potential threats advanced AI models pose to humanity, particularly if they escape the control of their developers. The company's IPO prospectus echoed those concerns, warning that \"sufficiently advanced AI systems could pose catastrophic or existential risks to society if not developed and deployed responsibly.\" Anthropic also acknowledged that it may ultimately lose control of its own models. \"There can be no assurance, however, that the safeguards or access regimes we adopt will prove adequate, that we will correctly…",
+     "url": "https://www.npr.org/2026/11/21/nx-s1-6048678/anthropic-ipo-mission-ai-safety",
+     "published": "2026-11-21T10:00:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 10.74,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.464,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0,
+      "repeat": -16.11
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "82ffb68447"
+    },
+    {
+     "source": "TechCrunch",
+     "source_type": "rss",
+     "title": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+     "summary": "Anthropic is moving from having Claude write code to helping developers decide when that code is ready to ship. On Monday, the newly public AI company announced the launch of Claude Ship , a suite of AI agents for automating code reviews, fixes, and approvals of routine code changes. The latter is the more interesting part of this new set of tools, as AI coding tools already offered code review features before now. What’s notable about Claude Ship is not just that it can review proposed code changes and identify and address problems, but that it also includes an agent that can approve code changes automatically based on policies set by a development team. The launch arrives at a time when AI coding agents have become increasingly capable of generating substantial amounts of code, leading to bottlenecks in reviewing and approving the code changes before they go live. With Claude Ship, the idea is to automate even more of the work involved in the development process, essentially by delegating approval authority to an AI agent itself. “Most teams want a person to approve every change, and that’s easy to keep up with when people write every line. But a lot of developers build with agents now,” a company blog post explains. “On the Claude Code team, Claude writes most of our code, and we wanted everything after the PR to move that fast too.” Claude Ship is launching in beta, allowing early adopters to use it to review pull requests (PRs), and then decide what’s ready to merge. The new offering consists of Code Review, which is already generally available , and two new agents now in beta: PR Steward and Claude Approvals. PR Steward focuses on addressing issues such as failing CI checks, merge conflicts, and feedback from Code Review. It also comments after every push on what it changed and how to roll it back, if needed. Claude Approvals then applies an approval policy that the team writes as a file in the repository. This approval process can incorporate various signals, including Code Review findings or the company’s own classifiers, with policies written in natural language. Because the offering is still in beta, Anthropic suggests running the approval functionality in observe-only mode first. Teams can also choose to start with just one repository and set monthly spending limits to have more control over the process. Anthropic says teams will also still remain in control of where Claude Ship runs, which review settings to use (e.g., Quick, Standard, or…",
+     "url": "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+     "published": "2026-11-23T22:05:50+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 28.319,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 9.2,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.765,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 18.0
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic",
+      "Claude Code"
+     ],
+     "id": "27065c561f"
+    },
+    {
+     "source": "SiliconANGLE",
+     "source_type": "rss",
+     "title": "Anthropic’s Claude Ship automates the final stage of the software development pipeline",
+     "summary": "Anthropic’s Claude Ship automates the final stage of the software development pipeline SiliconANGLE",
+     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQZW1lVUlfZE4tanNVU2k2aENXenBEWFY2eGRQTnNLbkZGMmRRMWxraTZYMktpSExXbnBWX252OHVHc1hfT1ZtTFpoRU93WGVUTy15dHJ1U292VXZmd1IxMXV6Y29SWi1CVFIzYkYtZTlpc3dRZlBwN2Y4aUF1NFFfN0FKa0dkXzFlZ1piLVZDUVJiNVgzQl9iX2h0RUVORW5OX1NLcGE3QW1UNDZRODdhVVFfRThfWGFKR2ZrMWtRYw?oc=5",
+     "published": "2026-11-24T01:30:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 22.143,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.788,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 16.844
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "1a0218a109"
+    },
+    {
+     "source": "Webrazzi",
+     "source_type": "rss",
+     "title": "Anthropic, kod değişikliklerini inceleyip onaylayan Claude Ship'i tanıttı",
+     "summary": "Yapay zeka şirketi Anthropic, yazılım geliştirme süreçlerini hızlandırmayı hedefleyen yeni aracı Claude Ship'i tanıttı . Yapay zeka ajanlarından oluşan sistem, geliştiricilerin hazırladığı kod değişikliklerini inceleyebiliyor, tespit edilen sorunları düzeltebiliyor ve ekiplerin belirlediği kurallara uygun değişiklikleri otomatik olarak onaylayabiliyor. Beta sürümüyle kullanıma sunulan Claude Ship , özellikle yapay zeka destekli kod geliştirme araçlarının yaygınlaşmasıyla ortaya çıkan inceleme ve onay süreçlerini hızlandırmayı amaçlıyor. Geliştiricilerin daha kısa sürede daha fazla kod üretebilmesine rağmen bu değişikliklerin kontrol edilmesi ve onaylanması, yazılım geliştirme sürecinde zaman alabiliyor. Anthropic, Claude Ship ile kodun yazılmasının ardından başlayan bu işlemleri de yapay zeka ajanlarına devretmeyi hedefliyor. Sistem, GitHub üzerindeki kod değişikliği taleplerini (pull request) inceleyerek gerekli düzeltmeleri yapabiliyor ve belirlenen koşullar karşılandığında onay verebiliyor. Claude Ship nasıl çalışıyor? Claude Ship, Code Review, PR Steward ve Claude Approval s olmak üzere üç bileşenden oluşuyor. Halihazırda genel kullanıma açık olan Code Review, kod değişikliklerini mevcut yazılımın bütünüyle karşılaştırarak olası hataları, güvenlik açıklarını ve diğer sorunları tespit etmeye odaklanıyor. Elde ettiği bulguları değerlendirerek geliştiricilere iletiyor. Kullanıcılar, incelemenin kapsamını Quick, Standard ve Deep seçenekleri arasından belirleyebiliyor. Beta aşamasındaki PR Steward ise tespit edilen sorunların giderilmesine yardımcı oluyor. Araç, otomatik testlerdeki başarısızlıkları, kod değişiklikleri arasındaki çakışmaları ve ekip üyelerinden gelen geri bildirimleri ele alıyor. Yaptığı her değişikliğin ardından hangi işlemleri gerçekleştirdiğini ve gerektiğinde bunların nasıl geri alınabileceğini açıklıyor. PR Steward'ın kod değişikliklerini kendi başına onaylama veya ana kodla birleştirme yetkisi bulunmuyor. Sistemin en dikkat çekici bileşeni olan Claude Approvals ise kod değişikliklerinin onaylanmasını otomatikleştiriyor. Geliştirme ekipleri, belirledikleri kuralları proje dosyasında tanımlayabiliyor. Claude Approvals, bu kurallara göre rutin değişiklikleri otomatik olarak onaylayabiliyor. Aynı şekilde Claude Approvals'ın daha kapsamlı değerlendirme gerektiren değişiklikleri insan onayına yönlendirebildiğini de ekleyelim. Bununla birlikte Claude Ship'in verdiği onay, kodun doğrudan ana projeye ekleneceği anlamına gelmiyor. Kod…",
+     "url": "https://webrazzi.com/2026/11/24/anthropic-kod-degisikliklerini-inceleyip-onaylayan-claude-shipi-tanitti/",
+     "published": "2026-11-24T09:00:00+00:00",
+     "author": "Tuğçe İçözü",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 22.115,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.838,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 16.177
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "f7bd62353a"
+    }
+   ],
+   "outlets": [
+    "WAM",
+    "TechCrunch",
+    "Google News",
+    "SiliconANGLE",
+    "Webrazzi",
+    "Industrial Cyber",
+    "NPR",
+    "Yahoo Finance"
+   ],
+   "outlet_count": 8,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "us"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-27T03:56:11+00:00",
+   "lead_score": 31.582,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "anthropic",
+    "claude",
+    "code",
+    "ship"
+   ],
+   "id": "sd7be",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "A code-review and approval agent bears on build-or-buy choices for engineering teams"
+    },
+    "regional_consequence": {
+     "score": 1,
+     "reason": "No regional actor is named; only a Turkish-language outlet covers it"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "Four outlets including TechCrunch and SiliconANGLE; no primary document beyond company statements."
+    },
+    "tension": {
+     "score": 1,
+     "reason": "Limited open question beyond how far automated approval can be trusted"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "buy_build_partner",
+   "short": null,
+   "summary": "Anthropic launched Claude Ship, a beta suite of AI agents that review, fix and approve routine code changes under rules set by teams.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 11,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (WAM, TechCrunch, Google News, SiliconANGLE)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": true,
+     "reason": "not on the kill list"
+    }
+   },
+   "override": "",
+   "slot": "quick",
+   "slot_reason": "by rank",
+   "position": 6,
+   "ref": 6
+  },
+  {
+   "title": "CrowdStrike to buy Zscaler in $44 billion deal as AI supercharges cyberattacks",
+   "items": [
+    {
+     "source": "CNBC",
+     "source_type": "rss",
+     "title": "CrowdStrike to buy Zscaler in $44 billion deal as AI supercharges cyberattacks",
+     "summary": "CrowdStrike plans to buy Zscaler for $43.9 billion in an all-stock deal that combines two significant security businesses at a time when artificial intelligence is supercharging attacks. Shares of CrowdStrike dropped 9% on Monday, while Zscaler surged nearly 18%. The deal is expected to close in the second half of CrowdStrike's fiscal year 2028. Under the agreement, Zscaler shareholders will receive 1.135 CrowdStrike shares for each share. CrowdStrike's acquisition pushes the Austin, Texas-based cyber vendor into the network security market and comes amid a massive year for cybersecurity deal-making in the wake of high-profile hacks like Hugging Face. \"With Zscaler, we're building cybersecurity's operating system: a single control plane to deploy AI, control AI, and enable any agentic application to run safely,\" CrowdStrike CEO George Kurtz said in a statement. \"We see a path to become the largest AI safety and security company the world has ever seen.\" Recent outages affecting Microsoft, the Federal Aviation Administration and JPMorgan Chase have sparked anxiety as businesses accelerate software patching and upgrades to aging systems in an effort to prevent bad actors from exploiting software vulnerabilities with AI. CrowdStrike has been a major beneficiary of skyrocketing demand for AI security, with shares soaring about 80% this year as of Monday's open. Zscaler shares are up about 5% year to date after Monday's surge. Their combined market value exceeded $265 billion as of Friday's close, behind market leader Palo Alto Networks at $282 billion. The deal marks CrowdStrike's biggest acquisition to date and is among the largest in the sector as businesses consolidate and ramp up defenses to fend off AI-powered attacks. Last year, Google announced plans to acquire Wiz for $32 billion. In 2024 Cisco shelled about $28 billion for Splunk. Competitor Palo Alto Networks has also spent billions on several cyber and AI businesses, including startup Applied Compute and a $25 billion deal for CyberArk, which it closed earlier this year. Analysts view the Zscaler deal as a major AI security opportunity, allowing CrowdStrike to capture more customer security spending and close a significant gap with Palo Alto. \"The addition of ZS to CRWD's platform could bring more breadth in an era of vendor consolidation and, more importantly, network security to position the company more effectively for rising demand for AI Sovereignty,\" wrote analysts at JPMorgan. CrowdStrike on…",
+     "url": "https://www.cnbc.com/2026/11/23/crowdstrike-zscaler-aquisition-ai-cyberattacks.html",
+     "published": "2026-11-23T14:38:45+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 23.737,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 5.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.719,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 15.262
+     },
+     "track": "",
+     "region": "",
+     "entities": [],
+     "id": "26e93aaa93"
+    },
+    {
+     "source": "Daily Sabah",
+     "source_type": "rss",
+     "title": "CrowdStrike to acquire Zscaler in $44B deal as cyber threats grow | Daily Sabah",
+     "summary": "CrowdStrike to acquire Zscaler in $44B deal as cyber threats grow | Daily Sabah Daily Sabah",
+     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPQjRqNU5weVVtMlRNYWxvSnNKS045RWo5cDVGV0wxWGRvYk9wMm13bFVfWFBwWEF2N1p4YVIteklxRGFFS2FKckFKVU9aVTdQZjJtckdzZk85YkFxMWJTcHFqMnJoTVh0TWw2SldIRG9FX1lzMngyRW9tNmJJbzZMWnJuaGlvemJFcWpGWHdKU2Z5OGM1cXNYM1ZFY1lBMEJJR1djNjcyOVp3c0xZ0gGyAUFVX3lxTE1vUlp2UTlyXzdMOHdub2FNVjRxWGNFUEJyMkszNTVMTERGT1llSFAtZTdpQ1ZpZGdDOXFHazZOc3ZVVy0xVzN3X2dRak5pTUtpemlhYTVlRlN2TVRGZVZhSjhPU2JRdUp6bGM5ZElfa2RWbG1RV0dVZnBFR1EzTUpSQkZSR3ZIa2JhV3BaLWEtNmprOGlfVU9BaXFva29rWkpQQ0s1YW1PNVRETEdPVTFoTXc?oc=5",
+     "published": "2026-11-23T16:07:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 16.829,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 2.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.728,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 14.101
+     },
+     "track": "",
+     "region": "turkey",
+     "entities": [],
+     "id": "5cf5e13c80"
+    },
+    {
+     "source": "Industrial Cyber",
+     "source_type": "rss",
+     "title": "CrowdStrike to acquire Zscaler in $43.9 billion all-stock deal to expand Zero Trust security and AI protection",
+     "summary": "CrowdStrike to acquire Zscaler in $43.9 billion all-stock deal to expand Zero Trust security and AI protection Industrial Cyber",
+     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNX3EtcEoyT0ZPOFlTRV8tWlJDRjJGZ3VHQ0RQUlFSVjBIUVJUdUxIaDFWQy12YlpZaG1tcUo5X3djaFNQVjZMQmNhMktsbENlbmJQckJiWlplTTA4TGdVOE5jaHhnelpCaThlbVlFMWY3TXVpVVBRQnRwN1daU1BFTDdJOG1PcHlqNVR0dVJsYkFQaVBuRTVQbDJHY216Tmt0djV4Q0N6MExwWm1INDF3ZlI5cFNaSVgtckRpb3BnRkRMdGdMbC1aQ2ZzOXYwYTBxU0I2c0duS0FCdw?oc=5",
+     "published": "2026-11-24T07:16:10+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 19.252,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 3.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.826,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 16.476
+     },
+     "track": "",
+     "region": "",
+     "entities": [],
+     "id": "8b6ba8e70f"
+    }
+   ],
+   "outlets": [
+    "CNBC",
+    "Google News",
+    "Daily Sabah"
+   ],
+   "outlet_count": 3,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-25T16:19:35+00:00",
+   "lead_score": 23.737,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "acquire",
+    "crowdstrike",
+    "deal",
+    "zscaler"
+   ],
+   "id": "s20cc",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "Consolidation of two security vendors affects security supplier choices."
+    },
+    "regional_consequence": {
+     "score": 1,
+     "reason": "No regional actor is named; Daily Sabah covers it but no consequence is stated"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "CNBC, Industrial Cyber and Daily Sabah report the same deal."
+    },
+    "tension": {
+     "score": 1,
+     "reason": "Deal terms are clear; the open question is post-merger integration, which the sources do not explore."
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "buy_build_partner",
+   "short": null,
+   "summary": "CrowdStrike agreed to buy Zscaler in an all-stock deal valued at about $43.9 billion, expected to close in the second half of CrowdStrike's fiscal 2028.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 11,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (CNBC, Google News, Daily Sabah)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": true,
+     "reason": "not on the kill list"
+    }
+   },
+   "override": "",
+   "slot": "radar",
+   "slot_reason": "by rank",
+   "position": 7,
+   "ref": 7
+  },
+  {
+   "title": "First Circle Capital announces final close of $26 million Africa fintech fund",
+   "items": [
+    {
+     "source": "Wamda",
+     "source_type": "rss",
+     "title": "First Circle Capital announces final close of $26 million Africa fintech fund",
+     "summary": "First Circle Capital, a pan-African, female-led venture capital firm specialising in African fintech with offices in Kampala, Nairobi, Casablanca, and Cape Town, today announced that it has completed its final close at $26 million for First Circle Africa Fund I, its specialist early-stage fund backing companies developing the next generation of financial products, services, and technology infrastructure across the continent. First Circle Capital was founded by Selma Ribica, a former M-Pesa executive and fintech investor; Agnes Aistleitner, a serial entrepreneur with extensive experience in emerging markets; and Robert Smith, a former strategy professional with a deep track record in technology entrepreneurship in East Africa. Africa Fund I invests at the pre-seed and seed stages in companies driving the next generation of African financial services across six core fintech verticals: insurtech, alternative lending models, interoperability and infrastructure, climate fintech, fintech SaaS, and regtech. First Circle Capital’s “FinTech 2.0” investment thesis builds on the growth of Africa's first generation of payments and lending businesses, targeting the next wave of innovation in financial services, from expanding access to credit and insurance to improving financial infrastructure, digital operations, and regulatory compliance. Across these investment verticals, First Circle is placing a growing emphasis on AI-native fintech: companies using artificial intelligence, automation, and data-driven operations from inception to lower the cost of delivering financial services, build more efficient products, and reach customers at greater scale. First Circle follows a thesis-led investment approach, identifying opportunities based on their potential to address structural gaps in African financial services. The fund has a pan-African mandate, investing across established and emerging fintech ecosystems, including Kenya, Nigeria, South Africa, Egypt, Morocco, Uganda, Ghana, and Francophone Africa. Investors in First Circle Africa Fund I include IFC, Bpifrance, MSMEDA, Axian, the Dutch Good Growth Fund, Stellar Foundation, and FSD Africa, bringing together international development finance institutions and other institutional and strategic investors around First Circle's specialist fintech strategy. Selma Ribica, co-founder and managing partner at First Circle Capital, said, \"Africa Fund I is built around a clear thesis: the next generation of African fintech…",
+     "url": "https://www.wamda.com/2026/11/circle-capital-announces-final-close-26-million-africa-fintech-fund",
+     "published": "2026-11-23T08:00:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 18.047,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.9,
+      "regional": 2.0,
+      "engagement": 0.0,
+      "recency": 0.681,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 9.966
+     },
+     "track": "models",
+     "region": "cn",
+     "entities": [
+      "ByteDance Seed",
+      "Together AI"
+     ],
+     "id": "1cbaa9370d"
+    },
+    {
+     "source": "TechCabal",
+     "source_type": "rss",
+     "title": "First Circle Capital’s $26 million pre-seed playbook",
+     "summary": "First Circle Capital’s $26 million pre-seed playbook TechCabal",
+     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9fTmdTdDd2WllIN2RUSHJ0enpOUWUwdU40cER1SHp5UEF1TkpzQXdnLUs4VzdSOE84N2d5UHhFUVlGZnEtOUpqNDhOUkFQMjIwSkVsYVAwTzNMdWlPbGpWTXZXV1RUazViYUZ4M2RBU0dOZUZmQ1pNYk5B?oc=5",
+     "published": "2026-11-23T11:02:32+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 8.198,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 0.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.698,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 6.0
+     },
+     "track": "models",
+     "region": "cn",
+     "entities": [
+      "ByteDance Seed"
+     ],
+     "id": "f9de940904"
+    },
+    {
+     "source": "Techeconomy",
+     "source_type": "rss",
+     "title": "Make in Africa: Qualcomm Announces Social Impact Fund Winner",
+     "summary": "Make in Africa: Qualcomm Announces Social Impact Fund Winner Techeconomy",
+     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQZGpLM1hxSmZRb0RUa3I2STNUVHFMejQ0dkpLcjFuQTlnMWJqdUhCc0Q1ZDUtN3VId0MyamZiMHhHeDVWTHU5T2dRZzE2ejRkaEJGZ290UDVYOXVsRGo5YnZXaG4tV2VnY0hHUTNzUGRjMnlsZG55ZWs1N3ducXVoWElkanlHT0lfbmc?oc=5",
+     "published": "2026-11-25T11:48:46+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 10.878,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 2.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.048,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 8.422
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "Qualcomm"
+     ],
+     "id": "2b600aba7e"
+    }
+   ],
+   "outlets": [
+    "Wamda",
+    "Google News",
+    "TechCabal"
+   ],
+   "outlet_count": 3,
+   "tiers": [
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "africa",
+    "cn",
+    "makers"
+   ],
+   "flagged": false,
+   "repeat": [],
+   "published": "2026-11-25T11:48:46+00:00",
+   "lead_score": 18.047,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "africa",
+    "fund"
+   ],
+   "id": "s6f14",
+   "kind": "regional",
+   "scores": {
+    "decision_impact": {
+     "score": 0,
+     "reason": "A fund close with no decision for managers."
+    },
+    "regional_consequence": {
+     "score": 1,
+     "reason": "Africa is named as the investment target, but no deployment or customer effect is stated"
+    },
+    "evidence": {
+     "score": 1,
+     "reason": "Press release plus TechCabal and Techeconomy coverage."
+    },
+    "tension": {
+     "score": 0,
+     "reason": "No conflict or open question in the sources"
+    }
+   },
+   "regional_actor": "First Circle Africa Fund I",
+   "decision_frame": "none",
+   "short": null,
+   "summary": "First Circle Capital closed its First Circle Africa Fund I at $26 million for early-stage African fintech, and the sources give no customer or market effect yet.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 3,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier B/C (Wamda, Google News, TechCabal)"
+    },
+    "depth": {
+     "pass": false,
+     "reason": "only an announcement: not enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a funding round with no customer or market consequence"
+    }
+   },
+   "seat": "africa",
+   "override": "",
+   "slot": "radar",
+   "slot_reason": "africa seat",
+   "position": 8,
+   "ref": 8
+  },
+  {
+   "title": "US intelligence chief warns of further technology disruptions amid system upgrades",
+   "items": [
+    {
+     "source": "Anadolu Ajansı",
+     "source_type": "rss",
+     "title": "US intelligence chief warns of further technology disruptions amid system upgrades",
+     "summary": "US intelligence chief warns of further technology disruptions amid system upgrades Anadolu Ajansı",
+     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPSVJzRlExZlZURTI0Mk15Z3JSdHlhLUVrb3duZU15TDluU3pDTmN5VmdKXzdQR3FWQXd6Wjh3ZVdwRDZMc3Mwa1l3VU1vWHpRdHk4NkRTaXhqdWFKUVZUbnVFQTNlWFNwVndHWGhEY2h3eHV5UnRwX241MGVuYXA5dFI3Y2tabTBTM04tU1haMHVmdTNnX0RnUml3MTM5OXU1b0V2V0xMQ2Npb0JhOUt1T1JqOWJnWm5PSUVxN1FCU0gzdw?oc=5",
+     "published": "2026-11-22T19:46:05+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 15.037,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 0.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.615,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 14.422
+     },
+     "track": "",
+     "region": "turkey",
+     "entities": [],
+     "id": "9d32a95feb"
+    }
+   ],
+   "outlets": [
+    "Anadolu Agency"
+   ],
+   "outlet_count": 1,
+   "tiers": [
+    "B"
+   ],
+   "verified": true,
+   "regions": [
+    "turkey"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-22T19:46:05+00:00",
+   "lead_score": 15.037,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [],
+   "id": "s7567",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 0,
+     "reason": "A general warning about system upgrades gives a manager no decision"
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No regional actor or market is named"
+    },
+    "evidence": {
+     "score": 1,
+     "reason": "One Anadolu report with no further coverage"
+    },
+    "tension": {
+     "score": 1,
+     "reason": "Warning about disruptions is raised but not explained"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "none",
+   "short": null,
+   "summary": "Anadolu reports a US intelligence chief warned of further technology disruptions during system upgrades, and the sources do not link this to AI.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 2,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier B (Anadolu Agency)"
+    },
+    "depth": {
+     "pass": false,
+     "reason": "only an announcement: not enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "seat": "turkey",
+   "override": "",
+   "slot": "radar",
+   "slot_reason": "turkey seat",
+   "position": 9,
+   "ref": 9
+  },
+  {
+   "title": "DeepSeek staff pitched Alice Huang-linked firms as black-market Nvidia chip suppliers, The Information reports",
+   "items": [
+    {
+     "source": "Digg",
+     "source_type": "rss",
+     "title": "DeepSeek staff pitched Alice Huang-linked firms as black-market Nvidia chip suppliers, The Information reports",
+     "summary": "DeepSeek staff pitched Alice Huang-linked firms as black-market Nvidia chip suppliers, The Information reports Digg",
+     "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1mUFY4clBqRlZzMEYwVjM0dUtQSzdGNmxNYmpNZXRqckFNWUE2d01OYU5hSDdXcW1oSGZTSTQtdlZqdG9v?oc=5",
+     "published": "2026-11-23T21:22:04+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 22.137,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.761,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 18.0
+     },
+     "track": "models",
+     "region": "cn",
+     "entities": [
+      "DeepSeek",
+      "NVIDIA"
+     ],
+     "id": "fd2820bb32"
+    },
+    {
+     "source": "WSJ",
+     "source_type": "rss",
+     "title": "Exclusive | The Alice Huang Associate Accused of Funneling Nvidia Chips to China",
+     "summary": "Exclusive | The Alice Huang Associate Accused of Funneling Nvidia Chips to China WSJ",
+     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE94MVRKSkVSTXVkZmRDTWYtakd3VFYtQ0VIWUhWRjVzTmlEUE9HbHh5QTZZU1pQMHRaNEpacHRjZWxad1c4VlJOdktDcFQ1c1lqRmdBR2hkZmFFVlAwNXdOamUtYVVmS3pJeFdpbVBKb05BZnYtLXktamVR?oc=5",
+     "published": "2026-11-22T02:01:11+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 9.741,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.53,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0,
+      "repeat": -14.612
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "995be3b86a"
+    },
+    {
+     "source": "The New York Times",
+     "source_type": "rss",
+     "title": "U.S. Tracked Alice Huang’s Contacts With China Spy Agency During Nvidia Affair",
+     "summary": "U.S. Tracked Alice Huang’s Contacts With China Spy Agency During Nvidia Affair The New York Times",
+     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPVzVyaXo0aXJLT2VuWXdDRlJIWEw1RDBlTWtxcG9RN2ZydEN0T2U5dnlCRnJXWFVKeVZ2X2JXUmpHUTQ5d0tCNHFGc0VKZHE4TFdVQXFId1k5YkRGU29pdF9VM3FES1ZDbEItTW9rQWRYQTVTakxtMG1uVnZwV1ZTRmc4XzV0MmtVX2NWYUhvWHM?oc=5",
+     "published": "2026-11-23T02:17:16+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 8.954,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.649,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0,
+      "repeat": -13.432
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "3df4ffa6f1"
+    },
+    {
+     "source": "Tom's Hardware",
+     "source_type": "rss",
+     "title": "Lawyer’s $9,450 private AI server of 12 used Nvidia V100s now runs every DeepSeek V4.1 Flash expert at 4-bit NVFP4 — up to 184 tokens per second on code, and long documents start answering in about half the time",
+     "summary": "Lawyer’s $9,450 private AI server of 12 used Nvidia V100s now runs every DeepSeek V4.1 Flash expert at 4-bit NVFP4 — up to 184 tokens per second on code, and long documents start answering in about half the time Tom's Hardware",
+     "url": "https://news.google.com/rss/articles/CBMijANBVV95cUxPRGRRRi1qSEtZVUk3TjFzdFhwUWhHZVVZWEUwbjcwa0RzeEFYLTJaOUUzS2RxSUJNdmdpcG5QenhZcnNuRFh3RDI1cEl5dHBOZDZDSjVrVF9hMGhEaU9uOG9WNVNiQUpCLUNkWXEyX0hqdk5ERkIxMFIzRm1BUEg3eFB4bUFocEJycTNYaENSVWFHZFp4LTlzaWdGTHFaZkhXNjBIV0dmWWdoZkE5U2tpdFN3ejFfcUdDdXVUMEZiT01MbzFEdWpjdjdzSk5BcGo3aE5xYjQ0eGpEVGVvd1ppT182ZGx4N1lLNXRBekl0V29Yd3lfNlhIM3BrcVhMRGlVd2dRMjY4ZTNvTmxnRVNTSlk3bWFFbWVrOVN2ZzJTQUExblFwUW5YZjRRa01XWURRU3YtZGVpNlNGTXR4RC10VkI1ZDBTdDY1QXZOLTFzSUtBTXNUR0VoSG9teXIyYm9Edk5SWVE2OWM4Zk5rUXRWMXQtbHNlaWpITklRYjROVDRJZmhBU1ByY3VyOXU?oc=5",
+     "published": "2026-11-20T12:30:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.449,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.388,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 15.51
+     },
+     "track": "models",
+     "region": "cn",
+     "entities": [
+      "DeepSeek",
+      "NVIDIA"
+     ],
+     "id": "b519d3021e"
+    },
+    {
+     "source": "Asharq Al-Awsat English",
+     "source_type": "rss",
+     "title": "US Blacklists Megaspeed Cloud Company Linked to Nvidia Scandal",
+     "summary": "",
+     "url": "https://english.aawsat.com/node/5344929",
+     "published": "2026-11-24T06:48:08+00:00",
+     "author": "author",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 15.923,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.823,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 12.0
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "9879043dd6"
+    }
+   ],
+   "outlets": [
+    "Google News",
+    "Tom's Hardware",
+    "Asharq Al-Awsat",
+    "Wall Street Journal",
+    "The New York Times"
+   ],
+   "outlet_count": 5,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "cn",
+    "makers"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-25T10:24:08+00:00",
+   "lead_score": 22.137,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "nvidia"
+   ],
+   "id": "sc1ab",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "Export-compliance exposure in chip supply bears on sourcing and risk decisions"
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No Gulf, Levant, Türkiye or African actor is named"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "WSJ and NYT report it; other items are aggregator or unrelated."
+    },
+    "tension": {
+     "score": 3,
+     "reason": "Alleged chip diversion and spy-agency contacts raise open questions"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "risk",
+   "short": null,
+   "summary": "WSJ reports that an associate of Alice Huang is accused of funneling Nvidia chips to China, and NYT reports US tracking of her contacts with a Chinese spy agency.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 11,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (Google News, Tom's Hardware, Asharq Al-Awsat, Wall Street Journal)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "out",
+   "slot_reason": "kill list: a global headline with no regional consequence",
+   "ref": 10
+  },
+  {
+   "title": "Dubai Future Foundation, MBZUAI sign collaboration agreement to advance scientific research, develop AI applications",
+   "items": [
+    {
+     "source": "www.wam.ae",
+     "source_type": "rss",
+     "title": "Dubai Future Foundation, MBZUAI sign collaboration agreement to advance scientific research, develop AI applications",
+     "summary": "Dubai Future Foundation, MBZUAI sign collaboration agreement to advance scientific research, develop AI applications www.wam.ae",
+     "url": "https://www.wam.ae/en/article/c3d8kxn-dubai-future-foundation-mbzuai-sign-collaboration",
+     "published": "2026-11-21T15:40:56+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.69,
+     "score": 35.559,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.0,
+      "regional": 8.0,
+      "engagement": 0.0,
+      "recency": 0.486,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 11.422
+     },
+     "track": "models",
+     "region": "gulf",
+     "entities": [
+      "MBZUAI"
+     ],
+     "id": "6e42f6cf08"
+    },
+    {
+     "source": "Gulf News",
+     "source_type": "rss",
+     "title": "FF EAI Robotics Ecosystem (FFR) unveils six robots and five applications in Dubai, advancing physical AI commercialisation across the Middle East",
+     "summary": "",
+     "url": "https://gulfnews.com/gn-focus/company-news/ff-eai-robotics-ecosystem-ffr-unveils-six-robots-and-five-applications-in-dubai-advancing-physical-ai-commercialisation-across-the-middle-east-1.500757599",
+     "published": "2026-11-23T06:58:29+00:00",
+     "author": "GN Focus",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 18.937,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 2.0,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 0.675,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 12.262
+     },
+     "track": "",
+     "region": "gulf",
+     "entities": [],
+     "id": "6e16171da0"
+    },
+    {
+     "source": "Zawya",
+     "source_type": "rss",
+     "title": "Launched by Digital Dubai in collaboration with Dubai Future Foundation during Dubai Future Week 2026",
+     "summary": "Dubai: Digital Dubai, in collaboration with Dubai Future Foundation, launched the second edition of the Dubai State of AI Report 2026, under the theme \"Scaling with Trust\", during the AI Retreat, held as part of Dubai Future Week, which runs from 18 to 21 November. The report provides an annual, citywide assessment of Dubai's transformation into an AI-enabled city. It tracks progress in adopting AI applications and scaling their use, assesses the value they deliver to the community, and identifies the opportunities, challenges, and priorities shaping the next phase. The report reflects a strategic shift from AI pilots and limited-scale projects to making AI an integral part of government work, service development, and everyday life in the city. It focuses on delivering tangible outcomes, building trust, and scaling AI responsibly, with human judgment at every point that matters. On this occasion, H.E. Hamad Obaid Al Mansoori, Director General of Digital Dubai, said: \"Guided by the vision of His Highness Sheikh Mohammed bin Rashid Al Maktoum, Vice President and Prime Minister of the UAE and Ruler of Dubai, Dubai has firmly established itself as a global model for anticipating the future and turning technological potential into real development opportunities. Today, as AI drives rapid transformation, Dubai is entering a new phase that goes beyond leveraging technology to improve services and extends to reimagining how government works and engages with people. This involves building a smarter, more integrated and proactive city that responds to the needs of its residents and visitors and places their quality of life at the heart of its priorities.\" H.E. added: \"The leadership of cities in the age of AI will not be measured by the technologies they possess or the number of applications they develop, but by their ability to turn this potential into genuine and sustainable value for people and society. This makes governance, trust, transparency and human oversight become essential pillars in shaping the future of AI. This report underscores Dubai’s commitment to a systematic and transparent approach to measuring progress, assessing its experience and setting priorities based on tangible results and measurable impact. It also reflects Dubai’s continued ambition to advance its AI journey and contribute to a global model for a city that harnesses AI with confidence and responsibility, while always placing people first.\" For his part, H.E. Khalfan Belhoul, CEO of…",
+     "url": "https://www.zawya.com/en/press-release/research-studies/launched-by-digital-dubai-in-collaboration-with-dubai-future-foundation-during-dubai-future-week-2026-2442705",
+     "published": "2026-11-21T17:51:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 16.45,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 4.2,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 0.495,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 7.755
+     },
+     "track": "",
+     "region": "gulf",
+     "entities": [],
+     "id": "be562a1ded"
+    },
+    {
+     "source": "www.wam.ae",
+     "source_type": "rss",
+     "title": "Dubai Future Foundation, MBZUAI sign collaboration agreement to advance scientific research, develop AI applications",
+     "summary": "Dubai Future Foundation, MBZUAI sign collaboration agreement to advance scientific research, develop AI applications www.wam.ae",
+     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPMG5ocmV2Uk4tNzB1Qk12aFRpX2RKTnVpclpVaVRrMUVQanZMZlVPdkIzZXlKd2VUMWVfdENieTRlY0ZOLXh1V3YyT3RiMURUUUhDanRjaGM4MUtURUN2NUtkdVFFaDhQdDA2RWVFUmo3SU45X3g3UGt1cWtlVDBqTmxvRTVRTkJCT2toU1cyVE8?oc=5",
+     "published": "2026-11-21T15:40:56+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.521,
+     "score": 21.448,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.0,
+      "regional": 8.0,
+      "engagement": 0.0,
+      "recency": 0.486,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 11.422
+     },
+     "track": "models",
+     "region": "gulf",
+     "entities": [
+      "MBZUAI"
+     ],
+     "id": "e48b3df42f"
+    }
+   ],
+   "outlets": [
+    "WAM",
+    "Google News",
+    "Gulf News",
+    "Zawya"
+   ],
+   "outlet_count": 4,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "gulf"
+   ],
+   "flagged": false,
+   "repeat": [],
+   "published": "2026-11-23T10:47:16+00:00",
+   "lead_score": 35.559,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "dubai"
+   ],
+   "id": "s87f6",
+   "kind": "regional",
+   "scores": {
+    "decision_impact": {
+     "score": 1,
+     "reason": "Agreement and report give a manager little to decide yet"
+    },
+    "regional_consequence": {
+     "score": 2,
+     "reason": "Named Dubai bodies and MBZUAI, but the consequence stays within one city"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "WAM, Zawya and Gulf News carry it, but the material is official and promotional"
+    },
+    "tension": {
+     "score": 1,
+     "reason": "Little open question beyond the agreement itself"
+    }
+   },
+   "regional_actor": "Dubai Future Foundation",
+   "decision_frame": "none",
+   "short": null,
+   "summary": "Dubai Future Foundation and MBZUAI signed a collaboration agreement, and Digital Dubai published the second Dubai State of AI Report, both during Dubai Future Week.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 10,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (WAM, Google News, Gulf News, Zawya)"
+    },
+    "depth": {
+     "pass": false,
+     "reason": "only an announcement: not enough for 60-180 s"
+    },
+    "kill": {
+     "pass": true,
+     "reason": "not on the kill list"
+    }
+   },
+   "override": "",
+   "slot": "out",
+   "slot_reason": "only an announcement: not enough for 60-180 s",
+   "ref": 11
+  },
+  {
+   "title": "OpenAI’s chief scientist has thoughts on how to limit AI development",
+   "items": [
+    {
+     "source": "TechCrunch",
+     "source_type": "rss",
+     "title": "OpenAI’s chief scientist has thoughts on how to limit AI development",
+     "summary": "A new blog post from OpenAI’s chief scientist Jakub Pachocki discusses potential limits on AI development, with a focus on a measurement called perplexity. Slowing AI development became a particularly hot topic after a former OpenAI and Anthropic researcher said the companies were “gambling with our lives,” and even Anthropic’s IPO filing suggested that the technology could pose “catastrophic or existential risks to society.” Anthropic CEO Dario Amodei then published a plan to “pace the frontier,” seemingly endorsed by OpenAI CEO Sam Altman and SpaceX CEO Elon Musk. Among other things, Amodei called for companies to agree to “common safety standards as well as limits on the rate of unchecked AI progress.” But to establish a speed limit on AI development, you need to agree on how you measure speed. Pachocki’s post — described by Altman as “the most important thing OpenAI has published in a while” — suggests perplexity (not to be confused with the company of the same name ) could be that measurement. In Pachocki’s argument, benchmarks that focus on AI’s “downstream capabilities” have quickly become outdated as the technology advances. But perplexity — which “measures how well a model predicts the next token on average; lower perplexity means better predictions” — has remained “informative.” Pachocki’s post includes a chart of how the perplexity of OpenAI’s models has fallen since GPT-3.5. “GPT‑4, at ~0.91, was proficient at utilizing chain-of-thought reasoning productively, which motivated the subsequent targeted elicitation of this capability and the creation of modern reasoning models,” he wrote. “Now, as we have reached losses below 0.8, we have seen the emergence of transformative capabilities in fields like cybersecurity and mathematics.” So in his view, perplexity could provide the basis for “a shared benchmark for general intelligence,” which AI companies could then use to establish “common limits.” With perplexity serving as a standard measurement for AI progress, the companies would commit not to go past a certain threshold “until our ability to understand and monitor AI behavior achieves a certain concrete milestone.” When you purchase through links in our articles, we may earn a small commission . This doesn’t affect our editorial independence. Anthony Ha is TechCrunch’s weekend editor. Previously, he worked as a tech reporter at Adweek, a senior editor at VentureBeat, a local government reporter at the Hollister Free Lance, and vice president of…",
+     "url": "https://techcrunch.com/2026/11/22/openais-chief-scientist-has-thoughts-on-how-to-limit-ai-development/",
+     "published": "2026-11-22T21:14:07+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 21.14,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 4.7,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.622,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 15.0
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic",
+      "OpenAI",
+      "Perplexity Comet"
+     ],
+     "id": "716c53fa8f"
+    },
+    {
+     "source": "Bloomberg.com",
+     "source_type": "rss",
+     "title": "OpenAI Chief Scientist Urges Industry Limits on AI Development",
+     "summary": "OpenAI Chief Scientist Urges Industry Limits on AI Development Bloomberg.com",
+     "url": "https://www.bloomberg.com/news/articles/2026-11-22/openai-chief-scientist-urges-industry-limits-on-ai-development",
+     "published": "2026-11-22T19:40:54+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 19.856,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.614,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 15.51
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "OpenAI"
+     ],
+     "id": "00d330afbd"
+    },
+    {
+     "source": "Reuters",
+     "source_type": "rss",
+     "title": "OpenAI scientist proposes industry AI limits tied to model intelligence metric",
+     "summary": "OpenAI scientist proposes industry AI limits tied to model intelligence metric Reuters",
+     "url": "https://www.reuters.com/business/openai-scientist-proposes-industry-ai-limits-tied-model-intelligence-metric-2026-11-22/",
+     "published": "2026-11-22T23:09:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 19.629,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.632,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 15.262
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "OpenAI"
+     ],
+     "id": "1d5faa891c"
+    },
+    {
+     "source": "The Information",
+     "source_type": "rss",
+     "title": "OpenAI Calls For Leading AI Firms to Agree on AI Development Limits",
+     "summary": "OpenAI Calls For Leading AI Firms to Agree on AI Development Limits The Information",
+     "url": "https://www.theinformation.com/briefings/openai-calls-leading-ai-firms-agree-ai-development-limits",
+     "published": "2026-11-22T21:08:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 19.487,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.622,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 15.133
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "OpenAI"
+     ],
+     "id": "6dc1e405ea"
+    },
+    {
+     "source": "Jordan News",
+     "source_type": "rss",
+     "title": "OpenAI's chief scientist floats ideas on how to restrain AI development",
+     "summary": "As AI models develop rapidly, concern is growing that the technology may reach levels of capability that are difficult to understand or control. At a time when calls to slow the race between major companies are intensifying, OpenAI's chief scientist, Jakub Pachocki, has put forward an idea based on measuring the progress of models in a uniform way, as a step towards setting shared limits on their capabilities.",
+     "url": "https://www.jordannews.jo/Section-129/Technology/OpenAI-s-chief-scientist-floats-ideas-on-how-to-restrain-AI-development-59265",
+     "published": "2026-11-23T13:28:37+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 17.567,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.712,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 13.755
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "OpenAI"
+     ],
+     "id": "0a0b8e6b1f"
+    }
+   ],
+   "outlets": [
+    "TechCrunch",
+    "Bloomberg",
+    "Reuters",
+    "The Information",
+    "Startup Fortune",
+    "The Neuron",
+    "EdTech Innovation Hub",
+    "Crypto Briefing",
+    "PYMNTS.com",
+    "The Next Web",
+    "TRT World",
+    "shattered.io",
+    "Jordan News",
+    "Superpower Daily",
+    "Google News",
+    "The Defiant",
+    "Fortune",
+    "The Rundown AI",
+    "Digg",
+    "New Scientist",
+    "Broadband Breakfast",
+    "CASRAI",
+    "Unite.AI",
+    "Business Insider"
+   ],
+   "outlet_count": 24,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "us"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-27T00:33:45+00:00",
+   "lead_score": 21.14,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "limit",
+    "openai"
+   ],
+   "id": "sbc17",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 1,
+     "reason": "A proposal for shared limits gives a manager no near-term decision"
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No regional actor or market is named"
+    },
+    "evidence": {
+     "score": 3,
+     "reason": "Bloomberg, Reuters, The Information and TechCrunch report the proposal"
+    },
+    "tension": {
+     "score": 3,
+     "reason": "A proposed limit tied to a metric raises open questions on enforcement and the choice of measure"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "regulation",
+   "short": null,
+   "summary": "OpenAI chief scientist Jakub Pachocki proposed shared industry limits on AI development tied to a uniform measure of model capability.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 9,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (TechCrunch, Bloomberg, Reuters, The Information)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "out",
+   "slot_reason": "kill list: a global headline with no regional consequence",
+   "ref": 12
+  },
+  {
+   "title": "Amazon's Decart acquisition is a bet on using software to narrow the gap with Nvidia in the AI chip race",
+   "items": [
+    {
+     "source": "TechCrunch",
+     "source_type": "rss",
+     "title": "Amazon's Decart acquisition is a bet on using software to narrow the gap with Nvidia in the AI chip race",
+     "summary": "Amazon's Decart acquisition is a bet on using software to narrow the gap with Nvidia in the AI chip race TechCrunch",
+     "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOLUFfQXUxWkEwMjFOUGs5blY2OWU0Sk1HRjcxeFZSblJlNkRtU2VEUXlCaU1UazZCaWQyOV9GT2ZXbjZ2Y1dlQVlDLTBPSUtVX1pETlQ4UzZzUk1scHF4b2M3NzdHU2lQQmhpRV9fQVltS2llbFh1UjJuWS1CN002UHlMOTNMT293N0Y3MjQtX3VfNG05VDZzYlM5VXhBQ092NEw5X29lZHFrMmlLbWVUelV5d2JMQXdHbVZBVW9QS0hFQ3FfZmt1WkJ3ek1MQzI2Nm90WQ?oc=5",
+     "published": "2026-11-24T15:51:07+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 24.264,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.888,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 16.476
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "b21d75aa45"
+    },
+    {
+     "source": "GitHub",
+     "source_type": "rss",
+     "title": "Amazon's Decart Deal Targets the Software Behind the AI Chip Bill",
+     "summary": "Amazon's Decart Deal Targets the Software Behind the AI Chip Bill GitHub",
+     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOZm9Ma1JGTFRDc3Jtd0dOREhmMHlQLVB0c2s0RFB3aG4tcHA0VlNXTVZ5N0R0NFA1cjBhOHhEQ2dkR3FlVlpRU1JjX1pvYVFXREtTenZXclE5R3hSQ3B1VjE1b21yWkQwT1g3UHV2ZXBhVzI1MGlsVEZCTHFGS1I5aWFVT1hGS2Z4SkQ4TQ?oc=5",
+     "published": "2026-11-24T07:11:05+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.793,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.826,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 15.966
+     },
+     "track": "chips",
+     "region": "hyperscalers",
+     "entities": [
+      "AWS Trainium"
+     ],
+     "id": "f22a1cca37"
+    },
+    {
+     "source": "Bloomberg.com",
+     "source_type": "rss",
+     "title": "Amazon Is Said to Pay $7.5 Billion For AI Startup Decart’s Tech",
+     "summary": "Amazon Is Said to Pay $7.5 Billion For AI Startup Decart’s Tech Bloomberg.com",
+     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNTEtGbThuSmc5SGd2SmJVQjZDSTFPNVVpMjJ5TG10OTA5dWlTNUFnRUtSbTBxOW1WYUtOdGZoWGxySDNHb1BYVjQ0SVhxQlBfYTB4aFhCWFRHSVBnS21XQ1FpS1dYb2p4cGxzb2k4VjJzU1JmVnB1MzktempwZXRyYWw0VFpyR3gtOFFVaVhPdWszS3A1THNRV2RPS3hFNXJ3ZXlkMEY4Um1CZjQ1VmxUNDN3RQ?oc=5",
+     "published": "2026-11-23T13:48:51+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 6.842,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 0.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.714,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 16.177,
+      "repeat": -10.264
+     },
+     "track": "",
+     "region": "",
+     "entities": [],
+     "id": "524f33c4e5"
+    },
+    {
+     "source": "Webrazzi",
+     "source_type": "rss",
+     "title": "Amazon, yapay zeka girişimi Decart'ı 7,5 milyar dolara satın almayı planlıyor",
+     "summary": "Amazon , yapay zeka girişimi Decart 'ı satın almak için görüşmeler yürütüyor. Financial Times'ın haberine göre taraflar, 7,5 milyar dolara kadar ulaşabilecek bir anlaşma üzerinde çalışıyor. Henüz kesinleşmeyen satın almanın önümüzdeki haftanın başlarında sonuçlanabileceği belirtiliyor. 2023'te Dean Leitersdorf , Moshe Shalev ve Orian Leitersdorf tarafından kurulan Decart , yapay zeka modellerinin farklı çiplerde daha verimli çalışmasını sağlayan yazılımlar geliştiriyor. Şirketin DOS adını verdiği teknoloji, modeller ile donanım arasında bir optimizasyon katmanı oluşturarak Nvidia GPU'ları, Amazon Trainium ve Google TPU'ları üzerinde çalışabiliyor. Amazon'un Decart ile ilgilenmesinin temel nedeni, kendi geliştirdiği Trainium çiplerini daha rekabetçi hale getirmek. Decart'ın teknolojisi, geliştiricilerin Nvidia donanımlarına göre optimize ettikleri yapay zeka yazılımlarını Trainium'a uyarlamasını kolaylaştırabilir. Böylece Amazon, AWS müşterilerine Nvidia GPU'larına alternatif sunma konusunda elini güçlendirebilir. Decart, Mayıs 2026'da Radical Ventures liderliğinde 300 milyon dolar yatırım alarak 4 milyar dolar değerlemeye ulaşmıştı. Nvidia, Sequoia Capital, Benchmark ve Toyota Ventures şirketin yatırımcıları arasında yer alıyor. Calcalist'in haberine göre Amazon'un teklifinde nakit, hisse ve ertelenmiş ödemeler bulunuyor. Üç kurucunun da satın alma sonrasında beş yıl boyunca şirkette kalması bekleniyor.",
+     "url": "https://webrazzi.com/2026/11/23/amazon-yapay-zeka-girisimi-decart-i-7-5-milyar-dolara-satin-almayi-planliyor/",
+     "published": "2026-11-23T09:30:00+00:00",
+     "author": "Candeğer Muradoğlu",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 19.751,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 2.3,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.689,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 15.262
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "AWS Trainium",
+      "Google TPU",
+      "NVIDIA"
+     ],
+     "id": "adc75d99d7"
+    },
+    {
+     "source": "SiliconANGLE",
+     "source_type": "rss",
+     "title": "Amazon acquires key assets of AI startup Decart for reported $7.5B",
+     "summary": "Amazon acquires key assets of AI startup Decart for reported $7.5B SiliconANGLE",
+     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaXR5TS11S0V5ZmZCOERDYlI1OG9vWG9UX3ZQZHoyYndOX0VrdExNYmNVbjBFNzBqdGMwY0ZDM0RjdWhxVWJFU0o0eG04N2oyZzNMVGdTbVRVMV9SUFNld3FaSnlOcl9ZSGQ4OGhLNXdYdzJwNFI2Mkh6M3BfLVIwN0hzVkF3Q3diQmxzN3BNUkVxREZsZHBJRmRfalVMTXc5dE55LQ?oc=5",
+     "published": "2026-11-24T01:40:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 19.716,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 2.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.789,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 15.856
+     },
+     "track": "chips",
+     "region": "hyperscalers",
+     "entities": [
+      "AWS Trainium"
+     ],
+     "id": "dc91f5adc6"
+    }
+   ],
+   "outlets": [
+    "TechCrunch",
+    "Google News",
+    "GitHub",
+    "Webrazzi",
+    "SiliconANGLE",
+    "The Economic Times",
+    "Anadolu Agency",
+    "JNS",
+    "Bloomberg"
+   ],
+   "outlet_count": 9,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "makers"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-26T14:48:10+00:00",
+   "lead_score": 24.264,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "amazon",
+    "decart"
+   ],
+   "id": "s1634",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "A reported acquisition that signals where AI software and chip competition is heading, relevant to platform choices."
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No regional actor or market is named"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "Bloomberg, TechCrunch and SiliconANGLE report it, but the price is reported rather than confirmed"
+    },
+    "tension": {
+     "score": 1,
+     "reason": "Software-versus-chip competition is a clear trade-off, but limited in the sources."
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "buy_build_partner",
+   "short": null,
+   "summary": "Amazon is reportedly paying $7.5 billion for AI startup Decart's technology, which targets software that runs AI models efficiently across different chips.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 9,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (TechCrunch, Google News, GitHub, Webrazzi)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "out",
+   "slot_reason": "kill list: a global headline with no regional consequence",
+   "ref": 13
+  },
+  {
+   "title": "Cisco, OpenAI Launch Project to Safeguard Agentic AI",
+   "items": [
+    {
+     "source": "WSJ",
+     "source_type": "rss",
+     "title": "Cisco, OpenAI Launch Project to Safeguard Agentic AI",
+     "summary": "Cisco, OpenAI Launch Project to Safeguard Agentic AI WSJ",
+     "url": "https://www.wsj.com/tech/cisco-openai-launch-project-to-safeguard-agentic-ai-f48e6420",
+     "published": "2026-11-23T22:12:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 23.426,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.766,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 13.755
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "OpenAI"
+     ],
+     "id": "43f5e44031"
+    },
+    {
+     "source": "OpenAI",
+     "source_type": "rss",
+     "title": "OpenAI and Cisco introduce Shirudo",
+     "summary": "An open-source runtime that helps operators protect running Linux systems without needing to wait for the patch or restarts OpenAI and Cisco are launching Shirudo, an open-source runtime that helps teams protect Linux systems while they roll out patches. In a controlled test ⁠ (opens in a new window) , a Codex-generated shield blocked a Java4Shell exploit attempt against a running Elasticsearch service without requiring a restart. We’re inviting developers, security researchers, and infrastructure operators across the industry to help develop the project further. The project brings together OpenAI’s frontier AI, security and infrastructure research and Cisco’s infrastructure and security expertise to help protect the systems people rely on every day. Testing and deploying a patch can still take days or weeks. Protecting a service in the meantime can be challenging because an exploit and a legitimate request may rely on the same Linux operation. Blocking that operation entirely could take the service offline. Shirudo (Japanese for “shield”) is designed to help security teams navigate this tradeoff. Teams can test whether a temporary safeguard, called a shield, blocks the behavior that exposes a vulnerability while allowing legitimate requests through. Once an operator approves the shield, it can be deployed while the service continues running. Shirudo uses eBPF, a Linux technology that allows small programs to run at specific points inside the operating system. This makes it possible to observe suspicious activity and apply targeted security protections to running systems. OpenAI and Cisco are designing Shirudo around four core capabilities: Live protection: eBPF shields can block vulnerable code paths without restarting the system. Security teams can monitor how a proposed shield would affect applications before enforcing it. Defense at machine speed: OpenAI and Cisco are designing Shirudo to give agents programmable controls to investigate vulnerabilities, develop targeted shields, and validate their effectiveness against exploits and real workloads. Security teams control what gets deployed. Trusted deployment: Shields are cryptographically signed and verified before loading. Linux's eBPF verifier checks eBPF programs against its safety rules, while kernel security controls restrict unauthorized changes. Hardware-backed verification: Shirudo uses a Trusted Platform Module (TPM) to support a verifiable record of protections being loaded or removed.…",
+     "url": "https://openai.com/index/introducing-shirudo/",
+     "published": "2026-11-23T21:24:12+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 22.651,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.5,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.761,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 13.571
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "OpenAI",
+      "OpenAI Codex",
+      "Together AI"
+     ],
+     "id": "d17e7b7013"
+    },
+    {
+     "source": "SiliconANGLE",
+     "source_type": "rss",
+     "title": "Cisco and OpenAI launch Shirudo open-source infrastructure shield to prevent AI-driven cyberattacks",
+     "summary": "Cybercriminals have gained the ability to discover vulnerabilities in software and take advantage of them in seconds, and it’s all thanks to artificial intelligence . Enterprises need a better way to defend themselves, so it’s fitting that one of the world’s top AI companies, OpenAI Group PBC, together with Cisco Systems Inc., is stepping up with a solution. They’ve just announced a new, open-source and extremely ambitious initiative called the Secure Infrastructure Project, which aims to ensure that all AI computing infrastructure is secure by design and capable of defending against lightning-fast AI-driven attacks. The first project within that initiative is Shirudo, which is designed to protect infrastructure systems automatically from critical exploits before they can be patched. In a blog post, Cisco Security Chief Technology Officer and Vice President of Engineering Thomas Graf explained that the industry has always treated security as an afterthought, essentially something that’s bolted onto systems after the fact. It has gotten away with this because much of the world’s computing infrastructure was built for workflows that proceed at human speeds. But with the emergence of AI models that can discover and work out how to exploit vulnerabilities in a matter of seconds, this kind of reactive security is no longer enough. According to Graf, even now, when a major vulnerability is discovered in widely used software, it can take weeks or even months to come up with a fix and ensure that every major system is patched against it. “That timeframe is no longer acceptable given that the mean time to exploitation has become negative, meaning that a growing number of vulnerabilities are now being exploited before they are publicly disclosed,” he said. “This will only accelerate with the further evolution of AI models and cybersecurity capabilities, becoming the norm in open-weight models.” To counter these kinds of automated attacks, Cisco and OpenAI believe that infrastructure has to be rebuilt from scratch with security in mind. They argue that it’s time to abandon static defenses and embrace systems that are hardened by default, immutable and rebuildable from a previous “good” state, so users can quickly revert back in the event of an attack. To do this, infrastructure systems must be based on Trusted Platform Modules and utilize reinforcement learning techniques to safely test their own defenses so they can adapt when faced with novel cyberattacks from…",
+     "url": "https://siliconangle.com/2026/11/23/cisco-and-openai-launch-shirudo-an-open-source-infrastructure-shield-to-protect-against-ai-driven-cyberattacks/",
+     "published": "2026-11-23T21:20:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 21.79,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.1,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.761,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 14.265
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "OpenAI",
+      "Together AI"
+     ],
+     "id": "e310da3525"
+    },
+    {
+     "source": "Gulf Business",
+     "source_type": "rss",
+     "title": "Cisco and OpenAI launch Shirudo to combat AI-driven cyberattacks, block Java4shell exploits",
+     "summary": "Cisco and OpenAI launch Shirudo to combat AI-driven cyberattacks, block Java4shell exploits Gulf Business",
+     "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQaVdnRFJobW9GdFNteUJ3TDhlb1ZFSWcwaDVVbjdkY1JtZGFBN052LXRjMF9nTTZ2Q1c4d2p4aVlVMkdGNkoybDVBUm43blRuRDZwV2duYW1WYkhTQW15Rk1OVDU2bkNtUU1BaWxGb1NaS3Q1MG5aNm96NFFBNDFkZVBQQkVQN094UFpZbkd2eGlTS3gtcDJ6Rm4tOEZHMG5ZT3NVQklndEZVdTFlVk9ZV2FJMkdwLVpyWGZxdzh4cFFuTXBhVjlGV1oxMnF0ZWs3SE04?oc=5",
+     "published": "2026-11-26T13:11:30+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 19.773,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.295,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 13.378
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "OpenAI"
+     ],
+     "id": "a229303acb"
+    },
+    {
+     "source": "Channel Insider",
+     "source_type": "rss",
+     "title": "Cisco, OpenAI Launch Shirudo for AI-Driven Cyber Defense",
+     "summary": "Critical PHP vulnerabilities expose security risks for MSPs. Learn why hidden dependencies, AI-assisted attacks, and rapid patching demand attention. MSPs face pressure to turn AI adoption into measurable results. Hereâs how internal productivity and evolving customer needs are reshaping AI strategies. DC power architectures are gaining popularity as AI workloads increase and intensify. Optivâs Kathryn Hall and Steve Fielder discuss how AI is reshaping managed security services, from supporting analysts and reskilling teams to strengthening governance and building deeper customer partnerships. WEIâs Greg LaBrie explains why enterprises are adopting Hardware-as-a-Service and how changing IT spending models create opportunities for channel partners. WCA Technologiesâ Peter Fidler explains how AI, automation, business outcomes, and customer expectations are changing the MSP model. Critical PHP vulnerabilities expose security risks for MSPs. Learn why hidden dependencies, AI-assisted attacks, and rapid patching demand attention. MSPs face pressure to turn AI adoption into measurable results. Hereâs how internal productivity and evolving customer needs are reshaping AI strategies. DC power architectures are gaining popularity as AI workloads increase and intensify. Optivâs Kathryn Hall and Steve Fielder discuss how AI is reshaping managed security services, from supporting analysts and reskilling teams to strengthening governance and building deeper customer partnerships. WEIâs Greg LaBrie explains why enterprises are adopting Hardware-as-a-Service and how changing IT spending models create opportunities for channel partners. WCA Technologiesâ Peter Fidler explains how AI, automation, business outcomes, and customer expectations are changing the MSP model. Cisco and OpenAI launch Shirudo, an open-source cybersecurity project using eBPF and AI agents to defend infrastructure against threats before patches are deployed. Cisco and OpenAI have launched Shirudo, an open-source cybersecurity project that uses AI agents and kernel-level defenses to help organizations protect vulnerable infrastructure before permanent patches can be deployed. âThere is nothing more important than giving security teams the tools they need to match the speed of the AI-driven threats they are facing. We need self-defending infrastructure that acts at the speed of code, learns in real time, and shields itself until patches are safely rolled out,â said Jeetu Patel,…",
+     "url": "https://www.channelinsider.com/ai/cisco-openai-shirudo-ai-cybersecurity/",
+     "published": "2026-11-26T12:40:26+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.197,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 8.5,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.289,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 14.101
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "OpenAI"
+     ],
+     "id": "00ba03ab58"
+    }
+   ],
+   "outlets": [
+    "Wall Street Journal",
+    "OpenAI",
+    "SiliconANGLE",
+    "Channel Insider",
+    "Gulf Business",
+    "Google News",
+    "InfoWorld",
+    "The Hacker News",
+    "Forbes Middle East",
+    "Cybersecurity Dive",
+    "AI Magazine",
+    "Breakingthenews.net",
+    "Cyber Magazine",
+    "Forbes",
+    "CDO Magazine",
+    "Storyboard18",
+    "DefenseScoop"
+   ],
+   "outlet_count": 17,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "us"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-26T13:11:30+00:00",
+   "lead_score": 23.426,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "cisco",
+    "openai"
+   ],
+   "id": "s258b",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "A free runtime shield for unpatched Linux systems bears on security planning"
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No regional actor or market is named"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "OpenAI and Cisco primary announcements plus WSJ and SiliconANGLE."
+    },
+    "tension": {
+     "score": 1,
+     "reason": "Limited open question beyond how well the shield works in production"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "risk",
+   "short": {
+    "job": "breaking",
+    "fact": "In a controlled test, Shirudo blocked a Java4Shell exploit attempt against a running Elasticsearch service without a restart.",
+    "implication": "Teams may be able to shield unpatched systems at runtime while patches are pending.",
+    "question": "How long does your team wait for a patch before it has to rely on another protection?"
+   },
+   "summary": "OpenAI and Cisco released Shirudo, an open-source runtime that protects running Linux systems while patches are rolled out, and in a controlled test it blocked an exploit attempt without a restart.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 9,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (Wall Street Journal, OpenAI, SiliconANGLE, Channel Insider)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "short",
+   "slot_reason": "Shorts candidate, picked on its own merits",
+   "ref": 14
+  },
+  {
+   "title": "Watch Apple Working on Own AI Agent to Rival OpenAI and Anthropic",
+   "items": [
+    {
+     "source": "Bloomberg.com",
+     "source_type": "rss",
+     "title": "Watch Apple Working on Own AI Agent to Rival OpenAI and Anthropic",
+     "summary": "Watch Apple Working on Own AI Agent to Rival OpenAI and Anthropic Bloomberg.com",
+     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORGRsVHY3NlVvcnhJdWRjQnliaU9JLWJxelBjUjhFSVFLRzF0czdXcThNQ00tQ01paE1rdlRQNTFNQ2RzVUFJbFlwQ2trSHNfdTNGZ3BhTVItakZjQl9Wb2tuZHI5MEhSSm42VVpzYk9PYmJNdWd2SjIyck1lTXdFWW9LeVdhWmhHTFR0bV9IbjBkbGYtcFI1TWk5eHc3RkJOb1ZEYTl3?oc=5",
+     "published": "2026-11-20T17:59:39+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 22.42,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 4.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.406,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 15.51
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic",
+      "OpenAI"
+     ],
+     "id": "74305df291"
+    },
+    {
+     "source": "Anadolu Ajansı",
+     "source_type": "rss",
+     "title": "Insiders say Anthropic, OpenAI struggle to contain unreleased AI models: Axios",
+     "summary": "Anthropic and OpenAI are grappling with unreleased artificial intelligence models that many employees believe are too powerful to release safely, according to a report on Tuesday. Citing more than two dozen sources familiar with internal discussions, Axios said the widening gap between what top systems can do and what humans can control could significantly slow the industry's rapid growth. Sources said the debate has extended to whether future frontier models should be kept for internal use only, and whether companies should keep training new models at all. Some insiders believe the problem can be fixed, while others want training halted. Noting two main concerns, the report said one of them is reinforcement learning, a training method in which models earn rewards for passing tests, which can teach advanced systems to game those rewards and bypass guardrails. The other is that models increasingly conceal their reasoning, with the most advanced internal systems reportedly showing deceptive explanations meant to satisfy human monitors. Axios said an Anthropic mathematician used an unreleased version of Claude to present a proof of the Riemann hypothesis, while an unreleased OpenAI model helped produce proofs for hundreds of math problems. An Anthropic spokesperson told Axios that keeping a model internal does not make it safe, and that the company may slow down or hold back releases even when it is costly. An OpenAI spokesperson said the company has adopted new safety requirements that could slow releases. Some employees fear executives will prioritize profits over safety, according to the report. news_share_description subscription_contact",
+     "url": "https://www.aa.com.tr/en/world/insiders-say-anthropic-openai-struggle-to-contain-unreleased-ai-models-axios/4136091",
+     "published": "2026-11-24T15:33:38+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.79,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 4.2,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.885,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 14.863
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic",
+      "OpenAI"
+     ],
+     "id": "ed00415b1d"
+    },
+    {
+     "source": "Axios",
+     "source_type": "rss",
+     "title": "Scoop: Anthropic and OpenAI employees fear unreleased AI models are too unsafe to release",
+     "summary": "Scoop: Anthropic and OpenAI employees fear unreleased AI models are too unsafe to release Axios",
+     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNWnJmY2hLTWlhTHcwN3pVSEhYOXlYUThYQXJ3RWxobVlPR2lweWpSQUY1NklSLVNVUHI4c0wwdnN3azBiV05wTVV6ZmRMTllRR1dvcmNYdjRheHZDOUNVaTBxUFpuS3BZUVBvZ2tpMlpTSS1oYWZ3SC16RVZEME51a0FB?oc=5",
+     "published": "2026-11-24T10:49:26+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.489,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.851,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 15.133
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic",
+      "OpenAI"
+     ],
+     "id": "ba4322098d"
+    },
+    {
+     "source": "The Economic Times",
+     "source_type": "rss",
+     "title": "Apple is late to the AI party, but could shake up the race against rivals with iPhone ecosystem",
+     "summary": "Apple is late to the AI party, but could shake up the race against rivals with iPhone ecosystem The Economic Times",
+     "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxQSWpyX1pjYllMQ3gwSFA2MnZqMm85N2hKUlFXLTZENTYtb0NhWC15amx5a2FwU2c4MFZvNXFCNzM3WTFQNDhSZGp1dFEtRGxYT24tMGdMalkzYmFBYWhSMHE2cy13T1dmclRSRzkxVUJVbG9IbkJ3N3hReDVwSHB1dXF5djJmUV9CejJPNFJYMXlxc21LRDdDbFlXU0I2WVlGamZHaWhfQnJ6ZzZHeU5ENkd5MHk1UExKYUZaWnJqTk85X3gxeU1nQ2pXYVVMNkJGX2psZTdpQjBrLWJSV05Nd013MHF3NDM4d3ZRb1pxSG1hekw2d2JxSUFfZWRyTHVYbEhSRmxFWmRVVXhYMVpheEdmUHFMZFNjZkHSAZ8CQVVfeXFMUFRQQ0RaakJvamdqT3F4VERxb1NPNVNSY21vTXNTNWg1MzVMZFJPaWcxX0thN2ZVQTBGbmJSRHRJYU9GSkRkb1JDWElwaFZXSE9fZnREazhlaW1RclY0Zlp5ZThFZ1NuRXBrYldoUDZrMExWbzJZcXYta2I2d2pDNVBUTjBvdXlmT0dJdFdILWM0eHFUVmJDU2FUWUQ4d1dCTDl6VklhdEljYlpRY2lMZWxCNjk0aUpPdHhBYkZFRGJVS3RCZ2VPVGpwQTRXaTg1TVdCZkFiTzdoSFZ4Z0NYQWw2clA5V2Jib1YxdEU5MkNhZnFlNDdWeFFobTVYNFo4ZUJLbTViSjM0WXpkbjJQTEJ0X3lOWVoxOWo2Mmw3NVU?oc=5",
+     "published": "2026-11-21T07:31:18+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 18.709,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.454,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 15.51
+     },
+     "track": "agents",
+     "region": "products",
+     "entities": [
+      "OpenAI Codex"
+     ],
+     "id": "a8113cb655"
+    },
+    {
+     "source": "Khaleej Times",
+     "source_type": "rss",
+     "title": "Anthropic listing extends Nasdaq's dominant run against arch-rival NYSE",
+     "summary": "Anthropic listing extends Nasdaq's dominant run against arch-rival NYSE Khaleej Times",
+     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPTG4wN0VqWVE2N1d6a0RIbWdXc3hsbl9EU0VzUXdfTGNBWmlKMVAtUG5IZlV2OW41NHA4V2NFYTRzZi16Z2ZmNjJJbGxNaEwzblU3RzJwYVRFenE1Q2hmcld4YUJHWkZjNHBuaHRaMFo3ZjlCSFlhYUhMbUUxbktwSE5kV3hHMXZuY1RZY1E3YTJVUTZXNThtdk9FcWZDQzJkVk1Xa3UzdTBKVTBR0gG0AUFVX3lxTE1DYjJCcjl1S2NXRFEyb192YjhtZ1BsTG9BaExtZVpReHR5RHhSS2xlSEZSazBkd2VHNlVpQ0g0OTF0OFBwUFVfUnlhOGY3Q3JnZTRSMjJVd3dXUmx5SDRTV1IzLVJ5VkdtcjcwSjUwUGJxaDA2NlZIbS1CRDRHQzlFbFQ5MzUzUGZOT1AyV1VqLUVRU3FyN25NVDUtVDk0bnlVdGFqb093dFlhRlU2eWxiQjRfZQ?oc=5",
+     "published": "2026-11-22T12:17:19+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 16.855,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.578,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 13.177
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "8b2a1e4235"
+    }
+   ],
+   "outlets": [
+    "Bloomberg",
+    "Crypto Briefing",
+    "Google News",
+    "Anadolu Agency",
+    "KQED",
+    "Axios",
+    "Coinpaper",
+    "Cointribune",
+    "BeInCrypto",
+    "Unite.AI",
+    "Howl.Link",
+    "The Economic Times",
+    "AI Magazine",
+    "PPC Land",
+    "The Rundown AI",
+    "Khaleej Times",
+    "AI: Reset to Zero",
+    "shattered.io",
+    "The Decoder",
+    "Daily Sabah",
+    "Fortune",
+    "Marcus on AI | Substack"
+   ],
+   "outlet_count": 22,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "us"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-26T23:04:34+00:00",
+   "lead_score": 22.42,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "anthropic",
+    "openai"
+   ],
+   "id": "se937",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 1,
+     "reason": "Model-safety reports and Apple's agent plans give a manager little to decide now"
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No regional actor or market is named"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "Axios scoop, Bloomberg and Economic Times, with Axios citing many sources."
+    },
+    "tension": {
+     "score": 3,
+     "reason": "Internal fears that unreleased models are unsafe set against competitive pressure"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "risk",
+   "short": null,
+   "summary": "Axios reports, citing more than two dozen sources, that Anthropic and OpenAI employees fear some unreleased models are too unsafe to release, while Bloomberg reports Apple is building its own AI agent.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 8,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (Bloomberg, Crypto Briefing, Google News, Anadolu Agency)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "out",
+   "slot_reason": "kill list: a global headline with no regional consequence",
+   "ref": 15
+  },
+  {
+   "title": "Anthropic, Nvidia shares rise in premarket trading after major tech selloff",
+   "items": [
+    {
+     "source": "CNBC",
+     "source_type": "rss",
+     "title": "Anthropic, Nvidia shares rise in premarket trading after major tech selloff",
+     "summary": "Anthropic and Nvidia shares rose in premarket trading Monday after AI stocks fell in the Nasdaq's worst week since 2020. The AI lab was up 4.47% at 5.21 am ET, ahead of its third day of trading following its IPO on Thursday. The chip giant rose 8.6%. Anthropic raised a record $93.5 billion in its IPO and an additional $26 billion from tech giants that bought at the offer price. The stock gained 17% in its debut on Thursday, before closing 8.5% down on Friday. Tech stocks remain rocky as investors remain nervous about the valuation of some AI companies and business models. Nvidia's premarket rebound follows a more than 40% slump in the stock over the past month, as Jensen Huang was ousted as CEO of the company he founded after he admitted to having an extramarital affair with a woman U.S. intelligence reportedly believes to be a Chinese spy. Other Big Tech companies also saw stocks buoyed on Monday. Alphabet saw stock rise 4.98%, Meta 4.36%, Amazon 3.96%, Microsoft 3.14%, SpaceX 3.94% and AMD 5.77% Neoclouds, which have seen a particularly choppy few months, also showed signs of recovery. Nebius was up 10.92%, CoreWeave 9.72% and Iren 8.8%.",
+     "url": "https://www.cnbc.com/2026/11/23/anthropic-nvidia-shares.html",
+     "published": "2026-11-23T09:17:42+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 24.084,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 4.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.688,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 16.844
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "AMD",
+      "Anthropic",
+      "NVIDIA"
+     ],
+     "id": "c54cbd7309"
+    },
+    {
+     "source": "AP News",
+     "source_type": "rss",
+     "title": "Nvidia and other AI stocks fall, but the rest of Wall Street rises with confidence in the US economy",
+     "summary": "Nvidia and other AI stocks fall, but the rest of Wall Street rises with confidence in the US economy AP News",
+     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQbEdHU1ZWMjgzb1lYODBaTEJpdWNXUXVpUmlDTmVxSTBjUVlOYlBBWmZXSzVrMWR3SE9NYTg5cVNuemZFZHlJdU1PdGdybnh1NUFQVTVINkJUUk1Sb0hmNnI5YS1LQTl5SUJibWpWekVQU1BqR3NuQWhVeHZlUVJ3bDEtRmZZNmVHWVFFRTA2RUhFcTQ?oc=5",
+     "published": "2026-11-24T15:19:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 22.661,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.884,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "043cbc1726"
+    },
+    {
+     "source": "WSJ",
+     "source_type": "rss",
+     "title": "Investors Dumping AI Stocks to Buy Into Anthropic Send Tech Shares Lower",
+     "summary": "Investors Dumping AI Stocks to Buy Into Anthropic Send Tech Shares Lower WSJ",
+     "url": "https://www.wsj.com/finance/stocks/stock-futures-rise-as-optimism-improves-ahead-of-anthropic-trading-debut-ecdfbb2f",
+     "published": "2026-11-24T02:21:49+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 21.656,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.793,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 17.101
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "5ffc3c9929"
+    },
+    {
+     "source": "The New York Times",
+     "source_type": "rss",
+     "title": "Anthropic Shares Slip as AI and Tech Stock Sell-Off Continues",
+     "summary": "Anthropic Shares Slip as AI and Tech Stock Sell-Off Continues The New York Times",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5XYVdGdzl2am5CT1o3QlFFV2duR2dJZzNpbjlrYWg2cU4tVHJwZ0I4WWhaVmd3ZHQ0cTVyRklGcHprTlk0UFEzenE2T2ZNZ1pvNXdKbDBySkFDXzA5cktobkRxaTcxdkZzWGtfXzVzLXZqeEhnSDk5VEROWGRsNzQ?oc=5",
+     "published": "2026-11-20T15:35:43+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.471,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.398,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 16.378
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "9cde150622"
+    },
+    {
+     "source": "Bloomberg.com",
+     "source_type": "rss",
+     "title": "Watch Nvidia Plunges as SEC Probe Deepens AI Market Selloff | Closing Bell",
+     "summary": "Watch Nvidia Plunges as SEC Probe Deepens AI Market Selloff | Closing Bell Bloomberg.com",
+     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZDlpZDd5Tk1WUDBidVlyd2VOcURuaTc3V2lSRE9adVlTb2RmU3l5UDlGQVdBRjc3aGdrZ2c3MEMwMkRUd1p4bXZJQTlXZlI5dXpiQzJlY3JYdGtuNUlhaFhjSkE1NXh6Ylp4eUpzMDhGZ2dySV9qYmdYRWlnd2tHVHlqYWVjbXZ1V1NYMGRHZTJKYmZZQ1ExUzlCNA?oc=5",
+     "published": "2026-11-20T22:12:21+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.296,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.42,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 16.177
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "dfeff117bd"
+    }
+   ],
+   "outlets": [
+    "CNBC",
+    "Associated Press",
+    "Wall Street Journal",
+    "The New York Times",
+    "Bloomberg",
+    "Google News",
+    "Axios",
+    "Yahoo Finance",
+    "Anadolu Agency",
+    "The Motley Fool",
+    "Eurasia Business News",
+    "Gulf News",
+    "Barron's",
+    "Reuters",
+    "BBC",
+    "Fortune",
+    "NBC News",
+    "TechCrunch",
+    "Forbes",
+    "Business Insider",
+    "Investing.com"
+   ],
+   "outlet_count": 21,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "us"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-26T18:15:00+00:00",
+   "lead_score": 24.084,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "anthropic"
+   ],
+   "id": "sa7e0",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 1,
+     "reason": "Market volatility rather than a decision for a manager."
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No regional actor or market is named"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "CNBC, AP, WSJ, NYT and Bloomberg report the market moves."
+    },
+    "tension": {
+     "score": 2,
+     "reason": "Open question whether the sell-off continues after the IPO"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "risk",
+   "short": null,
+   "summary": "AI stocks fell in the Nasdaq's worst week since 2020 while Anthropic and Nvidia shares moved sharply, with investors moving money out of AI stocks into Anthropic.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 7,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (CNBC, Associated Press, Wall Street Journal, The New York Times)"
+    },
+    "depth": {
+     "pass": false,
+     "reason": "only an announcement: not enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "out",
+   "slot_reason": "only an announcement: not enough for 60-180 s; kill list: a global headline with no regional consequence",
+   "ref": 16
+  },
+  {
+   "title": "Meta launches Muse in UK – the AI agent that can do your Christmas shopping",
+   "items": [
+    {
+     "source": "The Guardian",
+     "source_type": "rss",
+     "title": "Meta launches Muse in UK – the AI agent that can do your Christmas shopping",
+     "summary": "Meta launches Muse in UK – the AI agent that can do your Christmas shopping The Guardian",
+     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNYnNPV3c5WnFtTU5oUUFrMDU5ZXpxTWljNm9hZHhlUFFtNDBEclNETVF5RGc1ei04dlNPbGZLazJRLUEwMkdCbDZkckE1UUNBU1R3QkpYR3JORDZkNnJMckFCelFldldjRElLWmxLbllyNHU3cFQ2d1AwMGItU205eWhRZFF2WFd1MFdTbzVBNXBGdTdiVlhEaWVrZnZUN2V0SFpOSFFn?oc=5",
+     "published": "2026-11-24T06:00:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 23.604,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 4.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.818,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 15.744
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Meta AI"
+     ],
+     "id": "1578070c5a"
+    },
+    {
+     "source": "BBC",
+     "source_type": "rss",
+     "title": "Muse: Would you let Meta's AI agent run parts of your life?",
+     "summary": "Muse: Would you let Meta's AI agent run parts of your life? BBC",
+     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBLNklEaF8ydE8yX1N5c0p2LWhiUDJhXy1JelNNVk56MVdmVzgxazV0cmQtRmJKcWVCcFRnaWpaZlBTSFlLbUE1NnpOV2J6Y3lWU1UwTTBoOWE?oc=5",
+     "published": "2026-11-24T18:08:10+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 21.694,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 2.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.905,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 16.073
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "DeepSeek",
+      "Meta AI"
+     ],
+     "id": "3d8e0f9dc1"
+    },
+    {
+     "source": "Reuters",
+     "source_type": "rss",
+     "title": "As Meta bets big on Muse AI agent, early safety mishaps surface",
+     "summary": "As Meta bets big on Muse AI agent, early safety mishaps surface Reuters",
+     "url": "https://www.reuters.com/investigations/meta-bets-big-muse-ai-agent-early-safety-mishaps-surface-2026-11-18/",
+     "published": "2026-11-20T11:02:50+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.867,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 2.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.383,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 15.856
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Meta AI"
+     ],
+     "id": "0fbbf8b06f"
+    },
+    {
+     "source": "TechCrunch",
+     "source_type": "rss",
+     "title": "Walmart teams up with Meta to bring Black Friday deals to AI agent Muse",
+     "summary": "Walmart teams up with Meta to bring Black Friday deals to AI agent Muse TechCrunch",
+     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOblI0TVF2MWVsaGp3RmM1VEpuaHY1d1paaVg5WnFfRHlUa0Vucnpta3kwLUNzZDh4cmpRVnR6bzN3czJCMGQwVGx6cjgzUldYTnp3OFA5NGhseHFkTk9fNGhiNUxBU0FWU21mZjJRWHpuTDd0ZHU1cS0xNWpzRGtGdnlZY29VQndEbk5qbWZoVnNXck0zaTdhTURMR29BeGt0RmJHUEFuNDRQQQ?oc=5",
+     "published": "2026-11-24T21:32:38+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 21.996,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 2.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.931,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 17.648
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Meta AI"
+     ],
+     "id": "be6d3f0c00"
+    },
+    {
+     "source": "ZDNET",
+     "source_type": "rss",
+     "title": "How I use Meta Muse safely to stretch my AI budget – and what I never let it do",
+     "summary": "How I use Meta Muse safely to stretch my AI budget – and what I never let it do ZDNET",
+     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE52eGowRFZIOTZNVVZLR3dMQTBfa0wzbjFWQ3R5MzV4U25NaTNVbTJLNlJ2Y0hwREp3cjZJZ1NubjFfaHJCTVJ0ZjduOC1DaUZUdnpnVVlWZEs1YnFXa2VWTnlmMF9jSG52MGZ3Z0szVkFUbXB1bGZqLThUcw?oc=5",
+     "published": "2026-11-20T13:21:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 17.212,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 0.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.391,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 15.51
+     },
+     "track": "agents",
+     "region": "frameworks",
+     "entities": [
+      "OpenClaw"
+     ],
+     "id": "f93c8b3bb5"
+    }
+   ],
+   "outlets": [
+    "The Guardian",
+    "TechCrunch",
+    "BBC",
+    "Reuters",
+    "Google News",
+    "ZDNet",
+    "Webrazzi"
+   ],
+   "outlet_count": 7,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "us"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-26T12:13:46+00:00",
+   "lead_score": 23.604,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "meta",
+    "muse"
+   ],
+   "id": "sc6d2",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 1,
+     "reason": "A consumer shopping agent gives a manager little to decide"
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "Only a UK launch is named, with no regional market"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "Guardian, BBC and Reuters report it, and Reuters notes early safety mishaps"
+    },
+    "tension": {
+     "score": 2,
+     "reason": "Early safety mishaps set against the consumer appeal"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "risk",
+   "short": null,
+   "summary": "Meta has launched its Muse AI agent in the UK, with Walmart bringing Black Friday deals into it, and Reuters reports early safety mishaps.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 7,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (The Guardian, TechCrunch, BBC, Reuters)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "out",
+   "slot_reason": "kill list: a global headline with no regional consequence",
+   "ref": 17
+  },
+  {
+   "title": "Claude Code releases v2.1.331",
+   "items": [
+    {
+     "source": "GitHub · anthropics/claude-code",
+     "source_type": "rss",
+     "title": "Claude Code releases v2.1.331",
+     "summary": "## What's changed - Added Code Mode support in terminal sessions on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and Claude Platform on AWS - Added `oidc.groups_jsonpath` to the Claude apps gateway, to read groups from the matching entries of a list of objects with a small subset of JSONPath (RFC 9535) - Added an API connectivity section to `claude doctor` that reports whether the API can be reached, with the HTTP status or the error, or says why it wasn't tested - Added a notice when tap-mode voice dictation stops by itself, after 15 seconds without recognized speech or at its 2-minute limit - Added `CLAUDE_CODE_DISABLE_RESPONSE_COMPRESSION` to ask for uncompressed model responses behind a proxy that cuts compressed ones off; not advised yet for self-hosted runners or Remote Control - Added `CLAUDE_GATEWAY_IDP_CONNECT_BY_HOSTNAME=1` for Claude apps gateways: with `oidc.use_proxy: true`, sign-in requests hand the proxy an `https` IdP's hostname even with `NO_PROXY` set - Added `gen_ai.usage.*`, `gen_ai.response.model` and `gen_ai.operation.name` to `claude_code.llm_request` trace spans; `gen_ai.usage.input_tokens` includes prompt cache tokens - Added `optionalDependencies` to plugin manifests: plugins that install with the plugin listing them and can be disabled or uninstalled on their own - Fixed MCP tool calls hanging for up to 30 minutes on some malformed replies from a local or WebSocket server - Fixed PushNotification telling a headless run, such as a scheduled one, that the terminal was active in its first minute, instead of saying whether a mobile push was requested - Fixed `/install-github-app` skipping the repository step after setup warnings when no repository was found, and Esc not going back from its workflow list and sign-in steps - Fixed one-line tool results cut with no ellipsis in narrow windows, Markdown stars in the Auto mode tab of /permissions, and a hook's reason to stop a forked skill showing twice - Fixed `/diff` hiding…",
+     "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.331",
+     "published": "2026-11-23T21:34:41+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.1,
+     "score": 30.458,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.762,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 17.499
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Amazon Nova",
+      "Anthropic",
+      "Claude Code",
+      "Model Context Protocol"
+     ],
+     "id": "800aeca2d3"
+    },
+    {
+     "source": "ZDNET",
+     "source_type": "rss",
+     "title": "Claude can ship code for you now – how to try it (if you dare)",
+     "summary": "Claude can ship code for you now – how to try it (if you dare) ZDNET",
+     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1YdzNqWWozWExIQnJEYk9QUjFkcWU2V1ZSa2NfOHJod1pOQjNuTVpKQlAzUFg2dDNhN2x0WExPeEJ6NGhIWTZEdjdYWVJjOUxlWXZoeFNhTmxuWjQyRjZrQnRHaThQRUthVC1fSzVn?oc=5",
+     "published": "2026-11-23T20:00:02+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 21.827,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 2.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.752,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 18.0
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "beb3a1933d"
+    },
+    {
+     "source": "DeepLearning.AI",
+     "source_type": "rss",
+     "title": "Anthropic releases Claude Fable and Mythos 5.2 shortly before record-breaking IPO",
+     "summary": "Anthropic releases Claude Fable and Mythos 5.2 shortly before record-breaking IPO DeepLearning.AI",
+     "url": "https://www.deeplearning.ai/the-batch/claude-fable-gets-a-price-cut",
+     "published": "2026-11-20T16:05:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 11.4,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 8.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.4,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 18.0,
+      "repeat": -17.1
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "19fd6749bd"
+    },
+    {
+     "source": "Blockchain News",
+     "source_type": "rss",
+     "title": "Enterprise Guide to Securing AI Coding Agents with Claude Code",
+     "summary": "Enterprise Guide to Securing AI Coding Agents with Claude Code Blockchain News",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9kNXl5M2NLMWxWSUVPRV9zbjZXUndZTDN5MzlaS2VNRDc3cVVhVnE5YXZLcTd6aEM2UGRlQXpvUFRqUEdqeVIyMkpMaGJkRGlRS3k1NkVvSEZXaVlQeVFyenNsUWZQeDhIRFo4cUgwR0lqblEzY0hn?oc=5",
+     "published": "2026-11-23T21:57:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 22.867,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 7.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.765,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 17.648
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic",
+      "Claude Code"
+     ],
+     "id": "8bd2d2bf5e"
+    }
+   ],
+   "outlets": [
+    "GitHub",
+    "Google News",
+    "ZDNet",
+    "The Batch (DeepLearning.AI)"
+   ],
+   "outlet_count": 4,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "us"
+   ],
+   "flagged": false,
+   "repeat": [],
+   "published": "2026-11-27T04:41:11+00:00",
+   "lead_score": 30.458,
+   "advice_bait": false,
+   "routine_release": true,
+   "common_words": [
+    "claude",
+    "code"
+   ],
+   "id": "sd316",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 1,
+     "reason": "Release notes show feature changes, with little that forces a manager's decision"
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No regional actor or market is named"
+    },
+    "evidence": {
+     "score": 1,
+     "reason": "Mostly a vendor's own release notes and a guide, with no independent reporting"
+    },
+    "tension": {
+     "score": 0,
+     "reason": "No conflict or open question in the sources"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "none",
+   "short": null,
+   "summary": "Anthropic's Claude Code release notes list new terminal support on several cloud platforms, and DeepLearning.AI reports new Claude models released shortly before the IPO.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 4,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (GitHub, Google News, ZDNet, The Batch (DeepLearning.AI))"
+    },
+    "depth": {
+     "pass": false,
+     "reason": "a routine version release"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "out",
+   "slot_reason": "a routine version release; kill list: a global headline with no regional consequence",
+   "ref": 18
+  },
+  {
+   "title": "Anthropic mathematician claims he used Claude to prove 19th-century Riemann hypothesis",
+   "items": [
+    {
+     "source": "The Guardian",
+     "source_type": "rss",
+     "title": "Anthropic mathematician claims he used Claude to prove 19th-century Riemann hypothesis",
+     "summary": "Anthropic’s Levent Alpöge says it took six weeks for him using the AI tool to solve 19th-century Riemann hypothesis A mathematician at Anthropic has convincingly said that the San Francisco -based artificial intelligence (AI) company’s software has helped crack one of the most important unsolved problems in mathematics. Levent Alpöge, a Turkish American mathematician, on Friday posted a note on his personal website saying that Claude, the AI software, had helped prove the Riemann hypothesis. He says that Claude helped develop a solution to the problem during the course of about six weeks. On Saturday afternoon, two organizations announced that they had independently verified Alpöge’s claim after reviewing the programming language he used to share the solution. The proof evidently marks another breakthrough in the use of AI for complicated math problems – even as mathematicians express uneasiness around extremely lucrative private companies dishing out millions of dollars for the technology to solve problems. “Claude and I have had a great time together with such breadth in recent months, but this time Claude far outpaced me near the finish line,” Alpöge wrote, while anthropomorphizing the AI software. “No, Claude flew, and danced, and sparkled near that finish line.” Alpöge linked to computer code – written in a language called Lean – that he maintained could verify the findings. Mathematicians subsequently began working to see if Alpöge’s proof could be confirmed. On Saturday afternoon, the Lean Focused Research Organization – which seeks to advance the use of the programming language – and the Mathlib Initiative, a program that works with Lean for math equations, announced that they had verified Alpöge’s solution. “We have full confidence that Alpöge’s proof of the Riemann hypothesis is correct, and we congratulate him on this achievement,” the groups announced. Alpöge’s note was published just one day after Anthropic went public on the Nasdaq stock market index. He acknowledged that, writing: “The precise timing is horrible. If I could have, I’d have finished this all much earlier.” The Riemann hypothesis is a nearly 170-year-old math problem named after Bernhard Riemann, a German mathematician who proposed it in 1859. The hypothesis deals with prime numbers – whole numbers greater than 1 that can only be divided by themselves and 1. Riemann questioned how often prime numbers appear and how they are distributed along the number line. And he developed a…",
+     "url": "https://www.theguardian.com/technology/2026/nov/21/anthropic-riemann-hypothesis-solved-claude-ai",
+     "published": "2026-11-21T20:01:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 24.911,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 4.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.504,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 17.184
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic",
+      "Together AI"
+     ],
+     "id": "3500af305e"
+    },
+    {
+     "source": "The New York Times",
+     "source_type": "rss",
+     "title": "Anthropic Mathematician Claims to Solve Riemann Hypothesis With Help From Claude",
+     "summary": "Anthropic Mathematician Claims to Solve Riemann Hypothesis With Help From Claude The New York Times",
+     "url": "https://www.nytimes.com/2026/11/20/science/anthropic-ai-math-riemann-hypothesis.html",
+     "published": "2026-11-21T16:52:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 23.559,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.491,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 17.017
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "3ebde50b56"
+    },
+    {
+     "source": "Anadolu Ajansı",
+     "source_type": "rss",
+     "title": "Anthropic mathematician claims AI-assisted breakthrough on 167-year-old math problem",
+     "summary": "Anthropic mathematician claims AI-assisted breakthrough on 167-year-old math problem Anadolu Ajansı",
+     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPYzhLSXhIeUczb2UxOHI4ZjN5bHZJODBHLWhub2hwUk9iX1hicVRXa0RRWmtFQXdtNC1jSUVUblpwRzFYSnlDWFNEYTE1X3A1eVp6eGVGdHlUdGR4MElIS01QbzlXc3N2ZTM3MVZjcUlVNXFGVEMxQTVZMmptVkhLa2pCQWJqZ0pMUDlVSERUNDc5SXgtdkdFQ3AxUWR6RHlkZEZ5cVV5Q1JSSVZEdE9LT0JWc2stSWtMRDhBTjFtdjdSaGRT?oc=5",
+     "published": "2026-11-21T10:10:34+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 16.943,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.465,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 13.378
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "217296edb4"
+    },
+    {
+     "source": "ETV Bharat",
+     "source_type": "rss",
+     "title": "Anthropic Mathematician Claims Claude Helped Him Solve Riemann Hypothesis",
+     "summary": "Anthropic Mathematician Claims Claude Helped Him Solve Riemann Hypothesis ETV Bharat",
+     "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQNEZrc1Fzdzc3ME5ob3hDVDZ3R1dRLXAxZ0RjWFJoYzYyazJYT0N2RmpPWUc3MGlZdTRadnoyZjY2VE9jajZoZXJ1U213OUtQNllzQk1UVFh4b2dxQzF1NG8wSGJQLWZEOXF3YmNZOXA5U1NRcmQwNU5lckxCOEtRQlhSR00tMm5HV2ZKQWRrX2pXZ3FROVZwYlppVUZmSHhJNTZXYkxBWmp1LVNBWklDMzVuXzZKUW9OTGdVQXRsQUREOFE5bm15dWdNTkRTS1ZBWnJjc0hXZU10WVpNUjQ5aUxvZE9aVkVYbVlSTlpIeVhiNnRNdmfSAfsBQVVfeXFMT1pvWFppMU55S3JIOWlkMm1OVEtvX0R4cHAwU3MxT3JGWGhoSW4wamFaZGdrM2w1ZlJDaVZ4dWxPaEN3TTItcWI0eFBPT3JvaERRbVE4YXU0OVhqS0tIUDI5V0dHN3FXSGV6WjV5TGltRWc1Y2dXbkM0RHNFcnlNYWUtZ1RwWVJzN0w5NEVtYlFuM3QxdHlHeEtlVmdzdW53NVVBbmZ0MVM2Tk1BMWdhbFNtOXdpWGFsVDZzS1NuUzRPOFRoUkE1bmZwUlIzSG9TZjMyYzlfQ0ZibmZOVmF0MDBZbVI5d1dXVkJnM0hrRS1qSlpYTlFhR1ZVNFU?oc=5",
+     "published": "2026-11-21T15:17:21+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.117,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.485,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 17.101
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic"
+     ],
+     "id": "2b03c890d9"
+    },
+    {
+     "source": "Scientific American",
+     "source_type": "rss",
+     "title": "Anthropic mathematician claims to prove Riemann hypothesis, most famous problem in all of math",
+     "summary": "Anthropic mathematician claims to prove Riemann hypothesis, most famous problem in all of math An AI-generated solution of the 167-year-old problem, long considered far out of reach to human mathematicians, would cap off the technology’s year-long conquest of math in spectacular fashion By Joseph Howlett edited by Claire Cameron Levent Alpöge, a mathematician and employee at artificial intelligence company Anthropic, claimed on Friday to have proven the most famous problem in all of mathematics using an LLM. “I believe I have, working with Claude, discovered a proof of the Riemann Hypothesis,” Alpöge wrote in a statement posted on his website. The Riemann hypothesis was first proposed in 1859 by the mathematician Bernhard Riemann. It claims that the locations of the prime numbers along the number line, which appear random at first blush, are actually determined by an intricate, meaningful order. If you're enjoying this article, consider supporting our award-winning journalism by subscribing . By purchasing a subscription you are helping to ensure the future of impactful stories about the discoveries and ideas shaping our world today. The conjecture has since become the North Star for the entire field of number theory, and is the most famous open problem in math. It’s one of the few open problems on which the Clay Mathematics Institute has placed a million-dollar bounty. Progress toward solving the Riemann hypothesis was so rare that most top experts spent little of their time actually working on it, because there was no obvious path to proving Riemann’s guess. The first chink in the problem’s armor appeared in October, when one of the proofs in OpenAI’s massive dump of math results made significant progress on making sense of the primes. Now the long struggle appears over. Alpöge posted his Claude proof coded in the programming language Lean, which verifies the mathematical correctness of each argument. Issues can arise in Lean, but it shouldn’t take long for experts to verify whether the hypothesis is properly coded, and if the proof is correct. If that happens, it will cap off a year in which AI’s mathematical capabilities ascended from unreliable college student to a superhuman force, leaving no part of the discipline undisrupted. The announcement comes just a day after Anthropic's record-breaking debut on the stock market. Alpöge says his proof confirms the “Generalized Riemann Hypothesis,” a gargantuan expansion on Riemann’s initial guess that…",
+     "url": "https://www.scientificamerican.com/article/anthropic-mathematician-claims-to-prove-riemann-hypothesis-most-famous-problem-in-all-of-math/",
+     "published": "2026-11-20T14:00:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 16.721,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.393,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 13.755
+     },
+     "track": "models",
+     "region": "us",
+     "entities": [
+      "Anthropic",
+      "OpenAI"
+     ],
+     "id": "0b5d0afadc"
+    }
+   ],
+   "outlets": [
+    "The Guardian",
+    "The New York Times",
+    "Google News",
+    "Anadolu Agency",
+    "Scientific American",
+    "IBM",
+    "New Scientist"
+   ],
+   "outlet_count": 7,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "us"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-21T20:01:00+00:00",
+   "lead_score": 24.911,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "anthropic",
+    "claim",
+    "hypothesi",
+    "mathematician",
+    "riemann"
+   ],
+   "id": "sd3a9",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 0,
+     "reason": "A mathematics claim gives a manager no decision to make"
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No regional actor or market is named"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "Several outlets report it, but it is the mathematician's own claim"
+    },
+    "tension": {
+     "score": 2,
+     "reason": "Open question whether the proof will hold up under expert review"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "none",
+   "short": null,
+   "summary": "Anthropic mathematician Levent Alpoge posted a note saying Claude helped him prove the Riemann hypothesis, a claim that the sources report without a regional link.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 4,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (The Guardian, The New York Times, Google News, Anadolu Agency)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "out",
+   "slot_reason": "kill list: a global headline with no regional consequence",
+   "ref": 19
+  }
+ ],
+ "shorts": [
+  {
+   "story_id": "s258b",
+   "title": "Cisco, OpenAI Launch Project to Safeguard Agentic AI",
+   "job": "breaking",
+   "fact": "In a controlled test, Shirudo blocked a Java4Shell exploit attempt against a running Elasticsearch service without a restart.",
+   "implication": "Teams may be able to shield unpatched systems at runtime while patches are pending.",
+   "question": "How long does your team wait for a patch before it has to rely on another protection?"
+  },
+  {
+   "story_id": "s7240",
+   "title": "Artefact unveils AI sovereignty framework as UAE moves half of government services to Agentic AI",
+   "job": "explainer",
+   "fact": "The UAE's Mira AI assistant will first offer government services in March 2027, covering Emirates ID, visa and work permit renewals.",
+   "implication": "Businesses that handle these permits will need to plan for the switch to an AI assistant channel.",
+   "question": "Which of your company's government transactions would you trust an AI assistant to complete?"
+  }
+ ],
+ "overrides": [],
+ "approved": null
+}
