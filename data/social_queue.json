@@ -1100,5 +1100,59 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531774921501401089"
       }
     }
+  },
+  {
+    "id": "2026-11-27-brk-microsoft-ai-spending-selloff-en#1",
+    "week": "2026-11-27-brk-microsoft-ai-spending-selloff-en",
+    "lang": "en",
+    "file": "2026-11-27-brk-microsoft-ai-spending-selloff-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-27-brk-microsoft-ai-spending-selloff-en/2026-11-27-brk-microsoft-ai-spending-selloff-en-short-01.mp4",
+    "title": "Microsoft Shares Fall 13%",
+    "due": "2026-11-27T01:54:41Z",
+    "approved": true,
+    "captions": {
+      "youtube": "Microsoft Shares Fall 13%\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Microsoft Shares Fall 13%\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Microsoft Shares Fall 13%\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Microsoft Shares Fall 13%\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "Microsoft shares are down about 13% from their all-time highs as investors worry about AI spending, Yahoo Finance reports. The company spent $45.2 billion on capex in its fiscal first quarter, yet free cash flow stayed positive at $18.6 billion, while Azure revenue grew 48% year on year. Microsoft holds 21% of the global cloud infrastructure market, and nearly 4 million companies use Microsoft 365. For Gulf organisations building on Azure and Copilot, the spending race shows how much capacity the major cloud providers are adding to keep up with AI demand.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "queued",
+        "note": "not connected this run (secrets missing or the token failed): still queued"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T01:54:42Z",
+        "media_id": "17914641009583179",
+        "url": "https://www.instagram.com/reel/DgOjByJRSVb/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T01:54:42Z",
+        "video_id": "1861926821900711",
+        "url": "https://www.facebook.com/reel/1861926821900711",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T01:54:42Z",
+        "buffer_id": "6b08e30e70e2a88e2cea5fb9",
+        "url": "https://tiktok.com/@aithisweek/video/7712663994108103957",
+        "via": "buffer"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-27T01:54:42Z",
+        "post": "urn:li:ugcPost:7531898991853187073",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531898991853187073"
+      }
+    }
   }
 ]
