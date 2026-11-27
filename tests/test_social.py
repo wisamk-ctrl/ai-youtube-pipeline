@@ -561,3 +561,25 @@ def test_captions_link_the_latest_episode_when_one_is_public(monkeypatch):
     yt = social.caption({"title": "S"}, cfg, "en", "youtube")
     assert "Latest full episode: https://youtu.be/abc" in yt and "Channel: https://www.youtube.com/@AIThisWeekME" in yt
     assert "link in bio" in social.caption({"title": "S"}, cfg, "en", "tiktok")
+
+
+def test_a_short_with_a_licensed_photo_credits_its_author_and_licence(tmp_path, monkeypatch):
+    """CC BY / BY-SA photos need attribution where they are shown: the Short's own caption."""
+    from pipeline.publish import playlists
+    monkeypatch.setattr(playlists, "latest_episode_url", lambda root=None: None)
+    cfg = {"publish": {}, "social": {}}
+    credits = [{"provider": "Wikimedia Commons", "author": "Jane Doe", "license": "CC BY-SA 4.0", "title": "File:a.jpg"},
+               {"provider": "pixabay", "author": "someone"}]
+    for platform in ("youtube", "tiktok", "instagram", "linkedin", "facebook"):
+        text = social.caption({"title": "S"}, cfg, "en", platform, credits=credits)
+        assert "Photo: Jane Doe, CC BY-SA 4.0, via Wikimedia Commons" in text
+        assert "someone" not in text
+    assert "Photo" not in social.caption({"title": "S"}, cfg, "en", "youtube")
+
+
+def test_plan_week_reads_the_photo_credits_of_the_render(tmp_path):
+    out = week(tmp_path, 1)
+    (out / "credits.json").write_text(json.dumps([{"provider": "Wikimedia Commons", "author": "Jane Doe",
+                                                   "license": "CC BY 2.0", "title": "File:a.jpg"}]))
+    new = social.plan_week(out, CFG, [], lambda f: f, datetime(2026, 11, 2, tzinfo=timezone.utc))
+    assert all("Photo: Jane Doe, CC BY 2.0, via Wikimedia Commons" in c for c in new[0]["captions"].values())

@@ -61,6 +61,8 @@ shot-list check enforces its numbers. Change it here only.
   licence that allows reuse with credit (CC0, public domain, CC BY, CC BY-SA); the author and licence go into the
   description. No such photo → the subject's name as a title card. Never news-agency or press-kit photos (their
   rights are unknown), never a lookalike from stock.
+  **Shorts too** (founder 2026-11-27): breaking and explainer Shorts show the person or head office a line
+  names the same way; the photo's author and licence go into each Short's caption on every platform.
 - **Generated clips** (`[Visual: generated <scene>]`): concept scenes we generate (HeyGen video, Higgsfield models)
   in the house look, e.g. `glowing server hall at night, slow dolly`. Never a real person's face, a logo, a real
   event or readable text. The Review issue lists them to make; until a clip is listed in

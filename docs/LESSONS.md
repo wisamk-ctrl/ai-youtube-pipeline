@@ -530,3 +530,8 @@ the Microsoft 365 outage on 2026-11-17, which was fixed for outages only.
 - **Google News refuses a burst of searches from one machine (429, then 302).** Three test queries in a row from
   the Mac were blocked; the check was done in a browser.
 
+- **2026-11-27, Shorts (founder: "add real faces of people when we mention them, photos of HQs"):** breaking and
+  explainer Shorts could only use library clips and cards. They now draft `photo: <name> | Name, role` and
+  `photo: <Company> headquarters` shots (one `VISUALS` rule in pipeline/breaking.py shared by both); mechanical()
+  refuses a photo of anyone the articles do not name, and a repeated photo. Each Short's caption credits the
+  Wikimedia author and licence (pipeline/publish/social.py `photo_credits`).
