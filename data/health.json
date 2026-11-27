@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-26T03:19:18Z",
+ "checked": "2026-11-27T03:19:36Z",
  "identities": {
   "LinkedIn": [
    "Wissam Kishek"
@@ -18,6 +18,9 @@
   ]
  },
  "problems": [
-  "HeyGen wallet: HeyGen's API wallet holds $11.07, under the $12.5 floor: top it up at app.heygen.com (API)"
+  "Connections: YouTube: the saved sign-in was refused. Connect again.",
+  "HeyGen wallet: HeyGen's API wallet holds $11.05, under the $12.5 floor: top it up at app.heygen.com (API)",
+  "Posting queue: 2026-11-26-brk-openai-cisco-shirudo-en#1 on youtube: approved and due since 2026-11-26T17:41:37Z, still waiting",
+  "Scheduled jobs: channel: last success 2026-11-26T09:58:15Z, more than 6 hours ago"
  ]
 }
