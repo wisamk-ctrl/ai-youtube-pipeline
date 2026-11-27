@@ -115,6 +115,23 @@ def due_times(first: datetime, count: int, days: list[int], hour_utc: int) -> li
     return out
 
 
+ASK_EN, ASK_AR = "Answer in the comments.", "شاركونا رأيكم في التعليقات."
+
+
+def ask_first(yt, video_id: str, entry: dict[str, Any]) -> str:
+    """The channel asks the Short's question as its first comment (founder 2026-11-27): people answer a comment that
+    is already there more readily than they start one. The API cannot pin it; pin it in Studio. Never fails a post."""
+    q = str(entry.get("question") or "").strip()
+    if not q:
+        return ""
+    try:
+        from pipeline.publish.playlists import post_comment
+        return post_comment(yt, video_id, f"{q} {ASK_EN if entry.get('lang', 'en') == 'en' else ASK_AR}")
+    except Exception as exc:  # noqa: BLE001 — the Short is already live
+        log.warning("First comment on %s not posted: %s", video_id, exc)
+        return ""
+
+
 def photo_credits(credits: list[dict[str, Any]] | None, lang: str) -> str:
     """CC BY / BY-SA photos need attribution where they are shown: the Short's own caption (founder 2026-11-27)."""
     names = []
@@ -151,7 +168,9 @@ def caption(short: dict[str, Any], cfg: dict[str, Any], lang: str, platform: str
     if platform == "youtube" and cfg.get("publish", {}).get("partnerships_email"):
         more += f"\nPartnerships: {cfg['publish']['partnerships_email']}"
     note = desc.DISCLOSURE_EN if lang == "en" else desc.DISCLOSURE_AR
-    return "\n\n".join(x for x in (desc.clean(short.get("title", "")), more, note, photo_credits(credits, lang),
+    ask = str(short.get("question") or "").strip()   # founder 2026-11-27: the question comes first, on every platform
+    ask = f"{ask} {ASK_EN if lang == 'en' else ASK_AR}" if ask else ""
+    return "\n\n".join(x for x in (ask, desc.clean(short.get("title", "")), more, note, photo_credits(credits, lang),
                                     " ".join(tags)) if x)
 
 
@@ -178,6 +197,7 @@ def plan_week(out_dir: Path, cfg: dict[str, Any], queue: list[dict[str, Any]], a
         new.append({
             "id": f"{week}#{n}", "week": week, "lang": lang, "file": name, "url": asset_url(name),
             "title": sh.get("title", ""), "due": due.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            **({"question": sh["question"]} if sh.get("question") else {}),
             "approved": not s.get("require_approval", True),
             "captions": {p: caption(sh, cfg, lang, p, credits) for p in platforms},
             "posts": {p: {"status": "queued"} for p in platforms},
@@ -658,7 +678,9 @@ def youtube_poster(cfg: dict[str, Any]):
         vid = yu._insert(yt, body, local)
         from pipeline.publish import playlists
         lists = playlists.place(yt, vid, e.get("title", ""), e["captions"].get("linkedin", ""), "short", cfg)
-        return {"url": f"https://youtube.com/shorts/{vid}", **({"playlists": lists} if lists else {})}
+        comment = ask_first(yt, vid, e)
+        return {"url": f"https://youtube.com/shorts/{vid}", **({"playlists": lists} if lists else {}),
+                **({"first_comment": comment} if comment else {})}
     return post
 
 

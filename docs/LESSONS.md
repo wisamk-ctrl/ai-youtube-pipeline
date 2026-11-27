@@ -535,3 +535,8 @@ the Microsoft 365 outage on 2026-11-17, which was fixed for outages only.
   `photo: <Company> headquarters` shots (one `VISUALS` rule in pipeline/breaking.py shared by both); mechanical()
   refuses a photo of anyone the articles do not name, and a repeated photo. Each Short's caption credits the
   Wikimedia author and licence (pipeline/publish/social.py `photo_credits`).
+- **2026-11-27, Shorts invite comments (founder: "invite people to participate"):** the spoken closing question came
+  in the last seconds and nothing showed it. Each breaking and explainer Short now drafts a `question` (at most 12
+  words, answerable in a word or two, never money, law, tax or health; checked in mechanical()). It is shown on the
+  end card with "Answer in the comments", leads the caption on every platform, and is posted by the channel as the
+  Short's first comment on YouTube (the API cannot pin it). The founder answers comments himself; nothing replies automatically.

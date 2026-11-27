@@ -32,7 +32,8 @@ def state():
 def good_draft(ids, number_line="Politico counts 6 major outages in 6 days."):
     L = breaking.Line
     return breaking.Draft(newsworthy=True, slug="six outages", title="Six US Outages in Six Days",
-                          hook="Six US outages in six days.", linkedin="Six outages in six days.", lines=[
+                          hook="Six US outages in six days.", linkedin="Six outages in six days.",
+                          question="Would your company trust one cloud provider now?", lines=[
         L(text=number_line, visual="number: 6 | Major US outages in 6 days", sources=[ids[0]]),
         L(text="Microsoft 365 went down on November 12.",
           visual="clip: office tower at night, floors going dark", sources=[ids[0]]),
@@ -256,3 +257,21 @@ def test_a_photo_of_someone_the_articles_never_name_is_refused():
     d = good_draft([i.id for i in items])
     d.lines[6].visual = "photo: Elon Musk | Elon Musk, CEO of Tesla"
     assert any("Elon Musk" in p for p in breaking.mechanical(d, items, LIB))
+
+
+def test_a_short_asks_one_quick_question_on_screen_and_in_the_folder(tmp_path, monkeypatch):
+    """Founder 2026-11-27: invite people to answer. One short question a viewer can answer in a word or two."""
+    st = state()
+    items = breaking._articles(breaking.candidates(st, NOW, set())[0])
+    d = good_draft([i.id for i in items])
+    assert breaking.mechanical(d, items, LIB) == []
+    for bad, why in [("Would you trust one cloud provider", "?"),
+                     ("Should Gulf banks now invest in a second cloud provider for safety?", "money"),
+                     ("What do you think about everything that happened with these outages across the whole week?", "words")]:
+        d.question = bad
+        assert any(why in p for p in breaking.mechanical(d, items, LIB)), bad
+    d.question = "Would your company trust one cloud provider now?"
+    week = breaking.write(d, items, NOW, {k: "u" for k in LIB}, tmp_path)
+    meta = yaml.safe_load((tmp_path / "reviewed" / week / "breaking.yaml").read_text())
+    assert meta["question"] == "Would your company trust one cloud provider now?"
+    assert "question" in breaking.SYSTEM

@@ -330,3 +330,15 @@ def test_thumbnail_takes_two_stories_on_two_lines_the_second_in_gold():
     assert "Days Offline<br><b>Record IPO</b>" in h and " / " not in h.split("<body>")[1]
     one = packaging.thumbnail_html("Microsoft Goes Dark", "AI This Week")
     assert "Microsoft Goes <b>Dark</b>" in one and "<br>" not in one
+
+
+def test_a_short_that_asks_shows_its_question_on_the_end_card():
+    from pipeline import language
+    from pipeline.post import shorts
+    language.apply_language({}, "2026-11-27-brk-x-en")
+    try:
+        page = shorts.end_html("AI This Week", "More on Sunday", ask="Would your company trust one cloud provider now?")
+    finally:
+        language.apply_language({}, "2026-W48")
+    assert "Would your company trust one cloud provider now?" in page and "Answer in the comments" in page
+    assert "More on Sunday" not in page
