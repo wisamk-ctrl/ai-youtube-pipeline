@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-27 11:25 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Nvidia halts AI server shipments to four South-East Asian countries.  ← The National (1fe3a8654e), WSJ (f63a11ca36), The New York Times (f44826cd43), Tom's Hardware (09246c9558)
+- (2) The FT reports Dell and Supermicro told customers Nvidia won't authorise their orders.  ← The National (1fe3a8654e)
+- (3) Washington is tightening export controls to stop China accessing AI computing.  ← The National (1fe3a8654e), The New York Times (f44826cd43)
+- (4) New US rules target Chinese firms renting Nvidia-powered cloud computing.  ← The National (1fe3a8654e), Tom's Hardware (09246c9558)
+- (5) Nvidia booked $104 billion in revenue through its Singapore subsidiary in 2025.  ← The National (1fe3a8654e)
+- (6) A cloud executive told the FT it's causing sheer chaos.  ← The National (1fe3a8654e)
+- (7) Would Gulf data centre builders rely on one chip supplier now?  ← regional line, no facts

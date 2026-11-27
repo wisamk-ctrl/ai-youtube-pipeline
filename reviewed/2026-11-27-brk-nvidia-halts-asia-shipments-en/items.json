@@ -1,0 +1,78 @@
+[
+  {
+    "source": "The National",
+    "source_type": "rss",
+    "title": "Nvidia halts chip shipments to South-East Asia amid US crackdown",
+    "summary": "Nvidia has asked its manufacturing partners to halt shipments of servers containing its artificial intelligence chips to four South-East Asian countries, as the US tightens export controls to prevent China from accessing AI computing technology . Manufacturers, including Dell and Supermicro, have informed customers in Malaysia , Singapore, Thailand and Indonesia that Nvidia will not authorise their orders to be shipped, the Financial Times said in a report on Thursday, quoting sources. It remains unclear whether the suspension is temporary, as Nvidia and its manufacturing partners seek clarity on how to comply with Washington’s latest export restrictions, the sources said. Huang 'honoured to return' to Nvidia less than two weeks after resigning The four countries have become favoured destinations for Chinese AI developers seeking to access Nvidia’s most advanced chips, whose exports are restricted by Washington. The move threatens to disrupt an expanding data centre industry in South-East Asia – a region which is an important source of revenue for Nvidia. The US chipmaker recorded $104 billion in revenue through its Singapore subsidiary in 2025, a 72 per cent increase from a year earlier, according to company accounts, as reported by the FT . Nvidia also records some of its Taiwan and China revenue via its Singapore unit, the report added. The move follows new US rules introduced last week to stop Chinese companies bypassing export restrictions by renting computing power from cloud providers using Nvidia chips. The lack of clarity around how the licensing requirements will be implemented has created uncertainty among companies operating in the region, the report said. “There's this new rule but no guidance on execution,” an executive at a cloud provider told the FT . “No one knows how to apply for this licence while the 90-day clock is ticking. It's causing sheer chaos in the region.” Nvidia chief executive Jensen Huang has previously argued that allowing the company to sell its chips in China would help maintain the country's dependence on American technology.",
+    "url": "https://www.thenationalnews.com/future/technology/2026/11/26/nvidia-halts-chip-shipments-to-south-east-asia-amid-us-crackdown/",
+    "published": "2026-11-26T06:19:05+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "NVIDIA"
+    ],
+    "id": "1fe3a8654e"
+  },
+  {
+    "source": "Tom's Hardware",
+    "source_type": "rss",
+    "title": "Nvidia stops AI GPU shipments to Southeast Asia amid purported China cloud access ban, report claims — data centers in Singapore, other countries, in trouble as Commerce Department requires cloud providers to obtain export license",
+    "summary": "Nvidia stops AI GPU shipments to Southeast Asia amid purported China cloud access ban, report claims — data centers in Singapore, other countries, in trouble as Commerce Department requires cloud providers to obtain export license Tom's Hardware",
+    "url": "https://news.google.com/rss/articles/CBMi2AJBVV95cUxPdGpodGZZZkhBY0lBaUZWMkM4QTFrYmJSaHM0ZVRKX2RtYW5UcE5EeERHbHBSZ1QwY0xUaGIybEcxY2pFU0J3dXQtV1lXWkRFbHZOOGFha1hiOEJyb18xb0tjV3NadDR0c015SjdvZ2VvVXJPN1BrSDJsZm9OWWtBSkFpN0g1R0RYRFB6bXJZS0hQVUl6TXdNSDVKa2lVSlJfYUtkLUVRWlVLLWx6MEdkN2FpSUVqeU5zSHVyeUV3Q3RhRGFXZ2lMZnFOSlg1ZzFUdmRiTVhPUk9ZM1EwMzBjWU0zV3k2bzNOZ21sQnE5NkFaODNISE41Q1BfMWwxNUtWbWFXZmNYQjQyYVdXaXI0cDdvcVIwMjV0T2Y2N3l4b09ST0NLbnM0ZnVsbXNsY3hmSWV4bldvT0VMUXg0MTEyZDV6NXNFTkpEQVJiQlhKYWxXeDNwQlNSbg?oc=5",
+    "published": "2026-11-26T16:00:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "NVIDIA"
+    ],
+    "id": "09246c9558"
+  },
+  {
+    "source": "The New York Times",
+    "source_type": "rss",
+    "title": "Nvidia Halts Sales to Southeast Asia as U.S. Tightens China Restrictions",
+    "summary": "Nvidia Halts Sales to Southeast Asia as U.S. Tightens China Restrictions The New York Times",
+    "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNSHM3RHJjQzd5X25CS3B2YkpjVm9fa092SkJjUmlWLS1xRi1EaFZNam9wTi1lbUpmTXdPeVRaYXdjM2hnT2dLenQyQXVtOHZzcDJ5SkZSeGdlS0ZCZHMtMUNfclhqT3VJVUNmNy1yUmtNMnlnRkhvd1ZWV2FKdVQ1QmtB?oc=5",
+    "published": "2026-11-27T02:45:41+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "NVIDIA"
+    ],
+    "id": "f44826cd43"
+  },
+  {
+    "source": "WSJ",
+    "source_type": "rss",
+    "title": "Nvidia Tells Partners to Pause Shipments to Southeast Asia",
+    "summary": "Nvidia Tells Partners to Pause Shipments to Southeast Asia WSJ",
+    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOMGFER2Vpbl9JMXo5TFF1MFdQemdLcWFENFE0eGhwRS1pWkVyVTJvMFQ3RnRxUURGSjBxbHVMVVlyYzk0N3ZVU0tfb0tJa3NJREFmSzNmbkVWd0xxdDlvLUlqNzQ1bnBmUExWNWxmVTczRG1UNEQzd3NReXh5N2xTU3IwbkRwcDJFT1BXYzExU3NLMVNkZ3RR?oc=5",
+    "published": "2026-11-26T17:06:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "NVIDIA"
+    ],
+    "id": "f63a11ca36"
+  }
+]
