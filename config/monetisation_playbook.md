@@ -95,8 +95,9 @@ per month (670 a month is 8,000 a year, the threshold from 1 February 2027).
   are spoken at the episode's pace, the middle a little quicker (`tempo_short_en`, `pace_short_ends`).
 - The weekly episode's own Shorts are no longer posted days later. Confirmed 2026-11-23: `publish` does not
   queue them, and the two W45 Shorts still waiting were marked skipped.
-- Instagram and TikTok captions carry no WhatsApp link (links are not clickable there): the WhatsApp Channel
-  link goes in each profile's bio, set by hand (founder 2026-11-23).
+- Captions that show links (YouTube, LinkedIn, Facebook) end with "Follow us: Instagram · TikTok" (`social.follow`).
+  The AI This Week WhatsApp Channel is no longer promoted (founder 2026-11-28); WhatsApp is only the founder's
+  own status, shared by hand from the "WhatsApp kit" issue. Instagram and TikTok captions carry no links.
 - Explainer Shorts (founder 2026-11-23): when the week's ranking is approved, its "explainer" candidates (seven at
   most since 2026-11-24, one a day) are written fresh as 20–35 s Shorts that explain one idea, with the same line-by-line source checks as a
   breaking Short and no words that date them. They are not cuts of the episode. Same check and `post <id>` reply.

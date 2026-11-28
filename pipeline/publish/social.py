@@ -163,8 +163,8 @@ def caption(short: dict[str, Any], cfg: dict[str, Any], lang: str, platform: str
                     else f"آخر حلقة كاملة: {ep}\nالقناة: {s['channel_url']}")
     if platform == "linkedin":   # broad, high-reach tags (founder 2026-11-18)
         tags = list(s.get(f"linkedin_hashtags_{lang}", tags))[:10]
-    if platform in ("linkedin", "youtube", "facebook") and s.get("whatsapp_channel_url"):
-        more += ("\nFollow on WhatsApp: " if lang == "en" else "\nتابعونا على واتساب: ") + s["whatsapp_channel_url"]
+    if platform in ("linkedin", "youtube", "facebook"):   # these show links (founder 2026-11-28: not WhatsApp)
+        more += follow_line(s, lang)
     if platform == "youtube" and cfg.get("publish", {}).get("partnerships_email"):
         more += f"\nPartnerships: {cfg['publish']['partnerships_email']}"
     note = desc.DISCLOSURE_EN if lang == "en" else desc.DISCLOSURE_AR
@@ -755,6 +755,13 @@ def linkedin_poster(cfg: dict[str, Any]):
     def post(e: dict[str, Any], local: Path) -> dict[str, Any]:
         return li.post_video(local, e["captions"]["linkedin"], e.get("title") or e["file"])
     return post
+
+
+def follow_line(s: dict[str, Any], lang: str = "en") -> str:
+    """Where else to follow the show, for captions that show links: Instagram and TikTok (founder 2026-11-28,
+    replacing the WhatsApp Channel, which is no longer promoted). Empty when none is set."""
+    links = " · ".join(f"{name}: {url}" for name, url in (s.get("follow") or {}).items())
+    return ("\nFollow us: " if lang == "en" else "\nتابعونا: ") + links if links else ""
 
 
 def channels_line(cfg: dict[str, Any], have: Callable[[str], bool] | None = None) -> str:

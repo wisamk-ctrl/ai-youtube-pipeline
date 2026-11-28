@@ -48,17 +48,25 @@ def test_facebook_caption_carries_the_channel_link():
     assert "https://youtube.com/@x" in caption({"title": "T"}, cfg, "en", "facebook")
 
 
-def test_whatsapp_channel_link_in_captions_once_set():
-    cfg = {"social": {"channel_url": "https://youtube.com/@x", "whatsapp_channel_url": "https://whatsapp.com/channel/ABC"},
+def test_captions_point_to_instagram_and_tiktok_not_the_whatsapp_channel():
+    """Founder 2026-11-28: the WhatsApp Channel is no longer promoted; Instagram and TikTok are."""
+    cfg = {"social": {"channel_url": "https://youtube.com/@x",
+                      "follow": {"Instagram": "https://www.instagram.com/ig", "TikTok": "https://www.tiktok.com/@tt"}},
            "publish": {"hashtags_en": ["#AI"]}}
-    assert "https://whatsapp.com/channel/ABC" in caption({"title": "T"}, cfg, "en", "youtube")
-    assert "whatsapp.com" not in caption({"title": "T"}, cfg, "en", "tiktok")
+    for p in ("youtube", "linkedin", "facebook"):
+        c = caption({"title": "T"}, cfg, "en", p)
+        assert "Instagram: https://www.instagram.com/ig" in c and "TikTok: https://www.tiktok.com/@tt" in c, p
+        assert "whatsapp" not in c.lower(), p
+    for p in ("instagram", "tiktok"):                      # links are not clickable there
+        assert "https://www.instagram.com/ig" not in caption({"title": "T"}, cfg, "en", p)
+    ar = caption({"title": "T"}, cfg, "ar", "youtube")
+    assert "تابعونا" in ar and "https://www.tiktok.com/@tt" in ar
 
 
-def test_whatsapp_kit_has_channel_and_status_parts():
+def test_whatsapp_kit_is_for_the_status_only():
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
     from channel import kit_body
     b = kit_body("California sues OpenAI #Shorts", "https://youtu.be/x", "https://r/clip.mp4", True, "https://yt/@c")
-    assert "WhatsApp Channel" in b and "My status" in b and "⚡ California sues OpenAI" in b and "#Shorts" not in b
+    assert "WhatsApp Channel" not in b and "My status" in b and "⚡ California sues OpenAI" in b and "#Shorts" not in b
     assert "https://r/clip.mp4" in b
