@@ -20,7 +20,7 @@ async function tt(path, token, body) {
     "Content-Type": "application/json; charset=UTF-8" }, body: JSON.stringify(body || {}) });
   const j = await r.json().catch(() => ({}));
   if (!r.ok || (j.error && j.error.code && j.error.code !== "ok"))
-    throw new Error((j.error && (j.error.message || j.error.code)) || `TikTok HTTP ${r.status}`);
+    throw new Error(j.error ? `${j.error.code}: ${j.error.message || ""}`.trim() : `TikTok HTTP ${r.status}`);
   return j.data;
 }
 
