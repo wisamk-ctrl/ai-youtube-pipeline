@@ -1,0 +1,9 @@
+Drafted automatically 2026-11-28 09:31 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) OpenAI has countersued Apple over alleged trade secret theft.  ← UkrMedia News (7ea9ef106f), Al Jazeera (c238d9af1e), Gulf News (182360f1c0)
+- (2) It filed on 27 November in a California federal court.  ← UkrMedia News (7ea9ef106f)
+- (3) OpenAI claims Apple obtained its device roadmap through a re-hired engineer.  ← UkrMedia News (7ea9ef106f)
+- (4) It alleges Apple threatened shared suppliers with lost contracts.  ← UkrMedia News (7ea9ef106f), Asharq Al-Awsat English (d89d52779e)
+- (5) OpenAI says around 400 specialists have moved from Apple.  ← UkrMedia News (7ea9ef106f)
+- (6) Apple sued first in July and rejects the allegations.  ← UkrMedia News (7ea9ef106f)
+- (7) Analysts say OpenAI is building AI devices with Jony Ive's team.  ← UkrMedia News (7ea9ef106f)
+- (8) Would Gulf companies choose OpenAI devices over iPhones?  ← regional line, no facts
