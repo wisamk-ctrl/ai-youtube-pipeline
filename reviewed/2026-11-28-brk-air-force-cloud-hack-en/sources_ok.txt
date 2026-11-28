@@ -1,0 +1,9 @@
+Drafted automatically 2026-11-28 11:20 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Reuters reports hackers breached the US Air Force's cloud platform.  ← Gulf News (bfbb77e7e4)
+- (2) The platform is called Cloud One.  ← Gulf News (bfbb77e7e4)
+- (3) NBC News says the attack could have exposed sensitive military information.  ← Gulf News (bfbb77e7e4)
+- (4) The Pentagon did not specifically deny the breach.  ← Gulf News (bfbb77e7e4)
+- (5) An official said its systems are safe, secure, and managed 24-7.  ← Gulf News (bfbb77e7e4)
+- (6) Federal News Network says contractors found the hack during maintenance.  ← Gulf News (bfbb77e7e4)
+- (7) The CIA and FBI were also reportedly hacked in recent weeks.  ← Gulf News (bfbb77e7e4)
+- (8) Would Gulf governments keep military data on cloud platforms now?  ← regional line, no facts
