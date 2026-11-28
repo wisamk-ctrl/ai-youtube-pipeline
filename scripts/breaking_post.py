@@ -11,6 +11,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))   # `python scripts/breaking_post.py` must find the pipeline package
 
 
 def approve(week: str, queue: Path = ROOT / "data" / "social_queue.json", root: Path = ROOT, now: datetime | None = None) -> int:
@@ -28,7 +29,8 @@ def approve(week: str, queue: Path = ROOT / "data" / "social_queue.json", root: 
         e["captions"]["tiktok"] = tt.replace("Full episode on YouTube: link in bio",
                                              "More on this in Sunday's episode of AI This Week. Follow so you don't miss it.")
         if meta.get("linkedin") and "linkedin" in e["captions"]:
-            follow = f"\nFollow on WhatsApp: {s['whatsapp_channel_url']}" if s.get("whatsapp_channel_url") else ""
+            from pipeline.publish.social import follow_line
+            follow = follow_line(s)
             e["captions"]["linkedin"] = (f"{meta['linkedin'].strip()}\n\nMore on this in Sunday's episode of AI This Week."
                                          f"{follow}\n\n{note}\n\n{tags}").strip()
         n += 1

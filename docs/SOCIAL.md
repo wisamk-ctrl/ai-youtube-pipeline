@@ -16,14 +16,14 @@ secrets that are set. The reply to `publish`, the "ready to check" message and `
 | Facebook Page | A link post through Composio. A video only with `FACEBOOK_PAGE_ID` and `FACEBOOK_PAGE_TOKEN` | Reel through Composio | No Page token. No Reel has posted yet |
 | Instagram | Never | Reel through Composio | No token. One Reel has posted (W46-en #1) |
 | TikTok | Never | Through Buffer, public, AI label on (`tiktok_via: buffer`, 2026-11-25); to the founder's drafts while TikTok is not connected in Buffer | Connect @aithisweek in Buffer |
-| WhatsApp Channel | By hand, from the "WhatsApp kit" issue | By hand, same issue | Nothing posts into it by itself |
+| WhatsApp (your status) | By hand, from the "WhatsApp kit" issue | By hand, same issue | The AI This Week WhatsApp Channel is no longer promoted (founder 2026-11-28) |
 | WhatsApp alerts to the founder | | | Off: `WHATSAPP_PHONE` and `CALLMEBOT_APIKEY` are not set |
 
 A platform that is not connected is skipped, and now says so: a warning in the log, a `⏭️` line in the run
 summary, and a note on the queue entry that the "posted" comment shows. The run still passes.
 
-The WhatsApp Channel link is in the Shorts captions on YouTube, LinkedIn and Facebook. Instagram and TikTok
-captions say "link in bio": those two show no clickable links.
+Shorts captions on YouTube, LinkedIn and Facebook end with "Follow us: Instagram · TikTok" (`social.follow`,
+founder 2026-11-28; the WhatsApp Channel link was removed). Instagram and TikTok captions show no clickable links.
 
 ## How it runs each week
 1. The edit makes three vertical clips (`output/<week>/shorts/`).

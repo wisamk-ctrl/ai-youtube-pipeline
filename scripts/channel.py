@@ -506,27 +506,24 @@ def report(keep: bool = True) -> None:
 
 
 def kit_body(title: str, link: str, clip: str, short: bool, channel_url: str = "") -> str:
-    """The WhatsApp kit: the same video and link for the founder's status and for the AI This Week
-    WhatsApp Channel (founder 2026-11-19). WhatsApp has no API that posts to a status or a Channel."""
+    """The WhatsApp kit: the video and link for the founder's own status (founder 2026-11-19). Since 2026-11-28
+    the AI This Week WhatsApp Channel is no longer used: the founder shares to his status only.
+    WhatsApp has no API that posts to a status."""
     clean = title.replace("#Shorts", "").strip()
     head = f"⚡ {clean}" if short else f"🆕 New episode of AI This Week: {clean}"
-    channel_text = [head, "", f"▶️ {link}"] + ([f"More from the show: {channel_url}"] if short and channel_url else [])
     return "\n".join([
         f"**{clean}** is live: {link}", "",
         "### 1. Save the video", "",
         f"Open this on your phone and save it: {clip}" if clip else "No vertical clip this time: share the YouTube link instead.", "",
-        "### 2. WhatsApp Channel (AI This Week)", "",
-        "WhatsApp → Updates → your channel → 📎 → pick the video → paste this caption → send:", "",
-        "```", *channel_text, "```", "",
-        "### 3. Your status", "",
-        "WhatsApp → Updates → My status → pick the same video → paste:", "",
+        "### 2. Your status", "",
+        "WhatsApp → Updates → My status → pick the video → paste:", "",
         "```", head, link, "```", "",
-        "The 10-second way for either: open the YouTube link → Share → WhatsApp."])
+        "The 10-second way: open the YouTube link → Share → WhatsApp → My status."])
 
 
 def status_kit() -> None:
     """Hourly: when an episode or a Short has just gone public, open a "WhatsApp kit" issue (GitHub e-mails it)
-    with the vertical video to save and captions for the WhatsApp Channel and the founder's status."""
+    with the vertical video to save and the caption for the founder's WhatsApp status."""
     seen_file = ROOT / "data" / "status_kits.json"
     seen = json.loads(seen_file.read_text(encoding="utf-8")) if seen_file.exists() else []
     queue_file = ROOT / "data" / "social_queue.json"

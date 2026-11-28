@@ -16,7 +16,7 @@ from pipeline.publish import social
 ROOT = Path(__file__).resolve().parent.parent
 CFG = {"publish": {"privacy": "private"},
        "social": {"platforms": ["youtube", "instagram", "facebook", "tiktok", "linkedin"], "tiktok_mode": "inbox",
-                  "whatsapp_channel_url": "https://whatsapp.com/channel/x"}}
+                  "follow": {"Instagram": "https://www.instagram.com/ig", "TikTok": "https://www.tiktok.com/@tt"}}}
 TODAY = {"GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "YOUTUBE_REFRESH_TOKEN", "LINKEDIN_TOKEN", "TIKTOK_CLIENT_KEY",
          "TIKTOK_CLIENT_SECRET", "TIKTOK_REFRESH_TOKEN", "COMPOSIO_API_KEY"}          # the repo's secrets on 2026-11-23
 today = lambda name: name in TODAY
@@ -42,7 +42,7 @@ def test_posters_and_the_status_read_one_table_of_secrets():
 def test_publish_reply_names_every_platform_and_what_is_off():
     msg = rs.publish_reply(CFG, "2026-W48-en", today)
     assert "`2026-W48-en`" in msg and "private" in msg and "unlisted" not in msg
-    for needle in ("LinkedIn", "Facebook", "link post", "Instagram", "TikTok", "drafts", "WhatsApp Channel",
+    for needle in ("LinkedIn", "Facebook", "link post", "Instagram", "TikTok", "drafts", "WhatsApp status",
                    "by hand", "alerts to your phone are off"):
         assert needle in msg, needle
     assert "alerts to your phone are off" not in rs.publish_reply(CFG, "2026-W48-en", everything)
@@ -102,7 +102,7 @@ def test_alerts_that_are_off_say_so_once(monkeypatch, caplog):
     assert "WhatsApp alerts are off" in health.alert_note(nothing) and health.alert_note(everything) == ""
 
 
-def test_breaking_short_on_linkedin_keeps_the_whatsapp_link(tmp_path):
+def test_breaking_short_on_linkedin_points_to_instagram_and_tiktok(tmp_path):
     import json
     from scripts import breaking_post
     week = "2026-11-23-brk-test-en"
@@ -114,13 +114,13 @@ def test_breaking_short_on_linkedin_keeps_the_whatsapp_link(tmp_path):
     q.write_text(json.dumps([{"week": week, "captions": {"linkedin": "old", "tiktok": ""}}]), encoding="utf-8")
     assert breaking_post.approve(week, queue=q, root=tmp_path) == 1
     cap = json.loads(q.read_text(encoding="utf-8"))[0]["captions"]["linkedin"]
-    assert cap.startswith("Six outages") and "Follow on WhatsApp: https://whatsapp.com/channel/x" in cap
+    assert cap.startswith("Six outages") and "Instagram: https://www.instagram.com/ig" in cap and "whatsapp" not in cap.lower()
 
 
-def test_settings_comment_no_longer_promises_the_link_on_every_caption():
-    text = (ROOT / "config" / "settings.yaml").read_text(encoding="utf-8")
-    line = next(x for x in text.splitlines() if x.strip().startswith("whatsapp_channel_url:"))
-    assert "every Short's caption" not in line and "YouTube, LinkedIn and Facebook" in line
+def test_settings_promote_instagram_and_tiktok_not_the_whatsapp_channel():
+    s = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))["social"]
+    assert "whatsapp_channel_url" not in s                       # founder 2026-11-28
+    assert s["follow"] == {"Instagram": "https://www.instagram.com/aithisweekme", "TikTok": "https://www.tiktok.com/@aithisweek"}
 
 
 def test_no_weekly_short_is_left_waiting_in_the_queue():

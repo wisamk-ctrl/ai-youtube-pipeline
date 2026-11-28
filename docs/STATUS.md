@@ -369,5 +369,6 @@ The weekly job now stops after ranking the week's stories and waits for the foun
 - **Decided by the founder, 2026-11-23:** Instagram and TikTok captions stay without the WhatsApp link (he
   adds it to the two bios by hand); weekly Shorts stay off and the two W45 entries were marked skipped; a region
   seat takes a quick slot only from 11/21 up, a weaker one gets a radar line.
-- **Still for the founder:** set `WHATSAPP_PHONE` and `CALLMEBOT_APIKEY` to switch his WhatsApp alerts on; add
-  the WhatsApp Channel link to the Instagram and TikTok bios.
+- **WhatsApp (founder 2026-11-28):** the WhatsApp Channel is no longer promoted and its link left the captions;
+  captions point to Instagram and TikTok instead (`social.follow`). WhatsApp stays only for the founder's own
+  status, by hand from the "WhatsApp kit" issue. WhatsApp alerts are dropped (CallMeBot was full).

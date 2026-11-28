@@ -475,7 +475,9 @@ publish:
 social:                       # Shorts / Reels / TikTok on the platforms' own APIs (pipeline/publish/social.py)
   platforms: [youtube, instagram, facebook, tiktok, linkedin]   # a platform without its secrets is skipped
   channel_url: https://www.youtube.com/@AIThisWeekME
-  whatsapp_channel_url: "https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38"     # the AI This Week WhatsApp Channel invite link; Shorts captions carry it on YouTube, LinkedIn and Facebook (Instagram and TikTok show no links)
+  follow:                     # founder 2026-11-28: captions that show links (YouTube, LinkedIn, Facebook) point here; the WhatsApp Channel is no longer promoted
+    Instagram: https://www.instagram.com/aithisweekme
+    TikTok: https://www.tiktok.com/@aithisweek
   linkedin_version: "202610"  # LinkedIn API version (YYYYMM); each is supported about a year, then bump it (202510 retired by 2026-11-18)
   linkedin_hashtags_en: ["#AI", "#ArtificialIntelligence", "#GenerativeAI", "#Technology", "#Innovation", "#FutureOfWork", "#Leadership", "#DigitalTransformation", "#TechNews", "#GCC"]   # broad reach (founder 2026-11-18)
   days: [0, 2, 4]             # Monday, Wednesday, Friday after the episode
