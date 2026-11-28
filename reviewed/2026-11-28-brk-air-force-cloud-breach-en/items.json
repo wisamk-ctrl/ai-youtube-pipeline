@@ -1,0 +1,21 @@
+[
+  {
+    "source": "Gulf News",
+    "source_type": "rss",
+    "title": "Hackers breach one of US military’s largest cloud computing platforms, putting sensitive military data at risk",
+    "summary": "Cyber breach raises concerns over military records, logistics and air defence systems Dubai: Hackers have breached one of the US military’s largest cloud computing platforms, potentially exposing sensitive information related to military operations, personnel and logistics. The intrusion into the US Air Force’s Cloud One platform was discovered in recent weeks during efforts to upgrade the system, Reuters reported, citing three people familiar with the matter. The identity of the hackers, the full extent of the breach and whether any data was stolen remain unclear. The discovery, however, has disrupted operations across the platform. In a statement to Reuters, the US Air Force declined to comment on the security, vulnerabilities or operational status of specific networks and systems, stressing that it continuously takes measures to protect its information, systems and operational capabilities. Launched in 2017, Cloud One was designed to consolidate the Air Force’s information technology services, bringing together cloud computing resources from Microsoft, Amazon, Oracle and Alphabet. The platform supports dozens of applications covering personnel records, payroll, logistics and maintenance. It also hosts systems that consolidate air defence radar data across North America and track military munitions at more than 200 US Air Force locations worldwide. The US military’s Cyber Command has reportedly been called in to assess the potential damage. The discovery of the breach has prompted authorities to suspend efforts to migrate administrative applications to Cloud One, a longstanding military priority. Updates to existing applications have also been blocked, while some users have reportedly had their administrative privileges revoked. One source indicated that the hackers had exploited a software vulnerability to gain access to a central management layer of the platform. The specific vulnerability and the extent to which the intruders accessed military information remain unknown. The breach comes amid mounting concerns over AI-powered cyberattacks, particularly against cloud-based networks, where artificial intelligence can rapidly identify security weaknesses across large systems. The US government is already dealing with the fallout from several recently disclosed cybersecurity incidents involving the FBI, the Pentagon, the Department of Homeland Security, intelligence agencies and the Treasury Department. Cloud One has long been a target of cyberattacks.…",
+    "url": "https://gulfnews.com/world/americas/hackers-breach-one-of-us-militarys-largest-cloud-computing-platforms-putting-sensitive-military-data-at-risk-1.500763342",
+    "published": "2026-11-27T13:16:10+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "chips",
+    "region": "inference",
+    "entities": [
+      "Together AI"
+    ],
+    "id": "a3c5b8978c"
+  }
+]

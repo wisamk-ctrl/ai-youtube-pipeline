@@ -1,0 +1,9 @@
+Drafted automatically 2026-11-28 01:32 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Reuters: hackers breached the US Air Force's Cloud One platform.  ← Gulf News (a3c5b8978c)
+- (2) It pools cloud from Microsoft, Amazon, Oracle and Alphabet.  ← Gulf News (a3c5b8978c)
+- (3) It holds personnel records, payroll, logistics and air defence radar data.  ← Gulf News (a3c5b8978c)
+- (4) It tracks munitions at more than 200 Air Force locations.  ← Gulf News (a3c5b8978c)
+- (5) Who did it, and whether data was stolen, is unclear.  ← Gulf News (a3c5b8978c)
+- (6) One source says hackers exploited a software vulnerability.  ← Gulf News (a3c5b8978c)
+- (7) Cyber Command was reportedly called in, and migrations are suspended.  ← Gulf News (a3c5b8978c)
+- (8) Would your government trust one shared cloud platform now?  ← regional line, no facts
