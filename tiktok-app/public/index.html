@@ -35,7 +35,7 @@
 </head>
 <body>
 <header><h1>AI This Week <span>· Post to TikTok</span></h1>
-  <p class="mute">Publishes the show's own weekly AI-news Shorts to its TikTok account.</p></header>
+  <p class="mute">Publishes the show's own weekly AI-news Shorts to its TikTok account. <span id="host"></span></p></header>
 <main>
   <p id="msg" class="err" hidden></p>
 
@@ -83,6 +83,7 @@
   <a id="logout" href="/api/logout" hidden>Disconnect</a></footer>
 <script>
 const $ = (id) => document.getElementById(id);
+document.getElementById("host").textContent = location.host;
 const LABEL = { PUBLIC_TO_EVERYONE: "Everyone", MUTUAL_FOLLOW_FRIENDS: "Friends", FOLLOWER_OF_CREATOR: "Followers", SELF_ONLY: "Only me" };
 const MUC = '<a href="https://www.tiktok.com/legal/page/global/music-usage-confirmation/en" target="_blank">Music Usage Confirmation</a>';
 const BCP = '<a href="https://www.tiktok.com/legal/page/global/bc-policy/en" target="_blank">Branded Content Policy</a>';
