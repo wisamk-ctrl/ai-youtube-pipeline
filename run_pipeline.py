@@ -167,8 +167,8 @@ def _items(out: Path) -> list[NewsItem]:
 
 def _directed(cfg: dict, out: Path, script: str) -> str:
     """The script with shot markers: as written if it has them, otherwise through the director pass."""
-    from pipeline.script_format import has_shots
-    if has_shots(script):
+    from pipeline.script_format import is_directed
+    if is_directed(script):
         return script
     from pipeline.scripting.director import direct
     directed = direct(script, _items(out), cfg)
@@ -479,7 +479,7 @@ def phase_direct(cfg: dict, out: Path) -> None:
         sys.exit(f"{out / 'script.md'} not found — run the script phase first.")
     from pipeline.script_format import strip_shots
     # Always a fresh plan: an earlier one (perhaps the rule-based fallback) is discarded.
-    script = _directed(cfg, out, strip_shots((out / "script.md").read_text(encoding="utf-8")))
+    script = _directed(cfg, out, strip_shots((out / "script.md").read_text(encoding="utf-8"), keep_titles=True))
     from pipeline.video.voicefirst import write_voice_pack
     write_voice_pack(script, cfg, out)
     _shotlist(cfg, out, script, count_spoken_words(script) / cfg["scripting"]["words_per_minute"] * 60, None)

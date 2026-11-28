@@ -35,3 +35,15 @@ Hi everyone, welcome to AI This Week, I'm Wissam.
 Next, the listing.
 """
     assert lint_opening(good) == []
+
+
+def test_a_script_with_only_the_writers_title_cards_still_goes_to_the_director():
+    from pipeline.script_format import is_directed, strip_shots
+    words = " ".join(["word"] * 300)
+    only_titles = f"[Section: One]\n{words}\n[Visual: title شو يعني؟]\n{words}\n[Visual: title رأي وسام]\n{words}\n"
+    assert not is_directed(only_titles)
+    dense = "[Section: One]\n" + "".join(f"[Visual: stock clip {k}]\n" + "word " * 40 + "\n" for k in range(20))
+    assert is_directed(dense)
+    mixed = "[Visual: title رأي وسام]\nHi.\n[Visual: stock chips]\nThere.\n[Face]\nEnd.\n"
+    kept = strip_shots(mixed, keep_titles=True)
+    assert "[Visual: title رأي وسام]" in kept and "stock chips" not in kept and "[Face]" not in kept

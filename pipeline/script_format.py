@@ -474,11 +474,23 @@ def has_shots(script: str) -> bool:
     return bool(extract_shots(script))
 
 
-def strip_shots(script: str) -> str:
-    """The script without shot markers (for re-directing); every other marker and word is kept."""
-    keep = [line for line in script.splitlines()
-            if not ((m := MARKER_RE.fullmatch(line.strip())) and parse_shot(m.group("body")))]
-    return "\n".join(keep)
+def is_directed(script: str, words_per_shot: int = 60) -> bool:
+    """A script the director has already worked on: shots other than title cards, at least one per
+    `words_per_shot` spoken words. The writer now places a few title cards itself ("What it means", "Wissam's
+    view"), and W48 (2026-11-28) skipped the director because of them: 72 s of face, one stock clip per section."""
+    shots = extract_shots(script)
+    visual = [s for s in shots if s.kind != "title"]
+    return bool(visual) and len(shots) * words_per_shot >= count_spoken_words(script)
+
+
+def strip_shots(script: str, keep_titles: bool = False) -> str:
+    """The script without shot markers (for re-directing); every other marker and word is kept. keep_titles keeps
+    the title cards the writer places by rule ("What it means", "Wissam's view"), which the director does not add."""
+    def drop(line: str) -> bool:
+        m = MARKER_RE.fullmatch(line.strip())
+        shot = parse_shot(m.group("body")) if m else None
+        return bool(shot) and not (keep_titles and shot[1] == "title")
+    return "\n".join(line for line in script.splitlines() if not drop(line))
 
 
 # ── Host introduction (founder 2026-11-20: "introduce me on every video") ────
