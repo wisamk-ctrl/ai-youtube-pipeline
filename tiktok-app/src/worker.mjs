@@ -61,7 +61,14 @@ export default {
           if (!r.ok) return json({ error: `GitHub HTTP ${r.status}` }, 502);
           const vids = (await r.json()).flatMap((rel) => rel.assets.filter((a) => /short.*\.mp4$/i.test(a.name))
             .map((a) => ({ name: a.name, url: a.browser_download_url, size: a.size, title: rel.name || rel.tag_name })));
-          return json(vids.slice(0, 20));
+          const list = vids.slice(0, 20);
+          await Promise.all(list.map(async (v) => {   // the Short's own headline, from the week's breaking.yaml
+            const week = v.name.replace(/-short-\d+\.mp4$/i, "");
+            const y = await fetch(`https://raw.githubusercontent.com/${REPO}/main/reviewed/${week}/breaking.yaml`).catch(() => null);
+            const m = y && y.ok ? (await y.text()).match(/^title:\s*['"]?(.+?)['"]?\s*$/m) : null;
+            v.title = m ? m[1] : week;
+          }));
+          return json(list);
         }
         case "/api/post": {
           if (req.method !== "POST") return json({ error: "POST only" }, 405);
