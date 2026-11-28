@@ -1,0 +1,145 @@
+[
+  {
+    "source": "WSJ",
+    "source_type": "rss",
+    "title": "Cisco, OpenAI Launch Project to Safeguard Agentic AI",
+    "summary": "Cisco, OpenAI Launch Project to Safeguard Agentic AI WSJ",
+    "url": "https://www.wsj.com/tech/cisco-openai-launch-project-to-safeguard-agentic-ai-f48e6420",
+    "published": "2026-11-23T22:12:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 23.426,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.766,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 13.755
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "43f5e44031"
+  },
+  {
+    "source": "OpenAI",
+    "source_type": "rss",
+    "title": "OpenAI and Cisco introduce Shirudo",
+    "summary": "An open-source runtime that helps operators protect running Linux systems without needing to wait for the patch or restarts OpenAI and Cisco are launching Shirudo, an open-source runtime that helps teams protect Linux systems while they roll out patches. In a controlled test ⁠ (opens in a new window) , a Codex-generated shield blocked a Java4Shell exploit attempt against a running Elasticsearch service without requiring a restart. We’re inviting developers, security researchers, and infrastructure operators across the industry to help develop the project further. The project brings together OpenAI’s frontier AI, security and infrastructure research and Cisco’s infrastructure and security expertise to help protect the systems people rely on every day. Testing and deploying a patch can still take days or weeks. Protecting a service in the meantime can be challenging because an exploit and a legitimate request may rely on the same Linux operation. Blocking that operation entirely could take the service offline. Shirudo (Japanese for “shield”) is designed to help security teams navigate this tradeoff. Teams can test whether a temporary safeguard, called a shield, blocks the behavior that exposes a vulnerability while allowing legitimate requests through. Once an operator approves the shield, it can be deployed while the service continues running. Shirudo uses eBPF, a Linux technology that allows small programs to run at specific points inside the operating system. This makes it possible to observe suspicious activity and apply targeted security protections to running systems. OpenAI and Cisco are designing Shirudo around four core capabilities: Live protection: eBPF shields can block vulnerable code paths without restarting the system. Security teams can monitor how a proposed shield would affect applications before enforcing it. Defense at machine speed: OpenAI and Cisco are designing Shirudo to give agents programmable controls to investigate vulnerabilities, develop targeted shields, and validate their effectiveness against exploits and real workloads. Security teams control what gets deployed. Trusted deployment: Shields are cryptographically signed and verified before loading. Linux's eBPF verifier checks eBPF programs against its safety rules, while kernel security controls restrict unauthorized changes. Hardware-backed verification: Shirudo uses a Trusted Platform Module (TPM) to support a verifiable record of protections being loaded or removed.…",
+    "url": "https://openai.com/index/introducing-shirudo/",
+    "published": "2026-11-23T21:24:12+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 22.651,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.5,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.761,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 13.571
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI",
+      "OpenAI Codex",
+      "Together AI"
+    ],
+    "id": "d17e7b7013"
+  },
+  {
+    "source": "SiliconANGLE",
+    "source_type": "rss",
+    "title": "Cisco and OpenAI launch Shirudo open-source infrastructure shield to prevent AI-driven cyberattacks",
+    "summary": "Cybercriminals have gained the ability to discover vulnerabilities in software and take advantage of them in seconds, and it’s all thanks to artificial intelligence . Enterprises need a better way to defend themselves, so it’s fitting that one of the world’s top AI companies, OpenAI Group PBC, together with Cisco Systems Inc., is stepping up with a solution. They’ve just announced a new, open-source and extremely ambitious initiative called the Secure Infrastructure Project, which aims to ensure that all AI computing infrastructure is secure by design and capable of defending against lightning-fast AI-driven attacks. The first project within that initiative is Shirudo, which is designed to protect infrastructure systems automatically from critical exploits before they can be patched. In a blog post, Cisco Security Chief Technology Officer and Vice President of Engineering Thomas Graf explained that the industry has always treated security as an afterthought, essentially something that’s bolted onto systems after the fact. It has gotten away with this because much of the world’s computing infrastructure was built for workflows that proceed at human speeds. But with the emergence of AI models that can discover and work out how to exploit vulnerabilities in a matter of seconds, this kind of reactive security is no longer enough. According to Graf, even now, when a major vulnerability is discovered in widely used software, it can take weeks or even months to come up with a fix and ensure that every major system is patched against it. “That timeframe is no longer acceptable given that the mean time to exploitation has become negative, meaning that a growing number of vulnerabilities are now being exploited before they are publicly disclosed,” he said. “This will only accelerate with the further evolution of AI models and cybersecurity capabilities, becoming the norm in open-weight models.” To counter these kinds of automated attacks, Cisco and OpenAI believe that infrastructure has to be rebuilt from scratch with security in mind. They argue that it’s time to abandon static defenses and embrace systems that are hardened by default, immutable and rebuildable from a previous “good” state, so users can quickly revert back in the event of an attack. To do this, infrastructure systems must be based on Trusted Platform Modules and utilize reinforcement learning techniques to safely test their own defenses so they can adapt when faced with novel cyberattacks from…",
+    "url": "https://siliconangle.com/2026/11/23/cisco-and-openai-launch-shirudo-an-open-source-infrastructure-shield-to-protect-against-ai-driven-cyberattacks/",
+    "published": "2026-11-23T21:20:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 21.79,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.1,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.761,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 14.265
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI",
+      "Together AI"
+    ],
+    "id": "e310da3525"
+  },
+  {
+    "source": "Gulf Business",
+    "source_type": "rss",
+    "title": "Cisco and OpenAI launch Shirudo to combat AI-driven cyberattacks, block Java4shell exploits",
+    "summary": "Cisco and OpenAI launch Shirudo to combat AI-driven cyberattacks, block Java4shell exploits Gulf Business",
+    "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQaVdnRFJobW9GdFNteUJ3TDhlb1ZFSWcwaDVVbjdkY1JtZGFBN052LXRjMF9nTTZ2Q1c4d2p4aVlVMkdGNkoybDVBUm43blRuRDZwV2duYW1WYkhTQW15Rk1OVDU2bkNtUU1BaWxGb1NaS3Q1MG5aNm96NFFBNDFkZVBQQkVQN094UFpZbkd2eGlTS3gtcDJ6Rm4tOEZHMG5ZT3NVQklndEZVdTFlVk9ZV2FJMkdwLVpyWGZxdzh4cFFuTXBhVjlGV1oxMnF0ZWs3SE04?oc=5",
+    "published": "2026-11-26T13:11:30+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 19.773,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.295,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 13.378
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "a229303acb"
+  },
+  {
+    "source": "Channel Insider",
+    "source_type": "rss",
+    "title": "Cisco, OpenAI Launch Shirudo for AI-Driven Cyber Defense",
+    "summary": "Critical PHP vulnerabilities expose security risks for MSPs. Learn why hidden dependencies, AI-assisted attacks, and rapid patching demand attention. MSPs face pressure to turn AI adoption into measurable results. Hereâs how internal productivity and evolving customer needs are reshaping AI strategies. DC power architectures are gaining popularity as AI workloads increase and intensify. Optivâs Kathryn Hall and Steve Fielder discuss how AI is reshaping managed security services, from supporting analysts and reskilling teams to strengthening governance and building deeper customer partnerships. WEIâs Greg LaBrie explains why enterprises are adopting Hardware-as-a-Service and how changing IT spending models create opportunities for channel partners. WCA Technologiesâ Peter Fidler explains how AI, automation, business outcomes, and customer expectations are changing the MSP model. Critical PHP vulnerabilities expose security risks for MSPs. Learn why hidden dependencies, AI-assisted attacks, and rapid patching demand attention. MSPs face pressure to turn AI adoption into measurable results. Hereâs how internal productivity and evolving customer needs are reshaping AI strategies. DC power architectures are gaining popularity as AI workloads increase and intensify. Optivâs Kathryn Hall and Steve Fielder discuss how AI is reshaping managed security services, from supporting analysts and reskilling teams to strengthening governance and building deeper customer partnerships. WEIâs Greg LaBrie explains why enterprises are adopting Hardware-as-a-Service and how changing IT spending models create opportunities for channel partners. WCA Technologiesâ Peter Fidler explains how AI, automation, business outcomes, and customer expectations are changing the MSP model. Cisco and OpenAI launch Shirudo, an open-source cybersecurity project using eBPF and AI agents to defend infrastructure against threats before patches are deployed. Cisco and OpenAI have launched Shirudo, an open-source cybersecurity project that uses AI agents and kernel-level defenses to help organizations protect vulnerable infrastructure before permanent patches can be deployed. âThere is nothing more important than giving security teams the tools they need to match the speed of the AI-driven threats they are facing. We need self-defending infrastructure that acts at the speed of code, learns in real time, and shields itself until patches are safely rolled out,â said Jeetu Patel,…",
+    "url": "https://www.channelinsider.com/ai/cisco-openai-shirudo-ai-cybersecurity/",
+    "published": "2026-11-26T12:40:26+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 20.197,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 8.5,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.289,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 14.101
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "00ba03ab58"
+  }
+]

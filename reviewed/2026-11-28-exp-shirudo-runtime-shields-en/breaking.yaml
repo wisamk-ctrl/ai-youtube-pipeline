@@ -1,0 +1,12 @@
+title: OpenAI and Cisco Shield Servers
+end_text: New episode every Sunday
+question: Would your team let AI agents write shields for your servers?
+outro: assets/brand/shorts_outro_breaking_en.wav
+linkedin: What protects a server in the weeks before its patch arrives? OpenAI and
+  Cisco have launched Shirudo, an open-source runtime that applies temporary shields
+  to running Linux systems using eBPF, with security teams approving what gets deployed.
+  OpenAI says that in a controlled test, a Codex-generated shield blocked a Java4Shell
+  exploit attempt against a running Elasticsearch service without a restart. For Gulf
+  operators running critical digital infrastructure, the idea of protecting live systems
+  while patches are tested is worth a close look.
+drafted: automatically

@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-28 09:03 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) Mira is the UAE's new AI agent for government services.  ← Arabian Business (722a1127e6), Khaleej Times (c47be3663a), Gulf News (b05e2f3f4b)
+- (2) Arabian Business reports it will handle Emirates ID, residence and work permit renewals.  ← Arabian Business (722a1127e6)
+- (3) Khaleej Times reports the first services arrive in March 2027.  ← Khaleej Times (c47be3663a), Arabian Business (722a1127e6)
+- (4) Zawya reports the UAE is moving half of government services to agentic AI.  ← Zawya (be61f4254e)
+- (5) An Artefact white paper asks how agencies keep control of data, models and agents.  ← Zawya (be61f4254e)
+- (6) For firms that file permits, the service counter may become a conversation.  ← Arabian Business (722a1127e6)
+- (7) Would your company trust an AI agent with visa renewals?  ← regional line, no facts

@@ -1,0 +1,8 @@
+Drafted automatically 2026-11-28 09:03 UTC; each line passed the figure check and a second-model check against its cited articles. Founder to confirm before posting.
+- (1) OpenAI and Cisco want to shield servers before patches arrive.  ← OpenAI (d17e7b7013), SiliconANGLE (e310da3525)
+- (2) Testing and deploying a patch can take days or weeks, OpenAI says.  ← OpenAI (d17e7b7013)
+- (3) Cisco's Thomas Graf says some flaws are now exploited before disclosure.  ← SiliconANGLE (e310da3525)
+- (4) Their open-source answer is Shirudo, Japanese for shield.  ← OpenAI (d17e7b7013)
+- (5) Teams test whether a shield blocks the flaw but lets real requests through.  ← OpenAI (d17e7b7013)
+- (6) OpenAI says, in a controlled test, a shield stopped Java4Shell without a restart.  ← OpenAI (d17e7b7013)
+- (7) Would your team let AI agents write shields for your servers?  ← regional line, no facts
