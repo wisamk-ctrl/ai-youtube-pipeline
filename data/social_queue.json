@@ -1415,5 +1415,67 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7532377531346378752"
       }
     }
+  },
+  {
+    "id": "2026-11-28-brk-air-force-cloud-hack-en#1",
+    "week": "2026-11-28-brk-air-force-cloud-hack-en",
+    "lang": "en",
+    "file": "2026-11-28-brk-air-force-cloud-hack-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-28-brk-air-force-cloud-hack-en/2026-11-28-brk-air-force-cloud-hack-en-short-01.mp4",
+    "title": "Air Force Cloud Hack Reported",
+    "due": "2026-11-28T11:26:22Z",
+    "question": "Would Gulf governments keep military data on cloud platforms now?",
+    "approved": true,
+    "captions": {
+      "youtube": "Would Gulf governments keep military data on cloud platforms now? Answer in the comments.\n\nAir Force Cloud Hack Reported\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Would Gulf governments keep military data on cloud platforms now? Answer in the comments.\n\nAir Force Cloud Hack Reported\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Would Gulf governments keep military data on cloud platforms now? Answer in the comments.\n\nAir Force Cloud Hack Reported\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Would Gulf governments keep military data on cloud platforms now? Answer in the comments.\n\nAir Force Cloud Hack Reported\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "Reuters reports that hackers breached the US Air Force's Cloud One platform. NBC News, citing an unnamed official, says the attack could have exposed sensitive military information, while the Pentagon said its systems are safe and secure without specifically denying the breach. Federal News Network says contractors discovered the hack earlier this year during maintenance. For Gulf governments moving sensitive workloads to the cloud, the report is a reminder that security and oversight of contractors matter as much as the platform itself.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T11:26:23Z",
+        "url": "https://youtube.com/shorts/ofX_vqk9BhA",
+        "playlists": [
+          "AI news Shorts",
+          "AI in the Gulf"
+        ],
+        "first_comment": "UgwIBr-XMQ7TcQlytwx4AaABAg"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T11:26:23Z",
+        "media_id": "17911583643597883",
+        "url": "https://www.instagram.com/reel/DgSJQSXRlUc/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T11:26:23Z",
+        "video_id": "1931959254853739",
+        "url": "https://www.facebook.com/reel/1931959254853739",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T11:26:23Z",
+        "buffer_id": "6b0aba8a669c22f85dea710b",
+        "url": "https://tiktok.com/@aithisweek/video/7713182412078927122",
+        "via": "buffer"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T11:26:23Z",
+        "post": "urn:li:ugcPost:7532405245352665088",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7532405245352665088"
+      }
+    }
   }
 ]
