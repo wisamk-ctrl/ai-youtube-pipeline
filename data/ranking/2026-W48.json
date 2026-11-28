@@ -237,8 +237,8 @@
    "override": "",
    "slot": "deep",
    "slot_reason": "by rank",
-   "position": 1,
-   "ref": 1
+   "ref": 1,
+   "position": 1
   },
   {
    "title": "Trump's threat on AI data centres could be an opportunity for the Gulf",
@@ -376,8 +376,8 @@
    "override": "",
    "slot": "deep",
    "slot_reason": "by rank",
-   "position": 2,
-   "ref": 2
+   "ref": 2,
+   "position": 2
   },
   {
    "title": "Jensen Huang 'honoured to return' to Nvidia less than two weeks after resignation",
@@ -626,8 +626,8 @@
    "override": "",
    "slot": "deep",
    "slot_reason": "by rank",
-   "position": 3,
-   "ref": 3
+   "ref": 3,
+   "position": 3
   },
   {
    "title": "Nvidia chip buyers told to rule out Chinese renters to buy GPUs, sources say",
@@ -851,8 +851,8 @@
    "override": "",
    "slot": "quick",
    "slot_reason": "by rank",
-   "position": 4,
-   "ref": 4
+   "ref": 4,
+   "position": 4
   },
   {
    "title": "Anthropic (ANT) Puts Claude Into Enterprise Security As Its AI Builds Successors",
@@ -1084,8 +1084,659 @@
    "override": "",
    "slot": "quick",
    "slot_reason": "by rank",
-   "position": 5,
-   "ref": 5
+   "ref": 5,
+   "position": 5
+  },
+  {
+   "title": "CrowdStrike to buy Zscaler in $44 billion deal as AI supercharges cyberattacks",
+   "items": [
+    {
+     "source": "CNBC",
+     "source_type": "rss",
+     "title": "CrowdStrike to buy Zscaler in $44 billion deal as AI supercharges cyberattacks",
+     "summary": "CrowdStrike plans to buy Zscaler for $43.9 billion in an all-stock deal that combines two significant security businesses at a time when artificial intelligence is supercharging attacks. Shares of CrowdStrike dropped 9% on Monday, while Zscaler surged nearly 18%. The deal is expected to close in the second half of CrowdStrike's fiscal year 2028. Under the agreement, Zscaler shareholders will receive 1.135 CrowdStrike shares for each share. CrowdStrike's acquisition pushes the Austin, Texas-based cyber vendor into the network security market and comes amid a massive year for cybersecurity deal-making in the wake of high-profile hacks like Hugging Face. \"With Zscaler, we're building cybersecurity's operating system: a single control plane to deploy AI, control AI, and enable any agentic application to run safely,\" CrowdStrike CEO George Kurtz said in a statement. \"We see a path to become the largest AI safety and security company the world has ever seen.\" Recent outages affecting Microsoft, the Federal Aviation Administration and JPMorgan Chase have sparked anxiety as businesses accelerate software patching and upgrades to aging systems in an effort to prevent bad actors from exploiting software vulnerabilities with AI. CrowdStrike has been a major beneficiary of skyrocketing demand for AI security, with shares soaring about 80% this year as of Monday's open. Zscaler shares are up about 5% year to date after Monday's surge. Their combined market value exceeded $265 billion as of Friday's close, behind market leader Palo Alto Networks at $282 billion. The deal marks CrowdStrike's biggest acquisition to date and is among the largest in the sector as businesses consolidate and ramp up defenses to fend off AI-powered attacks. Last year, Google announced plans to acquire Wiz for $32 billion. In 2024 Cisco shelled about $28 billion for Splunk. Competitor Palo Alto Networks has also spent billions on several cyber and AI businesses, including startup Applied Compute and a $25 billion deal for CyberArk, which it closed earlier this year. Analysts view the Zscaler deal as a major AI security opportunity, allowing CrowdStrike to capture more customer security spending and close a significant gap with Palo Alto. \"The addition of ZS to CRWD's platform could bring more breadth in an era of vendor consolidation and, more importantly, network security to position the company more effectively for rising demand for AI Sovereignty,\" wrote analysts at JPMorgan. CrowdStrike on…",
+     "url": "https://www.cnbc.com/2026/11/23/crowdstrike-zscaler-aquisition-ai-cyberattacks.html",
+     "published": "2026-11-23T14:38:45+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 23.737,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 5.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.719,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 15.262
+     },
+     "track": "",
+     "region": "",
+     "entities": [],
+     "id": "26e93aaa93"
+    },
+    {
+     "source": "Daily Sabah",
+     "source_type": "rss",
+     "title": "CrowdStrike to acquire Zscaler in $44B deal as cyber threats grow | Daily Sabah",
+     "summary": "CrowdStrike to acquire Zscaler in $44B deal as cyber threats grow | Daily Sabah Daily Sabah",
+     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPQjRqNU5weVVtMlRNYWxvSnNKS045RWo5cDVGV0wxWGRvYk9wMm13bFVfWFBwWEF2N1p4YVIteklxRGFFS2FKckFKVU9aVTdQZjJtckdzZk85YkFxMWJTcHFqMnJoTVh0TWw2SldIRG9FX1lzMngyRW9tNmJJbzZMWnJuaGlvemJFcWpGWHdKU2Z5OGM1cXNYM1ZFY1lBMEJJR1djNjcyOVp3c0xZ0gGyAUFVX3lxTE1vUlp2UTlyXzdMOHdub2FNVjRxWGNFUEJyMkszNTVMTERGT1llSFAtZTdpQ1ZpZGdDOXFHazZOc3ZVVy0xVzN3X2dRak5pTUtpemlhYTVlRlN2TVRGZVZhSjhPU2JRdUp6bGM5ZElfa2RWbG1RV0dVZnBFR1EzTUpSQkZSR3ZIa2JhV3BaLWEtNmprOGlfVU9BaXFva29rWkpQQ0s1YW1PNVRETEdPVTFoTXc?oc=5",
+     "published": "2026-11-23T16:07:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 16.829,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 2.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.728,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 14.101
+     },
+     "track": "",
+     "region": "turkey",
+     "entities": [],
+     "id": "5cf5e13c80"
+    },
+    {
+     "source": "Industrial Cyber",
+     "source_type": "rss",
+     "title": "CrowdStrike to acquire Zscaler in $43.9 billion all-stock deal to expand Zero Trust security and AI protection",
+     "summary": "CrowdStrike to acquire Zscaler in $43.9 billion all-stock deal to expand Zero Trust security and AI protection Industrial Cyber",
+     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNX3EtcEoyT0ZPOFlTRV8tWlJDRjJGZ3VHQ0RQUlFSVjBIUVJUdUxIaDFWQy12YlpZaG1tcUo5X3djaFNQVjZMQmNhMktsbENlbmJQckJiWlplTTA4TGdVOE5jaHhnelpCaThlbVlFMWY3TXVpVVBRQnRwN1daU1BFTDdJOG1PcHlqNVR0dVJsYkFQaVBuRTVQbDJHY216Tmt0djV4Q0N6MExwWm1INDF3ZlI5cFNaSVgtckRpb3BnRkRMdGdMbC1aQ2ZzOXYwYTBxU0I2c0duS0FCdw?oc=5",
+     "published": "2026-11-24T07:16:10+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 19.252,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 3.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.826,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 16.476
+     },
+     "track": "",
+     "region": "",
+     "entities": [],
+     "id": "8b6ba8e70f"
+    }
+   ],
+   "outlets": [
+    "CNBC",
+    "Google News",
+    "Daily Sabah"
+   ],
+   "outlet_count": 3,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-25T16:19:35+00:00",
+   "lead_score": 23.737,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "acquire",
+    "crowdstrike",
+    "deal",
+    "zscaler"
+   ],
+   "id": "s20cc",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "Consolidation of two security vendors affects security supplier choices."
+    },
+    "regional_consequence": {
+     "score": 1,
+     "reason": "No regional actor is named; Daily Sabah covers it but no consequence is stated"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "CNBC, Industrial Cyber and Daily Sabah report the same deal."
+    },
+    "tension": {
+     "score": 1,
+     "reason": "Deal terms are clear; the open question is post-merger integration, which the sources do not explore."
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "buy_build_partner",
+   "short": null,
+   "summary": "CrowdStrike agreed to buy Zscaler in an all-stock deal valued at about $43.9 billion, expected to close in the second half of CrowdStrike's fiscal 2028.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 11,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (CNBC, Google News, Daily Sabah)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": true,
+     "reason": "not on the kill list"
+    }
+   },
+   "override": "",
+   "slot": "quick",
+   "slot_reason": "by rank",
+   "ref": 6,
+   "position": 6
+  },
+  {
+   "title": "DeepSeek staff pitched Alice Huang-linked firms as black-market Nvidia chip suppliers, The Information reports",
+   "items": [
+    {
+     "source": "Digg",
+     "source_type": "rss",
+     "title": "DeepSeek staff pitched Alice Huang-linked firms as black-market Nvidia chip suppliers, The Information reports",
+     "summary": "DeepSeek staff pitched Alice Huang-linked firms as black-market Nvidia chip suppliers, The Information reports Digg",
+     "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1mUFY4clBqRlZzMEYwVjM0dUtQSzdGNmxNYmpNZXRqckFNWUE2d01OYU5hSDdXcW1oSGZTSTQtdlZqdG9v?oc=5",
+     "published": "2026-11-23T21:22:04+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 22.137,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.761,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 18.0
+     },
+     "track": "models",
+     "region": "cn",
+     "entities": [
+      "DeepSeek",
+      "NVIDIA"
+     ],
+     "id": "fd2820bb32"
+    },
+    {
+     "source": "WSJ",
+     "source_type": "rss",
+     "title": "Exclusive | The Alice Huang Associate Accused of Funneling Nvidia Chips to China",
+     "summary": "Exclusive | The Alice Huang Associate Accused of Funneling Nvidia Chips to China WSJ",
+     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE94MVRKSkVSTXVkZmRDTWYtakd3VFYtQ0VIWUhWRjVzTmlEUE9HbHh5QTZZU1pQMHRaNEpacHRjZWxad1c4VlJOdktDcFQ1c1lqRmdBR2hkZmFFVlAwNXdOamUtYVVmS3pJeFdpbVBKb05BZnYtLXktamVR?oc=5",
+     "published": "2026-11-22T02:01:11+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 9.741,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.53,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0,
+      "repeat": -14.612
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "995be3b86a"
+    },
+    {
+     "source": "The New York Times",
+     "source_type": "rss",
+     "title": "U.S. Tracked Alice Huang’s Contacts With China Spy Agency During Nvidia Affair",
+     "summary": "U.S. Tracked Alice Huang’s Contacts With China Spy Agency During Nvidia Affair The New York Times",
+     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPVzVyaXo0aXJLT2VuWXdDRlJIWEw1RDBlTWtxcG9RN2ZydEN0T2U5dnlCRnJXWFVKeVZ2X2JXUmpHUTQ5d0tCNHFGc0VKZHE4TFdVQXFId1k5YkRGU29pdF9VM3FES1ZDbEItTW9rQWRYQTVTakxtMG1uVnZwV1ZTRmc4XzV0MmtVX2NWYUhvWHM?oc=5",
+     "published": "2026-11-23T02:17:16+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 8.954,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.649,
+      "noise": -0.0,
+      "publisher_tier": 1.3,
+      "coverage": 18.0,
+      "repeat": -13.432
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "3df4ffa6f1"
+    },
+    {
+     "source": "Tom's Hardware",
+     "source_type": "rss",
+     "title": "Lawyer’s $9,450 private AI server of 12 used Nvidia V100s now runs every DeepSeek V4.1 Flash expert at 4-bit NVFP4 — up to 184 tokens per second on code, and long documents start answering in about half the time",
+     "summary": "Lawyer’s $9,450 private AI server of 12 used Nvidia V100s now runs every DeepSeek V4.1 Flash expert at 4-bit NVFP4 — up to 184 tokens per second on code, and long documents start answering in about half the time Tom's Hardware",
+     "url": "https://news.google.com/rss/articles/CBMijANBVV95cUxPRGRRRi1qSEtZVUk3TjFzdFhwUWhHZVVZWEUwbjcwa0RzeEFYLTJaOUUzS2RxSUJNdmdpcG5QenhZcnNuRFh3RDI1cEl5dHBOZDZDSjVrVF9hMGhEaU9uOG9WNVNiQUpCLUNkWXEyX0hqdk5ERkIxMFIzRm1BUEg3eFB4bUFocEJycTNYaENSVWFHZFp4LTlzaWdGTHFaZkhXNjBIV0dmWWdoZkE5U2tpdFN3ejFfcUdDdXVUMEZiT01MbzFEdWpjdjdzSk5BcGo3aE5xYjQ0eGpEVGVvd1ppT182ZGx4N1lLNXRBekl0V29Yd3lfNlhIM3BrcVhMRGlVd2dRMjY4ZTNvTmxnRVNTSlk3bWFFbWVrOVN2ZzJTQUExblFwUW5YZjRRa01XWURRU3YtZGVpNlNGTXR4RC10VkI1ZDBTdDY1QXZOLTFzSUtBTXNUR0VoSG9teXIyYm9Edk5SWVE2OWM4Zk5rUXRWMXQtbHNlaWpITklRYjROVDRJZmhBU1ByY3VyOXU?oc=5",
+     "published": "2026-11-20T12:30:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 20.449,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.388,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 15.51
+     },
+     "track": "models",
+     "region": "cn",
+     "entities": [
+      "DeepSeek",
+      "NVIDIA"
+     ],
+     "id": "b519d3021e"
+    },
+    {
+     "source": "Asharq Al-Awsat English",
+     "source_type": "rss",
+     "title": "US Blacklists Megaspeed Cloud Company Linked to Nvidia Scandal",
+     "summary": "",
+     "url": "https://english.aawsat.com/node/5344929",
+     "published": "2026-11-24T06:48:08+00:00",
+     "author": "author",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 15.923,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 1.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.823,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 12.0
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "NVIDIA"
+     ],
+     "id": "9879043dd6"
+    }
+   ],
+   "outlets": [
+    "Google News",
+    "Tom's Hardware",
+    "Asharq Al-Awsat",
+    "Wall Street Journal",
+    "The New York Times"
+   ],
+   "outlet_count": 5,
+   "tiers": [
+    "A",
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "cn",
+    "makers"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-25T10:24:08+00:00",
+   "lead_score": 22.137,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "nvidia"
+   ],
+   "id": "sc1ab",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 2,
+     "reason": "Export-compliance exposure in chip supply bears on sourcing and risk decisions"
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No Gulf, Levant, Türkiye or African actor is named"
+    },
+    "evidence": {
+     "score": 2,
+     "reason": "WSJ and NYT report it; other items are aggregator or unrelated."
+    },
+    "tension": {
+     "score": 3,
+     "reason": "Alleged chip diversion and spy-agency contacts raise open questions"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "risk",
+   "short": null,
+   "summary": "WSJ reports that an associate of Alice Huang is accused of funneling Nvidia chips to China, and NYT reports US tracking of her contacts with a Chinese spy agency.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 11,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier A/B/C (Google News, Tom's Hardware, Asharq Al-Awsat, Wall Street Journal)"
+    },
+    "depth": {
+     "pass": true,
+     "reason": "enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "radar",
+   "slot_reason": "kill list: a global headline with no regional consequence",
+   "ref": 7,
+   "position": 7
+  },
+  {
+   "title": "First Circle Capital announces final close of $26 million Africa fintech fund",
+   "items": [
+    {
+     "source": "Wamda",
+     "source_type": "rss",
+     "title": "First Circle Capital announces final close of $26 million Africa fintech fund",
+     "summary": "First Circle Capital, a pan-African, female-led venture capital firm specialising in African fintech with offices in Kampala, Nairobi, Casablanca, and Cape Town, today announced that it has completed its final close at $26 million for First Circle Africa Fund I, its specialist early-stage fund backing companies developing the next generation of financial products, services, and technology infrastructure across the continent. First Circle Capital was founded by Selma Ribica, a former M-Pesa executive and fintech investor; Agnes Aistleitner, a serial entrepreneur with extensive experience in emerging markets; and Robert Smith, a former strategy professional with a deep track record in technology entrepreneurship in East Africa. Africa Fund I invests at the pre-seed and seed stages in companies driving the next generation of African financial services across six core fintech verticals: insurtech, alternative lending models, interoperability and infrastructure, climate fintech, fintech SaaS, and regtech. First Circle Capital’s “FinTech 2.0” investment thesis builds on the growth of Africa's first generation of payments and lending businesses, targeting the next wave of innovation in financial services, from expanding access to credit and insurance to improving financial infrastructure, digital operations, and regulatory compliance. Across these investment verticals, First Circle is placing a growing emphasis on AI-native fintech: companies using artificial intelligence, automation, and data-driven operations from inception to lower the cost of delivering financial services, build more efficient products, and reach customers at greater scale. First Circle follows a thesis-led investment approach, identifying opportunities based on their potential to address structural gaps in African financial services. The fund has a pan-African mandate, investing across established and emerging fintech ecosystems, including Kenya, Nigeria, South Africa, Egypt, Morocco, Uganda, Ghana, and Francophone Africa. Investors in First Circle Africa Fund I include IFC, Bpifrance, MSMEDA, Axian, the Dutch Good Growth Fund, Stellar Foundation, and FSD Africa, bringing together international development finance institutions and other institutional and strategic investors around First Circle's specialist fintech strategy. Selma Ribica, co-founder and managing partner at First Circle Capital, said, \"Africa Fund I is built around a clear thesis: the next generation of African fintech…",
+     "url": "https://www.wamda.com/2026/11/circle-capital-announces-final-close-26-million-africa-fintech-fund",
+     "published": "2026-11-23T08:00:00+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 18.047,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 3.9,
+      "regional": 2.0,
+      "engagement": 0.0,
+      "recency": 0.681,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 9.966
+     },
+     "track": "models",
+     "region": "cn",
+     "entities": [
+      "ByteDance Seed",
+      "Together AI"
+     ],
+     "id": "1cbaa9370d"
+    },
+    {
+     "source": "TechCabal",
+     "source_type": "rss",
+     "title": "First Circle Capital’s $26 million pre-seed playbook",
+     "summary": "First Circle Capital’s $26 million pre-seed playbook TechCabal",
+     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9fTmdTdDd2WllIN2RUSHJ0enpOUWUwdU40cER1SHp5UEF1TkpzQXdnLUs4VzdSOE84N2d5UHhFUVlGZnEtOUpqNDhOUkFQMjIwSkVsYVAwTzNMdWlPbGpWTXZXV1RUazViYUZ4M2RBU0dOZUZmQ1pNYk5B?oc=5",
+     "published": "2026-11-23T11:02:32+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 8.198,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 0.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.698,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 6.0
+     },
+     "track": "models",
+     "region": "cn",
+     "entities": [
+      "ByteDance Seed"
+     ],
+     "id": "f9de940904"
+    },
+    {
+     "source": "Techeconomy",
+     "source_type": "rss",
+     "title": "Make in Africa: Qualcomm Announces Social Impact Fund Winner",
+     "summary": "Make in Africa: Qualcomm Announces Social Impact Fund Winner Techeconomy",
+     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQZGpLM1hxSmZRb0RUa3I2STNUVHFMejQ0dkpLcjFuQTlnMWJqdUhCc0Q1ZDUtN3VId0MyamZiMHhHeDVWTHU5T2dRZzE2ejRkaEJGZ290UDVYOXVsRGo5YnZXaG4tV2VnY0hHUTNzUGRjMnlsZG55ZWs1N3ducXVoWElkanlHT0lfbmc?oc=5",
+     "published": "2026-11-25T11:48:46+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 0.9,
+     "score": 10.878,
+     "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 2.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.048,
+      "noise": -0.0,
+      "publisher_tier": 0.6,
+      "coverage": 8.422
+     },
+     "track": "chips",
+     "region": "makers",
+     "entities": [
+      "Qualcomm"
+     ],
+     "id": "2b600aba7e"
+    }
+   ],
+   "outlets": [
+    "Wamda",
+    "Google News",
+    "TechCabal"
+   ],
+   "outlet_count": 3,
+   "tiers": [
+    "B",
+    "C"
+   ],
+   "verified": true,
+   "regions": [
+    "africa",
+    "cn",
+    "makers"
+   ],
+   "flagged": false,
+   "repeat": [],
+   "published": "2026-11-25T11:48:46+00:00",
+   "lead_score": 18.047,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [
+    "africa",
+    "fund"
+   ],
+   "id": "s6f14",
+   "kind": "regional",
+   "scores": {
+    "decision_impact": {
+     "score": 0,
+     "reason": "A fund close with no decision for managers."
+    },
+    "regional_consequence": {
+     "score": 1,
+     "reason": "Africa is named as the investment target, but no deployment or customer effect is stated"
+    },
+    "evidence": {
+     "score": 1,
+     "reason": "Press release plus TechCabal and Techeconomy coverage."
+    },
+    "tension": {
+     "score": 0,
+     "reason": "No conflict or open question in the sources"
+    }
+   },
+   "regional_actor": "First Circle Africa Fund I",
+   "decision_frame": "none",
+   "short": null,
+   "summary": "First Circle Capital closed its First Circle Africa Fund I at $26 million for early-stage African fintech, and the sources give no customer or market effect yet.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 3,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier B/C (Wamda, Google News, TechCabal)"
+    },
+    "depth": {
+     "pass": false,
+     "reason": "only an announcement: not enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a funding round with no customer or market consequence"
+    }
+   },
+   "override": "",
+   "slot": "radar",
+   "slot_reason": "africa seat",
+   "ref": 8,
+   "seat": "africa",
+   "position": 8
+  },
+  {
+   "title": "US intelligence chief warns of further technology disruptions amid system upgrades",
+   "items": [
+    {
+     "source": "Anadolu Ajansı",
+     "source_type": "rss",
+     "title": "US intelligence chief warns of further technology disruptions amid system upgrades",
+     "summary": "US intelligence chief warns of further technology disruptions amid system upgrades Anadolu Ajansı",
+     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPSVJzRlExZlZURTI0Mk15Z3JSdHlhLUVrb3duZU15TDluU3pDTmN5VmdKXzdQR3FWQXd6Wjh3ZVdwRDZMc3Mwa1l3VU1vWHpRdHk4NkRTaXhqdWFKUVZUbnVFQTNlWFNwVndHWGhEY2h3eHV5UnRwX241MGVuYXA5dFI3Y2tabTBTM04tU1haMHVmdTNnX0RnUml3MTM5OXU1b0V2V0xMQ2Npb0JhOUt1T1JqOWJnWm5PSUVxN1FCU0gzdw?oc=5",
+     "published": "2026-11-22T19:46:05+00:00",
+     "author": "",
+     "engagement": 0,
+     "source_weight": 1.0,
+     "score": 15.037,
+     "score_breakdown": {
+      "watchlist": 0.0,
+      "enterprise": 0.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.615,
+      "noise": -0.0,
+      "publisher_tier": 1.0,
+      "coverage": 14.422
+     },
+     "track": "",
+     "region": "turkey",
+     "entities": [],
+     "id": "9d32a95feb"
+    }
+   ],
+   "outlets": [
+    "Anadolu Agency"
+   ],
+   "outlet_count": 1,
+   "tiers": [
+    "B"
+   ],
+   "verified": true,
+   "regions": [
+    "turkey"
+   ],
+   "flagged": true,
+   "repeat": [],
+   "published": "2026-11-22T19:46:05+00:00",
+   "lead_score": 15.037,
+   "advice_bait": false,
+   "routine_release": false,
+   "common_words": [],
+   "id": "s7567",
+   "kind": "global",
+   "scores": {
+    "decision_impact": {
+     "score": 0,
+     "reason": "A general warning about system upgrades gives a manager no decision"
+    },
+    "regional_consequence": {
+     "score": 0,
+     "reason": "No regional actor or market is named"
+    },
+    "evidence": {
+     "score": 1,
+     "reason": "One Anadolu report with no further coverage"
+    },
+    "tension": {
+     "score": 1,
+     "reason": "Warning about disruptions is raised but not explained"
+    }
+   },
+   "regional_actor": "",
+   "decision_frame": "none",
+   "short": null,
+   "summary": "Anadolu reports a US intelligence chief warned of further technology disruptions during system upgrades, and the sources do not link this to AI.",
+   "judged_by": "claude-haiku-5-5",
+   "total": 2,
+   "max_total": 21,
+   "gates": {
+    "new": {
+     "pass": true,
+     "reason": "new this week"
+    },
+    "verified": {
+     "pass": true,
+     "reason": "tier B (Anadolu Agency)"
+    },
+    "depth": {
+     "pass": false,
+     "reason": "only an announcement: not enough for 60-180 s"
+    },
+    "kill": {
+     "pass": false,
+     "reason": "kill list: a global headline with no regional consequence"
+    }
+   },
+   "override": "",
+   "slot": "radar",
+   "slot_reason": "turkey seat",
+   "ref": 9,
+   "seat": "turkey",
+   "position": 9
   },
   {
    "title": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
@@ -1310,660 +1961,9 @@
      "reason": "not on the kill list"
     }
    },
-   "override": "",
-   "slot": "quick",
-   "slot_reason": "by rank",
-   "position": 6,
-   "ref": 6
-  },
-  {
-   "title": "CrowdStrike to buy Zscaler in $44 billion deal as AI supercharges cyberattacks",
-   "items": [
-    {
-     "source": "CNBC",
-     "source_type": "rss",
-     "title": "CrowdStrike to buy Zscaler in $44 billion deal as AI supercharges cyberattacks",
-     "summary": "CrowdStrike plans to buy Zscaler for $43.9 billion in an all-stock deal that combines two significant security businesses at a time when artificial intelligence is supercharging attacks. Shares of CrowdStrike dropped 9% on Monday, while Zscaler surged nearly 18%. The deal is expected to close in the second half of CrowdStrike's fiscal year 2028. Under the agreement, Zscaler shareholders will receive 1.135 CrowdStrike shares for each share. CrowdStrike's acquisition pushes the Austin, Texas-based cyber vendor into the network security market and comes amid a massive year for cybersecurity deal-making in the wake of high-profile hacks like Hugging Face. \"With Zscaler, we're building cybersecurity's operating system: a single control plane to deploy AI, control AI, and enable any agentic application to run safely,\" CrowdStrike CEO George Kurtz said in a statement. \"We see a path to become the largest AI safety and security company the world has ever seen.\" Recent outages affecting Microsoft, the Federal Aviation Administration and JPMorgan Chase have sparked anxiety as businesses accelerate software patching and upgrades to aging systems in an effort to prevent bad actors from exploiting software vulnerabilities with AI. CrowdStrike has been a major beneficiary of skyrocketing demand for AI security, with shares soaring about 80% this year as of Monday's open. Zscaler shares are up about 5% year to date after Monday's surge. Their combined market value exceeded $265 billion as of Friday's close, behind market leader Palo Alto Networks at $282 billion. The deal marks CrowdStrike's biggest acquisition to date and is among the largest in the sector as businesses consolidate and ramp up defenses to fend off AI-powered attacks. Last year, Google announced plans to acquire Wiz for $32 billion. In 2024 Cisco shelled about $28 billion for Splunk. Competitor Palo Alto Networks has also spent billions on several cyber and AI businesses, including startup Applied Compute and a $25 billion deal for CyberArk, which it closed earlier this year. Analysts view the Zscaler deal as a major AI security opportunity, allowing CrowdStrike to capture more customer security spending and close a significant gap with Palo Alto. \"The addition of ZS to CRWD's platform could bring more breadth in an era of vendor consolidation and, more importantly, network security to position the company more effectively for rising demand for AI Sovereignty,\" wrote analysts at JPMorgan. CrowdStrike on…",
-     "url": "https://www.cnbc.com/2026/11/23/crowdstrike-zscaler-aquisition-ai-cyberattacks.html",
-     "published": "2026-11-23T14:38:45+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 1.0,
-     "score": 23.737,
-     "score_breakdown": {
-      "watchlist": 0.0,
-      "enterprise": 5.8,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.719,
-      "noise": -0.0,
-      "publisher_tier": 1.3,
-      "coverage": 15.262
-     },
-     "track": "",
-     "region": "",
-     "entities": [],
-     "id": "26e93aaa93"
-    },
-    {
-     "source": "Daily Sabah",
-     "source_type": "rss",
-     "title": "CrowdStrike to acquire Zscaler in $44B deal as cyber threats grow | Daily Sabah",
-     "summary": "CrowdStrike to acquire Zscaler in $44B deal as cyber threats grow | Daily Sabah Daily Sabah",
-     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPQjRqNU5weVVtMlRNYWxvSnNKS045RWo5cDVGV0wxWGRvYk9wMm13bFVfWFBwWEF2N1p4YVIteklxRGFFS2FKckFKVU9aVTdQZjJtckdzZk85YkFxMWJTcHFqMnJoTVh0TWw2SldIRG9FX1lzMngyRW9tNmJJbzZMWnJuaGlvemJFcWpGWHdKU2Z5OGM1cXNYM1ZFY1lBMEJJR1djNjcyOVp3c0xZ0gGyAUFVX3lxTE1vUlp2UTlyXzdMOHdub2FNVjRxWGNFUEJyMkszNTVMTERGT1llSFAtZTdpQ1ZpZGdDOXFHazZOc3ZVVy0xVzN3X2dRak5pTUtpemlhYTVlRlN2TVRGZVZhSjhPU2JRdUp6bGM5ZElfa2RWbG1RV0dVZnBFR1EzTUpSQkZSR3ZIa2JhV3BaLWEtNmprOGlfVU9BaXFva29rWkpQQ0s1YW1PNVRETEdPVTFoTXc?oc=5",
-     "published": "2026-11-23T16:07:00+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 1.0,
-     "score": 16.829,
-     "score_breakdown": {
-      "watchlist": 0.0,
-      "enterprise": 2.0,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.728,
-      "noise": -0.0,
-      "publisher_tier": 1.0,
-      "coverage": 14.101
-     },
-     "track": "",
-     "region": "turkey",
-     "entities": [],
-     "id": "5cf5e13c80"
-    },
-    {
-     "source": "Industrial Cyber",
-     "source_type": "rss",
-     "title": "CrowdStrike to acquire Zscaler in $43.9 billion all-stock deal to expand Zero Trust security and AI protection",
-     "summary": "CrowdStrike to acquire Zscaler in $43.9 billion all-stock deal to expand Zero Trust security and AI protection Industrial Cyber",
-     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNX3EtcEoyT0ZPOFlTRV8tWlJDRjJGZ3VHQ0RQUlFSVjBIUVJUdUxIaDFWQy12YlpZaG1tcUo5X3djaFNQVjZMQmNhMktsbENlbmJQckJiWlplTTA4TGdVOE5jaHhnelpCaThlbVlFMWY3TXVpVVBRQnRwN1daU1BFTDdJOG1PcHlqNVR0dVJsYkFQaVBuRTVQbDJHY216Tmt0djV4Q0N6MExwWm1INDF3ZlI5cFNaSVgtckRpb3BnRkRMdGdMbC1aQ2ZzOXYwYTBxU0I2c0duS0FCdw?oc=5",
-     "published": "2026-11-24T07:16:10+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 1.0,
-     "score": 19.252,
-     "score_breakdown": {
-      "watchlist": 0.0,
-      "enterprise": 3.8,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.826,
-      "noise": -0.0,
-      "publisher_tier": 0.6,
-      "coverage": 16.476
-     },
-     "track": "",
-     "region": "",
-     "entities": [],
-     "id": "8b6ba8e70f"
-    }
-   ],
-   "outlets": [
-    "CNBC",
-    "Google News",
-    "Daily Sabah"
-   ],
-   "outlet_count": 3,
-   "tiers": [
-    "A",
-    "B",
-    "C"
-   ],
-   "verified": true,
-   "regions": [],
-   "flagged": true,
-   "repeat": [],
-   "published": "2026-11-25T16:19:35+00:00",
-   "lead_score": 23.737,
-   "advice_bait": false,
-   "routine_release": false,
-   "common_words": [
-    "acquire",
-    "crowdstrike",
-    "deal",
-    "zscaler"
-   ],
-   "id": "s20cc",
-   "kind": "global",
-   "scores": {
-    "decision_impact": {
-     "score": 2,
-     "reason": "Consolidation of two security vendors affects security supplier choices."
-    },
-    "regional_consequence": {
-     "score": 1,
-     "reason": "No regional actor is named; Daily Sabah covers it but no consequence is stated"
-    },
-    "evidence": {
-     "score": 2,
-     "reason": "CNBC, Industrial Cyber and Daily Sabah report the same deal."
-    },
-    "tension": {
-     "score": 1,
-     "reason": "Deal terms are clear; the open question is post-merger integration, which the sources do not explore."
-    }
-   },
-   "regional_actor": "",
-   "decision_frame": "buy_build_partner",
-   "short": null,
-   "summary": "CrowdStrike agreed to buy Zscaler in an all-stock deal valued at about $43.9 billion, expected to close in the second half of CrowdStrike's fiscal 2028.",
-   "judged_by": "claude-haiku-5-5",
-   "total": 11,
-   "max_total": 21,
-   "gates": {
-    "new": {
-     "pass": true,
-     "reason": "new this week"
-    },
-    "verified": {
-     "pass": true,
-     "reason": "tier A/B/C (CNBC, Google News, Daily Sabah)"
-    },
-    "depth": {
-     "pass": true,
-     "reason": "enough for 60-180 s"
-    },
-    "kill": {
-     "pass": true,
-     "reason": "not on the kill list"
-    }
-   },
-   "override": "",
-   "slot": "radar",
-   "slot_reason": "by rank",
-   "position": 7,
-   "ref": 7
-  },
-  {
-   "title": "First Circle Capital announces final close of $26 million Africa fintech fund",
-   "items": [
-    {
-     "source": "Wamda",
-     "source_type": "rss",
-     "title": "First Circle Capital announces final close of $26 million Africa fintech fund",
-     "summary": "First Circle Capital, a pan-African, female-led venture capital firm specialising in African fintech with offices in Kampala, Nairobi, Casablanca, and Cape Town, today announced that it has completed its final close at $26 million for First Circle Africa Fund I, its specialist early-stage fund backing companies developing the next generation of financial products, services, and technology infrastructure across the continent. First Circle Capital was founded by Selma Ribica, a former M-Pesa executive and fintech investor; Agnes Aistleitner, a serial entrepreneur with extensive experience in emerging markets; and Robert Smith, a former strategy professional with a deep track record in technology entrepreneurship in East Africa. Africa Fund I invests at the pre-seed and seed stages in companies driving the next generation of African financial services across six core fintech verticals: insurtech, alternative lending models, interoperability and infrastructure, climate fintech, fintech SaaS, and regtech. First Circle Capital’s “FinTech 2.0” investment thesis builds on the growth of Africa's first generation of payments and lending businesses, targeting the next wave of innovation in financial services, from expanding access to credit and insurance to improving financial infrastructure, digital operations, and regulatory compliance. Across these investment verticals, First Circle is placing a growing emphasis on AI-native fintech: companies using artificial intelligence, automation, and data-driven operations from inception to lower the cost of delivering financial services, build more efficient products, and reach customers at greater scale. First Circle follows a thesis-led investment approach, identifying opportunities based on their potential to address structural gaps in African financial services. The fund has a pan-African mandate, investing across established and emerging fintech ecosystems, including Kenya, Nigeria, South Africa, Egypt, Morocco, Uganda, Ghana, and Francophone Africa. Investors in First Circle Africa Fund I include IFC, Bpifrance, MSMEDA, Axian, the Dutch Good Growth Fund, Stellar Foundation, and FSD Africa, bringing together international development finance institutions and other institutional and strategic investors around First Circle's specialist fintech strategy. Selma Ribica, co-founder and managing partner at First Circle Capital, said, \"Africa Fund I is built around a clear thesis: the next generation of African fintech…",
-     "url": "https://www.wamda.com/2026/11/circle-capital-announces-final-close-26-million-africa-fintech-fund",
-     "published": "2026-11-23T08:00:00+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 1.0,
-     "score": 18.047,
-     "score_breakdown": {
-      "watchlist": 1.5,
-      "enterprise": 3.9,
-      "regional": 2.0,
-      "engagement": 0.0,
-      "recency": 0.681,
-      "noise": -0.0,
-      "publisher_tier": 1.0,
-      "coverage": 9.966
-     },
-     "track": "models",
-     "region": "cn",
-     "entities": [
-      "ByteDance Seed",
-      "Together AI"
-     ],
-     "id": "1cbaa9370d"
-    },
-    {
-     "source": "TechCabal",
-     "source_type": "rss",
-     "title": "First Circle Capital’s $26 million pre-seed playbook",
-     "summary": "First Circle Capital’s $26 million pre-seed playbook TechCabal",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9fTmdTdDd2WllIN2RUSHJ0enpOUWUwdU40cER1SHp5UEF1TkpzQXdnLUs4VzdSOE84N2d5UHhFUVlGZnEtOUpqNDhOUkFQMjIwSkVsYVAwTzNMdWlPbGpWTXZXV1RUazViYUZ4M2RBU0dOZUZmQ1pNYk5B?oc=5",
-     "published": "2026-11-23T11:02:32+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 1.0,
-     "score": 8.198,
-     "score_breakdown": {
-      "watchlist": 1.5,
-      "enterprise": 0.0,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.698,
-      "noise": -0.0,
-      "publisher_tier": 1.0,
-      "coverage": 6.0
-     },
-     "track": "models",
-     "region": "cn",
-     "entities": [
-      "ByteDance Seed"
-     ],
-     "id": "f9de940904"
-    },
-    {
-     "source": "Techeconomy",
-     "source_type": "rss",
-     "title": "Make in Africa: Qualcomm Announces Social Impact Fund Winner",
-     "summary": "Make in Africa: Qualcomm Announces Social Impact Fund Winner Techeconomy",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQZGpLM1hxSmZRb0RUa3I2STNUVHFMejQ0dkpLcjFuQTlnMWJqdUhCc0Q1ZDUtN3VId0MyamZiMHhHeDVWTHU5T2dRZzE2ejRkaEJGZ290UDVYOXVsRGo5YnZXaG4tV2VnY0hHUTNzUGRjMnlsZG55ZWs1N3ducXVoWElkanlHT0lfbmc?oc=5",
-     "published": "2026-11-25T11:48:46+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 0.9,
-     "score": 10.878,
-     "score_breakdown": {
-      "watchlist": 1.5,
-      "enterprise": 2.0,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 1.048,
-      "noise": -0.0,
-      "publisher_tier": 0.6,
-      "coverage": 8.422
-     },
-     "track": "chips",
-     "region": "makers",
-     "entities": [
-      "Qualcomm"
-     ],
-     "id": "2b600aba7e"
-    }
-   ],
-   "outlets": [
-    "Wamda",
-    "Google News",
-    "TechCabal"
-   ],
-   "outlet_count": 3,
-   "tiers": [
-    "B",
-    "C"
-   ],
-   "verified": true,
-   "regions": [
-    "africa",
-    "cn",
-    "makers"
-   ],
-   "flagged": false,
-   "repeat": [],
-   "published": "2026-11-25T11:48:46+00:00",
-   "lead_score": 18.047,
-   "advice_bait": false,
-   "routine_release": false,
-   "common_words": [
-    "africa",
-    "fund"
-   ],
-   "id": "s6f14",
-   "kind": "regional",
-   "scores": {
-    "decision_impact": {
-     "score": 0,
-     "reason": "A fund close with no decision for managers."
-    },
-    "regional_consequence": {
-     "score": 1,
-     "reason": "Africa is named as the investment target, but no deployment or customer effect is stated"
-    },
-    "evidence": {
-     "score": 1,
-     "reason": "Press release plus TechCabal and Techeconomy coverage."
-    },
-    "tension": {
-     "score": 0,
-     "reason": "No conflict or open question in the sources"
-    }
-   },
-   "regional_actor": "First Circle Africa Fund I",
-   "decision_frame": "none",
-   "short": null,
-   "summary": "First Circle Capital closed its First Circle Africa Fund I at $26 million for early-stage African fintech, and the sources give no customer or market effect yet.",
-   "judged_by": "claude-haiku-5-5",
-   "total": 3,
-   "max_total": 21,
-   "gates": {
-    "new": {
-     "pass": true,
-     "reason": "new this week"
-    },
-    "verified": {
-     "pass": true,
-     "reason": "tier B/C (Wamda, Google News, TechCabal)"
-    },
-    "depth": {
-     "pass": false,
-     "reason": "only an announcement: not enough for 60-180 s"
-    },
-    "kill": {
-     "pass": false,
-     "reason": "kill list: a funding round with no customer or market consequence"
-    }
-   },
-   "seat": "africa",
-   "override": "",
-   "slot": "radar",
-   "slot_reason": "africa seat",
-   "position": 8,
-   "ref": 8
-  },
-  {
-   "title": "US intelligence chief warns of further technology disruptions amid system upgrades",
-   "items": [
-    {
-     "source": "Anadolu Ajansı",
-     "source_type": "rss",
-     "title": "US intelligence chief warns of further technology disruptions amid system upgrades",
-     "summary": "US intelligence chief warns of further technology disruptions amid system upgrades Anadolu Ajansı",
-     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPSVJzRlExZlZURTI0Mk15Z3JSdHlhLUVrb3duZU15TDluU3pDTmN5VmdKXzdQR3FWQXd6Wjh3ZVdwRDZMc3Mwa1l3VU1vWHpRdHk4NkRTaXhqdWFKUVZUbnVFQTNlWFNwVndHWGhEY2h3eHV5UnRwX241MGVuYXA5dFI3Y2tabTBTM04tU1haMHVmdTNnX0RnUml3MTM5OXU1b0V2V0xMQ2Npb0JhOUt1T1JqOWJnWm5PSUVxN1FCU0gzdw?oc=5",
-     "published": "2026-11-22T19:46:05+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 1.0,
-     "score": 15.037,
-     "score_breakdown": {
-      "watchlist": 0.0,
-      "enterprise": 0.0,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.615,
-      "noise": -0.0,
-      "publisher_tier": 1.0,
-      "coverage": 14.422
-     },
-     "track": "",
-     "region": "turkey",
-     "entities": [],
-     "id": "9d32a95feb"
-    }
-   ],
-   "outlets": [
-    "Anadolu Agency"
-   ],
-   "outlet_count": 1,
-   "tiers": [
-    "B"
-   ],
-   "verified": true,
-   "regions": [
-    "turkey"
-   ],
-   "flagged": true,
-   "repeat": [],
-   "published": "2026-11-22T19:46:05+00:00",
-   "lead_score": 15.037,
-   "advice_bait": false,
-   "routine_release": false,
-   "common_words": [],
-   "id": "s7567",
-   "kind": "global",
-   "scores": {
-    "decision_impact": {
-     "score": 0,
-     "reason": "A general warning about system upgrades gives a manager no decision"
-    },
-    "regional_consequence": {
-     "score": 0,
-     "reason": "No regional actor or market is named"
-    },
-    "evidence": {
-     "score": 1,
-     "reason": "One Anadolu report with no further coverage"
-    },
-    "tension": {
-     "score": 1,
-     "reason": "Warning about disruptions is raised but not explained"
-    }
-   },
-   "regional_actor": "",
-   "decision_frame": "none",
-   "short": null,
-   "summary": "Anadolu reports a US intelligence chief warned of further technology disruptions during system upgrades, and the sources do not link this to AI.",
-   "judged_by": "claude-haiku-5-5",
-   "total": 2,
-   "max_total": 21,
-   "gates": {
-    "new": {
-     "pass": true,
-     "reason": "new this week"
-    },
-    "verified": {
-     "pass": true,
-     "reason": "tier B (Anadolu Agency)"
-    },
-    "depth": {
-     "pass": false,
-     "reason": "only an announcement: not enough for 60-180 s"
-    },
-    "kill": {
-     "pass": false,
-     "reason": "kill list: a global headline with no regional consequence"
-    }
-   },
-   "seat": "turkey",
-   "override": "",
-   "slot": "radar",
-   "slot_reason": "turkey seat",
-   "position": 9,
-   "ref": 9
-  },
-  {
-   "title": "DeepSeek staff pitched Alice Huang-linked firms as black-market Nvidia chip suppliers, The Information reports",
-   "items": [
-    {
-     "source": "Digg",
-     "source_type": "rss",
-     "title": "DeepSeek staff pitched Alice Huang-linked firms as black-market Nvidia chip suppliers, The Information reports",
-     "summary": "DeepSeek staff pitched Alice Huang-linked firms as black-market Nvidia chip suppliers, The Information reports Digg",
-     "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1mUFY4clBqRlZzMEYwVjM0dUtQSzdGNmxNYmpNZXRqckFNWUE2d01OYU5hSDdXcW1oSGZTSTQtdlZqdG9v?oc=5",
-     "published": "2026-11-23T21:22:04+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 0.9,
-     "score": 22.137,
-     "score_breakdown": {
-      "watchlist": 1.5,
-      "enterprise": 5.4,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.761,
-      "noise": -0.0,
-      "publisher_tier": 0.6,
-      "coverage": 18.0
-     },
-     "track": "models",
-     "region": "cn",
-     "entities": [
-      "DeepSeek",
-      "NVIDIA"
-     ],
-     "id": "fd2820bb32"
-    },
-    {
-     "source": "WSJ",
-     "source_type": "rss",
-     "title": "Exclusive | The Alice Huang Associate Accused of Funneling Nvidia Chips to China",
-     "summary": "Exclusive | The Alice Huang Associate Accused of Funneling Nvidia Chips to China WSJ",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE94MVRKSkVSTXVkZmRDTWYtakd3VFYtQ0VIWUhWRjVzTmlEUE9HbHh5QTZZU1pQMHRaNEpacHRjZWxad1c4VlJOdktDcFQ1c1lqRmdBR2hkZmFFVlAwNXdOamUtYVVmS3pJeFdpbVBKb05BZnYtLXktamVR?oc=5",
-     "published": "2026-11-22T02:01:11+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 0.9,
-     "score": 9.741,
-     "score_breakdown": {
-      "watchlist": 1.5,
-      "enterprise": 3.4,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.53,
-      "noise": -0.0,
-      "publisher_tier": 1.3,
-      "coverage": 18.0,
-      "repeat": -14.612
-     },
-     "track": "chips",
-     "region": "makers",
-     "entities": [
-      "NVIDIA"
-     ],
-     "id": "995be3b86a"
-    },
-    {
-     "source": "The New York Times",
-     "source_type": "rss",
-     "title": "U.S. Tracked Alice Huang’s Contacts With China Spy Agency During Nvidia Affair",
-     "summary": "U.S. Tracked Alice Huang’s Contacts With China Spy Agency During Nvidia Affair The New York Times",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPVzVyaXo0aXJLT2VuWXdDRlJIWEw1RDBlTWtxcG9RN2ZydEN0T2U5dnlCRnJXWFVKeVZ2X2JXUmpHUTQ5d0tCNHFGc0VKZHE4TFdVQXFId1k5YkRGU29pdF9VM3FES1ZDbEItTW9rQWRYQTVTakxtMG1uVnZwV1ZTRmc4XzV0MmtVX2NWYUhvWHM?oc=5",
-     "published": "2026-11-23T02:17:16+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 0.9,
-     "score": 8.954,
-     "score_breakdown": {
-      "watchlist": 1.5,
-      "enterprise": 1.6,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.649,
-      "noise": -0.0,
-      "publisher_tier": 1.3,
-      "coverage": 18.0,
-      "repeat": -13.432
-     },
-     "track": "chips",
-     "region": "makers",
-     "entities": [
-      "NVIDIA"
-     ],
-     "id": "3df4ffa6f1"
-    },
-    {
-     "source": "Tom's Hardware",
-     "source_type": "rss",
-     "title": "Lawyer’s $9,450 private AI server of 12 used Nvidia V100s now runs every DeepSeek V4.1 Flash expert at 4-bit NVFP4 — up to 184 tokens per second on code, and long documents start answering in about half the time",
-     "summary": "Lawyer’s $9,450 private AI server of 12 used Nvidia V100s now runs every DeepSeek V4.1 Flash expert at 4-bit NVFP4 — up to 184 tokens per second on code, and long documents start answering in about half the time Tom's Hardware",
-     "url": "https://news.google.com/rss/articles/CBMijANBVV95cUxPRGRRRi1qSEtZVUk3TjFzdFhwUWhHZVVZWEUwbjcwa0RzeEFYLTJaOUUzS2RxSUJNdmdpcG5QenhZcnNuRFh3RDI1cEl5dHBOZDZDSjVrVF9hMGhEaU9uOG9WNVNiQUpCLUNkWXEyX0hqdk5ERkIxMFIzRm1BUEg3eFB4bUFocEJycTNYaENSVWFHZFp4LTlzaWdGTHFaZkhXNjBIV0dmWWdoZkE5U2tpdFN3ejFfcUdDdXVUMEZiT01MbzFEdWpjdjdzSk5BcGo3aE5xYjQ0eGpEVGVvd1ppT182ZGx4N1lLNXRBekl0V29Yd3lfNlhIM3BrcVhMRGlVd2dRMjY4ZTNvTmxnRVNTSlk3bWFFbWVrOVN2ZzJTQUExblFwUW5YZjRRa01XWURRU3YtZGVpNlNGTXR4RC10VkI1ZDBTdDY1QXZOLTFzSUtBTXNUR0VoSG9teXIyYm9Edk5SWVE2OWM4Zk5rUXRWMXQtbHNlaWpITklRYjROVDRJZmhBU1ByY3VyOXU?oc=5",
-     "published": "2026-11-20T12:30:00+00:00",
-     "author": "",
-     "engagement": 0,
-     "source_weight": 0.9,
-     "score": 20.449,
-     "score_breakdown": {
-      "watchlist": 1.5,
-      "enterprise": 3.6,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.388,
-      "noise": -0.0,
-      "publisher_tier": 1.0,
-      "coverage": 15.51
-     },
-     "track": "models",
-     "region": "cn",
-     "entities": [
-      "DeepSeek",
-      "NVIDIA"
-     ],
-     "id": "b519d3021e"
-    },
-    {
-     "source": "Asharq Al-Awsat English",
-     "source_type": "rss",
-     "title": "US Blacklists Megaspeed Cloud Company Linked to Nvidia Scandal",
-     "summary": "",
-     "url": "https://english.aawsat.com/node/5344929",
-     "published": "2026-11-24T06:48:08+00:00",
-     "author": "author",
-     "engagement": 0,
-     "source_weight": 1.0,
-     "score": 15.923,
-     "score_breakdown": {
-      "watchlist": 1.5,
-      "enterprise": 1.6,
-      "regional": 0.0,
-      "engagement": 0.0,
-      "recency": 0.823,
-      "noise": -0.0,
-      "publisher_tier": 1.0,
-      "coverage": 12.0
-     },
-     "track": "chips",
-     "region": "makers",
-     "entities": [
-      "NVIDIA"
-     ],
-     "id": "9879043dd6"
-    }
-   ],
-   "outlets": [
-    "Google News",
-    "Tom's Hardware",
-    "Asharq Al-Awsat",
-    "Wall Street Journal",
-    "The New York Times"
-   ],
-   "outlet_count": 5,
-   "tiers": [
-    "A",
-    "B",
-    "C"
-   ],
-   "verified": true,
-   "regions": [
-    "cn",
-    "makers"
-   ],
-   "flagged": true,
-   "repeat": [],
-   "published": "2026-11-25T10:24:08+00:00",
-   "lead_score": 22.137,
-   "advice_bait": false,
-   "routine_release": false,
-   "common_words": [
-    "nvidia"
-   ],
-   "id": "sc1ab",
-   "kind": "global",
-   "scores": {
-    "decision_impact": {
-     "score": 2,
-     "reason": "Export-compliance exposure in chip supply bears on sourcing and risk decisions"
-    },
-    "regional_consequence": {
-     "score": 0,
-     "reason": "No Gulf, Levant, Türkiye or African actor is named"
-    },
-    "evidence": {
-     "score": 2,
-     "reason": "WSJ and NYT report it; other items are aggregator or unrelated."
-    },
-    "tension": {
-     "score": 3,
-     "reason": "Alleged chip diversion and spy-agency contacts raise open questions"
-    }
-   },
-   "regional_actor": "",
-   "decision_frame": "risk",
-   "short": null,
-   "summary": "WSJ reports that an associate of Alice Huang is accused of funneling Nvidia chips to China, and NYT reports US tracking of her contacts with a Chinese spy agency.",
-   "judged_by": "claude-haiku-5-5",
-   "total": 11,
-   "max_total": 21,
-   "gates": {
-    "new": {
-     "pass": true,
-     "reason": "new this week"
-    },
-    "verified": {
-     "pass": true,
-     "reason": "tier A/B/C (Google News, Tom's Hardware, Asharq Al-Awsat, Wall Street Journal)"
-    },
-    "depth": {
-     "pass": true,
-     "reason": "enough for 60-180 s"
-    },
-    "kill": {
-     "pass": false,
-     "reason": "kill list: a global headline with no regional consequence"
-    }
-   },
-   "override": "",
+   "override": "drop",
    "slot": "out",
-   "slot_reason": "kill list: a global headline with no regional consequence",
+   "slot_reason": "dropped by the founder",
    "ref": 10
   },
   {
@@ -4009,6 +4009,15 @@
    "question": "Which of your company's government transactions would you trust an AI assistant to complete?"
   }
  ],
- "overrides": [],
+ "overrides": [
+  {
+   "story_id": "sd7be",
+   "title": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+   "action": "drop",
+   "reason": "it is the weakest quick story and the second Anthropic item; 5 already covers Anthropic for business buyers",
+   "by": "wisamk-ctrl",
+   "at": "2026-11-28T09:02:03.288726+00:00"
+  }
+ ],
  "approved": null
 }
