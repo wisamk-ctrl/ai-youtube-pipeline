@@ -101,11 +101,12 @@ async function start() {
   for (const p of c.privacy_level_options) $("privacy").add(new Option(LABEL[p] || p, p));
   for (const [k, off] of [["comment", c.comment_disabled], ["duet", c.duet_disabled], ["stitch", c.stitch_disabled]])
     if (off) { $(k).disabled = true; $(k).parentElement.title = "Turned off in your TikTok privacy settings"; }
-  const v = await (await fetch("/api/videos")).json();
-  $("vids").innerHTML = "";
+  const vr = await fetch("/api/videos"), v = await vr.json();
+  $("vids").innerHTML = vr.ok ? "" : `<span class="err">${v.error}</span>`;
+  if (!vr.ok) return;
   for (const x of v) {
     const l = document.createElement("label");
-    l.innerHTML = `<input type="radio" name="v"> <span>${x.title}<br><span class="mute">${x.name} · ${(x.size / 1048576).toFixed(1)} MB</span></span>`;
+    l.innerHTML = `<input type="radio" name="v"> <span>${x.title}<br><span class="mute">${x.name}</span></span>`;
     l.querySelector("input").onchange = () => pick(x); $("vids").append(l);
   }
   update();

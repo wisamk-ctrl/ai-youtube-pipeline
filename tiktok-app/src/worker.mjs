@@ -56,19 +56,12 @@ export default {
       switch (url.pathname) {
         case "/api/creator": return json(await tt("/v2/post/publish/creator_info/query/", s.access_token));
         case "/api/videos": {
-          const r = await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=15`,
-            { headers: { Accept: "application/vnd.github+json", "User-Agent": "aithisweek-post" } });
-          if (!r.ok) return json({ error: `GitHub HTTP ${r.status}` }, 502);
-          const vids = (await r.json()).flatMap((rel) => rel.assets.filter((a) => /short.*\.mp4$/i.test(a.name))
-            .map((a) => ({ name: a.name, url: a.browser_download_url, size: a.size, title: rel.name || rel.tag_name })));
-          const list = vids.slice(0, 20);
-          await Promise.all(list.map(async (v) => {   // the Short's own headline, from the week's breaking.yaml
-            const week = v.name.replace(/-short-\d+\.mp4$/i, "");
-            const y = await fetch(`https://raw.githubusercontent.com/${REPO}/main/reviewed/${week}/breaking.yaml`).catch(() => null);
-            const m = y && y.ok ? (await y.text()).match(/^title:\s*['"]?(.+?)['"]?\s*$/m) : null;
-            v.title = m ? m[1] : week;
-          }));
-          return json(list);
+          // The show's own Shorts, newest first, from the pipeline's social queue (raw file: no API rate limit).
+          const r = await fetch(`https://raw.githubusercontent.com/${REPO}/main/data/social_queue.json`);
+          if (!r.ok) return json({ error: `Could not load the Shorts list (HTTP ${r.status}).` }, 502);
+          const vids = (await r.json()).filter((e) => /\.mp4$/i.test(e.url || "")).reverse().slice(0, 20)
+            .map((e) => ({ name: e.file, url: e.url, title: e.title || e.week }));
+          return json(vids);
         }
         case "/api/post": {
           if (req.method !== "POST") return json({ error: "POST only" }, 405);
