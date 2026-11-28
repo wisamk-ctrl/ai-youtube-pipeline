@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI This Week · Post to TikTok</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --line:#2a313c; --ink:#e8ecf1; --mute:#9aa4b2; --accent:#25f4ee; --hot:#fe2c55; }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif }
+  header, main, footer { max-width:760px; margin:0 auto; padding:20px 16px }
+  h1 { font:700 24px "Space Grotesk",sans-serif; margin:0 }
+  h1 span { color:var(--accent) }
+  h2 { font:500 16px "Space Grotesk",sans-serif; margin:0 0 10px }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px; margin-bottom:16px }
+  .mute { color:var(--mute); font-size:13px }
+  button, .btn { background:var(--hot); color:#fff; border:0; border-radius:8px; padding:11px 18px; font:500 15px "IBM Plex Sans"; cursor:pointer; text-decoration:none; display:inline-block }
+  button:disabled { opacity:.4; cursor:not-allowed }
+  .who { display:flex; gap:12px; align-items:center }
+  .who img { width:44px; height:44px; border-radius:50% }
+  .vids { display:grid; gap:8px; max-height:220px; overflow:auto }
+  .vids label { display:flex; gap:10px; align-items:center; padding:8px 10px; border:1px solid var(--line); border-radius:8px; cursor:pointer }
+  video { width:100%; max-width:300px; border-radius:10px; background:#000; display:block; margin-top:12px }
+  textarea, select { width:100%; background:#0b0f14; color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:10px; font:inherit }
+  textarea { min-height:110px }
+  .row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-top:1px solid var(--line) }
+  .row:first-of-type { border-top:0 }
+  .sub { padding-left:16px }
+  .err { color:#ff8a9b } .ok { color:var(--accent) }
+  a { color:var(--accent) }
+  [hidden] { display:none !important }
+</style>
+</head>
+<body>
+<header><h1>AI This Week <span>· Post to TikTok</span></h1>
+  <p class="mute">Publishes the show's own weekly AI-news Shorts to its TikTok account. <span id="host"></span></p></header>
+<main>
+  <p id="msg" class="err" hidden></p>
+
+  <section id="out" class="card" hidden>
+    <h2>Connect your TikTok account</h2>
+    <p class="mute">You'll sign in on TikTok and approve access to your profile info and to post videos you choose here.</p>
+    <a class="btn" href="/api/login">Continue with TikTok</a>
+  </section>
+
+  <section id="in" hidden>
+    <div class="card who"><img id="avatar" alt=""><div><div>Posting as <b id="nick"></b></div><div class="mute" id="user"></div></div></div>
+
+    <div class="card"><h2>1 · Choose a video</h2>
+      <div class="vids" id="vids"><span class="mute">Loading the show's Shorts…</span></div>
+      <video id="preview" controls playsinline hidden></video>
+      <p class="mute" id="dur"></p></div>
+
+    <div class="card"><h2>2 · Caption</h2>
+      <textarea id="title" maxlength="2200" placeholder="Write a caption"></textarea></div>
+
+    <div class="card"><h2>3 · Settings</h2>
+      <label class="mute" for="privacy">Who can view this video</label>
+      <select id="privacy"><option value="" selected disabled>Select who can view</option></select>
+      <div style="margin-top:12px">
+        <div class="row"><span>Allow comments</span><input type="checkbox" id="comment"></div>
+        <div class="row"><span>Allow Duet</span><input type="checkbox" id="duet"></div>
+        <div class="row"><span>Allow Stitch</span><input type="checkbox" id="stitch"></div>
+        <div class="row"><span>AI-generated content label</span><input type="checkbox" id="aigc" checked></div>
+        <div class="row"><span>Disclose commercial content<br><span class="mute">Turn on if this video promotes yourself, a brand, product or service.</span></span><input type="checkbox" id="commercial"></div>
+        <div id="commercialBox" class="sub" hidden>
+          <div class="row"><span>Your brand<br><span class="mute">You are promoting yourself or your own business. The video will be labeled "Promotional content".</span></span><input type="checkbox" id="yourBrand"></div>
+          <div class="row"><span>Branded content<br><span class="mute">You are promoting another brand or a third party. The video will be labeled "Paid partnership".</span></span><input type="checkbox" id="branded"></div>
+          <p class="mute" id="commercialNote"></p>
+        </div>
+      </div></div>
+
+    <div class="card">
+      <p id="consent" class="mute"></p>
+      <button id="post" disabled>Post to TikTok</button>
+      <p id="result"></p></div>
+  </section>
+</main>
+<footer class="mute"><a href="https://wisamk-ctrl.github.io/ai-youtube-pipeline/terms.html">Terms of Service</a> ·
+  <a href="https://wisamk-ctrl.github.io/ai-youtube-pipeline/privacy.html">Privacy Policy</a> ·
+  <a id="logout" href="/api/logout" hidden>Disconnect</a></footer>
+<script>
+const $ = (id) => document.getElementById(id);
+document.getElementById("host").textContent = location.host;
+const LABEL = { PUBLIC_TO_EVERYONE: "Everyone", MUTUAL_FOLLOW_FRIENDS: "Friends", FOLLOWER_OF_CREATOR: "Followers", SELF_ONLY: "Only me" };
+const MUC = '<a href="https://www.tiktok.com/legal/page/global/music-usage-confirmation/en" target="_blank">Music Usage Confirmation</a>';
+const BCP = '<a href="https://www.tiktok.com/legal/page/global/bc-policy/en" target="_blank">Branded Content Policy</a>';
+let creator = null, video = null, duration = 0;
+
+const err = new URLSearchParams(location.search).get("error");
+if (err) { $("msg").textContent = err; $("msg").hidden = false; }
+
+async function start() {
+  const r = await fetch("/api/creator");
+  if (r.status === 401) { $("out").hidden = false; return; }
+  const c = await r.json();
+  if (!r.ok) { $("msg").textContent = "TikTok says you can't post right now: " + c.error; $("msg").hidden = false; return; }
+  creator = c; $("in").hidden = false; $("logout").hidden = false;
+  $("avatar").src = c.creator_avatar_url || ""; $("nick").textContent = c.creator_nickname; $("user").textContent = "@" + c.creator_username;
+  for (const p of c.privacy_level_options) $("privacy").add(new Option(LABEL[p] || p, p));
+  for (const [k, off] of [["comment", c.comment_disabled], ["duet", c.duet_disabled], ["stitch", c.stitch_disabled]])
+    if (off) { $(k).disabled = true; $(k).parentElement.title = "Turned off in your TikTok privacy settings"; }
+  const vr = await fetch("/api/videos"), v = await vr.json();
+  $("vids").innerHTML = vr.ok ? "" : `<span class="err">${v.error}</span>`;
+  if (!vr.ok) return;
+  for (const x of v) {
+    const l = document.createElement("label");
+    l.innerHTML = `<input type="radio" name="v"> <span>${x.title}<br><span class="mute">${x.name}</span></span>`;
+    l.querySelector("input").onchange = () => pick(x); $("vids").append(l);
+  }
+  update();
+}
+function pick(x) {
+  video = x; const p = $("preview"); p.hidden = false; p.src = x.url;
+  p.onloadedmetadata = () => { duration = p.duration; const max = creator.max_video_post_duration_sec;
+    $("dur").textContent = `${Math.round(duration)} s` + (max && duration > max ? ` — longer than your account allows (${max} s)` : ""); update(); };
+  if (!$("title").value) $("title").value = x.title; update();
+}
+function update() {
+  const com = $("commercial").checked, branded = com && $("branded").checked;
+  $("commercialBox").hidden = !com;
+  const priv = [...$("privacy").options].find((o) => o.value === "SELF_ONLY");
+  if (priv) { priv.disabled = branded; priv.text = branded ? "Only me (not available for branded content)" : "Only me"; }
+  if (branded && $("privacy").value === "SELF_ONLY") $("privacy").value = "";
+  $("commercialNote").textContent = com && !$("yourBrand").checked && !$("branded").checked ? "Choose at least one option to continue." : "";
+  $("consent").innerHTML = "By posting, you agree to TikTok's " + (branded ? BCP + " and " : "") + MUC + ".";
+  const max = creator && creator.max_video_post_duration_sec;
+  $("post").disabled = !video || !$("privacy").value || (com && !$("yourBrand").checked && !$("branded").checked) || (max && duration > max);
+}
+for (const id of ["privacy", "commercial", "yourBrand", "branded"]) $(id).addEventListener("change", update);
+$("post").onclick = async () => {
+  $("post").disabled = true; $("result").className = ""; $("result").textContent = "Sending the video to TikTok…";
+  const form = { title: $("title").value, privacy: $("privacy").value, comment: $("comment").checked, duet: $("duet").checked,
+    stitch: $("stitch").checked, aigc: $("aigc").checked, commercial: $("commercial").checked, yourBrand: $("yourBrand").checked,
+    branded: $("branded").checked, durationSec: duration };
+  const r = await fetch("/api/post", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ videoUrl: video.url, form }) });
+  const j = await r.json();
+  if (!r.ok) { $("result").className = "err"; $("result").textContent = j.error; update(); return; }
+  $("result").className = "ok";
+  $("result").textContent = "Sent. TikTok is processing it: it may take a few minutes to appear on your profile.";
+  for (let i = 0; i < 40; i++) {
+    await new Promise((s) => setTimeout(s, 5000));
+    const s = await (await fetch("/api/status", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ publish_id: j.publish_id }) })).json();
+    if (s.status === "PUBLISH_COMPLETE") { $("result").textContent = "Published to your TikTok profile."; break; }
+    if (s.status === "FAILED") { $("result").className = "err"; $("result").textContent = "TikTok could not publish it: " + (s.fail_reason || "unknown reason"); break; }
+    $("result").textContent = `Processing on TikTok (${(s.status || "").toLowerCase().replace(/_/g, " ")})… it may take a few minutes.`;
+  }
+};
+start();
+</script>
+</body>
+</html>
