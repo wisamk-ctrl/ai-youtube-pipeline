@@ -1065,8 +1065,15 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued",
-        "note": "not connected this run (secrets missing or the token failed): still queued"
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T10:43:11Z",
+        "url": "https://youtube.com/shorts/_zH9KRxcyEY",
+        "playlists": [
+          "AI news Shorts",
+          "AI in the Gulf",
+          "Big Tech and the AI labs"
+        ]
       },
       "instagram": {
         "status": "posted",
@@ -1119,8 +1126,15 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued",
-        "note": "not connected this run (secrets missing or the token failed): still queued"
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T10:43:11Z",
+        "url": "https://youtube.com/shorts/H_B4Ojum58w",
+        "playlists": [
+          "AI news Shorts",
+          "AI in the Gulf",
+          "Big Tech and the AI labs"
+        ]
       },
       "instagram": {
         "status": "posted",
@@ -1173,8 +1187,15 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued",
-        "note": "not connected this run (secrets missing or the token failed): still queued"
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T10:43:11Z",
+        "url": "https://youtube.com/shorts/pjNLUSm2hQo",
+        "playlists": [
+          "AI news Shorts",
+          "AI in the Gulf",
+          "Big Tech and the AI labs"
+        ]
       },
       "instagram": {
         "status": "posted",
@@ -1227,8 +1248,14 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued",
-        "note": "not connected this run (secrets missing or the token failed): still queued"
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T10:43:11Z",
+        "url": "https://youtube.com/shorts/6DVZWUKsgZE",
+        "playlists": [
+          "AI news Shorts",
+          "Chips and data centres"
+        ]
       },
       "instagram": {
         "status": "posted",
@@ -1282,8 +1309,16 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued",
-        "note": "not connected this run (secrets missing or the token failed): still queued"
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T10:43:11Z",
+        "url": "https://youtube.com/shorts/ANiVaLJJNVE",
+        "playlists": [
+          "AI news Shorts",
+          "AI in the Gulf",
+          "Big Tech and the AI labs"
+        ],
+        "first_comment": "Ugx8qQ3zPGPtZXZjfEd4AaABAg"
       },
       "instagram": {
         "status": "posted",
@@ -1337,8 +1372,16 @@
     },
     "posts": {
       "youtube": {
-        "status": "queued",
-        "note": "not connected this run (secrets missing or the token failed): still queued"
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T10:43:11Z",
+        "url": "https://youtube.com/shorts/jrsDBg9u4iI",
+        "playlists": [
+          "AI news Shorts",
+          "AI in the Gulf",
+          "Big Tech and the AI labs"
+        ],
+        "first_comment": "UgwyROylFzFcqJB0Xql4AaABAg"
       },
       "instagram": {
         "status": "posted",
