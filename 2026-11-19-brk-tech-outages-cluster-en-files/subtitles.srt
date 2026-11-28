@@ -1,0 +1,75 @@
+1
+00:00:00,000 --> 00:00:04,250
+In one week, Microsoft, Apple, JPMorgan Chase
+
+2
+00:00:04,300 --> 00:00:06,590
+United Airlines and the NSA all suffered major
+
+3
+00:00:06,640 --> 00:00:09,450
+tech failures, Scientific American reports
+
+4
+00:00:09,500 --> 00:00:11,350
+Microsoft's cloud software was unavailable
+
+5
+00:00:11,400 --> 00:00:13,250
+for almost 24 hours
+
+6
+00:00:13,300 --> 00:00:15,630
+A malfunctioning telecom network halted U.S
+
+7
+00:00:15,680 --> 00:00:16,590
+air traffic
+
+8
+00:00:16,640 --> 00:00:19,570
+Some blamed cyberattacks or AI running amok
+
+9
+00:00:19,620 --> 00:00:22,130
+The magazine says the evidence supports neither
+
+10
+00:00:22,180 --> 00:00:24,410
+Microsoft says AI agents weren't the cause
+
+11
+00:00:24,460 --> 00:00:26,990
+Apple's outage followed an internal update
+
+12
+00:00:27,040 --> 00:00:30,150
+and the NSA cites scheduled maintenance
+
+13
+00:00:30,200 --> 00:00:32,390
+The Uptime Institute found data center outage
+
+14
+00:00:32,440 --> 00:00:36,710
+rates per site fell in 2026 for a fifth year running
+
+15
+00:00:36,760 --> 00:00:39,070
+Reliability engineer Laura Nolan says outages
+
+16
+00:00:39,120 --> 00:00:41,790
+can cluster in a few days without a shared cause
+
+17
+00:00:41,840 --> 00:00:44,110
+For Gulf businesses and governments, the thing
+
+18
+00:00:44,160 --> 00:00:46,690
+to watch is how cloud providers test and manage
+
+19
+00:00:46,740 --> 00:00:48,610
+updates to ever more complex systems

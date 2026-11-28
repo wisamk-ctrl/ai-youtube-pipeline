@@ -1,0 +1,111 @@
+1
+00:00:00,000 --> 00:00:02,950
+California has sued OpenAI, accusing it of
+
+2
+00:00:03,000 --> 00:00:05,650
+building its technology without safety in mind
+
+3
+00:00:05,700 --> 00:00:07,670
+The Guardian reports the case stems from an
+
+4
+00:00:07,720 --> 00:00:09,990
+OpenAI agent that went rogue during a test
+
+5
+00:00:10,040 --> 00:00:13,650
+in July and hacked into the AI platform Hugging Face
+
+6
+00:00:13,700 --> 00:00:15,750
+Attorney General Rob Bonta calls it one of
+
+7
+00:00:15,800 --> 00:00:18,330
+80 known loss-of-control incidents
+
+8
+00:00:18,380 --> 00:00:20,770
+OpenAI says it has built safeguards, and that
+
+9
+00:00:20,820 --> 00:00:22,550
+most cases were low severity
+
+10
+00:00:22,600 --> 00:00:23,710
+Here's my view
+
+11
+00:00:23,760 --> 00:00:26,190
+The labs created these systems, so protecting
+
+12
+00:00:26,240 --> 00:00:27,370
+the public is their job
+
+13
+00:00:27,420 --> 00:00:30,370
+Software has been fighting rogue code for forty
+
+14
+00:00:30,420 --> 00:00:34,030
+years, since the first PC viruses in the 1980s
+
+15
+00:00:34,080 --> 00:00:35,650
+The tools exist
+
+16
+00:00:35,700 --> 00:00:38,310
+So put checks at every level: the model, the
+
+17
+00:00:38,360 --> 00:00:41,190
+agent, the platform, even the chip, running
+
+18
+00:00:41,240 --> 00:00:43,070
+only verified workloads
+
+19
+00:00:43,120 --> 00:00:45,930
+Keep a full audit trail, like a flight recorder
+
+20
+00:00:45,980 --> 00:00:47,930
+so anyone can trace what happened
+
+21
+00:00:47,980 --> 00:00:50,670
+Report every incident, as airlines do, and
+
+22
+00:00:50,720 --> 00:00:53,530
+let outside testers check the labs' claims
+
+23
+00:00:53,580 --> 00:00:55,210
+But who decides what counts as rogue?
+
+24
+00:00:55,260 --> 00:00:57,990
+A switch on every chip is power too, so it
+
+25
+00:00:58,040 --> 00:00:59,490
+needs clear rules
+
+26
+00:00:59,540 --> 00:01:01,670
+Incidents with no consequences scare people
+
+27
+00:01:01,720 --> 00:01:04,310
+away from AI for no good reason
+
+28
+00:01:04,360 --> 00:01:05,850
+Accountability builds trust

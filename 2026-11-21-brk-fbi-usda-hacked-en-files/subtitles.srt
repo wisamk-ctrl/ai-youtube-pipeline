@@ -1,0 +1,71 @@
+1
+00:00:00,000 --> 00:00:02,530
+US media report that hackers have breached
+
+2
+00:00:02,580 --> 00:00:05,610
+the US Agriculture Department and the FBI
+
+3
+00:00:05,660 --> 00:00:08,190
+NBC reports the USDA told staff a system for
+
+4
+00:00:08,240 --> 00:00:10,590
+payments to farmers was targeted
+
+5
+00:00:10,640 --> 00:00:13,270
+Two former officials told NBC the hackers may
+
+6
+00:00:13,320 --> 00:00:16,330
+use it as a backdoor to more sensitive material
+
+7
+00:00:16,380 --> 00:00:18,690
+CNN reports the FBI was hacked for the second
+
+8
+00:00:18,740 --> 00:00:20,290
+time since September
+
+9
+00:00:20,340 --> 00:00:22,650
+The FBI is probing an apparent intrusion of
+
+10
+00:00:22,700 --> 00:00:24,730
+the National Crime Information Center, used
+
+11
+00:00:24,780 --> 00:00:25,930
+for warrant checks
+
+12
+00:00:25,980 --> 00:00:28,130
+It remains unclear if the breaches are linked
+
+13
+00:00:28,180 --> 00:00:30,150
+or who is behind them
+
+14
+00:00:30,200 --> 00:00:32,490
+They follow weeks of major US outages that
+
+15
+00:00:32,540 --> 00:00:34,670
+officials say were not criminal
+
+16
+00:00:34,720 --> 00:00:36,610
+Gulf governments and businesses will be watching
+
+17
+00:00:36,660 --> 00:00:38,630
+how attacks on payment and records systems
+
+18
+00:00:38,680 --> 00:00:40,030
+shape their own cyber defences

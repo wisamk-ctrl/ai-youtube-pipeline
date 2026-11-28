@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:03,470
+AWS took 93 minutes to tell customers about an outage
+
+2
+00:00:03,520 --> 00:00:06,470
+The outage hit its US East region early on November 15
+
+3
+00:00:06,520 --> 00:00:07,750
+It began at 3:05 a.m
+
+4
+00:00:07,800 --> 00:00:10,310
+and lasted until 6:53 a.m
+
+5
+00:00:10,360 --> 00:00:13,750
+THE ELEC says more than 10 major AWS services were affected
+
+6
+00:00:13,800 --> 00:00:16,370
+Users hit sign-up errors, authentication failures
+
+7
+00:00:16,420 --> 00:00:17,710
+and connectivity issues
+
+8
+00:00:17,760 --> 00:00:20,010
+The main casualty was IAM Identity Center
+
+9
+00:00:20,060 --> 00:00:21,790
+an enterprise login system
+
+10
+00:00:21,840 --> 00:00:24,910
+AWS engineers responded within minutes, the report says
+
+11
+00:00:24,960 --> 00:00:27,630
+But the first status page post came only after 93 minutes
+
+12
+00:00:27,680 --> 00:00:30,530
+The Register reports AWS questioned Downdetector's
+
+13
+00:00:30,580 --> 00:00:32,870
+reliability instead of explaining the failure
+
+14
+00:00:32,920 --> 00:00:34,750
+The outage drew little attention, coming early
+
+15
+00:00:34,800 --> 00:00:35,730
+on a Sunday
+
+16
+00:00:35,780 --> 00:00:38,010
+For Gulf firms on global clouds, outage communication
+
+17
+00:00:38,060 --> 00:00:38,890
+is worth watching

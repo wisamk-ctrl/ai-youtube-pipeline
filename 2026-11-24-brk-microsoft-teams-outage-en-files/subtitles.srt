@@ -1,0 +1,51 @@
+1
+00:00:00,000 --> 00:00:02,370
+Microsoft's Exchange Online and Teams went
+
+2
+00:00:02,420 --> 00:00:03,750
+down for hours
+
+3
+00:00:03,800 --> 00:00:07,450
+More than 130,000 users reported problems
+
+4
+00:00:07,500 --> 00:00:08,710
+Computer Weekly reports
+
+5
+00:00:08,760 --> 00:00:10,590
+Computer Weekly calls it a major outage of
+
+6
+00:00:10,640 --> 00:00:12,690
+Microsoft's online applications
+
+7
+00:00:12,740 --> 00:00:14,970
+Its data shows how deeply the UK public sector
+
+8
+00:00:15,020 --> 00:00:16,710
+relies on these services
+
+9
+00:00:16,760 --> 00:00:19,650
+Computer Weekly says it is examining what went wrong
+
+10
+00:00:19,700 --> 00:00:21,950
+A Microsoft outage review found gaps in server
+
+11
+00:00:22,000 --> 00:00:24,110
+testing, The Defiant reports
+
+12
+00:00:24,160 --> 00:00:26,270
+Could Gulf offices keep working if Teams and
+
+13
+00:00:26,320 --> 00:00:27,450
+email failed for hours?

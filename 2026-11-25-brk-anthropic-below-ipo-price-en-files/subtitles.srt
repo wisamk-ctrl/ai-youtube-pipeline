@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:03,950
+Anthropic shares have fallen below their $83 IPO price
+
+2
+00:00:04,000 --> 00:00:05,530
+TechCrunch reports the stock traded as low
+
+3
+00:00:05,580 --> 00:00:07,870
+as $76 by midday Tuesday
+
+4
+00:00:07,920 --> 00:00:10,650
+That's down nearly 12% from Monday's close
+
+5
+00:00:10,700 --> 00:00:13,650
+Observers see it as a barometer for AI valuations
+
+6
+00:00:13,700 --> 00:00:15,650
+TechCrunch says a weak run could pressure startup
+
+7
+00:00:15,700 --> 00:00:17,990
+valuations and AI IPOs
+
+8
+00:00:18,040 --> 00:00:20,750
+Nvidia also fell more than 7% by midday
+
+9
+00:00:20,800 --> 00:00:23,360
+The Motley Fool says nine-month revenue surged
+
+10
+00:00:23,410 --> 00:00:26,430
+1,200% to $33.24 billion
+
+11
+00:00:26,480 --> 00:00:29,610
+Does this change how your company chooses its AI providers?

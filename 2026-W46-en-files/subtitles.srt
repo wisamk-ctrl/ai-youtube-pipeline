@@ -1,0 +1,1099 @@
+1
+00:00:00,000 --> 00:00:02,850
+In the latest US elections, local communities
+
+2
+00:00:02,900 --> 00:00:05,570
+voted against proposals tied to data centers
+
+3
+00:00:05,620 --> 00:00:08,910
+in 40 cases out of 41
+
+4
+00:00:08,960 --> 00:00:11,010
+So if people there don't want data centers
+
+5
+00:00:11,060 --> 00:00:13,570
+next to their homes, who's going to host them?
+
+6
+00:00:13,620 --> 00:00:15,710
+And who's going to pay the price?
+
+7
+00:00:15,760 --> 00:00:17,950
+Hi everyone, welcome to AI This Week
+
+8
+00:00:18,000 --> 00:00:19,310
+I'm Wissam
+
+9
+00:00:19,360 --> 00:00:21,550
+I've spent 25 years in enterprise software
+
+10
+00:00:21,600 --> 00:00:24,830
+across the Middle East, Turkey and Africa
+
+11
+00:00:24,880 --> 00:00:27,230
+Today: Jensen Huang leaves NVIDIA
+
+12
+00:00:27,280 --> 00:00:29,910
+Plus Anthropic's IPO under pressure, a Saudi
+
+13
+00:00:29,960 --> 00:00:32,430
+platform that keeps data inside the Kingdom
+
+14
+00:00:32,480 --> 00:00:34,530
+and a wallet that lets an AI agent shop for
+
+15
+00:00:34,580 --> 00:00:35,070
+you
+
+16
+00:00:35,120 --> 00:00:37,750
+We start with the biggest story of the week
+
+17
+00:00:37,800 --> 00:00:40,330
+On November 12, NVIDIA announced that Jensen
+
+18
+00:00:40,380 --> 00:00:43,250
+Huang has resigned as president, CEO and board
+
+19
+00:00:43,300 --> 00:00:45,810
+member, effective immediately
+
+20
+00:00:45,860 --> 00:00:48,350
+The company's finance chief, Colette Kress
+
+21
+00:00:48,400 --> 00:00:49,990
+is now interim CEO
+
+22
+00:00:50,040 --> 00:00:51,950
+And the board says it will consider candidates
+
+23
+00:00:52,000 --> 00:00:54,550
+from inside and outside the company
+
+24
+00:00:54,600 --> 00:00:55,810
+NVIDIA gave no reason
+
+25
+00:00:55,860 --> 00:00:59,630
+Press reports, including Al Jazeera and TechCrunch
+
+26
+00:00:59,680 --> 00:01:01,850
+tie his exit to his private life
+
+27
+00:01:01,900 --> 00:01:04,210
+Al Jazeera reports that he admitted being unfaithful
+
+28
+00:01:04,260 --> 00:01:05,290
+to his wife
+
+29
+00:01:05,340 --> 00:01:07,150
+One of the reported relationships was with
+
+30
+00:01:07,200 --> 00:01:08,950
+a woman alleged to have worked for Chinese
+
+31
+00:01:09,000 --> 00:01:09,890
+intelligence
+
+32
+00:01:09,940 --> 00:01:12,150
+That part is an allegation: Al Jazeera notes
+
+33
+00:01:12,200 --> 00:01:14,330
+there is no established evidence that company
+
+34
+00:01:14,380 --> 00:01:16,190
+secrets were compromised
+
+35
+00:01:16,240 --> 00:01:18,350
+Why does this matter here in the region?
+
+36
+00:01:18,400 --> 00:01:20,790
+Many AI programs in our region are built on
+
+37
+00:01:20,840 --> 00:01:21,650
+NVIDIA's chips
+
+38
+00:01:21,700 --> 00:01:24,310
+And that roadmap now depends on a company without
+
+39
+00:01:24,360 --> 00:01:24,810
+its founder
+
+40
+00:01:24,860 --> 00:01:28,170
+My view: the AI industry just lost its most
+
+41
+00:01:28,220 --> 00:01:30,190
+important leader over matters that began in
+
+42
+00:01:30,240 --> 00:01:31,350
+his private life
+
+43
+00:01:31,400 --> 00:01:33,590
+If the security allegations are proven, that's
+
+44
+00:01:33,640 --> 00:01:35,090
+a different conversation
+
+45
+00:01:35,140 --> 00:01:37,250
+But until then, I think this is a loss the
+
+46
+00:01:37,300 --> 00:01:38,730
+industry didn't need
+
+47
+00:01:38,780 --> 00:01:40,790
+And there's a lesson for us in the Gulf: don't
+
+48
+00:01:40,840 --> 00:01:43,530
+build a national AI strategy around one man
+
+49
+00:01:43,580 --> 00:01:45,310
+or one vendor
+
+50
+00:01:45,360 --> 00:01:47,070
+Now to the models
+
+51
+00:01:47,120 --> 00:01:48,790
+Anthropic is the company behind the Claude
+
+52
+00:01:48,840 --> 00:01:49,770
+family of models
+
+53
+00:01:49,820 --> 00:01:52,270
+And it's now getting ready to go public, most
+
+54
+00:01:52,320 --> 00:01:54,830
+likely in mid-November, on the Nasdaq stock
+
+55
+00:01:54,880 --> 00:01:56,190
+exchange
+
+56
+00:01:56,240 --> 00:01:58,650
+According to CNBC, investors in the company
+
+57
+00:01:58,700 --> 00:02:01,310
+are seeing a valuation that starts at $1 trillion
+
+58
+00:02:01,360 --> 00:02:05,050
+and goes up to $1.5 trillion
+
+59
+00:02:05,100 --> 00:02:07,390
+A few months ago, the number people were talking
+
+60
+00:02:07,440 --> 00:02:09,490
+about was $2 trillion
+
+61
+00:02:09,540 --> 00:02:11,710
+So expectations have come down
+
+62
+00:02:11,760 --> 00:02:12,490
+Why?
+
+63
+00:02:12,540 --> 00:02:14,750
+Because the mood has gotten tougher, from the
+
+64
+00:02:14,800 --> 00:02:16,110
+stock market to the street
+
+65
+00:02:16,160 --> 00:02:19,870
+The Nasdaq posted its sharpest drop in 19 months
+
+66
+00:02:19,920 --> 00:02:22,050
+And the hardest hit were chip companies, and
+
+67
+00:02:22,100 --> 00:02:23,790
+the newer companies that rent out computing
+
+68
+00:02:23,840 --> 00:02:25,150
+power for AI
+
+69
+00:02:25,200 --> 00:02:28,610
+In the US midterms, voters sent a clear message
+
+70
+00:02:28,660 --> 00:02:31,010
+Candidates who called for tighter AI regulation
+
+71
+00:02:31,060 --> 00:02:34,010
+won in states like Michigan and Texas
+
+72
+00:02:34,060 --> 00:02:37,030
+And according to an NBC News exit poll, a survey
+
+73
+00:02:37,080 --> 00:02:39,190
+of people as they leave the voting booth, more
+
+74
+00:02:39,240 --> 00:02:41,530
+than half of voters said data centers were
+
+75
+00:02:41,580 --> 00:02:44,390
+a deciding or major factor in how they chose
+
+76
+00:02:44,440 --> 00:02:46,390
+their congressional candidates
+
+77
+00:02:46,440 --> 00:02:48,510
+Maura Austin, a behavioral science researcher
+
+78
+00:02:48,560 --> 00:02:51,410
+at the University of Virginia, told CNBC that
+
+79
+00:02:51,460 --> 00:02:53,390
+people don't want a data center next to them
+
+80
+00:02:53,440 --> 00:02:56,370
+if all it does is make a big tech company richer
+
+81
+00:02:56,420 --> 00:02:58,450
+She added that an Anthropic listing at such
+
+82
+00:02:58,500 --> 00:03:00,830
+a high valuation brings it closer to the image
+
+83
+00:03:00,880 --> 00:03:03,110
+of big tech and billionaires, and she doesn't
+
+84
+00:03:03,160 --> 00:03:04,430
+expect people to like that
+
+85
+00:03:04,480 --> 00:03:06,970
+Anthropic could be the first company that does
+
+86
+00:03:07,020 --> 00:03:09,990
+nothing but AI to go public, and in exactly
+
+87
+00:03:10,040 --> 00:03:11,450
+this climate
+
+88
+00:03:11,500 --> 00:03:13,270
+So what does this mean for us?
+
+89
+00:03:13,320 --> 00:03:15,770
+Anthropic sells most of its products to businesses
+
+90
+00:03:15,820 --> 00:03:17,190
+not individuals
+
+91
+00:03:17,240 --> 00:03:19,070
+So for a company here in the region that runs
+
+92
+00:03:19,120 --> 00:03:21,690
+on Claude, its provider could soon be a listed
+
+93
+00:03:21,740 --> 00:03:23,890
+company, under the market's eye
+
+94
+00:03:23,940 --> 00:03:26,730
+And when US politics gets tough on data centers
+
+95
+00:03:26,780 --> 00:03:29,310
+a question comes up: where will the next wave
+
+96
+00:03:29,360 --> 00:03:30,810
+of computing power get built?
+
+97
+00:03:30,860 --> 00:03:34,370
+From the US to Saudi Arabia, and this is our
+
+98
+00:03:34,420 --> 00:03:36,160
+top story from the region
+
+99
+00:03:36,210 --> 00:03:38,850
+Riyadh-based OmniOps has launched the Bunyan
+
+100
+00:03:38,900 --> 00:03:41,170
+Inference Hub, according to a statement published
+
+101
+00:03:41,220 --> 00:03:42,990
+by Wamda and Zawya
+
+102
+00:03:43,040 --> 00:03:45,050
+Inference just means running a trained model
+
+103
+00:03:45,100 --> 00:03:46,670
+to get answers from it
+
+104
+00:03:46,720 --> 00:03:49,670
+The platform is for governments, companies
+
+105
+00:03:49,720 --> 00:03:51,310
+startups and developers
+
+106
+00:03:51,360 --> 00:03:53,890
+It has a library of open models, the kind anyone
+
+107
+00:03:53,940 --> 00:03:56,070
+can download and run, or you can bring your
+
+108
+00:03:56,120 --> 00:03:56,520
+own model
+
+109
+00:03:56,540 --> 00:03:59,350
+And the data and the running of the model all
+
+110
+00:03:59,400 --> 00:04:01,350
+stay inside Saudi Arabia
+
+111
+00:04:01,400 --> 00:04:03,410
+Access to the models comes in ready-made token
+
+112
+00:04:03,460 --> 00:04:04,590
+packages
+
+113
+00:04:04,640 --> 00:04:06,990
+A token is the unit of text a model reads and
+
+114
+00:04:07,040 --> 00:04:07,750
+writes
+
+115
+00:04:07,800 --> 00:04:10,650
+And if you need more capacity or full isolation
+
+116
+00:04:10,700 --> 00:04:13,270
+there are dedicated GPUs, the chips that run
+
+117
+00:04:13,320 --> 00:04:15,470
+AI models, just for you
+
+118
+00:04:15,520 --> 00:04:17,890
+According to the company, it has its own engine
+
+119
+00:04:17,940 --> 00:04:20,950
+that adjusts how models run on existing hardware
+
+120
+00:04:21,000 --> 00:04:24,690
+The goal, in their words, is to raise GPU utilization
+
+121
+00:04:24,740 --> 00:04:26,230
+and cut the cost per token
+
+122
+00:04:26,280 --> 00:04:28,350
+And the platform runs on different types of
+
+123
+00:04:28,400 --> 00:04:31,170
+chips, so it isn't tied to a single vendor
+
+124
+00:04:31,220 --> 00:04:33,250
+You can also set usage limits and track how
+
+125
+00:04:33,300 --> 00:04:35,210
+much each team is consuming
+
+126
+00:04:35,260 --> 00:04:38,530
+Mohammed Altassan, founder and CEO of OmniOps
+
+127
+00:04:38,580 --> 00:04:40,790
+said that managing model consumption securely
+
+128
+00:04:40,840 --> 00:04:43,250
+and with cost controls has never mattered this
+
+129
+00:04:43,300 --> 00:04:44,010
+much
+
+130
+00:04:44,060 --> 00:04:46,770
+And notice the irony: in the US, people are
+
+131
+00:04:46,820 --> 00:04:49,730
+rejecting data centers near them, while here
+
+132
+00:04:49,780 --> 00:04:51,750
+local hosting is the selling point
+
+133
+00:04:51,800 --> 00:04:53,130
+Why does this matter here in the region?
+
+134
+00:04:53,180 --> 00:04:55,890
+For organizations required to keep their data
+
+135
+00:04:55,940 --> 00:04:58,670
+inside the country, the only option was sometimes
+
+136
+00:04:58,720 --> 00:05:00,850
+to build their own infrastructure
+
+137
+00:05:00,900 --> 00:05:03,490
+Now, according to the company, they have another
+
+138
+00:05:03,540 --> 00:05:04,490
+path
+
+139
+00:05:04,540 --> 00:05:06,810
+And the packages and per-team limits give the
+
+140
+00:05:06,860 --> 00:05:08,990
+finance department control over costs
+
+141
+00:05:09,040 --> 00:05:10,470
+What should we watch?
+
+142
+00:05:10,520 --> 00:05:12,750
+Who the first customers will be, and which
+
+143
+00:05:12,800 --> 00:05:14,870
+models land in the library
+
+144
+00:05:14,920 --> 00:05:16,610
+Now let's move on to agents
+
+145
+00:05:16,660 --> 00:05:19,590
+On Friday, OpenAI announced ChatGPT Wallet
+
+146
+00:05:19,640 --> 00:05:23,010
+It's a payment wallet that lets its AI agents
+
+147
+00:05:23,060 --> 00:05:25,290
+called "dots," make purchases for you
+
+148
+00:05:25,340 --> 00:05:27,110
+The company built it in partnership with American
+
+149
+00:05:27,160 --> 00:05:29,010
+Express and Mastercard
+
+150
+00:05:29,060 --> 00:05:30,450
+Visa is a partner too
+
+151
+00:05:30,500 --> 00:05:33,110
+And users keep their card points and protections
+
+152
+00:05:33,160 --> 00:05:34,490
+So how does it work?
+
+153
+00:05:34,540 --> 00:05:37,090
+You enter your card details once, and you ask
+
+154
+00:05:37,140 --> 00:05:39,030
+the agent to find the item for you
+
+155
+00:05:39,080 --> 00:05:41,450
+And you approve every purchase yourself, with
+
+156
+00:05:41,500 --> 00:05:43,530
+a security verification step
+
+157
+00:05:43,580 --> 00:05:46,470
+And most importantly, according to OpenAI
+
+158
+00:05:46,520 --> 00:05:48,570
+the agent never sees your card details
+
+159
+00:05:48,620 --> 00:05:51,070
+The payment network gives it a payment token
+
+160
+00:05:51,120 --> 00:05:53,030
+just for that transaction
+
+161
+00:05:53,080 --> 00:05:55,590
+The token has a card number, a security code
+
+162
+00:05:55,640 --> 00:05:58,110
+and an expiry date, all limited to that one
+
+163
+00:05:58,160 --> 00:05:58,930
+purchase
+
+164
+00:05:58,980 --> 00:06:01,110
+And the company says it isn't taking a commission
+
+165
+00:06:01,160 --> 00:06:03,610
+on purchases, at least at the start
+
+166
+00:06:03,660 --> 00:06:05,750
+Chaya Nayak, who leads payments and revenue
+
+167
+00:06:05,800 --> 00:06:08,990
+products at OpenAI, told CNBC their goal is
+
+168
+00:06:09,040 --> 00:06:11,850
+to build a safe, easy foundation with merchants
+
+169
+00:06:11,900 --> 00:06:13,450
+and payment networks
+
+170
+00:06:13,500 --> 00:06:15,910
+The rollout is limited: only Pro subscribers
+
+171
+00:06:15,960 --> 00:06:17,390
+in the US who are over 18
+
+172
+00:06:17,440 --> 00:06:20,270
+And this isn't their first attempt at commerce
+
+173
+00:06:20,320 --> 00:06:22,530
+Last fall they launched a feature called Instant
+
+174
+00:06:22,580 --> 00:06:24,650
+Checkout, and quickly dropped it
+
+175
+00:06:24,700 --> 00:06:27,530
+So the agent has gone from talking to paying
+
+176
+00:06:27,580 --> 00:06:29,450
+So where do our banks and retailers stand in
+
+177
+00:06:29,500 --> 00:06:30,270
+all this?
+
+178
+00:06:30,320 --> 00:06:32,290
+The service is still US-only
+
+179
+00:06:32,340 --> 00:06:34,850
+But the approach itself, partnering with card
+
+180
+00:06:34,900 --> 00:06:37,130
+networks and using a payment token for each
+
+181
+00:06:37,180 --> 00:06:39,610
+transaction, could be a model banks here look
+
+182
+00:06:39,660 --> 00:06:40,190
+at
+
+183
+00:06:40,240 --> 00:06:42,190
+So the question for banks and retailers in
+
+184
+00:06:42,240 --> 00:06:44,650
+the region is: how will they handle a purchase
+
+185
+00:06:44,700 --> 00:06:46,690
+started by an agent, not a person?
+
+186
+00:06:46,740 --> 00:06:50,070
+Before we go on, a story that hit offices across
+
+187
+00:06:50,120 --> 00:06:54,750
+our region last week: the Microsoft 365 outage
+
+188
+00:06:54,800 --> 00:06:57,870
+On November 12, Outlook email, calendars and
+
+189
+00:06:57,920 --> 00:06:59,930
+Teams meetings stopped working for businesses
+
+190
+00:06:59,980 --> 00:07:01,190
+around the world
+
+191
+00:07:01,240 --> 00:07:03,310
+Microsoft's preliminary incident report puts
+
+192
+00:07:03,360 --> 00:07:05,930
+the outage at just under 24 hours, according
+
+193
+00:07:05,980 --> 00:07:07,350
+to Ars Technica
+
+194
+00:07:07,400 --> 00:07:10,030
+In the UAE, Khaleej Times reported disruption
+
+195
+00:07:10,080 --> 00:07:11,750
+for businesses and residents
+
+196
+00:07:11,800 --> 00:07:12,550
+So what went wrong?
+
+197
+00:07:12,600 --> 00:07:15,730
+Microsoft says three things came together
+
+198
+00:07:15,780 --> 00:07:17,530
+A software defect that had been sitting in
+
+199
+00:07:17,580 --> 00:07:19,550
+its network gateway since July
+
+200
+00:07:19,600 --> 00:07:21,870
+A shift that put Teams traffic onto the same
+
+201
+00:07:21,920 --> 00:07:23,930
+system that carries email
+
+202
+00:07:23,980 --> 00:07:26,350
+And part of that system's server capacity already
+
+203
+00:07:26,400 --> 00:07:28,330
+offline for a separate reason
+
+204
+00:07:28,380 --> 00:07:30,490
+Recovery was slow because servers coming back
+
+205
+00:07:30,540 --> 00:07:32,890
+online were immediately overwhelmed again
+
+206
+00:07:32,940 --> 00:07:35,630
+a Microsoft executive, Charles Lamanna, told
+
+207
+00:07:35,680 --> 00:07:38,530
+customers, as reported by ABC News
+
+208
+00:07:38,580 --> 00:07:40,650
+Microsoft says it was not a cyberattack and
+
+209
+00:07:40,700 --> 00:07:42,310
+had nothing to do with AI agents
+
+210
+00:07:42,360 --> 00:07:43,630
+And it apologized
+
+211
+00:07:43,680 --> 00:07:46,270
+My view: this is not acceptable from a company
+
+212
+00:07:46,320 --> 00:07:47,950
+of Microsoft's size
+
+213
+00:07:48,000 --> 00:07:50,410
+A defect that sat unnoticed for months should
+
+214
+00:07:50,460 --> 00:07:52,510
+not be able to take email and meetings down
+
+215
+00:07:52,560 --> 00:07:54,290
+across the world for a day
+
+216
+00:07:54,340 --> 00:07:56,670
+For large organizations in our region, the
+
+217
+00:07:56,720 --> 00:07:59,490
+lesson is redundancy: more than one cloud
+
+218
+00:07:59,540 --> 00:08:02,170
+and a mix of international and local providers
+
+219
+00:08:02,220 --> 00:08:05,530
+so that one company's bad day is not yours
+
+220
+00:08:05,580 --> 00:08:07,950
+Staying with NVIDIA, and this time in Korea
+
+221
+00:08:08,000 --> 00:08:10,410
+This whole story comes from NVIDIA's own announcements
+
+222
+00:08:10,460 --> 00:08:13,190
+so let's hear it in that light
+
+223
+00:08:13,240 --> 00:08:15,070
+NVIDIA and Korea's Ministry of Science and
+
+224
+00:08:15,120 --> 00:08:18,810
+ICT have expanded their sovereign AI collaboration
+
+225
+00:08:18,860 --> 00:08:21,290
+According to NVIDIA, the collaboration opens
+
+226
+00:08:21,340 --> 00:08:23,950
+the door for Korean chip companies to try joining
+
+227
+00:08:24,000 --> 00:08:26,830
+NVLink Fusion, NVIDIA's technology for linking
+
+228
+00:08:26,880 --> 00:08:29,130
+other companies' chips with its own
+
+229
+00:08:29,180 --> 00:08:31,730
+NVIDIA also announced work with SK Telecom
+
+230
+00:08:31,780 --> 00:08:35,010
+Korea's largest mobile operator, and with Rebellions
+
+231
+00:08:35,060 --> 00:08:38,170
+a Korean AI chip startup, on sovereign infrastructure
+
+232
+00:08:38,220 --> 00:08:39,150
+for Korean models
+
+233
+00:08:39,200 --> 00:08:41,770
+And by their own numbers, they'll be working
+
+234
+00:08:41,820 --> 00:08:44,730
+with 3 consortiums and with 4 Korean companies
+
+235
+00:08:44,780 --> 00:08:47,430
+building foundation models, the large general
+
+236
+00:08:47,480 --> 00:08:49,730
+models that other products are built on
+
+237
+00:08:49,780 --> 00:08:52,230
+That's using Dynamo, NVIDIA's software for
+
+238
+00:08:52,280 --> 00:08:53,850
+serving models at scale
+
+239
+00:08:53,900 --> 00:08:56,170
+On the investment side, NVIDIA announced it
+
+240
+00:08:56,220 --> 00:08:59,490
+has invested in a Korean startup called Point2
+
+241
+00:08:59,540 --> 00:09:02,030
+That company moves data between chips and racks
+
+242
+00:09:02,080 --> 00:09:04,950
+using radio waves, instead of copper and optical
+
+243
+00:09:05,000 --> 00:09:05,400
+fiber
+
+244
+00:09:05,440 --> 00:09:08,910
+And NVIDIA plans to invest in 3 more startups
+
+245
+00:09:08,960 --> 00:09:11,890
+a model lab in Seoul, a robotics company, and
+
+246
+00:09:11,940 --> 00:09:14,090
+a company that makes language models and document
+
+247
+00:09:14,140 --> 00:09:14,770
+tools
+
+248
+00:09:14,820 --> 00:09:17,110
+So what's the takeaway for the Gulf states?
+
+249
+00:09:17,160 --> 00:09:19,350
+Korea shows us what a sovereign package between
+
+250
+00:09:19,400 --> 00:09:21,610
+a government and a vendor looks like: local
+
+251
+00:09:21,660 --> 00:09:24,810
+chips, local models, training, and startup
+
+252
+00:09:24,860 --> 00:09:25,990
+funding
+
+253
+00:09:26,040 --> 00:09:27,870
+Sovereign programs in the Gulf can compare
+
+254
+00:09:27,920 --> 00:09:30,090
+their own deals against it, keeping in mind
+
+255
+00:09:30,140 --> 00:09:31,870
+this is NVIDIA's version of events
+
+256
+00:09:31,920 --> 00:09:35,110
+Before we wrap up, a quick roundup of developer
+
+257
+00:09:35,160 --> 00:09:36,090
+tools
+
+258
+00:09:36,140 --> 00:09:38,890
+Claude Code, Anthropic's coding agent, shipped
+
+259
+00:09:38,940 --> 00:09:41,310
+its latest release, and the first item in it
+
+260
+00:09:41,360 --> 00:09:43,850
+is a fix for a security issue in how it unpacks
+
+261
+00:09:43,900 --> 00:09:45,190
+compressed data
+
+262
+00:09:45,240 --> 00:09:48,530
+Codex, OpenAI's coding agent: the latest release
+
+263
+00:09:48,580 --> 00:09:50,610
+lets you add a custom model provider from the
+
+264
+00:09:50,660 --> 00:09:51,470
+command line
+
+265
+00:09:51,520 --> 00:09:53,810
+And it still blocks project settings in untrusted
+
+266
+00:09:53,860 --> 00:09:56,530
+folders, a security point that matters to engineers
+
+267
+00:09:56,580 --> 00:10:00,110
+And CrewAI, a framework for building agents
+
+268
+00:10:00,160 --> 00:10:03,990
+has made gpt-6-luna the default model everywhere
+
+269
+00:10:04,040 --> 00:10:06,570
+The bottom line: in the US, the question is
+
+270
+00:10:06,620 --> 00:10:08,970
+now who's willing to host AI, while in the
+
+271
+00:10:09,020 --> 00:10:12,130
+Gulf, hosting has become the offer itself
+
+272
+00:10:12,180 --> 00:10:13,890
+Subscribe to the channel and tell us what you
+
+273
+00:10:13,940 --> 00:10:16,050
+think: who do you think will host the next
+
+274
+00:10:16,100 --> 00:10:17,010
+wave of AI?
+
+275
+00:10:17,060 --> 00:10:18,510
+Thanks for watching, take care

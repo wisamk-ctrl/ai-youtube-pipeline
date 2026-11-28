@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:04,130
+Reuters: hackers breached the US Air Force's Cloud One platform
+
+2
+00:00:04,180 --> 00:00:08,370
+It pools cloud from Microsoft, Amazon, Oracle and Alphabet
+
+3
+00:00:08,420 --> 00:00:11,330
+It holds personnel records, payroll, logistics
+
+4
+00:00:11,380 --> 00:00:13,090
+and air defence radar data
+
+5
+00:00:13,140 --> 00:00:16,330
+It tracks munitions at more than 200 Air Force locations
+
+6
+00:00:16,380 --> 00:00:19,670
+Who did it, and whether data was stolen, is unclear
+
+7
+00:00:19,720 --> 00:00:22,910
+One source says hackers exploited a software vulnerability
+
+8
+00:00:22,960 --> 00:00:24,910
+Cyber Command was reportedly called in, and
+
+9
+00:00:24,960 --> 00:00:25,890
+migrations are suspended
+
+10
+00:00:25,940 --> 00:00:29,370
+Would your government trust one shared cloud platform now?

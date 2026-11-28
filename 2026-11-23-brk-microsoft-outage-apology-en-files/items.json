@@ -1,0 +1,19 @@
+[
+  {
+    "source": "CBS News",
+    "source_type": "rss",
+    "title": "Transcript: Brad Smith, Microsoft president and vice chair, on \"Face the Nation with Margaret Brennan,\" Nov. 22, 2026",
+    "summary": "The following is the transcript of the interview with Microsoft president and vice chair Brad Smith that aired on \"Face the Nation with Margaret Brennan\" on Nov. 22, 2026. MARGARET BRENNAN: Welcome back to Face the Nation. We turn now to the president and vice chairman of Microsoft, Brad Smith, who joins us from Seattle. Very early morning. Thank you for joining us. MICROSOFT PRESIDENT & VICE CHAIR BRAD SMITH: My pleasure. Thank you. MARGARET BRENNAN: So we've been talking about these outages at companies. Microsoft had a global outage for 24 hours, hobbled corporations. It was tough for us here in the news business not to have our email working on November 12 or so. Microsoft said it was linked to a technical issue, not a cyber hack. What is the company doing to make sure this doesn't happen again? And did AI play a role here? SMITH: Well, the first thing we always need to do when this happens is apologize, and we have, and I want to do so again. And you're right; it was not linked to AI. It wasn't a cyberattack. It was basically a perfect storm of software that was updated four months earlier, and then it interacted with a new update and a shift in network traffic. You know, we have taken steps. We've published two reports in the last 10 days. We've worked to be transparent, showing minute by minute to the public what happened. We've taken nine steps already, as we laid out in our report. There's 13 more steps we're going to take. We've learned a lot. It was painful, especially for everybody who relies on us. We get it, and I think this combination is going to make us stronger going forward. It's just constantly what we have to do in an age of such complex technology. MARGARET BRENNAN: Well, as you know, it was a series of events. It wasn't just Microsoft, but we saw tech outages and all sorts of complications. It's raised questions about what AI's role is generally. I heard you say it wasn't a factor for Microsoft, but when you look across the country right now, I mean, do you think that we are applying AI tools to look for vulnerabilities and then doing these automated updates in such a way that, frankly, like our old infrastructure, just isn't prepared for. SMITH: I think that is part of the really important question, and you can think about what's happening with all of these outages, at least in substantial part, as sort of AI ripple effects. What AI did earlier this year was basically make it much easier for people to find vulnerabilities in code,…",
+    "url": "https://www.cbsnews.com/news/transcript-brad-smith-microsoft-on-face-the-nation-with-margaret-brennan-nov-22-2026/",
+    "published": "2026-11-22T17:25:35+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "36fc00151f"
+  }
+]

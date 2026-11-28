@@ -1,0 +1,79 @@
+1
+00:00:00,000 --> 00:00:02,910
+BankInfoSecurity reports a global Microsoft
+
+2
+00:00:02,960 --> 00:00:06,810
+365 outage disrupted email, calendars and cloud
+
+3
+00:00:06,860 --> 00:00:09,550
+tools across many sectors this week
+
+4
+00:00:09,600 --> 00:00:12,010
+InformationWeek reports it lasted over 20 hours
+
+5
+00:00:12,060 --> 00:00:15,430
+with more than 7 million reports on Downdetector
+
+6
+00:00:15,480 --> 00:00:17,550
+That makes it the largest outage reported there
+
+7
+00:00:17,600 --> 00:00:19,330
+in the last 12 months
+
+8
+00:00:19,380 --> 00:00:21,390
+Microsoft says the disruption was not caused
+
+9
+00:00:21,440 --> 00:00:22,450
+by malicious actors
+
+10
+00:00:22,500 --> 00:00:25,050
+But Microsoft Threat Intelligence says it saw
+
+11
+00:00:25,100 --> 00:00:27,970
+a coordinated, high-volume phishing campaign
+
+12
+00:00:28,020 --> 00:00:30,270
+targeting enterprises globally
+
+13
+00:00:30,320 --> 00:00:31,850
+Experts say U.S
+
+14
+00:00:31,900 --> 00:00:34,410
+hospitals largely kept patient care running
+
+15
+00:00:34,460 --> 00:00:36,530
+using manual workarounds
+
+16
+00:00:36,580 --> 00:00:39,750
+For many, services returned by early Friday
+
+17
+00:00:39,800 --> 00:00:41,610
+For Gulf businesses and governments relying
+
+18
+00:00:41,660 --> 00:00:43,950
+on a single cloud provider, the question to
+
+19
+00:00:44,000 --> 00:00:46,070
+watch is whether continuity plans can cover
+
+20
+00:00:46,120 --> 00:00:46,950
+outages like this

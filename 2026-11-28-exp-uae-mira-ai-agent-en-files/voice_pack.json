@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-28-exp-uae-mira-ai-agent-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "Mira is the UAE's new AI agent for government services. Arabian Business reports it will handle Emirates ID, residence and work permit renewals. Khaleej Times reports the first services arrive in March 2027. Zawya reports the UAE is moving half of government services to agentic AI. An Artefact white paper asks how agencies keep control of data, models and agents. For firms that file permits, the service counter may become a conversation. Would your company trust an AI agent with visa renewals?"
+    }
+  ]
+}

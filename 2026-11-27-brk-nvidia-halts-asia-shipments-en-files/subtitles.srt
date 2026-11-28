@@ -1,0 +1,47 @@
+1
+00:00:00,000 --> 00:00:04,750
+Nvidia halts AI server shipments to four South-East Asian countries
+
+2
+00:00:04,800 --> 00:00:07,330
+The FT reports Dell and Supermicro told customers
+
+3
+00:00:07,380 --> 00:00:09,850
+Nvidia won't authorise their orders
+
+4
+00:00:09,900 --> 00:00:11,530
+Washington is tightening export controls to
+
+5
+00:00:11,580 --> 00:00:13,870
+stop China accessing AI computing
+
+6
+00:00:13,920 --> 00:00:16,750
+New US rules target Chinese firms renting Nvidia-powered
+
+7
+00:00:16,800 --> 00:00:18,130
+cloud computing
+
+8
+00:00:18,180 --> 00:00:20,990
+Nvidia booked $104 billion in revenue through
+
+9
+00:00:21,040 --> 00:00:23,370
+its Singapore subsidiary in 2025
+
+10
+00:00:23,420 --> 00:00:26,370
+A cloud executive told the FT it's causing sheer chaos
+
+11
+00:00:26,420 --> 00:00:29,050
+Would Gulf data centre builders rely on one
+
+12
+00:00:29,100 --> 00:00:29,870
+chip supplier now?

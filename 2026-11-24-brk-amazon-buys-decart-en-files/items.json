@@ -1,0 +1,96 @@
+[
+  {
+    "source": "Webrazzi",
+    "source_type": "rss",
+    "title": "Amazon, Decart'ı 7,5 milyar dolara satın aldı",
+    "summary": "Amazon 'un Decart 'ı 7,5 milyar dolara kadar ulaşabilecek bir bedelle satın almak için görüşmeler yürüttüğünü sizlere aktarmıştık . Söz konusu satın alma haberi doğrulandı . Anlaşma kapsamında Amazon, Decart'ın yapay zeka modellerinin farklı donanımlarda daha verimli çalışmasını sağlayan Decart Optimization Stack (DOS) teknolojisini bünyesine katacak. Satın alma, şirketin kurucu ekibinin yanı sıra yapay zeka alanında çalışan araştırmacı ve mühendisleri de kapsıyor. Amazon'un Decart'a ilgisinin arkasında, kendi geliştirdiği Trainium çiplerini Nvidia'ya karşı daha güçlü bir alternatif haline getirme hedefi bulunuyor. Şirket, bugüne kadar Trainium çiplerini kendi veri merkezlerinde kullanıyordu. Şimdi ise bu çipleri müşterilerine sunmaya hazırlanıyor. Decart'ın optimizasyon teknolojisi, geliştiricilerin yapay zeka iş yüklerini Nvidia GPU'ları yerine Amazon'un Trainium çiplerinde çalıştırmasını kolaylaştırabilir. Amazon'da temel yapay zeka modelleri, özel çipler ve kuantum bilişimden sorumlu kıdemli başkan yardımcısı Peter DeSantis, daha verimli hesaplama altyapısının model eğitimi, pekiştirmeli öğrenme ve çıkarım süreçlerini hızlandıracağını belirtiyor. DeSantis'e göre bu verimlilik, müşterilere daha düşük maliyetle daha gelişmiş modeller sunulmasının da önünü açabilir. Amazon ve Decart, anlaşmanın finansal koşullarına ilişkin ek bir açıklama yapmadı.",
+    "url": "https://webrazzi.com/2026/11/24/amazon-decart-i-7-5-milyar-dolara-satin-aldi/",
+    "published": "2026-11-24T07:00:00+00:00",
+    "author": "Candeğer Muradoğlu",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "AWS Trainium",
+      "NVIDIA"
+    ],
+    "id": "aaf174d238"
+  },
+  {
+    "source": "Tech Times",
+    "source_type": "rss",
+    "title": "Amazon Decart Acquisition: Reported $7.5B Buys Chip Software and Founders, Not Lucy or Oasis Models",
+    "summary": "Amazon Decart Acquisition: Reported $7.5B Buys Chip Software and Founders, Not Lucy or Oasis Models Tech Times",
+    "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQd052bjduLWU3R0VKYU9tTEpQR2ZTeGRGY3BqRlAtbThXUFBRblI5MWNjLVBPdkxkbWI2d09hajh0MFZ4VExPNWlOdDdGaDJVcjNBbXp4LUxLTFFvSUVhUU55OGRmV0V2aWVuYms3RXBVWmdVSDJVMHZyQ29zYTdSR3lCSEQ3MWZSNDdWTkhFdHNtb0tkeGJEaEpISW41c0x2dV9yaDdJbTktTko4VWN0WG8xOURHT25rV09CWHplc1NmUjVfVzVobVJHQllhWjJYOGJJeFhtcGtTdXc?oc=5",
+    "published": "2026-11-24T06:30:36+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "chips",
+    "region": "hyperscalers",
+    "entities": [
+      "AWS Trainium"
+    ],
+    "id": "7b82d0ac05"
+  },
+  {
+    "source": "www.trendingtopics.eu",
+    "source_type": "rss",
+    "title": "Amazon Pays $7.5 Billion for Decart AI’s Chip Optimization Technology",
+    "summary": "Amazon Pays $7.5 Billion for Decart AI’s Chip Optimization Technology www.trendingtopics.eu",
+    "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNR1NLWS1RTXdVXzhXOUxjZGpHRUxtN05UejhadXRfU1VyWlplako2dS04VGM1SEduVXo4WExOb0dmZGNrenRTekFvcEFsWUR2ZEI1cXNnOGlnaUZKNkctNE9BYnlYWHZJYmNLUTRQVlBPVHoya19QZVVvYUMwcUt4NjgtMA?oc=5",
+    "published": "2026-11-24T08:28:25+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "chips",
+    "region": "hyperscalers",
+    "entities": [
+      "AWS Trainium"
+    ],
+    "id": "b7d71fba4a"
+  },
+  {
+    "source": "SiliconANGLE",
+    "source_type": "rss",
+    "title": "Amazon acquires key assets of AI startup Decart for reported $7.5B",
+    "summary": "Amazon acquires key assets of AI startup Decart for reported $7.5B SiliconANGLE",
+    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaXR5TS11S0V5ZmZCOERDYlI1OG9vWG9UX3ZQZHoyYndOX0VrdExNYmNVbjBFNzBqdGMwY0ZDM0RjdWhxVWJFU0o0eG04N2oyZzNMVGdTbVRVMV9SUFNld3FaSnlOcl9ZSGQ4OGhLNXdYdzJwNFI2Mkh6M3BfLVIwN0hzVkF3Q3diQmxzN3BNUkVxREZsZHBJRmRfalVMTXc5dE55LQ?oc=5",
+    "published": "2026-11-24T01:40:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "chips",
+    "region": "hyperscalers",
+    "entities": [
+      "AWS Trainium"
+    ],
+    "id": "dc91f5adc6"
+  },
+  {
+    "source": "Anadolu Ajansı",
+    "source_type": "rss",
+    "title": "Amazon to buy Decart's AI optimization technology",
+    "summary": "Amazon to buy Decart's AI optimization technology Anadolu Ajansı",
+    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQYVlQWFFMa0dvMVRiUk1yNjQxZjRGT29zUkpwT3dSWUdGT21PRjlQTWFxeEpwSDlsRGt3bVlQWU1fNUFWd21pbDdfUlVNM1lVMDZnZGdkZkdzYS1Wamd5Mnhpb2pVTjIxTnpydF9mV0RyQTJwWGtDc01ScGJFclZHNXJaSjcyUy0zaXRqXzF3?oc=5",
+    "published": "2026-11-23T20:33:49+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "turkey",
+    "entities": [],
+    "id": "581c623805"
+  }
+]

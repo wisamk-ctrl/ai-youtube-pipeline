@@ -1,0 +1,55 @@
+1
+00:00:00,000 --> 00:00:04,050
+CIA analysis system breached, The New York Times reports
+
+2
+00:00:04,100 --> 00:00:06,210
+Sources say only unclassified information was
+
+3
+00:00:06,260 --> 00:00:08,110
+exposed, and it's resolved
+
+4
+00:00:08,160 --> 00:00:10,210
+The system handles open source intelligence
+
+5
+00:00:10,260 --> 00:00:12,150
+like internet and satellite data
+
+6
+00:00:12,200 --> 00:00:14,550
+It's unclear what was taken, or who did it
+
+7
+00:00:14,600 --> 00:00:16,630
+The FBI's national crime database was also
+
+8
+00:00:16,680 --> 00:00:18,090
+recently hacked
+
+9
+00:00:18,140 --> 00:00:20,650
+Apple, JP Morgan Chase and Microsoft also had
+
+10
+00:00:20,700 --> 00:00:22,450
+systems go down this month
+
+11
+00:00:22,500 --> 00:00:24,570
+Intelligence chief Jay Clayton blames rushed
+
+12
+00:00:24,620 --> 00:00:26,390
+upgrades against AI-armed hackers
+
+13
+00:00:26,440 --> 00:00:29,270
+Is your organisation patching fast enough to
+
+14
+00:00:29,320 --> 00:00:30,570
+outpace AI-armed hackers?

@@ -1,0 +1,53 @@
+{
+  "sections": [
+    {
+      "title": "Opening",
+      "start": 0.0
+    },
+    {
+      "title": "Welcome",
+      "start": 20.76
+    },
+    {
+      "title": "Jensen Huang Leaves NVIDIA",
+      "start": 40.12
+    },
+    {
+      "title": "Anthropic's IPO Under Pressure",
+      "start": 110.36
+    },
+    {
+      "title": "Saudi Arabia's Bunyan Platform",
+      "start": 215.86
+    },
+    {
+      "title": "The AI Agent Wallet",
+      "start": 319.92
+    },
+    {
+      "title": "The Microsoft 365 Outage",
+      "start": 411.74
+    },
+    {
+      "title": "NVIDIA and Korea",
+      "start": 490.58
+    },
+    {
+      "title": "Quick Roundup",
+      "start": 576.92
+    },
+    {
+      "title": "Closing",
+      "start": 609.04
+    }
+  ],
+  "sting": {
+    "at": 15.291,
+    "seconds": 5.0
+  },
+  "end_card": {
+    "start": 623.88,
+    "seconds": 15.0
+  },
+  "duration": 638.88
+}

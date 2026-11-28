@@ -1,0 +1,53 @@
+[
+ {
+  "source": "CNN",
+  "source_type": "web",
+  "title": "Live updates: Jensen Huang reinstated as CEO of Nvidia",
+  "url": "https://www.cnn.com/2026/11/23/tech/nvidia-reinstates-jensen-huang-ceo",
+  "published": "2026-11-23T15:00:00+00:00",
+  "author": "",
+  "engagement": "0",
+  "source_weight": "1.0",
+  "score": "0.0",
+  "score_breakdown": "{}",
+  "track": "business",
+  "region": "us",
+  "entities": "['NVIDIA']",
+  "id": "304a603816",
+  "summary": "Nvidia's board reinstated Jensen Huang as chief executive, president and board member on Monday. Huang had stepped down on November 12. The board said it was satisfied with his candor and his ability to lead the company. Nvidia said it had received assurances from senior levels of the US government that his return would not pose a national security risk. President Trump publicly endorsed the move hours before the announcement. Huang said he was honored to return to the company he founded."
+ },
+ {
+  "source": "CNN",
+  "source_type": "web",
+  "title": "Nvidia shares soar more than 30% after Huang reinstated as CEO",
+  "url": "https://www.cnn.com/2026/11/23/markets/us-stocks-rebound-intl",
+  "published": "2026-11-23T16:00:00+00:00",
+  "author": "",
+  "engagement": "0",
+  "source_weight": "1.0",
+  "score": "0.0",
+  "score_breakdown": "{}",
+  "track": "business",
+  "region": "us",
+  "entities": "['NVIDIA']",
+  "id": "9040bad98a",
+  "summary": "Nvidia shares rose more than 30% on Monday after the board reinstated Jensen Huang as CEO, effective immediately."
+ },
+ {
+  "source": "CNN en Español",
+  "source_type": "web",
+  "title": "Nvidia en vivo: regreso de Jensen Huang como CEO",
+  "url": "https://cnnespanol.cnn.com/2026/11/23/economia/live-news/nvidia-jensen-huang-regreso-ceo-en-vivo-trax",
+  "published": "2026-11-23T16:30:00+00:00",
+  "author": "",
+  "engagement": "0",
+  "source_weight": "1.0",
+  "score": "0.0",
+  "score_breakdown": "{}",
+  "track": "business",
+  "region": "us",
+  "entities": "['NVIDIA']",
+  "id": "873b74588a",
+  "summary": "Nvidia's board reinstated Jensen Huang as CEO. The board will continue its investigation into Huang."
+ }
+]

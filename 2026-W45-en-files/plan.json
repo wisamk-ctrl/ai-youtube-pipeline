@@ -1,0 +1,113 @@
+{
+  "episode_title_ar": "صفقة أدنوك وG42 مع OpenAI، وGPT-6 Cyber، ومعالج Vera للوكلاء",
+  "cold_open_hook_en": "As Sam Altman travels to the UAE, ADNOC and G42 sign a five-year AI deal with OpenAI. In the same week OpenAI unveils GPT-6 Cyber, a model built to find exploitable vulnerabilities, and NVIDIA argues that the bottleneck for AI agents is now the CPU. Here's what it all means for your stack.",
+  "segments": [
+    {
+      "track": "models",
+      "item_ids": [
+        "5d7e2da583",
+        "611db20fcc",
+        "7d5edd20c1"
+      ],
+      "headline_en": "ADNOC and G42 sign a five-year AI deal with OpenAI as Altman visits the UAE",
+      "angle": "The Gulf leads: Abu Dhabi's national energy champion and its flagship AI group are partnering with OpenAI on a multi-year initiative, reported as a five-year deal and timed with Sam Altman's UAE trip. Keep to what the reports confirm: the parties, the multi-year/five-year framing and the timing. Flag that further terms were not in our sources.",
+      "enterprise_impact": "A frontier US lab is locking in long-term partnerships with Gulf energy and AI anchors. GCC enterprises should expect OpenAI capabilities to arrive through local partners like G42, which shapes vendor choices, procurement and sovereignty conversations across the region.",
+      "broll_ideas": [
+        "Abu Dhabi skyline with ADNOC, G42 and OpenAI logos animating together",
+        "Text card: 'Multi-year / 5-year deal' with the signing date of 2 Nov 2026",
+        "Map graphic linking San Francisco and Abu Dhabi"
+      ],
+      "approx_seconds": 80
+    },
+    {
+      "track": "models",
+      "item_ids": [
+        "9300b70a91"
+      ],
+      "headline_en": "HUMAIN and the $2.6bn sovereign AI initiative backed by PIF and Aramco",
+      "angle": "A quick Saudi counterpoint to the Abu Dhabi story. HUMAIN is tied to a $2.6bn sovereign AI initiative involving PIF and Aramco. Frame it as two Gulf capitals each building national AI capacity through their energy and sovereign-wealth giants. State only the headline facts.",
+      "enterprise_impact": "Sovereign AI money in Saudi Arabia signals local compute and model options for Saudi enterprises and government suppliers. That matters for data-residency planning.",
+      "broll_ideas": [
+        "Riyadh skyline with HUMAIN, PIF and Aramco logos",
+        "Big number card: $2.6bn",
+        "Split screen comparing UAE (ADNOC/G42) and KSA (PIF/Aramco/HUMAIN)"
+      ],
+      "approx_seconds": 45
+    },
+    {
+      "track": "models",
+      "item_ids": [
+        "53c56afbaf"
+      ],
+      "headline_en": "OpenAI launches GPT-6 Cyber, a model for finding and fixing exploitable vulnerabilities",
+      "angle": "A shift in tempo from geopolitics to security. OpenAI's GPT-6 Cyber is purpose-built to find exploitable vulnerabilities and develop fixes, and it is trained to stay within authorized scope. The story is the rise of domain-specialized frontier models, with alignment framed around scope control.",
+      "enterprise_impact": "Security teams in banks, telcos and government entities could gain an AI teammate for vulnerability discovery and patching. The 'authorized scope' framing will be the key question for CISOs and regulators weighing offensive-capable tools.",
+      "broll_ideas": [
+        "Terminal-style animation of a vulnerability being flagged, then patched",
+        "Quote card: 'trained to stay within authorized scope'",
+        "Shield icon over a code diff"
+      ],
+      "approx_seconds": 60
+    },
+    {
+      "track": "agents",
+      "item_ids": [
+        "5beddb2a54",
+        "b8bac355d6",
+        "3e5d35744d",
+        "8491ebd6e6"
+      ],
+      "headline_en": "Coding agents go remote and governed: Claude Code on Bedrock AgentCore, plus identity and cost controls",
+      "angle": "Enterprise agents are maturing from laptop toys into governed infrastructure. AWS shows how to run Claude Code as a remote agent where each task gets an isolated AgentCore session in your account and returns a GitHub pull request. It is backed by IAM credentials, PrivateLink, CloudTrail audit logs and geographic inference profiles for data residency. AgentCore Gateway also adds Okta Cross App Access with default-deny Cedar policies, and on-behalf-of token exchange so ServiceNow calls keep the user's identity. Claude Code v2.1.317 adds a per-developer cost report API, OTel attributes and a warning on unrequested connectors.",
+      "enterprise_impact": "For GCC CTOs the blockers to agent rollout are data residency, audit, identity and spend. This week's releases address each one directly: no per-seat licenses billed through existing AWS accounts, user-identity propagation into systems like ServiceNow, and cost reporting by developer or IdP group.",
+      "broll_ideas": [
+        "Animated diagram: laptop, then isolated AgentCore session, then a GitHub PR",
+        "Checklist graphic: Residency, Audit, Identity, Cost",
+        "Screen capture of a Cedar policy or cost-report API call"
+      ],
+      "approx_seconds": 85
+    },
+    {
+      "track": "chips",
+      "item_ids": [
+        "e8438a23db",
+        "abce147212"
+      ],
+      "headline_en": "NVIDIA's Vera CPU pitch: agents run on CPUs too, and power is the limit",
+      "angle": "Agents bounce between GPU reasoning and CPU execution. NVIDIA claims that in a 100MW data center comparison, Vera gives 1.6x more agents per watt than the fastest x86 CPU and 2x faster agent speed than the most efficient x86 CPU. Perplexity ran agentic coding 1.5x faster on Vera and plans production deployment. Daytona brought 1,000 sandboxes online in 10.8 seconds versus 88.4 with x86. Add the memory angle: from Blackwell Ultra to Vera Rubin, HBM per GPU rose about 3% while agentic throughput per dollar rose up to 30x, according to NVIDIA. Present these as vendor-reported figures.",
+      "enterprise_impact": "Gulf data-center builders are planning power-constrained AI factories, so agent density per watt and memory efficiency directly affect capacity and cost. These are the procurement metrics to ask vendors about.",
+      "broll_ideas": [
+        "Bar chart: agents per watt, Vera vs x86 (1.6x), labeled 'NVIDIA-reported'",
+        "Timer graphic: 10.8s vs 88.4s for 1,000 sandboxes",
+        "Data-center aisle footage with a power-meter overlay"
+      ],
+      "approx_seconds": 70
+    },
+    {
+      "track": "radar",
+      "item_ids": [
+        "9f1346ce69"
+      ],
+      "headline_en": "On the radar: Tencent's Hy4 model lands on OpenRouter",
+      "angle": "Tencent is not on our watchlist yet, but it was the subject of six independent reports this week covering a benchmark and a launch. It also has a hard signal: its Hy4 model is now listed on OpenRouter. Treat it as a name to watch from China, without overclaiming performance.",
+      "enterprise_impact": "Availability on OpenRouter means teams in the region can test another Chinese model through a familiar API, which widens model choice and adds pricing pressure.",
+      "broll_ideas": [
+        "Screenshot-style card of the OpenRouter listing 'Tencent: Hy4'",
+        "Radar sweep graphic with the Tencent logo appearing"
+      ],
+      "approx_seconds": 30
+    }
+  ],
+  "quick_fire_item_ids": [
+    "195f4627fb",
+    "bcfd72dabc",
+    "e2baf2e1c3",
+    "9cb1868256"
+  ],
+  "thumbnail_text_ar": "أدنوك + OpenAI",
+  "language": "en",
+  "translated_from": "2026-W45",
+  "episode_title_en": "ADNOC and G42 Sign OpenAI Deal, GPT-6 Cyber, NVIDIA Vera CPU",
+  "description_en": "This week in AI: ADNOC and G42 signed a multi-year AI deal with OpenAI, OpenAI announced GPT-6 Cyber for finding and fixing security vulnerabilities, and NVIDIA shared figures on its Vera CPU for AI agents. The episode also covers HUMAIN's $2.6 billion sovereign AI initiative, AWS agent governance tools, Tencent's Hy4 on OpenRouter, and quick regional news. NVIDIA's figures come from NVIDIA and its partners, not an independent source.",
+  "thumbnail_text_en": "ADNOC + OpenAI"
+}

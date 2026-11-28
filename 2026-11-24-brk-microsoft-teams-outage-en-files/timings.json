@@ -1,0 +1,43 @@
+{
+  "stages": [
+    {
+      "stage": "talking head (voice + face chunks)",
+      "seconds": 4.93
+    },
+    {
+      "stage": "captions (Whisper + script alignment)",
+      "seconds": 8.48
+    },
+    {
+      "stage": "visuals (stock, photos, cards)",
+      "seconds": 27.53
+    },
+    {
+      "stage": "edited cut",
+      "seconds": 13.31
+    },
+    {
+      "stage": "audio master (music, sting, loudness)",
+      "seconds": 6.28
+    },
+    {
+      "stage": "final pass (captions, sting, end card; 1080p + 4K master)",
+      "seconds": 12.92
+    },
+    {
+      "stage": "shorts",
+      "seconds": 65.81
+    }
+  ],
+  "details": [
+    {
+      "stage": "visuals: stock search + parallel download",
+      "seconds": 0.22
+    },
+    {
+      "stage": "visuals: cards (browser frames + encode)",
+      "seconds": 10.74
+    }
+  ],
+  "total_s": 139.26
+}

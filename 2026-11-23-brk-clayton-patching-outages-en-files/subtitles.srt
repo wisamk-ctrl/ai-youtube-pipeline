@@ -1,0 +1,63 @@
+1
+00:00:00,000 --> 00:00:02,570
+US Director of National Intelligence Jay Clayton
+
+2
+00:00:02,620 --> 00:00:05,630
+says Americans should expect more tech outages
+
+3
+00:00:05,680 --> 00:00:07,890
+He told CNN that patching and replacing aging
+
+4
+00:00:07,940 --> 00:00:12,150
+systems will bring glitches, gaps and interruptions in service
+
+5
+00:00:12,200 --> 00:00:14,750
+On ABC, he said the recent outages were not
+
+6
+00:00:14,800 --> 00:00:16,630
+coordinated or state-sponsored
+
+7
+00:00:16,680 --> 00:00:19,090
+He declined to explain a suspected FBI hack
+
+8
+00:00:19,140 --> 00:00:21,130
+and a USDA security incident
+
+9
+00:00:21,180 --> 00:00:24,330
+He linked an NSA outage to patching a PHP flaw
+
+10
+00:00:24,380 --> 00:00:26,790
+The NSA cited scheduled maintenance
+
+11
+00:00:26,840 --> 00:00:30,210
+Wiz says the PHP2Shell flaws affect software
+
+12
+00:00:30,260 --> 00:00:32,990
+powering about 70% of websites, and were found
+
+13
+00:00:33,040 --> 00:00:34,390
+with AI help
+
+14
+00:00:34,440 --> 00:00:37,790
+PHP issued security patches around October 21
+
+15
+00:00:37,840 --> 00:00:40,550
+In the Gulf, watch how operators tell patch-driven
+
+16
+00:00:40,600 --> 00:00:42,450
+outages apart from real intrusions

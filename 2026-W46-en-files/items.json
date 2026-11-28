@@ -1,0 +1,852 @@
+[
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Route coding agent requests to the right model on Amazon Bedrock with NVIDIA NeMo Switchyard",
+    "summary": "Coding agents such as Claude Code and OpenAI Codex CLI work in tasks. A developer asks for a change, and the agent reads files, edits code, and runs tests until the work is done. One task can take a few model calls or dozens. What the developer pays for is the task, not one call. The price per token alone doesn’t tell you what a whole task costs. The total depends on how many turns a model needs, how much history each turn replays, and how often a task has to be retried or never finishes. You pay for every attempt, including attempts on tasks that never finish. So when you route a coding agent’s requests between models, judge the routing by cost per solved task: the total cost of your runs divided by the number of runs whose tests pass. NVIDIA NeMo Switchyard is an open source library that helps an AI agent choose which model handles each request. You define the models that it can use and the strategy that it follows. Its LiteLLM integration supports two strategies. Stage routing reads the recent tool activity and results in the request history, and then picks one of two candidate models. Random routing picks from the configured models, with optional weights, for traffic splits and A/B comparisons. Another option you can explore is LiteLLM, who also recently shipped a native built-in Switchyard stage router as an auto-router strategy. In this post, you use the AWS Cloud Development Kit (AWS CDK) to deploy LiteLLM, an open source gateway for large language models (LLMs), with the Switchyard routing plugin in your AWS account. LiteLLM calls the models on Amazon Bedrock . You then use the sample’s benchmark runners to measure cost per solved task for a routed model group and for single-model baseline groups, so that you can evaluate routing against your own workloads. Note: The sample installs switchyard-server 0.3.0 from crates.io and runs the published LiteLLM v1.102.0 image. NVIDIA documents switchyard-server 0.3.0 as a demo and evaluation component, and its configuration can change between releases. This sample uses the experimental Switchyard LiteLLM integration and its configuration and APIs may change between releases. This is sample code, for non-production usage. Work with your security and legal teams to meet your organizational security, regulatory, and compliance requirements before deployment. Deploy the sample in a non-production account and test it before relying on it. Solution overview Figure 1 shows the architecture of the solution. LiteLLM…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/route-coding-agent-requests-to-the-right-model-on-amazon-bedrock-with-nvidia-nemo-switchyard/",
+    "published": "2026-11-13T22:30:12+00:00",
+    "author": "Aswath Ram A Srinivasan",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 20.444,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 10.2,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.405,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Amazon Nova",
+      "Anthropic",
+      "Claude Code",
+      "NVIDIA",
+      "OpenAI",
+      "OpenAI Codex"
+    ],
+    "id": "3880f24cce"
+  },
+  {
+    "source": "NVIDIA",
+    "source_type": "rss",
+    "title": "NVIDIA Announces New Planned Investments in Korean Startups at the MSIT-NVIDIA AI Startup Partnership Forum",
+    "summary": "Korea’s Ministry of Science and ICT and NVIDIA hosted the MSIT -NVIDIA AI Startup Partnership Forum at COEX. Representatives from the Ministry of Science and ICT and NVIDIA met with over 20 Korean startups across foundation models, physical AI, AI infrastructure and AI semiconductors. NVIDIA also announced an investment in Korean startup Point2 , with additional investments planned in Motif Technologies , RLWRLD and Upstage. Point2 Technology, an AI interconnect company, builds scalable, radio frequency-based interconnects that move data between chips and racks in AI factories, offering an innovative alternative to conventional copper and optical interconnect solutions for AI cluster scale-up, delivering the reach, performance and efficiency needed for next-generation AI infrastructure. Motif Technologies , a Seoul-based AI lab, develops foundation models for building AI agents that carry out complex tasks, including Motif-3, a large language model released with open weights. RLWRLD, a physical AI startup based in San Francisco, Seoul and Tokyo, develops robotics foundation models that enable humanoid and industrial robots to perform complex real-world tasks that require five-finger dexterity, such as precisely inserting components, threading nuts onto bolts and kitting parts from moving conveyors. Upstage , a Korean enterprise AI company, develops Solar language models and document AI tools that help businesses extract information from complex documents, streamline workflows and build AI applications for everyday operations. The companies represent work across the full AI stack , from infrastructure to models to robotics applications. The planned investments build on NVIDIA’s work with Korea’s startup and venture community, including more than 1,000 Korea-based members of NVIDIA Inception , a program that helps startups grow with access to preferred pricing, technical expertise and opportunities for investor introductions.",
+    "url": "https://blogs.nvidia.com/blog/korean-startup-investments-msit/",
+    "published": "2026-11-09T08:00:53+00:00",
+    "author": "NVIDIA Writers",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 18.345,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 9.7,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.56,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "NVIDIA"
+    ],
+    "id": "57a8ba0d55"
+  },
+  {
+    "source": "NVIDIA",
+    "source_type": "rss",
+    "title": "From Chips to Skills, NVIDIA and Korea Expand Sovereign AI Collaboration",
+    "summary": "NVIDIA and Korea’s Ministry of Science and ICT (MSIT) are expanding their collaboration across the country’s sovereign AI ecosystem, from AI semiconductors and data center infrastructure to talent, startups, models, agents and security. The collaboration lays the groundwork for Korean NPU and XPU companies to explore participation in the NVIDIA NVLink Fusion ecosystem, and includes NVIDIA training and certification programs, hackathons and technical seminars to strengthen GPU utilization. Through Korea’s AI for All initiative, NVIDIA will collaborate with three selected consortia and four leading Korean foundation model builders, using NVIDIA Dynamo software to optimize and scale AI inference. In addition, NVIDIA today announced a collaboration with SK Telecom and Rebellions, supported by MSIT, to advance sovereign AI infrastructure for Korean models and workloads with NVIDIA NVLink Fusion. Read more in the press release .",
+    "url": "https://blogs.nvidia.com/blog/korea-sovereign-ai-collaboration/",
+    "published": "2026-11-09T05:00:04+00:00",
+    "author": "Jesse Clayton",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 18.011,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 9.5,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.546,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "Broadcom",
+      "NVIDIA"
+    ],
+    "id": "22dc4f77b8"
+  },
+  {
+    "source": "NVIDIA",
+    "source_type": "rss",
+    "title": "Korea’s AI Ecosystem Advances and Secures Agentic AI With NVIDIA",
+    "summary": "As AI agents take on more work, they need capable open models and security that advances alongside them. Hyundai Motor Group is exploring NVIDIA NemoClaw blueprints and the NVIDIA OpenShell runtime, while AIM Intelligence is integrating its Starfort platform with NVIDIA OpenShell to support secure AI agents for employee productivity and enterprise workflows . A key component of the NVIDIA Open Agent Safety Platform, OpenShell provides a secure runtime with sandboxed execution and policy-based controls to safeguard sensitive data, manage access to enterprise tools and govern autonomous agent actions. AIM Intelligence , a Korean AI security company, is integrating its Starfort agent control platform with NVIDIA OpenShell. The goal is to combine OpenShell’s runtime access controls with Starfort’s detection of malicious instructions and data leakage. The company is also considering a preliminary proof of concept for the public energy sector, with potential applications across enterprise, industrial and robotics environments. On the model side, LG AI Research is opening application programming interface access for K-EXAONE-2.5, developed using NVIDIA Nemotron datasets, including Nemotron-Personas-Korea . Nemotron-Personas-Korea is an open dataset of 7 million fully synthetic Korean personas, grounded in official Korean statistics, that model builders use to ground training data and evaluation in Korean contexts. NVIDIA Nemotron is a family of open models, datasets and techniques that help developers build specialized, efficient AI agents. Learn more about NVIDIA Nemotron open models and get started building secure agents with NVIDIA OpenShell .",
+    "url": "https://blogs.nvidia.com/blog/korea-secure-agentic-ai/",
+    "published": "2026-11-09T05:00:39+00:00",
+    "author": "Nicola Sessions",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 16.295,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 8.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.546,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "NVIDIA"
+    ],
+    "id": "741e635ddb"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Cost attribution and controls for AI developer and productivity tools on Amazon Bedrock",
+    "summary": "Amazon Bedrock provides built-in, zero-instrumentation cost attribution that traces every inference call back to the IAM principal that made it. The identity flows along with organizational tags, into AWS Cost and Usage Reports (CUR 2.0) and AWS Cost Explorer while keeping data inside the AWS security boundary. This post shows you how to use these capabilities to answer three questions that every FinOps and AI Platform leader asks as AI tool adoption scales: What is the real per-user cost? Which teams generate the most spend, and does that spend correlate with the value they deliver? How should next year’s budget scale with headcount and adoption? The approach works identically regardless of which AI coding or productivity tool makes the call. Claude Code, Claude Desktop, OpenAI Codex, ChatGPT Work, and OpenCode all invoke Amazon Bedrock through one of two inference endpoints: bedrock-runtime or bedrock-mantle , and Bedrock’s attribution mechanism operates at the endpoint layer, beneath any tool-specific logic. You configure identity propagation once, and every tool that routes inference through Bedrock inherits per-user cost visibility automatically. By the end of this post, you will have AWS IAM Identity Center configured with your external identity provider for per-user attribution, session tags (team, cost center) flowing into CUR 2.0, Amazon Athena queries and dashboard options for ongoing cost visibility, and a clear understanding of Bedrock-native usage controls to enforce spending limits. How Amazon Bedrock attribution works Amazon Bedrock records the IAM identity of every inference caller with no changes required to your API calls. When a user invokes a model through either the bedrock-runtime or bedrock-mantle endpoint, Bedrock captures the caller’s full IAM ARN, including the session name for federated users and publishes it to CUR 2.0 in the line_item_iam_principal column. In billing data, usage is aggregated per principal and per usage type for each export interval: one hour in an hourly export, one day in a daily export. CUR does not contain per-request cost. For per-prompt detail, use model invocation logs or request metadata tagging. Optionally, you can attach tags to IAM principals or pass session tags during federation to add organizational dimensions. These tags appear in CUR 2.0 with the iamPrincipal/ prefix and in Cost Explorer as filterable dimensions. The mechanism supports four access patterns: IAM users, per-application roles,…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/cost-attribution-and-controls-for-ai-developer-and-productivity-tools-on-amazon-bedrock/",
+    "published": "2026-11-13T18:44:02+00:00",
+    "author": "Aamna Najmi",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 16.009,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 7.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.362,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Amazon Nova",
+      "Anthropic",
+      "Claude Code",
+      "OpenAI",
+      "OpenAI Codex"
+    ],
+    "id": "16c76fa53e"
+  },
+  {
+    "source": "NVIDIA",
+    "source_type": "rss",
+    "title": "NVIDIA Expands Open Source Commitment With OpenShell Contribution and New AI Infrastructure",
+    "summary": "Kubernetes, the open source system that manages how applications run across thousands of AI factories, has become the foundation for AI, and the demands on it are only growing. To help meet them, NVIDIA is deepening its commitment to open source at KubeCon + CloudNativeCon , the flagship conference for the Kubernetes and cloud-native communities. NVIDIA is contributing NVIDIA OpenShell , an open source runtime for securing and governing autonomous agents, to the Cloud Native Computing Foundation (CNCF), a nonprofit that is part of the Linux Foundation and the host of KubeCon. As a CNCF Sandbox project, OpenShell will be governed by the organizations building it into their products and strengthened by the expertise of security professionals worldwide. NVIDIA is also contributing to Agent Substrate , an open source Google-led framework for operating long-running agent workloads at scale on Kubernetes that has been accepted into the CNCF Sandbox. Additionally, NVIDIA announced new components of the NVIDIA DSX AI Factory Platform : NVIDIA Kubernetes Engine , NVIDIA Kubernetes Recipes and NVIDIA Snapshot . These tools help teams deploy, manage and scale GPU infrastructure on Kubernetes for AI factories. Together, these advancements mark a step forward in making Kubernetes the leading foundation for AI workloads at scale — empowering developers to build safer, more efficient AI infrastructure for the future. Securing AI Agents in the Open NVIDIA’s contribution of OpenShell to CNCF puts security infrastructure for autonomous agents in the community’s hands to build, inspect and improve — accelerating development and hardening its safeguards. “The cloud-native community has a new infrastructure challenge: giving agents secure environments in which to operate,” said Jim Zemlin, CEO of the Linux Foundation. “NVIDIA’s contribution of OpenShell to CNCF gives developers a shared foundation to build on and an opportunity to shape how agent security evolves. Bringing this work into the community enables broader collaboration on infrastructure that will be critical to the next generation of cloud-native applications.” OpenShell gives organizations control over what AI agents can do. It applies deterministic controls to agent activity, so teams can enforce policies as agents use tools, access inference services and execute workloads. Its extensible architecture lets teams connect their own compute, inference providers, credential storage and monitoring tools. This allows…",
+    "url": "https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/",
+    "published": "2026-11-10T16:00:03+00:00",
+    "author": "Warren Barkley",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 15.492,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 7.7,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.731,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "NVIDIA",
+      "Together AI"
+    ],
+    "id": "b4eac762a1"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Build composable, interoperable multi-agent systems with A2A on AWS",
+    "summary": "Agents in multi-agent systems that span organizational boundaries often need to collaborate in a composable, interoperable way, with agents that other organizations build and run. They need a way to discover each other, communicate, and exchange tasks without exposing internals or requiring the same framework on both sides. The Agent-to-Agent (A2A) protocol addresses this constraint. Without A2A, building composable multi-agent systems across organizational boundaries requires custom integration code for each customer and framework. Independent software vendors (ISVs) can instead build composable, interoperable agents that work with the A2A-compatible frameworks their customers already use. While we frame this post around the ISV use case, the pattern also applies to organizations that expose agents across boundaries, whether to partners, customers, or internal teams that use different frameworks. As your system grows, you add skills by registering Agent Cards with the orchestrator, without changing the agents already running. In this post, we walk through a deployed reference architecture on AWS. A LangChain-based enterprise orchestrator communicates with a Strands Agents-based software as a service (SaaS) agent across organizational boundaries using A2A, with the enterprise and the SaaS provider in separate AWS accounts. Neither side depends on the other’s framework or SDK, and the two sides share no secrets. We cover the architecture and implementation patterns, then deploy the system from three Jupyter notebooks and run an end-to-end test. The A2A protocol is now a Linux Foundation project , and AWS is among the organizations that support it. With A2A, agents can discover each other, negotiate tasks, and collaborate across organizational boundaries through a standardized protocol. The protocol uses existing authentication standards such as OAuth 2.0 and OpenID Connect (OIDC) for cross-boundary security, and is designed to work across A2A-compatible frameworks. In Open Protocols for Agent Interoperability Part 4: Inter-Agent Communication on A2A , we introduced A2A concepts and demonstrated two Strands agents communicating using the protocol on AWS. That post established the foundation with Agent Card discovery, structured task execution, and the A2A server pattern. This post builds on that foundation with cross-framework interoperability, cross-organizational trust boundaries, and OAuth in both directions. Solution overview Three agents run in two AWS…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/build-composable-interoperable-multi-agent-systems-with-a2a-on-aws/",
+    "published": "2026-11-12T15:42:21+00:00",
+    "author": "Amit Chaudhary",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 15.268,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 7.2,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.087,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "agents",
+    "region": "frameworks",
+    "entities": [
+      "LangChain"
+    ],
+    "id": "de687054f0"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "OpenAI Codex on Amazon Bedrock",
+    "summary": "Developers increasingly use Codex with Amazon Bedrock to explore unfamiliar code, make changes, and handle repetitive engineering work. For platform teams, the challenge is to make those tools available without creating a second model-access, identity, and operations stack. Codex can use Amazon Bedrock for inference with supported OpenAI models. In this post, we show how to fit that path into the AWS identity, AWS Identity and Access Management (IAM), Regional, and observability practices your organization already uses. Codex still runs on the developer workstation. The main design choice is how its model requests reach Amazon Bedrock and where your organization applies policy and operational controls. We begin with a small, least-privilege pilot and work through the checks that matter before access expands. The examples use GPT-5.6 Sol. Before starting the pilot, review Supported models by AWS Region in Amazon Bedrock to confirm that Sol, Terra, or Luna is available in the AWS Region and inference path you plan to use. Recommended default: Start with Native AWS Access for a small, least-privilege pilot. Choose AgentCore Gateway, a capability of Amazon Bedrock AgentCore, when you want AWS managed gateway infrastructure for routing or Amazon Bedrock Guardrails. Choose an LLM Gateway when a platform team wants to enforce controls in the request path. A custom integration is the advanced version of the LLM Gateway pattern, not a quick start. The examples come from the open source Guidance for Codex on AWS repository. It includes quick starts for Native AWS Access, AgentCore Gateway, LiteLLM on ECS, Portkey, the AWS Distro for OpenTelemetry (ADOT), and the Amazon CloudWatch setup used later in the post. Choose the quick start that matches your architecture, use it for the pilot, and adapt it to your environment. Choose your rollout path Authentication is only one part of an enterprise rollout. Decide who can use the service and which models and Regions are approved. Also define where configuration lives, what telemetry to collect, how usage is allocated, and which skills or Model Context Protocol (MCP) servers are allowed. The following table maps those needs to an access path and an owning team. Choose the access path that provides the controls you need now. The most straightforward path that meets the requirement usually has the lowest operational overhead. Decision rules Native AWS Access is the usual starting point when AWS identity and IAM controls are…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/openai-codex-on-amazon-bedrock/",
+    "published": "2026-11-11T23:35:47+00:00",
+    "author": "Shivi Bhatia",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 14.743,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 7.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.951,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Amazon Nova",
+      "Model Context Protocol",
+      "OpenAI",
+      "OpenAI Codex"
+    ],
+    "id": "8983976445"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Optimizing cost per task and proving agent ROI on Amazon Bedrock",
+    "summary": "Part 1 of this series built the operating model that controls Amazon Bedrock spend: attribution with AWS Identity and Access Management (IAM) principal tags and Cost and Usage Report 2.0, observability with model invocation logging, enforcement at three tiers, and a review cadence. That layer answers who spent it, and you can stop them. It can’t tell you whether the spend was well spent. This post answers two questions that Part 1 deliberately left open. First: Why is this workflow expensive? The answer requires thinking in cost per task, not cost per token. Second: Is the agent better than the humans were? The answer requires baselines, controlled experiments, and a scorecard tied to decisions. In this post, you learn a framework for calculating true model cost (including four hidden cost drivers that the pricing page doesn’t show), techniques for reducing cost per task through caching, routing, and output constraints, and a discipline for measuring agent ROI with human baselines, holdout experiments, and a five-dimension scorecard. This post is written for two audiences: the application and platform engineers who own the optimization levers, and the product owners and FinOps partners who need to justify agent spend to leadership. Cost per task, not cost per token Price per token invites quick comparison, but it doesn’t reflect what you actually pay. The published rate reflects the cost of a single token. Your bill reflects the cost of completing a task. A task is one complete unit of work your application asks a model to do: resolve one support email, extract fields from one invoice, or answer one user question. A task runs from the request through to a usable result, however many model calls it takes. The lower-priced model might not be the cheaper one to run. A cheaper model might fragment your text into more tokens, pad responses with filler, misread your tool schema and loop through corrections, or burn thousands of reasoning tokens before answering. None of these costs appear on the Bedrock pricing page . The four hidden cost drivers Four model characteristics determine what that published rate actually costs you on your workload. Tokenizer efficiency A token isn’t a word, and it is not equal across models. Every model family uses a different tokenizer and vocabulary. The same text, code, or JSON payload splits into different token counts. If Model A’s list price is 15 percent lower but its tokenizer needs 40 percent more tokens for your data…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/optimizing-cost-per-task-and-proving-agent-roi-on-amazon-bedrock/",
+    "published": "2026-11-12T18:43:19+00:00",
+    "author": "Majd Arbash",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 14.687,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.115,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Amazon Nova"
+    ],
+    "id": "355689f1d7"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Build autonomous AI agents with Amazon Bedrock and Spring AI",
+    "summary": "Java teams have established JVM tooling, continuous integration and continuous delivery (CI/CD) pipelines, and operational patterns, yet taking AI agents from prototype to production is hard: agent frameworks do not solve scalability, governance, security, and operational concerns by default. Amazon Bedrock and Spring AI close those gaps, so Java teams can build autonomous AI agents that plan, call tools and APIs, and maintain context across multi-turn conversations. Agentic AI is moving beyond prompt-response interactions toward autonomous systems that execute complex multi-step tasks. Java remains one of the widely used programming languages in enterprise software. Teams have existing CI/CD pipelines, operational expertise, and established patterns built around the JVM. Spring AI brings AI capabilities to the JVM through familiar Spring patterns: auto-configuration, dependency injection, and composable advisors. Developers can build AI agents using the same idioms they use for REST APIs, security, and data access. Amazon Bedrock AgentCore is a platform to build, connect, and optimize agents at scale, with any framework or model. With AgentCore, you can build, deploy, and operate AI agents at scale. It is framework-agnostic and model-agnostic: you bring your preferred agent framework and foundation model (FM). With AgentCore, you can access the production infrastructure you need: managed runtime, memory, browser automation, code execution, and identity management. In this post, we show you how to build autonomous AI agents in Java using Spring AI and Amazon Bedrock with spring-ai-agentcore . We explore the key implementation patterns for two systems. The first is a single-agent travel assistant that demonstrates tool calling and memory. The second is a multi-agent intelligent document processing (IDP) system that shows how specialist agents, a rules engine, and alerting work together. Prerequisites To follow along with this walkthrough, you need the following: Java – JDK 21 (required) Spring Boot – 4.1 (with Spring AI 2.0 and spring-ai-agentcore 2.0) Maven – 3.9+. Node.js – 18+ (for the React frontend) Terraform – 1.5+. Docker – with Buildx for multi-architecture builds. AWS Command Line Interface (AWS CLI) – v2, configured with credentials. An AWS account . What makes a system an agent A chat completion call can generate text, but it can’t decide what to do next, reach into external systems, or remember what happened yesterday. An agent can, because it…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/build-autonomous-ai-agents-with-amazon-bedrock-and-spring-ai/",
+    "published": "2026-11-12T01:18:23+00:00",
+    "author": "Viquar Khan",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 14.452,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.964,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Amazon Nova",
+      "Microsoft AutoGen",
+      "Together AI"
+    ],
+    "id": "4fde59b892"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Four Amazon Bedrock inference choices that affect cost",
+    "summary": "Your Amazon Bedrock inference bill can keep climbing after you tune prompts and application logic. Request-level choices can still change how many tokens the service processes and the rate applied to them. Cache duration, service tier, reasoning effort, and maxTokens can affect cost without changing your model or prompt. Each choice depends on the model and workload. This post shows how we tested each choice and how to verify its effect from response metadata, logs, and billing data. To try these settings yourself, start with the Amazon Bedrock Samples notebooks Mixed TTL Caching and Tenant Isolation with Prompt Caching . For maxTokens and reasoning effort, see the 01-low-effort folder of the sample-code-for-genai-cost-management-workshop GitHub repo. Each sample sets its own model ID, so change it, and the inference parameters, to match the model you call. For model availability by AWS Region, refer to Models at a glance . For broader decisions such as model selection, batch inference, routing, and distillation, see Effective cost optimization strategies for Amazon Bedrock . Where inference cost comes from Every Amazon Bedrock response carries usage metadata. Input and output tokens bill at the rate for the model and tier that served the request. Cache reads and writes use separate token counters, and reasoning tokens count as output tokens. Prompt cache duration Repeated system instructions, tool definitions, or reference context can be processed again when the cache expires before the next request. The Prompt caching for faster model inference guide lists 5-minute and 1-hour time-to-live (TTL) values for supported Anthropic models. It also lists a 30-minute minimum TTL for supported GPT-5.6 models. Support and API fields depend on the model, so check the current support matrix before selecting a duration. For supported models, Amazon Bedrock also offers implicit prompt caching , which attempts to reuse eligible prompt prefixes without cache controls in your request. Because implicit caching is best effort and doesn’t guarantee a cache hit, the duration choices in this section apply to explicit caching. This Converse API signature requests a 1-hour entry on models that support it: { \"cachePoint\": { \"type\": \"default\", \"ttl\": \"1h\" } } For supported Anthropic models, InvokeModel places the same ttl value in cache_control . A longer duration is not automatically cheaper. The Amazon Bedrock Pricing page lists separate rates for 5-minute writes, 1-hour…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/four-amazon-bedrock-inference-choices-that-affect-cost/",
+    "published": "2026-11-12T20:51:55+00:00",
+    "author": "Sai Pavan Kasani",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 14.095,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.135,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Amazon Nova",
+      "Anthropic",
+      "OpenAI"
+    ],
+    "id": "332da1c688"
+  },
+  {
+    "source": "CNBC",
+    "source_type": "rss",
+    "title": "Anthropic IPO meets AI backlash after midterms show stinging rebuke of data centers",
+    "summary": "Americans were unequivocal at the ballot box this week as they expressed disdain for tech billionaires and mistrust of artificial intelligence. With that backdrop, Anthropic is about to try to go public. The AI company is gearing up for a potentially historic IPO, likely targeting mid-November for its Nasdaq debut. CNBC reported on Friday that Anthropic investors see the company aiming for a valuation of $1 trillion to $1.5 trillion, down from a target of $2 trillion that had been floated in recent months. From Wall Street to Main Street, it's becoming a tougher environment for Anthropic. The Nasdaq on Thursday suffered its steepest drop in 19 months, and it's down to start November after October marked its worst month since March 2025. Chipmakers and neoclouds, the companies most closely tied to the AI buildout, are getting hit the hardest. Voters rebuked AI in Tuesday's midterm elections, while sending Democrats to sweeping congressional victories across the country. Candidates who advocated for more stringent AI regulation won handily in states like Michigan, Ohio, Texas and Georgia, which will all now have Democratic governors, and local communities opposed data center-related ballot measures in 40 out of 41 cases . More than half of voters said AI data centers were a \"crucial\" or \"major factor\" in who they supported for Congress, according to an exit poll from NBC News. \"People don't want a data center going near them if it's just going to house AI that's going to help a big tech company profit,\" Maura Austin, a behavioral scientist at the University of Virginia, told CNBC. \"What Anthropic is doing when they're going public with such a high valuation is they're really leaning into that big tech, billionaire kind of caricature. I expect that's not going to go well with the public.\" Anthropic has long tried to position itself as a safety-conscious company that takes AI's potential risks and benefits seriously. CEO Dario Amodei co-founded the company alongside a handful of researchers who defected from OpenAI , now its chief rival. Anthropic is best known for developing a family of AI models called Claude , and it primarily sells its products and services to other businesses. The company's enterprise focus has helped it avoid becoming the public face of AI, leaving that distinction to OpenAI and CEO Sam Altman . But with Anthropic poised to become the first pure-play AI company to hit the public market, minting a number of new billionaires and many more…",
+    "url": "https://www.cnbc.com/2026/11/07/anthropic-ipo-ai-data-center-backlash.html",
+    "published": "2026-11-07T13:00:01+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 14.03,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 10.1,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.391,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic",
+      "OpenAI"
+    ],
+    "id": "ae356485e4"
+  },
+  {
+    "source": "GitHub · anthropics/claude-code",
+    "source_type": "rss",
+    "title": "Claude Code releases v2.1.325",
+    "summary": "## What's changed - Fixed a security issue in how zstd-compressed responses are decoded - Added a spinner tip in VS Code and similar integrated terminals about re-running a notebook cell, shown once Claude has read or edited a Jupyter notebook - Added a line under the error shown when your organization's policy blocks a request, saying how to continue: run `/rewind` and change the message, or run `/clear` - Added a note for Claude when a sandboxed `git checkout`, `git stash` or autostash pull cannot update protected files such as those in `.claude` - Fixed `/security-review` and skills' inline git commands stopping with an error in worktrees of bare repositories, `--separate-git-dir` checkouts and Android `repo` checkouts - Fixed subagents with their own model being moved to the plan-mode model when the model setting is `opusplan` or `haiku` - Fixed subagents on a different model sizing file reads and MCP results with the main session's model - Fixed sessions on many third-party gateways and Foundry stopping with a context length error on every turn instead of compacting - Fixed recent turns sometimes going missing from a resumed session after Claude Code stopped without a clean exit - Fixed shell commands running in the launch directory after the working directory was deleted; the command now fails with a message and can be re-issued - Fixed an approved plan edit being lost when the `plansDirectory` folder can't take it: the plan is now saved in the default plans folder, and a warning says where and why - Fixed a saved `sonnet[1m]` model setting being rewritten on a new install to a model id the API rejects - Fixed focus view hiding the reply to your prompt when a scheduled task replied after it - Fixed the prompt sometimes missing from a background subagent's view when fullscreen is off - Fixed long options in lists and permission prompts being partly overwritten when they wrap, and first-run screens losing lines on narrow terminals - Fixed startup warnings about…",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
+    "published": "2026-11-13T20:40:01+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.1,
+    "score": 13.991,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.9,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.384,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic",
+      "Claude Code",
+      "Model Context Protocol"
+    ],
+    "id": "3578b3def0"
+  },
+  {
+    "source": "Amazon Web Services (AWS)",
+    "source_type": "rss",
+    "title": "How DXC Technology built a multi-model AI substrate on Amazon Bedrock",
+    "summary": "This post is co-written with Nick Tamburro of DXC Technology. When an AI agent can act on a production server at a bank or a hospital, access to a capable foundation model is only the starting point. Recent public incidents, in which autonomous agents took destructive actions their operators never intended, show that the real risk is rarely the model alone. It’s an agent holding more authority than its task requires, with nothing in the architecture to stop it. Avoiding that starts with a substrate that governs model access at the infrastructure level. Amazon Bedrock provides that substrate. Through a single managed interface, it gives DXC OASIS access to multiple foundation models: Anthropic Claude, Amazon Nova , Meta Llama, and open-weight families. Amazon Bedrock Guardrails enforce content filtering, personally identifiable information (PII) redaction, and denied-topic policies uniformly across every model. AWS PrivateLink keeps inference traffic within the customer’s virtual private cloud (VPC), and serverless scaling avoids self-managed GPU infrastructure as a failure point. Because these are system-level controls rather than bolt-ons, they gave DXC Technology a governed foundation for what no model layer can deliver on its own: a trusted harness that orchestrates, governs, and audits AI agents across enterprise IT operations at scale. Model availability varies by AWS Region. See Supported models by AWS Region in Amazon Bedrock . DXC Technology runs managed IT services for some of the world’s most regulated organizations: banks, hospitals, and government agencies. With more than 115,000 employees across 70 countries, DXC operates mission-critical systems where resilience and governance are non-negotiable. When DXC set out to build DXC OASIS, the harness for mission-critical IT operations, the team separated the problem into two layers. The first is a governed model substrate built on Amazon Bedrock. The second is the trusted harness built on top: DXC’s own orchestration, governance, and assurance layer. In this post, we explore how DXC built the resilient, flexible model substrate beneath DXC OASIS on Amazon Bedrock. We also show where DXC drew the line between what the substrate provides and what the harness must provide. Since general availability in March 2026, DXC OASIS has reduced resolution time by 95% on average across 56 measured use cases. Across every model, customer data stays within the AWS data boundary: prompts and completions are not…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/how-dxc-technology-built-a-multi-model-ai-substrate-on-amazon-bedrock/",
+    "published": "2026-11-11T20:45:45+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 13.839,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 9.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.928,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Amazon Nova",
+      "Anthropic",
+      "Meta AI"
+    ],
+    "id": "b2b3dad90a"
+  },
+  {
+    "source": "Wamda",
+    "source_type": "rss",
+    "title": "OmniOps unveils Bunyan Inference Hub to simplify AI deployment in Saudi Arabia",
+    "summary": "OmniOps, Saudi Arabia's sovereign AI infrastructure technology company, announced the launch of Bunyan Inference Hub, a platform for governments, enterprises, startups and developers to access open-source AI models and computing resources, with data and workloads hosted in Saudi Arabia. As organizations move AI applications into production, infrastructure becomes more complex, and the need for different AI models can mean working with separate providers, computing environments, and technical integrations. Organizations that need to follow stricter data residency or security requirements may find that the only way to meet those frameworks is by building and managing their own infrastructure. Bunyan Inference Hub brings these elements together in one platform. Hosted in Saudi Arabia, it enables organizations to keep their data and AI workloads within the Kingdom, access a catalogue of AI models or bring their own, and use computing resources without managing separate infrastructure for each model or use case. Customers access predefined token bundles across supported models and workloads, with dedicated GPU infrastructure available for organizations that need additional capacity or isolation. This is enabled by OmniOps’ proprietary inference optimization engine, developed by the company’s R&D team. The engine adapts how AI models run on available hardware to match workload requirements, helping organizations improve GPU utilization, reduce the cost per token, and maintain consistent performance as demand grows, without having to manage the underlying infrastructure. The platform can run across different GPUs and AI accelerators rather than relying on a single hardware provider. It routes requests to the appropriate model and computing resources, manages infrastructure scaling, and monitors performance and usage. Customers can also set usage limits and track token consumption across teams. “As entities embrace AI across functions and applications in their operations, ensuring that the consumption of AI models is managed efficiently and with the correct security and cost guardrails has never been more critical,” commented Mohammed Altassan, Founding CEO of OmniOps. “The new hub brings together our proprietary Bunyan Inference technology and experience in sovereign AI deployment in a simplified platform that public and private sector organizations can plug into their operations and use to deploy AI solutions more efficiently.” The launch comes as demand for AI…",
+    "url": "https://www.wamda.com/2026/11/omniops-unveils-bunyan-inference-hub-simplify-ai-deployment-saudi-arabia",
+    "published": "2026-11-11T13:55:45+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 13.577,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 7.2,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 0.877,
+      "noise": -0.0,
+      "publisher_tier": 1.0
+    },
+    "track": "chips",
+    "region": "inference",
+    "entities": [
+      "Together AI"
+    ],
+    "id": "0669df2705"
+  },
+  {
+    "source": "Zawya",
+    "source_type": "rss",
+    "title": "OmniOps launches Bunyan Inference Hub for Saudi-hosted access to AI models and compute",
+    "summary": "Riyadh, Saudi Arabia – OmniOps, Saudi Arabia's sovereign AI infrastructure technology company, announced the launch of Bunyan Inference Hub, a platform for governments, enterprises, startups and developers to access open-source AI models and computing resources, with data and workloads hosted in Saudi Arabia. As organizations move AI applications into production, infrastructure becomes more complex, and the need for different AI models can mean working with separate providers, computing environments, and technical integrations. Organizations that need to follow stricter data residency or security requirements may find that the only way to meet those frameworks is by building and managing their own infrastructure. Bunyan Inference Hub brings these elements together in one platform. Hosted in Saudi Arabia, it enables organizations to keep their data and AI workloads within the Kingdom, access a catalogue of AI models or bring their own, and use computing resources without managing separate infrastructure for each model or use case. Customers access predefined token bundles across supported models and workloads, with dedicated GPU infrastructure available for organizations that need additional capacity or isolation. This is enabled by OmniOps’ proprietary inference optimization engine, developed by the company’s R&D team. The engine adapts how AI models run on available hardware to match workload requirements, helping organizations improve GPU utilization, reduce the cost per token, and maintain consistent performance as demand grows, without having to manage the underlying infrastructure. The platform can run across different GPUs and AI accelerators rather than relying on a single hardware provider. It routes requests to the appropriate model and computing resources, manages infrastructure scaling, and monitors performance and usage. Customers can also set usage limits and track token consumption across teams. “As entities embrace AI across functions and applications in their operations, ensuring that the consumption of AI models is managed efficiently and with the correct security and cost guardrails has never been more critical,” commented Mohammed Altassan, Founding CEO of OmniOps. “The new hub brings together our proprietary Bunyan Inference technology and experience in sovereign AI deployment in a simplified platform that public and private sector organizations can plug into their operations and use to deploy AI solutions more efficiently.” The launch…",
+    "url": "https://www.zawya.com/en/press-release/companies-news/omniops-launches-bunyan-inference-hub-for-saudi-hosted-access-to-ai-models-and-compute-2206635",
+    "published": "2026-11-11T09:44:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 13.547,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 7.2,
+      "regional": 4.0,
+      "engagement": 0.0,
+      "recency": 0.847,
+      "noise": -0.0,
+      "publisher_tier": 1.0
+    },
+    "track": "chips",
+    "region": "inference",
+    "entities": [
+      "Together AI"
+    ],
+    "id": "0a9932f6a1"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Run agents securely and efficiently with the next generation AgentCore runtime",
+    "summary": "AI agents have moved past one-off prompts. They now run multi-step workloads for hours at a time. The length of task that frontier agents can complete on their own doubles about every four months ( METR ), and 40 percent of large enterprises are scaling AI agents, up from 27 percent a year ago ( McKinsey ). As agents run longer and with more autonomy, the focus shifts from what agents can do to how securely, reliably, and economically they can operate at scale. Agents do more than traditional software: they execute code, navigate browsers, access sensitive data, and act on behalf of users. These capabilities introduce new security and infrastructure demands, making strong isolation essential for production deployments. Every agent session needs a secure, isolated environment. But delivering that isolation at scale introduces a fundamental challenge: balancing performance, cost, and efficiency. Pre-provisioned environments consume resources even when idle, driving up costs. On-demand environments reduce wasted capacity but introduce cold-start latency, delaying agent execution. Neither approach scales efficiently without trade-offs. As organizations move from deploying a handful of agents to running thousands of concurrent sessions, building and managing custom sandboxes becomes increasingly complex, expensive, and unpredictable. The challenge is evident. Only 15 percent of organizations have scaled orchestrated, multi-agent systems, and 70 percent say they can’t yet trust and govern their agents ( Deloitte ). Scaling agents shouldn’t mean choosing between security, speed, and cost. The next generation of agent infrastructure must deliver strong isolation with fast startup times, elastic scaling, and usage-based economics. Because as AI agents move into production, secure execution shouldn’t be the bottleneck. It should be the foundation that makes scale possible. The fastest path to production should also be the safest one. The next generation AgentCore runtime We built Amazon Bedrock AgentCore to help developers build, connect, and optimize agents securely at scale. AgentCore runtime, a capability of Amazon Bedrock AgentCore, is the managed compute layer. It gives developers a fully managed environment to deploy and run agents without building or maintaining infrastructure. Since launching, our customers have been pushing their agents into increasingly complex workloads. As those workloads grow, so do the demands on the execution environment: more…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/run-agents-securely-and-efficiently-with-the-next-generation-agentcore-runtime/",
+    "published": "2026-11-12T17:59:59+00:00",
+    "author": "Madhu Parthasarathy",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 13.273,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.9,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.108,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Amazon Nova"
+    ],
+    "id": "66bdd92f8e"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Cost-optimizing AssemblyAI speech-to-text inference on AWS with Amazon EC2 Spot",
+    "summary": "Speech-to-text inference is computationally intensive. Each audio file triggers a pipeline of deep learning models (acoustic models, language models, and post-processing stages) running on NVIDIA GPUs to meet latency requirements. At scale, this means thousands of GPU instances running continuously. AssemblyAI needed a way to run GPU-intensive inference workloads cost-effectively at scale, without sacrificing the availability and latency guarantees their customers depend on. Running entirely on On-Demand Instances would be cost-prohibitive. Spot Instances offer significant savings, while Amazon Elastic Compute Cloud (Amazon EC2) can reclaim them with a 2-minute warning when capacity is needed elsewhere. AssemblyAI needed an architecture that absorbs Spot interruptions gracefully while maintaining service level agreement (SLA) commitments. Additionally, customers in regulated industries, including healthcare, finance, and legal, must keep audio data within specific geographic boundaries. They implement strict data residency configurations in European AWS Regions. Available on AWS Marketplace , AssemblyAI provides an API for transcription, speaker detection, sentiment analysis, chapter detection, and personally identifiable information (PII) redaction. Their models transcribe and analyze speech for high-volume workloads across industries including technology, media, healthcare, and financial services. In this post, we show you how AssemblyAI runs cost-optimized AI inference at scale for their speech-to-text platform. The architecture uses Amazon Elastic Container Service (Amazon ECS), Amazon Elastic Compute Cloud (Amazon EC2) Spot Instances, and Amazon Simple Queue Service (Amazon SQS). Together, these services combine a flexible fleet of NVIDIA GPUs, ECS capacity providers, and a queue-based retry mechanism. The result is significant cost savings while maintaining SLA commitments across European AWS Regions. Solution overview AssemblyAI’s inference platform runs on Amazon ECS with compute capacity managed through ECS capacity providers. The fleet mixes Amazon EC2 Spot Instances and On-Demand Instances across multiple NVIDIA GPU instance families, running a single inference model per GPU at a scale of thousands of instances. The architecture is built on four pillars that work together to deliver cost-optimized and resilient inference: Amazon ECS capacity providers mixing Spot and On-Demand. Multi-family GPU Spot diversification across EC2 instance types…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/cost-optimizing-assemblyai-speech-to-text-inference-on-aws-with-amazon-ec2-spot/",
+    "published": "2026-11-13T19:35:35+00:00",
+    "author": "Belair Albahagwi",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 13.216,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.6,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.372,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "chips",
+    "region": "makers",
+    "entities": [
+      "NVIDIA",
+      "Together AI"
+    ],
+    "id": "081d77d792"
+  },
+  {
+    "source": "GitHub · microsoft/agent-framework",
+    "source_type": "rss",
+    "title": "Microsoft AutoGen releases python-1.25.0",
+    "summary": "### Added - **agent-framework-core**, **agent-framework-foundry-hosting**: Support callable MCP discovery approval policies and honor Foundry Toolbox approval metadata, including tool-name and read-only filters, explicit caller overrides, and policy refresh for retained tools ([#10136](https://github.com/microsoft/agent-framework/pull/10136)) ### Changed - **agent-framework**, **agent-framework-a2a**, **agent-framework-ag-ui**, **agent-framework-anthropic**, **agent-framework-azure-ai-search**, **agent-framework-azure-contentunderstanding**, **agent-framework-azure-cosmos**, **agent-framework-azure-cosmos-memory**, **agent-framework-azure-documentdb**, **agent-framework-bedrock**, **agent-framework-chatkit**, **agent-framework-claude**, **agent-framework-copilotstudio**, **agent-framework-core**, **agent-framework-declarative**, **agent-framework-devui**, **agent-framework-duckdb**, **agent-framework-foundry**, **agent-framework-foundry-hosting**, **agent-framework-foundry-local**, **agent-framework-gemini**, **agent-framework-github-copilot**, **agent-framework-hosting**, **agent-framework-hosting-a2a**, **agent-framework-hosting-mcp**, **agent-framework-hosting-responses**, **agent-framework-hosting-telegram**, **agent-framework-hyperlight**, **agent-framework-mem0**, **agent-framework-mistral**, **agent-framework-mongodb**, **agent-framework-monty**, **agent-framework-nvidia**, **agent-framework-ollama**, **agent-framework-openai**, **agent-framework-oracle**, **agent-framework-orchestrations**, **agent-framework-postgres**, **agent-framework-purview**, **agent-framework-qdrant**, **agent-framework-redis**, **agent-framework-sql-server**, **agent-framework-tools**, **agent-framework-typesafe**: [BREAKING] Remove Python 3.10 installation eligibility and obsolete compatibility branches; require Python 3.11 or later ([#9948](https://github.com/microsoft/agent-framework/pull/9948)) **Migration:** Upgrade Python 3.10 environments to Python 3.11 or later before…",
+    "url": "https://github.com/microsoft/agent-framework/releases/tag/python-1.25.0",
+    "published": "2026-11-07T15:52:42+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.1,
+    "score": 12.728,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 7.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.401,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "agents",
+    "region": "frameworks",
+    "entities": [
+      "Anthropic",
+      "Google DeepMind",
+      "Microsoft AutoGen",
+      "Microsoft Copilot",
+      "Mistral",
+      "Model Context Protocol",
+      "NVIDIA",
+      "OpenAI"
+    ],
+    "id": "9d7ccb7a6a"
+  },
+  {
+    "source": "GitHub · google-gemini/gemini-cli",
+    "source_type": "rss",
+    "title": "Gemini Agent releases Release v0.68.0",
+    "summary": "## What's Changed * Changelog for v0.67.0-preview.0 by @gemini-cli-robot in https://github.com/google-gemini/gemini-cli/pull/29990 * Changelog for v0.66.0 by @gemini-cli-robot in https://github.com/google-gemini/gemini-cli/pull/29992 * docs(readme): clarify Gemini CLI scope, limitations, and tool landscape by @LyalinDotCom in https://github.com/google-gemini/gemini-cli/pull/29995 * fix(cli): bound inline history re-render after terminal width changes by @jvargassanchez-dot in https://github.com/google-gemini/gemini-cli/pull/29904 * fix(ui): handle surrogate pairs when truncating in sanitizeForDisplay by @diegogodinezr in https://github.com/google-gemini/gemini-cli/pull/29993 * fix(core): make isWithinRoot case-insensitive on Windows by @duvanka-prasad in https://github.com/google-gemini/gemini-cli/pull/29999 * fix(core): recognize dotted Gemini 3 models in supportsMultimodalFunctionResponse by @jesussamuel-byte in https://github.com/google-gemini/gemini-cli/pull/29982 * feat(cli): add extension validation command and evaluation tests by @tadipavan in https://github.com/google-gemini/gemini-cli/pull/29980 * fix(core): normalize leading slashes in file search query for @ autocomplete by @urielefrenvirtusa in https://github.com/google-gemini/gemini-cli/pull/29987 * fix(vscode-ide-companion): register all extension disposables in context.subscriptions by @jvargassanchez-dot in https://github.com/google-gemini/gemini-cli/pull/29994 * fix(core): list Auto in /model when dynamicModelConfiguration is enabled and preview access is disabled by @villahernandez-coder in https://github.com/google-gemini/gemini-cli/pull/29998 * fix(core,cli): fix instances of incorrect \\n escape behavior by @ugorla-dev in https://github.com/google-gemini/gemini-cli/pull/29989 * fix(core): use PowerShell CIM fallback for Windows IDE process lookup by @tadipavan in https://github.com/google-gemini/gemini-cli/pull/30006 * fix(cli): surface 429 rate limit cool-down and countdown in loading indicator…",
+    "url": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.68.0",
+    "published": "2026-11-10T21:17:07+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.1,
+    "score": 12.389,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.763,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Gemini Agent",
+      "Google DeepMind"
+    ],
+    "id": "04da2ea8cd"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Building a self-service LLM gateway with Amazon Bedrock and LiteLLM",
+    "summary": "Developers want AI coding assistants with minimal setup. With a large language model (LLM) gateway and LiteLLM, they can quickly access foundation models (FMs) available on Amazon Bedrock while you gain visibility and usage control. Platform teams need to monitor latency and errors, finance teams need to attribute inference costs to teams and projects, and security teams need consistent access controls. An LLM gateway can help address these needs by providing a centrally managed access point to the models that power coding assistants. In this post, we show how to build a self-service LLM gateway using Amazon Bedrock Application Inference Profiles with LiteLLM running on AWS Fargate to abstract Amazon Bedrock behind an OpenAI-compatible API. With this pattern, developers can access foundation models through a single API with a dedicated key while you gain per-user cost controls and model performance observability. By the end, you will understand the pattern well enough to build your own version from the illustrative snippets and AWS Cloud Development Kit (AWS CDK) constructs. This post uses Claude Sonnet and Claude Haiku models for example purposes. For a list of models and availability by AWS Region, see Supported models by AWS Region in Amazon Bedrock . This LLM gateway pattern follows a straightforward request flow from the developer, through the LiteLLM layer, to Amazon Bedrock and the underlying FM. The following diagram illustrates the production topology behind that flow. For simplicity, we don’t cover the addition of Amazon Bedrock Guardrails, such as content filtering and grounding, but you would normally include appropriate responsible AI controls before deploying to production. A developer’s OpenAI-compatible client reaches the LLM gateway through Amazon Route 53, Amazon CloudFront, and an Application Load Balancer (ALB). It authenticates to LiteLLM on Fargate with a per-user API key. Behind that, the request draws on Amazon Relational Database Service (Amazon RDS) (PostgreSQL) for virtual-key and spend state. It also interacts with Amazon ElastiCache for Valkey as a cache, and AWS Secrets Manager for secrets. LiteLLM then ultimately invokes Amazon Bedrock Application Inference Profiles using a scoped AWS Identity and Access Management (IAM) task role. Amazon CloudWatch captures requests per minute (RPM) and tokens per minute (TPM) metrics and the quota alarm. Figure 1: LLM gateway architecture (production topology) The architecture consists of…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/building-a-self-service-llm-gateway-with-amazon-bedrock-and-litellm/",
+    "published": "2026-11-12T18:41:12+00:00",
+    "author": "Sitaraman Vijay Krishna",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 12.035,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.1,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.115,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Amazon Nova",
+      "Anthropic",
+      "OpenAI"
+    ],
+    "id": "b7b9161e40"
+  },
+  {
+    "source": "CNBC",
+    "source_type": "rss",
+    "title": "OpenAI launches ChatGPT Wallet, allowing its 'dots' AI agents to make purchases for users",
+    "summary": "OpenAI on Friday announced ChatGPT Wallet, a new payment feature that enables its \"dots\" artificial intelligence agents to make purchases on behalf of users. The company built ChatGPT Wallet in partnership with American Express , Mastercard and Visa , and it allows cardholders to maintain their existing credit card rewards and protections. Eligible users enter their card information once, prompt their dot to find items to buy and approve each purchase with a security check. OpenAI said its dots agents will never actually access a user's card details. Instead, their payment networks will provide the dot with a \"payment token,\" which contains a scoped card number, security code and expiration date that is specific to a given transaction. \"Our goal here is to really focus on merchants and our network partners and start building out a really great foundation that's safe and easy to use,\" Chaya Nayak, who leads product for monetization and payments at OpenAI, told CNBC in an interview. ChatGPT Wallet comes as a growing number of consumers are exploring how to use personal AI agents to manage their calendars, book travel and complete other day-to-day tasks. OpenAI introduced the dots agents during its annual developer conference in late September, shortly after Meta's Muse offering topped the App Store charts . Purchases made through ChatGPT Wallet could eventually kick-start a new revenue stream for OpenAI, but the company said it is not taking a cut of transactions to start. With the initial launch, OpenAI is working to build relationships with merchants and position itself as a serious platform for shoppers, especially as vendors are beginning to experiment with personal agents. OpenAI has pushed deeper into AI-enabled commerce over the last year, but some of its early attempts failed to take off. The company introduced an \" Instant Checkout \" feature last fall, which it quickly pivoted away from. By March, it had rolled out a revamped shopping experience that aimed to make it easier for users to find and compare products. Nayak said ChatGPT Wallet builds on OpenAI's previous efforts, particularly around product discovery. \"We think that this is the next step, where if someone found something they're really excited to buy, then we want to be able to get them through to that endpoint,\" she said. ChatGPT Wallet is initially available to OpenAI's Pro subscribers in the U.S. who are over 18 years old. The limited rollout is intentional, and the \"right approach…",
+    "url": "https://www.cnbc.com/2026/11/13/openai-chatgpt-wallet-dot-purchases.html",
+    "published": "2026-11-13T15:00:01+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 11.958,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 7.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.32,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "88d77a52ad"
+  },
+  {
+    "source": "https://debuglies.com",
+    "source_type": "rss",
+    "title": "Agentic AI and National Security: The New Architecture of Industrial Sovereignty -ADNOC (Abu Dhabi National Oil Company)–OpenAI–G42 partnership",
+    "summary": "Agentic AI and National Security: The New Architecture of Industrial Sovereignty -ADNOC (Abu Dhabi National Oil Company)–OpenAI–G42 partnership https://debuglies.com",
+    "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxNUzZjUUVrOWZyUmYyMEpoN1hMZUw0M0dSQzZkQTRJbldLWDlDMzlUZXBkMUFWOEgzTWRrVVZmYm0wejNnc3U2aXpybk1KOGdrQkR1WDMxRkdXb2YxOU56a1lnWF9lQmVsd3BXMDNpUjBDc2lkN1QySU10QTlzWjBKQVg1alNiaFRTQVdhYUEzTXZqQmRkRjhPUVVLVlZkNnFuZDdVcEVHVW1pYi1LcnczM0pnc1VsbmJsdmQ5ZVNjMVhScVFIeVNiSW9LQWQ4S2dCMldzd0RjMjVOMkNvckRKRTRvRGNZX3J0SDJxb183YWl6Q3VGQnZEaElDTlFzVkQ0NTRj?oc=5",
+    "published": "2026-11-10T15:00:34+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.17,
+    "score": 11.951,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 6.8,
+      "regional": 8.0,
+      "engagement": 0.0,
+      "recency": 0.725,
+      "noise": -0.0,
+      "publisher_tier": 0.6
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "G42",
+      "OpenAI"
+    ],
+    "id": "286e1faaa8"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Build a model improvement flywheel with Amazon SageMaker HyperPod Data Capture",
+    "summary": "Foundation models deployed on Amazon SageMaker HyperPod meet inputs that no pre-curated dataset covers: domain-specific jargon, unexpected formats, new products, and changing user behavior. Without a record of production inference data, teams can’t detect drift, find failure patterns, or use real interactions to improve the model. Amazon SageMaker HyperPod now provides Data Capture, a built-in capability that records live inference inputs and outputs to Amazon Simple Storage Service (Amazon S3) at three independent tiers, with minimal latency impact and zero impact on model availability. In this post, we walk through one complete example on a single SageMaker HyperPod cluster. A home-appliance support router captures its production traffic, Amazon Athena queries surface a new-product blind spot, a SQL policy labels the captured records, and a fine-tune on that data teaches the router the new product. We measure accuracy before and after, on data that could not have existed before the model was deployed. The inference operator serves the model on one node, and the training operator runs the fine-tuning on another. We use synthetic data for the walkthrough. The scripts, manifests, SQL, synthetic datasets, and expected outputs are available in the accompanying GitHub repository . Three-tier Data Capture architecture HyperPod Data Capture provides three independent tiers, each at a different point in the request path. You can turn on any combination in the same dataCapture block. Tier 1: SageMaker endpoint Tier 2: Load balancer Tier 3: Model pod What’s captured Full request/response payloads Application Load Balancer (ALB) access-log fields: request line, status codes, timings, client IP, user agent Full request/response payloads plus event metadata Managed by SageMaker native data capture ALB access logs HyperPod inference operator (NGINX + OTel collector + S3 uploader sidecars) Best for Compliance, Model Monitor, audit Traffic and error-rate monitoring at low cost Debugging, analytics, training-data collection Configuration sagemakerEndpoint: — sampling %, input/output, AWS KMS loadBalancer: { enabled: true } modelPod: — sampling %, input/output, buffer, max payload size, AWS KMS, content types Tiers 1 and 3 both store full payloads, so enabling both stores every record twice. Use Tier 1 for compliance and Model Monitor, Tier 2 when you only need traffic metadata, and Tier 3 when you intend to use the payloads. This post uses Tier 3 only. Because Tier 3…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/build-a-model-improvement-flywheel-with-amazon-sagemaker-hyperpod-data-capture/",
+    "published": "2026-11-13T18:01:15+00:00",
+    "author": "Shantanu Tripathi",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 11.94,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 4.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.354,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "agents",
+    "region": "products",
+    "entities": [
+      "OpenAI Codex"
+    ],
+    "id": "a8b10f8e66"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "From prototype to production: Engineering agents with Agent DLC",
+    "summary": "Over the past year, AI agents have moved from exploration into engineering. Enterprise teams are shipping large language model (LLM) systems that call tools, orchestrate APIs, and answer questions over internal knowledge. A successful demo can show what an agent is capable of. Before release, the team needs to answer a further question: “ Is this agent ready for production? ” The person responsible for that decision needs evidence that the agent meets the agreed requirements. To make that decision consistently, teams need a repeatable, affordable way to assess the agent’s current behavior and whether the latest change has improved it. In traditional software development, teams answer these questions with unit tests, continuous integration and continuous delivery (CI/CD), and passing builds. Those mechanisms are necessary but not sufficient for agents, for three reasons, each requiring additional checks. This post explains these three properties and presents a measured case where an aggregate metric hides a coverage problem. It then introduces the Agent Development Lifecycle (Agent DLC): one lifecycle, two loops, and a single explicit standard for judging every change. A note on terminology: Throughout this post, gold standard means one specific artifact: the bundle of verifiable criteria, their thresholds, and the approved examples they are checked against. Business owners approve this standard as the basis for acceptance decisions. 1. Three properties of agents that require additional engineering practices Conventional software testing and CI/CD still apply to agents, but three properties require additional checks. First, agents are non-deterministic: identical inputs can produce different outputs and execution paths. Second, changes to prompts, tool descriptions, retrieval settings, or memory configuration can alter behavior in ways that a text review alone can’t reveal. Third, model endpoints, knowledge bases, and external APIs can change independently of the repository and affect agent behavior. Table 1 summarizes the engineering practices needed to address each property. Table 1. What each property invalidates, and what it requires instead. Property The conventional answer Why it falls short What Agent DLC requires Non-determinism One assertion per case in CI Measures a single sample of a distribution. Passes and fails for reasons unrelated to your change Run each example k times. Judge on pass rate and failure distribution Prompts are source code…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/from-prototype-to-production-engineering-agents-with-agent-dlc/",
+    "published": "2026-11-12T15:38:47+00:00",
+    "author": "Yuan Wei",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 11.679,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 4.9,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.087,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Amazon Nova"
+    ],
+    "id": "19d3c2e19d"
+  },
+  {
+    "source": "GitHub · openai/codex",
+    "source_type": "rss",
+    "title": "OpenAI Codex releases 0.169.0",
+    "summary": "## New Features - The opt-in terminal workspace supports multiple side-chat tabs. Switch between them with the keyboard or mouse, and reopen saved local side chats after restarting Codex. (#59784, #60152, #60181) - Search older tasks from the agent command center by name, prompt preview, or working directory. (#60286) - Turn on **Collapse turn details** in the full-screen transcript to fold completed activity beneath each prompt while keeping answers visible and tool output searchable. (#60554, #60555, #60556, #60557) - Add or edit custom model providers from the terminal. With custom gateway onboarding enabled, you can create a provider during sign-in and use a device code for supported gateways over SSH or without a local browser. (#59779, #60009, #60186, #60486, #60662) - Press `Ctrl+S` in the terminal report editor to save a diagnostic ZIP locally, even when uploads are disabled. (#60542) - With the opt-in Cloud connection on macOS and Linux, send images, choose a model and reasoning effort, and archive or restore Cloud conversations from the terminal. (#59828, #60061, #60635, #60651) ## Bug Fixes - `codex exec` keeps project configuration and MCP servers disabled in untrusted directories, even with `--sandbox workspace-write`. Use `--trust` with `codex exec` or `codex review` to explicitly save project trust. (#60041) - **Yes, clear context and implement** now hands the full approved plan to the fresh session and keeps the current session open if the handoff fails. (#60763) - Fixed Windows sandbox handling for quoted `cmd.exe` paths and for PowerShell sessions whose working directory has an unreadable parent. (#60624, #60647) - Pasted images on macOS retain their intended orientation and use native PNG or JPEG clipboard data when available. (#60455) - The terminal no longer stays busy waiting for MCP servers that a shared app server did not report. (#60280, #60622) - Interrupted turns now close cleanly, and delayed aborts or file approval cancellations no…",
+    "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0",
+    "published": "2026-11-13T08:37:05+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.1,
+    "score": 11.657,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.4,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.252,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Model Context Protocol",
+      "OpenAI",
+      "OpenAI Codex"
+    ],
+    "id": "720dff5fdc"
+  },
+  {
+    "source": "Amazon Nova",
+    "source_type": "rss",
+    "title": "Deploy frontier AI models on AWS Trainium with SGLang-Neuron",
+    "summary": "Today, Amazon announced that SGLang-Neuron is publicly available and can be accessed through an AWS Deep Learning Container, released by RadixArk in collaboration with Annapurna Labs. With SGLang-Neuron, you can serve models and generate reinforcement learning (RL) rollouts with SGLang on AWS Trainium using the same SGLang interface you use today. Trainium is a portfolio of AWS AI chips that delivers strong economics for AI training and inference at scale. Now, running SGLang on Trainium follows the SGLang workflow you already know: you launch models through SGLang’s server interface and invoke the endpoint using the same generation APIs. Underneath that interface, SGLang-Neuron runs on native PyTorch. With its out-of-tree plugin design, Trainium support and SGLang core develop independently and iterate faster. How SGLang runs on Trainium SGLang-Neuron is an out-of-tree plugin that connects SGLang with AWS Trainium. Installing the plugin registers the neuron platform through SGLang’s plugin entry points, and setting SGLANG_PLATFORM=neuron selects it when the server starts. SGLang core continues to provide the API server, request lifecycle, RadixAttention, and prefix-cache bookkeeping. The plugin implements the Trainium-specific models, attention, mixture of experts (MoE), and the graph runner. Figure 1: SGLang-Neuron on AWS Trainium TorchNeuron registers Trainium as a native PyTorch device. SGLang-Neuron uses standard PyTorch operations for the model execution path and incorporates kernels written with the Neuron Kernel Interface (NKI) for performance. It compiles these operations and kernels into executable programs using torch.compile , which the graph runner prepares and executes during serving. SGLang-Neuron also supports PD disaggregation . In this configuration, a prefill server computes the prompt KV cache and transfers it to a decode server using NIXL over Elastic Fabric Adapter (EFA) . The decode server then generates the remaining tokens. Each server still uses SGLang’s scheduler and request lifecycle, while the plugin manages the Trainium execution and KV-cache transfer path. Serving models on AWS Trainium using SGLang-Neuron To follow this walkthrough, you use a Trainium3 Amazon Elastic Compute Cloud (Amazon EC2) instance with a pytorch-inference-sglang-neuronx container. Here are the steps: Start the container. docker run --rm -it \\ --privileged --ipc=host \\ -v /path/to/work:/work \\…",
+    "url": "https://aws.amazon.com/blogs/machine-learning/deploy-frontier-ai-models-on-aws-trainium-with-sglang-neuron/",
+    "published": "2026-11-12T22:03:34+00:00",
+    "author": "Alex Nails",
+    "engagement": 0,
+    "source_weight": 1.2,
+    "score": 11.616,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 4.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.146,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "chips",
+    "region": "hyperscalers",
+    "entities": [
+      "AWS Trainium",
+      "Amazon Nova"
+    ],
+    "id": "fecee83ad9"
+  },
+  {
+    "source": "Microsoft",
+    "source_type": "rss",
+    "title": "State Farm scales governed AI to deliver enterprise business value with Microsoft Copilot Studio and Power Platform",
+    "summary": "The Ask HR policy agent shows the value of self-service in practice. Built in Copilot Studio, the agent allows employees to ask questions about HR policies and benefits instead of manually contacting an HR representative. According to Dorton, the impact was immediate: \"This has saved our HR department a lot of time, and it's also helped employees feel confident in finding the information they need on their own.\" After seeing early success, the HR team began building a roadmap of 12 additional agents. The same approach extended to underwriting. A data scientist built an agent to help underwriters and trainees search criteria that previously lived in large, hard-to-navigate manuals. By moving those manuals into SharePoint Online, the information became easier for Copilot Studio to surface and easier for underwriters to navigate. These tools help employees find relevant information faster and reduce manual searching. Employees remain responsible for decisions that require judgment, expertise, and care. Within 30 days, the agent became the second most-used agent at State Farm, out of more than 3,000 AI agent identities within the Power Platform environment. Other teams began applying the same approach to their own work. Translation agents assist with translating marketing materials between English and Spanish, including through an email-based workflow that helped reduce translation turnaround time from 12 months to 24 hours. A content agent helps writers check content against internal standards, removing the need for a separate license. In information security, a builder created design templates, documentation, and a wiki series that now help other Copilot Studio builders navigate the risk process. The biggest shift may be cultural. As Dorton puts it, \"AI elevates our employees' ability to do their job.\" Builders who once attended workshops as learners are now becoming champions, joining office hours, sharing templates, and helping others build responsibly. State Farm’s next chapter builds on what teams have already proven with knowledge-based agents. Building on knowledge-based use cases, teams are considering ways these capabilities could support more complex workflows and coordination across systems. As Dorton explains, the focus is shifting beyond simple retrieval agents: \"Right now, we’re looking at moving past those conversational or knowledge-retrieval AI agents towards more complex, action-oriented or autonomous AI agents.\" To support this shift,…",
+    "url": "https://www.microsoft.com/en/customers/story/26947-state-farm-microsoft-power-platform",
+    "published": "2026-11-08T08:00:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 11.534,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 7.9,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.458,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Copilot Studio",
+      "Microsoft Copilot"
+    ],
+    "id": "c00bd07854"
+  },
+  {
+    "source": "GitHub · crewAIInc/crewAI",
+    "source_type": "rss",
+    "title": "CrewAI releases 1.15.38",
+    "summary": "## What's Changed ### Features - Make gpt-6-luna crewAI's default model everywhere - Read spreadsheet URLs in an agent's input with tools over every row - Tag eval usage spans with target and a per-evaluation id - Add --no-open to crewai eval for headless use ### Bug Fixes - Count a crewai eval run that exits with an error as run_failed - Create the project .env owner-only when crewai eval turns tracing on - Upload a failed anonymous run that crewai eval started - Check openai-compatible providers' API key on the first call - Scope memoized crew methods to their instance - Exit non-zero when crewai run's project script fails - Eval asks to share the trace with Enter meaning yes, and explains why ### Documentation - Document required_inputs on GET /inputs and which flow fields are inputs ## Contributors @joaomdmoura",
+    "url": "https://github.com/crewAIInc/crewAI/releases/tag/1.15.38",
+    "published": "2026-11-08T19:39:30+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.1,
+    "score": 11.161,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 5.8,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 0.505,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "agents",
+    "region": "frameworks",
+    "entities": [
+      "CrewAI",
+      "OpenAI"
+    ],
+    "id": "e59a01325a"
+  },
+  {
+    "source": "GitHub · n8n-io/n8n",
+    "source_type": "rss",
+    "title": "n8n releases n8n@2.47.6",
+    "summary": "## [2.47.6](https://github.com/n8n-io/n8n/compare/n8n@2.47.5...n8n@2.47.6) (2026-11-13) ### Bug Fixes * **core:** Keep trusted-source cache keys in one Redis cluster slot ([#43627](https://github.com/n8n-io/n8n/issues/43627)) ([2d95724](https://github.com/n8n-io/n8n/commit/2d95724b7d8f2befcb9891af795f7d9b25941577)) * **core:** Let agents turn off prompt caching for endpoints that reject the cache fields ([#43673](https://github.com/n8n-io/n8n/issues/43673)) ([400fb98](https://github.com/n8n-io/n8n/commit/400fb989ce8e0717218e558e17daa6c3ae931732)) * **core:** Read legacy-format data with the instance key when the stored key differs ([#43725](https://github.com/n8n-io/n8n/issues/43725)) ([188f2a4](https://github.com/n8n-io/n8n/commit/188f2a4e9f239d254efa910a5d5e7de7faf43893)) * **editor:** Make JSON highlight color visible on light theme ([#43689](https://github.com/n8n-io/n8n/issues/43689)) ([83dc3dd](https://github.com/n8n-io/n8n/commit/83dc3dd02eb01e995197b8d12f4ceb60d72a0c2d)) * **Pinecone Vector Store Node:** Search indexes with a document schema through the documents API ([#43650](https://github.com/n8n-io/n8n/issues/43650)) ([14e03f8](https://github.com/n8n-io/n8n/commit/14e03f80250fb19c7c439ce69b59e0d91c91d856)) ### Features * **editor:** Show Gateway credits promotions from the Gateway config ([#43661](https://github.com/n8n-io/n8n/issues/43661)) ([a2f4beb](https://github.com/n8n-io/n8n/commit/a2f4beb7848491e0fcecf7ee4c0c6d564f0fe873)) ### Performance Improvements * **core:** Keep the replaceSpecialChars character map out of the runtime bundle ([#43728](https://github.com/n8n-io/n8n/issues/43728)) ([a6a0cce](https://github.com/n8n-io/n8n/commit/a6a0cce33b998ca2da7d507b0a62a144502ded79)) * **core:** Reduce per-item setup in the expression runtime ([#43438](https://github.com/n8n-io/n8n/issues/43438)) ([3393555](https://github.com/n8n-io/n8n/commit/3393555e9efdc283394314e89eb3125f8d22ba4d))",
+    "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.47.6",
+    "published": "2026-11-13T08:24:14+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.1,
+    "score": 9.652,
+    "score_breakdown": {
+      "watchlist": 1.5,
+      "enterprise": 4.0,
+      "regional": 0.0,
+      "engagement": 0.0,
+      "recency": 1.25,
+      "noise": -0.0,
+      "publisher_tier": 1.3
+    },
+    "track": "agents",
+    "region": "frameworks",
+    "entities": [
+      "n8n"
+    ],
+    "id": "0f63f220c3"
+  }
+]

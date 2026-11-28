@@ -1,0 +1,78 @@
+[
+  {
+    "source": "UkrMedia News",
+    "source_type": "rss",
+    "title": "OpenAI has filed a counterclaim against Apple over trade secrets amid the race in the AI sector",
+    "summary": "OpenAI has filed a counterclaim against Apple in the US District Court for the Northern District of California, accusing the tech giant of breaching trade secret rights and engaging in unfair competition. In the statement of claim, the developer of ChatGPT asserts that, that Apple is trying to slow down OpenAI’s entry into the consumer AI devices market, by intimidating joint contractors and restricting engineers from moving to competitors. The legal battle between the two tech industry leaders entered a new phase on 27 November 2026. In the counterclaims filed, OpenAI raised several key complaints against the iPhone manufacturer: Theft of trade secrets: OpenAI claims that Apple obtained confidential information about its unannounced device and hardware development roadmap after re-hiring a former engineer who had worked at OpenAI for six months; Pressure on supply chains: According to the claimant, Apple is threatening joint suppliers with the loss of contracts and demanding that they disclose details of projects for OpenAI and the names of the engineers involved, as a result of which one of the contractors was forced to switch to night-shift production, whilst another refused to cooperate altogether; The practice of «retaining» staff: at the company Sema Altman They claimed that around 400 specialists have already moved from Apple to OpenAI, and that the corporation is allegedly intimidating other employees, encouraging the use of personal accounts for work files and continuing to monitor employees’ devices after they leave the company. The complaint also states that Apple has brought legal proceedings due to delays in the introduction of innovative features artificial intelligence into its own product range. The counterclaim was a response to the claim filed in July by the company itself Apple , in which the corporation accused OpenAI and two of its former employees — Tanga Tana і Chang Liu — in the misappropriation of confidential work carried out to develop new gadgets. Tang Tang previously held the post of Vice President of Design for the iPhone and Apple Watch, and later joined the start-up io Products, founded by Apple’s former chief designer Jonny Ive , which OpenAI acquired in 2025. According to analysts, OpenAI is working with Jony Ive’s team to develop a range of next-generation connected AI devices — including a smart speaker and personal gadgets capable of operating without traditional mobile apps. Apple itself has rejected the allegations,…",
+    "url": "https://ukrmedia.news/en/science-tech/openai-podala-zustrichnyi-pozov-proty-apple-shi/",
+    "published": "2026-11-28T08:32:03+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "7ea9ef106f"
+  },
+  {
+    "source": "Al Jazeera",
+    "source_type": "rss",
+    "title": "OpenAI countersues Apple over trade secrets as AI race heats up",
+    "summary": "OpenAI countersues Apple over trade secrets as AI race heats up Al Jazeera",
+    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxON1UyNzVUM1VWYllDUVB5Rl9LVDYwZExiMWt2WFp4eWVUckVjdDhqbFFfSXR1b2NiRm9LbFZQZ2xlZTNkRmtaSkZnb2M4ekJwVkVxbE1jdmNlazc2QUMxallwb1JpTWRvVk9ZOW12SVM5MTZ4RS1CQkNGcW5qZlMySWJZTjBkNXBtZXByR0NuVWdJZWVXWW8zcWRsTUF1ZUJXMlNVNWxEM2l0VThn0gGyAUFVX3lxTE16T05QbEdEbTdCUklBU3kyX05YX2RxaTZrVl9yWTEtWDF4dThXOFAyODNDTjFHTy1LRmJkZEJpd1E0eTBOaWxkS0NXV1BIWFo0V1ZTU01JMzd5bVpkMHFWTEhSNEVBT3E1cXd1NVJFbEJtSXFURGpxMzlKOWtNTXg1amFKZDhEOWttUlhkU1Y2UmVnSUgwRWZqWmJmTzdRaVBNM01pczFxTnh0RzYxRk02MFE?oc=5",
+    "published": "2026-11-28T00:26:08+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "c238d9af1e"
+  },
+  {
+    "source": "Gulf News",
+    "source_type": "rss",
+    "title": "OpenAI accuses Apple of stealing trade secrets in countersuit",
+    "summary": "STOCK OpenAI ChatGPT",
+    "url": "https://gulfnews.com/world/americas/openai-accuses-apple-of-stealing-trade-secrets-in-countersuit-1.500763719",
+    "published": "2026-11-28T07:56:48+00:00",
+    "author": "AFP",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "182360f1c0"
+  },
+  {
+    "source": "Asharq Al-Awsat English",
+    "source_type": "rss",
+    "title": "OpenAI Countersues Apple in Row Over Trade Secrets, Suppliers",
+    "summary": "",
+    "url": "https://english.aawsat.com/node/5346527",
+    "published": "2026-11-28T07:12:12+00:00",
+    "author": "author",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "d89d52779e"
+  }
+]

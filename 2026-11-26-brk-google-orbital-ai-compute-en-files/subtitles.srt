@@ -1,0 +1,47 @@
+1
+00:00:00,000 --> 00:00:03,270
+Google will test AI data center racks in orbit
+
+2
+00:00:03,320 --> 00:00:05,150
+It booked a Blue Origin New Glenn launch for
+
+3
+00:00:05,200 --> 00:00:07,130
+the first quarter of 2029
+
+4
+00:00:07,180 --> 00:00:09,290
+Project Suncatcher uses solar-powered satellites
+
+5
+00:00:09,340 --> 00:00:11,870
+carrying Google's Tensor Processing Units
+
+6
+00:00:11,920 --> 00:00:15,490
+The goal: test AI workloads at roughly single-rack scale
+
+7
+00:00:15,540 --> 00:00:17,690
+IDC's Dave McCarthy says no technician can
+
+8
+00:00:17,740 --> 00:00:19,950
+swap a failed GPU at 500 kilometers
+
+9
+00:00:20,000 --> 00:00:22,510
+Data Center Knowledge reports heat rejection
+
+10
+00:00:22,560 --> 00:00:24,630
+is the biggest engineering obstacle
+
+11
+00:00:24,680 --> 00:00:26,650
+Would Gulf data center operators ever look
+
+12
+00:00:26,700 --> 00:00:27,510
+to space for compute?

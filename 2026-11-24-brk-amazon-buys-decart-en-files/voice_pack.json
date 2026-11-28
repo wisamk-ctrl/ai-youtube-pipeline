@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-24-brk-amazon-buys-decart-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "Amazon is buying key assets of AI startup Decart. The reported price is $7.5 billion. It gets Decart's tech for running AI models efficiently on different hardware. Founders and engineers join too, but not Decart's Lucy or Oasis models. Webrazzi says the goal is making Amazon's Trainium chips a rival to Nvidia. Amazon is now preparing to offer Trainium chips to customers. Would your company run its AI on Amazon's chips instead of Nvidia's?"
+    }
+  ]
+}

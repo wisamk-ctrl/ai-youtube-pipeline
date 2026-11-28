@@ -1,0 +1,71 @@
+1
+00:00:00,000 --> 00:00:03,130
+Politico counts six major outages in six days
+
+2
+00:00:03,180 --> 00:00:05,270
+across the United States
+
+3
+00:00:05,320 --> 00:00:07,970
+Microsoft 365 went down on November 12
+
+4
+00:00:08,020 --> 00:00:10,750
+The next day, the FAA halted flight departures
+
+5
+00:00:10,800 --> 00:00:13,030
+nationwide for about four hours
+
+6
+00:00:13,080 --> 00:00:15,730
+Then JPMorgan Chase payments were delayed
+
+7
+00:00:15,780 --> 00:00:18,130
+United Airlines had a systemwide outage, and
+
+8
+00:00:18,180 --> 00:00:20,710
+CNN reported that the NSA's classified network
+
+9
+00:00:20,760 --> 00:00:21,930
+went down
+
+10
+00:00:21,980 --> 00:00:23,310
+So was it an attack?
+
+11
+00:00:23,360 --> 00:00:25,530
+Secretary of State Marco Rubio says there is
+
+12
+00:00:25,580 --> 00:00:27,210
+zero evidence of a malign actor
+
+13
+00:00:27,260 --> 00:00:29,430
+The Director of National Intelligence says
+
+14
+00:00:29,480 --> 00:00:31,870
+security upgrades are taking longer than planned
+
+15
+00:00:31,920 --> 00:00:34,270
+and hitting unexpected problems
+
+16
+00:00:34,320 --> 00:00:36,850
+For businesses in our region, last week's lesson
+
+17
+00:00:36,900 --> 00:00:39,630
+holds: plan for the day a system you depend
+
+18
+00:00:39,680 --> 00:00:40,430
+on goes down

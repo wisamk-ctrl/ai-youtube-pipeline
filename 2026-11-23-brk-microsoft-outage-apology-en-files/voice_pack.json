@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-23-brk-microsoft-outage-apology-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "Microsoft president Brad Smith has apologised again for a global outage that CBS said lasted 24 hours. Smith told CBS it was not linked to AI, and it was not a cyberattack. He blamed a perfect storm: software updated four months earlier, a new update and a shift in network traffic. Microsoft has published two reports in the last 10 days, showing minute by minute what happened. Smith says the company has taken nine steps already, with 13 more to come. He called the wider wave of outages partly AI ripple effects, as AI made flaws in code easier to find. For Gulf firms on global cloud platforms, watch how providers explain and fix outages like this."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "sections": [
+    {
+      "title": "Opening",
+      "start": 0.0
+    },
+    {
+      "title": "Welcome",
+      "start": 31.5
+    },
+    {
+      "title": "The Day Microsoft Stopped",
+      "start": 40.52
+    },
+    {
+      "title": "Gulf Money and AI",
+      "start": 208.52
+    },
+    {
+      "title": "The Biggest IPO in History",
+      "start": 295.19
+    },
+    {
+      "title": "The Model Price War",
+      "start": 464.66
+    },
+    {
+      "title": "Microsoft's Agents Get Their Own Identities",
+      "start": 550.72
+    },
+    {
+      "title": "Agents Now Have Wallets",
+      "start": 626.34
+    },
+    {
+      "title": "Washington and the Chips",
+      "start": 659.04
+    },
+    {
+      "title": "California vs. OpenAI: Who's Responsible?",
+      "start": 713.7
+    },
+    {
+      "title": "Weekly Radar",
+      "start": 807.0
+    },
+    {
+      "title": "Closing",
+      "start": 866.0
+    }
+  ],
+  "sting": {
+    "at": 26.043,
+    "seconds": 5.0
+  },
+  "end_card": {
+    "start": 879.68,
+    "seconds": 15.0
+  },
+  "duration": 894.68
+}

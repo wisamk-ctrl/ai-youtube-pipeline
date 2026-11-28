@@ -1,0 +1,36 @@
+[
+  {
+    "source": "InformationWeek",
+    "source_type": "rss",
+    "title": "Microsoft outage brings enterprise resilience gaps to light",
+    "summary": "Beyond the operational headache, CIOs and CISOs had to contend with increased security threats, such as phishing attempts. As the dust settles, the real work gets started. The recent wave of essential service outages demonstrated the difficulty of applying an enterprise resiliency plan when redundancy options are limited. It's not just the loss of core business services that disrupt enterprises during these outages — CIOs and CISOs also face security challenges when a critical system goes down. \"Microsoft, a core internet cloud provider, had a bad afternoon, and it traveled through email, chat, AI tools and an earnings calendar,\" Brian Greenberg, former CIO for consulting firm RHR International, said in a LinkedIn post . \"And in my experience, most continuity plans can't cover an outage like this. Since these SaaS providers are essentially utilities, it's like having the power go out in your home. \" In Microsoft's case, the Outlook and 365 outage was also long-lasting: It is now the largest reported on Downdetector in the last 12 months, with more than 7 million reports and an outage that lasted over 20 hours. Related: When auditors come for your AI algorithms While system redundancy can eliminate single points of failure and protect IT infrastructure against outages from third-party vendors and cloud providers, it's also expensive, hard to get buy in, difficult to demonstrate ROI and operationally complex to manage. When the affected service or application is essential to business operations, CIOs must rethink their approach to risk management and cybersecurity. In addition to the operational risk of lost business, enterprises face both internal and external security risks when a critical system such as Outlook is unavailable. \"One risk is that employees will start finding other ways to get their jobs done (such as webmail, personal FTP [file transfer], and even WhatsApp), when all work-related comms should really be through formal channels,\" said Rik Turner, chief analyst at Omdia. In the case of Outlook, the outage was widely reported, which created an opportunity for external threats. Turner said there have been reports of a spike in phishing attacks worded to look like tech support emails. Microsoft Threat Intelligence reported observing a coordinated, high-volume phishing campaign that targeted enterprises globally across different verticals. \"Better email security against those phishing attempts is a good place to start,\" Turner said. Chuck Adkins,…",
+    "url": "https://www.informationweek.com/risk-management/microsoft-outage-brings-enterprise-resilience-gaps-to-light",
+    "published": "2026-11-19T20:49:09+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "6bea164bfa"
+  },
+  {
+    "source": "BankInfoSecurity",
+    "source_type": "rss",
+    "title": "Microsoft Outage Tests Healthcare Cyber Resilience",
+    "summary": "Business Continuity Management / Disaster Recovery , Critical Infrastructure Security , Email Security & Protection A global Microsoft 365 cloud services outage that disrupted organizations across multiple sectors underscored the need for hospitals and other medical facilities to strengthen operational resilience, manage third-party technology dependencies and prepare for disruptions - even when cyberattacks aren't to blame, experts said. See Also: When Prevention Failed: Real Recovery Stories from the Trenches Microsoft has said the disruption was not caused by malicious actors. But the outage served as another reminder that healthcare organizations must be prepared to maintain critical operations when essential cloud-based communications and other services become unavailable. The Microsoft 365 global outage that began Thursday primarily affected U.S. healthcare organizations through administrative, communications and authentication bottlenecks rather than disruptions to core electronic health record systems or bedside clinical platforms, said David Utzke, CEO and CTO at security firm MyKey Technologies (see: Microsoft Cloud Service Outage Triggers Global Disruption ). Because the failure centered on Exchange Online - Microsoft's cloud-based business email service - and Microsoft 365 features tracked under incidents EX1550543 and MO1550821 - hospitals and clinics generally remained operational for patient care while struggling with behind-the-scenes coordination, Utzke said. Unlike the July 2024 CrowdStrike outage , which crashed Windows endpoints worldwide, this week's Microsoft disruption primarily affected email, calendar synchronization and cloud productivity tools, he said. \"The initial sense of the impact in the U.S. involves administrative strain over clinical shutdowns. U.S. hospitals and public agencies largely kept emergency and inpatient care running while scrambling to implement manual communication workarounds,\" Utzke said. Errol Weiss, chief security officer at the Health Information Sharing and Analysis Center, said reports from healthcare CISOs and Health-ISAC members similarly suggest that the most visible impact involved disruptions to email and staff coordination. \"Several organizations were developing contingency plans depending on how long the outage lasted,\" he said. For many, services were returning by early Friday morning, with email delivery resuming. \"Some advised users to allow time for Outlook to synchronize and to expect…",
+    "url": "https://www.bankinfosecurity.com/microsoft-outage-tests-healthcare-cyber-resilience-a-33389",
+    "published": "2026-11-19T23:51:36+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "450d6dc15f"
+  }
+]

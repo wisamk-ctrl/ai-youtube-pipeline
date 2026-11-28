@@ -1,0 +1,22 @@
+[
+  {
+    "source": "Data Center Knowledge",
+    "source_type": "rss",
+    "title": "Google, Blue Origin Plan Orbital AI Compute Test",
+    "summary": "The 2029 mission will deploy rack-scale computing satellites, with cooling, autonomous recovery, and hardware longevity likely to determine whether orbital infrastructure can support commercial workloads. Google has booked a Blue Origin New Glenn launch for the first quarter of 2029 to advance Project Suncatcher, a test of solar-powered computing satellites designed to evaluate whether space-based infrastructure can support AI workloads at roughly the scale of individual data center racks. The companies announced the agreement Nov. 19 , outlining a dedicated heavy-lift mission to place satellites equipped with Google’s Tensor Processing Units into sun-synchronous orbit. Google has described the project as a long-term effort to expand AI infrastructure by tapping solar energy in space. For data center operators and investors, the more immediate questions are how much useful computing the satellites can sustain, how they recover from failures, and whether their operating lives can justify launch and replacement costs. Dave McCarthy, IDC’s group vice president for cloud and datacenters, enterprise infrastructure, told Data Center Knowledge that successful deployments will need to demonstrate sustained uptime, autonomous fault recovery, and optical communications capable of keeping pace with the processors. Related: Edge AI May Give Telecoms a Seat at the Table “A server rack in orbit has to prove it can run for long periods of time because you can’t send a technician to swap a failed GPU at 500 kilometers,” he said. Those requirements sharpen the technical and economic questions surrounding Orbital’s planned AI satellites , including radiation resilience and the ability to sustain GPU operations over time. Rob DeMillo, CEO and cofounder of orbital computing company Sophia Space, said the demonstrations must also show that multiple nodes can compute together and run useful customer workloads. “An operator doesn’t necessarily need a demonstration to be large. They need it to demonstrate that the underlying architecture works and can scale,” DeMillo told Data Center Knowledge . “There is a significant difference between putting a computer in space and building computing infrastructure in space.” Heat rejection remains the largest engineering obstacle. Because space has no atmosphere to carry heat away, operators must rely on radiators, which add weight and complexity and compete with processors and other components for launch capacity. Bill Ray, distinguished…",
+    "url": "https://www.datacenterknowledge.com/edge-data-centers/google-blue-origin-plan-orbital-ai-compute-test",
+    "published": "2026-11-25T16:00:10+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "agents",
+    "region": "products",
+    "entities": [
+      "OpenAI Codex",
+      "Together AI"
+    ],
+    "id": "9008ae6288"
+  }
+]

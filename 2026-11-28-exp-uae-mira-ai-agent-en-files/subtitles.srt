@@ -1,0 +1,47 @@
+1
+00:00:00,000 --> 00:00:03,990
+Mira is the UAE's new AI agent for government services
+
+2
+00:00:04,040 --> 00:00:06,440
+Arabian Business reports it will handle Emirates ID
+
+3
+00:00:06,490 --> 00:00:08,240
+residence and work permit renewals
+
+4
+00:00:08,290 --> 00:00:10,450
+Khaleej Times reports the first services arrive
+
+5
+00:00:10,500 --> 00:00:11,660
+in March 2027
+
+6
+00:00:11,710 --> 00:00:14,570
+Zawya reports the UAE is moving half of government
+
+7
+00:00:14,620 --> 00:00:16,570
+services to agentic AI
+
+8
+00:00:16,620 --> 00:00:18,710
+An Artefact white paper asks how agencies keep
+
+9
+00:00:18,760 --> 00:00:21,650
+control of data, models and agents
+
+10
+00:00:21,700 --> 00:00:23,930
+For firms that file permits, the service counter
+
+11
+00:00:23,980 --> 00:00:25,550
+may become a conversation
+
+12
+00:00:25,600 --> 00:00:28,550
+Would your company trust an AI agent with visa renewals?

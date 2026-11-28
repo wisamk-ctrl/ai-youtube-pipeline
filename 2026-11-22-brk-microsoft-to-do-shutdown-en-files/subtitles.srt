@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:02,770
+Microsoft is shutting down To Do, its task-manager
+
+2
+00:00:02,820 --> 00:00:05,350
+app, after nearly 10 years
+
+3
+00:00:05,400 --> 00:00:07,250
+The company says the shutdown takes place on
+
+4
+00:00:07,300 --> 00:00:12,010
+June 30, 2027, across Windows, Mac, Android
+
+5
+00:00:12,060 --> 00:00:13,690
+iOS and the web
+
+6
+00:00:13,740 --> 00:00:16,210
+Existing tasks and lists will not migrate to
+
+7
+00:00:16,260 --> 00:00:19,910
+Microsoft Planner, the new home for work and school tasks
+
+8
+00:00:19,960 --> 00:00:22,290
+Planner is not available on personal accounts
+
+9
+00:00:22,340 --> 00:00:26,150
+including Microsoft 365 Personal and Family subscribers
+
+10
+00:00:26,200 --> 00:00:27,330
+They will need another app
+
+11
+00:00:27,380 --> 00:00:30,170
+Microsoft says it will offer an export option
+
+12
+00:00:30,220 --> 00:00:32,690
+but has not yet published the details
+
+13
+00:00:32,740 --> 00:00:35,010
+The underlying To Do service and APIs will
+
+14
+00:00:35,060 --> 00:00:38,210
+be retired separately, at a date not yet disclosed
+
+15
+00:00:38,260 --> 00:00:40,850
+For Gulf companies running on Microsoft tools
+
+16
+00:00:40,900 --> 00:00:43,250
+watch how smoothly teams move their task data
+
+17
+00:00:43,300 --> 00:00:44,050
+before the deadline

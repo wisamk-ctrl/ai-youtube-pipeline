@@ -1,0 +1,71 @@
+1
+00:00:00,000 --> 00:00:02,770
+OpenAI's chief scientist Jakub Pachocki wants
+
+2
+00:00:02,820 --> 00:00:05,270
+rival AI labs to agree on limits for their
+
+3
+00:00:05,320 --> 00:00:06,730
+most powerful models
+
+4
+00:00:06,780 --> 00:00:09,550
+In an essay published November 22, he proposes
+
+5
+00:00:09,600 --> 00:00:13,250
+common limits based on perplexity and other measurements
+
+6
+00:00:13,300 --> 00:00:15,310
+Perplexity scores how well a model guesses
+
+7
+00:00:15,360 --> 00:00:17,070
+the next piece of text
+
+8
+00:00:17,120 --> 00:00:19,330
+OpenAI published its own scores for the first
+
+9
+00:00:19,380 --> 00:00:24,150
+time, falling from about 0.99 for GPT-3.5 to
+
+10
+00:00:24,200 --> 00:00:26,880
+under 0.8 for its newest models
+
+11
+00:00:26,930 --> 00:00:28,870
+Labs would stay below the limits until they
+
+12
+00:00:28,920 --> 00:00:31,770
+can understand and monitor model behavior
+
+13
+00:00:31,820 --> 00:00:34,130
+CEO Sam Altman backed the idea
+
+14
+00:00:34,180 --> 00:00:37,170
+Reports name no limit value, no start date
+
+15
+00:00:37,220 --> 00:00:38,850
+and no body to run it
+
+16
+00:00:38,900 --> 00:00:41,450
+For Gulf governments building AI capacity
+
+17
+00:00:41,500 --> 00:00:43,630
+watch whether shared limits become a standard
+
+18
+00:00:43,680 --> 00:00:44,670
+they're expected to follow

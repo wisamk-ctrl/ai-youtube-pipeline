@@ -1,0 +1,21 @@
+[
+  {
+    "source": "Tech Times",
+    "source_type": "rss",
+    "title": "Jay Clayton Predicts More Tech Outages From Patching, Won't Explain Suspected FBI, USDA Hacks",
+    "summary": "Director of National Intelligence (DNI) Jay Clayton told CNN, ABC and Fox viewers on Sunday, Nov. 22, that Americans should expect more outages as companies and federal agencies replace and patch aging systems, and he declined to explain a suspected FBI hack and a security incident at the Department of Agriculture (USDA). For anyone who banks, flies or works in Microsoft 365, that makes the past 10 days of failures a forecast rather than an anomaly, and the line Clayton draws between patch-driven failures and real intrusions has not yet been tested by investigators. Clayton said on CNN that the upgrade work now under way will bring \"glitches, gaps, interruptions in service,\" and that this is going to happen. He called the upgrades necessary for performance and cybersecurity, because newer technology strains older systems. On ABC he repeated that the outages were not coordinated or state-sponsored. On Fox, Clayton said he could not say where the FBI incident came from or whether anything was compromised, said he was not in a position to give further details, and said the FBI will determine the origin and scope before telling the public. Reuters reported that he also declined to discuss the USDA report and said investigators would answer in due course. The sharpest technical claim in Clayton's account came earlier. On Tuesday, Nov. 17, he told Fox Business that the NSA's network outage followed patching after a PHP vulnerability was identified, because patched systems failed to restart or hand work to other systems as expected. He said the FBI and NSA had appropriately told operators to take systems offline and install the fix. The NSA's own statement, as relayed by Implicator, was less specific, citing scheduled maintenance rather than a patch. The PHP flaws are a matter of public record. Security firm Wiz describes two critical flaws dubbed PHP2Shell, covering four bugs, in software that powers about 70% of websites, and says the vulnerable code had been present for more than a decade. Researchers at Calif and Wiz found them with AI help, with OpenAI also assisting, and PHP issued security patches around Oct. 21. Wiz describes the flaws as memory-safety bugs in PHP, tied to how it handles fatal errors, particularly out-of-memory errors. A patch is new code applied to running software, and new code can introduce new bugs , which engineers call a regression. Patches can also break functionality and require testing, and large organizations can miss…",
+    "url": "https://www.techtimes.com/articles/331300/20261123/jay-clayton-predicts-more-tech-outages-patching-wont-explain-suspected-fbi-usda-hacks.htm",
+    "published": "2026-11-23T06:05:30+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "a27c77f6a1"
+  }
+]

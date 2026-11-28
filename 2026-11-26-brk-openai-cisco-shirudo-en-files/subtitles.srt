@@ -1,0 +1,55 @@
+1
+00:00:00,000 --> 00:00:02,490
+OpenAI and Cisco just launched Shirudo for
+
+2
+00:00:02,540 --> 00:00:03,850
+AI cyber defense
+
+3
+00:00:03,900 --> 00:00:06,050
+The open-source project uses AI agents and
+
+4
+00:00:06,100 --> 00:00:08,030
+eBPF kernel-level defenses
+
+5
+00:00:08,080 --> 00:00:09,990
+The goal is to shield vulnerable infrastructure
+
+6
+00:00:10,040 --> 00:00:12,390
+before permanent patches are deployed
+
+7
+00:00:12,440 --> 00:00:14,330
+Gulf Business reports it targets AI-driven
+
+8
+00:00:14,380 --> 00:00:17,020
+cyberattacks and blocks Java4shell exploits
+
+9
+00:00:17,070 --> 00:00:19,470
+Jeetu Patel says security teams need tools
+
+10
+00:00:19,520 --> 00:00:21,490
+matching the speed of AI threats
+
+11
+00:00:21,540 --> 00:00:23,150
+He calls for self-defending infrastructure
+
+12
+00:00:23,200 --> 00:00:25,730
+that shields itself until patches roll out
+
+13
+00:00:25,780 --> 00:00:28,010
+Would your security team let AI agents guard
+
+14
+00:00:28,060 --> 00:00:28,650
+your infrastructure?

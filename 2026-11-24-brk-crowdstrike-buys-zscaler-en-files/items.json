@@ -1,0 +1,53 @@
+[
+  {
+    "source": "CNBC",
+    "source_type": "web",
+    "title": "CrowdStrike to buy Zscaler in $44 billion deal as AI supercharges cyberattacks",
+    "summary": "CrowdStrike agreed to buy Zscaler in an all-stock deal valued at $43.9 billion, with 1.135 CrowdStrike shares for each Zscaler share. CNBC calls it CrowdStrike's biggest acquisition to date and among the largest in the sector. Zscaler is a network security provider. CEO George Kurtz said the combination gives a single control plane to deploy and control AI and run agentic applications safely. CrowdStrike shares fell 9% on Monday and Zscaler rose nearly 18%. The deal is expected to close in the second half of CrowdStrike's fiscal year 2028. The article sets the deal against recent outages at Microsoft, the FAA and JPMorgan Chase.",
+    "url": "https://www.cnbc.com/2026/11/23/crowdstrike-zscaler-aquisition-ai-cyberattacks.html",
+    "published": "2026-11-23T14:38:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "26e93aaa93"
+  },
+  {
+    "source": "TechCrunch",
+    "source_type": "web",
+    "title": "CrowdStrike to acquire Zscaler for $44 billion",
+    "summary": "CrowdStrike agreed to buy Zscaler in a $43.9 billion all-stock deal, announced Monday. CrowdStrike secures the computers, laptops, phones and other devices on a company's network. Zscaler is a San Jose cloud cybersecurity provider offering zero-trust technology, with about 8,000 enterprise customers. The companies say the deal positions them for the AI era and will help customers safely adopt AI. It is subject to regulatory approval.",
+    "url": "https://techcrunch.com/2026/11/23/crowdstrike-to-acquire-zscaler-for-44-billion/",
+    "published": "2026-11-23T16:20:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "c32e65acfc"
+  },
+  {
+    "source": "The Register",
+    "source_type": "web",
+    "title": "CrowdStrike splashes $44B on Zscaler, customers brace for the bill",
+    "summary": "CrowdStrike agreed to buy Zscaler for $43.9 billion in an all-stock deal, which The Register calls the biggest cybersecurity acquisition on record, ahead of Google's $32 billion acquisition of Wiz. Zscaler holders receive 1.135 CrowdStrike shares each, a 34% premium. CrowdStrike says owning both its Falcon endpoint protection and Zscaler's zero-trust network security lets it monitor what AI agents do on corporate devices, where they connect and what data they access. Sysadmins fear higher prices at renewal and vendor lock-in. The deal is expected to close in the second half of CrowdStrike's fiscal 2028, subject to regulators and Zscaler shareholders approving. The article recalls the July 2024 CrowdStrike update that took down an estimated 8.5 million Windows machines.",
+    "url": "https://www.theregister.com/security/2026/11/24/crowdstrike-splashes-44b-on-zscaler-customers-brace-for-the-bill/5311877",
+    "published": "2026-11-24T12:22:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "ba152944e2"
+  }
+]

@@ -1,0 +1,63 @@
+1
+00:00:00,000 --> 00:00:02,670
+A Gulf Today column asks if the public is being
+
+2
+00:00:02,720 --> 00:00:05,330
+told the truth about recent tech outages
+
+3
+00:00:05,380 --> 00:00:07,950
+It says the US grounded all departing flights
+
+4
+00:00:08,000 --> 00:00:11,230
+only the second time since the September 11 attacks
+
+5
+00:00:11,280 --> 00:00:13,950
+Microsoft was down for nearly 24 hours, weeks
+
+6
+00:00:14,000 --> 00:00:17,670
+after announcing 60,000 job cuts, the column says
+
+7
+00:00:17,720 --> 00:00:20,250
+Several American banks went down, and Apple
+
+8
+00:00:20,300 --> 00:00:22,190
+and the National Security Agency's internal
+
+9
+00:00:22,240 --> 00:00:24,070
+network had brief outages
+
+10
+00:00:24,120 --> 00:00:26,370
+One cyber insider says the number of reports
+
+11
+00:00:26,420 --> 00:00:29,450
+hasn't changed, only the newsworthiness threshold
+
+12
+00:00:29,500 --> 00:00:31,490
+The columnist writes that whatever company
+
+13
+00:00:31,540 --> 00:00:34,670
+comms teams say, things are clearly not fine
+
+14
+00:00:34,720 --> 00:00:36,350
+For Gulf businesses and governments running
+
+15
+00:00:36,400 --> 00:00:38,930
+more services in the cloud, how outages get
+
+16
+00:00:38,980 --> 00:00:40,770
+explained to the public is one to watch

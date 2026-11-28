@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:03,470
+Amazon is buying key assets of AI startup Decart
+
+2
+00:00:03,520 --> 00:00:06,330
+The reported price is $7.5 billion
+
+3
+00:00:06,380 --> 00:00:08,390
+It gets Decart's tech for running AI models
+
+4
+00:00:08,440 --> 00:00:10,510
+efficiently on different hardware
+
+5
+00:00:10,560 --> 00:00:13,150
+Founders and engineers join too, but not Decart's Lucy
+
+6
+00:00:13,200 --> 00:00:14,360
+or Oasis models
+
+7
+00:00:14,410 --> 00:00:16,970
+Webrazzi says the goal is making Amazon's Trainium
+
+8
+00:00:17,020 --> 00:00:18,750
+chips a rival to Nvidia
+
+9
+00:00:18,800 --> 00:00:21,810
+Amazon is now preparing to offer Trainium chips to customers
+
+10
+00:00:21,860 --> 00:00:24,410
+Would your company run its AI on Amazon's chips
+
+11
+00:00:24,460 --> 00:00:25,470
+instead of Nvidia's?

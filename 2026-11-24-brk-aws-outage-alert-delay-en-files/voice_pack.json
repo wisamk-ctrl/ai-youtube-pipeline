@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-24-brk-aws-outage-alert-delay-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "AWS took 93 minutes to tell customers about an outage. The outage hit its US East region early on November 15. It began at 3:05 a.m. and lasted until 6:53 a.m. THE ELEC says more than 10 major AWS services were affected. Users hit sign-up errors, authentication failures and connectivity issues. The main casualty was IAM Identity Center, an enterprise login system. AWS engineers responded within minutes, the report says. But the first status page post came only after 93 minutes. The Register reports AWS questioned Downdetector's reliability instead of explaining the failure. The outage drew little attention, coming early on a Sunday. For Gulf firms on global clouds, outage communication is worth watching."
+    }
+  ]
+}

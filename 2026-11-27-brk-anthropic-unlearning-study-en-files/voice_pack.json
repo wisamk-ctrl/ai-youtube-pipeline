@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-27-brk-anthropic-unlearning-study-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "Anthropic research says AI models keep cyberattack knowledge after unlearning. Researchers tested 23 model checkpoints that had been through unlearning. On standard tests, accuracy on cyber questions fell to near chance. But in 14 of 23 cases, models still ranked the correct answers highest. The researchers say unlearning created backdoor-like mechanisms inside the models. Activation on affected neurons rose by 22-100x on cyber text. Would your company trust an AI model that claims to have forgotten?"
+    }
+  ]
+}

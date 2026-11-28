@@ -1,0 +1,55 @@
+1
+00:00:00,000 --> 00:00:03,010
+Reuters reports hackers breached the US Air Force's
+
+2
+00:00:03,060 --> 00:00:04,110
+cloud platform
+
+3
+00:00:04,160 --> 00:00:06,130
+The platform is called Cloud One
+
+4
+00:00:06,180 --> 00:00:08,150
+NBC News says the attack could have exposed
+
+5
+00:00:08,200 --> 00:00:10,010
+sensitive military information
+
+6
+00:00:10,060 --> 00:00:12,610
+The Pentagon did not specifically deny the breach
+
+7
+00:00:12,660 --> 00:00:15,190
+An official said its systems are safe, secure
+
+8
+00:00:15,240 --> 00:00:16,830
+and managed 24-7
+
+9
+00:00:16,880 --> 00:00:18,750
+Federal News Network says contractors found
+
+10
+00:00:18,800 --> 00:00:20,190
+the hack during maintenance
+
+11
+00:00:20,240 --> 00:00:22,550
+The CIA and FBI were also reportedly hacked
+
+12
+00:00:22,600 --> 00:00:23,970
+in recent weeks
+
+13
+00:00:24,020 --> 00:00:26,250
+Would Gulf governments keep military data on
+
+14
+00:00:26,300 --> 00:00:27,290
+cloud platforms now?

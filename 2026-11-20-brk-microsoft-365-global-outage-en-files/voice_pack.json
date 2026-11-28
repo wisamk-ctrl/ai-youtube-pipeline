@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-20-brk-microsoft-365-global-outage-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "A Microsoft 365 outage took down Outlook, Teams and other services around the world. Downdetector logged more than 7.7 million reports in the 60 hours after it began, Broadband Breakfast reports. More than 90 countries and territories logged at least 1,000 reports. Japan's Digital Agency could not receive email. In the UK, almost all NHS Trusts lost email, and some operations were cancelled, Tech Policy Press reports. Microsoft's preliminary review blames a software defect, introduced in July, in its network gateway servers. At worst, more than 80% of those servers stopped responding. Microsoft found no sign of a cyberattack. For the Gulf, watch how much businesses and governments rely on a single cloud provider."
+    }
+  ]
+}

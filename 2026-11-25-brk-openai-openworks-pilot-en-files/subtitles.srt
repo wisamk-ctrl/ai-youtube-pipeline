@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:03,590
+OpenAI is paying locals to bring AI to small businesses
+
+2
+00:00:03,640 --> 00:00:06,430
+The pilot, called OpenWorks, runs in 20 U.S
+
+3
+00:00:06,480 --> 00:00:08,370
+cities, The Rundown reports
+
+4
+00:00:08,420 --> 00:00:10,610
+Helpers, called partners, can receive stipends
+
+5
+00:00:10,660 --> 00:00:12,990
+of up to $8,000 a month
+
+6
+00:00:13,040 --> 00:00:15,710
+Owners pick a task, and the help comes at no cost
+
+7
+00:00:15,760 --> 00:00:19,130
+Businesses also get three free months of ChatGPT Business
+
+8
+00:00:19,180 --> 00:00:21,710
+OpenAI's rules exclude software companies and
+
+9
+00:00:21,760 --> 00:00:23,990
+firms backed by venture capital
+
+10
+00:00:24,040 --> 00:00:26,410
+Would local AI helpers speed up small businesses
+
+11
+00:00:26,460 --> 00:00:26,910
+in the Gulf?

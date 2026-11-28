@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:02,890
+Microsoft shares are down about 13% from their
+
+2
+00:00:02,940 --> 00:00:04,150
+all-time highs
+
+3
+00:00:04,200 --> 00:00:07,630
+Yahoo Finance reports investors worry about AI spending
+
+4
+00:00:07,680 --> 00:00:10,790
+Microsoft spent $45.2 billion on capex last
+
+5
+00:00:10,840 --> 00:00:12,770
+quarter to add computing capacity
+
+6
+00:00:12,820 --> 00:00:16,590
+Free cash flow still stayed positive at $18.6 billion
+
+7
+00:00:16,640 --> 00:00:20,110
+Azure revenue grew 48% from a year earlier
+
+8
+00:00:20,160 --> 00:00:22,930
+Microsoft holds 21% of the global cloud infrastructure
+
+9
+00:00:22,980 --> 00:00:24,870
+market, behind Amazon
+
+10
+00:00:24,920 --> 00:00:27,610
+Nearly 4 million companies use Microsoft 365
+
+11
+00:00:27,660 --> 00:00:30,310
+Is your company already using Copilot at work?

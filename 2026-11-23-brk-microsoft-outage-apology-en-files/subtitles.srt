@@ -1,0 +1,63 @@
+1
+00:00:00,000 --> 00:00:02,470
+Microsoft president Brad Smith has apologised
+
+2
+00:00:02,520 --> 00:00:06,930
+again for a global outage that CBS said lasted 24 hours
+
+3
+00:00:06,980 --> 00:00:09,570
+Smith told CBS it was not linked to AI, and
+
+4
+00:00:09,620 --> 00:00:11,330
+it was not a cyberattack
+
+5
+00:00:11,380 --> 00:00:13,950
+He blamed a perfect storm: software updated
+
+6
+00:00:14,000 --> 00:00:16,510
+four months earlier, a new update and a shift
+
+7
+00:00:16,560 --> 00:00:18,070
+in network traffic
+
+8
+00:00:18,120 --> 00:00:19,930
+Microsoft has published two reports in the
+
+9
+00:00:19,980 --> 00:00:23,290
+last 10 days, showing minute by minute what happened
+
+10
+00:00:23,340 --> 00:00:25,210
+Smith says the company has taken nine steps
+
+11
+00:00:25,260 --> 00:00:27,110
+already, with 13 more to come
+
+12
+00:00:27,160 --> 00:00:29,790
+He called the wider wave of outages partly
+
+13
+00:00:29,840 --> 00:00:32,870
+AI ripple effects, as AI made flaws in code
+
+14
+00:00:32,920 --> 00:00:34,410
+easier to find
+
+15
+00:00:34,460 --> 00:00:37,230
+For Gulf firms on global cloud platforms, watch
+
+16
+00:00:37,280 --> 00:00:39,890
+how providers explain and fix outages like this

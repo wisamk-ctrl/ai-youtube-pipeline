@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-26-brk-google-orbital-ai-compute-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "Google will test AI data center racks in orbit. It booked a Blue Origin New Glenn launch for the first quarter of 2029. Project Suncatcher uses solar-powered satellites carrying Google's Tensor Processing Units. The goal: test AI workloads at roughly single-rack scale. IDC's Dave McCarthy says no technician can swap a failed GPU at 500 kilometers. Data Center Knowledge reports heat rejection is the biggest engineering obstacle. Would Gulf data center operators ever look to space for compute?"
+    }
+  ]
+}

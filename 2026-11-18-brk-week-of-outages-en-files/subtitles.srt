@@ -1,0 +1,79 @@
+1
+00:00:00,000 --> 00:00:02,870
+The BBC reports an unusual run of major outages
+
+2
+00:00:02,920 --> 00:00:04,050
+in the past week
+
+3
+00:00:04,100 --> 00:00:06,610
+A massive Microsoft outage, all US flights
+
+4
+00:00:06,660 --> 00:00:09,310
+grounded for hours, and NSA problems
+
+5
+00:00:09,360 --> 00:00:11,790
+No evidence links them, the BBC says
+
+6
+00:00:11,840 --> 00:00:13,403
+Many followed updates gone wrong
+
+7
+00:00:13,453 --> 00:00:16,430
+JP Morgan Chase blamed a software bug for US
+
+8
+00:00:16,480 --> 00:00:19,070
+bank payment problems, saying it was not a
+
+9
+00:00:19,120 --> 00:00:20,570
+cyber-security incident
+
+10
+00:00:20,620 --> 00:00:23,750
+AI also helped uncover flaws in Java, the third-most
+
+11
+00:00:23,800 --> 00:00:25,070
+popular programming language
+
+12
+00:00:25,120 --> 00:00:27,810
+Hackers using malicious code in Optimizely
+
+13
+00:00:27,860 --> 00:00:30,530
+stole about $7,000 in cryptocurrency before
+
+14
+00:00:30,580 --> 00:00:31,990
+being kicked out
+
+15
+00:00:32,040 --> 00:00:34,330
+Anthropic and OpenAI now give select companies
+
+16
+00:00:34,380 --> 00:00:37,190
+early access to top models, so defenders find
+
+17
+00:00:37,240 --> 00:00:38,570
+flaws first
+
+18
+00:00:38,620 --> 00:00:41,050
+In the Gulf, watch how critical systems test
+
+19
+00:00:41,100 --> 00:00:43,490
+their updates, and who gets early access to
+
+20
+00:00:43,540 --> 00:00:44,130
+defensive AI

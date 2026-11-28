@@ -1,0 +1,21 @@
+[
+  {
+    "source": "Foreign Policy",
+    "source_type": "rss",
+    "title": "The U.S. Tech Outage Wave, Explained",
+    "summary": "Get audio access with any FP subscription. A wave of tech outages in the U.S. federal government and private sector over the past week have made a lot of people understandably nervous. The outages affected commercial air travel, email, banking, and more—in some cases causing disruptions worldwide. A global Microsoft outage that began last Thursday derailed a number of services that businesses, schools, and governments rely on. Then the U.S. Federal Aviation Administration (FAA) issued a rare nationwide ground stop on Friday leading to widespread flight cancellations and delays. Chase Bank, Bank of America, and Apple services also faced brief disruptions in recent days. And on Tuesday, some internal systems at the U.S. National Security Agency (NSA) went down. A wave of tech outages in the U.S. federal government and private sector over the past week have made a lot of people understandably nervous. The outages affected commercial air travel, email, banking, and more—in some cases causing disruptions worldwide. A global Microsoft outage that began last Thursday derailed a number of services that businesses, schools, and governments rely on. Then the U.S. Federal Aviation Administration (FAA) issued a rare nationwide ground stop on Friday leading to widespread flight cancellations and delays. Chase Bank, Bank of America, and Apple services also faced brief disruptions in recent days. And on Tuesday, some internal systems at the U.S. National Security Agency (NSA) went down. Given the outages occurred on such a massive scale and in quick succession, questions have been raised as to whether they were a result of nefarious activities. But there is currently no evidence that the recent incidents were due to cyberattacks or that they were linked. The Microsoft outage was the result of a combination of factors, including a “latent bug” from July that caused servers to become “overwhelmed and unresponsive,” Charles Lamanna, Microsoft’s executive vice president of Copilot, agents, and platform, said in a post on X . Lamanna said a “surge in load” and decreased server capacity had also contributed to the outage. The FAA is still assessing what led to the ground stop, which lasted less than five hours, but a preliminary investigation indicated that the technical problem was caused by the installation of a router at a radio facility in Arkansas that may have flooded its communications network. A radar site in Amarillo, Texas, is also being looked at as part of the…",
+    "url": "https://foreignpolicy.com/2026/11/18/microsoft-outage-faa-apple-nsa-tech-banks-cause-ai-explainer/",
+    "published": "2026-11-18T21:56:18+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Microsoft Copilot"
+    ],
+    "id": "3b04d90a6b"
+  }
+]

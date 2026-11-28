@@ -1,0 +1,55 @@
+1
+00:00:00,000 --> 00:00:02,870
+Anthropic's shares fell on Friday, a day after
+
+2
+00:00:02,920 --> 00:00:05,970
+its stock market debut, the BBC reports
+
+3
+00:00:06,020 --> 00:00:09,690
+On Thursday, trading started at $111.50 and
+
+4
+00:00:09,740 --> 00:00:14,210
+the stock closed up 17% at $97.17
+
+5
+00:00:14,260 --> 00:00:17,170
+On Friday it dropped more than 12% at one point
+
+6
+00:00:17,220 --> 00:00:21,130
+to about $85, near the $83 IPO price
+
+7
+00:00:21,180 --> 00:00:25,250
+It closed down 8.5%, reversing half of Thursday's gains
+
+8
+00:00:25,300 --> 00:00:30,190
+The Nasdaq plunged 5.3%, and the S&P 500 and
+
+9
+00:00:30,240 --> 00:00:32,650
+the Dow entered correction territory
+
+10
+00:00:32,700 --> 00:00:35,690
+The BBC cites concerns over AI spending, with
+
+11
+00:00:35,740 --> 00:00:38,130
+more than $1 trillion spent in the last year
+
+12
+00:00:38,180 --> 00:00:40,170
+by a few major tech companies
+
+13
+00:00:40,220 --> 00:00:42,620
+For the Gulf, watch whether investor nerves
+
+14
+00:00:42,670 --> 00:00:45,210
+change the pace of AI and data center projects

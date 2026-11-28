@@ -1,0 +1,51 @@
+1
+00:00:00,000 --> 00:00:04,570
+CrowdStrike is buying Zscaler for $43.9 billion
+
+2
+00:00:04,620 --> 00:00:05,850
+all in stock
+
+3
+00:00:05,900 --> 00:00:07,610
+The Register calls it the biggest cybersecurity
+
+4
+00:00:07,660 --> 00:00:09,330
+acquisition on record
+
+5
+00:00:09,380 --> 00:00:11,170
+CrowdStrike protects devices
+
+6
+00:00:11,220 --> 00:00:13,990
+Zscaler secures the network with zero-trust technology
+
+7
+00:00:14,040 --> 00:00:15,630
+CrowdStrike says together they can watch what
+
+8
+00:00:15,680 --> 00:00:17,770
+AI agents do and access
+
+9
+00:00:17,820 --> 00:00:20,630
+My view: as AI agents browse the internet
+
+10
+00:00:20,680 --> 00:00:22,830
+this is a seismic move for security
+
+11
+00:00:22,880 --> 00:00:25,770
+Watch the regulators, renewal prices, and whether
+
+12
+00:00:25,820 --> 00:00:26,790
+outages get rarer
+
+13
+00:00:26,840 --> 00:00:30,050
+Would your company trust one vendor for all its security?

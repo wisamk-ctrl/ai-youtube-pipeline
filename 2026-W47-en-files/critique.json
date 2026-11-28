@@ -1,0 +1,177 @@
+[
+  {
+    "scores": {
+      "hook": 10,
+      "clarity": 8,
+      "pacing": 7,
+      "flow": 10,
+      "arabic": 10,
+      "value": 10
+    },
+    "minimum": 7,
+    "verdict": "Solid, well-sourced stories with real regional analysis, but it needs pauses inserted throughout and a few names explained before Wissam can read it to camera.",
+    "defects": [
+      {
+        "axis": "hook",
+        "severity": "minor",
+        "rule": "Hook exceeds 45 words",
+        "quote": "So if your whole company runs on a single provider"
+      },
+      {
+        "axis": "clarity",
+        "severity": "major",
+        "rule": "Unknown name with no few-word explanation",
+        "quote": "HUMAIN is targeting the skills gap in Saudi Arabia"
+      },
+      {
+        "axis": "clarity",
+        "severity": "major",
+        "rule": "Unknown name with no few-word explanation",
+        "quote": "carried out a cyberattack on the Hugging Face platform"
+      },
+      {
+        "axis": "clarity",
+        "severity": "major",
+        "rule": "Unknown names with no few-word explanation",
+        "quote": "Space42 and Exodigo have partnered to map what's underground"
+      },
+      {
+        "axis": "clarity",
+        "severity": "major",
+        "rule": "Technical term unexplained for non-specialists",
+        "quote": "Pricing is per million tokens."
+      },
+      {
+        "axis": "clarity",
+        "severity": "major",
+        "rule": "Technical term unexplained for non-specialists",
+        "quote": "2.4 trillion parameters."
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Sentence over 25 words",
+        "quote": "But the data center commitments determine how much capacity will be available tomorrow"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Sentence over 25 words",
+        "quote": "Its sign-in and every action it takes are logged"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Sentence over 25 words",
+        "quote": "There has to be oversight at every level"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Sentence over 25 words",
+        "quote": "And for the Gulf, with the UAE and Saudi Arabia wanting to lead"
+      },
+      {
+        "axis": "clarity",
+        "severity": "minor",
+        "rule": "Referent unclear: 'running meetings' never stated earlier",
+        "quote": "verify the claim about running meetings on its own"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "Satya Nadella, Microsoft's CEO, spoke on Wednesday"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "In Britain, the outage opened up the debate"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "And this month, ADNOC and AI company G42"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "That's over 19 years, and most of it goes"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "Now let's move to agents, and back to Microsoft."
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "OpenAI launched a wallet inside ChatGPT"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "In the world of chips, three headlines point"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "the state of California has sued OpenAI"
+      },
+      {
+        "axis": "pacing",
+        "severity": "major",
+        "rule": "More than 60 spoken words with no pause",
+        "quote": "The companies building these systems are responsible for protecting people."
+      },
+      {
+        "axis": "arabic",
+        "severity": "major",
+        "rule": "Word-for-word phrasing that sounds odd to native ear",
+        "quote": "only as strong as the infrastructure underneath it can bear"
+      },
+      {
+        "axis": "value",
+        "severity": "major",
+        "rule": "Figure stated with no spoken attribution",
+        "quote": "Abu Dhabi investment firm MGX entered a partnership with BlackRock"
+      }
+    ],
+    "worst_three": [
+      {
+        "where": "Now let's move to agents",
+        "problem": "The whole Microsoft agents story runs well over 150 words with no pause, so a phone listener loses the identity and audit point.",
+        "fix": "Insert [Pause] after 'the agent picks up the comment.', after 'without anyone asking it to.' and after 'the tech team can shut it down.'; split the sign-in sentence: 'Its sign-in and every action are logged under its name. So there's a clear audit trail. And the tech team can shut it down.'"
+      },
+      {
+        "where": "The model has 2.4 trillion",
+        "problem": "Broad-audience listeners hear 'tokens' and 'parameters' with no idea what they are, so the price war and the Qwen numbers mean nothing.",
+        "fix": "After 'Pricing is per million tokens.' add 'A token is roughly a short word or part of a word.' Before '2.4 trillion parameters' add 'Parameters are the internal settings a model learns; more usually means more capable.'"
+      },
+      {
+        "where": "HUMAIN is targeting the skills",
+        "problem": "Listeners don't know what HUMAIN, Hugging Face or Space42/Exodigo are, so they can't follow who is doing what.",
+        "fix": "Rewrite as 'HUMAIN, Saudi Arabia's national AI company backed by the Public Investment Fund, is targeting...'; 'the Hugging Face platform, a popular site where developers share AI models'; 'Space42, a UAE space-tech company, and Exodigo, which maps underground sites without digging, have partnered...'"
+      }
+    ],
+    "samples": [
+      {
+        "hook": 10,
+        "clarity": 8,
+        "pacing": 7,
+        "flow": 10,
+        "arabic": 10,
+        "value": 10
+      }
+    ],
+    "stable": true,
+    "language": "en"
+  }
+]

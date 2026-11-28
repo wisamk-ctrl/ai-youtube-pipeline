@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-22-brk-claude-riemann-proof-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "An Anthropic mathematician says the company's AI, Claude, helped him prove the Riemann hypothesis. The Guardian reports Levent Alpöge posted the claim on his personal website on Friday. He says Claude helped develop the solution over about six weeks. The problem dates to 1859, when German mathematician Bernhard Riemann proposed it. It concerns how prime numbers are distributed. On Saturday, the Lean Focused Research Organization and the Mathlib Initiative said they independently verified it. The note came one day after Anthropic listed on Nasdaq. The Guardian says mathematicians are uneasy about companies paying millions for such work. For Gulf governments and research institutions, watch whether AI-assisted proofs reshape how science and research partnerships are funded."
+    }
+  ]
+}

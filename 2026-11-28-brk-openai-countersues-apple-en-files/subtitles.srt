@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:03,710
+OpenAI has countersued Apple over alleged trade secret theft
+
+2
+00:00:03,760 --> 00:00:07,090
+It filed on 27 November in a California federal court
+
+3
+00:00:07,140 --> 00:00:09,190
+OpenAI claims Apple obtained its device roadmap
+
+4
+00:00:09,240 --> 00:00:10,990
+through a re-hired engineer
+
+5
+00:00:11,040 --> 00:00:12,790
+It alleges Apple threatened shared suppliers
+
+6
+00:00:12,840 --> 00:00:14,210
+with lost contracts
+
+7
+00:00:14,260 --> 00:00:17,490
+OpenAI says around 400 specialists have moved from Apple
+
+8
+00:00:17,540 --> 00:00:20,470
+Apple sued first in July and rejects the allegations
+
+9
+00:00:20,520 --> 00:00:22,650
+Analysts say OpenAI is building AI devices
+
+10
+00:00:22,700 --> 00:00:24,350
+with Jony Ive's team
+
+11
+00:00:24,400 --> 00:00:27,150
+Would Gulf companies choose OpenAI devices over iPhones?

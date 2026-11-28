@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-22-brk-microsoft-to-do-shutdown-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "Microsoft is shutting down To Do, its task-manager app, after nearly 10 years. The company says the shutdown takes place on June 30, 2027, across Windows, Mac, Android, iOS and the web. Existing tasks and lists will not migrate to Microsoft Planner, the new home for work and school tasks. Planner is not available on personal accounts, including Microsoft 365 Personal and Family subscribers. They will need another app. Microsoft says it will offer an export option, but has not yet published the details. The underlying To Do service and APIs will be retired separately, at a date not yet disclosed. For Gulf companies running on Microsoft tools, watch how smoothly teams move their task data before the deadline."
+    }
+  ]
+}

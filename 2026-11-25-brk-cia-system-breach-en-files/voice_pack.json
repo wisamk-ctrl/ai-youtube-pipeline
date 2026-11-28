@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-25-brk-cia-system-breach-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "CIA analysis system breached, The New York Times reports. Sources say only unclassified information was exposed, and it's resolved. The system handles open source intelligence, like internet and satellite data. It's unclear what was taken, or who did it. The FBI's national crime database was also recently hacked. Apple, JP Morgan Chase and Microsoft also had systems go down this month. Intelligence chief Jay Clayton blames rushed upgrades against AI-armed hackers. Is your organisation patching fast enough to outpace AI-armed hackers?"
+    }
+  ]
+}

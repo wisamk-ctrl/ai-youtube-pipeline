@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-28-exp-shirudo-runtime-shields-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "OpenAI and Cisco want to shield servers before patches arrive. Testing and deploying a patch can take days or weeks, OpenAI says. Cisco's Thomas Graf says some flaws are now exploited before disclosure. Their open-source answer is Shirudo, Japanese for shield. Teams test whether a shield blocks the flaw but lets real requests through. OpenAI says, in a controlled test, a shield stopped Java4Shell without a restart. Would your team let AI agents write shields for your servers?"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+[
+  {
+    "source": "Gulf News",
+    "source_type": "rss",
+    "title": "Pentagon refuses to confirm reported hack of Air Force cloud system",
+    "summary": "The department says military systems remain secure but declines to discuss network status Washington: The US military denied Friday any issues with its computer security following media reports that the Air Force's cloud based system was hacked, in what would be the latest high profile breach of US digital infrastructure in recent weeks. Asked whether the Air Force's Cloud One platform had been hacked, the Pentagon did not specifically deny that the system had been breached. Instead, a Defence Department official told AFP late Friday that \"The Department of War's systems are safe, secure, and managed 24-7 by the best experts and teams in the world. We will continue to maintain all mission-critical operations and applications.\" \"As a matter of policy and operations security, the Department of War does not comment on the status of our networks,\" a Defence Department official said earlier on Friday. NBC News , a major US broadcaster, reported Friday citing an unnamed US official, that the cloud platform had been breached and that an attack \"could have exposed sensitive military information.\" The breach was first reported by Reuters earlier Friday. Federal News Network, which specialises in covering US federal agencies, also confirmed the breach, citing a \"person familiar with the incident.\" The contractors discovered the hack earlier in the year while doing maintenance on the system, Federal News said. The reported attack is the latest in a string of major outages in US government and private-sector digital infrastructure. In recent weeks the CIA and FBI were also reportedly subject to hacks. Suppliers for major American financial institutions including JPMorgan Chase, Visa and Mastercard were also hit. In other instances, such as a major Microsoft Outlook outage, a separate US air traffic control issue and a reported issue with a top-secret National Security Agency (NSA) network earlier this month, officials were at pains to blame the outages on maintenance or defects -- not intrusions. The attacks and outages are not limited to the United States. The European Commission last week said it came under an AI-assisted cyberattack in October. AFP was hit by a cyber attack on Thursday, forcing a major client-facing system to be taken offline. Hackers breach major US Air Force cloud data platform US moves to recover $1.1 billion stolen in Binance hack United Airlines flights delayed after 90-minute outage Binance resumes withdrawals after $6.34b crypto hack",
+    "url": "https://gulfnews.com/world/americas/pentagon-refuses-to-confirm-reported-hack-of-air-force-cloud-system-1.500763835",
+    "published": "2026-11-28T07:28:40+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "gulf",
+    "entities": [],
+    "id": "bfbb77e7e4"
+  }
+]

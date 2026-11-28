@@ -1,0 +1,19 @@
+[
+  {
+    "source": "THE ELEC, Korea Electronics Industry Media",
+    "source_type": "rss",
+    "title": "AWS Faces Customer Backlash Over 93-Minute Delay in Outage Alert",
+    "summary": "Amazon Web Services (AWS) has come under criticism for delaying its notification of a major data center service outage that lasted nearly four hours. According to major international media reports on Nov. 23, an outage occurred in AWS's US East (us-east-1) region, one of its largest and most critical infrastructure hubs, at 3:05 a.m. local time on Nov. 15. The disruption lasted about three hours and 48 minutes, affecting more than 10 major AWS services through sign-up errors, authentication failures and connectivity issues. Services were not fully restored until 6:53 a.m. The controversy centers on AWS's handling of incident communications. Although AWS engineers began responding within five minutes of the outage, the company did not post its first official notification on its customer-facing status page until 93 minutes after the disruption began. The outage attracted relatively little media and public attention. It occurred early on a Sunday morning and was overshadowed by other major disruptions, including a Microsoft 365 outage on Nov. 13 and a Federal Aviation Administration (FAA) air traffic control system failure that caused a nationwide suspension of flight operations in the United States. Another factor limiting public attention was that the disruption primarily affected IAM Identity Center, an authentication system used by enterprise developers, rather than consumer-facing applications. For enterprise customers, however, the delay meant spending more than 90 minutes without even knowing the cause of the disruption. International media outlets also criticized AWS's defensive response. According to technology publication The Register, when signs of the AWS outage appeared on the real-time outage reporting platform Downdetector, the company focused on questioning the platform's reliability rather than explaining its own system failures. Downdetector serves as a reference tool for users seeking to determine whether service problems stem from their own systems or a broader infrastructure outage. In March this year, Accenture acquired Ookla, Downdetector's parent company, from Ziff Davis Media.",
+    "url": "https://www.thelec.net/news/articleView.html?idxno=15842",
+    "published": "2026-11-24T01:40:11+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "",
+    "region": "",
+    "entities": [],
+    "id": "9fa5edc42f"
+  }
+]

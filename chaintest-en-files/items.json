@@ -1,0 +1,41 @@
+[
+  {
+    "source": "The Guardian",
+    "source_type": "rss",
+    "title": "California sues OpenAI over safety concerns after rogue agent hacking",
+    "summary": "Lawsuit stems from earlier incident where tech company’s products hacked into open-source platform Hugging Face California sued OpenAI on Monday, accusing the artificial intelligence titan of developing its technology without safety or the public’s interest in mind. The lawsuit concerns an incident earlier this year where OpenAI agents – semi-autonomous AI software that can carry out digital actions on behalf of users – launched a cyber-attack into the open-source AI platform Hugging Face. Rob Bonta, California’s attorney general, said the “infamous” attack was just one of 80 known incidents involving “loss of control” and shows that OpenAI doesn’t have adequate safeguards in place to protect society. “While narratives about the Hugging Face attack have evoked science fiction fantasies of rogue AI systems run amok, let me be clear: the Hugging Face attack was the predictable result of an internal culture at OpenAI that prioritizes growth and rapid model development over safety and accountability,” Bonta said in a statement. The lawsuit, filed in state superior court in San Francisco, alleges OpenAI violated California’s Unfair Competition Law and is a public nuisance as defined by state law. Bonta is asking the court to order OpenAI to change its business practices and pay civil penalties. California’s lawsuit follows Bonta’s formal investigation into OpenAI, launched in September, over the Hugging Face incident, followed by a subpoena of the company investigating other cybersecurity incidents and risks with its models. The Federal Trade Commission is also conducting an industry-wide investigation into OpenAI, Anthropic and other AI labs over the potential dangers their technology poses to consumers’ digital security. In July, OpenAI revealed that one of its autonomous AI agents went rogue during a test , accessing the open web and hacking into Hugging Face. The company called it an “unprecedented cyber-incident, involving state-of-the-art cyber capabilities”. Since then, several other incidents involving OpenAI have come to light, including a breach of government websites in Australia. Other AI firms, including Anthropic and Google, have also disclosed rogue agent activity . Drew Pusateri, a spokesperson for OpenAI, said the company has worked to create safeguards for its AI models, along with identifying and disclosing incidents of “misalignment”. He said most cases identified have been low severity with limited-to-no impact. “Since the Hugging Face…",
+    "url": "https://www.theguardian.com/technology/2026/nov/16/california-openai-rogue-agent-hacking-lawsuit",
+    "published": "2026-11-17T18:06:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic",
+      "OpenAI"
+    ],
+    "id": "7d4307f50c"
+  },
+  {
+    "source": "Daily Sabah",
+    "source_type": "rss",
+    "title": "California sues OpenAI over AI models' hacking incidents | Daily Sabah",
+    "summary": "California sues OpenAI over AI models' hacking incidents | Daily Sabah Daily Sabah",
+    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPX1ExT0dBaC0xLTlRbnR1RG11TXgwMkdNaV9RSHdHdTVQTDRWOWpmclVrck9FZUJ4YmdSblNNbXdkbkotenl0SmhLeG5yNW1RakN5dlRrR2RnRllseTUtbXAxR2JET3pRNm11ekRDNXhDT3FzSVJ3UnpoQW9XeVlqano5NkFrU2ZzeEU2RVAtQUstTVlVcUFNQlM0bzVtR2RlcUHSAaIBQVVfeXFMT19RMU9HQWgtMS05UW50dURtdU14MDJHTWlfUUh3R3U1UEw0VjlqZnJVa3JPRWVCeGJnUm5TTW13ZG5KLXp5dEpoS3hucjVtUWpDeXZUa0dkZ0ZZbHk1LW1wMUdiRE96UTZtdXpEQzV4Q09xc0lSd1J6aEFvV3lZamp6OTZBa1Nmc3hFNkVQLUFLLU1ZVXFBTUJTNG81bUdkZXFB?oc=5",
+    "published": "2026-11-16T21:51:00+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 1.0,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "OpenAI"
+    ],
+    "id": "f06ba4a0a3"
+  }
+]

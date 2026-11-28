@@ -1,0 +1,40 @@
+[
+  {
+    "source": "Crypto Briefing",
+    "source_type": "rss",
+    "title": "Anthropic study finds AI models still hold cyberattack knowledge after unlearning",
+    "summary": "Researchers found that 14 of 23 unlearned model checkpoints still ranked the correct answers to hazardous cyber questions highest Thu 26 Nov 2026 · 18:06 EST · 3 min read AI labs have a cleanup tool for dangerous knowledge. It’s called unlearning, and new Anthropic research suggests it works more like a curtain than a shredder. In a study published on November 23, 2026, Anthropic researchers Jasmine Shone and Lisa Dunlap found that 14 of 23 model checkpoints put through unlearning still favored the correct answers to hazardous cybersecurity questions. On paper, those models looked scrubbed. Underneath, much of the knowledge was still there. The team ran its audit using the WMDP-cyber benchmark. The test contains 1,987 multiple-choice questions covering dangerous cyber topics, the kind of material developers would rather their models not help anyone with. Each of the 23 checkpoints had been through some form of unlearning. The techniques differed, but the goal was the same: make the model forget the risky material. Under standard testing, the techniques appeared to succeed. Overall accuracy on the cyber questions fell to near chance levels, roughly what a model would score by picking answers at random. Then the researchers looked past the final answer and checked how the models ranked the possible answer texts. In 14 of the 23 cases, the models still put the original correct answers at the top. The more unsettling detail sits inside the models themselves. According to the researchers, unlearning did not remove the underlying knowledge as intended. Instead, the methods created what the authors describe as backdoor-like mechanisms. Specific neurons began responding strongly to cyber-related text after the unlearning attempts. Daily. Free. Join 34,000+ readers across crypto, finance, and policy. We respect your privacy. Unsubscribe anytime. How strongly? Activation on the forget-set text (the cyber material the models were meant to drop) rose by factors of 22-100x on the affected neurons. The researchers say this pattern helps explain a problem the field has run into before. Capabilities that seemed removed can sometimes come back through light fine-tuning or tweaked prompting. The study is Part 2 of an Anthropic series titled “Returning to the Neuron Basis for Interpretability.” Interpretability is the branch of AI research that tries to work out what is happening inside a model, rather than judging it only by its outputs. This paper shows why that matters.…",
+    "url": "https://cryptobriefing.com/anthropic-ai-unlearning-cyberattack-knowledge/",
+    "published": "2026-11-26T23:06:08+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic"
+    ],
+    "id": "0b3d650ae1"
+  },
+  {
+    "source": "shattered.io",
+    "source_type": "rss",
+    "title": "China AI Deals Hit by $1.7T Rout After Anthropic IPO",
+    "summary": "China AI Deals Hit by $1.7T Rout After Anthropic IPO shattered.io",
+    "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQd2l1bXdPSE4zOWtLZkFrUm1fZGxSU1ZPaUctU29KQU9mSWRWSTg3N2lzZHRfeEZMOFc1NnlOR183TGRabXJsRXVrWFF6MXlhTjhmS1Uza1liZ21ZRkRXNzR0WklvNlR6cTN4QXBXNGE4Wm41UFljb2laaW0zc3RmWkVtM2piV29UZGF6OXRKMmhicWludE83YzdtSlJWTGdC?oc=5",
+    "published": "2026-11-25T13:18:30+00:00",
+    "author": "",
+    "engagement": 0,
+    "source_weight": 0.9,
+    "score": 0.0,
+    "score_breakdown": {},
+    "track": "models",
+    "region": "us",
+    "entities": [
+      "Anthropic"
+    ],
+    "id": "e65d0a2a59"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "week": "2026-11-26-brk-openai-cisco-shirudo-en",
+  "chunks": [
+    {
+      "id": "01-voice",
+      "role": "voice",
+      "text": "OpenAI and Cisco just launched Shirudo for AI cyber defense. The open-source project uses AI agents and eBPF kernel-level defenses. The goal is to shield vulnerable infrastructure before permanent patches are deployed. Gulf Business reports it targets AI-driven cyberattacks and blocks Java4shell exploits. Jeetu Patel says security teams need tools matching the speed of AI threats. He calls for self-defending infrastructure that shields itself until patches roll out. Would your security team let AI agents guard your infrastructure?"
+    }
+  ]
+}
