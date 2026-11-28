@@ -1,0 +1,4 @@
+Checked by hand 2026-11-28 (founder approved the W48 script on issue #109). The source check flagged two lines with no news item behind them:
+- (166) Next week, it's GITEX in Dubai, and we'll cover its biggest announcements.  ← GITEX GLOBAL 2026 runs 7-11 December 2026 in Dubai (organiser press release 721dfee12c, WAM via Zawya 82e6d1b6e3; also docs/EVENTS_2027.md). The episode publishes 29 November, so "next week" is right.
+- (168) I've spent 25 years in enterprise software, across the Middle East, Turkey and Africa.  ← the founder's own biography, as in every sign-off.
+Definitions (open model, distillation, gigawatt) are plain explanations, not news claims.
