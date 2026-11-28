@@ -14,6 +14,7 @@ test("asks only for the scopes the demo shows", () => {
   assert.equal(u.origin + u.pathname, "https://www.tiktok.com/v2/auth/authorize/");
   assert.equal(u.searchParams.get("scope"), "user.info.basic,video.publish");
   assert.equal(u.searchParams.get("state"), "s1");
+  assert.equal(u.searchParams.get("disable_auto_auth"), "1");   // the consent screen shows every time
 });
 
 test("privacy has no default: posting without a choice is refused", () => {

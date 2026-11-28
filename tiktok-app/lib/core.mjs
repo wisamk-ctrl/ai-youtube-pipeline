@@ -7,7 +7,7 @@ export const TT = "https://open.tiktokapis.com";
 
 export function authorizeUrl({ clientKey, redirectUri, state }) {
   const q = new URLSearchParams({ client_key: clientKey, scope: SCOPES.join(","), response_type: "code",
-    redirect_uri: redirectUri, state });
+    redirect_uri: redirectUri, state, disable_auto_auth: "1" });
   return `https://www.tiktok.com/v2/auth/authorize/?${q}`;
 }
 
