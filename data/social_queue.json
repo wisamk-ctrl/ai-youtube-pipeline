@@ -1317,5 +1317,60 @@
         "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7532257398099644416"
       }
     }
+  },
+  {
+    "id": "2026-11-28-brk-openai-countersues-apple-en#1",
+    "week": "2026-11-28-brk-openai-countersues-apple-en",
+    "lang": "en",
+    "file": "2026-11-28-brk-openai-countersues-apple-en-short-01.mp4",
+    "url": "https://github.com/wisamk-ctrl/ai-youtube-pipeline/releases/download/social-2026-11-28-brk-openai-countersues-apple-en/2026-11-28-brk-openai-countersues-apple-en-short-01.mp4",
+    "title": "OpenAI Countersues Apple",
+    "due": "2026-11-28T09:37:16Z",
+    "question": "Would Gulf companies choose OpenAI devices over iPhones?",
+    "approved": true,
+    "captions": {
+      "youtube": "Would Gulf companies choose OpenAI devices over iPhones? Answer in the comments.\n\nOpenAI Countersues Apple\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\nPartnerships: aithisweek.partnerships@gmail.com\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\nPhoto: Daniel L. Lu (user:dllu), CC BY-SA 4.0, via Wikimedia Commons\n\n#Shorts #AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "instagram": "Would Gulf companies choose OpenAI devices over iPhones? Answer in the comments.\n\nOpenAI Countersues Apple\n\nFull episode on YouTube: link in bio\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\nPhoto: Daniel L. Lu (user:dllu), CC BY-SA 4.0, via Wikimedia Commons\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "facebook": "Would Gulf companies choose OpenAI devices over iPhones? Answer in the comments.\n\nOpenAI Countersues Apple\n\nLatest full episode: https://youtu.be/rp0sXtZ9kIc\nChannel: https://www.youtube.com/@AIThisWeekME\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\nPhoto: Daniel L. Lu (user:dllu), CC BY-SA 4.0, via Wikimedia Commons\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "tiktok": "Would Gulf companies choose OpenAI devices over iPhones? Answer in the comments.\n\nOpenAI Countersues Apple\n\nMore on this in Sunday's episode of AI This Week. Follow so you don't miss it.\n\nNote: this episode is presented by Wissam's AI digital twin, with his consent. Informational only; not investment or legal advice.\n\nPhoto: Daniel L. Lu (user:dllu), CC BY-SA 4.0, via Wikimedia Commons\n\n#AI #AINews #ArtificialIntelligence #TechNews #GenerativeAI #Technology #Innovation #FutureOfWork #ChatGPT #MiddleEast",
+      "linkedin": "OpenAI has countersued Apple, alleging theft of trade secrets. In a filing dated 27 November in a California federal court, OpenAI claims Apple obtained its device roadmap through a re-hired engineer and pressured shared suppliers; it says around 400 specialists have moved from Apple to OpenAI. Apple, which sued first in July, rejects the allegations. For Gulf enterprises standardised on Apple hardware, a new AI device contender built with Jony Ive's team could reshape future device choices.\n\nMore on this in Sunday's episode of AI This Week.\nFollow on WhatsApp: https://whatsapp.com/channel/0029Vb9GAWP47XeAS2GDOm38\n\nPresented by my AI digital twin, with my consent. Informational only.\n\n#AI #ArtificialIntelligence #GenerativeAI #Technology #Innovation #FutureOfWork #Leadership #DigitalTransformation #TechNews #GCC"
+    },
+    "posts": {
+      "youtube": {
+        "status": "queued",
+        "note": "not connected this run (secrets missing or the token failed): still queued"
+      },
+      "instagram": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T09:37:17Z",
+        "media_id": "18385000429239015",
+        "url": "https://www.instagram.com/reel/DgR8w2FRSu2/",
+        "via": "composio"
+      },
+      "facebook": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T09:37:17Z",
+        "video_id": "29233641712966588",
+        "url": "https://www.facebook.com/reel/29233641712966588",
+        "via": "composio"
+      },
+      "tiktok": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T09:37:17Z",
+        "buffer_id": "6b0aa0f79caa4fb9ca999136",
+        "url": "https://tiktok.com/@aithisweek/video/7713154301434006791",
+        "via": "buffer"
+      },
+      "linkedin": {
+        "status": "posted",
+        "attempts": 1,
+        "at": "2026-11-28T09:37:17Z",
+        "post": "urn:li:ugcPost:7532377531346378752",
+        "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7532377531346378752"
+      }
+    }
   }
 ]
